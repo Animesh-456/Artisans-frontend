@@ -22,7 +22,7 @@ export default function Header({ }: Props) {
 
 
 	// useEffect(() => {
-		
+
 	// 		// Owl Carousel Initialization
 	// 		$(document).ready(function () {
 	// 			var owl1 = $("#owl-demo1");
@@ -43,7 +43,7 @@ export default function Header({ }: Props) {
 	// 				itemsMobile: false
 	// 			});
 	// 		});
-		
+
 	// }, []); // Empty dependency array ensures this effect runs once after initial render
 
 	// // Search Toggle Function
@@ -101,10 +101,12 @@ export default function Header({ }: Props) {
 						<div className="col-sm-4">
 							<div className="right_account">
 								<ul>
-									<li><img src={"/img/user.png"} alt="" /></li>
+									<li>
+										<Link href={"/auth/sign-in"}>
+											<img src={"/img/user.png"} alt="" /></Link></li>
 									<li><img src={"/img/heart.png"} alt="" /></li>
 									<li><img src={"/img/market.png"} alt="" /></li>
-									
+
 								</ul>
 							</div>
 						</div>
