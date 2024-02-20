@@ -88,9 +88,11 @@ export default function Header({ }: Props) {
 						<div className="col-sm-4">
 							<div className="right_account">
 								<ul>
-									<li><img src="img/user.png" alt="" /></li>
-									<li><img src="img/heart.png" alt="" /></li>
-									<li><img src="img/market.png" alt="" /></li>
+									<li>
+										<a href="auth/sign-in">
+											<img src="/img/user.png" alt="" /></a></li>
+									<li><img src="/img/heart.png" alt="" /></li>
+									<li><img src="/img/market.png" alt="" /></li>
 								</ul>
 							</div>
 						</div>
