@@ -1,19 +1,6 @@
-
-
-
-
-
 const about = () => {
-
-
-
-
     return (
         <>
-
-
-
-
             <section className="about_wrap">
                 <div className="container">
                     <div className="row">
@@ -52,17 +39,6 @@ const about = () => {
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
-
-
-
-
-
         </>
     )
 }

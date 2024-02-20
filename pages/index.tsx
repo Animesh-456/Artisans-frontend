@@ -60,7 +60,7 @@ function Home(prp) {
         <>
 
             <div id="myCarousel" className="carousel slide" data-ride="carousel">
-                <ul className="carousel-indicators">
+                {/* <ul className="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                 </ul>
@@ -81,7 +81,30 @@ function Home(prp) {
                             <p>Transform Your Space with Stunning Wall Art</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
+                <Carousel>
+                    <Carousel.Item interval={5000}>
+                        <div className="carousel-item active">
+                            <h1><b>Free shipping on all order</b> <a href="#">out now</a></h1>
+                            <img src="img/SLIDER-_1.jpg" alt="" />
+                            <div className="capt_ion">
+                                <h2>600+ artworks</h2>
+                                <p>Transform Your Space with Stunning Wall Art</p>
+                            </div>
+                        </div>
+                    </Carousel.Item>
+                    <Carousel.Item interval={5000}>
+                        <div className="carousel-item active">
+                            <h1><b>Free shipping on all order</b> <a href="#">out now</a></h1>
+                            <img src="img/SLIDER-_2.jpg" alt="" />
+                            <div className="capt_ion">
+                                <h2>600+ artworks</h2>
+                                <p>Transform Your Space with Stunning Wall Art</p>
+                            </div>
+                        </div>
+                    </Carousel.Item>
+                </Carousel>
             </div>
 
             <div className="container">
@@ -173,14 +196,14 @@ function Home(prp) {
 
 
                 <Carousel>
-                    <Carousel.Item>
+                    <Carousel.Item interval={5000}>
 
                         <img src="img/pic4.jpg" alt="" />
                         <img src="img/pic5.jpg" alt="" />
                         <img src="img/pic6.jpg" alt="" />
 
                     </Carousel.Item>
-                    <Carousel.Item>
+                    <Carousel.Item interval={5000}>
                         <img src="img/pic4.jpg" alt="" />
                         <img src="img/pic5.jpg" alt="" />
                         <img src="img/pic6.jpg" alt="" />

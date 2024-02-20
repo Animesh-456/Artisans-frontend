@@ -73,10 +73,10 @@ export default function Header({ }: Props) {
 							<div className="search-wrapper">
 								<div className="input-holder">
 									<input type="text" className="search-input" placeholder="Type to search" />
-									<button className="search-icon" onClick={()=>searchToggle}><i className="fa fa-search"></i></button>
+									<button className="search-icon" onClick={() => searchToggle}><i className="fa fa-search"></i></button>
 									{/*  onclick="searchToggle(this, event);" */}
 								</div>
-								<span className="close" onClick={()=>searchToggle}></span>
+								<span className="close" onClick={() => searchToggle}></span>
 								{/* onclick="searchToggle(this, event); */}
 							</div>
 						</div>
@@ -107,10 +107,12 @@ export default function Header({ }: Props) {
 						<div className="collapse navbar-collapse" id="navbarNav">
 							<ul className="navbar-nav">
 								<li className="nav-item">
-									<a href="#" className="nav-link active">Home</a>
+									<a href={'/'} className="nav-link active">Home</a>
+									{/* <Link className="nav-link" href="/">Home</Link> */}
 								</li>
 								<li className="nav-item">
-									<a href="#" className="nav-link">About Us</a>
+									<a href="/account/about" className="nav-link">About Us</a>
+									{/* <Link className="nav-link" href='/account/about'>About Us</Link> */}
 								</li>
 								<li className="nav-item">
 									<a className="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">art request <span className="fa fa-angle-down"></span>
