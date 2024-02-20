@@ -19,26 +19,26 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 type Props = {};
 
 export const getStaticProps = async () => {
-    try {
-        const response = await fetch(`${env.base_url}project/page-details`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch');
-        }
-        const data = await response.json();
-        
-        return {
-            props: {
-                prp: data // Assuming the fetched data structure matches what's expected
-            }
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return {
-            props: {
-                prp: null // Or any default value indicating an error occurred
-            }
-        };
-    }
+	try {
+		const response = await fetch(`${env.base_url}project/page-details`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch');
+		}
+		const data = await response.json();
+
+		return {
+			props: {
+				prp: data // Assuming the fetched data structure matches what's expected
+			}
+		};
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		return {
+			props: {
+				prp: null // Or any default value indicating an error occurred
+			}
+		};
+	}
 };
 
 const listing = (prp) => {
@@ -49,7 +49,7 @@ const listing = (prp) => {
 	const [numPages, setNumPages] = useState(null);
 	//const totaljobs = useAtomValue(atom.project.api.total_jobs)
 	const [arr, setArr] = useState([]);
-	
+
 
 	//console.log("This users total jobs:- ", totaljobs)
 
@@ -65,13 +65,13 @@ const listing = (prp) => {
 		//api.project.list({ params: opt });
 		//api.project.public_profile_total_jobs({ params: { id: user?.id } })
 		const pageQueryParam = new URLSearchParams(location.search).get('page');
-        	const pageNumber = parseInt(pageQueryParam) || 1;
-        	console.log("Page number is ", pageNumber)
-        	api.project.list({ params: { ...opt, page: pageNumber-1 } });
+		const pageNumber = parseInt(pageQueryParam) || 1;
+		console.log("Page number is ", pageNumber)
+		api.project.list({ params: { ...opt, page: pageNumber - 1 } });
 
 
 	}, []);
-	
+
 
 	const handlePageClick = (i) => {
 
@@ -125,7 +125,7 @@ const listing = (prp) => {
 	const getPageNumbers = () => {
 		const startPage = Math.max(0, opt.page - Math.floor(visiblePages / 2));
 		const endPage = Math.min(opt.total_pages, startPage + visiblePages - 1);
-		
+
 		return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 	};
 
@@ -134,357 +134,163 @@ const listing = (prp) => {
 
 
 	return (
-	    <>
-	    <Head>
-                <title>{`${prp?.prp?.data[4].page_title}`}</title>
-                <meta name="description" content={`${prp?.prp?.data[4].page_desc}`} />
-            </Head>
-		<div>
-			<div
-				className='banner_wp sign_banner'
-				style={{ backgroundImage: "url(/img/banner2.jpg)" }}>
-				<div className='container'>
-					<div className='row'>
-						<div className='banner_text inner_banner_text'>
-							<h1 className='yh'>machining request</h1>
+		<>
+			<Head>
+				<title>{`${prp?.prp?.data[4].page_title}`}</title>
+				<meta name="description" content={`${prp?.prp?.data[4].page_desc}`} />
+			</Head>
+			<div>
+				<div
+					className='banner_wp sign_banner'
+					style={{ backgroundImage: "url(/img/banner2.jpg)" }}>
+					<div className='container'>
+						<div className='row'>
+							<div className='banner_text inner_banner_text'>
+								<h1 className='yh'>machining request</h1>
 
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className='container'>
-				<div className='avail'>
-					<h3></h3>
+				<div className='container'>
+					<div className='avail'>
+						<h3></h3>
+					</div>
 				</div>
-			</div>
-			<div className='container'>
-				<div className='row job_machin_wp'>
+				<div className='container'>
+					<div className='row job_machin_wp'>
 
-					{user?.role_id == 2 || user?.role_id == 1 ? (
-						<>
-							<AccountSideBar />
-						</>
-					) : (<>
-
-						<div className='col-sm-4'>
-							<div className='looking_m'>
-								<h3>Looking for a Machinist?</h3>
-								<p>Post your request and receive quotes for free.</p>
-								<Link href='/job/post'>
-									<a>Post your request</a>
-								</Link>
-								<h3>Are you a Machinist?</h3>
-								<p>Create a profile and start working.</p>
-								<Link href='/auth/sign-in'>
-									<a onClick={() => writeAtom(atom.storage.radio_login, "2")}>Create Your Profile</a>
-								</Link>
-							</div>
-						</div>
-					</>)}
-
-
-					<div className='col-sm-8'>
-						<div className='machin_req'>
+						{user?.role_id == 2 || user?.role_id == 1 ? (
 							<>
-								<h3>
-									Machining Requests <span>showing results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</span>
-								</h3>
-								{list.length
-									? (list.map((l, index) => {
+								<AccountSideBar />
+							</>
+						) : (<>
 
-										const strt = new Date(l?.project_post_format_date)
+							<div className='col-sm-4'>
+								<div className='looking_m'>
+									<h3>Looking for a Machinist?</h3>
+									<p>Post your request and receive quotes for free.</p>
+									<Link href='/job/post'>
+										<a>Post your request</a>
+									</Link>
+									<h3>Are you a Machinist?</h3>
+									<p>Create a profile and start working.</p>
+									<Link href='/auth/sign-in'>
+										<a onClick={() => writeAtom(atom.storage.radio_login, "2")}>Create Your Profile</a>
+									</Link>
+								</div>
+							</div>
+						</>)}
 
 
-										let n = new Date().toLocaleString('en-US', {
-    										timeZone: 'Europe/Paris',
-  										});
-										const nd = new Date(n)
+						<div className='col-sm-8'>
+							<div className='machin_req'>
+								<>
+									<h3>
+										Machining Requests <span>showing results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</span>
+									</h3>
+									{list.length
+										? (list.map((l, index) => {
 
-										const today = new Date()
-										nd.setHours(nd.getHours(), nd.getMinutes(), nd.getSeconds());
+											const strt = new Date(l?.project_post_format_date)
 
 
-										// Calculate the time difference in milliseconds
-										const timeDiff = nd.getTime() - strt.getTime();
+											let n = new Date().toLocaleString('en-US', {
+												timeZone: 'Europe/Paris',
+											});
+											const nd = new Date(n)
 
-										// Calculate the number of days
-										const diffInDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+											const today = new Date()
+											nd.setHours(nd.getHours(), nd.getMinutes(), nd.getSeconds());
 
-										// Calculate the number of remaining hours
-										const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
 
-										console.log("ndis", diffInDays, hourDifference)
+											// Calculate the time difference in milliseconds
+											const timeDiff = nd.getTime() - strt.getTime();
 
+											// Calculate the number of days
+											const diffInDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
+											// Calculate the number of remaining hours
+											const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
 
-										const strt2 = new Date(n)
-										const nd2 = new Date(l?.project_expiry_date)
+											console.log("ndis", diffInDays, hourDifference)
 
-										const today2 = new Date(l?.project_post_format_date)
-										nd2.setHours(today2.getHours(), today2.getMinutes(), today2.getSeconds());
 
 
-										// Calculate the tim2e difference in milliseconds
-										const timeDiff2 = nd2.getTime() - strt2.getTime();
+											const strt2 = new Date(n)
+											const nd2 = new Date(l?.project_expiry_date)
 
-										// Calculate the number of days
-										const diffInDays2 = Math.floor(timeDiff2 / (1000 * 60 * 60 * 24));
+											const today2 = new Date(l?.project_post_format_date)
+											nd2.setHours(today2.getHours(), today2.getMinutes(), today2.getSeconds());
 
-										// Calculate the number of remaining hours
-										const hourDifference2 = Math.floor((timeDiff2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-										console.log("ndis2", diffInDays2, hourDifference2)
-										const date = new Date(l?.created * 1000);
+											// Calculate the tim2e difference in milliseconds
+											const timeDiff2 = nd2.getTime() - strt2.getTime();
 
-										const year = date.getFullYear();
-										const month = String(date.getMonth() + 1).padStart(2, '0');
-										const day = String(date.getDate()).padStart(2, '0');
-										const hours = String(date.getHours()).padStart(2, '0');
-										const minutes = String(date.getMinutes()).padStart(2, '0');
-										const seconds = String(date.getSeconds()).padStart(2, '0');
+											// Calculate the number of days
+											const diffInDays2 = Math.floor(timeDiff2 / (1000 * 60 * 60 * 24));
 
-										const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+											// Calculate the number of remaining hours
+											const hourDifference2 = Math.floor((timeDiff2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-										console.log('created-------------------', formattedDate);
+											console.log("ndis2", diffInDays2, hourDifference2)
+											const date = new Date(l?.created * 1000);
 
+											const year = date.getFullYear();
+											const month = String(date.getMonth() + 1).padStart(2, '0');
+											const day = String(date.getDate()).padStart(2, '0');
+											const hours = String(date.getHours()).padStart(2, '0');
+											const minutes = String(date.getMinutes()).padStart(2, '0');
+											const seconds = String(date.getSeconds()).padStart(2, '0');
 
-										/////////////////////////////////for log/////////////////////////////
+											const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-										
+											console.log('created-------------------', formattedDate);
 
 
+											/////////////////////////////////for log/////////////////////////////
 
 
 
 
 
-										const givenDateTime2 = moment(l?.project_post_format_date, 'YYYY-MM-DD HH:mm:ss');
-										const nowDateTime2 = moment();
 
-										// Step 2: Calculate the time difference using the diff method
-										const timeDifference2 = nowDateTime2.diff(givenDateTime2);
 
-										// Step 3: Extract the days and hours from the difference using Moment's duration methods
-										const duration2 = moment.duration(timeDifference2);
-										const days2 = duration2.days();
-										const hours2 = duration2.hours();
 
-										console.log("The new time diff2 is", days2, hours2)
 
-
-
-										return (
-
-											(l?.pro_job == 1) ? ((user?.role_id == 2 && user?.pro_user == 1) || (user?.email == l?.creator.email)) ?
-												<>
-
-
-													<div className='machin_req_li' key={l?.id}>
-														{l?.programmer_id ? (
-															<div className='award'>
-																<img src='/img/awarded.png' />
-															</div>
-														) : (
-															<></>
-														)}
-														<div className='machin_req_li_img'>
-															{l?.attachment_name?.includes(",") ? (
-																(l?.visibility.toLowerCase() == "private") ? (
-																	user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) >= 1))) ? l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
-																	<div className="pdf-container"><Document
-																		file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
-																		onLoadSuccess={onDocumentLoadSuccess}
-																	>
-																		<Page pageNumber={1} width={200} />
-																	</Document> </div> : (<img
-																		src={common.get_attachment(
-																			(l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-																		)}
-																	/>) : (<img
-																		src='/img/private.jpg'
-																	/>)
-
-																	: l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
-																		<div className="pdf-container"><Document
-																			file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
-																			onLoadSuccess={onDocumentLoadSuccess}
-																		>
-																			<Page pageNumber={1} width={200} />
-																		</Document> </div> : (<img
-																			src={common.get_attachment(
-																				(l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-																			)}
-																		/>)
-															) : (
-																(l?.visibility.toLowerCase() == "private") ? (
-																	(l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) >= 1))) ? (l?.attachment_name?.includes("pdf")) ?
-																	<div className="pdf-container"><Document
-																		file={common.get_attachment((l?.attachment_name), formattedDate)}
-																		onLoadSuccess={onDocumentLoadSuccess}
-																	>
-																		<Page pageNumber={1} width={200} />
-																	</Document> </div> : (<img
-																		src={common.get_attachment(
-																			(l?.attachment_name), formattedDate)}
-																	/>) : (<img
-																		src='/img/private.jpg'
-																	/>)
-
-																	: (l?.attachment_name?.includes("pdf") ?
-																		<div className="pdf-container"><Document
-																			file={common.get_attachment((l?.attachment_name), formattedDate)}
-																			onLoadSuccess={onDocumentLoadSuccess}
-																		>
-																			<Page pageNumber={1} width={200} />
-																		</Document> </div> : (
-																			<img
-																				src={common.get_attachment(
-																					(l?.attachment_name), formattedDate)}
-																			/>))
-															)}
-														</div>
-
-
-
-														<div className='machin_req_li_text'>
-															{(user?.pro_user == 1 || l?.pro_job == 0) ? (<h4>
-																<a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
-															</h4>) : (<h4>{l?.project_name}</h4>)}
-
-															<p>
-																<span>
-																	Posted{" "}
-																	{diffInDays} d {hourDifference} h ago
-																	{/* {moment().format("YYYY-MM-DD") ==
-																		l?.project_post_date
-																		? "today"
-																		: moment(l?.project_post_date).fromNow(true)} */}
-																</span>
-																<span>
-																	End:{" "}
-																	{diffInDays2 >= 0 && hourDifference2 >= 0 ? (
-																		<>{diffInDays2} d {hourDifference2} h</>
-																	) : (<>0 d 0 h</>)}
-																	{/* {moment(
-																		moment
-																			.unix(parseInt(l?.post_for))
-																			.format("YYYY-MM-DD HH:mm:ss"),
-																	).toNow(true)} */}
-																</span>{" "}
-																{l?.bids_count ? (
-																	<span>{l?.bids_count} Offers</span>
-																) : (
-																	<></>
-																)}
-															</p>
-															{l?.visibility.toLowerCase() == "private" ? (
-																user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
-																	<div>
-
-																		{l?.description.length > 250 ? (
-																			<div>
-
-																				<>
-
-																					{expandedRows.includes(index) ? (
-
-																						<></>
-
-																					) : (
-																						<h5>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
-																					)}
-
-																				</>
-
-																			</div>
-																		) : (<h5>{l?.description}</h5>)}
-																		{expandedRows.includes(index) && (
-
-																			<h5>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
-
-																		)}
-
-
-
-																	</div>
-																) : (<></>)
-															) : (
-																<div>
-
-																	{l?.description.length > 250 ? (
-																		<div>
-
-																			<>
-
-																				{expandedRows.includes(index) ? (
-
-																					<></>
-
-																				) : (
-																					<h5>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
-																				)}
-
-																			</>
-
-																		</div>
-																	) : (<h5>{l?.description}</h5>)}
-																	{expandedRows.includes(index) && (
-
-																		<h5>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
-
-																	)}
+											const givenDateTime2 = moment(l?.project_post_format_date, 'YYYY-MM-DD HH:mm:ss');
+											const nowDateTime2 = moment();
 
+											// Step 2: Calculate the time difference using the diff method
+											const timeDifference2 = nowDateTime2.diff(givenDateTime2);
 
+											// Step 3: Extract the days and hours from the difference using Moment's duration methods
+											const duration2 = moment.duration(timeDifference2);
+											const days2 = duration2.days();
+											const hours2 = duration2.hours();
 
+											console.log("The new time diff2 is", days2, hours2)
+
+
+
+											return (
+
+												(l?.pro_job == 1) ? ((user?.role_id == 2 && user?.pro_user == 1) || (user?.email == l?.creator.email)) ?
+													<>
+
+
+														<div className='machin_req_li' key={l?.id}>
+															{l?.programmer_id ? (
+																<div className='award'>
+																	<img src='/img/awarded.png' alt="" />
 																</div>
+															) : (
+																<></>
 															)}
-															{l?.visibility.toLowerCase() == "private" ? (
-																user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
-																	<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
-																) : (<></>)
-															) : (<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
-															)}
-
-
-														</div>
-														<div>
-															{l?.pro_job == 1 ? (<div className="pro_tag"><img src='/img/pro_icon.png' alt='' /></div>) : (<></>)}
-
-														</div>
-
-
-													</div>
-
-												</> : <></>
-												:
-												<>
-
-													<div className='machin_req_li' key={l?.id}>
-														{l?.programmer_id ? (
-															<div className='award'>
-																<img src='/img/awarded.png' />
-															</div>
-														) : (
-															<></>
-														)}
-
-														<div className='machin_req_li_img'>
-															{l?.attachment_name?.includes(",") ? (
-																(l?.visibility.toLowerCase() == "private") ? (user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0))) ? l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
-																	<div className="pdf-container"><Document
-																		file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
-																		onLoadSuccess={onDocumentLoadSuccess}
-																	>
-																		<Page pageNumber={1} width={200} />
-																	</Document> </div> : (<img
-																		src={common.get_attachment(
-																			(l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-																		)}
-																	/>) : (<img
-																		src='/img/private.jpg'
-																	/>)
-
-																	: l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
+															<div className='machin_req_li_img'>
+																{l?.attachment_name?.includes(",") ? (
+																	(l?.visibility.toLowerCase() == "private") ? (
+																		user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) >= 1))) ? l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
 																		<div className="pdf-container"><Document
 																			file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
 																			onLoadSuccess={onDocumentLoadSuccess}
@@ -494,22 +300,24 @@ const listing = (prp) => {
 																			src={common.get_attachment(
 																				(l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
 																			)}
+																		/>) : (<img
+																			src='/img/private.jpg' alt="cnc machining"
 																		/>)
-															) : (
-																(l?.visibility.toLowerCase() == "private") ? (user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0))) ? l?.attachment_name?.includes("pdf") ?
-																	<div className="pdf-container"><Document
-																		file={common.get_attachment((l?.attachment_name), formattedDate)}
-																		onLoadSuccess={onDocumentLoadSuccess}
-																	>
-																		<Page pageNumber={1} width={200} />
-																	</Document> </div> : (<img
-																		src={common.get_attachment(
-																			(l?.attachment_name), formattedDate)}
-																	/>) : (<img
-																		src='/img/private.jpg'
-																	/>)
 
-																	: (l?.attachment_name?.includes("pdf") ?
+																		: l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
+																			<div className="pdf-container"><Document
+																				file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
+																				onLoadSuccess={onDocumentLoadSuccess}
+																			>
+																				<Page pageNumber={1} width={200} />
+																			</Document> </div> : (<img
+																				src={common.get_attachment(
+																					(l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+																				)}
+																			/>)
+																) : (
+																	(l?.visibility.toLowerCase() == "private") ? (
+																		(l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) >= 1))) ? (l?.attachment_name?.includes("pdf")) ?
 																		<div className="pdf-container"><Document
 																			file={common.get_attachment((l?.attachment_name), formattedDate)}
 																			onLoadSuccess={onDocumentLoadSuccess}
@@ -518,50 +326,89 @@ const listing = (prp) => {
 																		</Document> </div> : (<img
 																			src={common.get_attachment(
 																				(l?.attachment_name), formattedDate)}
-																		/>))
-															)}
-														</div>
+																		/>) : (<img
+																			src='/img/private.jpg'
+																		/>)
+
+																		: (l?.attachment_name?.includes("pdf") ?
+																			<div className="pdf-container"><Document
+																				file={common.get_attachment((l?.attachment_name), formattedDate)}
+																				onLoadSuccess={onDocumentLoadSuccess}
+																			>
+																				<Page pageNumber={1} width={200} />
+																			</Document> </div> : (
+																				<img
+																					src={common.get_attachment(
+																						(l?.attachment_name), formattedDate)}
+																				/>))
+																)}
+															</div>
 
 
 
-														<div className='machin_req_li_text'>
-															{(user?.pro_user == 1 || l?.pro_job == 0) ? (<h4>
-																<a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
-															</h4>) : (<h6>{l?.project_name}</h6>)}
+															<div className='machin_req_li_text'>
+																{(user?.pro_user == 1 || l?.pro_job == 0) ? (<h4>
+																	<a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
+																</h4>) : (<h4>{l?.project_name}</h4>)}
 
-															<p>
-																<span>
-																	Posted{" "}
-																	{/* {moment().format("YYYY-MM-DD") ==
+																<p>
+																	<span>
+																		Posted{" "}
+																		{diffInDays} d {hourDifference} h ago
+																		{/* {moment().format("YYYY-MM-DD") ==
 																		l?.project_post_date
 																		? "today"
 																		: moment(l?.project_post_date).fromNow(true)} */}
-
-
-
-																	{diffInDays} d {hourDifference} h ago
-																</span>
-																<span>
-																	End:{" "}
-
-																	{diffInDays2 >= 0 ? (
-																		<>{diffInDays2} d {hourDifference2} h</>
-																	) : (<>0 days 0 hours</>)}
-
-																	{/* {moment(
+																	</span>
+																	<span>
+																		End:{" "}
+																		{diffInDays2 >= 0 && hourDifference2 >= 0 ? (
+																			<>{diffInDays2} d {hourDifference2} h</>
+																		) : (<>0 d 0 h</>)}
+																		{/* {moment(
 																		moment
 																			.unix(parseInt(l?.post_for))
 																			.format("YYYY-MM-DD HH:mm:ss"),
 																	).toNow(true)} */}
-																</span>{" "}
-																{l?.bids_count ? (
-																	<span className="offers-now">{l?.bids_count} Offers</span>
+																	</span>{" "}
+																	{l?.bids_count ? (
+																		<span>{l?.bids_count} Offers</span>
+																	) : (
+																		<></>
+																	)}
+																</p>
+																{l?.visibility.toLowerCase() == "private" ? (
+																	user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
+																		<div>
+
+																			{l?.description.length > 250 ? (
+																				<div>
+
+																					<>
+
+																						{expandedRows.includes(index) ? (
+
+																							<></>
+
+																						) : (
+																							<h5>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+																						)}
+
+																					</>
+
+																				</div>
+																			) : (<h5>{l?.description}</h5>)}
+																			{expandedRows.includes(index) && (
+
+																				<h5>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+
+																			)}
+
+
+
+																		</div>
+																	) : (<></>)
 																) : (
-																	<></>
-																)}
-															</p>
-															{l?.visibility.toLowerCase() == "private" ? (
-																user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
 																	<div>
 
 																		{l?.description.length > 250 ? (
@@ -590,79 +437,232 @@ const listing = (prp) => {
 
 
 																	</div>
-																) : (<></>)
-															) : (
-																<div>
+																)}
+																{l?.visibility.toLowerCase() == "private" ? (
+																	user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
+																		<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
+																	) : (<></>)
+																) : (<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
+																)}
 
-																	{l?.description.length > 250 ? (
+
+															</div>
+															<div>
+																{l?.pro_job == 1 ? (<div className="pro_tag"><img src='/img/pro_icon.png' alt='' /></div>) : (<></>)}
+
+															</div>
+
+
+														</div>
+
+													</> : <></>
+													:
+													<>
+
+														<div className='machin_req_li' key={l?.id}>
+															{l?.programmer_id ? (
+																<div className='award'>
+																	<img src='/img/awarded.png' />
+																</div>
+															) : (
+																<></>
+															)}
+
+															<div className='machin_req_li_img'>
+																{l?.attachment_name?.includes(",") ? (
+																	(l?.visibility.toLowerCase() == "private") ? (user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0))) ? l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
+																		<div className="pdf-container"><Document
+																			file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
+																			onLoadSuccess={onDocumentLoadSuccess}
+																		>
+																			<Page pageNumber={1} width={200} />
+																		</Document> </div> : (<img
+																			src={common.get_attachment(
+																				(l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+																			)}
+																		/>) : (<img
+																			src='/img/private.jpg'
+																		/>)
+
+																		: l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ?
+																			<div className="pdf-container"><Document
+																				file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
+																				onLoadSuccess={onDocumentLoadSuccess}
+																			>
+																				<Page pageNumber={1} width={200} />
+																			</Document> </div> : (<img
+																				src={common.get_attachment(
+																					(l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+																				)}
+																			/>)
+																) : (
+																	(l?.visibility.toLowerCase() == "private") ? (user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0))) ? l?.attachment_name?.includes("pdf") ?
+																		<div className="pdf-container"><Document
+																			file={common.get_attachment((l?.attachment_name), formattedDate)}
+																			onLoadSuccess={onDocumentLoadSuccess}
+																		>
+																			<Page pageNumber={1} width={200} />
+																		</Document> </div> : (<img
+																			src={common.get_attachment(
+																				(l?.attachment_name), formattedDate)}
+																		/>) : (<img
+																			src='/img/private.jpg'
+																		/>)
+
+																		: (l?.attachment_name?.includes("pdf") ?
+																			<div className="pdf-container"><Document
+																				file={common.get_attachment((l?.attachment_name), formattedDate)}
+																				onLoadSuccess={onDocumentLoadSuccess}
+																			>
+																				<Page pageNumber={1} width={200} />
+																			</Document> </div> : (<img
+																				src={common.get_attachment(
+																					(l?.attachment_name), formattedDate)}
+																			/>))
+																)}
+															</div>
+
+
+
+															<div className='machin_req_li_text'>
+																{(user?.pro_user == 1 || l?.pro_job == 0) ? (<h4>
+																	<a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
+																</h4>) : (<h6>{l?.project_name}</h6>)}
+
+																<p>
+																	<span>
+																		Posted{" "}
+																		{/* {moment().format("YYYY-MM-DD") ==
+																		l?.project_post_date
+																		? "today"
+																		: moment(l?.project_post_date).fromNow(true)} */}
+
+
+
+																		{diffInDays} d {hourDifference} h ago
+																	</span>
+																	<span>
+																		End:{" "}
+
+																		{diffInDays2 >= 0 ? (
+																			<>{diffInDays2} d {hourDifference2} h</>
+																		) : (<>0 days 0 hours</>)}
+
+																		{/* {moment(
+																		moment
+																			.unix(parseInt(l?.post_for))
+																			.format("YYYY-MM-DD HH:mm:ss"),
+																	).toNow(true)} */}
+																	</span>{" "}
+																	{l?.bids_count ? (
+																		<span className="offers-now">{l?.bids_count} Offers</span>
+																	) : (
+																		<></>
+																	)}
+																</p>
+																{l?.visibility.toLowerCase() == "private" ? (
+																	user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
 																		<div>
 
-																			<>
+																			{l?.description.length > 250 ? (
+																				<div>
 
-																				{expandedRows.includes(index) ? (
+																					<>
 
-																					<></>
+																						{expandedRows.includes(index) ? (
 
-																				) : (
-																					<h5>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
-																				)}
+																							<></>
 
-																			</>
+																						) : (
+																							<h5>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+																						)}
+
+																					</>
+
+																				</div>
+																			) : (<h5>{l?.description}</h5>)}
+																			{expandedRows.includes(index) && (
+
+																				<h5>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+
+																			)}
+
+
 
 																		</div>
-																	) : (<h5>{l?.description}</h5>)}
-																	{expandedRows.includes(index) && (
+																	) : (<></>)
+																) : (
+																	<div>
 
-																		<h5>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+																		{l?.description.length > 250 ? (
+																			<div>
 
-																	)}
+																				<>
+
+																					{expandedRows.includes(index) ? (
+
+																						<></>
+
+																					) : (
+																						<h5>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+																					)}
+
+																				</>
+
+																			</div>
+																		) : (<h5>{l?.description}</h5>)}
+																		{expandedRows.includes(index) && (
+
+																			<h5>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+
+																		)}
 
 
 
-																</div>
-															)}
-															{/* <p>{l?.pro_job} job type</p> */}
-															{l?.visibility.toLowerCase() == "private" ? (
-																user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
-																	<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
-																) : (<></>)
-															) : (<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
-															)}
+																	</div>
+																)}
+																{/* <p>{l?.pro_job} job type</p> */}
+																{l?.visibility.toLowerCase() == "private" ? (
+																	user && (l?.creator_id == user?.id || (user?.role_id == 2 && Number(totaljobs) != 0)) ? (
+																		<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
+																	) : (<></>)
+																) : (<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
+																)}
+
+
+															</div>
+															<div>
+																{l?.pro_job == 1 ? (<div className="pro_tag"><img src='/img/pro_icon.png' alt='' /></div>) : (<></>)}
+
+															</div>
 
 
 														</div>
-														<div>
-															{l?.pro_job == 1 ? (<div className="pro_tag"><img src='/img/pro_icon.png' alt='' /></div>) : (<></>)}
-
-														</div>
-
-
-													</div>
 
 
 
-												</>
+													</>
+											)
+
+
+
+										})
 										)
+										: ""}
 
-
-
-									})
-									)
-									: ""}
-
-							<div className='pagination-wrap'>	
-							<ul className='pagination'>
-									{(opt.page > 0) ? <li className='page-item'>
-                                       						 <a className='page-link' onClick={() => handlePageClick(0)}>
-                                           						 First
-                                        					 </a>
-                                    					</li>: ""}
-									{(opt.page > 0) ? <li className='page-item'>
-										<a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
-											Previous
-										</a>
-									</li> : ""}
-									{/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
+									<div className='pagination-wrap'>
+										<ul className='pagination'>
+											{(opt.page > 0) ? <li className='page-item'>
+												<a className='page-link' onClick={() => handlePageClick(0)}>
+													First
+												</a>
+											</li> : ""}
+											{(opt.page > 0) ? <li className='page-item'>
+												<a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
+													Previous
+												</a>
+											</li> : ""}
+											{/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
 										(d, i: any) => {
 											return (
 												<li
@@ -687,50 +687,50 @@ const listing = (prp) => {
 										},
 									)} */}
 
-									{opt.total_count>10 && getPageNumbers().map((page) => (
+											{opt.total_count > 10 && getPageNumbers().map((page) => (
 
-										<li
-											className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-												page
-												? "active"
-												: ""
-												}`}>
-											<Link href={`${router.pathname}?page=${page}`}>
-												<a
-													className='page-link'
-													onClick={(e) => {
-														e.preventDefault();
-														handlePageClick(page);
-													}}>
-													{page + 1}
+												<li
+													className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
+														page
+														? "active"
+														: ""
+														}`}>
+													<Link href={`${router.pathname}?page=${page}`}>
+														<a
+															className='page-link'
+															onClick={(e) => {
+																e.preventDefault();
+																handlePageClick(page);
+															}}>
+															{page + 1}
+														</a>
+													</Link>
+												</li>
+
+											))}
+
+
+
+
+											{opt.page != opt.total_pages ?
+												<li className='page-item'>
+													<a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
+														Next
+													</a>
+												</li> : ""}
+											{opt.page != opt.total_pages ? <li className='page-item'>
+												<a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
+													Last
 												</a>
-											</Link>
-										</li>
-
-									))}
-
-
-
-
-									{opt.page != opt.total_pages ?
-										<li className='page-item'>
-											<a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
-												Next
-											</a>
-										</li> : ""}
-									{opt.page != opt.total_pages ?<li className='page-item'>
-                                       								 <a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
-                                            										Last
-                                        							 </a>
-                                    						</li> : ""}
-								</ul>
+											</li> : ""}
+										</ul>
+									</div>
+								</>
 							</div>
-							</>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</>
 	);
 };

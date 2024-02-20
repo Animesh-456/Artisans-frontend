@@ -104,6 +104,7 @@ export default function Header({ }: Props) {
 									<li><img src={"/img/user.png"} alt="" /></li>
 									<li><img src={"/img/heart.png"} alt="" /></li>
 									<li><img src={"/img/market.png"} alt="" /></li>
+									
 								</ul>
 							</div>
 						</div>
