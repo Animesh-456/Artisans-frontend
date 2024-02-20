@@ -1,0 +1,850 @@
+@charset "UTF-8";
+
+/** @group Base */
+a:focus, button:focus {
+    outline: none !important;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+blockquote {
+    padding: 0;
+    margin: 0;
+}
+
+input, button, select, textarea {
+    outline: none;
+}
+
+label {
+    margin-bottom: 0;
+}
+
+p {
+    margin: 0;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li, ol li {
+    display: block;
+}
+
+dl {
+    margin: 0;
+}
+
+dt, dd {
+    line-height: inherit;
+}
+
+dt {
+    font-weight: inherit;
+}
+
+dd {
+    margin-bottom: 0;
+}
+
+cite {
+    font-style: normal;
+}
+
+form {
+    margin-bottom: 0;
+}
+
+blockquote {
+    padding-left: 0;
+    border-left: 0;
+}
+
+address {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+figure {
+    margin-bottom: 0;
+}
+
+html p a:hover {
+    text-decoration: none;
+}
+
+body {
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: .05em;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #777777;
+    background-color: #ffffff;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 300;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0;
+    color: #777777;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: inherit;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    color: #563018;
+}
+
+.top_bar {
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.top_bar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    float: right;
+}
+
+.top_bar ul li {
+    padding: 0 7px;
+}
+
+.top_bar ul li .fa {
+    background: #2c2c2c;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    padding-top: 3px;
+}
+
+.search-wrapper {
+    position: absolute;
+    transform: translate(0%, 0%);
+    top: 0;
+    left: 0;
+}
+
+.search-wrapper.active {}
+
+.search-wrapper .input-holder {
+    height: 39px;
+    width: 35px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-wrapper.active .input-holder {
+    width: 335px;
+    border-radius: 50px;
+    background: rgb(0 0 0 / 6%);
+    transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+}
+
+.search-wrapper .input-holder .search-input {
+    width: 100%;
+    height: 35px;
+    padding: 0px 70px 0 20px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: transparent;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #FFF;
+    transform: translate(0, 60px);
+    transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.3s;
+}
+
+.search-wrapper.active .input-holder .search-input {
+    opacity: 1;
+    transform: translate(0, 2px);
+}
+
+.search-wrapper .input-holder .search-icon {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 6px;
+    background: #FFF;
+    padding: 0px;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    float: right;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-wrapper.active .input-holder .search-icon {
+    width: 35x;
+    height: 35px;
+    margin: 3px;
+    border-radius: 30px;
+}
+
+.search-wrapper .close {
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    right: 6px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transform: rotate(-180deg);
+    transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+    transition-delay: 0.2s;
+}
+
+.search-wrapper.active .close {
+    right: -35px;
+    transform: rotate(45deg);
+    transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.5s;
+}
+
+.search-wrapper .close::before, .search-wrapper .close::after {
+    position: absolute;
+    content: '';
+    background: #FE5F55;
+    border-radius: 2px;
+}
+
+.search-wrapper .close::before {
+    width: 5px;
+    height: 25px;
+    left: 10px;
+    top: 0px;
+}
+
+.search-wrapper .close::after {
+    width: 25px;
+    height: 5px;
+    left: 0px;
+    top: 10px;
+}
+
+.search-wrapper .input-holder .search-icon .fa.fa-search {
+    color: #505050;
+}
+
+.logo_bar {
+    padding-top: 1em;
+    padding-bottom: 10px;
+}
+
+.right_account ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    float: right;
+}
+
+.right_account ul li {
+    padding-left: 20px;
+}
+
+.right_account ul li img {
+    width: 22px;
+}
+
+.menu_bar nav {
+    position: relative;
+}
+
+ul.jsx-undefined {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.GuRlX {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.GuRlX li {
+    width: 33%;
+}
+
+.GuRlX li a img {
+    width: 100px;
+    margin-bottom: 19px;
+}
+
+.hMovQM img {
+    height: 250px;
+    width: 100%;
+}
+
+/*.dropdown .submenu{  position:relative;}*/
+.dropdown button .fa.fa-caret-down {
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.dropdown a .fa.fa-caret-right {
+    float: right;
+}
+
+.dropdown .submenu>div {
+    background-color: #fff;
+    visibility: hidden;
+    position: absolute;
+    left: 100%;
+    top: -17px;
+    transition: .3s;
+    opacity: 0;
+    padding: 15px;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1px;
+}
+
+.qwe23 h4 {
+    font-size: 20px;
+    margin: 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+}
+
+.subCats {
+    display: flex;
+    width: 100%;
+    padding-top: 9px;
+}
+
+.eeXwrz {
+    width: 50%;
+}
+
+.eeXwrz h5 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.eeXwrz ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*use the following commented class if you wanna show submenu at left*/
+/*.dropdown .submenu.atLeft > div{  left:-100%;}*/
+.dropdown .submenu:hover>div {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown:hover>div {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown a {
+    display: block;
+    text-decoration: none;
+    padding: 8px;
+    color: #000;
+    transition: .1s;
+    white-space: nowrap;
+    font: normal normal 16px/17px 'helveticaregular';
+}
+
+.dropdown a:hover, .dropdown .submenu:hover>a {
+    background-color: transparent;
+    color: #60427D;
+}
+
+.navbar-collapse.collapse.in {
+    display: block !important;
+}
+
+.fa-angle-down {
+    padding-left: 10px;
+}
+
+.fa-icon {
+    font-size: 30px;
+    color: #fff;
+    background-color: pink;
+    margin: 2px 10px 5px 0px;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.dropdown-menu {
+    margin-top: 0px;
+    border: none;
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 100%;
+}
+
+.dropdown-item {
+    padding: 0px;
+}
+
+.dropdown-item:hover {
+    background-color: inherit;
+}
+
+.menu_bar .nav-item {
+    padding: 6px;
+    margin: 0px 3px;
+    text-align: center;
+    position: static;
+}
+
+.menu_bar ul li a {
+    color: #2C1A46 !important;
+    letter-spacing: 1px;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.menu_bar .navbar-collapse {
+    justify-content: center;
+}
+
+.qwe1 h6 {
+    padding-bottom: 9px;
+    color: #000;
+    font-weight: 500;
+}
+
+#myCarousel .carousel-item img {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+}
+
+#myCarousel .carousel-item h1 {
+    background: #000;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 17px;
+    letter-spacing: 2px;
+    padding: 16px;
+}
+
+#myCarousel .carousel-item h1 a:hover {
+    color: #fff;
+}
+
+.capt_ion {
+    position: absolute;
+    bottom: 42px;
+    width: 100%;
+}
+
+.capt_ion h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 9px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.capt_ion p {
+    color: #000;
+    background: rgb(255 255 255 / 36%);
+    padding: 6px;
+    display: inline;
+}
+
+#myCarousel .carousel-indicators li {
+    width: 84px;
+    height: 6px;
+}
+
+.menu_bar ul li a.active {
+    color: #7fc0ac !important;
+}
+
+.yh4d h1 {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 9px;
+    font-family: 'Libre Baskerville', serif;
+    color: #282828;
+    font-size: 47px;
+}
+
+.yh1d {
+    padding-top: 45px;
+}
+
+.yh4d h1 {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 23px;
+    font-family: 'Libre Baskerville', serif;
+    color: #282828;
+    font-size: 47px;
+}
+
+.yh5d img {
+    margin-bottom: 2em;
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+}
+
+.yh3d h5 {
+    color: #000;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+}
+
+.yh3d img {
+    width: 80px;
+    margin: 20px 0;
+}
+
+.qwe2 {
+    background: #b2e0b1;
+    padding: 3em 0;
+}
+
+.howw {
+    padding-bottom: 25px;
+}
+
+.owl-theme .owl-controls .owl-page span {
+    width: 100px !important;
+    height: 9px !important;
+    background: #404040 !important;
+    border-radius: 0 !important;
+}
+
+.recent-art {
+    padding: 2em 0;
+}
+
+.artist1 img {
+    width: 100%;
+}
+
+.artist1 h4 {
+    background: #000;
+    color: #fff;
+    padding: 11px;
+    font-size: 17px;
+    text-transform: uppercase;
+    line-height: 24px;
+}
+
+.artist1 img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.artist1 {
+    margin-bottom: 2em;
+}
+
+.view_all a {
+    text-transform: uppercase;
+    background: #ddfade;
+    color: #000;
+    padding: 10px 20px;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 600;
+}
+
+#owl-demo2 img {
+    width: 100%;
+    border-radius: 20px;
+    height: 225px;
+}
+
+#owl-demo2 .item {
+    margin: 6px;
+    position: relative;
+}
+
+.we1 {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.we1 .fa {
+    color: #fec107;
+}
+
+.we1 p {
+    color: #fff;
+    background: rgb(0 0 0 / 41%);
+}
+
+.primi1 img {
+    margin: 18px 0;
+    width: 70px;
+}
+
+.primi1 h4 {
+    color: #000;
+    font-family: 'Libre Baskerville', serif;
+    padding-bottom: 8px;
+    font-size: 25px;
+}
+
+footer {
+    background: #000000;
+}
+
+.footer_l {
+    padding: 2em 0;
+    text-align: left;
+}
+
+.footer_l h4 {
+    color: #fff;
+    padding-bottom: 16px;
+    font-size: 19px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer_l ul li {
+    color: #fff;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer_l ul li a {
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer_l p {
+    color: #fff;
+    padding-bottom: 29px;
+    font-size: 14px;
+}
+
+.footer_l form {
+    position: relative;
+}
+
+.footer_l input[type="email"] {
+    padding-left: 10px;
+    font-size: 14px;
+    background: #000;
+    border: 1px solid #fff;
+    line-height: 29px;
+    width: 100%;
+    color: #fff;
+}
+
+.footer_l button {
+    background: none;
+    color: #fff;
+    position: absolute;
+    right: 3px;
+    top: 2px;
+}
+
+.footer_b img {
+    margin-bottom: 15px;
+}
+
+.footer_b p {
+    color: #fff;
+    padding-bottom: 12px;
+    font-size: 14px;
+}
+
+.proj_d1 {
+    margin-top: 4em;
+}
+
+.proj_d1 h1 {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-family: 'Libre Baskerville', serif;
+    color: #282828;
+    font-size: 33px;
+    text-align: left;
+}
+
+.proj_i {
+    border: 2px dashed #ccc;
+    padding: 15px;
+}
+
+.proj_i img {
+    width: 100%;
+    height: 237px;
+    object-fit: cover;
+}
+
+.proj_d {
+    text-align: left;
+}
+
+.proj_d p {
+    font-size: 17px;
+    color: #000;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+.proj_d p span {
+    width: 31%;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.project_des {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.project_des1 {
+    text-align: left;
+    margin-bottom: 3em;
+}
+
+.project_des1 p {
+    color: #000;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+}
+
+.project_des1 button {
+    background: #96d994;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 19px;
+    font-family: 'Libre Baskerville', serif;
+    letter-spacing: 1px;
+}
+
+.tgh {
+    display: flex;
+}
+
+.tgh h2 {
+    color: #000;
+    font-size: 35px;
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.tgh div p .fa {
+    color: #fdc105;
+}
+
+.tgh figure {
+    margin-right: 41px;
+}
+
+.tgh figure img {
+    width: 100px;
+}
+
+.tgh1 {
+    text-align: right;
+}
+
+.tgh4 {
+    margin: 2em 0;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    padding: 20px 8px;
+}
+
+.tgh2 h5 {
+    color: #000;
+    font-weight: 400;
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+
+.tgh2 p {
+    color: #817f7f;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.tgh3 h6 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #000;
+    padding-bottom: 8px;
+}
+
+.tgh3 p {
+    padding-bottom: 0;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+@media (max-width: 767px) {
+    .menu_bar .nav-item {
+        width: 100%;
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    .dropdown-menu {
+        left: 0 !important;
+        position: relative !important;
+        padding: 20px;
+    }
+}
