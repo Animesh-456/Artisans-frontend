@@ -24,6 +24,8 @@ $(document).ready(function () {
     $(".mobile-offcanvas").removeClass("show");
     $("body").removeClass("offcanvas-active");
   });
+
+  
 }); // jquery end
 
 // owl function

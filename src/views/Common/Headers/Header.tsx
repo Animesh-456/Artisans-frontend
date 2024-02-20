@@ -6,53 +6,64 @@ import { toast } from "react-hot-toast";
 import atom from "../../../jotai/atom";
 import Routes from "../../../Routes";
 import api from "../../../api/services/api";
-
+import $ from 'jquery';
+// import 'owl.carousel/dist/assets/owl.carousel.css';
+// import 'owl.carousel/dist/assets/owl.theme.default.css';
+//import 'owl.carousel';
 type Props = {};
 
 export default function Header({ }: Props) {
 	const router = useRouter();
-	const [user, setUser] = useAtom(atom.storage.user);
 
-	useEffect(() => { }, []);
+	const path = router.pathname;
 
-	const handleLogout = () => {
-		//e.preventDefault();
-		console.log("hello");
-		console.log("user before logout ----->", user);
-		setUser(null);
-		//router.push("/auth/sign-ing");
-		router.push("/auth/sign-in")
-	};
-
-
-	useEffect(() => {
-		if (user) {
-			api.project.inbox_count({ params: { id: user?.id, role_id: user?.role_id } })
-		}
-	}, [])
+	console.log("The path is ", path)
 
 
 
+	// useEffect(() => {
+		
+	// 		// Owl Carousel Initialization
+	// 		$(document).ready(function () {
+	// 			var owl1 = $("#owl-demo1");
+	// 			owl1.owlCarousel({
+	// 				items: 3,
+	// 				itemsDesktop: [1000, 3],
+	// 				itemsDesktopSmall: [900, 3],
+	// 				itemsTablet: [600, 2],
+	// 				itemsMobile: false
+	// 			});
 
+	// 			var owl2 = $("#owl-demo2");
+	// 			owl2.owlCarousel({
+	// 				items: 5,
+	// 				itemsDesktop: [1000, 5],
+	// 				itemsDesktopSmall: [900, 3],
+	// 				itemsTablet: [600, 1],
+	// 				itemsMobile: false
+	// 			});
+	// 		});
+		
+	// }, []); // Empty dependency array ensures this effect runs once after initial render
 
+	// // Search Toggle Function
+	// const searchToggle = (obj: any, evt: any) => {
+	// 	var container = $(obj).closest('.search-wrapper');
+	// 	if (!container.hasClass('active')) {
+	// 		container.addClass('active');
+	// 		evt.preventDefault();
+	// 	} else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+	// 		container.removeClass('active');
+	// 		// clear input
+	// 		container.find('.search-input').val('');
+	// 	}
+	// };
 
-	function searchToggle(obj, evt) {
-		var container = obj.closest('.search-wrapper');
-		if (!container.classList.contains('active')) {
-			container.classList.add('active');
-			evt.preventDefault();
-		} else if (container.classList.contains('active') && !obj.closest('.input-holder')) {
-			container.classList.remove('active');
-			// clear input
-			container.querySelector('.search-input').value = '';
-		}
-	}
-
-	// Define the initialization of owl carousel
-
-
-
-	const inbox_count = useAtomValue(atom.project.api.inbox_count)
+	// // Function to handle onClick event
+	// const handleSearchToggleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	// 	// Call the searchToggle function
+	// 	searchToggle(event.currentTarget, event);
+	// };
 	return (
 		<>
 
@@ -73,24 +84,26 @@ export default function Header({ }: Props) {
 							<div className="search-wrapper">
 								<div className="input-holder">
 									<input type="text" className="search-input" placeholder="Type to search" />
-									<button className="search-icon" onClick={() => searchToggle}><i className="fa fa-search"></i></button>
+									<button className="search-icon" ><i className="fa fa-search"></i></button>
 									{/*  onclick="searchToggle(this, event);" */}
 								</div>
-								<span className="close" onClick={() => searchToggle}></span>
+								<span className="close"></span>
 								{/* onclick="searchToggle(this, event); */}
 							</div>
 						</div>
 						<div className="col-sm-4">
 							<div className="logo">
-								<img src={"/img/logo.png"} alt="" />
+								<Link href="/">
+									<img style={{ cursor: 'pointer' }} src={"/img/logo.png"} alt="" />
+								</Link>
 							</div>
 						</div>
 						<div className="col-sm-4">
 							<div className="right_account">
 								<ul>
-									<li><img src="img/user.png" alt="" /></li>
-									<li><img src="img/heart.png" alt="" /></li>
-									<li><img src="img/market.png" alt="" /></li>
+									<li><img src={"/img/user.png"} alt="" /></li>
+									<li><img src={"/img/heart.png"} alt="" /></li>
+									<li><img src={"/img/market.png"} alt="" /></li>
 								</ul>
 							</div>
 						</div>
@@ -107,11 +120,11 @@ export default function Header({ }: Props) {
 						<div className="collapse navbar-collapse" id="navbarNav">
 							<ul className="navbar-nav">
 								<li className="nav-item">
-									<a href={'/'} className="nav-link active">Home</a>
+									<a href={'/'} className={`nav-link ${path == '/' ? "active" : ""}`}>Home</a>
 									{/* <Link className="nav-link" href="/">Home</Link> */}
 								</li>
 								<li className="nav-item">
-									<a href="/account/about" className="nav-link">About Us</a>
+									<a href="/account/about" className={`nav-link ${path == '/account/about' ? "active" : ""}`}>About Us</a>
 									{/* <Link className="nav-link" href='/account/about'>About Us</Link> */}
 								</li>
 								<li className="nav-item">
