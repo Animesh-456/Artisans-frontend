@@ -19,14 +19,14 @@ type Props = {};
 
 
 
-const jobs = (props: Props) => {
+const Jobs = (props: Props) => {
     const router = useRouter();
 
     const list = useAtomValue(atom.project.api.my);
     const opt = useAtomValue(atom.project.api.my_proj_opt);
     const [index, setIndex] = useAtom(atom.storage.job_tab);
     let loginmodal = useAtomValue(atom.storage.loginmodal);
-	
+
     const user = useAtomValue(atom.storage.user);
 
     const RefLink = (l) => {
@@ -35,10 +35,10 @@ const jobs = (props: Props) => {
         router.replace(l)
     }
     useEffect(() => {
-	console.log("calling form customer end");
+        console.log("calling form customer end");
         const pageQueryParam = new URLSearchParams(location.search).get('page');
-		const pageNumber = parseInt(pageQueryParam) || 1;
-		console.log("Page number is ", pageNumber)
+        const pageNumber = parseInt(pageQueryParam) || 1;
+        console.log("Page number is ", pageNumber)
         api.project.my_jobs({ params: { ...opt, page: pageNumber - 1, status: index } });
     }, [index]);
 
@@ -64,11 +64,11 @@ const jobs = (props: Props) => {
         else if (value == 2) {
             setIndex(6);
         }
-	const pageQueryParam = new URLSearchParams(location.search).get('page');
-		const pageNumber = parseInt(pageQueryParam) || 1;
-		console.log("Page number is ", pageNumber)
-	
-        api.project.my_jobs({ params: { ...opt, page: pageNumber-1, status: index } });
+        const pageQueryParam = new URLSearchParams(location.search).get('page');
+        const pageNumber = parseInt(pageQueryParam) || 1;
+        console.log("Page number is ", pageNumber)
+
+        api.project.my_jobs({ params: { ...opt, page: pageNumber - 1, status: index } });
     }
     const [show, setShow] = useState(true);
 
@@ -133,265 +133,356 @@ const jobs = (props: Props) => {
     const getPageNumbers = () => {
         const startPage = Math.max(0, opt.page - Math.floor(visiblePages / 2));
         const endPage = Math.min(opt.total_pages, startPage + visiblePages - 1);
-	
+
         return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
     };
-	console.log("list_lenth", list.length);
+    console.log("list_lenth", list.length);
     return (
-        <div>
-            {/* <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>My Projects</h1>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-            <div className='container cjw'>
-                <div className='row'>
+
+        //For dynamic data we can use this 👇
+        // <section>
+        //     <div className='container cjw'>
+        //         <div className='row'>
+        //             <AccountSideBar />
+
+        //             <div className='col-sm-8'>
+        //                 <div className='profile_box'>
+        //                     <h3>
+        //                         My Projects
+        //                         {list?.length ? <span>({opt.total_count})</span> : ""}
+        //                     </h3>
+
+        //                     <div className='row help-ico'>
+        //                         <div className='col-sm-6'>
+
+        //                             {user?.role_id == 2 ? (
+        //                                 <select id='project_status' onChange={handleOptions}>
+        //                                     <option value={0} selected={true}>
+        //                                         Other
+        //                                     </option>
+        //                                     <option value={1}>
+        //                                         Awarded but not yet Funded projects
+        //                                     </option>
+        //                                     <option value={2}>
+        //                                         Finalized Orders without a Review
+        //                                     </option>
+        //                                 </select>
+        //                             ) : (
+        //                                 <></>
+        //                             )}
+
+        //                         </div>
+        //                         <div className='col-sm-6'>
+        //                             <a href='#' data-toggle='modal' data-target='#myhelp'>
+        //                                 <strong>
+        //                                     <i className='fa fa-question-circle' /> Help
+        //                                 </strong>
+        //                             </a>
+        //                         </div>
+        //                     </div>
+        //                     <div className='uys5'>
+        //                         <ul className='nav nav-pills' role='tablist'>
+        //                             {user?.role_id == 2 ? (
+        //                                 Routes.jobsTab.map((j) => {
+        //                                     return (
+        //                                         <>
+        //                                             <li className='nav-item'>
+        //                                                 <p
+        //                                                     className={`nav-link c-p ${j.id == index ? "active" : ""
+        //                                                         }`}
+        //                                                     style={{
+        //                                                         cursor: "pointer",
+        //                                                         color: j.id == index ? "white" : "black",
+        //                                                     }}
+        //                                                     onClick={(e) => {
+        //                                                         if (index == j.id) return;
+        //                                                         e.preventDefault();
+        //                                                         setIndex(j.id);
+        //                                                         console.log("tab id->", j.id);
+        //                                                         api.project.my_jobs({
+        //                                                             params: { ...opt, page: 0, status: j.id },
+        //                                                         });
+        //                                                     }}>
+        //                                                     {j.title}
+        //                                                 </p>
+        //                                             </li>
+        //                                         </>
+        //                                     );
+        //                                 })
+        //                             ) : (
+        //                                 <></>
+        //                             )}
+        //                         </ul>
+
+
+        //                         {/* <div className='tab-content'>
+        // 							<div id='all' className='tab-pane active'>
+        // 								<div className='project_loop'>
+        // 									<h4>
+        // 										<a href='#'>
+        // 											Lorem Ipsum is simply dummy text of the printing
+        // 										</a>
+        // 									</h4>
+        // 									<p>Public </p>
+        // 									<p>Posted : 16-Jun,2022</p>
+        // 								</div>
+        // 							</div>
+        // 							<div id='mybid' className='tab-pane fade'>
+        // 								<div className='project_loop'>
+        // 									<h4>
+        // 										<a href='#'>
+        // 											Lorem Ipsum is simply dummy text of the printing and
+        // 											typesetting industry.
+        // 										</a>
+        // 									</h4>
+        // 									<p>Public | Open</p>
+        // 									<p>Posted : 16-Jun,2022</p>
+        // 								</div>
+        // 							</div>
+        // 							<div id='orderprogress' className='tab-pane fade'>
+        // 								<div className='project_loop'>
+        // 									<h4>
+        // 										<a href='#'>
+        // 											Lorem Ipsum is simply dummy text of the printing and
+        // 											typesetting industry. Lorem Ipsum has been the
+        // 											industry's standard
+        // 										</a>
+        // 									</h4>
+        // 									<p>Public | Open</p>
+        // 									<p>Posted : 16-Jun,2022</p>
+        // 								</div>
+        // 							</div>
+        // 							<div id='finalizeorder' className='tab-pane fade'>
+        // 								<div className='project_loop'>
+        // 									<h4>
+        // 										<a href='#'>
+        // 											Lorem Ipsum is simply dummy text of the printing and
+        // 											typesetting industry. Lorem Ipsum has been the
+        // 											industry's
+        // 										</a>
+        // 									</h4>
+        // 									<p>Public | Open</p>
+        // 									<p>Posted : 16-Jun,2022</p>
+        // 								</div>
+        // 							</div>
+        // 						</div> */}
+        //                     </div>
+
+        //                     {list.length
+        //                         ? list?.map((l: ProjectDetails) => {
+        //                             return (
+        //                                 <>
+        //                                     <div className='project_loop'>
+        //                                         <div className="project_loop_jobs">
+        //                                             <h4>
+
+        //                                                 <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+        //                                             </h4>
+        //                                             <p>  Posted :{" "}
+        //                                                 {moment(l?.project_post_date).format("DD-MMM-YYYY")}</p>
+
+        //                                         </div>
+        //                                         <p>{l?.visibility}</p>
+        //                                     </div>
+        //                                 </>
+        //                             );
+        //                         })
+        //                         : (<> </>)}
+        //                     <ul className='pagination'>
+        //                         {(opt.page > 0) ? <li className='page-item'>
+        //                             <a className='page-link' onClick={() => handlePageClick(0)}>
+        //                                 First
+        //                             </a>
+        //                         </li> : ""}
+        //                         {(opt.page > 0) ? <li className='page-item'>
+        //                             <a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
+        //                                 Previous
+        //                             </a>
+        //                         </li> : ""}
+        //                         {/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
+        // 								(d, i: any) => {
+        // 									return (
+        // 										<li
+        // 											className={`page-item ${parseFloat((router?.query?.page || 0).toString()) -
+        // 												1 ==
+        // 												i
+        // 												? "active"
+        // 												: ""
+        // 												}`}>
+        // 											<Link href={`${router.pathname}?page=${i}`}>
+        // 												<a
+        // 													className='page-link'
+        // 													onClick={(e) => {
+        // 														e.preventDefault();
+        // 														handlePageClick(i);
+        // 													}}>
+        // 													{i + 1}
+        // 												</a>
+        // 											</Link>
+        // 										</li>
+        // 									);
+        // 								},
+        // 							)} */}
+
+        //                         {opt.total_count && getPageNumbers().map((page) => (
+        //                             <>
+        //                                 <li
+        //                                     className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
+        //                                         page
+        //                                         ? "active"
+        //                                         : ""
+        //                                         }`}>
+        //                                     <Link href={`${router.pathname}?page=${page}`}>
+        //                                         <a
+        //                                             className='page-link'
+        //                                             onClick={(e) => {
+        //                                                 e.preventDefault();
+        //                                                 handlePageClick(page);
+        //                                             }}>
+        //                                             {page + 1}
+        //                                         </a>
+        //                                     </Link>
+        //                                 </li>
+        //                             </>
+
+        //                         ))}
+
+
+
+
+        //                         {opt.page != opt.total_pages ?
+        //                             <li className='page-item'>
+        //                                 <a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
+        //                                     Next
+        //                                 </a>
+        //                             </li> : ""}
+        //                         {opt.page != opt.total_pages ? <li className='page-item'>
+        //                             <a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
+        //                                 Last
+        //                             </a>
+        //                         </li> : ""}
+        //                     </ul>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </section>
+
+        <section className="cjw">
+            <div className="container">
+                <div className="row">
                     <AccountSideBar />
-
-                    <div className='col-sm-8'>
-                        <div className='profile_box'>
-                            <h3>
-                                My Projects
-                                {list?.length ? <span>({opt.total_count})</span> : ""}
+                    <div className="col-sm-8">
+                        <div className="profile_box">
+                            <h3>My Projects <span>(1)</span>
                             </h3>
-                            <Modal show={loginmodal == true && user?.role_id == 1 && show && user?.pro_user == 0 && user.account == "Company" && user?.show_modal == 0 ? true : false} onHide={handleClose}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Access Usineur PRO</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <p className="tgs">A Pro to Pro relationship with privileged access to the best machinists. Usineur Pro is free and accessible at no additional cost to professional customers.</p>
-                                    <div className="form-check">
-                                        <label className="form-check-label">
-                                            <input type="checkbox" className="form-check-input" value="option" onClick={check} ></input>Don't show me again
-                                        </label>
-                                    </div>
-                                </Modal.Body>
-                                <Modal.Footer className="oksign2">
-                                    <Button className="oksign1" variant="secondary" onClick={handleClose}>
-                                        Not now
-                                    </Button>
-                                    <Button className="oksign" variant="primary" onClick={handlesubmit}>
-                                        Ok
-                                    </Button>
-                                </Modal.Footer>
-                            </Modal>
-                            <div className='row help-ico'>
-                                <div className='col-sm-6'>
-					 
-                                    {user?.role_id == 2 ? (
-                                        <select id='project_status' onChange={handleOptions}>
-                                            <option value={0} selected={true}>
-                                                Other
-                                            </option>
-                                            <option value={1}>
-                                                Awarded but not yet Funded projects
-                                            </option>
-                                            <option value={2}>
-                                                Finalized Orders without a Review
-                                            </option>
-                                        </select>
-                                    ) : (
-                                        <></>
-                                    )}
-                                
+                            <div className="row help-ico">
+                                <div className="col-sm-6">
+                                    <select id="project_status">
+                                        <option value="0" selected={true}>Other</option>
+                                        <option value="2">Awarded but not yet Funded projects</option>
+                                        <option value="4">Finalized Orders without a Review</option>
+                                    </select>
                                 </div>
-                                <div className='col-sm-6'>
-                                    <a href='#' data-toggle='modal' data-target='#myhelp'>
+                                <div className="col-sm-6">
+                                    <a href="#" data-toggle="modal" data-target="#myhelp">
                                         <strong>
-                                            <i className='fa fa-question-circle' /> Help
-                                        </strong>
+                                            <i className="fa fa-question-circle"></i> Help </strong>
                                     </a>
                                 </div>
                             </div>
-                            <div className='uys5'>
-                                <ul className='nav nav-pills' role='tablist'>
-                                    {user?.role_id == 2 ? (
-                                        Routes.jobsTab.map((j) => {
-                                            return (
-                                                <li className='nav-item'>
-                                                    <p
-                                                        className={`nav-link c-p ${j.id == index ? "active" : ""
-                                                            }`}
-                                                        style={{
-                                                            cursor: "pointer",
-                                                            color: j.id == index ? "white" : "black",
-                                                        }}
-                                                        onClick={(e) => {
-                                                            if (index == j.id) return;
-                                                            e.preventDefault();
-                                                            setIndex(j.id);
-                                                            console.log("tab id->", j.id);
-                                                            api.project.my_jobs({
-                                                                params: { ...opt, page: 0, status: j.id },
-                                                            });
-                                                        }}>
-                                                        {j.title}
-                                                    </p>
-                                                </li>
-                                            );
-                                        })
-                                    ) : (
-                                        <></>
-                                    )}
-                                </ul>
-                               
-
-                                {/* <div className='tab-content'>
-									<div id='all' className='tab-pane active'>
-										<div className='project_loop'>
-											<h4>
-												<a href='#'>
-													Lorem Ipsum is simply dummy text of the printing
-												</a>
-											</h4>
-											<p>Public </p>
-											<p>Posted : 16-Jun,2022</p>
-										</div>
-									</div>
-									<div id='mybid' className='tab-pane fade'>
-										<div className='project_loop'>
-											<h4>
-												<a href='#'>
-													Lorem Ipsum is simply dummy text of the printing and
-													typesetting industry.
-												</a>
-											</h4>
-											<p>Public | Open</p>
-											<p>Posted : 16-Jun,2022</p>
-										</div>
-									</div>
-									<div id='orderprogress' className='tab-pane fade'>
-										<div className='project_loop'>
-											<h4>
-												<a href='#'>
-													Lorem Ipsum is simply dummy text of the printing and
-													typesetting industry. Lorem Ipsum has been the
-													industry's standard
-												</a>
-											</h4>
-											<p>Public | Open</p>
-											<p>Posted : 16-Jun,2022</p>
-										</div>
-									</div>
-									<div id='finalizeorder' className='tab-pane fade'>
-										<div className='project_loop'>
-											<h4>
-												<a href='#'>
-													Lorem Ipsum is simply dummy text of the printing and
-													typesetting industry. Lorem Ipsum has been the
-													industry's
-												</a>
-											</h4>
-											<p>Public | Open</p>
-											<p>Posted : 16-Jun,2022</p>
-										</div>
-									</div>
-								</div> */}
-                            </div>
-
-                            {list.length
-                                ? list?.map((l: ProjectDetails) => {
-                                    return (
-                                        <div className='project_loop'>
-						<div className="project_loop_jobs">
-                                            <h4>
-
-                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
-                                            </h4>
-                                            <p>  Posted :{" "}
-                                                {moment(l?.project_post_date).format("DD-MMM-YYYY")}</p>
-						
-                                           </div>
-						<p>{l?.visibility}</p>
-                                        </div>
-                                    );
-                                })
-                                : (<> </>)}
-                            <ul className='pagination'>
-                                {(opt.page > 0) ? <li className='page-item'>
-                                    <a className='page-link' onClick={() => handlePageClick(0)}>
-                                        First
-                                    </a>
-                                </li> : ""}
-                                {(opt.page > 0) ? <li className='page-item'>
-                                    <a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
-                                        Previous
-                                    </a>
-                                </li> : ""}
-                                {/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
-										(d, i: any) => {
-											return (
-												<li
-													className={`page-item ${parseFloat((router?.query?.page || 0).toString()) -
-														1 ==
-														i
-														? "active"
-														: ""
-														}`}>
-													<Link href={`${router.pathname}?page=${i}`}>
-														<a
-															className='page-link'
-															onClick={(e) => {
-																e.preventDefault();
-																handlePageClick(i);
-															}}>
-															{i + 1}
-														</a>
-													</Link>
-												</li>
-											);
-										},
-									)} */}
-
-                                {opt.total_count && getPageNumbers().map((page) => (
-
-                                    <li
-                                        className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-                                            page
-                                            ? "active"
-                                            : ""
-                                            }`}>
-                                        <Link href={`${router.pathname}?page=${page}`}>
-                                            <a
-                                                className='page-link'
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    handlePageClick(page);
-                                                }}>
-                                                {page + 1}
-                                            </a>
-                                        </Link>
+                            <div className="uys5">
+                                <ul className="nav nav-pills" role="tablist">
+                                    <li className="nav-item">
+                                        <a className="nav-link active" data-toggle="pill" href="#all">All</a>
                                     </li>
-
-                                ))}
-
-
-
-
-                                {opt.page != opt.total_pages ?
-                                    <li className='page-item'>
-                                        <a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
-                                            Next
-                                        </a>
-                                    </li> : ""}
-                                {opt.page != opt.total_pages ? <li className='page-item'>
-                                    <a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
-                                        Last
-                                    </a>
-                                </li> : ""}
-                            </ul>
+                                    <li className="nav-item">
+                                        <a className="nav-link" data-toggle="pill" href="#mybid">My Bids</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" data-toggle="pill" href="#orderprogress">My Orders in Progress</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" data-toggle="pill" href="#finalizeorder">My Finalized Orders</a>
+                                    </li>
+                                </ul>
+                                <div className="tab-content">
+                                    <div id="all" className="tab-pane active">
+                                        <div className="project_loop">
+                                            <div className="project_loop_jobs">
+                                                <h4>
+                                                    <a href="#">testing art</a>
+                                                </h4>
+                                                <p>Posted : 16-Jun,2022</p>
+                                            </div>
+                                            <p>Public </p>
+                                        </div>
+                                        <div className="project_loop">
+                                            <div className="project_loop_jobs">
+                                                <h4>
+                                                    <a href="#">testnn</a>
+                                                </h4>
+                                                <p>Posted : 16-Jun,2022</p>
+                                            </div>
+                                            <p>Public</p>
+                                        </div>
+                                        <div className="project_loop">
+                                            <div className="project_loop_jobs">
+                                                <h4>
+                                                    <a href="#">Lorem Ipsum </a>
+                                                </h4>
+                                                <p>Posted : 16-Jun,2022</p>
+                                            </div>
+                                            <p>Public | Open</p>
+                                        </div>
+                                    </div>
+                                    <div id="mybid" className="tab-pane fade">
+                                        <div className="project_loop">
+                                            <div className="project_loop_jobs">
+                                                <h4>
+                                                    <a href="#">Lorem Ipsum </a>
+                                                </h4>
+                                                <p>Posted : 16-Jun,2022</p>
+                                            </div>
+                                            <p>Public | Open</p>
+                                        </div>
+                                    </div>
+                                    <div id="orderprogress" className="tab-pane fade">
+                                        <div className="project_loop">
+                                            <div className="project_loop_jobs">
+                                                <h4>
+                                                    <a href="#">testing art</a>
+                                                </h4>
+                                                <p>Posted : 16-Jun,2022</p>
+                                            </div>
+                                            <p>Public</p>
+                                        </div>
+                                    </div>
+                                    <div id="finalizeorder" className="tab-pane fade">
+                                        <div className="project_loop">
+                                            <div className="project_loop_jobs">
+                                                <h4>
+                                                    <a href="#">Lorem Ipsum </a>
+                                                </h4>
+                                                <p>Posted : 16-Jun,2022</p>
+                                            </div>
+                                            <p>Public | Open</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul className="pagination justify-content-center">
+                                    <li className="page-item"><a className="page-link" href="javascript:void(0);"><i className="fa fa-angle-double-left"></i></a></li>
+                                    <li className="page-item"><a className="page-link" href="javascript:void(0);">1</a></li>
+                                    <li className="page-item"><a className="page-link" href="javascript:void(0);">2</a></li>
+                                    <li className="page-item"><a className="page-link" href="javascript:void(0);"><i className="fa fa-angle-double-right"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
-export default jobs;
+export default Jobs;

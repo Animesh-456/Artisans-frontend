@@ -127,7 +127,7 @@ export default function Header({ }: Props) {
 									{/* <Link className="nav-link" href="/">Home</Link> */}
 								</li>
 								<li className="nav-item">
-									<a href="/account/about" className={`nav-link ${path == '/account/about' ? "active" : ""}`}>About Us</a>
+									<a href={"/account/about"} className={`nav-link ${path == '/account/about' ? "active" : ""}`}>About Us</a>
 									{/* <Link className="nav-link" href='/account/about'>About Us</Link> */}
 								</li>
 								<li className="nav-item">

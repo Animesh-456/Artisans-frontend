@@ -63,7 +63,7 @@ const AccountSideBar = (props: Props) => {
 
             api.project.public_user_reviews({ params: { id: id } })
 
-	    api.project.public_profile_total_jobs({ params: { id: id } })
+            api.project.public_profile_total_jobs({ params: { id: id } })
         }
 
     }, [router.isReady])
@@ -133,33 +133,33 @@ const AccountSideBar = (props: Props) => {
                             return f.role.includes(parseInt(user?.role_id));
                         }).map((d) => {
                             return (
-                                <div>
-                                    <li className={router.pathname == d.path ? "active" : ""}>
-                                        {d.path === "/account/public-profile/[id]" ? (
+                                <>
+                                    <div>
+                                        <li className={router.pathname == d.path ? "active" : ""}>
+                                            {d.path === "/account/public-profile/[id]" ? (
 
-                      <Link href={`/account/public-profile/${user?.id}`}>
-                        <a>{d.title}</a>
-                      </Link>
-                    ) : (
-                      <Link href={d.path}>
-                        <a>{d.title}</a>
-                      </Link>
-                    )}
-                                    </li>
-                                </div>
+                                                <Link href={`/account/public-profile/${user?.id}`}>
+                                                    <a>{d.title}</a>
+                                                </Link>
+                                            ) : (
+                                                <Link href={d.path}>
+                                                    <a>{d.title}</a>
+                                                </Link>
+                                            )}
+                                        </li>
+                                    </div>
+                                </>
                             );
                         })}
                     </ul>
-                    
-                    <ul className="side-nav">
-                        <li className=""><Link href={user?.pro_user == 1 ? "/account/term" : "/account/procust"}>{user?.role_id == 1 && user?.account == "Company" ? "Become a PRO customer" : ""}</Link></li>
-                    </ul>
+
+
                 </div>
             ) : (<></>)}
 
 
 
-            {router.pathname == "/account/jobs" || router.pathname == "/account/inbox" || router.pathname == "/account/edit-profile" || router.pathname == "/account/withdraw" || router.pathname == "/account/reviews" || router.pathname == "/account/invoices" || router.pathname == "/account/change-password" || router.pathname == "/job/listing" ? (
+            {/* {router.pathname == "/account/jobs" || router.pathname == "/account/inbox" || router.pathname == "/account/edit-profile" || router.pathname == "/account/withdraw" || router.pathname == "/account/reviews" || router.pathname == "/account/invoices" || router.pathname == "/account/change-password" || router.pathname == "/job/listing" ? (
                 <></>
             ) : (
                 <>
@@ -262,7 +262,7 @@ const AccountSideBar = (props: Props) => {
                         </div>
                     </div>
                 </>
-            )}
+            )} */}
 
         </div>
     );

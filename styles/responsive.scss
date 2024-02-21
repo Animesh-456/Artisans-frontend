@@ -1,38 +1,38 @@
 /*===================================================            Bootstrap 3 Media Queries             ===================================================*/
 /*==========  Mobile First Method  ==========*/
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {}
+@media only screen and (min-width: 320px) {}
 
 /* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {}
+@media only screen and (min-width: 480px) {}
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {}
+@media only screen and (min-width: 768px) {}
 
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {}
+@media only screen and (min-width: 992px) {}
 
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {}
+@media only screen and (min-width: 1200px) {}
 
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1199px) {}
+@media only screen and (max-width: 1199px) {}
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 991px) {}
+@media only screen and (max-width: 991px) {}
 
 /* Small Devices, Tablets */
-@media only screen and (max-width : 767px) {}
+@media only screen and (max-width: 767px) {}
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 479px) {}
+@media only screen and (max-width: 479px) {}
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 360px) {}
+@media only screen and (max-width: 360px) {}
 
 /* Custom, iPhone Retina */
-@media only screen and (max-width : 319px) {}
+@media only screen and (max-width: 319px) {}
 
 /*Apple iPhone 5, 5S & 5C Apple iPod Touch (5th generation)*/
 @media (min-width: 1500px) and (max-width: 1920px) {}
@@ -188,8 +188,89 @@
     padding: 8px 20px;
     font-size: 14px;
   }
+
+  .sign_wrap .col-sm-6:first-child {
+    margin-bottom: 2em;
+  }
+
+  .edit_password_wp {
+    text-align: left;
+  }
+
+  .profile_pic_img {
+    margin-top: 15px;
+  }
+
+  .myprofile_w {
+    display: grid;
+  }
+
+  .myprofile_l,
+  .myprofile_r {
+    width: auto;
+  }
+
+  .myprofile_r {
+    order: 1;
+    margin-bottom: 15px;
+  }
+
+  .myprofile_l {
+    order: 2;
+  }
+
+  .myprofile_name_list img {
+    height: 200px;
+  }
+
+  .overview-head figure {
+    width: 36%;
+  }
+
+  .overview-head>div {
+    width: 64%;
+  }
+
+  .myprofile_r figure img,
+  .overview-head figure img {
+    width: 105px;
+    height: 105px;
+  }
+
+  .location_a1 {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .location_l2,
+  .location_r2 {
+    width: auto;
+  }
+
+  .project_loop h4 a {
+    width: 100%;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .project_loop h4 span {
+    float: none;
+  }
+
+  .sidebar ul.side-nav li.active::after,
+  .sidebar ul.side-nav li.active::before {
+    display: none;
+  }
 }
 
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+  .about_l1 img {
+    height: 400px;
+  }
+
+  .about_r1 {
+    padding: 2em;
+  }
+}
 
 @media (max-width: 448px) {}
