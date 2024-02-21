@@ -261,6 +261,20 @@
   .sidebar ul.side-nav li.active::before {
     display: none;
   }
+
+  .machin_req_li_text p {
+    font-size: 13px;
+  }
+
+  .award {
+    right: auto;
+    top: -12px;
+    left: 0;
+  }
+
+  .award img {
+    width: 90px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -270,6 +284,11 @@
 
   .about_r1 {
     padding: 2em;
+  }
+
+  .machin_req h3 span {
+    font-size: 11px;
+    margin-top: 4px;
   }
 }
 
