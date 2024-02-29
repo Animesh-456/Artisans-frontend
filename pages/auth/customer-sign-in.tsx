@@ -300,7 +300,7 @@ const check = (event) => {
 										/>
 										<small>
 											Your email address will not be shared.{" "}
-											<a href='/account/privacy'>Privacy policy</a>
+											<a href={'/account/privacy'}>Privacy policy</a>
 										</small>
 									</div>
 								</div>
@@ -363,7 +363,7 @@ const check = (event) => {
 								<div className='form-check signcheck'>
 									<label className='form-check-label'>
 										<input type='checkbox' className='form-check-input' onClick={check} />I have
-										read and accept the <a href='/account/terms'>terms</a> of of use of
+										read and accept the <a href={'/account/terms'}>terms</a> of of use of
 										Machining-4u.co.uk
 									</label>
 								</div>

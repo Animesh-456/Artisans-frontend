@@ -371,7 +371,9 @@ const Jobs = (props: Props) => {
         <section className="cjw">
             <div className="container">
                 <div className="row">
-                    <AccountSideBar />
+                    <div className="col-sm-4">
+                        <AccountSideBar />
+                    </div>
                     <div className="col-sm-8">
                         <div className="profile_box">
                             <h3>My Projects <span>(1)</span>

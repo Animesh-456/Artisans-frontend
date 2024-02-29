@@ -124,7 +124,8 @@ const AccountSideBar = (props: Props) => {
     console.log("router path = ", router.pathname)
 
     return (
-        <div className="col-sm-4">
+        <>
+            {/* <div className="col-sm-4"> */}
             {user != null ? (
                 <div className="sidebar">
                     <h3>My Account</h3>
@@ -264,7 +265,9 @@ const AccountSideBar = (props: Props) => {
                 </>
             )} */}
 
-        </div>
+            {/* </div> */}
+
+        </>
     );
 };
 

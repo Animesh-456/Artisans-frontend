@@ -1,7 +1,7 @@
 import { useAtom, useAtomValue } from "jotai";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import atom from "../../../jotai/atom";
 import Routes from "../../../Routes";
@@ -10,6 +10,11 @@ import $ from 'jquery';
 // import 'owl.carousel/dist/assets/owl.carousel.css';
 // import 'owl.carousel/dist/assets/owl.theme.default.css';
 //import 'owl.carousel';
+
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Button from 'react-bootstrap/Button';
+
+
 type Props = {};
 
 export default function Header({ }: Props) {
@@ -18,6 +23,12 @@ export default function Header({ }: Props) {
 	const path = router.pathname;
 
 	console.log("The path is ", path)
+
+
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
 
 
@@ -64,6 +75,13 @@ export default function Header({ }: Props) {
 	// 	// Call the searchToggle function
 	// 	searchToggle(event.currentTarget, event);
 	// };
+
+	const [user, setUser] = useAtom(atom.storage.user);
+
+	const handleLogout = () => {
+		setUser(null);
+		router.push("/auth/sign-in")
+	};
 	return (
 		<>
 
@@ -76,6 +94,19 @@ export default function Header({ }: Props) {
 					</ul>
 				</div>
 			</div>
+
+
+
+			<Offcanvas show={show} onHide={handleClose}>
+				<Offcanvas.Header closeButton>
+					<Offcanvas.Title></Offcanvas.Title>
+				</Offcanvas.Header>
+				<Offcanvas.Body>
+					<ul className="navbar-nav align-items-lg-center flex-grow-1 pe-3"><li className="nav-item"><button data-bs-dismiss="offcanvas" className="nav-link active"><Link href={"/"} onClick={handleClose}>Home</Link></button></li><li className="nav-item"><button data-bs-dismiss="offcanvas" className="nav-link "><a href={"/machining"}>POST A JOB</a></button></li><li className="nav-item"><button data-bs-dismiss="offcanvas" className="nav-link " ><a href={"/machining/listing"}>VIEW JOBS</a></button></li><li className="nav-item"><button data-bs-dismiss="offcanvas" className="nav-link "><a href={"/account/profile"}>MY ACCOUNT</a></button></li><li className="nav-item"><button data-bs-dismiss="offcanvas" className="nav-link "><a href={"/account/inbox"}>INBOX</a></button></li><li className="nav-item"><button data-bs-dismiss="offcanvas" className="nav-link "><a>HOW IT WORK</a></button></li></ul>
+					<br />
+					<div className="d-flex"><Button variant="info" data-bs-dismiss="offcanvas" className="btn login-btn">login / sign up</Button></div>
+				</Offcanvas.Body>
+			</Offcanvas>
 
 			<div className="logo_bar">
 				<div className="container">
@@ -117,7 +148,7 @@ export default function Header({ }: Props) {
 			<div className="container">
 				<div className="menu_bar">
 					<nav className="navbar navbar-expand-md navbar-light p-0">
-						<button className="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<button className="navbar-toggler mr-3" onClick={handleShow} type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 							<i className="fa fa-bars"></i>
 						</button>
 						<div className="collapse navbar-collapse" id="navbarNav">
@@ -329,6 +360,12 @@ export default function Header({ }: Props) {
 								<li className="nav-item">
 									<a href="#" className="nav-link">Contact us</a>
 								</li>
+
+								{user ? (
+									<li className="nav-item">
+										<a href="#" className="nav-link" onClick={() => handleLogout()}>Logout</a>
+									</li>
+								) : (<></>)}
 							</ul>
 						</div>
 					</nav>

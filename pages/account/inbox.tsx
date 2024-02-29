@@ -130,7 +130,9 @@ const EditProfile = () => {
 			</div>
 			<div className='container cjw'>
 				<div className='row'>
-					<AccountSideBar />
+					<div className="col-sm-4">
+						<AccountSideBar />
+					</div>
 
 					<div className='col-sm-8'>
 						{user?.role_id == 2 ? (
@@ -142,15 +144,17 @@ const EditProfile = () => {
 								<div className='inbox-box'>
 									{notifs.length ? notifs.slice(0, 2).map((n) => {
 										return (
-											<div className='border-0 pb-0 qwe'>
+											<>
+												<div className='border-0 pb-0 qwe'>
 
-												<p className='admin-text qwe1'><span className='dpt-box'></span> Admin</p>
+													<p className='admin-text qwe1'><span className='dpt-box'></span> Admin</p>
 
-												<p className='inbox'>
-													{n.email_subject}
-												</p>
-												<p className="qwe2">{formatDate(n?.notif_date)}</p>
-											</div>
+													<p className='inbox'>
+														{n.email_subject}
+													</p>
+													<p className="qwe2">{formatDate(n?.notif_date)}</p>
+												</div>
+											</>
 										)
 
 									}) : (<></>)}
@@ -169,9 +173,9 @@ const EditProfile = () => {
 
 							<hr className='dashed-hr' />
 							<div className='table-responsive inbox-table mt-4'>
-								<table className='table'>
+								<table className='table table-bordered table-lg'>
 									<thead>
-										<tr>
+										<tr className="table-primary">
 											<th></th>
 											<th>User</th>
 											<th>Project title</th>
@@ -182,30 +186,35 @@ const EditProfile = () => {
 									<tbody>
 										{list.length ? list.map((l) => {
 											return (
-												<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
-													<td>
-														<div className="msgform"><i className="fa fa-square"></i></div>
+												<>
 
-													</td>
-													<td className='dummy-anchor darkblue-text cursor-pointer'>
 
-														{l?.user_name}
-													</td>
-													<td>{l?.project_name}</td>
-													<td className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
 
-														{user?.role_id == 1 && l?.buyer_message_status == "U" ? (
-															<b>{l?.message}</b>
-														) : user?.role_id == 1 && l?.buyer_message_status == "R" ? (
-															<>{l?.message}</>
-														) : user?.role_id == 2 && l?.programmer_message_status == "U" ? (
-															<b>{l?.message}</b>
-														) : user?.role_id == 2 && l?.programmer_message_status == "R" ? (
-															<>{l?.message}</>
-														) : (<>{l?.message}</>)}
-													</td>
+													<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
+														<td>
+															<div className="msgform"><i className="fa fa-square"></i></div>
 
-												</	tr>
+														</td>
+														<td className='dummy-anchor darkblue-text cursor-pointer'>
+
+															{l?.user_name}
+														</td>
+														<td>{l?.project_name}</td>
+														<td className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
+
+															{user?.role_id == 1 && l?.buyer_message_status == "U" ? (
+																<b>{l?.message}</b>
+															) : user?.role_id == 1 && l?.buyer_message_status == "R" ? (
+																<>{l?.message}</>
+															) : user?.role_id == 2 && l?.programmer_message_status == "U" ? (
+																<b>{l?.message}</b>
+															) : user?.role_id == 2 && l?.programmer_message_status == "R" ? (
+																<>{l?.message}</>
+															) : (<>{l?.message}</>)}
+														</td>
+
+													</	tr>
+												</>
 											)
 										}) : (<></>)}
 									</tbody>
@@ -250,23 +259,26 @@ const EditProfile = () => {
 
 									{opt.total_count > 0 && getPageNumbers().map((page) => (
 
-										<li
-											className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-												page
-												? "active"
-												: ""
-												}`}>
-											<Link href={`${router.pathname}?page=${page}`}>
-												<a
-													className='page-link'
-													onClick={(e) => {
-														e.preventDefault();
-														handlePageClick(page);
-													}}>
-													{page + 1}
-												</a>
-											</Link>
-										</li>
+										<>
+											<li
+												className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
+													page
+													? "active"
+													: ""
+													}`}>
+												<Link href={`${router.pathname}?page=${page}`}>
+													<a
+														className='page-link'
+														onClick={(e) => {
+															e.preventDefault();
+															handlePageClick(page);
+														}}>
+														{page + 1}
+													</a>
+												</Link>
+											</li>
+										</>
+
 
 									))}
 

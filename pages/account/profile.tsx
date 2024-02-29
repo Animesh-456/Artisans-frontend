@@ -12,7 +12,7 @@ import { CountryReponse } from "../../src/@types/type";
 
 type Props = {};
 
-const profile = (props: Props) => {
+const Profile = (props: Props) => {
     const router = useRouter();
     const data = useAtomValue<UserDetails>(atom.auth.api.me);
     const opt = useAtomValue(atom.project.api.my_opt);
@@ -92,17 +92,17 @@ const profile = (props: Props) => {
             setSlide(p)
         }
     }, [user?.prot_pic])
-    
+
     useEffect(() => {
         api.auth.countries({});
     }, []);
-    
-    
+
+
     const countries = useAtomValue<Array<CountryReponse>>(
         atom.auth.api.countries,
     );
-    
-    console.log("Country are:-",countries)
+
+    console.log("Country are:-", countries)
 
     return (
         <>
@@ -120,7 +120,9 @@ const profile = (props: Props) => {
                 </div>
                 <div className='container cjw'>
                     <div className='row'>
-                        <AccountSideBar />
+                        <div className="col-sm-4">
+                            <AccountSideBar />
+                        </div>
 
                         <div className='col-sm-8'>
                             <div className='profile_box'>
@@ -188,7 +190,7 @@ const profile = (props: Props) => {
                                         <div className='myprofile_name_list'>
                                             <p>{countries[1]?.country_name}</p>
                                         </div>
-                                       {user?.role_id == 1 ? (
+                                        {user?.role_id == 1 ? (
                                             <>
                                                 <div className='myprofile_name_label'>
                                                     <p>Description</p>
@@ -419,6 +421,6 @@ const profile = (props: Props) => {
         </>
     );
 };
-profile.ignorePath = false;
+Profile.ignorePath = false;
 
-export default profile;
+export default Profile;

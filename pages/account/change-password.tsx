@@ -39,7 +39,9 @@ const ChangePassword = (props: Props) => {
 			</div>
 			<div className='container cjw'>
 				<div className='row'>
-					<AccountSideBar />
+					<div className="col-sm-4">
+						<AccountSideBar />
+					</div>
 
 					<div className='col-sm-8'>
 						<div

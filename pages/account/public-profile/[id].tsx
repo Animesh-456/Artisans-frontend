@@ -154,31 +154,17 @@ const EditProfile = () => {
 
     return (
         // <>
-        //     {usr ? (
-        //         <div
-        //             classNameNameName='banner_wp sign_banner'
-        //             style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-        //             <div classNameNameName='container'>
-        //                 <div classNameNameName='row'>
-        //                     <div classNameNameName='banner_text inner_banner_text'>
-        //                         <h1 classNameNameName='yh'>My Profile</h1>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     ) : (<></>)}
 
-
-        //     <div classNameNameName='container cjw'>
-        //         <div classNameNameName='row'>
+        //     <div className='container cjw'>
+        //         <div className='row'>
 
 
         //             <AccountSideBar />
 
 
-        //             <div classNameNameName='col-sm-8'>
-        //                 <div classNameNameName='profile_box'>
-        //                     <div classNameNameName='overview-head'>
+        //             <div className='col-sm-8'>
+        //                 <div className='profile_box'>
+        //                     <div className='overview-head'>
         //                         <figure>
         //                             <img
         //                                 src={
@@ -190,15 +176,15 @@ const EditProfile = () => {
         //                         <div>
         //                             <h3>{udetails.user_name}</h3>
         //                             {/* <p>{udetails.user_name}</p> */}
-        //                             <div classNameNameName='location_a1'>
-        //                                 <div classNameNameName='location_l2'>
+        //                             <div className='location_a1'>
+        //                                 <div className='location_l2'>
         //                                     <h5>Feedback</h5>
         //                                 </div>
-        //                                 <div classNameNameName='location_r2'>
+        //                                 <div className='location_r2'>
         //                                     {public_avg_rating && user?.role_id == 2 ? (
         //                                         <p>
         //                                             <div
-        //                                                 classNameNameName="stars"
+        //                                                 className="stars"
         //                                                 style={{ '--rating': public_avg_rating } as CSSProperties}
         //                                             ><span>{public_avg_rating}</span></div>
 
@@ -206,7 +192,7 @@ const EditProfile = () => {
         //                                     ) : (
         //                                         <p>
         //                                             <div
-        //                                                 classNameNameName="stars"
+        //                                                 className="stars"
         //                                                 style={{ '--rating': 0.0 } as CSSProperties}
         //                                             ><span>0.0</span></div>
 
@@ -214,11 +200,11 @@ const EditProfile = () => {
         //                                     )}
         //                                 </div>
         //                             </div>
-        //                             <div classNameNameName='location_a1'>
-        //                                 <div classNameNameName='location_l2'>
+        //                             <div className='location_a1'>
+        //                                 <div className='location_l2'>
         //                                     <h5>Jobs Completed</h5>
         //                                 </div>
-        //                                 <div classNameNameName='location_r2'>
+        //                                 <div className='location_r2'>
         //                                     <p>{totaljobs}</p>
         //                                 </div>
         //                             </div>
@@ -239,7 +225,7 @@ const EditProfile = () => {
         //                             <h5>Description</h5>
 
 
-        //                             <pre classNameNameName="custom-pre">
+        //                             <pre className="custom-pre">
         //                                 <p>{user?.service_desc}</p>
         //                             </pre>
         //                             <br />
@@ -251,7 +237,7 @@ const EditProfile = () => {
         //                             <h5>Description</h5>
 
 
-        //                             <pre classNameNameName="custom-pre">
+        //                             <pre className="custom-pre">
         //                                 <p>{user?.description}</p>
         //                             </pre>
         //                             <br />
@@ -262,31 +248,31 @@ const EditProfile = () => {
 
         //                     {user?.role_id == 2 && public_profile_finalised_image?.length ? (
         //                         <>
-        //                          <h5>Finalised images</h5>
-        //                             <div classNameNameName='row'>
+        //                             <h5>Finalised images</h5>
+        //                             <div className='row'>
         //                                 {public_profile_finalised_image?.length
         //                                     ? (public_profile_finalised_image?.slice(0, 4).map((l) => {
-        // 				var imageSrc = common.get_attachment(l?.a, l?.d);
+        //                                         var imageSrc = common.get_attachment(l?.a, l?.d);
         //                                         if (imageSrc = '/public/404.jpg') {
         //                                             imageSrc = common.get_attachment_latest_ach(l?.a)
         //                                         }
-        // 				console.log("image src is :--", imageSrc)
+        //                                         console.log("image src is :--", imageSrc)
         //                                         return (
         //                                             <>
 
-        //                                                 <div classNameNameName='col-sm-3'>
-        //                                                     <div classNameNameName='last_l'>
+        //                                                 <div className='col-sm-3'>
+        //                                                     <div className='last_l'>
         //                                                         <figure>
         //                                                             <a data-toggle="tooltip" data-placement="top" title={l?.project_name}>
 
 
         //                                                                 <Link href={`/machining/${l?.b?.split(" ").join("-")}-${l?.c}`}>
         //                                                                     <img
-        //                                                                          src={imageSrc}
+        //                                                                         src={imageSrc}
 
-        //                                                                         //onClick={() => RefLink(`/machining/${l?.b}-${l?.c}`)}
+        //                                                                     //onClick={() => RefLink(`/machining/${l?.b}-${l?.c}`)}
         //                                                                     />
-        //                                                                     </Link>
+        //                                                                 </Link>
 
         //                                                             </a>
         //                                                         </figure>
@@ -297,13 +283,13 @@ const EditProfile = () => {
         //                                         );
         //                                     }))
         //                                     : ""}
-        // 			<div classNameNameName='all_request_button'>
-        //                 <Link href={`/account/finalised/${user?.id}`}>
-        //                     <a>
-        //                         All pictures <i classNameNameName='fa fa-angle-right' />
-        //                     </a>
-        //                 </Link>
-        //             </div>
+        //                                 <div className='all_request_button'>
+        //                                     <Link href={`/account/finalised/${user?.id}`}>
+        //                                         <a>
+        //                                             All pictures <i className='fa fa-angle-right' />
+        //                                         </a>
+        //                                     </Link>
+        //                                 </div>
         //                             </div>
         //                         </>
         //                     ) : (
@@ -317,25 +303,25 @@ const EditProfile = () => {
 
         //                             {user?.prot_pic?.length ? (
 
-        //                                 <div classNameNameName='gallery_photo'>
+        //                                 <div className='gallery_photo'>
         //                                     <h4>Portfolio</h4>
-        //                                     <div id='demo' classNameNameName='carousel slide' data-ride='carousel'>
-        //                                         <div classNameNameName='carousel-inner'>
-        //                                             <div classNameNameName='carousel-item active'>
+        //                                     <div id='demo' className='carousel slide' data-ride='carousel'>
+        //                                         <div className='carousel-inner'>
+        //                                             <div className='carousel-item active'>
         //                                                 <img src={common.get_portfolio_pic(`${slides[index]}`)} id="curr_img" />
         //                                             </div>
         //                                         </div>
         //                                         <button
-        //                                             classNameNameName='carousel-control-prev'
+        //                                             className='carousel-control-prev'
         //                                             onClick={prevSlide}
         //                                             data-slide='prev'>
-        //                                             <i classNameNameName="fa fa-angle-left"></i>
+        //                                             <i className="fa fa-angle-left"></i>
         //                                         </button>
         //                                         <button
-        //                                             classNameNameName='carousel-control-next'
+        //                                             className='carousel-control-next'
         //                                             onClick={nextSlide}
         //                                             data-slide='next'>
-        //                                             <i classNameNameName="fa fa-angle-right"></i>
+        //                                             <i className="fa fa-angle-right"></i>
         //                                         </button>
         //                                     </div>
         //                                 </div>
@@ -354,43 +340,44 @@ const EditProfile = () => {
         //                         {projects.length
         //                             ? projects?.map((l) => {
         //                                 return (
-        //                                     <div classNameNameName='project_loop'>
-        //                                         <h4>
+        //                                     <>
+        //                                         <div className='project_loop'>
+        //                                             <h4>
 
-        //                                             {l?.pro_job == 1 ? ( 
-        //                                                 user?.id == usr?.id ? (
-        //                                                     <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+        //                                                 {l?.pro_job == 1 ? (
+        //                                                     user?.id == usr?.id ? (
+        //                                                         <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+        //                                                     ) : (
+        //                                                         <a><b>Pro Job</b></a>
+        //                                                     )
         //                                                 ) : (
-        //                                                     <a><b>Pro Job</b></a>
-        //                                                 )
-        //                                             ) : (
-        //                                                 <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
-        //                                             )}
-        //                                             <span>
-        //                                                 Posted :{" "}
-        //                                                 {moment(l?.project_post_format_date).format("DD-MMM-YYYY")}
-        //                                             </span>
-        //                                         </h4>
-        //                                         <p>{l?.visibility}  {l?.programmer?.user_name ? ` | Machined by  ${l?.programmer?.user_name}` : ``}  </p>
+        //                                                     <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+        //                                                 )}
+        //                                                 <span>
+        //                                                     Posted :{" "}
+        //                                                     {moment(l?.project_post_format_date).format("DD-MMM-YYYY")}
+        //                                                 </span>
+        //                                             </h4>
+        //                                             <p>{l?.visibility}  {l?.programmer?.user_name ? ` | Machined by  ${l?.programmer?.user_name}` : ``}  </p>
 
 
-        //                                         {l.reviews.map((r) => (
+        //                                             {l.reviews.map((r) => (
 
-        //                                             <div>
-        //                                                 <p>Rating: {r?.rating}</p>
+        //                                                 <div>
+        //                                                     <p>Rating: {r?.rating}</p>
 
-        //                                                 <div
-        //                                                     classNameNameName="stars"
-        //                                                     style={{ '--rating': r?.rating } as CSSProperties}
-        //                                                 ><span>{r?.rating}</span></div>
-        //                                             </div>
-        //                                         ))}
-        //                                         {l.reviews.map((r) => (
+        //                                                     <div
+        //                                                         className="stars"
+        //                                                         style={{ '--rating': r?.rating } as CSSProperties}
+        //                                                     ><span>{r?.rating}</span></div>
+        //                                                 </div>
+        //                                             ))}
+        //                                             {l.reviews.map((r) => (
 
-        //                                             <div classNameNameName="comment1">
+        //                                                 <div className="comment1">
 
-        //                                                 {/* <div classNameNameName="comment">
-        //                                                     <div classNameNameName="quality"
+        //                                                     {/* <div className="comment">
+        //                                                     <div className="quality"
         //                                                         style={{ '--rating': r?.rating } as CSSProperties}
         //                                                     >
         //                                                         <span>Quality</span>
@@ -399,59 +386,60 @@ const EditProfile = () => {
 
         //                                                 </div> */}
 
-        //                                                 <div classNameNameName="rating-color pub-rat">
-        //                                                     <p>
+        //                                                     <div className="rating-color pub-rat">
+        //                                                         <p>
 
-        //                                                         <div
-        //                                                             classNameNameName="quality"
-        //                                                             style={{ '--rating': r?.provider_rate1} as CSSProperties}
-        //                                                         ></div>
-        //                                                         <span> Quality </span>
-        //                                                     </p>
+        //                                                             <div
+        //                                                                 className="quality"
+        //                                                                 style={{ '--rating': r?.provider_rate1 } as CSSProperties}
+        //                                                             ></div>
+        //                                                             <span> Quality </span>
+        //                                                         </p>
 
-        //                                                     <p>
+        //                                                         <p>
 
-        //                                                         <div
-        //                                                             classNameNameName="time"
-        //                                                             style={{ '--rating': r?.provider_rate2 } as CSSProperties}
-        //                                                         ></div>
-        //                                                         <span> Deadlines </span>
-        //                                                     </p>
+        //                                                             <div
+        //                                                                 className="time"
+        //                                                                 style={{ '--rating': r?.provider_rate2 } as CSSProperties}
+        //                                                             ></div>
+        //                                                             <span> Deadlines </span>
+        //                                                         </p>
 
-        //                                                     <p>
+        //                                                         <p>
 
-        //                                                         <div
-        //                                                             classNameNameName="communication"
-        //                                                             style={{ '--rating': r?.provider_rate3 } as CSSProperties}
-        //                                                         ></div>
-        //                                                         <span> Communication</span>
+        //                                                             <div
+        //                                                                 className="communication"
+        //                                                                 style={{ '--rating': r?.provider_rate3 } as CSSProperties}
+        //                                                             ></div>
+        //                                                             <span> Communication</span>
 
-        //                                                     </p>
+        //                                                         </p>
 
-        //                                                     <p>
+        //                                                         <p>
 
-        //                                                         <div
-        //                                                             classNameNameName="professionalism"
-        //                                                             style={{ '--rating': r?.provider_rate4 } as CSSProperties}
-        //                                                         ></div>
-        //                                                         <span> Professional</span>
-        //                                                     </p>
+        //                                                             <div
+        //                                                                 className="professionalism"
+        //                                                                 style={{ '--rating': r?.provider_rate4 } as CSSProperties}
+        //                                                             ></div>
+        //                                                             <span> Professional</span>
+        //                                                         </p>
+        //                                                     </div>
+
+
+        //                                                     <div className="public">
+
+        //                                                         <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
+
+        //                                                         <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
+
+        //                                                     </div>
+
+
         //                                                 </div>
 
-
-        //                                                 <div classNameNameName="public">
-
-        //                                                     <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
-
-        //                                                     <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
-
-        //                                                 </div>
-
-
-        //                                             </div>
-
-        //                                         ))}
-        //                                     </div>
+        //                                             ))}
+        //                                         </div>
+        //                                     </>
 
         //                                 );
 
@@ -470,7 +458,9 @@ const EditProfile = () => {
         <>
             <div className="container">
                 <div className="row">
-                    <AccountSideBar />
+                    <div className="col-sm-4">
+                        <AccountSideBar />
+                    </div>
                     <div className="col-sm-8">
                         <div className="profile_box">
                             <div className="overview-head">

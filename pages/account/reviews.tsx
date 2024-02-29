@@ -6,7 +6,7 @@ type Props = {};
 
 let Reviews_data = []
 
-const reviews = (props: Props) => {
+const Reviews = (props: Props) => {
 
 
     const UserData = JSON.parse(localStorage.getItem('UserData'));
@@ -50,7 +50,9 @@ const reviews = (props: Props) => {
             </div>
             <div className='container cjw'>
                 <div className='row'>
-                    <AccountSideBar />
+                    <div className="col-sm-4">
+                        <AccountSideBar />
+                    </div>
 
                     <div className='col-sm-8'>
                         <div className='profile_box'>
@@ -72,11 +74,13 @@ const reviews = (props: Props) => {
                                                 Reviews_data.map((item) => {
 
                                                     return (
-                                                        <tr>
-                                                            <td>{item.project.project_name}</td>
-                                                            <td>{item.provider.user_name}</td>
-                                                            <td>{item.rating}</td>
-                                                        </tr>
+                                                        <>
+                                                            <tr>
+                                                                <td>{item.project.project_name}</td>
+                                                                <td>{item.provider.user_name}</td>
+                                                                <td>{item.rating}</td>
+                                                            </tr>
+                                                        </>
                                                     )
                                                 })}
 
@@ -93,4 +97,4 @@ const reviews = (props: Props) => {
     );
 };
 
-export default reviews;
+export default Reviews;

@@ -24,7 +24,7 @@ const EditProfile = () => {
         country_code: user?.country_code || "",
         address1: user?.address1 || "",
         description: user?.description || "",
-         service_desc: user?.service_desc|| "",
+        service_desc: user?.service_desc || "",
         company_name: user?.company_name || "",
         siren: user?.siren || "",
         tva: user?.pro_vat || "",
@@ -236,7 +236,9 @@ const EditProfile = () => {
             </div>
             <div className='container cjw'>
                 <div className='row'>
-                    <AccountSideBar />
+                    <div className="col-sm-4">
+                        <AccountSideBar />
+                    </div>
 
                     <div className='col-sm-8'>
                         <div className='profile_box'>
@@ -309,7 +311,7 @@ const EditProfile = () => {
                                                 value={profile.country_code}
                                                 //onChange={setProfile("country_code")}
                                                 disabled
-                                                >
+                                            >
                                                 {countries?.length ? (
                                                     countries?.map((d) => {
                                                         return (
@@ -333,7 +335,7 @@ const EditProfile = () => {
                                                 onChange={setProfile("address1")}
                                             />
                                         </div>
-                                       {user?.role_id == 2 ? (
+                                        {user?.role_id == 2 ? (
                                             <>
 
                                                 <div className='col-sm-6'>
