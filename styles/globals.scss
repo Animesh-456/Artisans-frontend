@@ -1085,7 +1085,7 @@ footer {
 .reg-bottom button:first-child {
   background: #d34841;
   margin-right: 10px;
-  width: 160px;
+  width: 200px;
   height: 45px;
   border: none;
   border-radius: 22px;
@@ -1098,7 +1098,7 @@ footer {
 
 .reg-bottom button:last-child {
   margin-left: 10px;
-  width: 160px;
+  width: 200px;
   height: 45px;
   border: none;
   border-radius: 22px;
@@ -2056,16 +2056,110 @@ h3.cus {
   display: inline-block;
 }
 
-
-.nav-item button {
-  border: none;
-  background-color: transparent;
-  font-size: 15px;
+.job-l p {
+  color: #2e2e2e;
   font-weight: 500;
-  text-decoration: none;
-  color: #000;
+  text-align: center;
+  margin-bottom: 3em;
 }
 
-.nav-item button a{
+.job-r {
+  padding: 2em;
+  box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
+  border-radius: 5px;
+  text-align: left;
+}
+
+.job-r h3 {
+  text-transform: capitalize;
+  font-size: 25px;
+  padding-bottom: 22px;
+  font-weight: 600;
+  color: #7fc0ac;
+}
+
+.job-r textarea {
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  background: #f3f3f3;
+  resize: none;
+  padding-left: 5px;
+}
+
+.b-li p {
   color: #000;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  position: relative;
+  padding-left: 20px;
+  padding-bottom: 7px;
+}
+
+.b-li p:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background-color: #dd7878;
+}
+
+.attach-file {
+  padding: 2em;
+  box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
+  border-radius: 5px;
+  text-align: left;
+  height: 100%;
+}
+
+.attach-file h3 {
+  text-transform: capitalize;
+  font-size: 25px;
+  padding-bottom: 22px;
+  font-weight: 600;
+  color: #7fc0ac;
+}
+
+.attach-file h4 {
+  font-size: 19px;
+  font-weight: 500;
+  padding-bottom: 9px;
+  color: #5a5a5a;
+}
+
+.other_info {
+  padding: 2em;
+  box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
+  border-radius: 5px;
+  margin-top: 2em;
+  height: 100%;
+  text-align: left;
+}
+
+.other_info h3 {
+  font-weight: 600;
+  color: #7fc0ac;
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+.other_info h4 {
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 18px;
+}
+
+.other_info select {
+  max-width: 300px;
+  height: 42px;
+  border: none;
+  background: #d9efe8;
+  padding: 0 18px;
+  border-radius: 4px;
+  margin: 0 auto;
 }

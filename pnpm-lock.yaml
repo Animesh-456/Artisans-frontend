@@ -41,6 +41,9 @@ dependencies:
   next:
     specifier: 12.2.2
     version: 12.2.2(react-dom@18.2.0)(react@18.2.0)(sass@1.53.0)
+  owl.carousel:
+    specifier: ^2.3.4
+    version: 2.3.4
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -2476,6 +2479,12 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /owl.carousel@2.3.4:
+    resolution: {integrity: sha512-JaDss9+feAvEW8KZppPSpllfposEzQiW+Ytt/Xm5t/3CTJ7YVmkh6RkWixoA2yXk2boIwedYxOvrrppIGzru9A==}
+    dependencies:
+      jquery: 3.7.1
+    dev: false
 
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
