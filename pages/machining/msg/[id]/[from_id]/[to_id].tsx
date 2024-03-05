@@ -54,7 +54,7 @@ const Message = (props: Props) => {
 	}, [router.isReady]);
 
 
-		
+
 
 	const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
 		e.preventDefault();
@@ -238,7 +238,7 @@ const Message = (props: Props) => {
 		const id = router.query?.id
 		api.project.detail({ params: { id: id } })
 	}, [router.isReady])
-		
+
 	return (
 		<>
 			<div
@@ -254,7 +254,9 @@ const Message = (props: Props) => {
 			</div>
 			<div className='container cjw'>
 				<div className='row'>
-					<AccountSideBar />
+					<div className="col-sm-4">
+						<AccountSideBar />
+					</div>
 
 					<div className='col-sm-8'>
 						<div className='profile_box mb-4'>
@@ -405,23 +407,23 @@ const Message = (props: Props) => {
 													<tr>
 														<th>Sender</th>
 														<th>Message</th>
-														
+
 														<th className='text-end unid'>Date</th>
 													</tr>
 												</thead>
 												<tbody>
 													{msgs?.length ? (
 														msgs?.map((m) => {
-			const date = new Date(m?.created * 1000);
+															const date = new Date(m?.created * 1000);
 
-const year = date.getFullYear();
-const month = String(date.getMonth() + 1).padStart(2, '0'); 
-const day = String(date.getDate()).padStart(2, '0');
-const hours = String(date.getHours()).padStart(2, '0');
-const minutes = String(date.getMinutes()).padStart(2, '0');
-const seconds = String(date.getSeconds()).padStart(2, '0');
+															const year = date.getFullYear();
+															const month = String(date.getMonth() + 1).padStart(2, '0');
+															const day = String(date.getDate()).padStart(2, '0');
+															const hours = String(date.getHours()).padStart(2, '0');
+															const minutes = String(date.getMinutes()).padStart(2, '0');
+															const seconds = String(date.getSeconds()).padStart(2, '0');
 
-const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+															const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
 															return (
 																<tr>
@@ -469,7 +471,7 @@ const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 																		) : (<a target={"_blank"} href={common.get_message(`${m?.attach_file}`)}><p className='darkblue-text cursor-pointer'>{m?.attach_file}</p></a>)}
 																	</td>
 
-																	
+
 																	<td className='text-end'>
 																		{moment
 																			.unix(m?.created)

@@ -382,7 +382,7 @@ const ProjectDetail = () => {
 
         const [rating, setRating] = useState(0);
         return (
-            <div className='review_machinist_rating'>
+            <div classNameName='review_machinist_rating'>
                 <h6>{r.name}</h6>
                 <ReactStar
                     rating={review[r.key]}
@@ -702,199 +702,577 @@ const ProjectDetail = () => {
 
 
     return (
+
         <>
+
             <div className="container">
-                <div className="proj_d1"><h1>Project description</h1></div>
-                <div className="row project_des">
-                    <div className="col-sm-3">
-                        <div className="proj_i">
-                            <img
-                                src={common.get_attachment(
-                                    (data?.attachment_name?.split(',')[0]),
-                                    formattedDate,
-                                )}
-                                alt="ABC"
-                            />
+
+                {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
+
+                    <div className="row stepwrapper">
+                        <div className="col-sm-4">
+                            <div className="step_wp">
+                                <span className="triangle"></span>
+                                <div className="step_wp1">
+                                    <div>1</div>
+                                    <h3>Deposit funds</h3>
+                                    <p>Deposit your funds</p>
+                                    <a href="#">Deposit Funds</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="step_wp">
+                                <span className="triangle"></span>
+                                <div className="step_wp1">
+                                    <div>2</div>
+                                    <h3>Pay your Artist</h3>
+                                    <p>You have received your order. You are satisfied with the result. Release your funds and your machinist
+                                        will be paid immediately.</p>
+                                    <a href="#">Deposit Funds</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="step_wp">
+                                <div className="step_wp1">
+                                    <div>3</div>
+                                    <h3>Review the Artist's work</h3>
+                                    <p>Evaluate the work of your Artist.</p>
+                                    <a href="#">Deposit Funds</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-sm-9">
-                        <div className="proj_d">
-                            <p><span>Posted: </span>{moment(data?.project_post_date).format("DD-MMMM-YYYY")}</p>
-                            <p><span>Visibility: </span>{data?.visibility}</p>
-                            <p><span>Remaining time: </span>{diffInDays >= 0 && hourDifference >= 0 ? (
-                                <>{diffInDays} days {hourDifference} hours</>
-                            ) : (
-                                <>0 days</>
-                            )}</p>
-                            <p><span>Posted by: </span><a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}>{data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
-                                data?.creator?.user_name : "User") : data?.creator?.user_name}</a></p>
-                            <p><span>Offers received: </span> {data?.bids_count} Offers</p>
-                            <p><span>Attachments: </span>
+                )}
 
-                                {data?.attachment_name?.includes(",") ? (
-                                    data?.attachment_name?.split(",").map((d) => {
+
+                <div className="container">
+                    <div className="proj_d1"><h1>Project description</h1></div>
+                    <div className="row project_des">
+                        <div className="col-sm-3">
+                            <div className="proj_i">
+                                <img
+                                    src={common.get_attachment(
+                                        (data?.attachment_name?.split(',')[0]),
+                                        formattedDate,
+                                    )}
+                                    alt="ABC"
+                                />
+                            </div>
+                        </div>
+                        <div className="col-sm-9">
+                            <div className="proj_d">
+                                <p><span>Posted: </span>{moment(data?.project_post_date).format("DD-MMMM-YYYY")}</p>
+                                <p><span>Visibility: </span>{data?.visibility}</p>
+                                <p><span>Remaining time: </span>{diffInDays >= 0 && hourDifference >= 0 ? (
+                                    <>{diffInDays} days {hourDifference} hours</>
+                                ) : (
+                                    <>0 days</>
+                                )}</p>
+                                <p><span>Posted by: </span><a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}>{data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
+                                    data?.creator?.user_name : "User") : data?.creator?.user_name}</a></p>
+                                <p><span>Offers received: </span> {data?.bids_count} Offers</p>
+                                <p><span>Attachments: </span>
+
+                                    {data?.attachment_name?.includes(",") ? (
+                                        data?.attachment_name?.split(",").map((d) => {
+                                            return (
+                                                <>
+                                                    <ul>
+                                                        <li>
+                                                            <a
+                                                                href={common.get_attachment(d, formattedDate)}
+                                                                rel={"noreferrer"}
+                                                                target={"_blank"}>
+                                                                {d}
+
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </>
+                                            )
+                                        })
+                                    ) : (
+                                        <a
+                                            href={common.get_attachment(data?.attachment_name, formattedDate)}
+                                            rel={"noreferrer"}
+                                            target={"_blank"}>
+                                            {data?.attachment_name}
+                                        </a>
+                                    )}
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="project_des1">
+                        <div className="proj_d1"><h1>description</h1></div>
+                        <pre className="custom-pre">{data?.description}</pre>
+                        <br />
+
+                        <br />
+
+
+                        {additionalcomments.map((a, index) => (
+                            <>
+                                <div className="addtional-p-tag">
+                                    <p>-------------------------</p>
+                                    <p>comment added on {a?.post_date_time}</p>
+                                    <p key={index}><pre className="custom-pre">{a?.description}</pre></p>
+                                    <br />
+                                </div>
+                            </>
+
+                        ))}
+
+
+
+
+
+
+
+
+
+
+
+                        {additional && (
+                            <div className='send-message-col'>
+                                <textarea
+                                    className='form-control'
+                                    placeholder='Type your additional comment here'
+                                    value={additionalcomment}
+                                    onChange={(e) => setadditionalcomment(e.target.value)}
+                                />
+                                <br />
+
+
+                                <div className='upload-btn-wrapper'>
+                                    <button>
+                                        <i className='fa fa-upload' /> Add files
+                                    </button>
+                                    <input
+                                        type='file'
+                                        name='myfile'
+                                        onChange={handleadditionalcomment}
+                                        multiple={true}
+                                    />
+                                </div>
+                                <br />
+                                <br />
+                                {pr2 < 101 ? (
+                                    <ProgressBar now={pr2} label={`${pr2}%`} />
+                                ) : (<></>)}
+                                {additionalfile && pr2 > 100 ? (
+                                    additionalfile?.map((f) => {
                                         return (
                                             <>
-                                                <ul>
-                                                    <li>
-                                                        <a
-                                                            href={common.get_attachment(d, formattedDate)}
-                                                            rel={"noreferrer"}
-                                                            target={"_blank"}>
-                                                            {d}
-
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                                <div className="pro_div">
+                                                    <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_additional_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                </div>
                                             </>
                                         )
                                     })
-                                ) : (
-                                    <a
-                                        href={common.get_attachment(data?.attachment_name, formattedDate)}
-                                        rel={"noreferrer"}
-                                        target={"_blank"}>
-                                        {data?.attachment_name}
-                                    </a>
-                                )}
-
-
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="project_des1">
-                    <div className="proj_d1"><h1>description</h1></div>
-                    <pre className="custom-pre">{data?.description}</pre>
-                    <br />
-
-                    <br />
-
-
-                    {additionalcomments.map((a, index) => (
-                        <>
-                            <div className="addtional-p-tag">
-                                <p>-------------------------</p>
-                                <p>comment added on {a?.post_date_time}</p>
-                                <p key={index}><pre className="custom-pre">{a?.description}</pre></p>
+                                ) : (<></>)}
                                 <br />
+                                <div className="upload-btn-wrapper1">
+                                    <button type="submit" onClick={handleadditionalsubmit} className='btn mt-3'>
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+
+                        {data?.creator_id == user?.id && data?.project_status < 1 && (
+                            <div className="upload-btn-wrapper2">
+                                {additional ? (
+                                    <a type="button" onClick={() => setadditional(false)}>Cancel</a>
+                                ) : (
+                                    <button onClick={() => setadditional(true)}>Add Additional comment/File</button>
+                                )}
+                            </div>
+                        )}
+
+
+
+
+                        {user && (
+                            <>
+                                {user?.role_id == 2 &&
+                                    !data?.programmer_id &&
+                                    data?.bids?.filter((f) => f?.user_id == user?.id).length >
+                                    0 ? (
+
+                                    <div className="upload-btn-wrapper2">
+                                        <button
+                                            style={{ width: '20rem' }}
+                                            type='submit'
+                                            onClick={() => {
+                                                setOpen_offer(true);
+                                                setBid_id(
+                                                    data?.bids?.filter((f) => f?.user_id == user?.id)[0]
+                                                        ?.id,
+                                                );
+
+                                                let find_bid = data?.bids?.find(
+                                                    (f) => f?.user_id == user?.id,
+                                                );
+
+                                                if (find_bid) {
+                                                    for (const key of Object.keys(bid)) {
+                                                        setbid(key, find_bid[key] || "")(null);
+                                                    }
+                                                }
+                                                setischecked(false)
+                                            }}>
+                                            Edit Offer
+                                        </button>
+                                    </div>
+                                ) : user?.role_id == 2 && !data?.programmer_id ? (
+                                    (String(data?.visibility).toLocaleLowerCase() == "private" ? (
+                                        (Number(totaljobs) >= 1 ? (
+
+                                            <div className="upload-btn-wrapper2">
+                                                <button style={{ width: '20rem' }} type='submit' onClick={() => {
+                                                    setOpen_offer(true); setischecked(false); setprogress(0)
+                                                    setFile([])
+                                                }}>
+                                                    Create Offer
+                                                </button>
+                                            </div>
+                                        ) : (<></>))
+
+                                    ) : (
+                                        <>
+
+                                            <div className="upload-btn-wrapper2">
+                                                <button style={{ width: '20rem' }} type='submit' onClick={() => {
+                                                    setOpen_offer(true); setischecked(false); setprogress(0)
+                                                    setFile([])
+                                                }}>
+                                                    Create Offer
+                                                </button>
+                                            </div>
+                                        </>
+
+                                    ))
+                                ) : (
+                                    <></>
+                                )}
+                            </>
+                        )}
+
+
+
+
+
+                        {user && data?.prebid_messages?.length && data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
+                            <>
+                                <h3 className='cus'>Questions and Answers :</h3>
+                                <div className='row'>
+                                    {data?.prebid_messages?.length
+                                        ? data?.prebid_messages?.map((d, index) => {
+                                            return <Q_A key={index} d={d} user={user} data={data} />;
+                                        })
+                                        : ""}
+                                </div>
+                            </>
+                            : <></>) : <>
+                            {data?.prebid_messages?.length ? (
+                                <h3 className='cus'>Questions and Answers :</h3>
+                            ) : (<></>)}
+                            <div className='row'>
+                                {data?.prebid_messages?.length
+                                    ? data?.prebid_messages?.map((d, index) => {
+                                        return <Q_A key={index} d={d} user={user} data={data} />;
+                                    })
+                                    : ""}
                             </div>
                         </>
-
-                    ))}
-
+                        }
 
 
 
 
 
+                        <hr />
 
-
-
-
-
-                    {additional && (
-                        <div className='send-message-col'>
-                            <textarea
-                                className='form-control'
-                                placeholder='Type your additional comment here'
-                                value={additionalcomment}
-                                onChange={(e) => setadditionalcomment(e.target.value)}
-                            />
-                            <br />
-
-
-                            <div className='upload-btn-wrapper'>
-                                <button>
-                                    <i className='fa fa-upload' /> Add files
-                                </button>
-                                <input
-                                    type='file'
-                                    name='myfile'
-                                    onChange={handleadditionalcomment}
-                                    multiple={true}
-                                />
+                        <>
+                            <h3 className='cus'>Offers ({data?.bids_count})</h3>
+                            <div className='col-sm-12'>
+                                {data?.bids?.length ? (
+                                    data?.bids?.map((bid, index) => {
+                                        return (
+                                            <Offer
+                                                bid={bid}
+                                                data={data}
+                                                select_machinist={select_machinist}
+                                                send_msg={send_msg}
+                                                user={user}
+                                                key={bid?.id}
+                                                revdata={offr_rev_feed[index]?.id == bid?.user_id ? offr_rev_feed[index] : null}
+                                            />
+                                        );
+                                    })
+                                ) : (
+                                    <></>
+                                )}
                             </div>
-                            <br />
-                            <br />
-                            {pr2 < 101 ? (
-                                <ProgressBar now={pr2} label={`${pr2}%`} />
+                            <hr />
+                        </>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>
+                    <div className='fdfd4'>
+                        <div className='css-ung'>
+                            <p>Post a Public Message or a Question to the client (optional).</p>
+                            <label>Send a public message to the client..</label>
+                            <textarea
+                                name='message'
+                                rows={4}
+                                placeholder='Write your message here ...'
+                                defaultValue={""}
+                                value={question.message}
+                                onChange={setQuestion("message")}
+                            />
+                            <input
+                                type='submit'
+                                defaultValue='Send your Message'
+                                name='Prebid'
+                                onClick={handleQuestion}
+                            />
+                            <hr />
+                            <div className='row'>
+                                <div className='col-sm-12'>
+                                    <h5>Make an offer</h5>
+                                    <p>1.Describe what you are offering in detail.</p>
+                                    <p>
+                                        2.Do not include your contact details (email, phone, address
+                                        etc ...).
+                                    </p>
+                                    <p>
+                                        3.The shipping costs (with parcel tracking) must be included
+                                        in the price offered to the customer.
+                                    </p>
+                                    <textarea
+                                        name='message2'
+                                        rows={4}
+                                        placeholder='Describe your offer here ...'
+                                        defaultValue={""}
+                                        value={bid.bid_desc}
+                                        onChange={setbid("bid_desc")}
+                                    />
+                                </div>
+                            </div>
+                            <div className='upload-btn-wrapper'>
+                                <button className='btn'>
+                                    <i className='fa fa-upload' /> Add files (Max. &lt; 3 Mb)
+                                </button>
+                                <input type='file' name='myfile' multiple onChange={handle_file_change} />
+                            </div>
+
+
+                            {pr < 101 ? (
+                                <ProgressBar now={pr} label={`${pr}%`} />
                             ) : (<></>)}
-                            {additionalfile && pr2 > 100 ? (
-                                additionalfile?.map((f) => {
+
+
+                            {file && pr > 100 ? (
+                                file?.map((f) => {
                                     return (
                                         <>
                                             <div className="pro_div">
-                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_additional_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
                                             </div>
                                         </>
                                     )
                                 })
                             ) : (<></>)}
-                            <br />
-                            <div className="upload-btn-wrapper1">
-                                <button type="submit" onClick={handleadditionalsubmit} className='btn mt-3'>
-                                    Send
-                                </button>
-                            </div>
-                        </div>
-                    )}
 
 
-                    {data?.creator_id == user?.id && data?.project_status < 1 && (
-                        <div className="upload-btn-wrapper2">
-                            {additional ? (
-                                <a type="button" onClick={() => setadditional(false)}>Cancel</a>
-                            ) : (
-                                <button onClick={() => setadditional(true)}>Add Additional comment/File</button>
-                            )}
-                        </div>
-                    )}
 
-                    {/* <button>Add a comment or files</button> */}
-                </div>
-                <div className="project_des1">
-                    <div className="proj_d1"><h1>Offer (1)</h1></div>
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <div className="tgh">
-                                <figure>
-                                    <img src="/img/work-icon3.png" alt="" />
-                                </figure>
-                                <div>
-                                    <h2>debraj41</h2>
-                                    <p>1 jobs <i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-o"></i> <span>4.0</span></p>
+
+
+                            <div className='row css-kjus'>
+                                <div className='col-sm-6'>
+                                    <label>Paid to Me : £</label>
+                                    <input
+                                        name='txtPrice'
+                                        type='text'
+                                        disabled
+                                        value={bid.bid_amount}
+                                        onChange={setbid("bid_amount")}
+                                    />
+                                </div>
+                                <div className='col-sm-6'>
+                                    <label>
+                                        Price for client: £ <small>Includes Machining-4U fees</small>
+                                    </label>
+                                    <input
+                                        name='bidAmt'
+                                        type='text'
+                                        value={bid.bid_amount_gbp}
+                                        disabled={ischecked}
+                                        onChange={setbid("bid_amount_gbp")}
+                                    />
+                                </div>
+                                <div className='col-sm-12'>
+                                    <label>Estimated Days Until Shipping:</label>
+                                    <div className='form-inline1'>
+                                        <select
+                                            name='days'
+                                            value={bid.bid_days}
+                                            onChange={setbid("bid_days")} disabled={ischecked}>
+                                            <option value={0}>-- Select --</option>
+                                            <option value={2}>2 Days</option>
+                                            <option value={3}>3 Days</option>
+                                            <option value={4}>4 Days</option>
+                                            <option value={5}>5 Days</option>
+                                            <option value={6}>6 Days</option>
+                                            <option value={7}>7 Days</option>
+                                            <option value={8}>8 Days</option>
+                                            <option value={9}>9 Days</option>
+                                            <option value={10}>10 Days</option>
+                                            <option value={11}>11 Days</option>
+                                            <option value={12}>12 Days</option>
+                                            <option value={13}>13 Days</option>
+                                            <option value={14}>14 Days</option>
+                                            <option value={15}>15 Days</option>
+                                            <option value={16}>16 Days</option>
+                                            <option value={17}>17 Days</option>
+                                            <option value={18}>18 Days</option>
+                                            <option value={19}>19 Days</option>
+                                            <option value={20}>20 Days</option>
+                                            <option value={21}>21 Days</option>
+                                            <option value={22}>22 Days</option>
+                                            <option value={23}>23 Days</option>
+                                            <option value={24}>24 Days</option>
+                                            <option value={25}>25 Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className='col-sm-4'>
+                                    <div className='form-group form-check'>
+                                        <label className='form-check-label'>
+                                            <input
+                                                className='form-check-input'
+                                                type='checkbox'
+                                                onChange={(e) => {
+                                                    setwill_submit(e.target.checked);
+                                                    if (e.target.checked) {
+                                                        setbid("bid_amount", "0")(null);
+                                                        setbid("bid_amount_gbp", "0")(null);
+                                                        setbid("bid_days", "0")(0);
+                                                        setischecked(true)
+                                                    } else if (!e.target.checked) {
+                                                        setischecked(false)
+                                                    }
+                                                }}
+                                            />{" "}
+                                            Will Submit Amount Later
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className='col-sm-12'>
+                                    <input
+                                        type='submit'
+                                        defaultValue='Send your offer'
+                                        name='Prebid'
+                                        onClick={handleAddBid}
+                                    />
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-6">
-                            <div className="tgh1">
-                                <p>08-09-2023 11:10:15</p>
-                            </div>
+                    </div>
+                </GlobalModal>
+                <GlobalModal title='Select Machinist' atom={atom.modal.slct_mchnst}>
+                    <div className='slct-machinist-modal'>
+                        {selected_machinist ? (
+                            <>
+                                <p>
+                                    Are you sure, you want to select the offer from{" "}
+                                    {selected_machinist?.user_name} for £
+                                    {selected_machinist?.amount} ?
+                                </p>
+                                <p>This choice is final</p>
+                                <p>The price can not be changed</p>
+                                <div className='reg-bottom slct-mchinst'>
+                                    <button
+                                        type='submit'
+                                        name='submit'
+                                        onClick={() => {
+                                            setOpen_machinist(false);
+                                            setselected_machinist(null);
+                                        }}>
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type='submit'
+                                        name='submit'
+                                        onClick={handle_select_machinist}>
+                                        Confirm
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <></>
+                        )}
+                    </div>
+                </GlobalModal>
+
+                <GlobalModal
+                    title='Review Your Machinist'
+                    atom={atom.modal.review_machinist}>
+                    <div className='fdfd4'>
+                        <div className='css-ung'>
+                            {/* <p>Post a Public Message or a Question to the client (optional).</p> */}
+                            <label>Add a valuable comment for the machinist</label>
+                            <textarea
+                                name='message'
+                                rows={4}
+                                placeholder='Write your message here ...'
+                                defaultValue={""}
+                                value={review.comments}
+                                onChange={setreview("comments")}
+                            />
+
+                            {common.reviews_meta.map((r, index) => {
+                                return <ReviewBox key={index} r={r} />;
+                            })}
+                            <br />
+
+
+
+                            <h6>Average rating : {avgrat}</h6>
+
+                            <br />
+
+                            <input
+                                type='submit'
+                                defaultValue='Send your Message'
+                                name='Prebid'
+                                onClick={handleSubmitReview}
+                            />
+                            <hr />
                         </div>
                     </div>
-                    <div className="row tgh4">
-                        <div className="col-sm-8">
-                            <div className="tgh2">
-                                <h5>i can do</h5>
-                                <h5>Line 3</h5>
-                                <h5>Line 4</h5><br />
-                                <button>Send message to the machinist</button>
-                                <p>Attachments: chapeverinpoussoir1.jpg</p>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="tgh3">
-                                <h6>$30</h6>
-                                <p>Shipping fee Included</p>
-                                <p>Shipping time: 10 Days</p><br />
-                                <button>Select</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </GlobalModal>
+
             </div>
         </>
+
     );
 };
 ProjectDetail.ignorePath = true;
