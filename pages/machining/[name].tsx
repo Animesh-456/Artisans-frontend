@@ -724,6 +724,8 @@ const ProjectDetail = () => {
                                             Deposit Funds
                                         </Link>
 
+                                        // Deposit fnd link here ☝️
+
                                         // <a href={`/job/deposit-fund/${p_id}`}>Deposit Fund</a>
                                     )}
                                 </div>
