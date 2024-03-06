@@ -732,6 +732,7 @@ const ProjectDetail = () => {
                                 </div>
                             </div>
                             {/* hiiii */}
+                            {/* More logic goes here */}
 
                         </div>
                         <div className="col-sm-4">

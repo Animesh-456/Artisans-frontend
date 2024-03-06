@@ -93,11 +93,13 @@ const Reviews = (props: Props) => {
                                                 Reviews_data.map((item) => {
 
                                                     return (
-                                                        <tr>
-                                                            <td>{item.project.project_name}</td>
-                                                            <td>{item.provider.user_name}</td>
-                                                            <td>{item.rating}</td>
-                                                        </tr>
+                                                        <>
+                                                            <tr>
+                                                                <td>{item.project.project_name}</td>
+                                                                <td>{item.provider.user_name}</td>
+                                                                <td>{item.rating}</td>
+                                                            </tr>
+                                                        </>
                                                     )
                                                 })}
 
