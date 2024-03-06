@@ -716,8 +716,16 @@ const ProjectDetail = () => {
                                 <div className="step_wp1">
                                     <div>1</div>
                                     <h3>Deposit funds</h3>
-                                    <p>Deposit your funds</p>
-                                    <a href="#">Deposit Funds</a>
+                                    {data?.project_status == '1' ? <p>
+                                        Deposit your funds
+                                    </p> : <p>The funds were deposited on {formatDate(data?.project_fund_date_format)}</p>}
+                                    {data?.project_status == "1" && (
+                                        <Link href={`/job/deposit-fund/${p_id}`}>
+                                            Deposit Funds
+                                        </Link>
+
+                                        // <a href={`/job/deposit-fund/${p_id}`}>Deposit Fund</a>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -726,10 +734,17 @@ const ProjectDetail = () => {
                                 <span className="triangle"></span>
                                 <div className="step_wp1">
                                     <div>2</div>
-                                    <h3>Pay your Artist</h3>
-                                    <p>You have received your order. You are satisfied with the result. Release your funds and your machinist
-                                        will be paid immediately.</p>
-                                    <a href="#">Deposit Funds</a>
+                                    <h3>Pay your artist</h3>
+                                    {data?.project_status == '5' ? <p>
+                                        Approved parts. Funds released to your artist on {formatDate(data?.fund_release_date)}.
+                                    </p> : <p>You have received your order. You are satisfied with the result. Release your funds and your artist will be paid immediately.</p>}
+                                    {data?.project_status == "4" && (
+                                        <button
+                                            className='btn btn-warning text-white'
+                                            onClick={pay_machinist}>
+                                            Pay Artist
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -737,14 +752,119 @@ const ProjectDetail = () => {
                             <div className="step_wp">
                                 <div className="step_wp1">
                                     <div>3</div>
-                                    <h3>Review the Artist's work</h3>
-                                    <p>Evaluate the work of your Artist.</p>
-                                    <a href="#">Deposit Funds</a>
+                                    <h3>Review the Artists work</h3>
+
+                                    {(data?.project_status == '5' && reviewCust[0]?.rating != null) ? <p>
+                                        Evaluation performed the {formatDate(reviewCust[0]?.review_post_date)}
+                                    </p> : <p>Evaluate the work of your Machinist.</p>}
+
+                                    {(data?.project_status == '5' && reviewCust[0]?.rating == null) && (
+                                        <Button onClick={() => setOpenReview(true)}>Review</Button>
+
+                                    )}
+
+
+
+                                    {(data?.project_status == '5' && reviewCust[0]?.rating != null) && <h6>Rating : {reviewCust[0]?.rating}</h6>}
                                 </div>
                             </div>
                         </div>
                     </div>
                 )}
+
+
+                {/* Supplier side steps */}
+
+
+
+
+                {user && user?.id == data?.programmer_id && data?.project_status >= 4 && (
+
+                    <div className="row stepwrapper">
+                        <div className="col-sm-4">
+                            <div className="step_wp">
+                                <span className="triangle"></span>
+                                <div className="step_wp1">
+                                    <div>1</div>
+                                    <h3>Confirm Shipment Date</h3>
+
+                                    {steps_completed_supplier[0]?.step1 != 1 ? (
+                                        <p>
+                                            The client has confirmed the order and the funds have been deposited.
+                                        </p>
+                                    ) : (
+                                        <>
+                                            <p>Confirmation message sent</p>
+                                            <p>Sent Date: - {new Date(data?.expedition_day).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
+                                        </>
+                                    )}
+
+
+                                    {steps_completed_supplier[0]?.step1 != 1 && data?.project_status < "5" ? (
+                                        <Link href={`/account/machinistConfirmationMessage/${data.id}`}>
+                                            <a>Send Message</a>
+                                        </Link>
+                                    ) : (<></>)}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="step_wp">
+                                <span className="triangle"></span>
+                                <div className="step_wp1">
+                                    <div>2</div>
+                                    <h3>Shipping now</h3>
+                                    {steps_completed_supplier[0]?.step2 != 1 ? (
+                                        <p>
+                                            Inform your client that you have shipped their order (parcel tracking is compulsory).
+                                        </p>
+                                    ) : (
+                                        <>
+                                            <p>Shipment message sent</p>
+                                            <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
+                                            <p>Tracking Number: - {data?.track_number}</p>
+                                        </>
+                                    )}
+
+
+                                    {steps_completed_supplier[0]?.step2 != 1 && data?.project_status < "5" ? (
+                                        <Link href={`/account/machinistShippingMessage/${data.id}`}>
+                                            <a>Send Message</a>
+                                        </Link>
+                                    ) : (<></>)}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="step_wp">
+                                <div className="step_wp1">
+                                    <div>3</div>
+                                    <h3>Request release of funds</h3>
+                                    {steps_completed_supplier[0]?.step3 != 1 ? (
+
+                                        <p>
+                                            Once your customer has confirmed receipt of their order, request that funds be released into your account.
+                                        </p>
+                                    ) : (
+                                        <>
+                                            <p>Request sent</p>
+                                        </>
+                                    )}
+
+
+                                    {steps_completed_supplier[0]?.step3 != 1 && data?.project_status < "5" ? (
+                                        <Link href={`/account/requestfunds/${data.id}`}>
+                                            <a>Request Funds</a>
+                                        </Link>
+                                    ) : (<></>)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+
+
 
 
                 <div className="container">
