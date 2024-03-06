@@ -17,6 +17,19 @@ const DespositFund = (props: Props) => {
 	const [updated, setUpdated] = useState(false);
 	const [data, setData] = useAtom<ProjectDetails>(atom.project.api.detail);
 
+
+	const [savecheck, setsavecheck] = useState(false)
+	const changestatecheck = () => {
+		if (savecheck == true) {
+			setsavecheck(false)
+		} else {
+			setsavecheck(true)
+		}
+	}
+
+
+
+
 	const [profile, profileState] = useState({
 		name: user?.name || "",
 		postalcode: user?.zcode || "",
@@ -29,6 +42,8 @@ const DespositFund = (props: Props) => {
 
 	const handle_confirm_address = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
+		profile["checkstate"] = savecheck
 
 		let form = new FormData();
 
@@ -177,7 +192,7 @@ const DespositFund = (props: Props) => {
 								</div>
 								<div className='form-group form-check'>
 									<label className='form-check-label'>
-										<input className='form-check-input' type='checkbox' /> Save
+										<input onChange={changestatecheck} className='form-check-input' type='checkbox' /> Save
 										this address
 									</label>
 								</div>

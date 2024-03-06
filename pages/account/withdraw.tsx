@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 type Props = {};
 
-const withdraw = (props: Props) => {
+const Withdraw = (props: Props) => {
 
     const balanceData = useAtomValue<BalanceResponse>(atom.auth.api.user_balance);
     const updatedBalance = useAtomValue<BalanceResponse>(atom.auth.api.update_balance);
@@ -84,7 +84,7 @@ const withdraw = (props: Props) => {
                 toast.success("Withdrawl successful!");
                 setpaypal(null);
                 setval(0);
-                
+
             }
         });
 
@@ -120,7 +120,9 @@ const withdraw = (props: Props) => {
             </div>
             <div className='container cjw'>
                 <div className='row'>
-                    <AccountSideBar />
+                    <div className="col-sm-4">
+                        <AccountSideBar />
+                    </div>
 
                     <div className='col-sm-8'>
                         <div className='profile_box'>
@@ -211,4 +213,4 @@ const withdraw = (props: Props) => {
     );
 };
 
-export default withdraw;
+export default Withdraw;

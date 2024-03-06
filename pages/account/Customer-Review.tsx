@@ -1,4 +1,4 @@
-import React, { useEffect , useState } from "react";
+import React, { useEffect, useState } from "react";
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import api from "../../src/api/services/api";
 
@@ -6,33 +6,33 @@ type Props = {};
 
 //let Reviews_data = []
 
-const reviews = (props: Props) => {
+const Reviews = (props: Props) => {
 
     const [Reviews_data, SetReviews_data] = useState([]);
 
 
-	useEffect(() => {
+    useEffect(() => {
 
         const UserData = JSON.parse(localStorage.getItem('UserData'));
-        
-    api.project.reviews_list({ params: {} }, (d) => {
-        console.log("---->", d)
-      //  Reviews_data = d.data;
 
-    });
-      // const d = fetch(`http://localhost:4000/project/customer_review`);
-       console.log("udata--",UserData) 
-		api.project.Customer_Review({ params: { machinist_id: UserData.id } }, (d) => {
-			console.log(d)
-			SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
+        api.project.reviews_list({ params: {} }, (d) => {
+            console.log("---->", d)
+            //  Reviews_data = d.data;
 
-			//setLoaded(true);
-		});
-		
+        });
+        // const d = fetch(`http://localhost:4000/project/customer_review`);
+        console.log("udata--", UserData)
+        api.project.Customer_Review({ params: { machinist_id: UserData.id } }, (d) => {
+            console.log(d)
+            SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
 
-			//console.log("yoo")
-			//SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
-	  }, []);
+            //setLoaded(true);
+        });
+
+
+        //console.log("yoo")
+        //SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
+    }, []);
     // const UserData = JSON.parse(localStorage.getItem('UserData'));
     // console.log("data--", UserData)
 
@@ -69,7 +69,9 @@ const reviews = (props: Props) => {
             </div>
             <div className='container cjw'>
                 <div className='row'>
-                    <AccountSideBar />
+                    <div className="col-sm-4">
+                        <AccountSideBar />
+                    </div>
 
                     <div className='col-sm-8'>
                         <div className='profile_box'>
@@ -112,4 +114,4 @@ const reviews = (props: Props) => {
     );
 };
 
-export default reviews;
+export default Reviews;

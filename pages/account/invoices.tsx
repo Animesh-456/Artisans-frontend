@@ -152,7 +152,7 @@ function DownloadPDF(inv_no, customer, p_name, fund_release_date, amount, cus_ad
     // window.print();
     // document.body.innerHTML = originalContents; 
 }
-const invoices = (props: Props) => {
+const Invoices = (props: Props) => {
 
     const router = useRouter();
     const opt = useAtomValue(atom.project.api.list_opt);
@@ -236,7 +236,9 @@ const invoices = (props: Props) => {
             </div>
             <div className='container cjw'>
                 <div className='row'>
-                    <AccountSideBar />
+                    <div className="col-sm-4">
+                        <AccountSideBar />
+                    </div>
 
                     <div className='col-sm-8'>
                         <div className='profile_box'>
@@ -320,24 +322,26 @@ const invoices = (props: Props) => {
 									)} */}
 
                                         {opt.total_count > 10 && getPageNumbers().map((page) => (
+                                            <>
 
-                                            <li
-                                                className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-                                                    page
-                                                    ? "active"
-                                                    : ""
-                                                    }`}>
-                                                <Link href={`${router.pathname}?page=${page}`}>
-                                                    <a
-                                                        className='page-link'
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            handlePageClick(page);
-                                                        }}>
-                                                        {page + 1}
-                                                    </a>
-                                                </Link>
-                                            </li>
+                                                <li
+                                                    className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
+                                                        page
+                                                        ? "active"
+                                                        : ""
+                                                        }`}>
+                                                    <Link href={`${router.pathname}?page=${page}`}>
+                                                        <a
+                                                            className='page-link'
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                handlePageClick(page);
+                                                            }}>
+                                                            {page + 1}
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                            </>
 
                                         ))}
 
@@ -432,4 +436,4 @@ const invoices = (props: Props) => {
     );
 };
 
-export default invoices;
+export default Invoices;

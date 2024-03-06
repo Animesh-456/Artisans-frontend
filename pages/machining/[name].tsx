@@ -698,7 +698,9 @@ const ProjectDetail = () => {
 
 
 
-
+    const handleclk = (id) => {
+        toast.error("Clicked")
+    }
 
 
     return (
@@ -716,20 +718,20 @@ const ProjectDetail = () => {
                                 <div className="step_wp1">
                                     <div>1</div>
                                     <h3>Deposit funds</h3>
+
                                     {data?.project_status == '1' ? <p>
                                         Deposit your funds
                                     </p> : <p>The funds were deposited on {formatDate(data?.project_fund_date_format)}</p>}
                                     {data?.project_status == "1" && (
                                         <Link href={`/job/deposit-fund/${p_id}`}>
-                                            Deposit Funds
+                                            <a>Deposit Funds</a>
                                         </Link>
-
-                                        // Deposit fnd link here ☝️
-
-                                        // <a href={`/job/deposit-fund/${p_id}`}>Deposit Fund</a>
                                     )}
+
                                 </div>
                             </div>
+
+
                         </div>
                         <div className="col-sm-4">
                             <div className="step_wp">
@@ -741,11 +743,12 @@ const ProjectDetail = () => {
                                         Approved parts. Funds released to your artist on {formatDate(data?.fund_release_date)}.
                                     </p> : <p>You have received your order. You are satisfied with the result. Release your funds and your artist will be paid immediately.</p>}
                                     {data?.project_status == "4" && (
-                                        <button
+                                        <Link
+                                            href={`/account/CustomerRealeasePayment`}
                                             className='btn btn-warning text-white'
-                                            onClick={pay_machinist}>
+                                        >
                                             Pay Artist
-                                        </button>
+                                        </Link>
                                     )}
                                 </div>
                             </div>
@@ -761,8 +764,7 @@ const ProjectDetail = () => {
                                     </p> : <p>Evaluate the work of your Machinist.</p>}
 
                                     {(data?.project_status == '5' && reviewCust[0]?.rating == null) && (
-                                        <Button onClick={() => setOpenReview(true)}>Review</Button>
-
+                                        <button onClick={() => setOpenReview(true)}>Review</button>
                                     )}
 
 

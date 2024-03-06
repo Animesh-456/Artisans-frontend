@@ -235,7 +235,7 @@ const DepositFund1 = (props: Props) => {
             <PayPalScriptProvider
                 options={{
                     "client-id":
-                         "AX70eVDhpDXiUvF5zsWh_HePlHTuBhg0HEiXyfx1Ir4uPgTwRy_EJ9-eWGeGakxKxT7wXgFkvgSQtPUM",
+                         "AT_5r1CUj-A5aDvr-MjLuZNTfIdxJYdCuQlpF8GVq9HRvL-IjEjQMAm1ITlFZjdhBKOXt8eDdo2zTitG",
                          currency:"GBP"
                 }}>
                 <div
