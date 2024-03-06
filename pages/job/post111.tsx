@@ -20,26 +20,26 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 type Props = {};
 
 export const getStaticProps = async () => {
-    try {
-        const response = await fetch(`${env.base_url}project/page-details`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch');
-        }
-        const data = await response.json();
-        
-        return {
-            props: {
-                prp: data // Assuming the fetched data structure matches what's expected
-            }
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return {
-            props: {
-                prp: null // Or any default value indicating an error occurred
-            }
-        };
-    }
+	try {
+		const response = await fetch(`${env.base_url}project/page-details`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch');
+		}
+		const data = await response.json();
+
+		return {
+			props: {
+				prp: data // Assuming the fetched data structure matches what's expected
+			}
+		};
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		return {
+			props: {
+				prp: null // Or any default value indicating an error occurred
+			}
+		};
+	}
 };
 
 const post = (prp) => {
@@ -147,17 +147,17 @@ const post = (prp) => {
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
 			const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
-			 // if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "gif" && extension.toLowerCase() !== "pdf" && extension.toLowerCase() !== "bmp" && extension.toLowerCase() !== "tif" && extension.toLowerCase() !== "zip" && extension.toLowerCase() !== "rar" && extension.toLowerCase() !== "docx" && extension.toLowerCase() !== "exe" && extension.toLowerCase() !== "dwg" && extension.toLowerCase() !== "svg" && extension.toLowerCase() !== "sldasm" && extension.toLowerCase() !== "slddrw" && extension.toLowerCase() !== "ipt" && extension.toLowerCase() !== "pptx" && extension.toLowerCase() !== "igs" && extension.toLowerCase() !== "sldprt" && extension.toLowerCase() !== "stl" && extension.toLowerCase() !== "step" && extension.toLowerCase() !== "skp" && extension.toLowerCase() !== "sat") {
-            // 	toast.error(`File extension .${extension} is not allowed`);
-            // 	continue;
-            // }
+			// if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "gif" && extension.toLowerCase() !== "pdf" && extension.toLowerCase() !== "bmp" && extension.toLowerCase() !== "tif" && extension.toLowerCase() !== "zip" && extension.toLowerCase() !== "rar" && extension.toLowerCase() !== "docx" && extension.toLowerCase() !== "exe" && extension.toLowerCase() !== "dwg" && extension.toLowerCase() !== "svg" && extension.toLowerCase() !== "sldasm" && extension.toLowerCase() !== "slddrw" && extension.toLowerCase() !== "ipt" && extension.toLowerCase() !== "pptx" && extension.toLowerCase() !== "igs" && extension.toLowerCase() !== "sldprt" && extension.toLowerCase() !== "stl" && extension.toLowerCase() !== "step" && extension.toLowerCase() !== "skp" && extension.toLowerCase() !== "sat") {
+			// 	toast.error(`File extension .${extension} is not allowed`);
+			// 	continue;
+			// }
 
 
-            if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "pdf") {
-                toast.error(`File extension .${extension} is not allowed`);
-                continue;
-            }
-            
+			if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "pdf") {
+				toast.error(`File extension .${extension} is not allowed`);
+				continue;
+			}
+
 			if (file.size / (1024 * 1024) > 10) {
 				toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
 				continue;
@@ -203,14 +203,14 @@ const post = (prp) => {
 			const file = files[i];
 			const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
 			// if (extension.toLowerCase() !== "zip" && extension.toLowerCase() !== "rar" && extension.toLowerCase() !== "docx" && extension.toLowerCase() !== "exe" && extension.toLowerCase() !== "dwg" && extension.toLowerCase() !== "svg" && extension.toLowerCase() !== "sldasm" && extension.toLowerCase() !== "slddrw" && extension.toLowerCase() !== "ipt" && extension.toLowerCase() !== "pptx" && extension.toLowerCase() !== "igs" && extension.toLowerCase() !== "sldprt" && extension.toLowerCase() !== "stl" && extension.toLowerCase() !== "step" && extension.toLowerCase() !== "skp" && extension.toLowerCase() !== "sat" && extension.toLowerCase() !== "pdf") {
-            // 	toast.error(`File extension .${extension} is not allowed`);
-            // 	continue;
-            // }
+			// 	toast.error(`File extension .${extension} is not allowed`);
+			// 	continue;
+			// }
 
-            if (extension.toLowerCase() !== "zip" && extension.toLowerCase() !== "rar" && extension.toLowerCase() !== "docx" && extension.toLowerCase() !== "exe" && extension.toLowerCase() !== "dwg" && extension.toLowerCase() !== "svg" && extension.toLowerCase() !== "sldasm" && extension.toLowerCase() !== "slddrw" && extension.toLowerCase() !== "ipt" && extension.toLowerCase() !== "pptx" && extension.toLowerCase() !== "igs" && extension.toLowerCase() !== "sldprt" && extension.toLowerCase() !== "stl" && extension.toLowerCase() !== "step" && extension.toLowerCase() !== "skp" && extension.toLowerCase() !== "sat") {
-                toast.error(`File extension .${extension} is not allowed`);
-                continue;
-            }
+			if (extension.toLowerCase() !== "zip" && extension.toLowerCase() !== "rar" && extension.toLowerCase() !== "docx" && extension.toLowerCase() !== "exe" && extension.toLowerCase() !== "dwg" && extension.toLowerCase() !== "svg" && extension.toLowerCase() !== "sldasm" && extension.toLowerCase() !== "slddrw" && extension.toLowerCase() !== "ipt" && extension.toLowerCase() !== "pptx" && extension.toLowerCase() !== "igs" && extension.toLowerCase() !== "sldprt" && extension.toLowerCase() !== "stl" && extension.toLowerCase() !== "step" && extension.toLowerCase() !== "skp" && extension.toLowerCase() !== "sat") {
+				toast.error(`File extension .${extension} is not allowed`);
+				continue;
+			}
 
 			if (file.size / (1024 * 1024) > 10) {
 				toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
@@ -279,348 +279,335 @@ const post = (prp) => {
 	console.log("The files are:-", file)
 
 	return (
-	        <>
-            <Head>
-                <title>{`${prp?.prp?.data[2].page_title}`}</title>
-                <meta name="description" content={`${prp?.prp?.data[2].page_desc}`} />
-                <meta name="robots" content="noindex" />
+		<>
+			<Head>
+				<title>{`${prp?.prp?.data[2].page_title}`}</title>
+				<meta name="description" content={`${prp?.prp?.data[2].page_desc}`} />
+				<meta name="robots" content="noindex" />
 
-<meta name="googlebot" content="noindex" />
+				<meta name="googlebot" content="noindex" />
 
-            </Head>
-		<div>
-			<div
-				className='banner_wp sign_banner'
-				style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-				<div className='container'>
-					<div className='row'>
-						<div className='banner_text inner_banner_text'>
-							<h1 className='yh'>Post machining request</h1>
+			</Head>
+			<div>
+				<div
+					className='banner_wp sign_banner'
+					style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+					<div className='container'>
+						<div className='row'>
+							<div className='banner_text inner_banner_text'>
+								<h1 className='yh'>Post machining request</h1>
 
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className='container job_listing'>
-				<div className='row'>
-					<div className='col-sm-12'>
-						<div className='job-l'>
-							<p>
-								It is completely free for you to create a listing for your
-								custom CNC machining requirement.
-								<br />
-								Simply create your free listing and wait for quotes to come in.
-								You do not have to commit to anything until you are happy with a
-								quote provided.
-								<br />
-								Enter the details of your custom machined part requirement
-								below. Make sure you provide enough information for the CNC
-								machinist to make an accurate assessment. Provide a full
-								description, including dimensions and images.
-							</p>
+				<div className='container job_listing'>
+					<div className='row'>
+						<div className='col-sm-12'>
+							<div className='job-l'>
+								<p>
+									It is completely free for you to create a listing for your
+									custom CNC machining requirement.
+									<br />
+									Simply create your free listing and wait for quotes to come in.
+									You do not have to commit to anything until you are happy with a
+									quote provided.
+									<br />
+									Enter the details of your custom machined part requirement
+									below. Make sure you provide enough information for the CNC
+									machinist to make an accurate assessment. Provide a full
+									description, including dimensions and images.
+								</p>
+							</div>
 						</div>
-					</div>
-					<div className='col-sm-12'>
-						<div className='job-r'>
-							<h3>Describe Your Project</h3>
-							<div className='row'>
-								<div className='col-sm-4'>
-									<label>Title of Project: <span className="project-title">*</span></label>
+						<div className='col-sm-12'>
+							<div className='job-r'>
+								<h3>Describe Your Project</h3>
+								<div className='row'>
+									<div className='col-sm-4'>
+										<label>Title of Project: <span className="project-title">*</span></label>
 
+									</div>
+									<div className='col-sm-8'>
+										<input
+											type='text'
+											name='name'
+											placeholder='Ex : 5 steel spacers for motorcycle wheel'
+											autoComplete={"off"}
+											value={project.project_name}
+											onChange={setproject("project_name")}
+										/>
+									</div>
 								</div>
-								<div className='col-sm-8'>
-									<input
-										type='text'
-										name='name'
-										placeholder='Ex : 5 steel spacers for motorcycle wheel'
-										autoComplete={"off"}
-										value={project.project_name}
-										onChange={setproject("project_name")}
-									/>
+								<div className='row'>
+									<div className='col-sm-4'>
+										<label>Comment:  <span className="project-title">*</span> </label>
+									</div>
+									<div className='col-sm-8'>
+										<textarea
+											name='descri'
+											rows={4}
+											autoComplete={"off"}
+											value={project.description}
+											onChange={setproject("description")}
+										/>
+									</div>
 								</div>
-							</div>
-							<div className='row'>
-								<div className='col-sm-4'>
-									<label>Comment:  <span className="project-title">*</span> </label>
-								</div>
-								<div className='col-sm-8'>
-									<textarea
-										name='descri'
-										rows={4}
-										autoComplete={"off"}
-										value={project.description}
-										onChange={setproject("description")}
-									/>
-								</div>
-							</div>
-							<div className='row'>
-								<div className='col-sm-4'></div>
-								<div className='col-sm-8'>
-									<div className='b-li'>
-										<p>
-											Specify the materials to be used, the tolerances and the
-											total number of parts
-										</p>
-										<p>
-											If delivery outside mainland UK, please specify the
-											delivery location
-										</p>
-										<p>Please do not provide your contact details here.</p>
+								<div className='row'>
+									<div className='col-sm-4'></div>
+									<div className='col-sm-8'>
+										<div className='b-li'>
+											<p>
+												Specify the materials to be used, the tolerances and the
+												total number of parts
+											</p>
+											<p>
+												If delivery outside mainland UK, please specify the
+												delivery location
+											</p>
+											<p>Please do not provide your contact details here.</p>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className='container'>
-				<div className='attach-file'>
-					<h3>Attach your files here</h3>
-					<div className='row'>
-						<div className='col-sm-6'>
-							<h4>PDF or Image files*</h4>
-							<div className='upload-btn-wrapper'>
-								<button className='btn'>
-									<i className='fa fa-upload' /> Choose your PDF / Images
-								</button>
-								<input
-									type='file'
-									name='myfile'
-									onChange={handle_file_change}
-									multiple={true}
-								/>
-							</div>
-							{pr < 101 ? (
-								<ProgressBar now={pr} label={`${pr}%`} />
-							) : (<></>)}
-
-							{file && pr > 100 ? (
-								file?.map((f) => {
-									return (
-										<div className="pro_div">
-											<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
-										</div>
-									)
-								})
-							) : (<></>)}
-						</div>
-						<div className='col-sm-6'>
-							<div className='b-li'>
-								<p>The first file will be used for a thumbnail picture</p>
-								<p>Max file size: 3 MB</p>
-							</div>
-						</div>
-					</div>
-					<div className='row'>
-						<div className='col-sm-6'>
-							<h4>3D files or other format (optional)</h4>
-							<div className='upload-btn-wrapper'>
-								<button className='btn'>
-									<i className='fa fa-upload' /> Select your 3D files
-								</button>
-								<input
-									type='file'
-									name='myfile'
-									onChange={handle_file_change_other}
-									multiple={true}
-								/>
-							</div>
-
-
-							{pr2 < 101 ? (
-								<ProgressBar now={pr2} label={`${pr2}%`} />
-							) : (<></>)}
-
-							{otherFile && pr2 > 100 ? (
-								otherFile?.map((f) => {
-									return (
-										<div className="pro_div">
-											<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
-										</div>
-									)
-								})
-							) : (<></>)}
-
-						</div>
-						<div className='col-sm-6'></div>
-					</div>
-				</div>
-			</div>
-			<div className='container'>
-				<div className='row'>
-					<div className='col-sm-12'>
-						<div className='other_info'>
-							<h3>Other information</h3>
-							<h4>I would like to receive quotes before:</h4>
-							<select name='post_for' onChange={setproject("post_for")}>
-								<option value={4}>4 Days</option>
-								<option value={8}>8 Days</option>
-							</select>
-						</div>
-					</div>
-					<div className='col-sm-12'>
-						<div className='other_info'>
-							<h3>Visibility</h3>
-							{user?.pro_user == 1 ? (<div className='form-check'>
-								<label className='form-check-label'>
+				<div className='container'>
+					<div className='attach-file'>
+						<h3>Attach your files here</h3>
+						<div className='row'>
+							<div className='col-sm-6'>
+								<h4>PDF or Image files*</h4>
+								<div className='upload-btn-wrapper'>
+									<button className='btn'>
+										<i className='fa fa-upload' /> Choose your PDF / Images
+									</button>
 									<input
-										type='radio'
-										className='form-check-input'
-										name='optradio'
-										value={"Pro"}
-										checked={project.visibility == "Pro" ? true : false}
-										onChange={setproject("visibility")}
+										type='file'
+										name='myfile'
+										onChange={handle_file_change}
+										multiple={true}
 									/>
-									Pro (access to best machinists, professional services)
-								</label>
-							</div>) : (<></>)}
+								</div>
+								{pr < 101 ? (
+									<ProgressBar now={pr} label={`${pr}%`} />
+								) : (<></>)}
 
-							{/* <div className='form-check'>
-								<label className='form-check-label'>
-									<input
-										type='radio'
-										className='form-check-input'
-										name='optradio'
-										value={"Pro"}
-										checked={project.visibility == "Pro" ? true : false}
-										onChange={setproject("visibility")}
-									/>
-									Pro (access to best machinists, professional services)
-								</label>
-							</div> */}
-
-							<div className='form-check'>
-								<label className='form-check-label'>
-									<input
-										type='radio'
-										className='form-check-input'
-										name='optradio'
-										autoComplete={"off"}
-										value={"Public"}
-										checked={project.visibility == "Public" ? true : false}
-										onChange={setproject("visibility")}
-									/>
-									Public (you will receive more quotes)
-								</label>
-							</div>
-							<div className='form-check'>
-								<label className='form-check-label'>
-									<input
-										type='radio'
-										className='form-check-input'
-										name='optradio'
-										value={"Private"}
-										checked={project.visibility == "Private" ? true : false}
-										onChange={setproject("visibility")}
-									/>
-									Private (visibility restricted to confirmed machinists)
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className='container'>
-				<div className='reg-bottom'>
-					<button type='submit' name='submit' onClick={handlecancel}>
-						Cancel
-					</button>
-					<button type='submit' name='submit' onClick={handleSubmit}>
-						Check &amp; Submit
-					</button>
-				</div>
-			</div>
-
-			<GlobalModal
-				title='Confirm your Job Post'
-				atom={atom.modal.confirm_project}>
-				<div className='wjgf'>
-					{file?.length ? file[0]?.type?.includes("pdf") ? (
-						<div className="pdf-container"><Document
-							file={file[0]}
-							onLoadSuccess={onDocumentLoadSuccess}
-						>
-							<Page pageNumber={1} width={200} />
-						</Document> </div>
-					) : (
-						<img src={file?.length ? URL.createObjectURL(file[0]) : ""} />
-					) : (<></>)}
-
-					<div className='cnfm-job-details post'>
-						<div className='cnfm-job-attchmnts'>
-							<h5>Attachments: </h5>
-							<div>
-								{file?.length ? (
-									file?.map((f, i) => {
-
+								{file && pr > 100 ? (
+									file?.map((f) => {
 										return (
-											<ul>
-												<li>
-													<a href={URL.createObjectURL(f)} target={"_blank"}>
-														{path.parse(f?.name)?.name?.slice(0, 8)}
-														{path.extname(f?.name)}{" "}
-													</a>
-												</li>
-											</ul>
-										);
-
+											<div className="pro_div">
+												<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+											</div>
+										)
 									})
-								) : (
-									<></>
-								)}
-
-
-								{otherFile?.length ? (
-									otherFile?.map((f, i) => {
-
-										return (
-											<ul>
-												<li>
-													<a href={URL.createObjectURL(f)} target={"_blank"}>
-														{path.parse(f?.name)?.name?.slice(0, 8)}
-														{path.extname(f?.name)}{" "}
-													</a>
-												</li>
-											</ul>
-										);
-
-									})
-								) : (
-									<></>
-								)}
+								) : (<></>)}
 							</div>
-							<br />
-
+							<div className='col-sm-6'>
+								<div className='b-li'>
+									<p>The first file will be used for a thumbnail picture</p>
+									<p>Max file size: 3 MB</p>
+								</div>
+							</div>
 						</div>
+						<div className='row'>
+							<div className='col-sm-6'>
+								<h4>3D files or other format (optional)</h4>
+								<div className='upload-btn-wrapper'>
+									<button className='btn'>
+										<i className='fa fa-upload' /> Select your 3D files
+									</button>
+									<input
+										type='file'
+										name='myfile'
+										onChange={handle_file_change_other}
+										multiple={true}
+									/>
+								</div>
 
-						<span>
-							<h5>Title: </h5>
-							<p className="abcdxy">{project.project_name}</p>
-						</span>
-						<span>
-							<h5>Comment: </h5>
-							<pre className="custom-pre"><p>{project?.description}</p></pre>
-						</span>
-						<span>
-							<h5>I would like to receive quotes before: </h5>
-							<p>{project.post_for} Days</p>
-						</span>
-						<span>
-							<h5>Visibility: </h5>
-							<p>{project.visibility}</p>
-						</span>
+
+								{pr2 < 101 ? (
+									<ProgressBar now={pr2} label={`${pr2}%`} />
+								) : (<></>)}
+
+								{otherFile && pr2 > 100 ? (
+									otherFile?.map((f) => {
+										return (
+											<div className="pro_div">
+												<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
+											</div>
+										)
+									})
+								) : (<></>)}
+
+							</div>
+							<div className='col-sm-6'></div>
+						</div>
 					</div>
+				</div>
+				<div className='container'>
+					<div className='row'>
+						<div className='col-sm-12'>
+							<div className='other_info'>
+								<h3>Other information</h3>
+								<h4>I would like to receive quotes before:</h4>
+								<select name='post_for' onChange={setproject("post_for")}>
+									<option value={4}>4 Days</option>
+									<option value={8}>8 Days</option>
+								</select>
+							</div>
+						</div>
+						<div className='col-sm-12'>
+							<div className='other_info'>
+								<h3>Visibility</h3>
+								{user?.pro_user == 1 ? (<div className='form-check'>
+									<label className='form-check-label'>
+										<input
+											type='radio'
+											className='form-check-input'
+											name='optradio'
+											value={"Pro"}
+											checked={project.visibility == "Pro" ? true : false}
+											onChange={setproject("visibility")}
+										/>
+										Pro (access to best machinists, professional services)
+									</label>
+								</div>) : (<></>)}
+
+
+								<div className='form-check'>
+									<label className='form-check-label'>
+										<input
+											type='radio'
+											className='form-check-input'
+											name='optradio'
+											autoComplete={"off"}
+											value={"Public"}
+											checked={project.visibility == "Public" ? true : false}
+											onChange={setproject("visibility")}
+										/>
+										Public (you will receive more quotes)
+									</label>
+								</div>
+								<div className='form-check'>
+									<label className='form-check-label'>
+										<input
+											type='radio'
+											className='form-check-input'
+											name='optradio'
+											value={"Private"}
+											checked={project.visibility == "Private" ? true : false}
+											onChange={setproject("visibility")}
+										/>
+										Private (visibility restricted to confirmed machinists)
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className='container'>
 					<div className='reg-bottom'>
-						<button type='submit' name='submit' onClick={() => setOpen(false)}>
-							Back
+						<button type='submit' name='submit' onClick={handlecancel}>
+							Cancel
 						</button>
-						<button type='submit' name='submit' onClick={processSubmit}>
-							Submit your Request
+						<button type='submit' name='submit' onClick={handleSubmit}>
+							Check &amp; Submit
 						</button>
 					</div>
 				</div>
-			</GlobalModal>
-		</div>
+
+				<GlobalModal
+					title='Confirm your Job Post'
+					atom={atom.modal.confirm_project}>
+					<div className='wjgf'>
+						{file?.length ? file[0]?.type?.includes("pdf") ? (
+							<div className="pdf-container"><Document
+								file={file[0]}
+								onLoadSuccess={onDocumentLoadSuccess}
+							>
+								<Page pageNumber={1} width={200} />
+							</Document> </div>
+						) : (
+							<img src={file?.length ? URL.createObjectURL(file[0]) : ""} />
+						) : (<></>)}
+
+						<div className='cnfm-job-details post'>
+							<div className='cnfm-job-attchmnts'>
+								<h5>Attachments: </h5>
+								<div>
+									{file?.length ? (
+										file?.map((f, i) => {
+
+											return (
+												<ul>
+													<li>
+														<a href={URL.createObjectURL(f)} target={"_blank"}>
+															{path.parse(f?.name)?.name?.slice(0, 8)}
+															{path.extname(f?.name)}{" "}
+														</a>
+													</li>
+												</ul>
+											);
+
+										})
+									) : (
+										<></>
+									)}
+
+
+									{otherFile?.length ? (
+										otherFile?.map((f, i) => {
+
+											return (
+												<ul>
+													<li>
+														<a href={URL.createObjectURL(f)} target={"_blank"}>
+															{path.parse(f?.name)?.name?.slice(0, 8)}
+															{path.extname(f?.name)}{" "}
+														</a>
+													</li>
+												</ul>
+											);
+
+										})
+									) : (
+										<></>
+									)}
+								</div>
+								<br />
+
+							</div>
+
+							<span>
+								<h5>Title: </h5>
+								<p className="abcdxy">{project.project_name}</p>
+							</span>
+							<span>
+								<h5>Comment: </h5>
+								<pre className="custom-pre"><p>{project?.description}</p></pre>
+							</span>
+							<span>
+								<h5>I would like to receive quotes before: </h5>
+								<p>{project.post_for} Days</p>
+							</span>
+							<span>
+								<h5>Visibility: </h5>
+								<p>{project.visibility}</p>
+							</span>
+						</div>
+						<div className='reg-bottom'>
+							<button type='submit' name='submit' onClick={() => setOpen(false)}>
+								Back
+							</button>
+							<button type='submit' name='submit' onClick={processSubmit}>
+								Submit your Request
+							</button>
+						</div>
+					</div>
+				</GlobalModal>
+			</div>
 		</>
 	);
 

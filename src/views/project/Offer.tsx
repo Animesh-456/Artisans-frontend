@@ -593,6 +593,24 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							<p>Shipping time: 10 Days</p><br />
 							<button>Select</button> */}
 
+							{bid?.user_id == data?.programmer_id ? (
+
+								data?.visibility.toLowerCase() == "pro" ? (
+									bid?.user_id == data?.programmer_id || (storageuser?.role_id == "2" && storageuser?.pro_user == "1") ? (
+										<h3>
+											<img className="selected-img" src='/img/selected.png' alt='' />
+										</h3>
+									) : (<></>)
+								) : (
+									<h3>
+										<img className="selected-img" src='/img/selected.png' alt='' />
+									</h3>
+								)
+
+							) : (
+								<></>
+							)}
+
 							{(user?.role_id == 1 && data?.creator_id == user?.id) ||
 								bid?.user_id == user?.id ? (
 								<>  {bid?.user?.pro_user == 1 ? (<>

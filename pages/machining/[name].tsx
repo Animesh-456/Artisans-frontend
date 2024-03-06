@@ -382,7 +382,7 @@ const ProjectDetail = () => {
 
         const [rating, setRating] = useState(0);
         return (
-            <div classNameName='review_machinist_rating'>
+            <div className='review_machinist_rating'>
                 <h6>{r.name}</h6>
                 <ReactStar
                     rating={review[r.key]}
