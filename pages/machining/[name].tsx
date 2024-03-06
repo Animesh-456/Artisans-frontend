@@ -713,19 +713,20 @@ const ProjectDetail = () => {
 
                     <div className="row stepwrapper">
                         <div className="col-sm-4">
-                            <div className="step_wp">
+                            <div className="now-wp">
                                 <span className="triangle"></span>
                                 <div className="step_wp1">
                                     <div>1</div>
                                     <h3>Deposit funds</h3>
 
                                     {data?.project_status == '1' ? <p>
-                                        Deposit your funds
+                                        Deposit your fundsss
                                     </p> : <p>The funds were deposited on {formatDate(data?.project_fund_date_format)}</p>}
                                     {data?.project_status == "1" && (
                                         <Link href={`/job/deposit-fund/${p_id}`}>
                                             <a>Deposit Funds</a>
                                         </Link>
+
                                     )}
 
                                 </div>
@@ -1395,6 +1396,8 @@ const ProjectDetail = () => {
                 </GlobalModal>
 
             </div>
+
+
         </>
 
     );
