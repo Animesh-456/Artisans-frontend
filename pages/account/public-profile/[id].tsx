@@ -468,20 +468,40 @@ const EditProfile = () => {
                                     <img src="img/no-images.png" alt="" />
                                 </figure>
                                 <div>
-                                    <h3>debraj4</h3>
+                                    <h3>{udetails.user_name}</h3>
                                     <div className="location_a1">
                                         <div className="location_l2">
                                             <h5>Feedback</h5>
                                         </div>
                                         <div className="location_r2">
-                                            <p>
+                                            {/* <p>
                                                 <i className="fa fa-star"></i>
                                                 <i className="fa fa-star"></i>
                                                 <i className="fa fa-star"></i>
                                                 <i className="fa fa-star-half-o"></i>
                                                 <i className="fa fa-star-half-o"></i>
                                                 <span>5.0</span>
-                                            </p>
+                                            </p> */}
+
+                                            {/* Dynamic logic */}
+
+                                            {public_avg_rating && user?.role_id == 2 ? (
+                                                <p>
+                                                    <div
+                                                        className="stars"
+                                                        style={{ '--rating': public_avg_rating } as CSSProperties}
+                                                    ><span>{public_avg_rating}</span></div>
+
+                                                </p>
+                                            ) : (
+                                                <p>
+                                                    <div
+                                                        className="stars"
+                                                        style={{ '--rating': 0.0 } as CSSProperties}
+                                                    ><span>0.0</span></div>
+
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="location_a1">
@@ -489,12 +509,12 @@ const EditProfile = () => {
                                             <h5>Jobs Completed</h5>
                                         </div>
                                         <div className="location_r2">
-                                            <p> 0 </p>
+                                            <p> {totaljobs} </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="gallery_photo">
+                            {/* <div className="gallery_photo">
                                 <h4>Portfolio</h4>
                                 <div id="demo" className="carousel slide" data-ride="carousel">
                                     <div className="carousel-inner">
@@ -515,9 +535,74 @@ const EditProfile = () => {
                                         <i className="fa fa-angle-double-right"></i>
                                     </a>
                                 </div>
-                            </div>
+                            </div> */}
+
+                            {/* Portfolio logic */}
+
+
+
+
+                            {user?.role_id == 2 ? (
+                                <>
+
+                                    {user?.prot_pic?.length ? (
+
+                                        <div className='gallery_photo'>
+                                            <h4>Portfolio</h4>
+                                            <div id='demo' className='carousel slide' data-ride='carousel'>
+                                                <div className='carousel-inner'>
+                                                    <div className='carousel-item active'>
+                                                        <img src={common.get_portfolio_pic(`${slides[index]}`)} id="curr_img" />
+                                                    </div>
+                                                </div>
+                                                <button
+                                                    className='carousel-control-prev'
+                                                    onClick={prevSlide}
+                                                    data-slide='prev'>
+                                                    <i className="fa fa-angle-left"></i>
+                                                </button>
+                                                <button
+                                                    className='carousel-control-next'
+                                                    onClick={nextSlide}
+                                                    data-slide='next'>
+                                                    <i className="fa fa-angle-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : (<></>)}
+                                </>
+                            ) : (
+                                <></>
+                            )}
                             <h6>Description</h6>
-                            <pre className="custom-pre"><p>dejavu it is!</p></pre><br />
+                            {user?.role_id == 2 && user?.service_desc?.length ? (
+
+
+                                <>
+                                    <br />
+                                    <h5>Description</h5>
+
+
+                                    <pre className="custom-pre">
+                                        <p>{user?.service_desc}</p>
+                                    </pre>
+                                    <br />
+                                </>
+
+                            ) : user?.role_id == 1 && user?.description?.length ? (
+                                <>
+                                    <br />
+                                    <h5>Description</h5>
+
+
+                                    <pre className="custom-pre">
+                                        <p>{user?.description}</p>
+                                    </pre>
+                                    <br />
+                                </>
+                            ) : (
+                                <></>
+                            )}
                             <div>
                                 <h6>Work History <span>(0 Jobs)</span></h6>
                                 <div className="project_loop">
