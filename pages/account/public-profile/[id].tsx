@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import auth from "../../../src/validation/schema/auth";
 import { CSSProperties } from 'react';
 import Link from "next/link";
-
+import Carousel from 'react-bootstrap/Carousel';
 let Reviews_data = []
 let job_list = []
 
@@ -67,16 +67,16 @@ const EditProfile = () => {
 
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
-    // useEffect(() => {
-    //     if (!router.isReady) return;
-    //     let id = router.query?.id;
-    //     api.project.public_me({ params: { id: id } })
-    //     api.project.public_profile_api({ params: { id: id } })
-    //     api.project.public_profile_total_jobs({ params: { id: id } })
-    //     api.project.public_user_reviews({ params: { id: id } })
-    //     api.project.public_profile_finalised_image({ params: { id: id } })
+    useEffect(() => {
+        if (!router.isReady) return;
+        let id = router.query?.id;
+        api.project.public_me({ params: { id: id } })
+        api.project.public_profile_api({ params: { id: id } })
+        api.project.public_profile_total_jobs({ params: { id: id } })
+        api.project.public_user_reviews({ params: { id: id } })
+        api.project.public_profile_finalised_image({ params: { id: id } })
 
-    // }, [router.isReady]);
+    }, [router.isReady]);
 
     const public_profile_finalised_image = useAtomValue(atom.project.api.public_profile_finalised_image);
 
@@ -149,6 +149,13 @@ const EditProfile = () => {
 
 
     console.log("public_profile_finalised_image is :-", public_profile_finalised_image);
+
+
+
+
+    user?.prot_pic?.split(',').map((m) => {
+        console.log("Prot pic are", m)
+    })
 
 
 
@@ -465,7 +472,12 @@ const EditProfile = () => {
                         <div className="profile_box">
                             <div className="overview-head">
                                 <figure>
-                                    <img src="img/no-images.png" alt="" />
+                                    <img
+                                        src={
+                                            common.get_profile_picture(udetails?.user_picture) ||
+                                            "/img/no-images.png"
+                                        }
+                                    />
                                 </figure>
                                 <div>
                                     <h3>{udetails.user_name}</h3>
@@ -547,40 +559,52 @@ const EditProfile = () => {
 
                                     {user?.prot_pic?.length ? (
 
-                                        <div className='gallery_photo'>
-                                            <h4>Portfolio</h4>
-                                            <div id='demo' className='carousel slide' data-ride='carousel'>
-                                                <div className='carousel-inner'>
-                                                    <div className='carousel-item active'>
-                                                        <img src={common.get_portfolio_pic(`${slides[index]}`)} id="curr_img" />
+                                        // <div className='gallery_photo'>
+                                        //     <h4>Portfolio</h4>
+                                        //     <div id='demo' className='carousel slide' data-ride='carousel'>
+                                        //         <div className='carousel-inner'>
+                                        //             <div className='carousel-item active'>
+                                        //                 <img src={common.get_portfolio_pic(`${slides[index]}`)} id="curr_img" />
+                                        //             </div>
+                                        //         </div>
+                                        //         <button
+                                        //             className='carousel-control-prev'
+                                        //             onClick={prevSlide}
+                                        //             data-slide='prev'>
+                                        //             <i className="fa fa-angle-left"></i>
+                                        //         </button>
+                                        //         <button
+                                        //             className='carousel-control-next'
+                                        //             onClick={nextSlide}
+                                        //             data-slide='next'>
+                                        //             <i className="fa fa-angle-right"></i>
+                                        //         </button>
+                                        //     </div>
+                                        // </div>
+
+                                        <Carousel>
+                                            {user?.prot_pic?.split(',').map((m, index) => (
+                                                <Carousel.Item key={index} interval={4000}>
+                                                    <div className="carousel-item active">
+                                                        <img src={common.get_portfolio_pic(m)} id="curr_img" />
                                                     </div>
-                                                </div>
-                                                <button
-                                                    className='carousel-control-prev'
-                                                    onClick={prevSlide}
-                                                    data-slide='prev'>
-                                                    <i className="fa fa-angle-left"></i>
-                                                </button>
-                                                <button
-                                                    className='carousel-control-next'
-                                                    onClick={nextSlide}
-                                                    data-slide='next'>
-                                                    <i className="fa fa-angle-right"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                                </Carousel.Item>
+                                            ))}
+                                        </Carousel>
+
+
                                     ) : (<></>)}
                                 </>
                             ) : (
                                 <></>
                             )}
-                            <h6>Description</h6>
+
                             {user?.role_id == 2 && user?.service_desc?.length ? (
 
 
                                 <>
                                     <br />
-                                    <h5>Description</h5>
+                                    <h6>Description</h6>
 
 
                                     <pre className="custom-pre">
@@ -592,7 +616,7 @@ const EditProfile = () => {
                             ) : user?.role_id == 1 && user?.description?.length ? (
                                 <>
                                     <br />
-                                    <h5>Description</h5>
+                                    <h6>Description</h6>
 
 
                                     <pre className="custom-pre">
@@ -604,43 +628,112 @@ const EditProfile = () => {
                                 <></>
                             )}
                             <div>
-                                <h6>Work History <span>(0 Jobs)</span></h6>
-                                <div className="project_loop">
-                                    <h4>
-                                        <a href={"/machining/testing-job-31517"}>
-                                            testing job
-                                        </a>
-                                        <span>Posted : 28-Dec-2023</span>
-                                    </h4>
-                                    <p>Public | Machined by debraj41 </p>
-                                </div>
-                                <div className="project_loop">
-                                    <h4>
-                                        <a href={"/machining/test-inbox-30940"}>
-                                            test inbox
-                                        </a>
-                                        <span>Posted : 02-Oct-2023</span>
-                                    </h4>
-                                    <p>Public </p>
-                                </div>
-                                <div className="project_loop">
-                                    <h4>
-                                        <a href={"/machining/comment-check-30751"}>
-                                            comment check
-                                        </a>
-                                        <span>Posted : 06-Sep-2023</span>
-                                    </h4>
-                                    <p>Public </p>
-                                </div>
-                                <div className="project_loop">
-                                    <h4>
-                                        <a href={"/machining/test1-jobs-29476"}>
-                                            test1 jobs
-                                        </a>
-                                        <span>Posted : 27-Mar-2023</span>
-                                    </h4>
-                                    <p>Public | Machined by debraj41 </p>
-                                </div>
+                                <h6>Work History <span>({totaljobs})</span></h6>
+                                {projects.length
+                                    ? projects?.map((l) => {
+                                        return (
+                                            <>
+                                                <div className='project_loop'>
+                                                    <h4>
+
+                                                        {l?.pro_job == 1 ? (
+                                                            user?.id == usr?.id ? (
+                                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+                                                            ) : (
+                                                                <a><b>Pro Job</b></a>
+                                                            )
+                                                        ) : (
+                                                            <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+                                                        )}
+                                                        <span>
+                                                            Posted :{" "}
+                                                            {moment(l?.project_post_format_date).format("DD-MMM-YYYY")}
+                                                        </span>
+                                                    </h4>
+                                                    <p>{l?.visibility}  {l?.programmer?.user_name ? ` | Machined by  ${l?.programmer?.user_name}` : ``}  </p>
+
+
+                                                    {l.reviews.map((r) => (
+                                                        <>
+                                                            <div>
+                                                                <p>Rating: {r?.rating}</p>
+
+                                                                <div
+                                                                    className="stars"
+                                                                    style={{ '--rating': r?.rating } as CSSProperties}
+                                                                ><span>{r?.rating}</span></div>
+                                                            </div>
+                                                        </>
+                                                    ))}
+                                                    {l.reviews.map((r) => (
+
+                                                        <>
+
+                                                            <div className="comment1">
+
+
+
+                                                                <div className="rating-color pub-rat">
+                                                                    <p>
+
+                                                                        <div
+                                                                            className="quality"
+                                                                            style={{ '--rating': r?.provider_rate1 } as CSSProperties}
+                                                                        ></div>
+                                                                        <span> Quality </span>
+                                                                    </p>
+
+                                                                    <p>
+
+                                                                        <div
+                                                                            className="time"
+                                                                            style={{ '--rating': r?.provider_rate2 } as CSSProperties}
+                                                                        ></div>
+                                                                        <span> Deadlines </span>
+                                                                    </p>
+
+                                                                    <p>
+
+                                                                        <div
+                                                                            className="communication"
+                                                                            style={{ '--rating': r?.provider_rate3 } as CSSProperties}
+                                                                        ></div>
+                                                                        <span> Communication</span>
+
+                                                                    </p>
+
+                                                                    <p>
+
+                                                                        <div
+                                                                            className="professionalism"
+                                                                            style={{ '--rating': r?.provider_rate4 } as CSSProperties}
+                                                                        ></div>
+                                                                        <span> Professional</span>
+                                                                    </p>
+                                                                </div>
+
+
+                                                                <div className="public">
+
+                                                                    <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
+
+                                                                    <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
+
+                                                                </div>
+
+
+                                                            </div>
+
+                                                        </>
+
+                                                    ))}
+                                                </div>
+                                            </>
+
+                                        );
+
+                                    })
+                                    : ""}
                             </div>
                         </div>
                     </div>
