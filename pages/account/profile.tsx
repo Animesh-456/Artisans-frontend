@@ -9,6 +9,8 @@ import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { CountryReponse } from "../../src/@types/type";
+import Carousel from 'react-bootstrap/Carousel';
+
 
 type Props = {};
 
@@ -215,40 +217,24 @@ const Profile = (props: Props) => {
                                             <>
 
                                                 {user?.prot_pic?.length ? (
-                                                    <>
-                                                        <div className='myprofile_name_label'>
-                                                            <p>Portfolio Pictures</p>
-                                                        </div>
-                                                        <div className='myprofile_name_list'>
-                                                            <div
-                                                                id='demo'
-                                                                className='carousel slide'
-                                                                data-ride='carousel'>
-                                                                <div className='carousel-inner'>
-                                                                    <div className='carousel-item active'>
-                                                                        <img src={common.get_portfolio_pic(`${slide[index]}`)} id="curr_img" />
-                                                                    </div>
-                                                                </div>
-                                                                <button
-                                                                    className='carousel-control-prev'
-                                                                    onClick={prevSlide}
-                                                                    data-slide='prev'>
-                                                                    <span className='carousel-control-prev-icon' />
-                                                                </button>
-                                                                <button
-                                                                    className='carousel-control-next'
-                                                                    onClick={nextSlide}
-                                                                    data-slide='next'>
-                                                                    <span className='carousel-control-next-icon' />
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </>) : (<></>)}
 
+                                                    <Carousel>
+                                                        {user?.prot_pic?.split(',').map((m, index) => (
+                                                            <Carousel.Item key={index} interval={3000}>
+                                                                <div className="carousel-item active">
+                                                                    <img className="prot-img" src={common.get_portfolio_pic(m)} id="curr_img" />
+                                                                </div>
+                                                            </Carousel.Item>
+                                                        ))}
+                                                    </Carousel>
+
+
+                                                ) : (<></>)}
                                             </>
                                         ) : (
                                             <></>
                                         )}
+
                                         {user?.role_id == 2 && user?.pro_user == 1 ? (
                                             <>
                                                 <table>
