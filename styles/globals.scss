@@ -1078,8 +1078,12 @@ footer {
 }
 
 .reg-bottom {
+  // margin: 1em auto 4em;
+  // display: table;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
   margin: 1em auto 4em;
-  display: table;
 }
 
 .reg-bottom button:first-child {
@@ -1473,7 +1477,7 @@ a.page-link {
 .upload-btn-wrapper .btn {
   border: none;
   color: white;
-  background-color: #e9bc31;
+  background-color: #7fc0ac;
   padding: 8px 20px;
   border-radius: 8px;
   font-size: 16px;
@@ -2230,6 +2234,7 @@ h3.cus {
 .wjgf img {
   width: 100%;
   height: 10rem;
+  object-fit: contain;
 }
 
 .css-ung textarea {
@@ -2250,7 +2255,7 @@ h3.cus {
   font-weight: 600;
   box-shadow: 0px 2px 5px rgb(0 0 0 / 48%);
   cursor: pointer;
-  background: #dbbb40;
+  background: #7fc0ac;
   color: #fff;
 }
 
@@ -2275,6 +2280,7 @@ h3.cus {
   font-weight: 600;
   width: 100%;
   color: #4d86af;
+
 
 }
 
@@ -2317,10 +2323,23 @@ h3.cus {
   text-align: left;
 }
 
-.form-check-label .gfcg {
+.gfcg label{
   display: flex;
   height: 40px;
   display: flex;
   align-items: start;
   justify-content: center;
+}
+
+
+
+.post-jb-modal{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+
+.cnfm-job-attchmnts{
+  margin-top: 2rem;
 }

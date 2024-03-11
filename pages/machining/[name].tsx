@@ -384,6 +384,7 @@ const ProjectDetail = () => {
         return (
             <div className='review_machinist_rating'>
                 <h6>{r.name}</h6>
+                
                 <ReactStar
                     rating={review[r.key]}
                     starRatedColor='gold'
@@ -397,7 +398,6 @@ const ProjectDetail = () => {
                     starDimension='30px'
                     name='rating'
                 />
-
             </div>
 
         );
@@ -1160,7 +1160,7 @@ const ProjectDetail = () => {
 
 
 
-                <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>
+                <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>  
                     <div className='fdfd4'>
                         <div className='css-ung'>
                             <p>Post a Public Message or a Question to the client (optional).</p>
@@ -1232,7 +1232,7 @@ const ProjectDetail = () => {
 
 
                             <div className='row css-kjus'>
-                                <div className='col-sm-6'>
+                                <div className='col-sm-6 gfcg'>
                                     <label>Paid to Me : £</label>
                                     <input
                                         name='txtPrice'
@@ -1242,7 +1242,7 @@ const ProjectDetail = () => {
                                         onChange={setbid("bid_amount")}
                                     />
                                 </div>
-                                <div className='col-sm-6'>
+                                <div className='col-sm-6 gfcg'>
                                     <label>
                                         Price for client: £ <small>Includes Machining-4U fees</small>
                                     </label>
@@ -1289,9 +1289,11 @@ const ProjectDetail = () => {
                                         </select>
                                     </div>
                                 </div>
+
+                               
                                 <div className='col-sm-4'>
                                     <div className='form-group form-check'>
-                                        <label className='form-check-label gfcg'>
+                                        <label className='form-check-label'>
                                             <input
                                                 className='form-check-input'
                                                 type='checkbox'

@@ -469,72 +469,86 @@ const Post = (prp) => {
 							<img src={file?.length ? URL.createObjectURL(file[0]) : ""} />
 						) : (<></>)}
 
+						
+
 						<div className='cnfm-job-details post'>
 							<div className='cnfm-job-attchmnts'>
-								<h5>Attachments: </h5>
-								<div>
-									{file?.length ? (
-										file?.map((f, i) => {
+								<div className="post-jb-modal">
+									<h5>Attachments: </h5>
+									<div>
+										{file?.length ? (
+											file?.map((f, i) => {
 
-											return (
-												<>
-													<ul>
-														<li>
-															<a href={URL.createObjectURL(f)} target={"_blank"}>
-																{path.parse(f?.name)?.name?.slice(0, 8)}
-																{path.extname(f?.name)}{" "}
-															</a>
-														</li>
-													</ul>
-												</>
-											);
+												return (
+													<>
+														<ul>
+															<li>
+																<a href={URL.createObjectURL(f)} target={"_blank"}>
+																	{path.parse(f?.name)?.name?.slice(0, 8)}
+																	{path.extname(f?.name)}{" "}
+																</a>
+															</li>
+														</ul>
+													</>
+												);
 
-										})
-									) : (
-										<></>
-									)}
+											})
+										) : (
+											<></>
+										)}
 
 
-									{otherFile?.length ? (
-										otherFile?.map((f, i) => {
+										{otherFile?.length ? (
+											otherFile?.map((f, i) => {
 
-											return (
-												<>
-													<ul>
-														<li>
-															<a href={URL.createObjectURL(f)} target={"_blank"}>
-																{path.parse(f?.name)?.name?.slice(0, 8)}
-																{path.extname(f?.name)}{" "}
-															</a>
-														</li>
-													</ul>
-												</>
-											);
+												return (
+													<>
+														<ul>
+															<li>
+																<a href={URL.createObjectURL(f)} target={"_blank"}>
+																	{path.parse(f?.name)?.name?.slice(0, 8)}
+																	{path.extname(f?.name)}{" "}
+																</a>
+															</li>
+														</ul>
+													</>
+												);
 
-										})
-									) : (
-										<></>
-									)}
+											})
+										) : (
+											<></>
+										)}
+									</div>
 								</div>
 								<br />
 
 							</div>
 
 							<span>
-								<h5>Title: </h5>
-								<p className="abcdxy">{project.project_name}</p>
+								<div className="post-jb-modal">
+
+									<h5>Title: </h5>
+									<p className="abcdxy">{project.project_name}</p>
+								</div>
 							</span>
 							<span>
-								<h5>Comment: </h5>
-								<pre className="custom-pre"><p>{project?.description}</p></pre>
+
+								<div className="post-jb-modal">
+									<h5>Comment: </h5>
+									<pre className="custom-pre"><p>{project?.description}</p></pre>
+								</div>
 							</span>
 							<span>
-								<h5>I would like to receive quotes before: </h5>
-								<p>{project.post_for} Days</p>
+								<div className="post-jb-modal">
+									<h5>I would like to receive quotes before: </h5>
+									<p>{project.post_for} Days</p>
+								</div>
 							</span>
 							<span>
-								<h5>Visibility: </h5>
-								<p>{project.visibility}</p>
+								<div className="post-jb-modal">
+									<h5>Visibility: </h5>
+									<p>{project.visibility}</p>
+								</div>
 							</span>
 						</div>
 						<div className='reg-bottom'>
@@ -542,7 +556,7 @@ const Post = (prp) => {
 								Back
 							</button>
 							<button type='submit' name='submit' onClick={processSubmit}>
-								Submit your Request
+								Post Request
 							</button>
 						</div>
 					</div>
