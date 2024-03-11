@@ -1291,7 +1291,7 @@ const ProjectDetail = () => {
                                 </div>
                                 <div className='col-sm-4'>
                                     <div className='form-group form-check'>
-                                        <label className='form-check-label'>
+                                        <label className='form-check-label gfcg'>
                                             <input
                                                 className='form-check-input'
                                                 type='checkbox'
