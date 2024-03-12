@@ -6,14 +6,20 @@ const headers = [
 	},
 
 	{
-		title: "POST A JOB",
-    	path: "/machining",
+		title: "About Us",
+		path: "/account/about",
+		role: [1, 2],
+	},
+
+	{
+		title: "ART REQUEST",
+		path: "/job/post",
 		role: [1],
 	},
 
 	{
-		title: "VIEW JOBS",
-		path: "/machining/listing",
+		title: "ARTS AND ARTISANS",
+		path: "/job/listing",
 		role: [1, 2],
 	},
 
@@ -27,11 +33,7 @@ const headers = [
 		path: "/account/inbox",
 		role: [1, 2],
 	},
-	{
-		title: "HOW IT WORK",
-		path: "/page/works",
-		role: [1, 2],
-	},
+
 ];
 
 const EditProfileSideBar = [
@@ -49,7 +51,7 @@ const EditProfileSideBar = [
 	},
 
 
-	
+
 	{
 		title: "My Profile",
 		path: "/account/profile",
@@ -67,7 +69,7 @@ const EditProfileSideBar = [
 		path: "/account/inbox",
 		role: [1, 2],
 	},
-	
+
 	{
 		title: "Withdraw Funds",
 		path: "/account/withdraw",
@@ -83,7 +85,7 @@ const EditProfileSideBar = [
 		path: "/account/invoices",
 		role: [2],
 	},
-{
+	{
 		title: "Customer Review",
 		path: "/account/Customer-Review",
 		role: [2],
@@ -93,7 +95,7 @@ const EditProfileSideBar = [
 		path: "/account/change-password",
 		role: [1, 2],
 	},
-        
+
 ];
 const jobsTab = [
 	{

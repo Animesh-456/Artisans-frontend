@@ -82,6 +82,15 @@ export default function Header({ }: Props) {
 		setUser(null);
 		router.push("/auth/sign-in")
 	};
+
+
+	useEffect(() => {
+		if (user) {
+			api.project.inbox_count({ params: { id: user?.id, role_id: user?.role_id } })
+		}
+	}, [])
+
+	const inbox_count = useAtomValue(atom.project.api.inbox_count)
 	return (
 		<>
 
@@ -153,220 +162,57 @@ export default function Header({ }: Props) {
 						</button>
 						<div className="collapse navbar-collapse" id="navbarNav">
 							<ul className="navbar-nav">
-								<li className="nav-item">
-									<a href={'/'} className={`nav-link ${path == '/' ? "active" : ""}`}>Home</a>
-									{/* <Link className="nav-link" href="/">Home</Link> */}
-								</li>
-								<li className="nav-item">
-									<a href={"/account/about"} className={`nav-link ${path == '/account/about' ? "active" : ""}`}>About Us</a>
-									{/* <Link className="nav-link" href='/account/about'>About Us</Link> */}
-								</li>
-								<li className="nav-item">
-									<a className="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">art request <span className="fa fa-angle-down"></span>
-									</a>
-									<div className="dropdown-menu" aria-labelledby="navbarDropdown2">
-										<div className="container1">
-											<div className="row">
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art1</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art1</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art1</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li className="nav-item">
-									<a className="nav-link" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">artist & artisans <span className="fa fa-angle-down"></span>
-									</a>
-									<div className="dropdown-menu" aria-labelledby="navbarDropdown3">
-										<div className="container1">
-											<div className="row">
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art1</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art1</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div className="col-md-3">
-													<div className="qwe1">
-														<h6>Traditional Art1</h6>
-														<ul className="jsx-undefined">
-															<li className="jsx-undefined">
-																<a href="#">Pichwai</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Kinnala Art</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Tanjore Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Miniature Paintings</a>
-															</li>
-															<li className="jsx-undefined">
-																<a href="#">Gond</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li className="nav-item">
-									<a href="#" className="nav-link">Contact us</a>
-								</li>
 
-								{user ? (
-									<li className="nav-item">
-										<a href="#" className="nav-link" onClick={() => handleLogout()}>Logout</a>
-									</li>
-								) : (<></>)}
+								{Routes.headers.map((r) => {
+									return (
+										<>
+											<li className="nav-item" key={r.path}>
+												{user && !r.role.includes(user.role_id) ? (
+													<Link href={`#`}>
+														<a
+															className="nav-link"
+															onClick={(e) => {
+																e.preventDefault();
+																toast(
+																	`Login as ${user.role_id == 1 ? "Supplier" : "Customer"} to ${r.title
+																	}`
+																);
+															}}
+														>
+															{r.title}
+														</a>
+													</Link>
+												) : (
+													<Link href={`${r.path}`}>
+														<a
+
+															className={`nav-link ${router.pathname == r.path ? "active" : ""}`}
+														>
+															{/* Display inbox count for 'INBOX' menu item */}
+															{r.title === "INBOX" && user && inbox_count ? (
+																<>
+																	{r.title}{" "}
+																	<span className="darkblue-text" style={{ fontSize: "17px" }}>
+																		({inbox_count})
+																	</span>
+																</>
+															) : (
+																r.title
+															)}
+														</a>
+													</Link>
+												)}
+											</li>
+
+										</>
+									);
+								})}
+								{user && (
+									<li className="nav-item" ><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()} className="nav-link" >LOGOUT</a></li>
+								)}
+
 							</ul>
+
 						</div>
 					</nav>
 				</div>
