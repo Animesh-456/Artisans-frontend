@@ -351,3 +351,11 @@
 }
 
 @media (max-width: 448px) {}
+
+
+@media (max-width: 448px) {
+  .tydh1 {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

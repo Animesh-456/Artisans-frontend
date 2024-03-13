@@ -26,19 +26,19 @@ const jobs = () => {
   const machData = useAtomValue<UserDetails>(atom.auth.api.machanic_details);
   //const customerData = useAtomValue<UserDetails>(atom.auth.api.me);
   const project_id = useAtomValue(atom.storage.project_id);
-const project_data = useAtomValue(atom.storage.project_data);
-	console.log("project id--->",project_data);
+  const project_data = useAtomValue(atom.storage.project_data);
+  console.log("project id--->", project_data);
 
-const deliveryData = useAtomValue(atom.auth.api.delivery_contacts);
+  const deliveryData = useAtomValue(atom.auth.api.delivery_contacts);
 
   //const [userData, setuserData] = useState(currUserData);
   const [projectData, setprojectData] = useState(currprojectData);
-  const [check,setCheck] = useState(false);
-const [chk, setchk] = useState(true)
+  const [check, setCheck] = useState(false);
+  const [chk, setchk] = useState(true)
 
-	console.log("proj data-->>>>><<<",currprojectData);
+  console.log("proj data-->>>>><<<", currprojectData);
 
-const customer_releasepayment_checkbox = useAtomValue(atom.project.api.customer_releasepayment_checkbox)
+  const customer_releasepayment_checkbox = useAtomValue(atom.project.api.customer_releasepayment_checkbox)
 
 
 
@@ -61,42 +61,42 @@ const customer_releasepayment_checkbox = useAtomValue(atom.project.api.customer_
   const confirmFund = () => {
 
     api.wallet.pay_machinist(
-			{
-				body: {
-					project_id: projectdata?.id?.toString(),
-					
-				},
-				params:{
-				chkstate:chk
-					},
-			},
-			() => {
-				setprojectData((p) => {
-					return { ...p, project_status: "5" };
-				});
-       // window.location.href = 'http://35.179.7.135/account/FundSuccess'
-			Router.replace(`/account/FundSuccess`)
-				
-			},
-		);
-   
+      {
+        body: {
+          project_id: projectdata?.id?.toString(),
+
+        },
+        params: {
+          chkstate: chk
+        },
+      },
+      () => {
+        setprojectData((p) => {
+          return { ...p, project_status: "5" };
+        });
+        // window.location.href = 'http://35.179.7.135/account/FundSuccess'
+        Router.replace(`/account/FundSuccess`)
+
+      },
+    );
+
 
   }
 
-  const returnClick = ()=>{
+  const returnClick = () => {
 
     //window.location.href = `http://35.179.7.135/machining/${projectdata?.project_name?.split(" ").join("-")}-${projectdata?.id}`
-	Router.replace(`/machining/${projectdata?.project_name?.split(" ").join("-")}-${projectdata?.id}`)
+    Router.replace(`/machining/${projectdata?.project_name?.split(" ").join("-")}-${projectdata?.id}`)
   }
 
   let bidData: any = {}
 
   bidData = projectdata?.bids?.find(c => c.bid_amount_gbp)
 
-const checkstate = ()=>{
-    if(chk == true){
+  const checkstate = () => {
+    if (chk == true) {
       setchk(false)
-    }else{
+    } else {
       setchk(true)
     }
   }
@@ -111,7 +111,7 @@ const checkstate = ()=>{
 
       <div
         className='banner_wp sign_banner'
-        style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+        style={{ backgroundImage: "url(/img/banner1.jpg)", marginTop: '2rem' }}>
         <div className='container'>
           <div className='row'>
             <div className='banner_text inner_banner_text'>
@@ -126,11 +126,11 @@ const checkstate = ()=>{
         <h3 style={{ color: 'whitesmoke', marginBottom: '10px' }}>Free up Funds for your Machinist</h3>
       </div> */}
 
-      <div className="container">
+      <div className="container" style={{ marginTop: '1rem' }}>
         <div className="col-sm-12">
           <div className="tydh3">
-          <p>You have received your parts and are satisfied with the result. You can now pay your Usineur by releasing the funds you deposited during your order.</p>
-            <div className="table-responsive">             
+            <p>You have received your parts and are satisfied with the result. You can now pay your Usineur by releasing the funds you deposited during your order.</p>
+            <div className="table-responsive" style={{ marginTop: '1rem' }}>
               <table className="table table-bordered">
                 <tr className="table-primary">
                   <th >Project title</th>
@@ -152,7 +152,7 @@ const checkstate = ()=>{
                   <td><BsFillCaretRightFill color='#365d9c' /> Numero d'Identification(SIREN): </td>
                   <td> {project_data?.id}   </td>
                   <td><BsFillCaretRightFill color='#365d9c' /> Customer address:</td>
- 		<td>{deliveryData?.address + ", " + deliveryData?.city + ", " + deliveryData?.postalcode}</td>                </tr>
+                  <td>{deliveryData?.address + ", " + deliveryData?.city + ", " + deliveryData?.postalcode}</td>                </tr>
                 <tr>
                   <td><BsFillCaretRightFill color='#365d9c' /> Machinist's Address: </td>
                   <td> {machData?.address1 + ", " + machData?.city + ", " + machData?.country_code_country?.country_name + ", "
@@ -161,19 +161,19 @@ const checkstate = ()=>{
                   <td></td>
 
                 </tr>
-                
+
 
               </table>
             </div>
             <div className="tydh1">
-                <Button onClick={returnClick}> Return</Button>
-                <Button onClick={confirmFund} > Release Funds </Button>
-              </div>
+              <Button onClick={returnClick} variant="secondary"> Return</Button>
+              <Button onClick={confirmFund} style={{ backgroundColor: '#7fc0ac', border: 'none' }}> Release Funds </Button>
+            </div>
           </div>
         </div>
       </div>
 
-{projectdata?.visibility?.toLowerCase() == "public" && Object.keys(customer_releasepayment_checkbox).length ? (
+      {projectdata?.visibility?.toLowerCase() == "public" && Object.keys(customer_releasepayment_checkbox).length ? (
         <div className='form-check signcheck'>
           <label className='form-check-label'>
             <input type='checkbox' checked={chk} onChange={checkstate} className='form-check-input' />I authorize Usineur.fr to publish on the site any photos of my part(s) that my machinist has sent me.
@@ -181,7 +181,7 @@ const checkstate = ()=>{
         </div>
       ) : (<></>)}
 
-     
+
 
 
 

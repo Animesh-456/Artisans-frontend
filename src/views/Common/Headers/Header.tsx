@@ -208,7 +208,9 @@ export default function Header({ }: Props) {
 									);
 								})}
 								{user && (
-									<li className="nav-item" ><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()} className="nav-link" >LOGOUT</a></li>
+
+									<li className="nav-item" ><button style={{ cursor: 'pointer', backgroundColor:'#7fc0ac', color:'#fff', font:'bold',  borderRadius:'22px', border:'none', padding:'10px', width:'100px' }} onClick={() => handleLogout()} type="submit" name="submit" data-dashlane-label="true" data-dashlane-rid="69b1cea8e596d918" data-form-type="action">LOGOUT</button></li>
+									// <li className="nav-item" ><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()} className="nav-link" >LOGOUT</a></li>
 								)}
 
 							</ul>

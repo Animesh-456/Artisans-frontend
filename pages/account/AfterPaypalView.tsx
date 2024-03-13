@@ -19,7 +19,7 @@ const RedirectProject = () => {
     //const router = useRouter();
     //  router.push(localStorage.getItem('items'))
     //window.location.href = localStorage.getItem('items')
-	Router.replace(localStorage.getItem('items'))
+    Router.replace(localStorage.getItem('items'))
 
 }
 
@@ -27,26 +27,26 @@ const RedirectProject = () => {
 
 
 const jobs = () => {
-	const router = useRouter();
+    const router = useRouter();
 
-	const projectData = JSON.parse(localStorage.getItem('project_data'));
-	console.log("proj data-->", projectData);
+    const projectData = JSON.parse(localStorage.getItem('project_data'));
+    console.log("proj data-->", projectData);
 
-	const RedirectMsg = () => {
-	//router.push(`/machining/msg/${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
-	Router.replace(`/machining/msg/${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
-	}
+    const RedirectMsg = () => {
+        //router.push(`/machining/msg/${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
+        Router.replace(`/machining/msg/${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
+    }
 
     return (<>
 
         <div
             className='banner_wp sign_banner'
-            style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+            style={{ backgroundImage: "url(/img/banner1.jpg)", marginTop: '3rem' }}>
             <div className='container'>
                 <div className='row'>
                     <div className='banner_text inner_banner_text'>
                         <h1 className='yh'>Deposit funds</h1>
-                        
+
                     </div>
                 </div>
             </div>
@@ -55,21 +55,21 @@ const jobs = () => {
             <h3 style={{ color: 'whitesmoke', marginBottom: '10px' }}>Deposit funds</h3>
         </div> */}
 
-        <div className="container">
-        <div className="col-sm-12">
-        <div className="deposit-fund">
+        <div style={{ marginTop: '1rem' }} className="container">
+            <div className="col-sm-12">
+                <div className="deposit-fund">
 
-            <BsCheckCircleFill color='green' style={{ height: '50px', width: '110px' }} />
-            <p>We confirm that your payment has been made.<br />
-                Thank you for depositing the funds. We have sent you a confirmation email.<br />
-                Your Machinist will start working on your order.
-            </p>
-            <div className="tydh1">
-                <Button onClick={RedirectProject}>  Return to the project page</Button>
-                <Button onClick={RedirectMsg}> Send a message to your machinist </Button>
-            </div>            
-        </div>
-        </div>
+                    <BsCheckCircleFill color='green' style={{ height: '50px', width: '110px' }} />
+                    <p>We confirm that your payment has been made.<br />
+                        Thank you for depositing the funds. We have sent you a confirmation email.<br />
+                        Your Machinist will start working on your order.
+                    </p>
+                    <div className="tydh1">
+                        <Button onClick={RedirectProject} variant="secondary">  Return to the project page</Button>
+                        <Button style={{ backgroundColor: '#7fc0ac', border: 'none' }} onClick={RedirectMsg}> Send a message to your machinist </Button>
+                    </div>
+                </div>
+            </div>
         </div>
     </>);
 };

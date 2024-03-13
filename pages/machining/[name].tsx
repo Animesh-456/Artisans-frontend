@@ -713,7 +713,7 @@ const ProjectDetail = () => {
 
                     <div className="row stepwrapper">
                         <div className="col-sm-4">
-                            <div className="now-wp">
+                            <div className="step_wp">
                                 <span className="triangle"></span>
                                 <div className="step_wp1">
                                     <div>1</div>

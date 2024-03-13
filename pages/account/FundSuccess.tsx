@@ -17,8 +17,8 @@ const RedirectProject = () => {
     //const router = useRouter();
     //  router.push(localStorage.getItem('items'))
     //window.location.href = localStorage.getItem('items')
-	Router.replace(`${localStorage.getItem('items')}`)
-	console.log("funds success", localStorage.getItem('items'))
+    Router.replace(`${localStorage.getItem('items')}`)
+    console.log("funds success", localStorage.getItem('items'))
 
 }
 const jobs = () => {
@@ -28,7 +28,7 @@ const jobs = () => {
 
             <div
                 className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+                style={{ backgroundImage: "url(/img/banner1.jpg)", marginTop: '2rem' }}>
                 <div className='container'>
                     <div className='row'>
                         <div className='banner_text inner_banner_text'>
@@ -50,7 +50,7 @@ const jobs = () => {
                     </p>
 
                     <div className="tydh1">
-                        <Button  onClick={RedirectProject} >Continue</Button>
+                        <Button style={{ backgroundColor: '#7fc0ac', border: 'none' }} onClick={RedirectProject} >Continue</Button>
                     </div>
                 </div>
             </div>
