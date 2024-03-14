@@ -2371,3 +2371,16 @@ h3.cus {
   margin-top: 2rem;
   margin-bottom: 3rem;
 }
+
+
+
+.nav-item button{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.nav-item .nav-link .active button{
+  color: #d11b1b;
+}
+
