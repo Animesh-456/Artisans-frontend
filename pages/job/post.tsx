@@ -1,7 +1,7 @@
 import { useAtom, useAtomValue } from "jotai";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import api from "../../src/api/services/api";
 import common from "../../src/helpers/common";
@@ -45,6 +45,8 @@ export const getStaticProps = async () => {
 
 const Post = (prp) => {
 	const router = useRouter();
+
+	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	const [project, projectstate] = useState({
 		project_name: "",
@@ -160,7 +162,7 @@ const Post = (prp) => {
 				toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
 				continue;
 			}
-			// setpr(0)
+			setpr(0)
 			setLoading(true);
 			// Simulating file loading or processing
 			setTimeout(() => {
@@ -168,6 +170,8 @@ const Post = (prp) => {
 				// Your file processing logic goes here
 			}, 4000); // Simulating 2 seconds of file processing time
 			setFile((p) => [...p, file]);
+
+
 
 		}
 
@@ -251,6 +255,9 @@ const Post = (prp) => {
 		const newFiles = [...file];
 		newFiles.splice(fileIndex, 1);
 		setFile(newFiles);
+		if (fileInputRef.current) {
+			fileInputRef.current.value = '';
+		}
 	}
 
 	useEffect(() => {
@@ -345,14 +352,15 @@ const Post = (prp) => {
 											<input type="file" name="myfile"
 												onChange={handle_file_change}
 												multiple={true}
+												ref={fileInputRef}
 											/>
 										</div>
 
 
 										<br /><br /><br />
 										{pr < 101 ? (
-											 <ProgressBar now={pr} label={`${pr}%`} />
-											
+											<ProgressBar now={pr} label={`${pr}%`} />
+
 										) : (<></>)}
 
 										{/* {loading && <Spinner animation="border" variant="info" />} */}
@@ -469,7 +477,7 @@ const Post = (prp) => {
 							<img src={file?.length ? URL.createObjectURL(file[0]) : ""} />
 						) : (<></>)}
 
-						
+
 
 						<div className='cnfm-job-details post'>
 							<div className='cnfm-job-attchmnts'>
@@ -483,7 +491,7 @@ const Post = (prp) => {
 													<>
 														<ul>
 															<li>
-																<a href={URL.createObjectURL(f)} target={"_blank"}>
+																<a rel="noreferrer" href={URL.createObjectURL(f)} target={"_blank"}>
 																	{path.parse(f?.name)?.name?.slice(0, 8)}
 																	{path.extname(f?.name)}{" "}
 																</a>
@@ -505,7 +513,7 @@ const Post = (prp) => {
 													<>
 														<ul>
 															<li>
-																<a href={URL.createObjectURL(f)} target={"_blank"}>
+																<a rel="noreferrer" href={URL.createObjectURL(f)} target={"_blank"}>
 																	{path.parse(f?.name)?.name?.slice(0, 8)}
 																	{path.extname(f?.name)}{" "}
 																</a>
