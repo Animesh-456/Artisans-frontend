@@ -151,7 +151,7 @@ const Post = (prp) => {
 
 
 
-			if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "pdf") {
+			if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png") {
 				toast.error(`File extension .${extension} is not allowed`);
 				continue;
 			}
@@ -338,10 +338,10 @@ const Post = (prp) => {
 								<h3>Attach your files here</h3>
 								<div className="row">
 									<div className="col-sm-12">
-										<h4>PDF or Image files*</h4>
+										<h4> Image files*</h4>
 										<div className="upload-btn-wrapper">
 											<button className="btn" style={{ backgroundColor: '#7fc0ac' }}>
-												<i className="fa fa-upload"></i> Choose your PDF / Images </button>
+												<i className="fa fa-upload"></i> Choose your  Images </button>
 											<input type="file" name="myfile"
 												onChange={handle_file_change}
 												multiple={true}
@@ -350,12 +350,12 @@ const Post = (prp) => {
 
 
 										<br /><br /><br />
-										{/* {pr < 101 ? (
-											// <ProgressBar now={pr} label={`${pr}%`} />
-											<Spinner animation="border" variant="info" />
-										) : (<></>)} */}
+										{pr < 101 ? (
+											 <ProgressBar now={pr} label={`${pr}%`} />
+											
+										) : (<></>)}
 
-										{loading && <Spinner animation="border" variant="info" />}
+										{/* {loading && <Spinner animation="border" variant="info" />} */}
 
 										{!loading ? (
 											file?.map((f, index) => {
