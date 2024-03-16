@@ -1,5 +1,5 @@
 import { useAtomValue, useAtom } from "jotai";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { CountryReponse } from "../../src/@types/type";
 import api from "../../src/api/services/api";
@@ -14,6 +14,9 @@ const EditProfile = () => {
     const countries = useAtomValue<Array<CountryReponse>>(
         atom.auth.api.countries,
     );
+
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const [profile, profileState] = useState({
         name: user?.name || "",
@@ -163,6 +166,9 @@ const EditProfile = () => {
     function delete_files(e) {
         //setFile(file.filter(function (s) { return s !== e }))
         setFile(null)
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
     }
 
     useEffect(() => {
@@ -180,6 +186,9 @@ const EditProfile = () => {
 
     function delete_files2(e) {
         setFile2(file2.filter(function (s) { return s !== e }))
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
         //setFile(null)
     }
 
@@ -417,9 +426,10 @@ const EditProfile = () => {
                                                     name='myfile'
                                                     id='fileAttach'
                                                     onChange={handle_file_change}
+                                                    ref={fileInputRef}
                                                 />
                                             </div>
-
+                                            <br />
 
                                             {pr < 101 ? (
                                                 <ProgressBar now={pr} label={`${pr}%`} />
@@ -441,6 +451,7 @@ const EditProfile = () => {
                                                             common.get_profile_picture(profile?.prof_pic) ||
                                                             "/img/no-images.png"
                                                         }
+                                                        
                                                     />
                                                     <a style={{ cursor: "pointer" }} onClick={() => { delete_profile_pic(profile?.prof_pic) }}><i className="fa fa-trash-o"></i></a>
                                                 </figure>
@@ -464,6 +475,7 @@ const EditProfile = () => {
                                                             id='fileAttach'
                                                             multiple
                                                             onChange={handle_file_change2}
+                                                            ref={fileInputRef}
                                                         />
                                                     </div>
 
