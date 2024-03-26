@@ -277,8 +277,18 @@ const Post = (prp) => {
 	}, [pr2]);
 
 
-	function delete_files2(e) {
-		setFileOther(otherFile.filter(function (s) { return s !== e }))
+	function delete_files2(fileIndex) {
+
+
+		const newFiles = [...otherFile];
+		newFiles.splice(fileIndex, 1);
+		setFileOther(newFiles);
+		if (fileInputRef.current) {
+			fileInputRef.current.value = '';
+		}
+
+
+		//setFileOther(otherFile.filter(function (s) { return s !== e }))
 	}
 
 	useEffect(() => {
@@ -397,11 +407,11 @@ const Post = (prp) => {
 										) : (<></>)}
 
 										{otherFile && pr2 > 100 ? (
-											otherFile?.map((f) => {
+											otherFile?.map((f, index) => {
 												return (
 													<>
 														<div className="pro_div">
-															<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
+															<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(index)}><i className="fa fa-trash-o"></i></a></p>
 														</div>
 													</>
 												)

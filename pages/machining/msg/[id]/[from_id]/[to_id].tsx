@@ -300,7 +300,7 @@ const Message = (props: Props) => {
 													<input
 														name='file'
 														type='file'
-														multiple={true}													
+														multiple={true}
 														id='fileAttach'
 														className='opacity-0 '
 														onChange={handle_file_change}

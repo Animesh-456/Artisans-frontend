@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { BidsMsgResponse, MsgReponse, ProjectDetails } from "../../@types/type";
 import api from "../../api/services/api";
@@ -20,6 +20,10 @@ type Props = {
 };
 
 const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) => {
+
+
+	const fileInputRef = useRef<HTMLInputElement>(null);
+
 	const router = useRouter();
 
 	const [show, setShow] = useState(false);
@@ -223,9 +227,17 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	console.log("Files are", file)
 
-	function delete_files(e) {
-		setFile(file.filter(function (s) { return s !== e }))
+	function delete_files(fileIndex) {
+		//setFile(file.filter(function (s) { return s !== e }))
 		//setFile(null)
+
+
+		const newFiles = [...file];
+		newFiles.splice(fileIndex, 1);
+		setFile(newFiles);
+		if (fileInputRef.current) {
+			fileInputRef.current.value = '';
+		}
 	}
 
 	useEffect(() => {
@@ -553,18 +565,18 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 										onChange={setMsg("msg_box")}
 									/>
 									<br />
-									<input type={"file"} multiple onChange={handle_file_change} />
+									<input type={"file"} multiple onChange={handle_file_change} ref={fileInputRef} />
 									<br />
 									<br />
 									{pr < 101 ? (
 										<ProgressBar now={pr} label={`${pr}%`} />
 									) : (<></>)}
 									{file && pr > 100 ? (
-										file?.map((f) => {
+										file?.map((f, index) => {
 											return (
 												<>
 													<div className="pro_div">
-														<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+														<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
 													</div>
 												</>
 											)
