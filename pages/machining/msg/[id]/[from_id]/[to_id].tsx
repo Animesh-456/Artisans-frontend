@@ -1,7 +1,7 @@
 import { useAtom, useAtomValue } from "jotai";
 import moment from "moment";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import api from "../../../../../src/api/services/api";
 import common from "../../../../../src/helpers/common";
@@ -13,7 +13,7 @@ type Props = {};
 
 const Message = (props: Props) => {
 	const router = useRouter();
-
+	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [file, setFile] = useState([]);
 	const [changePic, setChangePic] = useState(false);
 	const [msgs, setMsgs] = useAtom(atom.project.api.list_msgs);
@@ -189,10 +189,16 @@ const Message = (props: Props) => {
 
 	console.log("Files are", file)
 
-	function delete_files(e) {
-		setFile(file.filter(function (s) { return s !== e }))
+	function delete_files(fileIndex) {
+		//setFile(file.filter(function (s) { return s !== e }))
 		//setFile(null)
+		const newFiles = [...file];
+		newFiles.splice(fileIndex, 1);
+		setFile(newFiles);
 		setChangePic(false)
+		if (fileInputRef.current) {
+			fileInputRef.current.value = '';
+		}
 	}
 
 	useEffect(() => {
@@ -218,6 +224,9 @@ const Message = (props: Props) => {
 		setmachineFile(machineFile.filter(function (s) { return s !== e }))
 		//setmachineFile(null)
 		//setChangeMachinPic(false)
+		if (fileInputRef.current) {
+			fileInputRef.current.value = '';
+		}
 	}
 
 	useEffect(() => {
@@ -291,10 +300,11 @@ const Message = (props: Props) => {
 													<input
 														name='file'
 														type='file'
-														multiple
+														multiple={true}													
 														id='fileAttach'
 														className='opacity-0 '
 														onChange={handle_file_change}
+														ref={fileInputRef}
 													/>
 												</div>
 
@@ -315,10 +325,10 @@ const Message = (props: Props) => {
 														) : (<></>)}
 														{file && pr > 100 ? (
 
-															file?.map((f) => {
+															file?.map((f, index) => {
 																return (
 																	<div className="pro_div">
-																		<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+																		<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
 																	</div>
 																)
 															})
@@ -347,6 +357,7 @@ const Message = (props: Props) => {
 															multiple={true}
 															className='opacity-0 qwe18'
 															onChange={handle_machine_file}
+															ref={fileInputRef}
 														/>
 													</div>
 
