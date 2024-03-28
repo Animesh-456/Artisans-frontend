@@ -763,7 +763,7 @@ const ProjectDetail = () => {
 
                                     {(data?.project_status == '5' && reviewCust[0]?.rating != null) ? <p>
                                         Evaluation performed the {formatDate(reviewCust[0]?.review_post_date)}
-                                    </p> : <p>Evaluate the work of your Machinist.</p>}
+                                    </p> : <p>Evaluate the work of your Artist.</p>}
 
                                     {(data?.project_status == '5' && reviewCust[0]?.rating == null) && (
                                         <button onClick={() => setOpenReview(true)}>Review</button>

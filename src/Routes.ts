@@ -76,7 +76,7 @@ const EditProfileSideBar = [
 		role: [2],
 	},
 	{
-		title: "Review Machinists",
+		title: "Review Artists",
 		path: "/account/reviews",
 		role: [1],
 	},

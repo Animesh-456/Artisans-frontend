@@ -43,7 +43,7 @@ const Reviews = (props: Props) => {
                 <div className='container'>
                     <div className='row'>
                         <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>Review Machinist</h1>
+                            <h1 className='yh'>Review artist</h1>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ const Reviews = (props: Props) => {
                                         <thead>
                                             <tr className='table-primary'>
                                                 <td>Name of the project</td>
-                                                <td>Machinist Name</td>
+                                                <td>artist Name</td>
                                                 <td>Ratings</td>
                                             </tr>
                                         </thead>

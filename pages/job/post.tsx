@@ -311,7 +311,7 @@ const Post = (prp) => {
 				<div className="container job_listing">
 					<div className="col-sm-12">
 						<div className="job-l">
-							<p> It is completely free for you to create a listing for your custom CNC machining requirement. <br />Simply create your free listing and wait for quotes to come in. You do not have to commit to anything until you are happy with a quote provided. <br />Enter the details of your custom machined part requirement below. Make sure you provide enough information for the CNC machinist to make an accurate assessment. Provide a full description, including dimensions and images. </p>
+							<p>  Simply create your free listing and wait for quotes to come in. You do not have to commit to anything until you are happy with a quote provided. <br />Enter the details of your custom machined part requirement below. Make sure you provide enough information for the artist to make an accurate assessment. Provide a full description, including dimensions and images. </p>
 						</div>
 					</div>
 					<div className="row">
@@ -460,7 +460,7 @@ const Post = (prp) => {
 											value={"Private"}
 											checked={project.visibility == "Private" ? true : false}
 											onChange={setproject("visibility")}
-										/>Private (visibility restricted to confirmed machinists) </label>
+										/>Private (visibility restricted to confirmed artists) </label>
 								</div>
 							</div>
 						</div>

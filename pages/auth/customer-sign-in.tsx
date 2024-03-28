@@ -278,7 +278,7 @@ const check = (event) => {
 											onChange={setSign("user_name")}
 										/>
 										<small>
-											Choose a Username to represent you on Machining-4u. It can
+											Choose a Username to represent you on www.artisans.studio. It can
 											not be changed later.
 										</small>
 									</div>
@@ -364,7 +364,7 @@ const check = (event) => {
 									<label className='form-check-label'>
 										<input type='checkbox' className='form-check-input' onClick={check} />I have
 										read and accept the <a href={'/account/terms'}>terms</a> of of use of
-										Machining-4u.co.uk
+										www.artisans.studio.
 									</label>
 								</div>
 								<br />

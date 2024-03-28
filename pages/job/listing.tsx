@@ -137,12 +137,12 @@ const Listing = (props: Props) => {
 
 
 								<div className='looking_m' style={{ backgroundImage: `url(/img/about-bg.jpg)` }}>
-									<h3>Looking for a Machinist?</h3>
+									<h3>Looking for a artist?</h3>
 									<p>Post your request and receive quotes for free.</p>
 									<Link href='/job/post'>
 										<a>Post your request</a>
 									</Link>
-									<h3>Are you a Machinist?</h3>
+									<h3>Are you a artist?</h3>
 									<p>Create a profile and start working.</p>
 									<Link href='/auth/sign-in'>
 										<a onClick={() => writeAtom(atom.storage.radio_login, "2")}>Create Your Profile</a>

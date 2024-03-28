@@ -113,7 +113,7 @@ const SignIn = (props: Props) => {
 												<input type="radio" className="form-check-input" name="optradio" value={1}
 													checked={check.role == 1 ? true : false}
 													onChange={setCheck("role")}
-												/>I am a customer </label>
+												/>I am customer </label>
 										</div>
 										<div className="form-check-inline">
 											<label className="form-check-label">
@@ -121,7 +121,7 @@ const SignIn = (props: Props) => {
 													value={2}
 													checked={check.role == 2 ? true : false}
 													onChange={setCheck("role")}
-												/>I am a supplier </label>
+												/>I am artist </label>
 										</div>
 										<br />
 										<br />

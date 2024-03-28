@@ -540,7 +540,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 												setprogress(0)
 												setChangePic(false)
 											}}>
-											Send a message to the machinist{" "}
+											Send a message to the artist{" "}
 											{/* {user?.role_id == 2 ? "client" : "machinist"} */}
 										</button>
 									) : (

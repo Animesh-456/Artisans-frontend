@@ -108,7 +108,7 @@ const CustomerSignIn = (props: Props) => {
 					<div className='col-sm-2'></div>
 					<div className='col-sm-8'>
 						<div className='register_c'>
-							<h3>Register as a Machinist</h3>
+							<h3>Register as artist</h3>
 							<form onSubmit={handleSumbit}>
 								<h4>Please Provide Your Information Below:</h4>
 								<div className='row'>
@@ -125,7 +125,7 @@ const CustomerSignIn = (props: Props) => {
 											onChange={setSign("user_name")}
 										/>
 										<small>
-											Choose a Username to represent you on Machining-4u. It can
+											Choose a Username to represent you on www.artisans.studio. It can
 											not be changed later.
 										</small>
 									</div>
@@ -328,16 +328,16 @@ const CustomerSignIn = (props: Props) => {
 									<label className='form-check-label qwe90'>
 										<input type='checkbox' className='form-check-input' />
 										<span>*</span>I have read and accept the{" "}
-										<a href='#'>terms</a> of of use of Machining-4u.co.uk
+										<a href='#'>terms</a> of of use of www.artisans.studio
 									</label>
 								</div>
 								<div className='form-check'>
 									<label className='form-check-label qwe90'>
 										<input type='checkbox' className='form-check-input' />
 										<span>*</span>I agree to receive all payments from
-										Machining-4u.co.uk clients using the Machining-4u.co.uk
+										www.artisans.studio.uk clients using the www.artisans.studio
 										Payment System. I understand that my account can be closed
-										if I request or receive payments from Machining-4u.co.uk
+										if I request or receive payments from www.artisans.studio
 										clients using another payment system.
 									</label>
 								</div>
