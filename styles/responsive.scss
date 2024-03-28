@@ -358,4 +358,14 @@
     flex-direction: column;
     gap: 1rem;
   }
+
+
+  @media (max-width: 448px) {
+    .item img {
+      height: auto;
+      width: auto;
+      
+    }
+  }
+
 }

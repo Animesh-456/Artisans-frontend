@@ -28,6 +28,13 @@ import $ from 'jquery'; // Import jQuery
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 
+
+
+
+import Crou from "./Crou";
+import Recentart from "./Recentart";
+
+
 // export const getStaticProps = async () => {
 //     try {
 //         const response = await fetch(`${env.base_url}project/page-details`);
@@ -53,6 +60,28 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 
 
+const responsive = {
+    superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+    }
+};
+
+
+
 function Home(prp) {
 
 
@@ -60,28 +89,6 @@ function Home(prp) {
         <>
 
             <div id="myCarousel" className="carousel slide" data-ride="carousel">
-                {/* <ul className="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                </ul>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <h1><b>Free shipping on all order</b> <a href="#">out now</a></h1>
-                        <img src="img/SLIDER-_1.jpg" alt="" />
-                        <div className="capt_ion">
-                            <h2>600+ artworks</h2>
-                            <p>Transform Your Space with Stunning Wall Art</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <h1><b>gold metal frame</b> <a href="#">out now</a></h1>
-                        <img src="img/SLIDER-_2.jpg" alt="" />
-                        <div className="capt_ion">
-                            <h2>600+ artworks</h2>
-                            <p>Transform Your Space with Stunning Wall Art</p>
-                        </div>
-                    </div>
-                </div> */}
 
                 <Carousel>
                     <Carousel.Item interval={5000}>
@@ -171,46 +178,7 @@ function Home(prp) {
 
             <div className="container-fluid recent-art">
                 <div className="yh4d yh1d"><h1>recent art from our artists</h1></div>
-                {/* <div id="owl-demo1" className="owl-carousel owl-theme">
-                    <div className="item">
-                        <img src="img/pic4.jpg" alt="" />
-                    </div>
-                    <div className="item">
-                        <img src="img/pic5.jpg" alt="" />
-                    </div>
-                    <div className="item">
-                        <img src="img/pic6.jpg" alt="" />
-                    </div>
-                    <div className="item">
-                        <img src="img/pic4.jpg" alt="" />
-                    </div>
-                    <div className="item">
-                        <img src="img/pic5.jpg" alt="" />
-                    </div>
-                    <div className="item">
-                        <img src="img/pic6.jpg" alt="" />
-                    </div>
-                </div> */}
-
-
-
-
-                <Carousel>
-                    <Carousel.Item interval={5000}>
-
-                        <img src="img/pic4.jpg" alt="" />
-                        <img src="img/pic5.jpg" alt="" />
-                        <img src="img/pic6.jpg" alt="" />
-
-                    </Carousel.Item>
-                    <Carousel.Item interval={5000}>
-                        <img src="img/pic4.jpg" alt="" />
-                        <img src="img/pic5.jpg" alt="" />
-                        <img src="img/pic6.jpg" alt="" />
-
-                    </Carousel.Item>
-
-                </Carousel>
+                <Recentart />
             </div>
 
             <div className="container-fluid recent-art">
@@ -245,130 +213,7 @@ function Home(prp) {
             <div className="container-fluid">
                 <div className="yh4d yh1d"><h1>Client Story</h1></div>
                 <div className="container">
-                    <div id="owl-demo2" className="owl-carousel owl-theme">
-                        <div className="item">
-                            <img src="img/pic4.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src="img/pic5.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src="img/pic6.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src="img/pic4.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src="img/pic5.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src="img/pic6.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src="img/pic5.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src="img/pic6.jpg" alt="" />
-                            <div className="we1">
-                                <p>Sandeep</p>
-                                <div>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    {/* <Carousel>
-                        <Carousel.Item>
-
-                            <img src="img/pic4.jpg" alt="" />
-                            <img src="img/pic5.jpg" alt="" />
-                            <img src="img/pic6.jpg" alt="" />
-
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img src="img/pic4.jpg" alt="" />
-                            <img src="img/pic5.jpg" alt="" />
-                            <img src="img/pic6.jpg" alt="" />
-
-                        </Carousel.Item>
-
-                    </Carousel> */}
+                    <Crou />
                 </div>
             </div>
             <br />

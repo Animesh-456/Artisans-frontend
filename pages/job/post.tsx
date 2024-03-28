@@ -16,7 +16,6 @@ import Head from "next/head";
 import env from "../../src/config/api";
 import Spinner from 'react-bootstrap/Spinner';
 
-
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
 
