@@ -245,7 +245,7 @@ const Listing = (props: Props) => {
 
 											return (
 
-												(l?.pro_job == 1) ? ((user?.role_id == 2 && user?.pro_user == 1) || (user?.email == l?.creator.email)) ?
+												(l?.pro_job == 1) ? ((user?.role_id == 2 && user?.pro_user == 1) || (user?.email == l?.creator?.email)) ?
 													<>
 														<h1>hiii</h1>
 

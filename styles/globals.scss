@@ -2397,3 +2397,13 @@ h3.cus {
   width: 300px;
   padding: 2px;
 }
+
+
+.cust-sign-label{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  // align-items: center;
+  justify-content: center;
+   margin-top: 2rem;
+}

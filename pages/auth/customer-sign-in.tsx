@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { toast } from "react-hot-toast";
 import { writeAtom } from "jotai-nexus";
-
+import Form from 'react-bootstrap/Form';
 
 type Props = {};
 
@@ -26,13 +26,13 @@ const CustomerSignIn = (props: Props) => {
 		user_name: "",
 		password: "",
 		confirm_password: "",
-                company_name: "",
+		company_name: "",
 		SIREN: "",
 		pro_user: 0,
 		show_modal: 0,
 	});
 	const setSign = common.ChangeState(signstate);
-	 const BaseURL = "http://localhost:4000/";
+	const BaseURL = "http://localhost:4000/";
 
 	const [disable, setDisable] = useState(false);
 	const [storedProject, setStoredProject] = useAtom(atom.storage.project);
@@ -50,6 +50,10 @@ const CustomerSignIn = (props: Props) => {
 	const handleSumbit = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (disable) return;
+		if (!checkbox) {
+			toast.error("Please accept the terms")
+			return
+		};
 		setDisable(true);
 		if (procust == true && signIn.account == "Company") {
 			signIn.pro_user = 1
@@ -77,45 +81,45 @@ const CustomerSignIn = (props: Props) => {
 				if (storedProject != null) {
 					setUser(d.data);
 					api.project.get_temp(
-							{ body: { project_ids: [storedProject] } },
-							(d) => {
-								setStoredProject(null);
-							},
-						);
+						{ body: { project_ids: [storedProject] } },
+						(d) => {
+							setStoredProject(null);
+						},
+					);
 					router.push("/account/jobs");
 				} else {
 					const requestOptions = {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({email_username:signIn.email, password: signIn.password}),
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({ email_username: signIn.email, password: signIn.password }),
 					};
 					fetch(`${BaseURL}user/auth/login`, requestOptions)
-					.then((response) => response.json())
-					.then((d) => {
-						if (d.status) {
-						toast.success(d.message);
-						writeAtom(atom.storage.user, d.data);
-						localStorage.setItem("UserData", JSON.stringify(d.data));
+						.then((response) => response.json())
+						.then((d) => {
+							if (d.status) {
+								toast.success(d.message);
+								writeAtom(atom.storage.user, d.data);
+								localStorage.setItem("UserData", JSON.stringify(d.data));
 
-						writeAtom(atom.storage.loginmodal, true)
-						router.push("/auth/success")	
+								writeAtom(atom.storage.loginmodal, true)
+								router.push("/auth/success")
 
-						} else {
-						toast.error(d.message);
-						}
-					});
-				
-			}
+							} else {
+								toast.error(d.message);
+							}
+						});
+
+				}
 			});
 		} else {
 			toast.error("Please agree to the terms of use");
 		}
 
 	};
-const [show, setShow] = useState(true);
-const [checkbox, setchexbox] = useState(false);
+	const [show, setShow] = useState(true);
+	const [checkbox, setchexbox] = useState(false);
 
-const check = (event) => {
+	const check = (event) => {
 		if (event.target.checked) {
 			setchexbox(true)
 		} else if (!event.target.checked) {
@@ -134,7 +138,7 @@ const check = (event) => {
 		signstate(signIn)
 		setprocust(true);
 	}
-	
+
 
 
 	useEffect(() => {
@@ -171,10 +175,10 @@ const check = (event) => {
 					<div className='col-sm-2'></div>
 					<div className='col-sm-8'>
 						<div className='register_c'>
-							<h3>{signIn.account == "Company" && procust==true ? "Register as a PRO Customer" : "Register as a Customer"}</h3>
+							<h3>{signIn.account == "Company" && procust == true ? "Register as a PRO Customer" : "Register as a Customer"}</h3>
 							<form onSubmit={handleSumbit}>
 								<h4>Please Provide Your Information Below:</h4>
-								<div className='row'>
+								{/* <div className='row'>
 									<div className='col-sm-4'>
 										<label>
 											Type of Account<span>*</span>
@@ -189,7 +193,7 @@ const check = (event) => {
 											<option value='Company'>Company</option>
 										</select>
 									</div>
-								</div>
+								</div> */}
 								<div className='row'>
 									<div className='col-sm-4'>
 										<label>
@@ -224,7 +228,7 @@ const check = (event) => {
 										/>
 									</div>
 								</div>
-									{signIn.account == "Company" && procust == true ? (
+								{signIn.account == "Company" && procust == true ? (
 									<><div className='row'>
 										<div className='col-sm-4'>
 											<label>
@@ -255,7 +259,7 @@ const check = (event) => {
 													value={signIn.SIREN}
 													autoComplete={"off"}
 													onChange={setSign("SIREN")} />
-												
+
 											</div>
 										</div>
 									</>
@@ -338,7 +342,7 @@ const check = (event) => {
 										/>
 									</div>
 								</div>
-									{signIn.account == "Company" && show ? (<Modal show={true} onHide={handleClose}>
+								{/* {signIn.account == "Company" && show ? (<Modal show={true} onHide={handleClose}>
 									<Modal.Header closeButton>
 										<Modal.Title>Modal heading</Modal.Title>
 									</Modal.Header>
@@ -358,14 +362,30 @@ const check = (event) => {
 											Ok, I sign up
 										</Button>
 									</Modal.Footer>
-								</Modal>) : (<></>)}
+								</Modal>) : (<></>)} */}
 
 								<div className='form-check signcheck'>
-									<label className='form-check-label'>
-										<input type='checkbox' className='form-check-input' onClick={check} />I have
-										read and accept the <a href={'/account/terms'}>terms</a> of of use of
-										www.artisans.studio.
+									<label className='form-check-label cust-sign-label'>
+										<div>
+											<input type='checkbox' onClick={check} />
+
+										</div>
+										<div>
+											I have
+											read and accept the <a href={'/account/terms'}>terms</a> of of use of
+											www.artisans.studio.
+										</div>
+										
 									</label>
+
+									{/* <div key={`default-checkbox`} className="mb-3"> 
+										<Form.Check // prettier-ignore
+											type={"checkbox"}
+											id={`default-checkbox`}
+											label={`default checkbox`}
+										/>
+									</div> */}
+
 								</div>
 								<br />
 								<br />
