@@ -69,7 +69,7 @@ const Post = (prp) => {
 	const [numPages, setNumPages] = useState(null);
 	const [filename, setFilename] = useState("");
 	const onDocumentLoadSuccess = ({ numPages }) => {
-		console.log("total page in pdf", numPages);
+		
 		setNumPages(numPages);
 	};
 
@@ -179,7 +179,7 @@ const Post = (prp) => {
 		const reader = new FileReader();
 		setFilename(file.name)
 
-		console.log("pdf file------->>", filename);
+	
 		reader.onloadend = () => {
 			const fileData = reader.result as string;
 			setNumPages(null); // Reset the number of pages when a new file is selected
@@ -227,13 +227,13 @@ const Post = (prp) => {
 			setpr2(0)
 		}
 
-		console.log("file length", file.length)
+		
 
 		//setFileOther((p) => [...p, ...files]);
 	};
 
 
-	console.log("file qqfqwvwqaffqf", filename)
+	
 	const [pr, setpr] = useState(110)
 	const [pr2, setpr2] = useState(110)
 
@@ -244,9 +244,7 @@ const Post = (prp) => {
 
 	}, [pr]);
 
-	console.log("Files are", file)
-
-	console.log("The other file are : -", otherFile)
+	
 
 	function delete_files(fileIndex) {
 		//setFile(file.filter(function (s) { return s !== e }))
@@ -300,7 +298,7 @@ const Post = (prp) => {
 	}
 
 
-	console.log("The files are:-", file)
+
 
 
 	const [loading, setLoading] = useState(false);
@@ -472,7 +470,7 @@ const Post = (prp) => {
 				</div>
 
 				<GlobalModal
-					title='Confirm your Job Post'
+					title='Confirm your Post'
 					atom={atom.modal.confirm_project}>
 					<div className='wjgf'>
 						{file?.length ? file[0]?.type?.includes("pdf") ? (

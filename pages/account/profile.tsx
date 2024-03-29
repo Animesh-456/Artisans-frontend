@@ -30,10 +30,6 @@ const Profile = (props: Props) => {
     project_images = user?.prot_pic != null ? user?.prot_pic.split(',') : ''
 
 
-    console.log("projects list", projects);
-
-    console.log("total pages", opt.total_pages);
-
     const [index, setIndex] = useState(0);
     const [slide, setSlide] = useState([]);
 
@@ -51,7 +47,7 @@ const Profile = (props: Props) => {
         totalAmount += e.amount;
     })
 
-    console.log("total spent amount-", totalAmount);
+   
 
     const handlePageClick = (i) => {
         router
@@ -104,7 +100,7 @@ const Profile = (props: Props) => {
         atom.auth.api.countries,
     );
 
-    console.log("Country are:-", countries)
+   
 
     return (
         <>

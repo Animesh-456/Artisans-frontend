@@ -41,7 +41,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	const [albidmsg, setalbidmsg] = useState([]);
 	const [allistmsg, setallistmsg] = useState([]);
-	console.log("proj data----------------->>>>>>", data);
+
 	const [progress, setprogress] = useState(0);
 
 	const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -85,7 +85,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 		for (const key of Object.keys(msg)) {
 			form.append(key, msg[key]);
 		}
-		console.log(msg);
+
 
 		api.project.send_bid_msg(
 			{
@@ -109,9 +109,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 	};
 
 
-	useEffect(() => {
-		console.log(msgs);
-	}, [msgs]);
+
 
 	const handle_list_msgs = () => {
 		if (showMsgs) {
@@ -194,7 +192,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 		}
 	}
 
-	console.log("all messages are :- ", albidmsg)
+
 
 	useEffect(() => {
 		// if (data.programmer_id != null) {
@@ -211,9 +209,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	const storageuser = useAtomValue(atom.storage.user)
 
-	console.log("data", data)
 
-	console.log("bod", bid)
 
 
 	const [pr, setpr] = useState(110)
@@ -225,7 +221,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	}, [pr]);
 
-	console.log("Files are", file)
+
 
 	function delete_files(fileIndex) {
 		//setFile(file.filter(function (s) { return s !== e }))
@@ -245,11 +241,6 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 	}, [])
 
 
-
-	console.log("bid time-->", new Date(moment.unix(bid?.bid_time).format('YYYY-MM-DD HH:mm:ss')).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" }))
-
-
-
 	const date = new Date(bid?.bid_time * 1000);
 
 	const year = date.getFullYear();
@@ -261,7 +252,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-	console.log('created-------------------', formattedDate);
+
 
 	function delete_additional_files(a, b) {
 
@@ -278,7 +269,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	}
 
-	console.log("logo of user is :--", bid?.user?.logo)
+
 
 	return (
 		<>
@@ -289,7 +280,10 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 					<div className="col-sm-6">
 						<div className="tgh">
 							<figure>
-								<img src="/img/work-icon3.png" alt="" />
+								<img src={
+									common.get_profile_picture(bid?.user?.logo) ||
+									"/img/work-icon3.png"
+								} alt="" />
 							</figure>
 							<div>
 								<h2>{bid?.user?.user_name}</h2>
@@ -333,7 +327,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 																			: data?.creator?.user_name
 																		}`}
 																	<br />
-																	{m?.send_from == data?.creator_id ? "(Customer)" : "(Machinist)"}
+																	{m?.send_from == data?.creator_id ? "(Customer)" : "(Artist)"}
 																</h6></div>
 															<div className="qwe14"><p className='text'><pre className="custom-pre">{m?.msg_box}</pre></p></div>
 
@@ -345,7 +339,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 																			<>
 																				<li>
 
-																					<a className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, m?.datetime)}>{im}</a>
+																					<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, m?.datetime)}>{im}</a>
 																					<br />
 
 																				</li>
@@ -355,7 +349,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 																		)
 																	})
-																) : (<><a className="link-text" target={"_blank"} href={common.get_attachment(`${m?.attachment}`, m?.datetime)}>{m?.attachment}</a></>)}
+																) : (<><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${m?.attachment}`, m?.datetime)}>{m?.attachment}</a></>)}
 
 															</ul>
 															</div>
@@ -398,7 +392,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 																			<>
 
 																				<li>
-																					<a className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, m?.datetime)}>{im}</a>
+																					<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, m?.datetime)}>{im}</a>
 																					<br />
 																				</li>
 
@@ -406,7 +400,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 																		)
 																	})
-																) : (<><a className="link-text" target={"_blank"} href={common.get_attachment(`${m?.attachment}`, m?.datetime)}>{m?.attachment}</a></>)}
+																) : (<><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${m?.attachment}`, m?.datetime)}>{m?.attachment}</a></>)}
 															</ul></div>
 
 															<div className="qwe16"><p className="bidmsg4">{moment(m?.datetime).format('YYYY-MM-DD HH:mm:ss')}</p></div>
@@ -455,7 +449,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 																		<>
 
 																			<li>
-																				<a className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, m?.datetime)}>{im}</a>
+																				<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, m?.datetime)}>{im}</a>
 																				<br />
 
 																			</li>
@@ -464,7 +458,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 																	)
 																})
-															) : (<><a className="link-text bidmsg3" target={"_blank"} href={common.get_attachment(`${m?.attachment}`, m?.datetime)}>{m?.attachment}</a></>)}
+															) : (<><a rel="noreferrer" className="link-text bidmsg3" target={"_blank"} href={common.get_attachment(`${m?.attachment}`, m?.datetime)}>{m?.attachment}</a></>)}
 
 														</ul></div>
 														<div className="qwe16"><p className="bidmsg4">{moment(m?.datetime).format('YYYY-MM-DD HH:mm:ss')}</p></div>
@@ -480,16 +474,16 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 							{albidmsg.length > 3 ? (
 								showMsgs ? (
-									<a onClick={handle_hide_msgs} className='d-block view-msg-btn'>
+									<a onClick={handle_hide_msgs} className='d-block view-msg-btn' style={{ cursor: "pointer" }}>
 										Hide All Message
 									</a>
 								) : (
 									user?.role_id == 2 && storageuser?.id == bid?.user_id ? (
-										<a onClick={handle_list_msgs} className='d-block view-msg-btn'>
+										<a onClick={handle_list_msgs} className='d-block view-msg-btn' style={{ cursor: "pointer" }}>
 											View All Message
 										</a>
 									) : user?.role_id == 1 && storageuser?.id == data?.creator_id ? (
-										<a onClick={handle_list_msgs} className='d-block view-msg-btn'>
+										<a onClick={handle_list_msgs} className='d-block view-msg-btn' style={{ cursor: "pointer" }}>
 											View All Message
 										</a>
 									) : (<></>)

@@ -37,7 +37,7 @@ const CustomerSignIn = (props: Props) => {
 	const [storedProject, setStoredProject] = useAtom(atom.storage.project);
 
 	useEffect(() => {
-		console.log("hello first time", disable);
+	
 
 		let time = setTimeout(() => {
 			setDisable(false);

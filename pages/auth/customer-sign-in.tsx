@@ -76,7 +76,7 @@ const CustomerSignIn = (props: Props) => {
 		}
 
 		if (checkbox == true) {
-			console.log("correct call----->");
+			
 			api.auth.customer_register({ body: signIn }, (d) => {
 				if (storedProject != null) {
 					setUser(d.data);

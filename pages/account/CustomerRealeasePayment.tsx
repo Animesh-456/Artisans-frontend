@@ -18,7 +18,7 @@ type Props = {};
 
 
 
-const jobs = () => {
+const Jobs = () => {
 
   let currprojectData = JSON.parse(localStorage.getItem('ProjectData'))
   //let currUserData = JSON.parse(localStorage.getItem('UserData'))
@@ -27,7 +27,7 @@ const jobs = () => {
   //const customerData = useAtomValue<UserDetails>(atom.auth.api.me);
   const project_id = useAtomValue(atom.storage.project_id);
   const project_data = useAtomValue(atom.storage.project_data);
-  console.log("project id--->", project_data);
+
 
   const deliveryData = useAtomValue(atom.auth.api.delivery_contacts);
 
@@ -36,7 +36,7 @@ const jobs = () => {
   const [check, setCheck] = useState(false);
   const [chk, setchk] = useState(true)
 
-  console.log("proj data-->>>>><<<", currprojectData);
+
 
   const customer_releasepayment_checkbox = useAtomValue(atom.project.api.customer_releasepayment_checkbox)
 
@@ -141,7 +141,7 @@ const jobs = () => {
 
 
                 <tr>
-                  <td ><BsFillCaretRightFill color='#365d9c' /> Machinist: </td>
+                  <td ><BsFillCaretRightFill color='#365d9c' /> Artist: </td>
                   <td> {project_data?.programmer.user_name}     </td>
                   <td ><BsFillCaretRightFill color='#365d9c' /> Client:</td>
                   <td >{project_data?.creator.user_name}</td>
@@ -154,7 +154,7 @@ const jobs = () => {
                   <td><BsFillCaretRightFill color='#365d9c' /> Customer address:</td>
                   <td>{deliveryData?.address + ", " + deliveryData?.city + ", " + deliveryData?.postalcode}</td>                </tr>
                 <tr>
-                  <td><BsFillCaretRightFill color='#365d9c' /> Machinist's Address: </td>
+                  <td><BsFillCaretRightFill color='#365d9c' /> Artists Address: </td>
                   <td> {machData?.address1 + ", " + machData?.city + ", " + machData?.country_code_country?.country_name + ", "
                     + machData?.zcode} </td>
                   <td></td>
@@ -191,4 +191,4 @@ const jobs = () => {
   );
 };
 
-export default jobs;
+export default Jobs;

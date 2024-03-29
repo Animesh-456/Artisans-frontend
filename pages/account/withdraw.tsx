@@ -72,7 +72,7 @@ const Withdraw = (props: Props) => {
         //setBalance(remain);
 
         var e = (document.getElementById("payOptions")) as HTMLSelectElement;
-        //console.log(e);
+       
 
         var sel = e.selectedIndex;
         var opt = e.options[sel];
@@ -98,7 +98,6 @@ const Withdraw = (props: Props) => {
         api.auth.user_balance({});
     }, [])
 
-    //console.log(balanceData);
 
     const [open, setOpen] = useAtom(atom.modal.paypal_email);
     const handleInputChange = (event) => {

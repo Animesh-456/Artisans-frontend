@@ -26,7 +26,7 @@ const AccountSideBar = (props: Props) => {
 
     if (user) {
         api.project.reviews_list({ params: {} }, (d) => {
-            console.log("ghut---->", d)
+          
             Reviews_data = d.data;
         });
     }
@@ -71,12 +71,12 @@ const AccountSideBar = (props: Props) => {
     const projects = useAtomValue(atom.project.api.total_jobs)
 
 
-    console.log("annonymous", user?.id)
+   
 
-    //console.log("Job data =======>>>>>>>", job_list)
+    
 
 
-    console.log("reviews data", Reviews_data)
+   
 
     Reviews_data.forEach(function (curr) {
         avg_rating += curr.rating;
@@ -88,7 +88,7 @@ const AccountSideBar = (props: Props) => {
 
     avg_rating = Number(avg_rating.toFixed(2));
 
-    console.log(avg_rating);
+   
 
 
 
@@ -119,9 +119,7 @@ const AccountSideBar = (props: Props) => {
 
 
 
-    console.log("User :- ", user)
-
-    console.log("router path = ", router.pathname)
+    
 
     return (
         <>

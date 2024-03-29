@@ -32,7 +32,7 @@ const Listing = (props: Props) => {
 	const [arr, setArr] = useState([]);
 
 
-	//console.log("This users total jobs:- ", totaljobs)
+	
 
 
 	const RefLink = (l) => {
@@ -47,7 +47,7 @@ const Listing = (props: Props) => {
 		//api.project.public_profile_total_jobs({ params: { id: user?.id } })
 		const pageQueryParam = new URLSearchParams(location.search).get('page');
 		const pageNumber = parseInt(pageQueryParam) || 1;
-		console.log("Page number is ", pageNumber)
+
 		api.project.list({ params: { ...opt, page: pageNumber - 1 } });
 
 
@@ -77,8 +77,7 @@ const Listing = (props: Props) => {
 			setExpandedRows([...expandedRows, rowIndex]);
 		}
 	};
-	console.log("list projects-->", list);
-	console.log("user projects-->", user);
+
 
 
 
@@ -93,14 +92,14 @@ const Listing = (props: Props) => {
 
 	const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
-	console.log("This users total jobs:- ", totaljobs)
+
 
 	const onDocumentLoadSuccess = ({ numPages }) => {
-		console.log("total page in pdf", numPages);
+	
 		setNumPages(numPages);
 	};
 
-	console.log("projects attach------------->", list);
+
 
 	const visiblePages = 10; // Number of visible page buttons
 	const getPageNumbers = () => {
@@ -110,8 +109,7 @@ const Listing = (props: Props) => {
 		return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 	};
 
-	console.log("Page is ", opt.page)
-	console.log("Page limitis ", opt.limit)
+	
 
 
 
@@ -183,7 +181,7 @@ const Listing = (props: Props) => {
 											// Calculate the number of remaining hours
 											const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
 
-											console.log("ndis", diffInDays, hourDifference)
+										
 
 
 
@@ -203,7 +201,7 @@ const Listing = (props: Props) => {
 											// Calculate the number of remaining hours
 											const hourDifference2 = Math.floor((timeDiff2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-											console.log("ndis2", diffInDays2, hourDifference2)
+										
 											const date = new Date(l?.created * 1000);
 
 											const year = date.getFullYear();
@@ -215,7 +213,7 @@ const Listing = (props: Props) => {
 
 											const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-											console.log('created-------------------', formattedDate);
+									
 
 
 											/////////////////////////////////for log/////////////////////////////
@@ -239,7 +237,7 @@ const Listing = (props: Props) => {
 											const days2 = duration2.days();
 											const hours2 = duration2.hours();
 
-											console.log("The new time diff2 is", days2, hours2)
+										
 
 
 

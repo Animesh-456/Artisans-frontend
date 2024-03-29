@@ -26,7 +26,7 @@ import { Button, ProgressBar } from "react-bootstrap";
 
 
 const ProjectDetail = () => {
-    //console.log("prp is----", prp)
+
 
     let d = useAtomValue(atom.storage.project_id)
     const router = useRouter();
@@ -63,8 +63,6 @@ const ProjectDetail = () => {
     const [filename, setFilename] = useState("");
 
 
-    console.log("current review--->", reviewCust);
-    console.log("project data---->>>>>>>", data);
     const steps_completed_supplier: any = useAtom(atom.project.api.steps_completed_supplier);
 
     const [question, questionstae] = useState({
@@ -228,11 +226,10 @@ const ProjectDetail = () => {
         setbid("project_id", id)(null);
         setbid("user_id", user?.id)(null);
 
-        console.log("review status", localStorage.getItem('ShowReview'))
 
 
 
-        console.log("project id--->", id);
+
         api.project.detail({ params: { id: id } });
         api.project.get_additional_comment({ params: { id: id } });
 
@@ -246,11 +243,7 @@ const ProjectDetail = () => {
             });
         }
 
-        console.log("project status1234------>", project_status)
-
-
-        console.log("showreview value", localStorage.getItem('ShowReview'))
-        console.log("reviewCust[0]?.rating", reviewCust[0]?.rating)
+     
 
         if (user?.role_id == 1 && localStorage.getItem('ShowReview') == '1' && reviewCust[0]?.rating == null) {
             setOpenReview(true)
@@ -258,7 +251,7 @@ const ProjectDetail = () => {
 
     }, [router.isReady]);
 
-    console.log("project rev------>", reviewCust)
+
 
 
     const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -341,7 +334,7 @@ const ProjectDetail = () => {
     const segments = idString.split('-');
     let p_id = segments[segments.length - 1];
     const avgrat = (review.provider_rate1 + review.provider_rate2 + review.provider_rate3 + review.provider_rate4) / 4;
-    console.log("rev-", reviewCust);
+    
 
     useEffect(() => {
 
@@ -352,11 +345,7 @@ const ProjectDetail = () => {
         const segments = idString.split('-');
         let id = segments[segments.length - 1];
 
-        console.log("datasssssssssssssssssssssssssssssss are:-", id)
-
-        console.log("datas22222222222222 are: - ", data)
-
-        console.log("storage atom project:-", d)
+  
 
         if (user) {
 
@@ -365,7 +354,7 @@ const ProjectDetail = () => {
                     id: d
                 }
             }, (d) => {
-                console.log("useeffect after", d.status)
+               
             })
             api.project.project_review({ params: { id: d } });
 
@@ -384,12 +373,12 @@ const ProjectDetail = () => {
         return (
             <div className='review_machinist_rating'>
                 <h6>{r.name}</h6>
-                
+
                 <ReactStar
                     rating={review[r.key]}
                     starRatedColor='gold'
                     changeRating={(newRating) => {
-                        console.log(r.key, newRating);
+                       
                         setreview(r.key, newRating)(null);
                         // setRating(newRating);
                     }}
@@ -404,20 +393,16 @@ const ProjectDetail = () => {
     };
     //const UserData = JSON.parse(localStorage.getItem('UserData'));
     const UserData = useAtomValue<UserDetails>(atom.auth.api.me);
-    console.log("UserData from pg-", UserData)
+
     let reviewStatus = localStorage.getItem('ShowReview')
     let table_status = '0'
-    console.log("datas--", data?.project_status)
-    console.log("data_status--", data?.project_status, typeof (data?.project_status))
-
-
-    console.log("table status", table_status)
+   
 
     useEffect(() => {
         if (user) {
             api.auth.me({});
         }
-        console.log("cuurr proj id----->", d);
+       
         if (user) {
             api.auth.delivery_contacts({ params: { id: d } });
         }
@@ -427,12 +412,12 @@ const ProjectDetail = () => {
 
     if (data?.project_status >= '4') {
 
-        console.log("going -- status")
+        
 
         localStorage.setItem('TableShow', '1')
         table_status = '1'
 
-        console.log("table status", table_status)
+        
 
 
     }
@@ -457,7 +442,7 @@ const ProjectDetail = () => {
 
         const finaldate = day + "-" + month + "," + year
 
-        console.log("finaldate is --", finaldate)
+       
         return finaldate;
     }
 
@@ -484,11 +469,7 @@ const ProjectDetail = () => {
     // Calculate the number of remaining hours
     const hourDifference = Math.floor((timeDiff2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-    console.log("ndis2", diffInDays, hourDifference)
-
-    console.log("REVIEW TESTING", reviewCust[0].rating)
-    console.log("data proj------>", data);
-    console.log("user data------>", user);
+   
 
     useEffect(() => {
         if (user) {
@@ -498,7 +479,7 @@ const ProjectDetail = () => {
 
 
 
-    console.log("LOG USER-------->>", user);
+   
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
 
@@ -512,7 +493,7 @@ const ProjectDetail = () => {
 
     }, [pr]);
 
-    console.log("Files are", file)
+   
 
     function delete_files(e) {
         setFile(file.filter(function (s) { return s !== e }))
@@ -524,7 +505,7 @@ const ProjectDetail = () => {
 
     const [ischecked, setischecked] = useState(false)
     const onDocumentLoadSuccess = ({ numPages }) => {
-        console.log("total page in pdf", numPages);
+       
         setNumPages(numPages);
     };
 
@@ -547,10 +528,10 @@ const ProjectDetail = () => {
 
     }, [router.isReady]);
     const finalise_image: any = useAtomValue(atom.project.api.project_finalise_image)
-    console.log("project_finalise_image-------", finalise_image)
+   
     const offr_rev_feed = useAtomValue(atom.project.api.offer_reviews_feedback)
 
-    console.log("Offer reviews from backend is ", offr_rev_feed)
+   
     const date = new Date(data?.created * 1000);
 
     const year = date.getFullYear();
@@ -562,7 +543,7 @@ const ProjectDetail = () => {
 
     const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-    console.log('created-------------------', formattedDate);
+    
 
 
     /////////////////For Additional Comment or File portion////////////////
@@ -648,7 +629,7 @@ const ProjectDetail = () => {
         });
     }
 
-    console.log("additionalfile", additionalfile, additionalcomment)
+   
 
 
     useEffect(() => {
@@ -657,10 +638,7 @@ const ProjectDetail = () => {
 
     const additionalcomments: any[] = useAtomValue(atom.project.api.get_additional_comment)
 
-    console.log("additionalcomments", additionalcomments)
-
-    console.log("review status", reviewStatus);
-    console.log("table_status", table_status);
+   
 
     var finalised_price = 0;
 
@@ -681,21 +659,16 @@ const ProjectDetail = () => {
         finalise_image[0]?.post_date,
     )
 
-    console.log("the f_img is: -", f_imgs)
+ 
     if (f_imgs = '/public/404.jpg') {
         f_imgs = common.get_attachment_latest_ach(finalise_image[0]?.attach_file)
     }
 
-    {
-        finalise_image?.length && finalise_image?.map((c, index) => {
-            console.log("finalise map is --", c[index]?.attach_file)
-        })
-    }
+  
 
 
 
-    console.log("prj_img", data?.attachment_name?.split(',')[0])
-
+  
 
 
     const handleclk = (id) => {
@@ -820,7 +793,7 @@ const ProjectDetail = () => {
                                 <div className="step_wp1">
                                     <div>2</div>
                                     <h3>Shipping now</h3>
-                                    {steps_completed_supplier[0]?.step2 != 1 ? (
+                                    {/* {steps_completed_supplier[0]?.step2 != 1 ? (
                                         <p>
                                             Inform your client that you have shipped their order (parcel tracking is compulsory).
                                         </p>
@@ -830,6 +803,18 @@ const ProjectDetail = () => {
                                             <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
                                             <p>Tracking Number: - {data?.track_number}</p>
                                         </>
+                                    )} */}
+
+                                    {steps_completed_supplier[0]?.step2 == 1 && data?.project_status < "5" ? (
+                                        <>
+                                            <p>Shipment message sent</p>
+                                            <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
+                                            <p>Tracking Number: - {data?.track_number}</p>
+                                        </>
+                                    ) : (
+                                        <p>
+                                            Inform your client that you have shipped their order (parcel tracking is compulsory).
+                                        </p>
                                     )}
 
 
@@ -1160,7 +1145,7 @@ const ProjectDetail = () => {
 
 
 
-                <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>  
+                <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>
                     <div className='fdfd4'>
                         <div className='css-ung'>
                             <p>Post a Public Message or a Question to the client (optional).</p>
@@ -1209,6 +1194,9 @@ const ProjectDetail = () => {
                                 <input type='file' name='myfile' multiple onChange={handle_file_change} />
                             </div>
 
+                            <br />
+                            <br />
+
 
                             {pr < 101 ? (
                                 <ProgressBar now={pr} label={`${pr}%`} />
@@ -1244,7 +1232,7 @@ const ProjectDetail = () => {
                                 </div>
                                 <div className='col-sm-6 gfcg'>
                                     <label>
-                                        Price for client: £ <small>Includes Machining-4U fees</small>
+                                        Price for client: £ <small>Includes artisans.studio fees</small>
                                     </label>
                                     <input
                                         name='bidAmt'
@@ -1290,7 +1278,7 @@ const ProjectDetail = () => {
                                     </div>
                                 </div>
 
-                               
+
                                 <div className='col-sm-4'>
                                     <div className='form-group form-check'>
                                         <label className='form-check-label'>
@@ -1325,7 +1313,7 @@ const ProjectDetail = () => {
                         </div>
                     </div>
                 </GlobalModal>
-                <GlobalModal title='Select Machinist' atom={atom.modal.slct_mchnst}>
+                <GlobalModal title='Select Artist' atom={atom.modal.slct_mchnst}>
                     <div className='slct-machinist-modal'>
                         {selected_machinist ? (
                             <>
@@ -1361,7 +1349,7 @@ const ProjectDetail = () => {
                 </GlobalModal>
 
                 <GlobalModal
-                    title='Review Your Machinist'
+                    title='Review Your Artist'
                     atom={atom.modal.review_machinist}>
                     <div className='fdfd4'>
                         <div className='css-ung'>

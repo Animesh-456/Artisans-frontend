@@ -22,7 +22,7 @@ export default function Header({ }: Props) {
 
 	const path = router.pathname;
 
-	console.log("The path is ", path)
+
 
 
 	const [show, setShow] = useState(false);

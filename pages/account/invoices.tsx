@@ -14,7 +14,7 @@ type Props = {};
 //let Invoice_data = []
 
 function DownloadPDF(inv_no, customer, p_name, fund_release_date, amount, cus_address, cus_city, cus_zcode, transaction_id) {
-    //console.log("click---",customer,p_name,amount,date)
+
     localStorage.setItem('customer_name', customer)
     localStorage.setItem('project_name', p_name)
     localStorage.setItem('amount', amount)
@@ -45,7 +45,7 @@ function DownloadPDF(inv_no, customer, p_name, fund_release_date, amount, cus_ad
     var year = fund_release_date1.getFullYear();
     var formatfund_release_date = day + " " + month + " " + year;
 
-    console.log("pdffff", cus_address);
+    
     var pdfjs = `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -160,19 +160,19 @@ const Invoices = (props: Props) => {
     var year = new Date().getFullYear();
 
     const UserData = JSON.parse(localStorage.getItem('UserData'));
-    console.log("data--", UserData)
+    
 
     useEffect(() => {
 
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
-        console.log("Page number is ", pageNumber)
+    
         api.project.Invoice_list({ params: { ...opt, machinist_id: UserData.id, page: pageNumber - 1 } })
 
     }, [])
 
 
-    console.log("inv_data", invoices)
+
 
     const handlePageClick = (i) => {
         router
@@ -208,11 +208,9 @@ const Invoices = (props: Props) => {
     // },1000)
 
 
-    invoices.map((m) => {
-        console.log("Invoice data is:--->", m?.amount_gbp)
-    })
+    
 
-    console.log("invsdvsovsd", invoices);
+    
 
     const visiblePages = 10; // Number of visible page buttons
     const getPageNumbers = () => {

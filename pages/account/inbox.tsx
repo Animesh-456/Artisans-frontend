@@ -45,27 +45,26 @@ const EditProfile = () => {
 
 
 
-	console.log("notifications-->", notifs);
+	
 
 	let pusharray = [];
 
 	const handleChange = (event) => {
 		if (event.target.checked) {
-			console.log("checked", event.target.name)
+			
 			pusharray.push(event.target.name)
-			console.log(pusharray)
+			
 		} else {
-			console.log("unchecked", event.target.name)
+		
 			let index = pusharray.indexOf(event.target.name)
 			pusharray.splice(index, 1);
-			console.log(pusharray)
+			
 		}
 	};
 
 
 
-	console.log("List are:- ", list)
-
+	
 
 
 	const readmsgs = async (a, b, c) => {
@@ -111,7 +110,7 @@ const EditProfile = () => {
 	useEffect(() => {
 		const pageQueryParam = new URLSearchParams(location.search).get('page');
 		const pageNumber = parseInt(pageQueryParam) || 1;
-		console.log("Page number is ", pageNumber)
+	
 		api.project.my_msgs({ params: { ...opt, page: pageNumber - 1 } });
 	}, []);
 

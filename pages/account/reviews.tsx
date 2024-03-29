@@ -10,27 +10,27 @@ const Reviews = (props: Props) => {
 
 
     const UserData = JSON.parse(localStorage.getItem('UserData'));
-    console.log("data--", UserData)
+    
 
 
     api.project.reviews_list({ params: {} }, (d) => {
-        console.log("---->", d)
+       
         Reviews_data = d.data;
 
     });
-    console.log("reviews data", Reviews_data)
+
 
 
     setTimeout(() => {
         let Tbody = document.getElementById('Tbody')
         let ReviewsList = JSON.parse(localStorage.getItem('Reviews_List'));
-        console.log("Reviews list--", ReviewsList)
+
 
         ReviewsList.map((item) => (
             Tbody.innerHTML = Tbody.innerHTML + `<tr> <td>${item.project.project_name}</td> <td>${item.provider.user_name}</td>  <td>${item.rating}</td> </tr>`
         ))
 
-        console.log(Reviews_data)
+
     }, 1000)
 
 

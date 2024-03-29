@@ -126,7 +126,7 @@ const DepositFund1 = (props: Props) => {
 
         try {
             let d = await api.wallet.create_order({ params: {}, body: { id: data?.id } });
-            console.log(d);
+         
                 return d?.data?.id;
         } catch (err) {
             return err;
@@ -184,7 +184,7 @@ const DepositFund1 = (props: Props) => {
         // });
     
 
-        console.log("approve is:-", _data)
+      
 
 		const dataToSend = {
 			key1: _data
@@ -192,7 +192,7 @@ const DepositFund1 = (props: Props) => {
 
 
 	const response = await api.wallet.paypal_transaction_complete({ params: {}, body: { key1: _data } },(d)=>{
-            console.log("the data after approve is", d?.data?.result?.result?.purchase_units[0]?.payments?.captures[0].amount.value)
+           
              
                 try {
                     api.project.addpayment(
@@ -216,7 +216,7 @@ const DepositFund1 = (props: Props) => {
                     );
                 } catch (error) {
 
-                    console.log("err", error)
+                   
 
                 }
             
@@ -227,7 +227,7 @@ const DepositFund1 = (props: Props) => {
     };
 
     const onError = () => {
-        console.log("Error");
+      
     };
 
     return (

@@ -90,7 +90,7 @@ const EditProfile = () => {
             setFile2((p) => [...p, ...files]);
 
         }
-        console.log(file2)
+
     };
 
     const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
@@ -161,11 +161,11 @@ const EditProfile = () => {
 
     }, [pr]);
 
-    console.log("Files are", file)
+   
 
     function delete_files(e) {
         //setFile(file.filter(function (s) { return s !== e }))
-        setFile(null)
+        setFile(null);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -182,7 +182,7 @@ const EditProfile = () => {
 
     }, [pr2]);
 
-    console.log("Files are", file)
+  
 
     function delete_files2(e) {
         setFile2(file2.filter(function (s) { return s !== e }))
@@ -430,13 +430,14 @@ const EditProfile = () => {
                                                 />
                                             </div>
                                             <br />
-
+                                            <br />
+                                            <br />
                                             {pr < 101 ? (
                                                 <ProgressBar now={pr} label={`${pr}%`} />
                                             ) : (<></>)}
 
+                                            <br /><br />
                                             {file && pr > 100 ? (
-
                                                 <div className="pro_div">
                                                     <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file)}><i className="fa fa-trash-o"></i></a></p>
                                                 </div>
@@ -451,7 +452,7 @@ const EditProfile = () => {
                                                             common.get_profile_picture(profile?.prof_pic) ||
                                                             "/img/no-images.png"
                                                         }
-                                                        
+
                                                     />
                                                     <a style={{ cursor: "pointer" }} onClick={() => { delete_profile_pic(profile?.prof_pic) }}><i className="fa fa-trash-o"></i></a>
                                                 </figure>

@@ -35,10 +35,10 @@ const Jobs = (props: Props) => {
         router.replace(l)
     }
     useEffect(() => {
-        console.log("calling form customer end");
+       
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
-        console.log("Page number is ", pageNumber)
+    
         api.project.my_jobs({ params: { ...opt, page: pageNumber - 1, status: index } });
     }, [index]);
 
@@ -53,7 +53,7 @@ const Jobs = (props: Props) => {
         var sel = ele.selectedIndex;
         var option_p = ele.options[sel];
         var value = Number(option_p.value);
-        console.log("status value->", value);
+     
         setOptions(value)
         if (value == 0) {
             setIndex(1);
@@ -66,7 +66,7 @@ const Jobs = (props: Props) => {
         }
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
-        console.log("Page number is ", pageNumber)
+       
 
         api.project.my_jobs({ params: { ...opt, page: pageNumber - 1, status: index } });
     }
@@ -126,7 +126,7 @@ const Jobs = (props: Props) => {
             });
     };
 
-    console.log("pages-->", opt);
+
 
 
     const visiblePages = 10; // Number of visible page buttons
@@ -136,7 +136,7 @@ const Jobs = (props: Props) => {
 
         return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
     };
-    console.log("list_lenth", list.length);
+
     return (
 
         //For dynamic data we can use this 👇

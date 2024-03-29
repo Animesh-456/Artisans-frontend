@@ -37,7 +37,7 @@ const Message = (props: Props) => {
 
 		let project_id = router?.query?.id;
 		let to_id = router?.query?.to_id;
-		console.log("The to_id", to_id)
+	
 		let from_id = router?.query?.from_id;
 
 		if (!project_id || !to_id) {
@@ -139,11 +139,6 @@ const Message = (props: Props) => {
 			form.append(key, msg[key]);
 		}
 
-		console.log("Message fom rfrontend", msg);
-
-		console.log("new file:- ", machineFile)
-		console.log("old file: -", file)
-		console.log(msg);
 
 		api.project.send_msg(
 			{
@@ -173,10 +168,7 @@ const Message = (props: Props) => {
 		setChangePic(false)
 	}
 
-	console.log("machine file", machineFile)
 
-	console.log("Messages are: -", msgs)
-	console.log("Meta is:-", meta)
 
 	const [pr, setpr] = useState(110)
 
@@ -187,7 +179,7 @@ const Message = (props: Props) => {
 
 	}, [pr]);
 
-	console.log("Files are", file)
+
 
 	function delete_files(fileIndex) {
 		//setFile(file.filter(function (s) { return s !== e }))
@@ -218,7 +210,7 @@ const Message = (props: Props) => {
 
 	}, [pr2]);
 
-	console.log("Files are", machineFile)
+
 
 	function delete_files2(e) {
 		setmachineFile(machineFile.filter(function (s) { return s !== e }))
@@ -233,14 +225,12 @@ const Message = (props: Props) => {
 		setmachineFile(machineFile)
 	}, [])
 
-	machineFile?.map((m) => {
-		console.log(m)
-	})
+
 
 	const [data, setData] = useAtom(atom.project.api.detail);
 
 
-	console.log("jhfgfhjh", router.query.id)
+
 
 	useEffect(() => {
 		if (!router.isReady) return

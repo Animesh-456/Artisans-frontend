@@ -46,7 +46,7 @@ const SignIn = (props: Props) => {
 
 	const handleLogin = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log("login--- click")
+	
 		api.auth.login(
 			{ body: Pick(["email_username", "password"], login) },
 			(d) => {

@@ -16,14 +16,12 @@ const Reviews = (props: Props) => {
         const UserData = JSON.parse(localStorage.getItem('UserData'));
 
         api.project.reviews_list({ params: {} }, (d) => {
-            console.log("---->", d)
             //  Reviews_data = d.data;
-
         });
         // const d = fetch(`http://localhost:4000/project/customer_review`);
-        console.log("udata--", UserData)
+       
         api.project.Customer_Review({ params: { machinist_id: UserData.id } }, (d) => {
-            console.log(d)
+            
             SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
 
             //setLoaded(true);

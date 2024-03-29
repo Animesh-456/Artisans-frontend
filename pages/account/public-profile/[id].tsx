@@ -59,11 +59,7 @@ const EditProfile = () => {
     //     api.auth.public_me({})
     // }, [])
 
-    console.log("The user id is", user_id)
-
-    console.log("user setails", user)
-
-    console.log("proj", projects)
+  
 
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
@@ -123,7 +119,7 @@ const EditProfile = () => {
             setIndex(index - 1);
         }
         //setSlide(project_images[index]);
-        console.log("prev slide ", slide);
+     
 
     }
 
@@ -134,7 +130,7 @@ const EditProfile = () => {
         } else {
             setIndex(index + 1);
         }
-        console.log("next slide ", slide);
+       
     }
 
 
@@ -148,15 +144,10 @@ const EditProfile = () => {
 
 
 
-    console.log("public_profile_finalised_image is :-", public_profile_finalised_image);
+   
 
 
-
-
-    user?.prot_pic?.split(',').map((m) => {
-        console.log("Prot pic are", m)
-    })
-
+  
 
 
     return (
