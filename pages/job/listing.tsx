@@ -32,7 +32,7 @@ const Listing = (props: Props) => {
 	const [arr, setArr] = useState([]);
 
 
-	
+
 
 
 	const RefLink = (l) => {
@@ -95,7 +95,7 @@ const Listing = (props: Props) => {
 
 
 	const onDocumentLoadSuccess = ({ numPages }) => {
-	
+
 		setNumPages(numPages);
 	};
 
@@ -109,7 +109,7 @@ const Listing = (props: Props) => {
 		return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 	};
 
-	
+
 
 
 
@@ -181,7 +181,7 @@ const Listing = (props: Props) => {
 											// Calculate the number of remaining hours
 											const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
 
-										
+
 
 
 
@@ -201,7 +201,7 @@ const Listing = (props: Props) => {
 											// Calculate the number of remaining hours
 											const hourDifference2 = Math.floor((timeDiff2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-										
+
 											const date = new Date(l?.created * 1000);
 
 											const year = date.getFullYear();
@@ -213,7 +213,7 @@ const Listing = (props: Props) => {
 
 											const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-									
+
 
 
 											/////////////////////////////////for log/////////////////////////////
@@ -237,7 +237,7 @@ const Listing = (props: Props) => {
 											const days2 = duration2.days();
 											const hours2 = duration2.hours();
 
-										
+
 
 
 
@@ -603,7 +603,8 @@ const Listing = (props: Props) => {
 																		<div className="flx-dsp">
 																			<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
 																			{l?.project_status == "5" ? (
-																				<span className="a-green-logo">A</span>
+																				// <span className="a-green-logo">A</span>
+																				<></>
 																			) : (
 																				<></>
 																			)}
@@ -617,7 +618,8 @@ const Listing = (props: Props) => {
 																	<div className="flx-dsp">
 																		<a href={`/account/public-profile/${l?.creator?.id}`} className="qwe5">{l?.creator?.user_name}</a>
 																		{l?.project_status == "5" ? (
-																			<span className="a-green-logo">A</span>
+																			// <span className="a-green-logo">A</span>
+																			<></>
 																		) : (
 																			<></>
 																		)}

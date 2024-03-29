@@ -243,7 +243,7 @@ const ProjectDetail = () => {
             });
         }
 
-     
+
 
         if (user?.role_id == 1 && localStorage.getItem('ShowReview') == '1' && reviewCust[0]?.rating == null) {
             setOpenReview(true)
@@ -334,7 +334,7 @@ const ProjectDetail = () => {
     const segments = idString.split('-');
     let p_id = segments[segments.length - 1];
     const avgrat = (review.provider_rate1 + review.provider_rate2 + review.provider_rate3 + review.provider_rate4) / 4;
-    
+
 
     useEffect(() => {
 
@@ -345,7 +345,7 @@ const ProjectDetail = () => {
         const segments = idString.split('-');
         let id = segments[segments.length - 1];
 
-  
+
 
         if (user) {
 
@@ -354,7 +354,7 @@ const ProjectDetail = () => {
                     id: d
                 }
             }, (d) => {
-               
+
             })
             api.project.project_review({ params: { id: d } });
 
@@ -378,7 +378,7 @@ const ProjectDetail = () => {
                     rating={review[r.key]}
                     starRatedColor='gold'
                     changeRating={(newRating) => {
-                       
+
                         setreview(r.key, newRating)(null);
                         // setRating(newRating);
                     }}
@@ -396,13 +396,13 @@ const ProjectDetail = () => {
 
     let reviewStatus = localStorage.getItem('ShowReview')
     let table_status = '0'
-   
+
 
     useEffect(() => {
         if (user) {
             api.auth.me({});
         }
-       
+
         if (user) {
             api.auth.delivery_contacts({ params: { id: d } });
         }
@@ -412,12 +412,12 @@ const ProjectDetail = () => {
 
     if (data?.project_status >= '4') {
 
-        
+
 
         localStorage.setItem('TableShow', '1')
         table_status = '1'
 
-        
+
 
 
     }
@@ -442,7 +442,7 @@ const ProjectDetail = () => {
 
         const finaldate = day + "-" + month + "," + year
 
-       
+
         return finaldate;
     }
 
@@ -469,7 +469,7 @@ const ProjectDetail = () => {
     // Calculate the number of remaining hours
     const hourDifference = Math.floor((timeDiff2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-   
+
 
     useEffect(() => {
         if (user) {
@@ -479,7 +479,7 @@ const ProjectDetail = () => {
 
 
 
-   
+
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
 
@@ -493,7 +493,7 @@ const ProjectDetail = () => {
 
     }, [pr]);
 
-   
+
 
     function delete_files(e) {
         setFile(file.filter(function (s) { return s !== e }))
@@ -505,7 +505,7 @@ const ProjectDetail = () => {
 
     const [ischecked, setischecked] = useState(false)
     const onDocumentLoadSuccess = ({ numPages }) => {
-       
+
         setNumPages(numPages);
     };
 
@@ -528,10 +528,10 @@ const ProjectDetail = () => {
 
     }, [router.isReady]);
     const finalise_image: any = useAtomValue(atom.project.api.project_finalise_image)
-   
+
     const offr_rev_feed = useAtomValue(atom.project.api.offer_reviews_feedback)
 
-   
+
     const date = new Date(data?.created * 1000);
 
     const year = date.getFullYear();
@@ -543,7 +543,7 @@ const ProjectDetail = () => {
 
     const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-    
+
 
 
     /////////////////For Additional Comment or File portion////////////////
@@ -629,7 +629,7 @@ const ProjectDetail = () => {
         });
     }
 
-   
+
 
 
     useEffect(() => {
@@ -638,7 +638,7 @@ const ProjectDetail = () => {
 
     const additionalcomments: any[] = useAtomValue(atom.project.api.get_additional_comment)
 
-   
+
 
     var finalised_price = 0;
 
@@ -659,16 +659,16 @@ const ProjectDetail = () => {
         finalise_image[0]?.post_date,
     )
 
- 
+
     if (f_imgs = '/public/404.jpg') {
         f_imgs = common.get_attachment_latest_ach(finalise_image[0]?.attach_file)
     }
 
-  
 
 
 
-  
+
+
 
 
     const handleclk = (id) => {
@@ -793,7 +793,7 @@ const ProjectDetail = () => {
                                 <div className="step_wp1">
                                     <div>2</div>
                                     <h3>Shipping now</h3>
-                                    {/* {steps_completed_supplier[0]?.step2 != 1 ? (
+                                    {steps_completed_supplier[0]?.step2 != 1 ? (
                                         <p>
                                             Inform your client that you have shipped their order (parcel tracking is compulsory).
                                         </p>
@@ -803,22 +803,23 @@ const ProjectDetail = () => {
                                             <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
                                             <p>Tracking Number: - {data?.track_number}</p>
                                         </>
-                                    )} */}
-
-                                    {steps_completed_supplier[0]?.step2 == 1 && data?.project_status < "5" ? (
-                                        <>
-                                            <p>Shipment message sent</p>
-                                            <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
-                                            <p>Tracking Number: - {data?.track_number}</p>
-                                        </>
-                                    ) : (
-                                        <p>
-                                            Inform your client that you have shipped their order (parcel tracking is compulsory).
-                                        </p>
                                     )}
 
+                                    {/* {steps_completed_supplier[0]?.step2 == 1 ? (
+                                        <>
+                                            <p>Shipment message sent</p>
+                                            <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
+                                            <p>Tracking Number: - {data?.track_number}</p>
+                                        </>
+                                    ) : (
+                                        <p>
+                                            Inform your client that you have shipped their order (parcel tracking is compulsory).
+                                        </p>
+                                    )} */}
+                                    
 
-                                    {steps_completed_supplier[0]?.step2 != 1 && data?.project_status < "5" ? (
+
+                                    {steps_completed_supplier[0]?.step2 != 1 && data?.project_status < 5 ? (
                                         <Link href={`/account/machinistShippingMessage/${data.id}`}>
                                             <a>Send Message</a>
                                         </Link>

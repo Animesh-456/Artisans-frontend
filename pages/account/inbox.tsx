@@ -134,7 +134,7 @@ const EditProfile = () => {
 					</div>
 
 					<div className='col-sm-8'>
-						{user?.role_id == 2 ? (
+						{/* {user?.role_id == 2 ? (
 							<div className='profile_box mb-4'>
 								<h3 className='pb-0'>
 									Notifications <span className='darkblue-text '>({notifs.length})</span>{" "}
@@ -166,7 +166,7 @@ const EditProfile = () => {
 									</div>
 								</div>
 							</div>
-						) : (<></>)}
+						) : (<></>)} */}
 						<div className='profile_box'>
 							<h3 className='pb-0'>Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h3>
 

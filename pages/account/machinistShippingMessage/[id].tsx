@@ -10,12 +10,12 @@ import Router from "next/router";
 import { useRouter } from "next/router";
 import { ProgressBar } from "react-bootstrap";
 
-const machinistshippingmessage = () => {
+const Machinistshippingmessage = () => {
     const router = useRouter();
     const user = useAtomValue(atom.storage.user);
     const data = useAtom(atom.project.api.detail);
 
-    
+
     const [value1, setValue1] = useState("");
     const [value2, setValue2] = useState("");
     const [value3, setValue3] = useState("");
@@ -69,11 +69,11 @@ const machinistshippingmessage = () => {
             file: form
         }, (d) => {
             if (d.status == true) {
-                Router.replace( `/machining/${data[0]?.project_name.split(" ").join("-")}-${data[0].id}`)
-		
+                Router.replace(`/machining/${data[0]?.project_name.split(" ").join("-")}-${data[0].id}`)
+
             }
         })
-       //Router.push(`/machining/${data[0]?.project_name}-${data[0].id}`) 
+        //Router.push(`/machining/${data[0]?.project_name}-${data[0].id}`) 
     }
 
     const handlecancel = () => {
@@ -82,25 +82,25 @@ const machinistshippingmessage = () => {
 
 
     console.log("data", data)
-	const steps_completed_supplier: any = useAtomValue(atom.project.api.steps_completed_supplier);
+    const steps_completed_supplier: any = useAtomValue(atom.project.api.steps_completed_supplier);
 
-   
+
     useEffect(() => {
-	const url = window.location.href
-        const parts = url.split("/");
-        const id2 = parts[parts.length - 1];        
-        api.project.detail({ params: { id: id2 } });
-        
-    }, []);
-
-	useEffect(() => {
         const url = window.location.href
         const parts = url.split("/");
         const id2 = parts[parts.length - 1];
-       
+        api.project.detail({ params: { id: id2 } });
+
+    }, []);
+
+    useEffect(() => {
+        const url = window.location.href
+        const parts = url.split("/");
+        const id2 = parts[parts.length - 1];
+
         console.log("Steps are:-", steps_completed_supplier)
 
-	
+
     }, []);
     const [trackstate, settrackstate] = useState(false);
     const [datstate, setdatstate] = useState(false)
@@ -111,15 +111,15 @@ const machinistshippingmessage = () => {
     const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault();
         const { files } = e.currentTarget;
-	setpr(0)
+        setpr(0)
         setFile((p) => [...p, ...files]);
     };
 
     console.log("files are:-", file)
 
-const [pr, setpr] = useState(110)
+    const [pr, setpr] = useState(110)
 
-useEffect(() => {
+    useEffect(() => {
         if (pr < 102) {
             setTimeout(() => setpr(prev => prev += 2), 50)
         }
@@ -167,9 +167,9 @@ useEffect(() => {
                                 <div className="col-sm-3"><label>Enter estimated shipping date</label></div>
                                 <div className="col-sm-6"><input type="date" name="name"
                                     autoComplete={"off"}
- 				    min={new Date().toISOString().slice(0, 10)}
+                                    min={new Date().toISOString().slice(0, 10)}
                                     onChange={setmsgs} value={value1} ></input></div>
-                                <button className="col-sm-2" >OK </button>
+
                             </div>
 
                             <div className="row tgs-1">
@@ -178,7 +178,7 @@ useEffect(() => {
                                 <div className="col-sm-6"><input type="text" name="name"
                                     autoComplete={"off"}
                                     onChange={setmsgs2} ></input></div>
-                                <button className="col-sm-2">OK </button>
+
                             </div>
 
 
@@ -203,7 +203,7 @@ useEffect(() => {
 
                             <br />
 
-                            {data[0]?.project_status == 4 ? (
+                            {/* {data[0]?.project_status == 4 ? (
                                 <div className='upload-btn-wrapper'>
                                     <button className='btn'>
                                         <i className='fa fa-upload' /> Attach photos of machined parts
@@ -215,9 +215,9 @@ useEffect(() => {
                                         onChange={handle_file_change}
                                     />
                                 </div>
-                            ) : (<></>)}
+                            ) : (<></>)} */}
 
-			   {pr < 101 ? (
+                            {pr < 101 ? (
                                 <ProgressBar now={pr} label={`${pr}%`} />
                             ) : (<></>)}
 
@@ -225,15 +225,17 @@ useEffect(() => {
                             {file && pr > 100 ? (
                                 file?.map((f) => {
                                     return (
-                                        <div className="pro_div">
-                                            <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
-                                        </div>
+                                        <>
+                                            <div className="pro_div">
+                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                            </div>
+                                        </>
                                     )
                                 })
                             ) : (<></>)}
 
 
-                            
+
 
                             <br />
                             <br />
@@ -257,4 +259,4 @@ useEffect(() => {
     )
 }
 
-export default machinistshippingmessage;
+export default Machinistshippingmessage;

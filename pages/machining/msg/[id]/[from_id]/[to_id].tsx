@@ -37,7 +37,7 @@ const Message = (props: Props) => {
 
 		let project_id = router?.query?.id;
 		let to_id = router?.query?.to_id;
-	
+
 		let from_id = router?.query?.from_id;
 
 		if (!project_id || !to_id) {
@@ -279,11 +279,11 @@ const Message = (props: Props) => {
 										<div className='mb-3 pencil qwe20'>
 											<div className='msg-attach'>
 												{/* <input
-												name='file'
-												type='file'
-												className='opacity-0 '
-												onChange={handle_file_change}
-											/> */}
+													name='file'
+													type='file'
+													className='opacity-0 '
+													onChange={handle_file_change}
+												/> */}
 
 												<div className='attach-input mymsg'>
 													<h6><i className="fa fa-paperclip" /> Attached File</h6>
@@ -292,7 +292,7 @@ const Message = (props: Props) => {
 														type='file'
 														multiple={true}
 														id='fileAttach'
-														className='opacity-0 '
+														className=''
 														onChange={handle_file_change}
 														ref={fileInputRef}
 													/>
@@ -301,13 +301,7 @@ const Message = (props: Props) => {
 												<div className='mb-3'>
 
 													<label className='fileinput'>
-														{/* <i className="fa fa-paperclip" /> */}
-														{/* <input
-													name='file'
-													type='file'
-													className='opacity-0 '
-													onChange={handle_file_change}
-												/> */}
+
 
 
 														{pr < 101 ? (
@@ -317,9 +311,11 @@ const Message = (props: Props) => {
 
 															file?.map((f, index) => {
 																return (
-																	<div className="pro_div">
-																		<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
-																	</div>
+																	<>
+																		<div className="pro_div">
+																			<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+																		</div>
+																	</>
 																)
 															})
 														) : (<></>)}
@@ -334,7 +330,7 @@ const Message = (props: Props) => {
 												</div>
 											</div>
 
-											{user?.role_id == 2 && data?.project_status < 5 ? (
+											{/* {user?.role_id == 2 && data?.project_status < 5 ? (
 												<div className='msg-attach'>
 													<div className='attach-input mymsg'>
 
@@ -354,13 +350,13 @@ const Message = (props: Props) => {
 													<div className='mb-3'>
 
 														<label className='fileinput'>
-															{/* <i className="fa fa-paperclip" /> */}
-															{/* <input
+															<i className="fa fa-paperclip" />
+															<input
 													name='file'
 													type='file'
 													className='opacity-0 '
 													onChange={handle_file_change}
-												/> */}
+												/>
 
 
 															{pr2 < 101 ? (
@@ -370,9 +366,11 @@ const Message = (props: Props) => {
 
 																machineFile?.map((f) => {
 																	return (
-																		<div className="pro_div">
-																			<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
-																		</div>
+																		<>
+																			<div className="pro_div">
+																				<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
+																			</div>
+																		</>
 																	)
 																})
 															) : (<></>)}
@@ -383,7 +381,7 @@ const Message = (props: Props) => {
 													</div>
 
 												</div>
-											) : (<></>)}
+											) : (<></>)} */}
 
 
 										</div>
@@ -427,58 +425,60 @@ const Message = (props: Props) => {
 															const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
 															return (
-																<tr>
-																	<td className='darkblue-text'>
-																		{m?.from_id == user?.id
-																			? user?.user_name
-																			: meta?.to?.user_name}
-																	</td>
-																	<td>
-																		<pre className="custom-pre">{m?.message}</pre>
-																		<br />
-																		{m?.machine_parts_image?.includes(",") ? (
-																			m?.machine_parts_image.split(",").map((m) => {
-																				return (
+																<>
+																	<tr>
+																		<td className='darkblue-text'>
+																			{m?.from_id == user?.id
+																				? user?.user_name
+																				: meta?.to?.user_name}
+																		</td>
+																		<td>
+																			<pre className="custom-pre">{m?.message}</pre>
+																			<br />
+																			{m?.machine_parts_image?.includes(",") ? (
+																				m?.machine_parts_image.split(",").map((m) => {
+																					return (
+																						<>
+																							<ul>
+																								<li>
 
-																					<ul>
-																						<li>
+																									<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
+																									<br />
 
-																							<a target={"_blank"} href={common.get_attachment(`${m}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
-																							<br />
-
-																						</li>
-																					</ul>
-
-																				)
-																			})
-																		) : (<a target={"_blank"} href={common.get_attachment(`${m?.machine_parts_image}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m?.machine_parts_image}</p></a>)}
-
-
-																		{m?.attach_file?.includes(",") ? (
-																			m?.attach_file.split(",").map((m) => {
-																				return (
-
-																					<ul>
-																						<li>
-
-																							<a target={"_blank"} href={common.get_message(`${m}`)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
-																							<br />
-
-																						</li>
-																					</ul>
-
-																				)
-																			})
-																		) : (<a target={"_blank"} href={common.get_message(`${m?.attach_file}`)}><p className='darkblue-text cursor-pointer'>{m?.attach_file}</p></a>)}
-																	</td>
+																								</li>
+																							</ul>
+																						</>
+																					)
+																				})
+																			) : (<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m?.machine_parts_image}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m?.machine_parts_image}</p></a>)}
 
 
-																	<td className='text-end'>
-																		{moment
-																			.unix(m?.created)
-																			.format("DD MMM, YYYY")}
-																	</td>
-																</tr>
+																			{m?.attach_file?.includes(",") ? (
+																				m?.attach_file.split(",").map((m) => {
+																					return (
+																						<>
+																							<ul>
+																								<li>
+
+																									<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m}`)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
+																									<br />
+
+																								</li>
+																							</ul>
+																						</>
+																					)
+																				})
+																			) : (<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m?.attach_file}`)}><p className='darkblue-text cursor-pointer'>{m?.attach_file}</p></a>)}
+																		</td>
+
+
+																		<td className='text-end'>
+																			{moment
+																				.unix(m?.created)
+																				.format("DD MMM, YYYY")}
+																		</td>
+																	</tr>
+																</>
 															);
 														})
 													) : (

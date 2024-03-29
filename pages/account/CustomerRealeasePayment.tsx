@@ -173,18 +173,13 @@ const Jobs = () => {
         </div>
       </div>
 
-      {projectdata?.visibility?.toLowerCase() == "public" && Object.keys(customer_releasepayment_checkbox).length ? (
+      {/* {projectdata?.visibility?.toLowerCase() == "public" && Object.keys(customer_releasepayment_checkbox).length ? (
         <div className='form-check signcheck'>
           <label className='form-check-label'>
             <input type='checkbox' checked={chk} onChange={checkstate} className='form-check-input' />I authorize Usineur.fr to publish on the site any photos of my part(s) that my machinist has sent me.
           </label>
         </div>
-      ) : (<></>)}
-
-
-
-
-
+      ) : (<></>)} */}
 
 
     </>

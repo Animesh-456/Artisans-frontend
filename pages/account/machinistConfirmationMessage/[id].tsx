@@ -7,7 +7,7 @@ import { useAtom, useAtomValue } from "jotai";
 import Router from "next/router";
 import { useRouter } from "next/router";
 
-const machinistConfirmationMessage = () => {
+const MachinistConfirmationMessage = () => {
     const router = useRouter();
     const user = useAtomValue(atom.storage.user);
     const data = useAtom(atom.project.api.detail);
@@ -19,7 +19,7 @@ const machinistConfirmationMessage = () => {
         to_id: data[0].creator_id,
     });
 
-    const [message, setmessage] = useState("Hello\nThank you for selecting me to meet your machining requirements, I will start work on your order immediately and estimate that it will be shipped by the @date@.\nThank you for your confidence, \n\n Regards\n" + `${user?.user_name}` + "\n \nPlease do not respond directly to this message.")
+    const [message, setmessage] = useState("Hello\nThank you for selecting me to meet your requirements, I will start work on your order immediately and estimate that it will be shipped by the @date@.\nThank you for your confidence, \n\n Regards\n" + `${user?.user_name}` + "\n \nPlease do not respond directly to this message.")
 
 
 
@@ -30,7 +30,7 @@ const machinistConfirmationMessage = () => {
             return { ...previousState, date: dt }
         });
 
-       setmsg(previousState => {
+        setmsg(previousState => {
             return { ...previousState, message: updtmsg.replace("@date@", new Date(e.target.value).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })) }
         });
 
@@ -76,15 +76,15 @@ const machinistConfirmationMessage = () => {
     }
 
     //console.log("String message:- ", string.message)
-	const steps_completed_supplier: any = useAtomValue(atom.project.api.steps_completed_supplier);
+    const steps_completed_supplier: any = useAtomValue(atom.project.api.steps_completed_supplier);
     useEffect(() => {
 
         let id = router.query?.id;
-	const url = window.location.href
-        const parts = url.split("/");
-        const id2 = parts[parts.length - 1];
+        const url = window.location.href
+        const parts = url.split("/");
+        const id2 = parts[parts.length - 1];
         api.project.detail({ params: { id: id2 } });
-        
+
     }, []);
 
 
@@ -119,9 +119,9 @@ const machinistConfirmationMessage = () => {
                                 <div className="col-sm-3"><label>Enter estimated shipping date</label></div>
                                 <div className="col-sm-6"><input type="date" name="name"
                                     autoComplete={"off"}
- 				    min={new Date().toISOString().slice(0, 10)}
+                                    min={new Date().toISOString().slice(0, 10)}
                                     onChange={setmsgs} value={msg.date} ></input></div>
-                                <button className="col-sm-2" onClick={datestate}>OK </button>
+                                {/* <button className="col-sm-2" onClick={datestate}>OK </button> */}
 
                             </div>
 
@@ -165,4 +165,4 @@ const machinistConfirmationMessage = () => {
     )
 }
 
-export default machinistConfirmationMessage;
+export default MachinistConfirmationMessage;
