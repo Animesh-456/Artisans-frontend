@@ -449,7 +449,7 @@ const ProjectDetail = () => {
 
 
     let n = new Date().toLocaleString('en-US', {
-        timeZone: 'Europe/Paris',
+        timeZone: 'Asia/Kolkata',
     });
 
 
