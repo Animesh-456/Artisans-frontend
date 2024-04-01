@@ -164,7 +164,7 @@ const Listing = (props: Props) => {
 
 
 											let n = new Date().toLocaleString('en-US', {
-												timeZone: 'Europe/Paris',
+												timeZone: 'Asia/Kolkata',
 											});
 											const nd = new Date(n)
 
