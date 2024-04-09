@@ -533,16 +533,16 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
       .catch((err) => console.log(err));
   },
   addpayment: ({ params, body }: PostParams, cb?: GetResponse) => {
-    toast.loading();
-    let data = Validate([], schema.project.add_payment, body);
+   
+    // let data = Validate([], schema.project.add_payment, body);
 
-    if (!data) {
-      return;
-    }
-    console.log("from frontend--", data);
+    // if (!data) {
+    //   return;
+    // }
+    // console.log("from frontend--", data);
 
     api
-      .post("project/deposit-fund", data, params)
+      .post("project/deposit-fund", body, params)
       .then((d) => {
         if (d.status) {
           toast.success(d.message);
@@ -552,23 +552,23 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
         }
       })
       .catch((err) => console.log(err));
-    const BaseURL = "http://localhost:4000/";
+    // const BaseURL = "http://localhost:4000/";
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    };
-    fetch(`${BaseURL}project/deposit-fund`, requestOptions)
-      .then((response) => response.json())
-      .then((d) => {
-        if (d.status) {
-          toast.success(d.message);
-          return cb(d);
-        } else {
-          toast.error(d.message);
-        }
-      });
+    // const requestOptions = {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(body),
+    // };
+    // fetch(`${BaseURL}project/deposit-fund`, requestOptions)
+    //   .then((response) => response.json())
+    //   .then((d) => {
+    //     if (d.status) {
+    //       toast.success(d.message);
+    //       return cb(d);
+    //     } else {
+    //       toast.error(d.message);
+    //     }
+    //   });
   },
 
   reviews_list: ({ params }, cb?: GetResponse) => {

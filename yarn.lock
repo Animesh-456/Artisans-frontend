@@ -17,6 +17,11 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@cashfreepayments/cashfree-js@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@cashfreepayments/cashfree-js/-/cashfree-js-1.0.4.tgz"
+  integrity sha512-xa5TwBKtYhOC+LFJxltFmWjexQCJzK7xdz0QcwrkVxIrAv78gdaYZKGxBHXeEb05O+S4xG9R4DUUO/enmjwD/g==
+
 "@eslint/eslintrc@^1.3.0":
   version "1.3.0"
   resolved "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-1.3.0.tgz"
@@ -203,6 +208,11 @@
   version "2.0.0"
   resolved "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
+
+"@stripe/stripe-js@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-3.2.0.tgz"
+  integrity sha512-dNu+FLX0UrxM0RVgr4YVc5dJdmC6Wx5Grgi53E28K+n+/aIqVrWkonKtAEPcdkabQz6i/1IpNd93s+UUVSOkcg==
 
 "@swc/helpers@0.4.2":
   version "0.4.2"
@@ -2143,6 +2153,11 @@ react-star-ratings@^2.3.0:
     classnames "^2.2.1"
     prop-types "^15.6.0"
     react "^16.1.0"
+
+react-stripe-checkout@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.npmjs.org/react-stripe-checkout/-/react-stripe-checkout-2.6.3.tgz"
+  integrity sha512-lnsCaAdlmwPGGMbQoI8FXtQUgEm+ktzPZ/ipAw4j0HYf80kef7CivGx6QitmgEn99/aa5hI/dmVXwfVZW/Mzfg==
 
 react-transition-group@^4.4.2:
   version "4.4.2"

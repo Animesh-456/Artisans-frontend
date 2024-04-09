@@ -10,8 +10,10 @@
 		"prod": "npm run build && pm2 reload WEB-APP"
 	},
 	"dependencies": {
+		"@cashfreepayments/cashfree-js": "^1.0.4",
 		"@paypal/paypal-js": "^5.1.1",
 		"@paypal/react-paypal-js": "^7.8.1",
+		"@stripe/stripe-js": "^3.2.0",
 		"axios": "^0.27.2",
 		"bootstrap": "^5.2.0",
 		"joi": "^17.6.0",
@@ -32,6 +34,7 @@
 		"react-pdf": "^7.1.1",
 		"react-router-dom": "^6.14.1",
 		"react-star-ratings": "^2.3.0",
+		"react-stripe-checkout": "^2.6.3",
 		"sass": "^1.53.0",
 		"swipe": "^1.7.7",
 		"swiper": "^8.3.2"

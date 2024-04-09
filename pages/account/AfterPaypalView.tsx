@@ -11,7 +11,7 @@ import { BsCheckCircleFill } from "react-icons/bs";
 import { Button } from "react-bootstrap";
 import { useRouter } from "next/router";
 import Router from "next/router";
-
+import toast from "react-hot-toast";
 type Props = {};
 
 
@@ -27,6 +27,7 @@ const RedirectProject = () => {
 
 
 const jobs = () => {
+
     const router = useRouter();
 
     const projectData = JSON.parse(localStorage.getItem('project_data'));

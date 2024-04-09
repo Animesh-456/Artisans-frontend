@@ -46,20 +46,19 @@ class Client {
 			"project/all-reviews",
 			"project/review-proj",
 
- 			"project/public-me",
-      			"project/public-profile-total-jobs",
-      			"project/public-user-reviews",
-      			"project/public-profile-api",
+			"project/public-me",
+			"project/public-profile-total-jobs",
+			"project/public-user-reviews",
+			"project/public-profile-api",
 			"project/offer-reviews-feedback",
-			 "project/project_finalise_image",
+			"project/project_finalise_image",
 			"project/get-additional-comment",
 			"project/page-details",
 			"project/project-detail-seo",
 			"project/public-profile-finalised-image",
 			"project/paypal-transaction-complete",
-			"project/create-order",
-
-
+			// "project/create-order",
+			"project/deposit-fund"
 		];
 
 		this.test = false;
@@ -139,7 +138,7 @@ class Client {
 	}
 
 
-	
+
 
 	async uploadFile(url, body, params) {
 		try {

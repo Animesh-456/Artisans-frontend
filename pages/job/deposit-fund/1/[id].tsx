@@ -6,6 +6,14 @@ import api from "../../../../src/api/services/api";
 import atom from "../../../../src/jotai/atom";
 import Router from "next/router";
 
+
+
+import { loadStripe } from '@stripe/stripe-js';
+
+import StripeCheckout from 'react-stripe-checkout';
+
+import toast from "react-hot-toast";
+import env from "../../../../src/config/api"
 import {
     CreateOrderActions,
     CreateOrderData,
@@ -18,10 +26,24 @@ import {
     PayPalScriptProvider,
     usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
+import { Button } from "react-bootstrap";
+
+
+import { load } from '@cashfreepayments/cashfree-js'
+
+
 
 type Props = {};
 
 const Paypalprovider = () => {
+
+
+
+
+
+
+
+
     const [{ isPending, options, isInitial, isRejected, isResolved }] =
         usePayPalScriptReducer();
 
@@ -31,6 +53,19 @@ const Paypalprovider = () => {
 };
 
 const DepositFund1 = (props: Props) => {
+
+    let cashfree;
+
+    let insitialzeSDK = async function () {
+
+        cashfree = await load({
+            mode: "sandbox",
+        })
+    }
+
+    insitialzeSDK()
+
+
     const router = useRouter();
 
     const [data, setData] = useAtom<ProjectDetails>(atom.project.api.detail);
@@ -39,7 +74,8 @@ const DepositFund1 = (props: Props) => {
 
     const elemref = useRef(null);
 
-    const [order_id, setOrderId] = useState(null);
+    const [orderId, setOrderId] = useState("")
+
 
     const [success, setSuccess] = useState(false);
 
@@ -59,274 +95,157 @@ const DepositFund1 = (props: Props) => {
         });
     }, [router.isReady]);
 
-    useEffect(() => {
-        if (!loaded) return;
-        // loadScript({
-        // 	"client-id":
-        // 		"AdttYSVnm8UEVFoLjLFNdUXxpAX8DOZxpXU4QvU50_1X6lTy0lvfO99-dG921aPbbIaVddVZtLs7dcbG",
-        // })
-        // 	.then((paypal) => {
-        // 		console.log(paypal);
 
-        // 		paypal
-        // 			.Buttons({
-        // 				createOrder: createOrder,
-        // 				onApprove: onApprove,
-        // 				onError: onError,
+    const getSessionId = async () => {
+        try {
+            let res = await api.wallet.create_order({ params: {}, body: { id: data?.id } });
 
-        // 				style: {
-        // 					layout: "vertical",
-        // 					color: "gold",
-        // 					shape: "rect",
-        // 					label: "paypal",
-        // 				},
 
-        // 				onClick: (data, actions) => {
-        // 					console.log(data, actions);
-        // 				},
-        // 			})
-        // 			.render("#paypal-button-container")
-        // 			.then((d) => {
-        // 				setInitiated(true);
-        // 				// var iframes: any =
-        // 				// 	document.getElementsByClassName("component-frame");
-        // 				// console.log(
-        // 				// 	"🚀 ~ file: [id].tsx ~ line 21 ~ useEffect ~ iframe",
-        // 				// 	iframes?.length,
-        // 				// );
-        // 				// if (iframes && iframes?.length) {
-        // 				// 	let iframe = iframes[0];
-        // 				// 	console.log(
-        // 				// 		"🚀 ~ file: [id].tsx ~ line 26 ~ Array.from ~ e",
-        // 				// 		iframe,
-        // 				// 	);
+            if (res.data.id && res.data.id.payment_session_id) {
 
-        // 				// 	// The second argument to postMessage() can be '*' to indicate no preference about the origin of the destination. A target origin should always be provided when possible, to avoid disclosing the data you send to any other site.
+                console.log(res.data.id)
+                setOrderId(res.data.id.order_id)
+                return res.data.id.payment_session_id
+            }
 
-        // 				// 	var elmnt =
-        // 				// 		iframe?.contentWindow?.document?.getElementsByClassName(
-        // 				// 			"paypal-button",
-        // 				// 		);
 
-        // 				// 	if (elmnt) {
-        // 				// 		console.log(elmnt);
-        // 				// 	}
-        // 				// }
-        // 			});
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-        // 		// start to use the PayPal JS SDK script
-        // 	})
-        // 	.catch((err) => {
-        // 		console.error("failed to load the PayPal JS SDK script", err);
-        // 	});
-    }, [loaded]);
 
-    const createOrder = async (dat: CreateOrderData, actions: CreateOrderActions) => {
+    const createOrder = async () => {
 
 
         try {
-            let d = await api.wallet.create_order({ params: {}, body: { id: data?.id } });
-         
-                return d?.data?.id;
-        } catch (err) {
-            return err;
+
+            let sessionId = await getSessionId()
+            let checkoutOptions = {
+                paymentSessionId: sessionId,
+                redirectTarget: "_modal",
+            }
+
+            cashfree.checkout(checkoutOptions).then(async (res) => {
+                console.log("payment initialized")
+                await verifyPayment(orderId)
+
+            })
+
+
+        } catch (error) {
+            console.log(error)
         }
-    };
-
-    const onApprove = async (_data: OnApproveData, actions: OnApproveActions) => {
-        // return actions.order.capture().then((details) => {
-        //     const { payer } = details;
-        //     try {
 
 
 
-
-
-
-
-
-
-        //         api.project.addpayment(
-        //             {
-        //                 body: {
-        //                     project_id: router?.query?.id,
-        //                     amount: details.purchase_units[0].amount.value,
-        //                 },
-        //             },
-        //             (d) => {
-
-        //                 let project = d?.data?.project;
-        //                 //			console.log("datas------",project)
-        //                 localStorage.setItem('ProjectData', JSON.stringify(project))
-        //                 localStorage.setItem('TableShow', '1')
-        //                 // console.log("data1---",JSON.parse(localStorage.getItem('ProjectData')))
-
-        //                 localStorage.setItem('items', (`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`));
-        //                 // router.replace(
-        //                 // 	`/machining/${project?.project_name?.split(" ").join("-")}-${
-        //                 // 		project?.id
-        //                 // 	}`,
-        //                 // );
-        //                 // window.location.href = 'http://35.179.7.135/account/AfterPaypalView'
-        //                 Router.replace(`/account/AfterPaypalView`)
-
-        //             },
-        //         );
-        //     } catch (error) {
-
-        //         console.log("err", error)
-
-        //     }
-        //     //window.location.href='account/AfterPaypalView';
-        //     // window.location.href = 'http://35.179.7.135/account/AfterPaypalView' 
-        //     Router.replace(`/account/AfterPaypalView`)
-        //     setSuccess(true);
-        // });
-    
-
-      
-
-		const dataToSend = {
-			key1: _data
-		};
-
-
-	const response = await api.wallet.paypal_transaction_complete({ params: {}, body: { key1: _data } },(d)=>{
-           
-             
-                try {
-                    api.project.addpayment(
-                        {
-                            body: {
-                                project_id: router?.query?.id,
-                                amount: d?.data?.result?.result?.purchase_units[0]?.payments?.captures[0].amount.value,
-                            },
-                        },
-                        (d) => {
-
-                            let project = d?.data?.project;
-                            localStorage.setItem('ProjectData', JSON.stringify(project))
-                            localStorage.setItem('TableShow', '1')
-
-                            localStorage.setItem('items', (`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`));
-
-                            Router.replace(`/account/AfterPaypalView`)
-
-                        },
-                    );
-                } catch (error) {
-
-                   
-
-                }
-            
-        })
-
-        return response
 
     };
 
-    const onError = () => {
-      
-    };
+
+
+
+    const verifyPayment = async (orderId) => {
+        try {
+
+            let result: any = await api.project.addpayment({ params: {}, body: { orderId: orderId } });
+            console.log("result after verification", result)
+            return
+
+            // if (result.data) {
+            //     toast.success("Verified")
+            // }
+        } catch (error) {
+            alert("error occured!")
+        }
+        toast.success("Verified")
+    }
+
+
+
+
 
     return (
         <>
-            <PayPalScriptProvider
-                options={{
-                    "client-id":
-                         "AT_5r1CUj-A5aDvr-MjLuZNTfIdxJYdCuQlpF8GVq9HRvL-IjEjQMAm1ITlFZjdhBKOXt8eDdo2zTitG",
-                         currency:"GBP"
-                }}>
-                <div
-                    className='banner_wp sign_banner'
-                    style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='banner_text inner_banner_text'>
-                                <h1 className='yh'>Project Description</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div className='container cjw'>
+            <div
+                className='banner_wp sign_banner'
+                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+                <div className='container'>
                     <div className='row'>
-                        <div className='col-sm-8 offset-md-2'>
-                            <div className='fund_d1'>
-                                <h5>
-                                    The funds will be transferred to your machinist only after you
-                                    have received your custom parts and approved the quality of
-                                    the work
-                                </h5>
-                                <div className='table-responsive'>
-                                    <table className='table table-bordered table-sm'>
-                                        <thead>
-                                            <tr className='table-primary'>
-                                                <td>Machinist</td>
-                                                <td>Project Name</td>
-                                                <td>Shipping Date</td>
-                                                <td>Client</td>
-                                                <td>Price</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{data?.programmer?.user_name}</td>
-                                                <td>{data?.project_name}</td>
-                                                <td>
-                                                    {
-                                                        data?.bids?.find(
-                                                            (f) => f?.user_id == data?.programmer_id,
-                                                        )?.bid_days
-                                                    }{" "}
-                                                    Days
-                                                </td>
-                                                <td>{data?.creator?.user_name}</td>
-                                                <td>
-                                                    £
-                                                    {
-                                                        data?.bids?.find(
-                                                            (f) => f?.user_id == data?.programmer_id,
-                                                        )?.bid_amount_gbp
-                                                    }
-                                                    (Shipping fee included)
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <br />
-                                <div id='paypal-button-container' ref={elemref}>
-                                    <PayPalButtons
-                                        createOrder={createOrder}
-                                        style={{
-                                            layout: "vertical",
-                                            color: "gold",
-                                            shape: "rect",
-                                            label: "paypal",
-                                        }}
-                                        onApprove={onApprove}
-                                        onInit={() => {
-                                            setInitiated(true);
-                                        }}
-                                    />
-                                </div>
-                                <h5>
+                        <div className='banner_text inner_banner_text'>
+                            <h1 className='yh'>Project Description</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                </h5>
-                                <div className='progress'>
-                                    <div
-                                        className='progress-bar bg-success progress-bar-striped progress-bar-animated'
-                                        style={{ width: "100%" }}
-                                    />
-                                </div>
+            <div className='container cjw'>
+                <div className='row'>
+                    <div className='col-sm-8 offset-md-2'>
+                        <div className='fund_d1'>
+                            <h5>
+                                The funds will be transferred to your machinist only after you
+                                have received your custom parts and approved the quality of
+                                the work
+                            </h5>
+                            <div className='table-responsive'>
+                                <table className='table table-bordered table-sm'>
+                                    <thead>
+                                        <tr className='table-primary'>
+                                            <td>Machinist</td>
+                                            <td>Project Name</td>
+                                            <td>Shipping Date</td>
+                                            <td>Client</td>
+                                            <td>Price</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{data?.programmer?.user_name}</td>
+                                            <td>{data?.project_name}</td>
+                                            <td>
+                                                {
+                                                    data?.bids?.find(
+                                                        (f) => f?.user_id == data?.programmer_id,
+                                                    )?.bid_days
+                                                }{" "}
+                                                Days
+                                            </td>
+                                            <td>{data?.creator?.user_name}</td>
+                                            <td>
+                                                £
+                                                {
+                                                    data?.bids?.find(
+                                                        (f) => f?.user_id == data?.programmer_id,
+                                                    )?.bid_amount_gbp
+                                                }
+                                                (Shipping fee included)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <div id='paypal-button-container' ref={elemref}>
+
+                                <Button onClick={createOrder}>Create Order</Button>
+                            </div>
+                            <h5>
+
+                            </h5>
+                            <div className='progress'>
+                                <div
+                                    className='progress-bar bg-success progress-bar-striped progress-bar-animated'
+                                    style={{ width: "100%" }}
+                                />
                             </div>
                         </div>
                     </div>
-                    <Paypalprovider />
                 </div>
-            </PayPalScriptProvider>
+
+            </div>
+
         </>
     );
 };
