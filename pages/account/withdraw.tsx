@@ -154,9 +154,9 @@ const Withdraw = (props: Props) => {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>GBP £ {currBalance || balanceData?.amount_gbp}</td>
+                                                <td>GBP ₹ {currBalance || balanceData?.amount_gbp}</td>
                                                 <td>
-                                                    GBP £{" "}
+                                                    GBP ₹{" "}
                                                     <input onChange={onChange}
                                                         name='total'
                                                         size={15}
@@ -165,7 +165,7 @@ const Withdraw = (props: Props) => {
                                                         className='in-s'
                                                     />
                                                 </td>
-                                                <td>GBP £ {remain}</td>
+                                                <td>GBP ₹ {remain}</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -17,7 +17,7 @@ const answer = {
 };
 const add_payment = {
 	project_id: Joi.string().required(),
-	amount: Joi.number().required(),
+	order_id: Joi.required(),
 };
 
 const get_temp = {

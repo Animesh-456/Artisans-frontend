@@ -104,8 +104,9 @@ const DepositFund1 = (props: Props) => {
             if (res.data.id && res.data.id.payment_session_id) {
 
                 console.log(res.data.id)
-                setOrderId(res.data.id.order_id)
-                return res.data.id.payment_session_id
+                await setOrderId(res.data.id.order_id)
+
+                return { sessionId: res.data.id.payment_session_id, orderId: res.data.id.order_id }
             }
 
 
@@ -122,13 +123,13 @@ const DepositFund1 = (props: Props) => {
 
             let sessionId = await getSessionId()
             let checkoutOptions = {
-                paymentSessionId: sessionId,
+                paymentSessionId: sessionId.sessionId,
                 redirectTarget: "_modal",
             }
 
             cashfree.checkout(checkoutOptions).then(async (res) => {
-                console.log("payment initialized")
-                await verifyPayment(orderId)
+                console.log("payment initialized", res)
+                await verifyPayment(sessionId.orderId)
 
             })
 
@@ -136,9 +137,6 @@ const DepositFund1 = (props: Props) => {
         } catch (error) {
             console.log(error)
         }
-
-
-
 
     };
 
@@ -148,18 +146,28 @@ const DepositFund1 = (props: Props) => {
     const verifyPayment = async (orderId) => {
         try {
 
-            let result: any = await api.project.addpayment({ params: {}, body: { orderId: orderId } });
-            console.log("result after verification", result)
-            return
+            // let result: any = await api.project.addpayment({ params: {}, body: { project_id: router.query?.id, order_id: orderId } });
+            // console.log("result after verification", result)
+            // return
+            await api.project.afterCashfree({ params: {}, body: { project_id: router.query.id, order_id: orderId } }, (d) => {
+                let project = d?.data?.project;
+                localStorage.setItem('ProjectData', JSON.stringify(project))
+                localStorage.setItem('TableShow', '1')
 
-            // if (result.data) {
-            //     toast.success("Verified")
-            // }
+                localStorage.setItem('items', (`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`));
+
+                Router.replace(`/account/AfterPaypalView`)
+            })
+
         } catch (error) {
             alert("error occured!")
         }
         toast.success("Verified")
     }
+
+
+
+
 
 
 
@@ -214,7 +222,7 @@ const DepositFund1 = (props: Props) => {
                                             </td>
                                             <td>{data?.creator?.user_name}</td>
                                             <td>
-                                                £
+                                                ₹
                                                 {
                                                     data?.bids?.find(
                                                         (f) => f?.user_id == data?.programmer_id,

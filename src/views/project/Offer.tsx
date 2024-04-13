@@ -623,11 +623,11 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 									<div className="tva_desc">
 										<p>{bid?.user?.pro_vat == 0 ? "Self-employed manufacturer, not subject to VAT" : ""}</p>
 									</div>
-									<h3>{bid?.bid_amount_gbp ? `£${bid?.bid_amount_gbp}TTC £${(bid?.bid_amount_gbp / Number(1 + (bid?.user?.pro_vat) / 100)).toFixed(2)}HT` : ""}</h3></>) : (<>
+									<h3>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}TTC ₹${(bid?.bid_amount_gbp / Number(1 + (bid?.user?.pro_vat) / 100)).toFixed(2)}HT` : ""}</h3></>) : (<>
 										{bid?.no_offer == 2 ? (
 											<p>Price Unspecified</p>
 										) : (
-											<><h6>{bid?.bid_amount_gbp ? `£${bid?.bid_amount_gbp}` : ""}</h6></>
+											<><h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6></>
 										)}
 									</>)}
 
@@ -641,7 +641,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 									) : (<></>))
 								) : (
 									(data?.programmer_id != null && bid?.user_id == data?.programmer_id ? (
-										<h6>{bid?.bid_amount_gbp ? `£${bid?.bid_amount_gbp}` : ""}</h6>
+										<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
 									) : (<><p>Hidden Price</p></>))
 								))
 							)}

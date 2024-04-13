@@ -270,7 +270,7 @@ const Invoices = (props: Props) => {
                                                                     <td>{item?.project?.fund_release_date}</td>
                                                                     <td>{item?.creator?.user_name}</td>
                                                                     <td style={{ textAlign: 'center' }}>{item?.project?.project_name}</td>
-                                                                    <td style={{ textAlign: 'center' }}>£{item?.amount_gbp?.toFixed(2)}</td>
+                                                                    <td style={{ textAlign: 'center' }}>₹{item?.amount_gbp?.toFixed(2)}</td>
                                                                     <td style={{ textAlign: 'center' }}>{(item?.amount_gbp - (item?.amount_gbp * ((100 - 14.9) / 100))).toFixed(2)}</td>
                                                                     <td>  <Button style={{ background: 'whitesmoke', color: 'black', borderRadius: '12px' }} onClick={() => { DownloadPDF(item?.id, item?.reciever?.user_name, item?.project?.project_name, item?.project?.fund_release_date, item?.amount_gbp, item?.reciever?.address1, item?.reciever?.city, item?.reciever?.zcode, item?.id) }} ><BsFillSdCardFill /> </Button></td>
                                                                 </tr>

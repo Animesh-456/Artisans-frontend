@@ -111,7 +111,7 @@ const DespositFund = (props: Props) => {
 							<div className='pr_details1'>
 								<div className='gr11'>Total price incuding tax:</div>
 								<div className='gr22'>
-									£
+									₹
 									{
 										data?.bids?.find((f) => f?.user_id == data?.programmer_id)
 											?.bid_amount_gbp

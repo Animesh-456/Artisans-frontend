@@ -54,7 +54,7 @@ const allNotification = () => {
         let textString = v.replace(/<[^>]+>/g, "");
         let NotifMessage = textString.replace(/\&nbsp;/g, ' ');
         let NotifMessage2 = NotifMessage.replace(/\&quot;/g, '');
-        let NotifMessage3 = NotifMessage2.replace(/\&pound;/g, '£');
+        let NotifMessage3 = NotifMessage2.replace(/\&pound;/g, '₹');
         let NotifMessage4 = NotifMessage3.replace(/\&#39;/g, '');
         let NotifMessage5 = NotifMessage4.replace(/\&eacute/g, 'é');
 

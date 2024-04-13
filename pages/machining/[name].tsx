@@ -1222,7 +1222,7 @@ const ProjectDetail = () => {
 
                             <div className='row css-kjus'>
                                 <div className='col-sm-6 gfcg'>
-                                    <label>Paid to Me : £</label>
+                                    <label>Paid to Me : ₹</label>
                                     <input
                                         name='txtPrice'
                                         type='text'
@@ -1233,7 +1233,7 @@ const ProjectDetail = () => {
                                 </div>
                                 <div className='col-sm-6 gfcg'>
                                     <label>
-                                        Price for client: £ <small>Includes artisans.studio fees</small>
+                                        Price for client: ₹ <small>Includes artisans.studio fees</small>
                                     </label>
                                     <input
                                         name='bidAmt'
@@ -1320,7 +1320,7 @@ const ProjectDetail = () => {
                             <>
                                 <p>
                                     Are you sure, you want to select the offer from{" "}
-                                    {selected_machinist?.user_name} for £
+                                    {selected_machinist?.user_name} for ₹
                                     {selected_machinist?.amount} ?
                                 </p>
                                 <p>This choice is final</p>

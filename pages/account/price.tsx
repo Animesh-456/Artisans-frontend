@@ -27,7 +27,7 @@ export const getStaticProps = async () => {
             throw new Error('Failed to fetch');
         }
         const data = await response.json();
-        
+
         return {
             props: {
                 prp: data // Assuming the fetched data structure matches what's expected
@@ -147,12 +147,12 @@ const Price = (prp) => {
     return (
 
         <>
-             <Head>
+            <Head>
                 <title>{`${prp?.prp?.data[5].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[5].page_desc}`} />
                 <meta name="robots" content="noindex" />
 
-<meta name="googlebot" content="noindex" />
+                <meta name="googlebot" content="noindex" />
 
             </Head>
             <div className="container cjw">
@@ -193,64 +193,65 @@ const Price = (prp) => {
 
                             const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-console.log("The file name this--->",l?.attachment_name?.includes);
-                            if(l?.attachment_name?.includes(",")){
+                            console.log("The file name this--->", l?.attachment_name?.includes);
+                            if (l?.attachment_name?.includes(",")) {
                                 console.log("wait here is the file", (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')))
                             }
                             return (
-                                <div className="machin_price_li">
-                                    <div className="machin_price_li_img">
-                                        {l?.attachment_name?.includes(",") ? (
+                                <>
+                                    <div className="machin_price_li">
+                                        <div className="machin_price_li_img">
+                                            {l?.attachment_name?.includes(",") ? (
 
-                                            l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ? (
-                                                <div className="pdf-container"><Document
-                                                    file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
-                                                    onLoadSuccess={onDocumentLoadSuccess}
-                                                >
-                                                    <Page pageNumber={1} width={200} />
-                                                </Document> </div>
-                                            ) :  l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("img") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("png") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("jpg") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("jpeg") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("svg")?
-                                            
-                                            (
+                                                l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).includes("pdf") ? (
+                                                    <div className="pdf-container"><Document
+                                                        file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
+                                                        onLoadSuccess={onDocumentLoadSuccess}
+                                                    >
+                                                        <Page pageNumber={1} width={200} />
+                                                    </Document> </div>
+                                                ) : l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("img") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("png") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("jpg") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("jpeg") || l?.attachment_name?.substring(0, l?.attachment_name?.indexOf(',')).toLowerCase().includes("svg") ?
 
-                                                < img
-                                                    src={common.get_attachment(
-                                                        (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-                                                    )}
-                                                />
+                                                    (
+
+                                                        < img
+                                                            src={common.get_attachment(
+                                                                (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                            )}
+                                                        />
+                                                    ) : (
+                                                        < img
+                                                            src="/img/404U.jpg"
+                                                        />
+                                                    )
+
                                             ) : (
-                                                < img
-                                                    src="/img/404U.jpg"
-                                                />
-                                            )
+                                                l?.attachment_name?.includes("pdf") ? (
+                                                    <div className="pdf-container"><Document
+                                                        file={common.get_attachment((l?.attachment_name), formattedDate)}
+                                                        onLoadSuccess={onDocumentLoadSuccess}
+                                                    >
+                                                        <Page pageNumber={1} width={200} />
+                                                    </Document> </div>
+                                                ) : l?.attachment_name?.includes("img") || l?.attachment_name?.includes("png") || l?.attachment_name?.includes("jpg") || l?.attachment_name?.includes("jpeg") || l?.attachment_name?.includes("svg") ?
 
-                                        ) : (
-                                            l?.attachment_name?.includes("pdf") ? (
-                                                <div className="pdf-container"><Document
-                                                    file={common.get_attachment((l?.attachment_name), formattedDate)}
-                                                    onLoadSuccess={onDocumentLoadSuccess}
-                                                >
-                                                    <Page pageNumber={1} width={200} />
-                                                </Document> </div>
-                                            ) :  l?.attachment_name?.includes("img") || l?.attachment_name?.includes("png") || l?.attachment_name?.includes("jpg") || l?.attachment_name?.includes("jpeg") || l?.attachment_name?.includes("svg")?
-                                            
-                                            (
-                                                < img
-                                                    src={common.get_attachment(
-                                                        (l?.attachment_name), formattedDate
-                                                    )}
-                                                />
-                                            ) :  (
-                                                < img
-                                                    src="/img/404U.jpg"
-                                                />
-                                            )
-                                        )}
-                                    </div><div className="machin_price_li_text">
-                                        <h4><a href={`/machining/${l?.project_name}-${l?.id}`}>{l?.project_name}</a></h4>
+                                                    (
+                                                        < img
+                                                            src={common.get_attachment(
+                                                                (l?.attachment_name), formattedDate
+                                                            )}
+                                                        />
+                                                    ) : (
+                                                        < img
+                                                            src="/img/404U.jpg"
+                                                        />
+                                                    )
+                                            )}
+                                        </div><div className="machin_price_li_text">
+                                            <h4><a href={`/machining/${l?.project_name}-${l?.id}`}>{l?.project_name}</a></h4>
 
-                                        <p><span>{l?.visibility} </span> | <span>Posted on :{l?.project_post_date}</span> </p>
-                                        {/* {desOpenView == true ? <>
+                                            <p><span>{l?.visibility} </span> | <span>Posted on :{l?.project_post_date}</span> </p>
+                                            {/* {desOpenView == true ? <>
                                             <p>{l?.description}</p></>
                                             :
                                             (
@@ -258,96 +259,97 @@ console.log("The file name this--->",l?.attachment_name?.includes);
                                                     <p><span>{(l?.description).slice(0, (l?.description).length / 2)}</span><span id="dots">...</span>-</p></>
                                             )
                                         } */}
-                                        <div>
+                                            <div>
 
-                                            {l?.description.length > 50 ? (
-                                                <div>
+                                                {l?.description.length > 50 ? (
+                                                    <div>
 
-                                                    <>
+                                                        <>
 
-                                                        {expandedRows.includes(index) ? (
+                                                            {expandedRows.includes(index) ? (
 
-                                                            <></>
+                                                                <></>
 
-                                                        ) : (
-                                                            <p>{l?.description.slice(0, 50).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
-                                                        )}
+                                                            ) : (
+                                                                <p>{l?.description.slice(0, 50).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
+                                                            )}
 
-                                                    </>
+                                                        </>
 
-                                                </div>
-                                            ) : (<p>{l?.description}</p>)}
-                                            {expandedRows.includes(index) && (
+                                                    </div>
+                                                ) : (<p>{l?.description}</p>)}
+                                                {expandedRows.includes(index) && (
 
-                                                <p>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
+                                                    <p>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
 
-                                            )}
+                                                )}
 
-                                        </div>
+                                            </div>
 
-                                        <div className="username">
+                                            <div className="username">
 
-                                            <a href={`/account/public-profile/${l?.creator_id}`} className="listing_creator_name">{l?.creator.user_name}</a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="has already made a purchase!"><span className="alpha-ico">A</span></a>
-                                        </div>
-                                    </div><div className="machin_price_li_text1">
-                                        <p>Purchased for</p>
-                                        <div className="project_amount">
-                                            <a href="#">{l?.transactions[0].amount_gbp.toFixed(2)}&nbsp;<span>£</span></a>
-                                            <div className="amount_details1">(inc VAT)</div>
-                                        </div>
-                                    </div><div className="machin_price_li_text2">
-                                        <p>Rating received </p>
-                                        <div className="ratings-sml">
-                                            <div
-                                                className="stars"
-                                                style={{ '--rating': l?.reviews[0].rating } as CSSProperties}
-                                            ><span>{l?.reviews[0].rating}</span></div>
-
-                                        </div>
-                                        <div className="rating-color">
-                                            <p>
-
+                                                <a href={`/account/public-profile/${l?.creator_id}`} className="listing_creator_name">{l?.creator.user_name}</a>
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="has already made a purchase!"><span className="alpha-ico">A</span></a>
+                                            </div>
+                                        </div><div className="machin_price_li_text1">
+                                            <p>Purchased for</p>
+                                            <div className="project_amount">
+                                                <a href="#">{l?.transactions[0].amount_gbp.toFixed(2)}&nbsp;<span>₹</span></a>
+                                                <div className="amount_details1">(inc VAT)</div>
+                                            </div>
+                                        </div><div className="machin_price_li_text2">
+                                            <p>Rating received </p>
+                                            <div className="ratings-sml">
                                                 <div
-                                                    className="quality"
-                                                    style={{ '--rating': l?.reviews[0].provider_rate1 } as CSSProperties}
-                                                ></div>
-                                                <span> Quality </span>
-                                            </p>
+                                                    className="stars"
+                                                    style={{ '--rating': l?.reviews[0].rating } as CSSProperties}
+                                                ><span>{l?.reviews[0].rating}</span></div>
 
-                                            <p>
+                                            </div>
+                                            <div className="rating-color">
+                                                <p>
 
-                                                <div
-                                                    className="time"
-                                                    style={{ '--rating': l?.reviews[0].provider_rate2 } as CSSProperties}
-                                                ></div>
-                                                <span> Time </span>
-                                            </p>
+                                                    <div
+                                                        className="quality"
+                                                        style={{ '--rating': l?.reviews[0].provider_rate1 } as CSSProperties}
+                                                    ></div>
+                                                    <span> Quality </span>
+                                                </p>
 
-                                            <p>
+                                                <p>
 
-                                                <div
-                                                    className="communication"
-                                                    style={{ '--rating': l?.reviews[0].provider_rate3 } as CSSProperties}
-                                                ></div>
-                                                <span> Communication</span>
+                                                    <div
+                                                        className="time"
+                                                        style={{ '--rating': l?.reviews[0].provider_rate2 } as CSSProperties}
+                                                    ></div>
+                                                    <span> Time </span>
+                                                </p>
 
-                                            </p>
+                                                <p>
 
-                                            <p>
+                                                    <div
+                                                        className="communication"
+                                                        style={{ '--rating': l?.reviews[0].provider_rate3 } as CSSProperties}
+                                                    ></div>
+                                                    <span> Communication</span>
 
-                                                <div
-                                                    className="professionalism"
-                                                    style={{ '--rating': l?.reviews[0].provider_rate4 } as CSSProperties}
-                                                ></div>
-                                                <span> Professionalism</span>
-                                            </p>
+                                                </p>
+
+                                                <p>
+
+                                                    <div
+                                                        className="professionalism"
+                                                        style={{ '--rating': l?.reviews[0].provider_rate4 } as CSSProperties}
+                                                    ></div>
+                                                    <span> Professionalism</span>
+                                                </p>
+                                            </div>
+
+
                                         </div>
-
 
                                     </div>
-
-                                </div>
+                                </>
                             );
 
                         })

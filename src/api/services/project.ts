@@ -64,39 +64,39 @@ export default {
       .catch((err) => console.log(err));
   },
 
-Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
-	//	toast.loading();
-	//	let data = Validate([], schema.project.invoice_list, body);
+  Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+    //	toast.loading();
+    //	let data = Validate([], schema.project.invoice_list, body);
 
-		// console.log("data+",data)
-		// if (!data) {
-		// 	return;
-		// }
+    // console.log("data+",data)
+    // if (!data) {
+    // 	return;
+    // }
 
-		api
-			.get("project/invoice-list", params)
-			.then((d) => {
+    api
+      .get("project/invoice-list", params)
+      .then((d) => {
 
-				localStorage.setItem('Invoice_List',JSON.stringify(d.data))
-				writeAtom(atom.project.api.invoices, d.data);
+        localStorage.setItem('Invoice_List', JSON.stringify(d.data))
+        writeAtom(atom.project.api.invoices, d.data);
 
-				let opt = readAtom(atom.project.api.list_opt);
-            			writeAtom(atom.project.api.list_opt, {
-            			...opt,
-           			 page: d.meta.current_page,
-            			total_pages: d.meta.total_pages,
-            			total_count: d.meta.total_count,
-          			});
-				//if (d.status) {
-				//	toast.success(d.message);
-				//	Router.push("/account/jobs");
-					return cb(d);
-				// } else {
-				// 	toast.error(d.message);
-				// }
-			})
-			.catch((err) => console.log(err));
-	},
+        let opt = readAtom(atom.project.api.list_opt);
+        writeAtom(atom.project.api.list_opt, {
+          ...opt,
+          page: d.meta.current_page,
+          total_pages: d.meta.total_pages,
+          total_count: d.meta.total_count,
+        });
+        //if (d.status) {
+        //	toast.success(d.message);
+        //	Router.push("/account/jobs");
+        return cb(d);
+        // } else {
+        // 	toast.error(d.message);
+        // }
+      })
+      .catch((err) => console.log(err));
+  },
 
 
 
@@ -269,7 +269,7 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
 
 
 
-	let opt = readAtom(atom.project.api.list_opt);
+          let opt = readAtom(atom.project.api.list_opt);
           writeAtom(atom.project.api.list_opt, {
             ...opt,
             page: d.meta.current_page,
@@ -443,8 +443,8 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
           }
 
           writeAtom(atom.project.api.detail, d.data);
- 	  writeAtom(atom.storage.project_id, d.data.id);
-	  writeAtom(atom.storage.project_data, d.data);
+          writeAtom(atom.storage.project_id, d.data.id);
+          writeAtom(atom.storage.project_data, d.data);
           // callback
           return cb(d);
         } else {
@@ -533,16 +533,8 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
       .catch((err) => console.log(err));
   },
   addpayment: ({ params, body }: PostParams, cb?: GetResponse) => {
-   
-    // let data = Validate([], schema.project.add_payment, body);
-
-    // if (!data) {
-    //   return;
-    // }
-    // console.log("from frontend--", data);
-
     api
-      .post("project/deposit-fund", body, params)
+      .post("project/add-answer", body, params)
       .then((d) => {
         if (d.status) {
           toast.success(d.message);
@@ -552,23 +544,7 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
         }
       })
       .catch((err) => console.log(err));
-    // const BaseURL = "http://localhost:4000/";
 
-    // const requestOptions = {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(body),
-    // };
-    // fetch(`${BaseURL}project/deposit-fund`, requestOptions)
-    //   .then((response) => response.json())
-    //   .then((d) => {
-    //     if (d.status) {
-    //       toast.success(d.message);
-    //       return cb(d);
-    //     } else {
-    //       toast.error(d.message);
-    //     }
-    //   });
   },
 
   reviews_list: ({ params }, cb?: GetResponse) => {
@@ -577,7 +553,7 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
       .then((d) => {
         if (d.status) {
           // api data
-          localStorage.setItem('Reviews_List',JSON.stringify(d.data))
+          localStorage.setItem('Reviews_List', JSON.stringify(d.data))
           writeAtom(atom.project.api.reviews, d.data);
 
           // callback
@@ -587,135 +563,135 @@ Invoice_list: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
         }
       })
       .catch((err) => console.log(err));
-      
-    },
 
-Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
-	//	toast.loading();
-	//	let data = Validate([], schema.project.invoice_list, body);
+  },
 
-		// console.log("data+",data)
-		// if (!data) {
-		// 	return;
-		// }
+  Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+    //	toast.loading();
+    //	let data = Validate([], schema.project.invoice_list, body);
 
-		api
-			.get("project/customer_review", params)
-			.then((d) => {
+    // console.log("data+",data)
+    // if (!data) {
+    // 	return;
+    // }
 
-				localStorage.setItem('Customer_Review_List',JSON.stringify(d.data))
+    api
+      .get("project/customer_review", params)
+      .then((d) => {
 
-				//if (d.status) {
-				//	toast.success(d.message);
-				//	Router.push("/account/jobs");
-					return cb(d);
-				// } else {
-				// 	toast.error(d.message);
-				// }
-			})
-			.catch((err) => console.log(err));
-	},
+        localStorage.setItem('Customer_Review_List', JSON.stringify(d.data))
 
- my_projects: ({ params }, cb?: GetResponse) => {
-      api
-        .get("project/my-projects", params)
-        .then((d) => {
-          if (d.status) {
-            // api data
-            writeAtom(atom.project.api.my_project, d.data);
-  
-            // api pagination opt
-            let opt = readAtom(atom.project.api.my_proj_opt);
-            writeAtom(atom.project.api.my_proj_opt, {
-              ...opt,
-              page: d.meta.current_page,
-              total_pages: d.meta.total_pages,
-              total_count: d.meta.total_count,
-            });
-  
-            // callback
-            return cb(d);
-          } else {
-            return toast.error(d.message);
-          }
-        })
-        .catch((err) => console.log(err));
-    },
+        //if (d.status) {
+        //	toast.success(d.message);
+        //	Router.push("/account/jobs");
+        return cb(d);
+        // } else {
+        // 	toast.error(d.message);
+        // }
+      })
+      .catch((err) => console.log(err));
+  },
 
-    review_projects : ({params}, cb?: GetResponse) => {
+  my_projects: ({ params }, cb?: GetResponse) => {
+    api
+      .get("project/my-projects", params)
+      .then((d) => {
+        if (d.status) {
+          // api data
+          writeAtom(atom.project.api.my_project, d.data);
 
-      api
-        .get("project/review-proj", params)
-        .then((d) => {
+          // api pagination opt
+          let opt = readAtom(atom.project.api.my_proj_opt);
+          writeAtom(atom.project.api.my_proj_opt, {
+            ...opt,
+            page: d.meta.current_page,
+            total_pages: d.meta.total_pages,
+            total_count: d.meta.total_count,
+          });
 
-         console.log("recevied data ---->", d.data);
-          
-          if (d.status) {
-            // api data
-            writeAtom(atom.project.api.reviewed_projects, d.data);
-  
-            // api pagination opt
-            let opt = readAtom(atom.project.api.rev_proj_opt);
-            writeAtom(atom.project.api.rev_proj_opt, {
-              ...opt,
-              page: d.meta.current_page,
-              total_pages: d.meta.total_pages,
-              total_count: d.meta.total_count,
-            });
-  
-            // callback
-            return cb(d);
-          } else {
-            return toast.error(d.message);
-          }
-        })
-        .catch((err) => console.log(err));
+          // callback
+          return cb(d);
+        } else {
+          return toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
 
-    },
+  review_projects: ({ params }, cb?: GetResponse) => {
 
-    image_list: ({ params }, cb?: GetResponse) => {
-      api
-        .get("project/image-list", params)
-        .then((d) => {
-          if (d.status) {
-            // // api data
-            // writeAtom(atom.project.api.list, d.data);
-  
-            // // api pagination opt
-            // let opt = readAtom(atom.project.api.list_opt);
-            // writeAtom(atom.project.api.list_opt, {
-            //   ...opt,
-            //   page: d.meta.current_page,
-            //   total_pages: d.meta.total_pages,
-            //   total_count: d.meta.total_count,
-            // });
-  
-            writeAtom(atom.project.api.all_list, d.data)
-  
-            // callback
-            return cb(d);
-          } else {
-            return toast.error(d.message);
-          }
-        })
-        .catch((err) => console.log(err));
-    },
+    api
+      .get("project/review-proj", params)
+      .then((d) => {
 
-   allreviews: ({ params }, cb?: GetResponse) => {
+        console.log("recevied data ---->", d.data);
+
+        if (d.status) {
+          // api data
+          writeAtom(atom.project.api.reviewed_projects, d.data);
+
+          // api pagination opt
+          let opt = readAtom(atom.project.api.rev_proj_opt);
+          writeAtom(atom.project.api.rev_proj_opt, {
+            ...opt,
+            page: d.meta.current_page,
+            total_pages: d.meta.total_pages,
+            total_count: d.meta.total_count,
+          });
+
+          // callback
+          return cb(d);
+        } else {
+          return toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+
+  },
+
+  image_list: ({ params }, cb?: GetResponse) => {
+    api
+      .get("project/image-list", params)
+      .then((d) => {
+        if (d.status) {
+          // // api data
+          // writeAtom(atom.project.api.list, d.data);
+
+          // // api pagination opt
+          // let opt = readAtom(atom.project.api.list_opt);
+          // writeAtom(atom.project.api.list_opt, {
+          //   ...opt,
+          //   page: d.meta.current_page,
+          //   total_pages: d.meta.total_pages,
+          //   total_count: d.meta.total_count,
+          // });
+
+          writeAtom(atom.project.api.all_list, d.data)
+
+          // callback
+          return cb(d);
+        } else {
+          return toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
+  allreviews: ({ params }, cb?: GetResponse) => {
 
     console.log("Before get reviews:- ")
     api.get("project/all-reviews", params).then((d) => {
       if (d.status) {
         console.log("Reviews :-", d.data)
         writeAtom(atom.project.api.allreviews, d.data)
-	let opt = readAtom(atom.project.api.list_opt);
-          writeAtom(atom.project.api.list_opt, {
-            ...opt,
-            page: d.meta.current_page,
-            total_pages: d.meta.total_pages,
-            total_count: d.meta.total_count,
-          });
-	
+        let opt = readAtom(atom.project.api.list_opt);
+        writeAtom(atom.project.api.list_opt, {
+          ...opt,
+          page: d.meta.current_page,
+          total_pages: d.meta.total_pages,
+          total_count: d.meta.total_count,
+        });
+
         // callback
         return cb(d);
       } else {
@@ -725,7 +701,7 @@ Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
       .catch((err) => console.log(err));
   },
 
- all_lists: ({ params }, cb?: GetResponse) => {
+  all_lists: ({ params }, cb?: GetResponse) => {
     api
       .get("project/all-lists", params)
       .then((d) => {
@@ -754,7 +730,7 @@ Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
   },
 
 
- project_gallery: ({ params }, cb?: GetResponse) => {
+  project_gallery: ({ params }, cb?: GetResponse) => {
     api
       .get("project/project-gallery", params)
       .then((d) => {
@@ -774,7 +750,7 @@ Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
           writeAtom(atom.project.api.project_gallery, d.data)
 
 
-	let opt = readAtom(atom.project.api.gallery_opt);
+          let opt = readAtom(atom.project.api.gallery_opt);
           writeAtom(atom.project.api.gallery_opt, {
             ...opt,
             page: d.meta.current_page,
@@ -794,7 +770,7 @@ Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
 
 
 
- update_release_payment: ({ body, params }: UploadParams, cb?: GetResponse) => {
+  update_release_payment: ({ body, params }: UploadParams, cb?: GetResponse) => {
     api.post("project/update_release_payment", body, params).then((d) => {
       if (d.status) {
         console.log("Response for:-", d.data)
@@ -805,18 +781,18 @@ Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
     })
   },
 
- notifs: ({ params }: GetParams, cb?:GetResponse) => {
-    api.get("project/notifs", params).then((d) =>{
+  notifs: ({ params }: GetParams, cb?: GetResponse) => {
+    api.get("project/notifs", params).then((d) => {
       if (d.status) {
         console.log("Notifs:-", d.data)
         writeAtom(atom.project.api.notifs, d.data)
-	let opt = readAtom(atom.project.api.my_proj_opt);
-            writeAtom(atom.project.api.my_proj_opt, {
-              ...opt,
-              page: d.meta.current_page,
-              total_pages: d.meta.total_pages,
-              total_count: d.meta.total_count,
-            });
+        let opt = readAtom(atom.project.api.my_proj_opt);
+        writeAtom(atom.project.api.my_proj_opt, {
+          ...opt,
+          page: d.meta.current_page,
+          total_pages: d.meta.total_pages,
+          total_count: d.meta.total_count,
+        });
         // callback
         return cb(d);
       } else {
@@ -827,7 +803,7 @@ Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
 
   },
 
- machinist_confirmation_message: ({ body, params }: UploadParams, cb?: GetResponse) => {
+  machinist_confirmation_message: ({ body, params }: UploadParams, cb?: GetResponse) => {
     api.post("project/machinist_confirmation_message", body, params).then((d) => {
       if (d.status) {
         console.log("Response for:-", d.data)
@@ -839,15 +815,15 @@ Customer_Review: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
     })
   },
 
-shipping_message_send: ({ body, file, params }: UploadParams, cb?: GetResponse) => {
+  shipping_message_send: ({ body, file, params }: UploadParams, cb?: GetResponse) => {
 
     toast.loading();
-	
-   console.log("before api")
+
+    console.log("before api")
     api
       .uploadFile("project/shipping_message_send", file, params)
       .then((d) => {
-	console.log("after shipping api posts",d);
+        console.log("after shipping api posts", d);
         if (d.status) {
           toast.success(d.message);
           //Router.push("/account/jobs");
@@ -859,7 +835,7 @@ shipping_message_send: ({ body, file, params }: UploadParams, cb?: GetResponse) 
       .catch((err) => console.log(err));
   },
 
-steps_completed_supplier: ({ params }, cb?: GetResponse) => {
+  steps_completed_supplier: ({ params }, cb?: GetResponse) => {
     api
       .get("project/steps_completed_supplier", params)
       .then((d) => {
@@ -875,7 +851,7 @@ steps_completed_supplier: ({ params }, cb?: GetResponse) => {
 
   },
 
-request_release_funds: ({ body, params }, cb?: GetResponse) => {
+  request_release_funds: ({ body, params }, cb?: GetResponse) => {
     api
       .post("project/request_release_funds", body, params)
       .then((d) => {
@@ -890,21 +866,21 @@ request_release_funds: ({ body, params }, cb?: GetResponse) => {
 
   },
 
-project_review: ({params}, cb?:GetResponse)=>{
-      api.get("project/project-review", params).then((d) =>{
-        if (d.status) {
-          writeAtom(atom.project.api.project_review, d.data)
-          // callback
-          return cb(d);
-        } else {
-          return toast.error(d.message);
-        }
-      })
-        .catch((err) => console.log(err));
+  project_review: ({ params }, cb?: GetResponse) => {
+    api.get("project/project-review", params).then((d) => {
+      if (d.status) {
+        writeAtom(atom.project.api.project_review, d.data)
+        // callback
+        return cb(d);
+      } else {
+        return toast.error(d.message);
+      }
+    })
+      .catch((err) => console.log(err));
 
-    },
+  },
 
-update_read_my_msgs: ({ body, params }: UploadParams, cb?: GetResponse) => {
+  update_read_my_msgs: ({ body, params }: UploadParams, cb?: GetResponse) => {
     api.post("project/update_read_my_msg", body, params).then((d) => {
       if (d.status) {
         console.log("Response for:-", d.data)
@@ -917,7 +893,7 @@ update_read_my_msgs: ({ body, params }: UploadParams, cb?: GetResponse) => {
 
 
 
- inbox_count: ({ params }: GetParams, cb?: GetResponse) => {
+  inbox_count: ({ params }: GetParams, cb?: GetResponse) => {
     api
       .get("project/inbox-count", params)
       .then((d) => {
@@ -957,7 +933,7 @@ update_read_my_msgs: ({ body, params }: UploadParams, cb?: GetResponse) => {
     })
   },
 
- customer_releasepayment_checkbox: ({ params }, cb?: GetResponse) => {
+  customer_releasepayment_checkbox: ({ params }, cb?: GetResponse) => {
     api
       .get("project/customer_releasepayment_checkbox", params)
       .then((d) => {
@@ -980,7 +956,7 @@ update_read_my_msgs: ({ body, params }: UploadParams, cb?: GetResponse) => {
 
 
 
-public_me: ({ params }: GetParams, cb?: GetResponse) => {
+  public_me: ({ params }: GetParams, cb?: GetResponse) => {
     api
       .get("project/public-me", params)
       .then((d) => {
@@ -1044,7 +1020,7 @@ public_me: ({ params }: GetParams, cb?: GetResponse) => {
 
 
 
-offer_reviews_feedback: ({ params }, cb?: GetResponse) => {
+  offer_reviews_feedback: ({ params }, cb?: GetResponse) => {
     api
       .get("project/offer-reviews-feedback", params)
       .then((d) => {
@@ -1061,12 +1037,12 @@ offer_reviews_feedback: ({ params }, cb?: GetResponse) => {
 
   },
 
-project_finalise_image: ({ params }, cb?: GetResponse) => {
+  project_finalise_image: ({ params }, cb?: GetResponse) => {
     api
       .get("project/project_finalise_image", params)
       .then((d) => {
         if (d.status) {
-          
+
           writeAtom(atom.project.api.project_finalise_image, d.data);
 
           return cb(d);
@@ -1077,28 +1053,28 @@ project_finalise_image: ({ params }, cb?: GetResponse) => {
       .catch((err) => console.log(err));
   },
 
-save_pdf:({ params, body }: PostParams, cb?: GetResponse) => {
-      
-  
-      api
-        .post("project/save-invoice", body, params)
-        .then((d) => {
-          if (d.status) {
-            toast.success(d.message);
-            return cb(d);
-          } else {
-            toast.error(d.message);
-          }
-        })
-        .catch((err) => console.log(err));
-
-    },
+  save_pdf: ({ params, body }: PostParams, cb?: GetResponse) => {
 
 
+    api
+      .post("project/save-invoice", body, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+
+  },
 
 
 
- get_additional_comment: ({ params }, cb?: GetResponse) => {
+
+
+  get_additional_comment: ({ params }, cb?: GetResponse) => {
     api
       .get("project/get-additional-comment", params)
       .then((d) => {
@@ -1141,7 +1117,7 @@ save_pdf:({ params, body }: PostParams, cb?: GetResponse) => {
 
 
 
-delete_additional_file: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+  delete_additional_file: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
     toast.loading();
     //let data = Validate([], schema.project.add_desccomment, body);
 
@@ -1167,7 +1143,7 @@ delete_additional_file: ({ params, body, file }: UploadParams, cb?: GetResponse)
 
 
 
-delete_profile_picture: ({ params, body }: UploadParams, cb?: GetResponse) => {
+  delete_profile_picture: ({ params, body }: UploadParams, cb?: GetResponse) => {
     toast.loading();
     //let data = Validate([], schema.project.add_desccomment, body);
 
@@ -1210,7 +1186,7 @@ delete_profile_picture: ({ params, body }: UploadParams, cb?: GetResponse) => {
       .catch((err) => console.log(err));
   },
 
-    page_details: ({ params }, cb?: GetResponse) => {
+  page_details: ({ params }, cb?: GetResponse) => {
     api
       .get("project/page-details", params)
       .then((d) => {
@@ -1227,7 +1203,7 @@ delete_profile_picture: ({ params, body }: UploadParams, cb?: GetResponse) => {
 
   },
 
-    project_detail_seo: ({ params }, cb?: GetResponse) => {
+  project_detail_seo: ({ params }, cb?: GetResponse) => {
     api
       .get("project/project-detail-seo", params)
       .then((d) => {
@@ -1243,8 +1219,8 @@ delete_profile_picture: ({ params, body }: UploadParams, cb?: GetResponse) => {
       .catch((err) => console.log(err));
 
   },
-  
-   public_profile_finalised_image: ({ params }, cb?: GetResponse) => {
+
+  public_profile_finalised_image: ({ params }, cb?: GetResponse) => {
     api
       .get("project/public-profile-finalised-image", params)
       .then((d) => {
@@ -1260,5 +1236,43 @@ delete_profile_picture: ({ params, body }: UploadParams, cb?: GetResponse) => {
       .catch((err) => console.log(err));
 
   },
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  afterCashfree: ({ params, body }: PostParams, cb?: GetResponse) => {
+    api
+      .post("project/after-payment", body, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+
+  },
+
 };
