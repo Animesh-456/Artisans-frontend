@@ -31,7 +31,7 @@ const MachinistConfirmationMessage = () => {
         });
 
         setmsg(previousState => {
-            return { ...previousState, message: updtmsg.replace("@date@", new Date(e.target.value).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })) }
+            return { ...previousState, message: updtmsg.replace("@date@", new Date(e.target.value).toLocaleDateString('fr-FR', { day: "numeric", year: "numeric", month: "long" })) }
         });
 
 
@@ -39,7 +39,7 @@ const MachinistConfirmationMessage = () => {
 
     const updatemessage = (e) => {
         setmsg(previousState => {
-            return { ...previousState, message: e.target.value.replace("@date@", new Date(e.target.value).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })) }
+            return { ...previousState, message: e.target.value.replace("@date@", new Date(e.target.value).toLocaleDateString('fr-FR', { day: "numeric", year: "numeric", month: "long" })) }
         });
     }
 

@@ -26,14 +26,14 @@ a:hover {
   text-decoration: none;
 }
 
-// @font-face {
-//   font-family: 'brasika_display_-_trialRg';
-//   src: url('../font/brasika-display-trial-webfont.woff2') format('woff2'),
-//     url('../font/brasika-display-trial-webfont.woff') format('woff');
-//   font-weight: normal;
-//   font-style: normal;
+@font-face {
+  font-family: 'brasika_display_-_trialRg';
+  src: url('../public/font/brasika-display-trial-webfont.woff2') format('woff2'),
+    url('../public/font/brasika-display-trial-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-// }
 
 .top_bg {
   background-color: #212121;

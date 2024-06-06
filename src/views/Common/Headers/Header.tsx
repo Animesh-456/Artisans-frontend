@@ -251,7 +251,7 @@ export default function Header({ }: Props) {
 					<div className="row">
 						<div className="col-6 col-sm-3">
 							<div className="logo">
-								<img src={"/img/logo.png"} alt="" />
+								<Link href="/"><img style={{"cursor":"pointer"}} src={"/img/logo.png"} alt="" /></Link>
 							</div>
 						</div>
 						<div className="col-6 col-sm-9">
@@ -259,21 +259,13 @@ export default function Header({ }: Props) {
 								<nav>
 									<a href="javascript:void(0)" className="smobitrigger ion-navicon-round"><i className="fa fa-bars"></i></a>
 									<ul className="mobimenu">
-
-
-
-
-
-
-
-
 										<li><Link href="/">Home</Link></li>
 										<li><Link href="/about">About Us</Link></li>
 										<li><Link href="/post">Art Request</Link></li>
 										<li><Link href="/lising">Browse Project</Link></li>
 										<li><Link href="/">Contact Us</Link></li>
-										<li className="login"><a href="/auth/sign-in"><i className="fa fa-user-o"></i> Login</a></li>
-										<li className="signup"><a href="/auth/sign-in">Sign Up</a></li>
+										<li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>
+										<li className="signup"><a href={"/auth/sign-in"}>Sign Up</a></li>
 									</ul>
 								</nav>
 							</div>

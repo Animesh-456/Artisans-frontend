@@ -28,58 +28,50 @@ const Crou = () => {
 
 
             <Carousel responsive={responsive}>
-                <div>
-
-                    <img src="img/pic4.jpg" alt="" />
-                    <div className="we1">
-                        <p>Sandeep</p>
-                        <div>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                        </div>
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="img/pic5.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
                     </div>
                 </div>
-                <div>
-                    <img src="img/pic5.jpg" alt="" />
-                    <div className="we1">
-                        <p>Sandeep</p>
-                        <div>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                        </div>
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="img/pic6.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
                     </div>
                 </div>
-                <div>
-                    <img src="img/pic6.jpg" alt="" />
-                    <div className="we1">
-                        <p>Sandeep</p>
-                        <div>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                        </div>
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="img/pic7.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
                     </div>
                 </div>
 
-                <div>
-                    <img src="img/pic6.jpg" alt="" />
-                    <div className="we1">
-                        <p>Sandeep</p>
-                        <div>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                        </div>
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="img/pic8.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
+                    </div>
+                </div>
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="img/pic6.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
+                    </div>
+                </div>
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="img/pic7.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
                     </div>
                 </div>
             </Carousel>

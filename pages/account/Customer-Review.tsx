@@ -6,7 +6,7 @@ type Props = {};
 
 //let Reviews_data = []
 
-const Reviews = (props: Props) => {
+const reviews = (props: Props) => {
 
     const [Reviews_data, SetReviews_data] = useState([]);
 
@@ -16,12 +16,14 @@ const Reviews = (props: Props) => {
         const UserData = JSON.parse(localStorage.getItem('UserData'));
 
         api.project.reviews_list({ params: {} }, (d) => {
+            console.log("---->", d)
             //  Reviews_data = d.data;
+
         });
         // const d = fetch(`http://localhost:4000/project/customer_review`);
-       
+        console.log("udata--", UserData)
         api.project.Customer_Review({ params: { machinist_id: UserData.id } }, (d) => {
-            
+            console.log(d)
             SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
 
             //setLoaded(true);
@@ -60,42 +62,40 @@ const Reviews = (props: Props) => {
                 <div className='container'>
                     <div className='row'>
                         <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>Customer Review</h1>
+                            <h1 className='yh'>Evaluations</h1>
                         </div>
                     </div>
                 </div>
             </div>
             <div className='container cjw'>
                 <div className='row'>
-                    <div className="col-sm-4">
-                        <AccountSideBar />
-                    </div>
+                    <AccountSideBar />
 
                     <div className='col-sm-8'>
                         <div className='profile_box'>
-                            <h3>Reviews</h3>
+                            <h3>Evaluations</h3>
                             <div className='fund_wp'>
                                 <div className='table-responsive'>
                                     <table className='table table-bordered table-sm'>
                                         <thead>
                                             <tr className='table-primary'>
-                                                <td>Name of the project</td>
-                                                <td>Machanist Name</td>
-                                                <td>Ratings</td>
+                                                <td>Nom du projet</td>
+                                                <td>Client</td>
+                                                <td>Statut</td>
                                             </tr>
                                         </thead>
                                         <tbody id="Tbody">
 
                                             {Reviews_data &&
 
-                                                Reviews_data.map((item) => {
+                                                Reviews_data?.map((item) => {
 
                                                     return (
                                                         <>
                                                             <tr>
-                                                                <td>{item.project.project_name}</td>
-                                                                <td>{item.provider.user_name}</td>
-                                                                <td>{item.rating}</td>
+                                                                <td>{item?.project?.project_name}</td>
+                                                                <td>{item?.provider?.user_name}</td>
+                                                                <td>{item?.rating}</td>
                                                             </tr>
                                                         </>
                                                     )
@@ -114,4 +114,4 @@ const Reviews = (props: Props) => {
     );
 };
 
-export default Reviews;
+export default reviews;
