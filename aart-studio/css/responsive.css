@@ -1,9 +1,6 @@
-@media all and (max-width : 768px) {
 
-  .smobitrigger,
-  .mnuclose {
-    display: inline-block;
-  }
+@media all and (max-width : 768px) {
+  .smobitrigger, .mnuclose { display: inline-block; }
 
   .smobitrigger {
     color: #47120f;
@@ -25,19 +22,14 @@
     overflow-y: auto;
   }
 
-  .navigation nav ul li,
-  .navigation nav ul li a {
-    width: 100%;
-  }
+  .navigation nav ul li, .navigation nav ul li a { width: 100%; }
 
   .navigation nav ul li a {
     padding-top: 5px;
     padding-bottom: 5px;
   }
 
-  .navigation nav ul li a:hover {
-    background: rgba(0, 0, 0, 0.29);
-  }
+  .navigation nav ul li a:hover { background: rgba(0, 0, 0, 0.29); }
 
   .mobimenu {
     list-style: none;
@@ -50,9 +42,7 @@
     right: -250px;
   }
 
-  .mnuopn {
-    right: 0px !important;
-  }
+  .mnuopn { right: 0px !important; }
 
   .ovrActv {
     position: fixed;
@@ -66,137 +56,108 @@
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
   }
-
   .signup a {
     width: 50% !important;
     margin-left: 18px;
     margin-top: 8px;
     text-align: center;
   }
-
   .top_socialmedia {
     justify-content: center;
     margin-bottom: 12px;
   }
-
   .right_icon {
     float: none;
     margin-bottom: 0;
   }
-
   .banner_text h1 {
     font-size: 4em;
   }
-
   .banner_text h2 {
     font-size: 2em;
   }
-
   .carve {
     width: 50%;
   }
-
   .popular_category_listing {
     overflow-x: auto;
   }
-
   .popular_category_listing {
-    overflow-x: auto;
-    margin-top: 4em;
+      overflow-x: auto;
+      margin-top: 4em;
   }
-
   .popular_category_listing li {
     width: auto;
     padding: 0 17px;
   }
-
   .banner_text {
     margin-top: 1em;
   }
-
   .search {
     margin-top: 2em;
   }
-
   .popular_wp {
     margin-top: 2em;
     padding-bottom: 2em;
   }
-
   .carve_pic {
     right: 0;
     width: 100px;
   }
-
   .discover_left {
     padding-top: 1em;
   }
-
   .discover_wp {
     background-position: 0;
   }
-
   .latest_request_text h1 {
     margin-top: 10px;
   }
-
   .owl-carousel .owl-nav button.owl-prev {
     position: relative;
     left: 0;
     bottom: 0;
   }
-
   .owl-carousel .owl-nav button.owl-next {
     position: relative;
     right: 0;
     bottom: 0;
   }
-
   .heading_title h1 {
     display: block;
     text-align: center;
   }
-
   .testimonial_animation {
     right: 5px;
     bottom: 0;
   }
-
   .testimonial_heading:after {
     left: 141px;
   }
-
   .footer_information {
     display: block;
     margin-top: 1em;
   }
-
   .footer_information1 {
     width: auto;
     margin-bottom: 18px;
   }
-
   .quick_wp {
     display: block;
   }
-
   .quick_left {
     width: auto;
     margin-bottom: 15px;
   }
-
-  .copyright p {
+  .copyright p{
     margin-bottom: 10px;
   }
-
   .heading_title:after {
     left: 143px;
   }
-
   .view_all {
     padding-top: 10px;
   }
-
   .banner_wp {
     background-position: bottom;
   }

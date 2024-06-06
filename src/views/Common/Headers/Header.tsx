@@ -96,14 +96,36 @@ export default function Header({ }: Props) {
 		<>
 
 
-			<div className="top_bar">
+			{/* <div className="top_bar">
 				<div className="container">
 					<ul>
 						<li><a href="#"><i className="fa fa-facebook-f"></i></a></li>
 						<li><a href="#"><i className="fa fa-instagram"></i></a></li>
 					</ul>
 				</div>
-			</div>
+			</div> */}
+
+
+			<section className="top_bg">
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-6">
+							<ul className="top_socialmedia">
+								<li><a href="#"><i className="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i className="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i className="fa fa-instagram"></i></a></li>
+								<li><a href="#"><i className="fa fa-linkedin"></i></a></li>
+							</ul>
+						</div>
+						<div className="col-sm-6">
+							<ul className="top_socialmedia right_icon">
+								<li><a href="#"><i className="fa fa-envelope"></i> info@aartstudion.com</a></li>
+								<li><a href="#"><i className="fa fa-phone"></i> 0000- 123 - 456789</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
 
 
 
@@ -115,7 +137,7 @@ export default function Header({ }: Props) {
 					<ul className="navbar-nav align-items-lg-center flex-grow-1 pe-3">
 						<li className="nav-item">
 							<Link href={"/"}>
-								<button onClick={handleClose} data-bs-dismiss="offcanvas" className={`nav-link ${path=="/" ? "active" : ""}`} style={{ border: 'none', backgroundColor: 'transparent' }}>
+								<button onClick={handleClose} data-bs-dismiss="offcanvas" className={`nav-link ${path == "/" ? "active" : ""}`} style={{ border: 'none', backgroundColor: 'transparent' }}>
 									HOME
 								</button>
 							</Link>
@@ -186,7 +208,7 @@ export default function Header({ }: Props) {
 				</Offcanvas.Body>
 			</Offcanvas>
 
-			<div className="logo_bar">
+			{/* <div className="logo_bar">
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-4">
@@ -194,10 +216,10 @@ export default function Header({ }: Props) {
 								<div className="input-holder">
 									<input type="text" className="search-input" placeholder="Type to search" />
 									<button className="search-icon" ><i className="fa fa-search"></i></button>
-									{/*  onclick="searchToggle(this, event);" */}
+									
 								</div>
 								<span className="close"></span>
-								{/* onclick="searchToggle(this, event); */}
+								
 							</div>
 						</div>
 						<div className="col-sm-4">
@@ -206,9 +228,9 @@ export default function Header({ }: Props) {
 									<img style={{ cursor: 'pointer' }} src={"/img/logo.png"} alt="" />
 								</Link>
 							</div>
-						</div>
-						<div className="col-sm-4">
-							<div className="right_account">
+						</div> */}
+			{/* <div className="col-sm-4"> */}
+			{/* <div className="right_account">
 								<ul>
 									<li>
 										<Link href={"/auth/sign-in"}>
@@ -217,77 +239,49 @@ export default function Header({ }: Props) {
 									<li><img src={"/img/market.png"} alt="" /></li>
 
 								</ul>
+							</div> */}
+			{/* </div>
+					</div>
+				</div>
+			</div> */}
+
+
+			<section className="menubar">
+				<div className="container">
+					<div className="row">
+						<div className="col-6 col-sm-3">
+							<div className="logo">
+								<img src={"/img/logo.png"} alt="" />
+							</div>
+						</div>
+						<div className="col-6 col-sm-9">
+							<div className="navigation">
+								<nav>
+									<a href="javascript:void(0)" className="smobitrigger ion-navicon-round"><i className="fa fa-bars"></i></a>
+									<ul className="mobimenu">
+
+
+
+
+
+
+
+
+										<li><Link href="/">Home</Link></li>
+										<li><Link href="/about">About Us</Link></li>
+										<li><Link href="/post">Art Request</Link></li>
+										<li><Link href="/lising">Browse Project</Link></li>
+										<li><Link href="/">Contact Us</Link></li>
+										<li className="login"><a href="/auth/sign-in"><i className="fa fa-user-o"></i> Login</a></li>
+										<li className="signup"><a href="/auth/sign-in">Sign Up</a></li>
+									</ul>
+								</nav>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 
-			<div className="container">
-				<div className="menu_bar">
-					<nav className="navbar navbar-expand-md navbar-light p-0">
-						<button className="navbar-toggler mr-3" onClick={handleShow} type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-							<i className="fa fa-bars"></i>
-						</button>
-						<div className="collapse navbar-collapse" id="navbarNav">
-							<ul className="navbar-nav">
-
-								{Routes.headers.map((r) => {
-									return (
-										<>
-											<li className="nav-item" key={r.path}>
-												{user && !r.role.includes(user.role_id) ? (
-													<Link href={`#`}>
-														<a
-															className="nav-link"
-															onClick={(e) => {
-																e.preventDefault();
-																toast(
-																	`Login as ${user.role_id == 1 ? "Supplier" : "Customer"} to ${r.title
-																	}`
-																);
-															}}
-														>
-															{r.title}
-														</a>
-													</Link>
-												) : (
-													<Link href={`${r.path}`}>
-														<a
-
-															className={`nav-link ${router.pathname == r.path ? "active" : ""}`}
-														>
-															{/* Display inbox count for 'INBOX' menu item */}
-															{r.title === "INBOX" && user && inbox_count ? (
-																<>
-																	{r.title}{" "}
-																	<span className="darkblue-text" style={{ fontSize: "17px" }}>
-																		({inbox_count})
-																	</span>
-																</>
-															) : (
-																r.title
-															)}
-														</a>
-													</Link>
-												)}
-											</li>
-
-										</>
-									);
-								})}
-								{user && (
-
-									<li className="nav-item" ><button style={{ cursor: 'pointer', backgroundColor: '#7fc0ac', color: '#fff', font: 'bold', borderRadius: '22px', border: 'none', padding: '5px', width: '100px', fontSize:'18px' }} onClick={() => handleLogout()} type="submit" name="submit" data-dashlane-label="true" data-dashlane-rid="69b1cea8e596d918" data-form-type="action">LOGOUT</button></li>
-									// <li className="nav-item" ><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()} className="nav-link" >LOGOUT</a></li>
-								)}
-
-							</ul>
-
-						</div>
-					</nav>
-				</div>
-			</div>
 		</>
 	);
 }
