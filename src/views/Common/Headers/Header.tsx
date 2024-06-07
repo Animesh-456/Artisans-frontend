@@ -129,12 +129,16 @@ export default function Header({ }: Props) {
 
 
 
-			<Offcanvas show={show} onHide={handleClose}>
-				<Offcanvas.Header closeButton>
+			<Offcanvas show={show} onHide={handleClose} placement="end" style={{ "backgroundColor": "rgb(71, 18, 15)", "fontFamily": "Poppins, sans-serif" }}>
+				<Offcanvas.Header closeButton closeVariant="white" style={{ "backgroundColor": "rgba(0, 0, 0, 0.18)" }} >
 					<Offcanvas.Title></Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>
-					<ul className="navbar-nav align-items-lg-center flex-grow-1 pe-3">
+					<ul className="navbar-nav align-items-lg-center flex-grow-1 pe-3" style={{
+						color: "#fff",
+						fontSize: "14px",
+						
+					}}>
 						<li className="nav-item">
 							<Link href={"/"}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className={`nav-link ${path == "/" ? "active" : ""}`} style={{ border: 'none', backgroundColor: 'transparent' }}>
@@ -179,32 +183,51 @@ export default function Header({ }: Props) {
 							</Link>
 						</li>
 
-					</ul>
-					<br />
-					{user ? (
-						<>
-							<li className="nav-item" >
-								<Link href={'/auth/sign-in'}>
-									<Button onClick={() => handleLogout()} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#7fc0ac', color: '#fff', font: 'bold' }}>
-										Logout
-									</Button>
-								</Link>
-								{/* <button style={{ cursor: 'pointer', backgroundColor: '#7fc0ac', color: '#fff', font: 'bold', borderRadius: '22px', border: 'none', padding: '10px', width: '100px' }} onClick={() => handleLogout()} type="submit" name="submit" data-dashlane-label="true" data-dashlane-rid="69b1cea8e596d918" data-form-type="action">LOGOUT</button> */}
-							</li>
-						</>
-					) : (
-						<>
-							<li className="nav-item" >
+
+
+						{user ? (
+							<>
+								<li className="nav-item" >
+									<Link href={'/auth/sign-in'}>
+										<Button onClick={() => handleLogout()} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#7fc0ac', color: '#fff', font: 'bold' }}>
+											Logout
+										</Button>
+									</Link>
+									{/* <button style={{ cursor: 'pointer', backgroundColor: '#7fc0ac', color: '#fff', font: 'bold', borderRadius: '22px', border: 'none', padding: '10px', width: '100px' }} onClick={() => handleLogout()} type="submit" name="submit" data-dashlane-label="true" data-dashlane-rid="69b1cea8e596d918" data-form-type="action">LOGOUT</button> */}
+								</li>
+							</>
+						) : (
+							<>
+								{/* <li className="nav-item" >
 								<Link href={'/auth/sign-in'}>
 									<Button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#7fc0ac', color: '#fff', font: 'bold' }}>
 										Login
 									</Button>
 								</Link>
 
-							</li>
+							</li> */}
+								<li className="nav-item">
+									<Link href={'/auth/sign-in'}>
+										<Button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent', color: '#ef6100', font: 'bold' }}>
+											<i className="fa fa-user-o"></i> Login
+										</Button>
+									</Link>
+								</li>
 
-						</>
-					)}
+
+
+								<li className="nav-item" >
+									<Link href={'/auth/sign-in'}>
+										<Button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#ef6100', color: '#fff', font: 'bold', width:"100px", borderRadius:"5px" }}>
+											Sign Up
+										</Button>
+									</Link>
+
+								</li>
+
+							</>
+						)}
+					</ul>
 				</Offcanvas.Body>
 			</Offcanvas>
 
