@@ -251,13 +251,13 @@ export default function Header({ }: Props) {
 					<div className="row">
 						<div className="col-6 col-sm-3">
 							<div className="logo">
-								<Link href="/"><img style={{"cursor":"pointer"}} src={"/img/logo.png"} alt="" /></Link>
+								<Link href="/"><img style={{ "cursor": "pointer" }} src={"/img/logo.png"} alt="" /></Link>
 							</div>
 						</div>
 						<div className="col-6 col-sm-9">
 							<div className="navigation">
 								<nav>
-									<a href="javascript:void(0)" className="smobitrigger ion-navicon-round"><i className="fa fa-bars"></i></a>
+									<button onClick={handleShow} style={{ "border": "none", "background": "transparent" }} className="smobitrigger ion-navicon-round"><i className="fa fa-bars"></i></button>
 									<ul className="mobimenu">
 										<li><Link href="/">Home</Link></li>
 										<li><Link href="/about">About Us</Link></li>
