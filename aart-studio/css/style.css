@@ -364,9 +364,29 @@ a:hover{
     font-family: "Poppins", sans-serif;
     font-size: 14px;
     color: #080424;
+    font-weight: 600;
+    padding-right: 25px;
+}
+.latest_request_text div > span:nth-child(3){
+	font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #080424;
+    font-weight: 600;
+    padding-right: 10px;
+}
+.latest_request_text div > span:nth-child(4){
+	font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #ef6100;
+    font-weight: 600;
+}
+.latest_request_text div > span:nth-child(4) a {
+    background: none;
+    box-shadow: none;
+    color: #ef6100;
 }
 .latest_request_text div > span:nth-child(1) .fa-check-circle {
-    color: #70ff03;
+    color: #0FA8F2;
     padding-left: 5px;
 }
 .latest_request_text a {
@@ -610,6 +630,15 @@ footer hr {
 }
 .copyright p a{
 	color: #ef6100;
+}
+.latest_request_pic {
+    position: relative;
+}
+.cir {
+    width: 40px !important;
+    position: absolute;
+    left: 7px;
+    top: 9px;
 }
 
 .carve{animation: customAni 2s ease 0s infinite normal none;}
