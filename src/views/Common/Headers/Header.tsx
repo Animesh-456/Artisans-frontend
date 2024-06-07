@@ -137,40 +137,41 @@ export default function Header({ }: Props) {
 					<ul className="navbar-nav align-items-lg-center flex-grow-1 pe-3" style={{
 						color: "#fff",
 						fontSize: "14px",
+						fontWeight:"bold"
 						
 					}}>
 						<li className="nav-item">
 							<Link href={"/"}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className={`nav-link ${path == "/" ? "active" : ""}`} style={{ border: 'none', backgroundColor: 'transparent' }}>
-									HOME
+									Home
 								</button>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link href={'/account/about'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									ABOUT US
+									About Us
 								</button>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link href={'/machining'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									ART REQUEST
+									Art Request
 								</button>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link href={'/machining/listing'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									ART AND ARTISANS
+									Art and Artisan
 								</button>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link href={'/account/profile'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									ACCOUNT
+									Account
 								</button>
 							</Link>
 						</li>
@@ -178,7 +179,7 @@ export default function Header({ }: Props) {
 						<li className="nav-item">
 							<Link href={'/account/inbox'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									INBOX
+									Inbox
 								</button>
 							</Link>
 						</li>
