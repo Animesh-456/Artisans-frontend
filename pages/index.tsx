@@ -306,6 +306,7 @@ function Home(prp) {
                         <div className="col-sm-3">
                             <div className="latest_request_pic">
                                 <img src="img/pic2.png" alt="" />
+                                <img className="cir" src="img/circle.png" alt="" />
                             </div>
                         </div>
                         <div className="col-sm-9">
