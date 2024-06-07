@@ -314,7 +314,9 @@ function Home(prp) {
                                 <p>We are a traditional supper club located On Main St in Wisconsin. We will feature steaks, chops, ribs, relish trays, fish fries, etc. </p>
                                 <div>
                                     <span>by mikeschmidt41D <i className="fa fa-check-circle"></i></span>
-                                    <span><i className="fa fa-clock-o"></i> 0 d 23 h ago</span>
+                                    <span>Posted: 2d 20h ago</span>
+                                    <span>End: 5d 23h</span>
+                                    <span><a href="#">3 offers</a></span>
                                 </div>
                                 <a href="#">View Details</a>
                             </div>
