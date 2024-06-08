@@ -137,7 +137,7 @@ const listing = (prp) => {
         <>
            
            
-                <section className="inner_banner_wp"  style={{ backgroundImage: `url(./img/inner-banner.jpg)` }}>
+                <section className="inner_banner_wp"  style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                     <div className="container">
                         <h1>Art Request</h1>
                     </div>
@@ -280,9 +280,9 @@ const listing = (prp) => {
                         <div className='col-sm-8'>
                             <div className='machin_req'>
                                 <>
-                                    <h3>
+                                    {/* <h3>
                                         Machining Requests <span>showing results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</span>
-                                    </h3>
+                                    </h3> */}
                                     {list.length
                                         ? (list.map((l, index) => {
 
