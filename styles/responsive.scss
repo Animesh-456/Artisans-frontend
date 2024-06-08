@@ -200,4 +200,41 @@
   .banner_wp {
     background-position: bottom;
   }
+
+  .inner_banner_wp h1 {
+    font-size: 30px;
+  }
+
+  .filter_section {
+    display: block;
+    width: 93%;
+  }
+
+  .post_request_button {
+    width: auto;
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .search_bar {
+    width: auto;
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+
+  .all_categori {
+    width: auto;
+    margin-bottom: 10px;
+  }
+
+  .sr {
+    width: auto;
+    line-height: 42px;
+  }
+
+  .inner_banner_wp {
+    height: 200px;
+  }
 }

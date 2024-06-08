@@ -774,6 +774,125 @@ footer hr {
   top: 9px;
 }
 
+.inner_banner_wp {
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  background-position: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'brasika_display_-_trialRg';
+}
+
+.inner_banner_wp h1 {
+  color: #060322;
+  font-size: 50px;
+}
+
+.art_request_wp {
+  background: #feeede;
+  padding: 3em 0;
+}
+
+a {
+  font-family: "Poppins", sans-serif;
+}
+
+.post_request_button {
+  width: 21%;
+  border-right: 1px solid #b5b5b5;
+  margin-right: 15px;
+  padding-right: 15px;
+}
+
+.post_request_button a {
+  background: #f06101;
+  color: #fff;
+  width: 100%;
+  display: block;
+  text-align: center;
+  line-height: 46px;
+  border-radius: 5px;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.search_bar {
+  width: 25%;
+  margin-right: 20px;
+  position: relative;
+}
+
+.search_bar input {
+  width: 100%;
+  height: 45px;
+  padding-left: 35px;
+  border-radius: 6px;
+  border: 1px solid #878787;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.search_bar .fa-search {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: #585858;
+  font-size: 12px;
+}
+
+.all_categori {
+  width: 25%;
+}
+
+.all_categori select {
+  width: 100%;
+  height: 45px;
+  padding-left: 18px;
+  border-radius: 6px;
+  border: 1px solid #878787;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.sr {
+  width: 25%;
+  text-align: right;
+  line-height: 42px;
+}
+
+.filter_section {
+  display: flex;
+  width: 97%;
+  margin: 0 auto 3em;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+}
+
+.page-item.active .page-link {
+  background-color: #f06101;
+  border-color: #f06101;
+}
+
+.page-link {
+  color: #321502;
+}
+
+.pagination_wp {
+  margin-top: 2em;
+}
+
 .carve {
   animation: customAni 2s ease 0s infinite normal none;
 }
