@@ -51,8 +51,16 @@ const Post = (prp) => {
 		project_name: "",
 		description: "",
 		visibility: "Public",
-		post_for: 4,
+		post_for: "4",
+
 	});
+
+	const [projectcheck, projectcheckstate] = useState({
+		post_for: "4",
+	})
+
+	const setprojectcheck = common.ChangeState(projectcheckstate);
+
 	const setproject = common.ChangeState(projectstate);
 
 	const [file, setFile] = useState([]);
@@ -73,7 +81,8 @@ const Post = (prp) => {
 		setNumPages(numPages);
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = (event) => {
+		event.preventDefault();
 		if (!file.length) return toast.error("Please select a file");
 
 		let data = Validate([], schema.project.add, project);
@@ -312,7 +321,7 @@ const Post = (prp) => {
 				</div>
 			</section>
 
-		
+
 
 
 			<section className="our_story_wp">
@@ -327,13 +336,13 @@ const Post = (prp) => {
 									<h2>Let's Start Our Story</h2>
 								</div>
 								<p>
-									Egestas maecenas pharetra convallis posuere morbi. Nunc pulvinar sapien et ligula ullamcorper. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.<br/><br/>
-										Augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.
-									</p>
-									</div>
+									Egestas maecenas pharetra convallis posuere morbi. Nunc pulvinar sapien et ligula ullamcorper. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.<br /><br />
+									Augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.
+								</p>
 							</div>
 						</div>
 					</div>
+				</div>
 			</section>
 
 
@@ -348,11 +357,19 @@ const Post = (prp) => {
 							<form>
 								<div className="from_feild">
 									<label>Title of Project: <span>*</span></label>
-									<input type="text" name="text" placeholder="Type here..." />
+									<input type="text" name="text" placeholder="Type here..."
+
+										autoComplete={"off"}
+										value={project.project_name}
+										onChange={setproject("project_name")}
+									/>
 								</div>
 								<div className="from_feild">
 									<label>Comment: <span>*</span></label>
-									<textarea placeholder="Comment" rows="6" cols="50"></textarea>
+									<textarea placeholder="Comment" rows={6} cols={50}
+										autoComplete={"off"}
+										value={project.description}
+										onChange={setproject("description")}></textarea>
 								</div>
 								<div className="b-li">
 									<p>Specify the materials to be used, the tolerances and the total number of parts</p>
@@ -363,9 +380,35 @@ const Post = (prp) => {
 									<label>Attach Your Files Here: <span>*</span></label>
 									<div className="upload-btn-wrapper">
 										<button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>
-										<input type="file" name="myfile" multiple="" />
+										<input type="file" name="myfile" onChange={handle_file_change}
+											multiple={true}
+											ref={fileInputRef} />
 									</div>
 								</div>
+
+								<br /><br /><br />
+								{pr < 101 ? (
+									<ProgressBar now={pr} label={`${pr}%`} />
+
+								) : (<></>)}
+
+								{/* {loading && <Spinner animation="border" variant="info" />} */}
+
+								{!loading ? (
+									file?.map((f, index) => {
+
+										return (
+											<>
+												<div className="pro_div">
+													<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+												</div>
+											</>
+										)
+
+									})
+								) : (<></>)}
+
+
 								<div className="b-li">
 									<p>The first file will be used for a thumbnail picture</p>
 									<p>Max file size: 3 MB</p>
@@ -374,12 +417,18 @@ const Post = (prp) => {
 									<label>I would like to receive quotes before: <span>*</span></label>
 									<div className="form-check">
 										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="optradio" value="Public" checked="" /> 4 Days
+											<input type="radio" className="form-check-input" name="otradio" value={"4"}
+												checked={project?.post_for == "4" ? true : false}
+												onChange={setproject("post_for")} /> 4 Days
+
 										</label>
 									</div>
 									<div className="form-check">
 										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="optradio" value="Public" checked="" />6 Days
+											<input type="radio" className="form-check-input" name="otradio" value={"6"}
+												checked={project?.post_for == "6" ? true : false}
+												onChange={setproject("post_for")}
+											/>6 Days
 										</label>
 									</div>
 								</div>
@@ -387,25 +436,140 @@ const Post = (prp) => {
 									<label>Visibility: <span>*</span></label>
 									<div className="form-check">
 										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="optradio" value="Public" checked="" />Public (you will receive more quotes)
+											<input type="radio" className="form-check-input" name="optradio" value={"Public"} checked={project.visibility == "Public" ? true : false} onChange={setproject("visibility")} />Public (you will receive more quotes)
 										</label>
 									</div>
 									<div className="form-check">
 										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="optradio" value="Public" checked="" />Private (visibility restricted to confirmed machinists)
+											<input type="radio" className="form-check-input" name="optradio" value={"Private"}
+												checked={project.visibility == "Private" ? true : false}
+												onChange={setproject("visibility")} />Private (visibility restricted to confirmed machinists)
 										</label>
 									</div>
 								</div>
 								<div className="submit_cancel">
-									<a href="#">Check & Submit</a>
-									<a href="#">Cancel <img src="../img/arrow.png" width="11px" alt="" /></a>
+									<button type="submit" name="submit" onClick={handleSubmit}>Check & Submit</button>
+									<button type="submit" name="submit" onClick={handlecancel}>Cancel</button>
+									{/* <a href="#">Cancel <img src="../img/arrow.png" width="11px" alt="" /></a> */}
 								</div>
 							</form>
 						</div>
 					</div>
+
+
 				</div>
+
+				<GlobalModal
+					title='Confirm your Post'
+					atom={atom.modal.confirm_project}>
+
+					<div className='wjgf'>
+						{file?.length ? file[0]?.type?.includes("pdf") ? (
+							<div className="pdf-container"><Document
+								file={file[0]}
+								onLoadSuccess={onDocumentLoadSuccess}
+							>
+								<Page pageNumber={1} width={200} />
+							</Document> </div>
+						) : (
+							<img src={file?.length ? URL.createObjectURL(file[0]) : ""} />
+						) : (<></>)}
+
+
+
+						<div className='cnfm-job-details post'>
+							<div className='cnfm-job-attchmnts'>
+								<div className="post-jb-modal">
+									<h5>Attachments: </h5>
+									<div>
+										{file?.length ? (
+											file?.map((f, i) => {
+
+												return (
+													<>
+														<ul>
+															<li>
+																<a rel="noreferrer" href={URL.createObjectURL(f)} target={"_blank"}>
+																	{path.parse(f?.name)?.name?.slice(0, 8)}
+																	{path.extname(f?.name)}{" "}
+																</a>
+															</li>
+														</ul>
+													</>
+												);
+
+											})
+										) : (
+											<></>
+										)}
+
+
+										{otherFile?.length ? (
+											otherFile?.map((f, i) => {
+
+												return (
+													<>
+														<ul>
+															<li>
+																<a rel="noreferrer" href={URL.createObjectURL(f)} target={"_blank"}>
+																	{path.parse(f?.name)?.name?.slice(0, 8)}
+																	{path.extname(f?.name)}{" "}
+																</a>
+															</li>
+														</ul>
+													</>
+												);
+
+											})
+										) : (
+											<></>
+										)}
+									</div>
+								</div>
+								<br />
+
+							</div>
+
+							<span>
+								<div className="post-jb-modal">
+
+									<h5>Title: </h5>
+									<p className="abcdxy">{project.project_name}</p>
+								</div>
+							</span>
+							<span>
+
+								<div className="post-jb-modal">
+									<h5>Comment: </h5>
+									<pre className="custom-pre"><p>{project?.description}</p></pre>
+								</div>
+							</span>
+							<span>
+								<div className="post-jb-modal">
+									<h5>I would like to receive quotes before: </h5>
+									<p>{project.post_for} Days</p>
+								</div>
+							</span>
+							<span>
+								<div className="post-jb-modal">
+									<h5>Visibility: </h5>
+									<p>{project.visibility}</p>
+								</div>
+							</span>
+						</div>
+						<div className='reg-bottom'>
+							<button type='submit' name='submit' onClick={() => setOpen(false)}>
+								Back
+							</button>
+							<button type='submit' name='submit' onClick={processSubmit}>
+								Post Request
+							</button>
+						</div>
+					</div>
+				</GlobalModal>
+
 			</section>
-			
+
 
 		</>
 	);

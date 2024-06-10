@@ -137,8 +137,8 @@ export default function Header({ }: Props) {
 					<ul className="navbar-nav align-items-lg-center flex-grow-1 pe-3" style={{
 						color: "#fff",
 						fontSize: "14px",
-						fontWeight:"bold"
-						
+						fontWeight: "bold"
+
 					}}>
 						<li className="nav-item">
 							<Link href={"/"}>
@@ -219,7 +219,7 @@ export default function Header({ }: Props) {
 
 								<li className="nav-item" >
 									<Link href={'/auth/sign-in'}>
-										<Button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#ef6100', color: '#fff', font: 'bold', width:"100px", borderRadius:"5px" }}>
+										<Button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#ef6100', color: '#fff', font: 'bold', width: "100px", borderRadius: "5px" }}>
 											Sign Up
 										</Button>
 									</Link>
@@ -285,7 +285,7 @@ export default function Header({ }: Props) {
 									<ul className="mobimenu">
 										<li><Link href="/">Home</Link></li>
 										<li><Link href="/about">About Us</Link></li>
-										<li><Link href="/post">Art Request</Link></li>
+										<li><Link href="/job/post">Art Request</Link></li>
 										<li><Link href="/lising">Browse Project</Link></li>
 										<li><Link href="/">Contact Us</Link></li>
 										<li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>
