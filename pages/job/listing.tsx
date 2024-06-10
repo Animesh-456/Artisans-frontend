@@ -134,7 +134,7 @@ const Listing = (prp) => {
         <>
 
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/header-banner-bg.jpg)` }}>
+            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Art Request</h1>
                 </div>
