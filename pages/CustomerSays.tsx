@@ -36,14 +36,14 @@ const CustomerSays = () => {
                             <p>Really easy to order on website. Both prints I ordered look lovely & compliment<br /> the recently newly decorated bedroom. This is the second order & both<br /> times prints have been lovely</p>
                             <div className="short_name">
                                 <div className="short_pic">
-                                    <img src="img/man.jpg" alt="" />
+                                    <img src="../img/man.jpg" alt="" />
                                 </div>
                                 <div className="short_text">
                                     <h5>Juliette Simpkins</h5>
                                     <p>Owner, Black Ring Coffee. USA </p>
                                 </div>
                             </div>
-                            <a className="view_all viewall_center" href="#">Join Now <img className="testimonial_arrow" src="img/arrow.png" alt="" /></a>
+                            <a className="view_all viewall_center" href="#">Join Now <img className="testimonial_arrow" src="../img/arrow.png" alt="" /></a>
                         </div>
                     </div>
                 </Carousel.Item>
@@ -53,14 +53,14 @@ const CustomerSays = () => {
                             <p>Really easy to order on website. Both prints I ordered look lovely & compliment<br /> the recently newly decorated bedroom. This is the second order & both<br /> times prints have been lovely</p>
                             <div className="short_name">
                                 <div className="short_pic">
-                                    <img src="img/man.jpg" alt="" />
+                                    <img src="../img/man.jpg" alt="" />
                                 </div>
                                 <div className="short_text">
                                     <h5>Juliette Simpkins</h5>
                                     <p>Owner, Black Ring Coffee. USA </p>
                                 </div>
                             </div>
-                            <a className="view_all viewall_center" href="#">Join Now <img className="testimonial_arrow" src="img/arrow.png" alt="" /></a>
+                            <a className="view_all viewall_center" href="#">Join Now <img className="testimonial_arrow" src="../img/arrow.png" alt="" /></a>
                         </div>
                     </div>
                 </Carousel.Item>

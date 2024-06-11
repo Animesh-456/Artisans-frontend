@@ -1,44 +1,93 @@
+import CustomerSays from "../CustomerSays"
+
 const about = () => {
     return (
         <>
-            <section className="about_wrap">
+
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }} >
+                <div className="container">
+                    <h1>Who Are You</h1>
+                </div>
+            </section>
+
+            <section className="about_wp">
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-5">
-                            <div className="about_l">
-                                <img src={"/img/about.png"} alt="" />
-                            </div>
+                        <div className="col-sm-6">
+                            <img src="../img/about-img1.jpg" alt="" />
                         </div>
-                        <div className="col-sm-7">
-                            <div className="about_r">
-                                <h2>About The Artling</h2>
-                                <p>Portenta haec esse dicit, neque ea ratione ullo modo posse vivi; Cum sciret confestim esse moriendum eamque mortem ardentiore studio peteret, quam Epicurus voluptatem petendam putat. Eorum enim est haec querela, qui sibi cari sunt seseque diligunt. At iam decimum annum inttamen simplicia, vestra versuta. Graecum enim hunc versum nostis omnes-: Suavis laborum est praeteritorum memoria..<br /><br />
-
-                                    Vitiosum est enim in dividendo partem in genere numerare. Atque ab his initiis profecti omnium virtutum et originem et progressionem persecuti sunt. Sed ille, ut dixi, vitiose. Quae cum dixisset paulumque institisset, Quid est? Quis istud, quaeso, nesciebat? Fortasse id optimum, sedubillud: Plus semper voluptatis? Sed ego in hoc resisto; Hos contra singulos dici est melius.</p>
+                        <div className="col-sm-6">
+                            <div className="heading_title">
+                                <h1>About Art Studio</h1>
                             </div>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                <br /><br />
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
-            <section className="about_wrap1">
-                <div className="container-fluid">
+
+
+            <section className="missionwp"  style={{ backgroundImage: `url(../img/about-bg.jpg)` }} >
+                <div className="container">
                     <div className="row">
                         <div className="col-sm-6">
-                            <div className="about_l1">
-                                <img src={"/img/about1.png"} alt="" />
+                            <div className="heading_title">
+                                <h1>About Art Studio</h1>
                             </div>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                <br /><br />
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
                         </div>
                         <div className="col-sm-6">
-                            <div className="about_r1" style={{ backgroundImage: `url(/img/about-bg.jpg)` }} >
-                                <h2>Mission & Vision</h2>
-                                <p>Portenta haec esse dicit, neque ea ratione ullo modo posse vivi; Cum sciret confestim esse moriendum eamque mortem ardentiore studio peteret, quam Epicurus voluptatem petendam putat. Eorum enim est haec querela, qui sibi cari sunt seseque diligunt. At iam decimum annum inttamen simplicia, vestra versuta. Graecum enim hunc versum nostis omnes-: Suavis laborum est praeteritorum memoria..</p>
-                                <img src={"/img/art-thumb01.jpg"} alt="" />
-                                <img src={"/img/art-thumb02.jpg"} alt="" />
-                            </div>
+                            <img src="../img/about-img2.jpg" alt="" />
                         </div>
                     </div>
                 </div>
             </section>
+
+            <section className="about_wp">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <img src="../img/about-img3.jpg" alt="" />
+                        </div>
+                        <div className="col-sm-6">
+                            <div className="heading_title">
+                                <h1>Our Story</h1>
+                            </div>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                <br /><br />
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section className="customer_wp" style={{ backgroundImage: `url(../img/bg4.jpg)` }}>
+                <div className="container">
+                    <div className="heading_title testimonial_heading">
+                        <h1>What Our Customers Are Saying</h1>
+                    </div>
+                    <div className="owl-carousel owl-carousel1 owl-theme">
+                        <CustomerSays />
+                    </div>
+                    <div className="testimonial_animation">
+                        <img src="../img/icon1.png" alt="" />
+                    </div>
+                </div>
+            </section>
+
+            
         </>
     )
 }

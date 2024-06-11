@@ -284,7 +284,7 @@ export default function Header({ }: Props) {
 									<button onClick={handleShow} style={{ "border": "none", "background": "transparent" }} className="smobitrigger ion-navicon-round"><i className="fa fa-bars"></i></button>
 									<ul className="mobimenu">
 										<li><Link href="/">Home</Link></li>
-										<li><Link href="/about">About Us</Link></li>
+										<li><Link href="/account/about">About Us</Link></li>
 										<li><Link href="/job/post">Art Request</Link></li>
 										<li><Link href="/lising">Browse Project</Link></li>
 										<li><Link href="/">Contact Us</Link></li>
