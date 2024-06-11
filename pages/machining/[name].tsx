@@ -680,9 +680,9 @@ const ProjectDetail = () => {
 
         <>
 
-            <div className="container">
 
-                {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
+
+            {/* {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
 
                     <div className="row stepwrapper">
                         <div className="col-sm-4">
@@ -704,8 +704,7 @@ const ProjectDetail = () => {
 
                                 </div>
                             </div>
-                            {/* hiiii */}
-                            {/* More logic goes here */}
+                            
 
                         </div>
                         <div className="col-sm-4">
@@ -749,15 +748,15 @@ const ProjectDetail = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
 
-                {/* Supplier side steps */}
+            {/* Supplier side steps */}
 
 
 
 
-                {user && user?.id == data?.programmer_id && data?.project_status >= 4 && (
+            {/* {user && user?.id == data?.programmer_id && data?.project_status >= 4 && (
 
                     <div className="row stepwrapper">
                         <div className="col-sm-4">
@@ -805,18 +804,8 @@ const ProjectDetail = () => {
                                         </>
                                     )}
 
-                                    {/* {steps_completed_supplier[0]?.step2 == 1 ? (
-                                        <>
-                                            <p>Shipment message sent</p>
-                                            <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
-                                            <p>Tracking Number: - {data?.track_number}</p>
-                                        </>
-                                    ) : (
-                                        <p>
-                                            Inform your client that you have shipped their order (parcel tracking is compulsory).
-                                        </p>
-                                    )} */}
                                     
+
 
 
                                     {steps_completed_supplier[0]?.step2 != 1 && data?.project_status < 5 ? (
@@ -853,13 +842,17 @@ const ProjectDetail = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
 
 
-
-
+            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
+                    <h1>{data?.project_name}</h1>
+                </div>
+            </section>
+
+            {/* <div className="container">
                     <div className="proj_d1"><h1>Project description</h1></div>
                     <div className="row project_des">
                         <div className="col-sm-3">
@@ -1140,254 +1133,396 @@ const ProjectDetail = () => {
 
 
 
-                </div>
+                </div> */}
 
 
 
-
-
-                <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>
-                    <div className='fdfd4'>
-                        <div className='css-ung'>
-                            <p>Post a Public Message or a Question to the client (optional).</p>
-                            <label>Send a public message to the client..</label>
-                            <textarea
-                                name='message'
-                                rows={4}
-                                placeholder='Write your message here ...'
-                                defaultValue={""}
-                                value={question.message}
-                                onChange={setQuestion("message")}
-                            />
-                            <input
-                                type='submit'
-                                defaultValue='Send your Message'
-                                name='Prebid'
-                                onClick={handleQuestion}
-                            />
-                            <hr />
-                            <div className='row'>
-                                <div className='col-sm-12'>
-                                    <h5>Make an offer</h5>
-                                    <p>1.Describe what you are offering in detail.</p>
-                                    <p>
-                                        2.Do not include your contact details (email, phone, address
-                                        etc ...).
-                                    </p>
-                                    <p>
-                                        3.The shipping costs (with parcel tracking) must be included
-                                        in the price offered to the customer.
-                                    </p>
-                                    <textarea
-                                        name='message2'
-                                        rows={4}
-                                        placeholder='Describe your offer here ...'
-                                        defaultValue={""}
-                                        value={bid.bid_desc}
-                                        onChange={setbid("bid_desc")}
-                                    />
+            <section className="project_description_wp">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-8">
+                            <div className="description_left">
+                                <img
+                                    src={common.get_attachment(
+                                        (data?.attachment_name?.split(',')[0]),
+                                        formattedDate,
+                                    )}
+                                    alt={`${data?.attachment_name?.split(',')[0]}`}
+                                />
+                                <div className="description_heading_title">
+                                    <h2>Description</h2>
                                 </div>
-                            </div>
-                            <div className='upload-btn-wrapper'>
-                                <button className='btn'>
-                                    <i className='fa fa-upload' /> Add files (Max. &lt; 3 Mb)
-                                </button>
-                                <input type='file' name='myfile' multiple onChange={handle_file_change} />
-                            </div>
-
-                            <br />
-                            <br />
+                                <p>{data?.description}</p>
+                                <div className="question_a">
 
 
-                            {pr < 101 ? (
-                                <ProgressBar now={pr} label={`${pr}%`} />
-                            ) : (<></>)}
 
-
-                            {file && pr > 100 ? (
-                                file?.map((f) => {
-                                    return (
+                                    {user && data?.prebid_messages?.length && data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
                                         <>
-                                            <div className="pro_div">
-                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                            <h3 className='cus'>Questions and Answers :</h3>
+                                            <div className='row'>
+                                                {data?.prebid_messages?.length
+                                                    ? data?.prebid_messages?.map((d, index) => {
+                                                        return <Q_A key={index} d={d} user={user} data={data} />;
+                                                    })
+                                                    : ""}
                                             </div>
                                         </>
-                                    )
-                                })
-                            ) : (<></>)}
+                                        : <></>) : <>
+                                        {data?.prebid_messages?.length ? (
+                                            <h3 className='cus'>Questions and Answers :</h3>
+                                        ) : (<></>)}
+                                        <div className='row'>
+                                            {data?.prebid_messages?.length
+                                                ? data?.prebid_messages?.map((d, index) => {
+                                                    return <Q_A key={index} d={d} user={user} data={data} />;
+                                                })
+                                                : ""}
+                                        </div>
+                                    </>
+                                    }
 
 
 
 
+                                    <hr />
 
-                            <div className='row css-kjus'>
-                                <div className='col-sm-6 gfcg'>
-                                    <label>Paid to Me : ₹</label>
-                                    <input
-                                        name='txtPrice'
-                                        type='text'
-                                        disabled
-                                        value={bid.bid_amount}
-                                        onChange={setbid("bid_amount")}
-                                    />
-                                </div>
-                                <div className='col-sm-6 gfcg'>
-                                    <label>
-                                        Price for client: ₹ <small>Includes artisans.studio fees</small>
-                                    </label>
-                                    <input
-                                        name='bidAmt'
-                                        type='text'
-                                        value={bid.bid_amount_gbp}
-                                        disabled={ischecked}
-                                        onChange={setbid("bid_amount_gbp")}
-                                    />
-                                </div>
-                                <div className='col-sm-12'>
-                                    <label>Estimated Days Until Shipping:</label>
-                                    <div className='form-inline1'>
-                                        <select
-                                            name='days'
-                                            value={bid.bid_days}
-                                            onChange={setbid("bid_days")} disabled={ischecked}>
-                                            <option value={0}>-- Select --</option>
-                                            <option value={2}>2 Days</option>
-                                            <option value={3}>3 Days</option>
-                                            <option value={4}>4 Days</option>
-                                            <option value={5}>5 Days</option>
-                                            <option value={6}>6 Days</option>
-                                            <option value={7}>7 Days</option>
-                                            <option value={8}>8 Days</option>
-                                            <option value={9}>9 Days</option>
-                                            <option value={10}>10 Days</option>
-                                            <option value={11}>11 Days</option>
-                                            <option value={12}>12 Days</option>
-                                            <option value={13}>13 Days</option>
-                                            <option value={14}>14 Days</option>
-                                            <option value={15}>15 Days</option>
-                                            <option value={16}>16 Days</option>
-                                            <option value={17}>17 Days</option>
-                                            <option value={18}>18 Days</option>
-                                            <option value={19}>19 Days</option>
-                                            <option value={20}>20 Days</option>
-                                            <option value={21}>21 Days</option>
-                                            <option value={22}>22 Days</option>
-                                            <option value={23}>23 Days</option>
-                                            <option value={24}>24 Days</option>
-                                            <option value={25}>25 Days</option>
-                                        </select>
+
+                                    <div className="question_a1">
+                                        <h4>Offers ({data?.bids_count})</h4>
                                     </div>
-                                </div>
+
+                                    {data?.bids?.length ? (
+                                        data?.bids?.map((bid, index) => {
+                                            return (
+                                                <Offer
+                                                    bid={bid}
+                                                    data={data}
+                                                    select_machinist={select_machinist}
+                                                    send_msg={send_msg}
+                                                    user={user}
+                                                    key={bid?.id}
+                                                    revdata={offr_rev_feed[index]?.id == bid?.user_id ? offr_rev_feed[index] : null}
+                                                />
+                                            );
+                                        })
+                                    ) : (
+                                        <></>
+                                    )}
 
 
-                                <div className='col-sm-4'>
-                                    <div className='form-group form-check'>
-                                        <label className='form-check-label'>
-                                            <input
-                                                className='form-check-input'
-                                                type='checkbox'
-                                                onChange={(e) => {
-                                                    setwill_submit(e.target.checked);
-                                                    if (e.target.checked) {
-                                                        setbid("bid_amount", "0")(null);
-                                                        setbid("bid_amount_gbp", "0")(null);
-                                                        setbid("bid_days", "0")(0);
-                                                        setischecked(true)
-                                                    } else if (!e.target.checked) {
-                                                        setischecked(false)
-                                                    }
-                                                }}
-                                            />{" "}
-                                            Will Submit Amount Later
-                                        </label>
-                                    </div>
                                 </div>
-                                <div className='col-sm-12'>
-                                    <input
-                                        type='submit'
-                                        defaultValue='Send your offer'
-                                        name='Prebid'
-                                        onClick={handleAddBid}
-                                    />
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="project_details_right">
+                                <div className="description_heading_title">
+                                    <h2>Project Details</h2>
+                                </div>
+                                <div className="project_details_content">
+                                    <p><span>Posted</span><span><b>{moment(data?.project_post_date).format("DD-MMMM-YYYY")}</b></span></p>
+                                    <p><span>Visibility</span><span><b>{data?.visibility}</b></span></p>
+                                    <p><span>Remaining Time</span><span><b>{diffInDays >= 0 && hourDifference >= 0 ? (
+                                        <>{diffInDays} days {hourDifference} hours</>
+                                    ) : (
+                                        <>0 days</>
+                                    )}</b></span></p>
+                                    <p><span>Posted by</span>
+                                        <b>
+                                            <a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}>{data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
+                                                data?.creator?.user_name : "User") : data?.creator?.user_name}</a>
+                                        </b>
+                                    </p>
+
+
+
+                                    <p><span>Offers Received </span><span><b>{data?.bids_count} Offers</b></span></p>
+                                    <p><span>Attachments </span><span>
+                                        {data?.attachment_name?.includes(",") ? (
+                                            data?.attachment_name?.split(",").map((d) => {
+                                                return (
+                                                    <>
+                                                        <ul>
+                                                            <li>
+                                                                <b>
+
+                                                                    <a
+                                                                        href={common.get_attachment(d, formattedDate)}
+                                                                        rel={"noreferrer"}
+                                                                        target={"_blank"}>
+                                                                        {d}
+
+                                                                    </a>
+                                                                </b>
+                                                            </li>
+                                                        </ul>
+                                                    </>
+                                                )
+                                            })
+                                        ) : (
+                                            <b>
+                                                <a
+                                                    href={common.get_attachment(data?.attachment_name, formattedDate)}
+                                                    rel={"noreferrer"}
+                                                    target={"_blank"}>
+                                                    {data?.attachment_name}
+                                                </a>
+                                            </b>
+                                        )}
+                                    </span></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </GlobalModal>
-                <GlobalModal title='Select Artist' atom={atom.modal.slct_mchnst}>
-                    <div className='slct-machinist-modal'>
-                        {selected_machinist ? (
-                            <>
+                </div>
+            </section>
+
+
+
+
+
+            <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>
+                <div className='fdfd4'>
+                    <div className='css-ung'>
+                        <p>Post a Public Message or a Question to the client (optional).</p>
+                        <label>Send a public message to the client..</label>
+                        <textarea
+                            name='message'
+                            rows={4}
+                            placeholder='Write your message here ...'
+                            defaultValue={""}
+                            value={question.message}
+                            onChange={setQuestion("message")}
+                        />
+                        <input
+                            type='submit'
+                            defaultValue='Send your Message'
+                            name='Prebid'
+                            onClick={handleQuestion}
+                        />
+                        <hr />
+                        <div className='row'>
+                            <div className='col-sm-12'>
+                                <h5>Make an offer</h5>
+                                <p>1.Describe what you are offering in detail.</p>
                                 <p>
-                                    Are you sure, you want to select the offer from{" "}
-                                    {selected_machinist?.user_name} for ₹
-                                    {selected_machinist?.amount} ?
+                                    2.Do not include your contact details (email, phone, address
+                                    etc ...).
                                 </p>
-                                <p>This choice is final</p>
-                                <p>The price can not be changed</p>
-                                <div className='reg-bottom slct-mchinst'>
-                                    <button
-                                        type='submit'
-                                        name='submit'
-                                        onClick={() => {
-                                            setOpen_machinist(false);
-                                            setselected_machinist(null);
-                                        }}>
-                                        Cancel
-                                    </button>
-                                    <button
-                                        type='submit'
-                                        name='submit'
-                                        onClick={handle_select_machinist}>
-                                        Confirm
-                                    </button>
+                                <p>
+                                    3.The shipping costs (with parcel tracking) must be included
+                                    in the price offered to the customer.
+                                </p>
+                                <textarea
+                                    name='message2'
+                                    rows={4}
+                                    placeholder='Describe your offer here ...'
+                                    defaultValue={""}
+                                    value={bid.bid_desc}
+                                    onChange={setbid("bid_desc")}
+                                />
+                            </div>
+                        </div>
+                        <div className='upload-btn-wrapper'>
+                            <button className='btn'>
+                                <i className='fa fa-upload' /> Add files (Max. &lt; 3 Mb)
+                            </button>
+                            <input type='file' name='myfile' multiple onChange={handle_file_change} />
+                        </div>
+
+                        <br />
+                        <br />
+
+
+                        {pr < 101 ? (
+                            <ProgressBar now={pr} label={`${pr}%`} />
+                        ) : (<></>)}
+
+
+                        {file && pr > 100 ? (
+                            file?.map((f) => {
+                                return (
+                                    <>
+                                        <div className="pro_div">
+                                            <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                        </div>
+                                    </>
+                                )
+                            })
+                        ) : (<></>)}
+
+
+
+
+
+                        <div className='row css-kjus'>
+                            <div className='col-sm-6 gfcg'>
+                                <label>Paid to Me : ₹</label>
+                                <input
+                                    name='txtPrice'
+                                    type='text'
+                                    disabled
+                                    value={bid.bid_amount}
+                                    onChange={setbid("bid_amount")}
+                                />
+                            </div>
+                            <div className='col-sm-6 gfcg'>
+                                <label>
+                                    Price for client: ₹ <small>Includes artisans.studio fees</small>
+                                </label>
+                                <input
+                                    name='bidAmt'
+                                    type='text'
+                                    value={bid.bid_amount_gbp}
+                                    disabled={ischecked}
+                                    onChange={setbid("bid_amount_gbp")}
+                                />
+                            </div>
+                            <div className='col-sm-12'>
+                                <label>Estimated Days Until Shipping:</label>
+                                <div className='form-inline1'>
+                                    <select
+                                        name='days'
+                                        value={bid.bid_days}
+                                        onChange={setbid("bid_days")} disabled={ischecked}>
+                                        <option value={0}>-- Select --</option>
+                                        <option value={2}>2 Days</option>
+                                        <option value={3}>3 Days</option>
+                                        <option value={4}>4 Days</option>
+                                        <option value={5}>5 Days</option>
+                                        <option value={6}>6 Days</option>
+                                        <option value={7}>7 Days</option>
+                                        <option value={8}>8 Days</option>
+                                        <option value={9}>9 Days</option>
+                                        <option value={10}>10 Days</option>
+                                        <option value={11}>11 Days</option>
+                                        <option value={12}>12 Days</option>
+                                        <option value={13}>13 Days</option>
+                                        <option value={14}>14 Days</option>
+                                        <option value={15}>15 Days</option>
+                                        <option value={16}>16 Days</option>
+                                        <option value={17}>17 Days</option>
+                                        <option value={18}>18 Days</option>
+                                        <option value={19}>19 Days</option>
+                                        <option value={20}>20 Days</option>
+                                        <option value={21}>21 Days</option>
+                                        <option value={22}>22 Days</option>
+                                        <option value={23}>23 Days</option>
+                                        <option value={24}>24 Days</option>
+                                        <option value={25}>25 Days</option>
+                                    </select>
                                 </div>
-                            </>
-                        ) : (
-                            <></>
-                        )}
-                    </div>
-                </GlobalModal>
-
-                <GlobalModal
-                    title='Review Your Artist'
-                    atom={atom.modal.review_machinist}>
-                    <div className='fdfd4'>
-                        <div className='css-ung'>
-                            {/* <p>Post a Public Message or a Question to the client (optional).</p> */}
-                            <label>Add a valuable comment for the machinist</label>
-                            <textarea
-                                name='message'
-                                rows={4}
-                                placeholder='Write your message here ...'
-                                defaultValue={""}
-                                value={review.comments}
-                                onChange={setreview("comments")}
-                            />
-
-                            {common.reviews_meta.map((r, index) => {
-                                return <ReviewBox key={index} r={r} />;
-                            })}
-                            <br />
+                            </div>
 
 
-
-                            <h6>Average rating : {avgrat}</h6>
-
-                            <br />
-
-                            <input
-                                type='submit'
-                                defaultValue='Send your Message'
-                                name='Prebid'
-                                onClick={handleSubmitReview}
-                            />
-                            <hr />
+                            <div className='col-sm-4'>
+                                <div className='form-group form-check'>
+                                    <label className='form-check-label'>
+                                        <input
+                                            className='form-check-input'
+                                            type='checkbox'
+                                            onChange={(e) => {
+                                                setwill_submit(e.target.checked);
+                                                if (e.target.checked) {
+                                                    setbid("bid_amount", "0")(null);
+                                                    setbid("bid_amount_gbp", "0")(null);
+                                                    setbid("bid_days", "0")(0);
+                                                    setischecked(true)
+                                                } else if (!e.target.checked) {
+                                                    setischecked(false)
+                                                }
+                                            }}
+                                        />{" "}
+                                        Will Submit Amount Later
+                                    </label>
+                                </div>
+                            </div>
+                            <div className='col-sm-12'>
+                                <input
+                                    type='submit'
+                                    defaultValue='Send your offer'
+                                    name='Prebid'
+                                    onClick={handleAddBid}
+                                />
+                            </div>
                         </div>
                     </div>
-                </GlobalModal>
+                </div>
+            </GlobalModal>
+            <GlobalModal title='Select Artist' atom={atom.modal.slct_mchnst}>
+                <div className='slct-machinist-modal'>
+                    {selected_machinist ? (
+                        <>
+                            <p>
+                                Are you sure, you want to select the offer from{" "}
+                                {selected_machinist?.user_name} for ₹
+                                {selected_machinist?.amount} ?
+                            </p>
+                            <p>This choice is final</p>
+                            <p>The price can not be changed</p>
+                            <div className='reg-bottom slct-mchinst'>
+                                <button
+                                    type='submit'
+                                    name='submit'
+                                    onClick={() => {
+                                        setOpen_machinist(false);
+                                        setselected_machinist(null);
+                                    }}>
+                                    Cancel
+                                </button>
+                                <button
+                                    type='submit'
+                                    name='submit'
+                                    onClick={handle_select_machinist}>
+                                    Confirm
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <></>
+                    )}
+                </div>
+            </GlobalModal>
 
-            </div>
+            <GlobalModal
+                title='Review Your Artist'
+                atom={atom.modal.review_machinist}>
+                <div className='fdfd4'>
+                    <div className='css-ung'>
+                        {/* <p>Post a Public Message or a Question to the client (optional).</p> */}
+                        <label>Add a valuable comment for the machinist</label>
+                        <textarea
+                            name='message'
+                            rows={4}
+                            placeholder='Write your message here ...'
+                            defaultValue={""}
+                            value={review.comments}
+                            onChange={setreview("comments")}
+                        />
+
+                        {common.reviews_meta.map((r, index) => {
+                            return <ReviewBox key={index} r={r} />;
+                        })}
+                        <br />
+
+
+
+                        <h6>Average rating : {avgrat}</h6>
+
+                        <br />
+
+                        <input
+                            type='submit'
+                            defaultValue='Send your Message'
+                            name='Prebid'
+                            onClick={handleSubmitReview}
+                        />
+                        <hr />
+                    </div>
+                </div>
+            </GlobalModal>
+
+
 
 
         </>

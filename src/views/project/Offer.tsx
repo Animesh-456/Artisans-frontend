@@ -274,7 +274,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 	return (
 		<>
 
-			<div className="project_des1">
+			{/* <div className="project_des1">
 
 				<div className="row">
 					<div className="col-sm-6">
@@ -515,7 +515,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 												setChangePic(false)
 											}}>
 											Send a message to the client{" "}
-											{/* {user?.role_id == 2 ? "client" : "machinist"} */}
+											
 										</button>
 
 									) : user?.role_id == 1 ? (
@@ -535,7 +535,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 												setChangePic(false)
 											}}>
 											Send a message to the artist{" "}
-											{/* {user?.role_id == 2 ? "client" : "machinist"} */}
+											
 										</button>
 									) : (
 										<></>
@@ -594,11 +594,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 					<div className="col-sm-4">
 						<div className="tgh3">
-							{/* <h6>$30</h6>
-							<p>Shipping fee Included</p>
-							<p>Shipping time: 10 Days</p><br />
-							<button>Select</button> */}
-
+							
 							{bid?.user_id == data?.programmer_id ? (
 
 								data?.visibility.toLowerCase() == "pro" ? (
@@ -723,6 +719,119 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 
 				</div>
+			</div> */}
+
+
+
+
+
+			<div className="offer_section">
+				<div className="offer_l">
+					<div className="offer_heading">
+						<figure>
+							<img src={
+								common.get_profile_picture(bid?.user?.logo) ||
+								"../img/pic3.png"
+							} alt="" />
+						</figure>
+						<h5>{bid?.user?.user_name}</h5>
+						<div>
+							{revdata?.totalproject} jobs
+							<span className="stars"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></span>
+							<span>{revdata?.public_avg_rating ? revdata?.public_avg_rating : "0.0"}</span>
+						</div>
+					</div>
+
+					{user && (storageuser?.id == data?.creator_id || data?.programmer_id == storageuser?.id) ? (
+						<>
+							<p>{bid?.bid_desc}</p>
+							<a href="#">Message to Artist</a>
+							<p>Attachments:
+								{bid?.bid_file && ((storageuser?.id == bid?.user_id) || (data?.creator_id == storageuser?.id)) && (
+
+									String(bid?.bid_file).includes(",") ? (
+
+										storageuser?.id == bid?.user_id && Number(data?.project_status) < 1 ? (
+											String(bid?.bid_file).split(",").map((m) => {
+												return (
+													<>
+														<ul>
+															<li>
+																<a rel="noreferrer" className="offattach" style={{ color: '#e9bc31' }} target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a>
+
+																{/* <div className="pro_div">
+																	<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span><a rel="noreferrer" className="offattach" style={{ color: '#e9bc31' }} target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a><a className="delete_icon" onClick={() => delete_additional_files(m, bid?.id)}><i className="fa fa-trash-o"></i></a></p>
+																</div> */}
+
+
+															</li>
+														</ul>
+													</>
+
+												)
+											})
+										) : (
+											String(bid?.bid_file).split(",").map((m) => {
+												return (
+													<>
+														<ul>
+															<li>
+
+																<a rel="noreferrer" className="offattach" style={{ color: '#e9bc31' }} target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a>
+
+
+															</li>
+														</ul>
+													</>
+
+												)
+											})
+										)
+									) : (<>
+
+										{storageuser?.id == bid?.user_id ? (
+											<div className="pro_div">
+												<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span><a rel="noreferrer" className="offattach" style={{ color: '#e9bc31' }} target={"_blank"} href={common.get_attachment_latest_ach(`${bid?.bid_file}`)}>{bid?.bid_file}</a><a className="delete_icon" onClick={() => delete_additional_files(bid?.bid_file, bid?.id)}><i className="fa fa-trash-o"></i></a></p>
+											</div>
+										) : (
+											<a rel="noreferrer" className="offattach" style={{ color: '#e9bc31' }} target={"_blank"} href={common.get_attachment_latest_ach(`${bid?.bid_file}`)}>{bid?.bid_file}</a>
+										)}
+
+									</>)
+
+								)}
+
+							</p>
+						</>
+					) : (
+						<></>
+					)}
+
+
+				</div>
+				{user && (storageuser?.id == data?.creator_id || data?.programmer_id == storageuser?.id) && (
+					<>
+
+
+						<div className="offer_r">
+							<span><b>{bid?.no_offer == 2 ? (
+								<p>Price Unspecified</p>
+							) : (
+								<><h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6><p>Shipping fee included</p><p>Shipping Time: 10 Days</p> <a href="#">Select
+									{storageuser?.id == data?.creator_id && (
+										<img src={"../img/arrow.png"} width="11px" alt="" />
+									)}
+								</a></>
+
+							)}</b></span>
+						</div>
+
+					</>
+				)}
+
+
+
+
 			</div>
 
 
