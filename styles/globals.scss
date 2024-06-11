@@ -997,7 +997,9 @@ p {
   color: red;
 }
 
-.from_feild input[type="text"] {
+.from_feild input[type="text"],
+.from_feild input[type="email"],
+.from_feild input[type="password"] {
   width: 100%;
   height: 44px;
   border-radius: 5px;
@@ -1266,6 +1268,89 @@ p {
 
 .carve {
   animation: customAni 2s ease 0s infinite normal none;
+}
+
+.about_wp img {
+  width: 100%;
+  border-radius: 10px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.about_wp {
+  background: #fff4e4;
+  padding: 3em 0;
+}
+
+.about_wp p {
+  margin-top: 2em;
+  font-size: 15px;
+}
+
+.about_wp .col-sm-6:last-child {
+  margin-top: 3em;
+}
+
+.missionwp .col-sm-6:first-child {
+  margin-top: 3em;
+}
+
+.missionwp {
+  padding: 3em 0 7em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.missionwp img {
+  width: 100%;
+  border-radius: 10px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.missionwp p {
+  margin-top: 2em;
+  font-size: 15px;
+}
+
+.sign_wp {
+  padding: 3em 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.sign_wp form {
+  margin-top: 2em;
+}
+
+.from_feild2 label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #404040;
+  letter-spacing: 0.5px;
+}
+
+.from_feild2 {
+  display: inline;
+}
+
+.from_feild1 {
+  float: right;
+}
+
+.from_feild1 a {
+  font-size: 14px;
+}
+
+.sign_wp .col-sm-6:first-child {
+  border-right: 1px solid #ccc;
+  padding-right: 30px;
+}
+
+.sign_wp .col-sm-6:last-child {
+  padding-left: 30px;
 }
 
 @keyframes customAni {

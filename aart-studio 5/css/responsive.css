@@ -224,4 +224,19 @@
   .project_details_right {
     margin: 0 0 30px 0;
   }
+  .customer_wp {
+    background-position: center;
+  }
+  .missionwp p, .about_wp p {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .sign_wp .col-sm-6:first-child {
+    border-right: none;
+    padding-right: 15px;
+    margin-bottom: 3em;
+  }
+  .sign_wp .col-sm-6:last-child {
+    padding-left: 15px;
+  }
 }
