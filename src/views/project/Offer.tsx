@@ -831,6 +831,8 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 
 
+			
+
 
 			</div>
 

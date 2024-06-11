@@ -46,7 +46,7 @@ const SignIn = (props: Props) => {
 
 	const handleLogin = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
-	
+
 		api.auth.login(
 			{ body: Pick(["email_username", "password"], login) },
 			(d) => {
@@ -65,7 +65,7 @@ const SignIn = (props: Props) => {
 
 	return (
 		<>
-			<section className="sign_wrap" style={{ backgroundImage: `url(./img/wave.png)` }}>
+			{/* <section className="sign_wrap" style={{ backgroundImage: `url(./img/wave.png)` }}>
 
 				<div className="container">
 					<div className="row">
@@ -142,6 +142,87 @@ const SignIn = (props: Props) => {
 								</form>
 
 							</div>
+						</div>
+					</div>
+				</div>
+			</section> */}
+			<section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+				<div className="container">
+					<h1>My Account</h1>
+				</div>
+			</section>
+
+			<section className="sign_wp" style={{ backgroundImage: `url(../img/bg5.jpg)` }}>
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-6">
+							<div className="heading_title">
+								<h1>Sign In</h1>
+							</div>
+							<form onSubmit={handleLogin}>
+								<div className="from_feild">
+									<label>Email or Username: <span>*</span></label>
+									<input type="text" name="text" placeholder="Email or Username"
+										autoComplete='on'
+										value={login.email_username}
+										onChange={setlogin("email_username")}
+									/>
+								</div>
+								<div className="from_feild">
+									<label>Password: <span>*</span></label>
+									<input type="password" name="password" placeholder="Password" value={login.password}
+										onChange={setlogin("password")} />
+								</div>
+								<div className="from_feild2">
+									<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+									<label>Keep me signed in</label>
+								</div>
+								<div className="from_feild1">
+									<a href={"/auth/forgetpassword"}>Forgot Password?`</a>
+								</div>
+								<div className="discover_wp">
+									{/* <a href="#">Sign In</a> */}
+									<input type="Submit" name="usersLogin" value="Sign in" />
+								</div>
+							</form>
+						</div>
+						<div className="col-sm-6">
+							<div className="heading_title">
+								<h1>Create an Account</h1>
+							</div>
+							<form onSubmit={handleSumbit}>
+								<div className="from_feild">
+									<div className="form-check">
+										<label className="form-check-label">
+											<input type="radio" className="form-check-input" name="optradio"
+												value={2}
+												checked={check.role == 2 ? true : false}
+												onChange={setCheck("role")}
+											/>I am an artist
+										</label>
+									</div>
+									<div className="form-check">
+										<label className="form-check-label">
+											<input type="radio" className="form-check-input" name="optradio" value={1}
+												checked={check.role == 1 ? true : false}
+												onChange={setCheck("role")}
+											/>I am an customer
+										</label>
+									</div>
+								</div>
+								<div className="from_feild">
+									<label>Email Address: <span>*</span></label>
+									<input value={check.email}
+										onChange={setCheck("email")} type="email" name="text" placeholder="Type here..." />
+								</div>
+								<div className="from_feild1">
+									<a href={"/account/terms"}>Terms of service`</a>
+								</div>
+								<div className="discover_wp">
+									{/* <a href="#">Sign Up</a> */}
+									<input type="Submit" name="submit" value="Sign Up" />
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>

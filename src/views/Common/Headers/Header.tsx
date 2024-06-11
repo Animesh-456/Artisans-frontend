@@ -288,8 +288,14 @@ export default function Header({ }: Props) {
 										<li><Link href="/job/post">Art Request</Link></li>
 										<li><Link href="/lising">Browse Project</Link></li>
 										<li><Link href="/">Contact Us</Link></li>
-										<li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>
-										<li className="signup"><a href={"/auth/sign-in"}>Sign Up</a></li>
+										{user ? (
+											<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
+										) : (
+											<>
+												<li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>
+												<li className="signup"><a href={"/auth/sign-in"}>Sign Up</a></li>
+											</>
+										)}
 									</ul>
 								</nav>
 							</div>
