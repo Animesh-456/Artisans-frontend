@@ -190,7 +190,8 @@ export default function Header({ }: Props) {
 							<>
 								<li className="nav-item" >
 									<Link href={'/auth/sign-in'}>
-										<Button onClick={() => handleLogout()} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#7fc0ac', color: '#fff', font: 'bold' }}>
+									
+										<Button onClick={() => handleLogout()} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: '#ef6100', color: '#fff', font: 'bold', width: "100px", borderRadius: "5px" }}>
 											Logout
 										</Button>
 									</Link>
