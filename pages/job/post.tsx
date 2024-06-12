@@ -333,7 +333,7 @@ const Post = (prp) => {
 						<div className="col-sm-6">
 							<div className="our_story_content">
 								<div className="heading_title">
-									<h2>Let's Start Our Story</h2>
+									<h2>Let `&apos;`s Start Our Story</h2>
 								</div>
 								<p>
 									Egestas maecenas pharetra convallis posuere morbi. Nunc pulvinar sapien et ligula ullamcorper. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.<br /><br />
@@ -448,127 +448,111 @@ const Post = (prp) => {
 									</div>
 								</div>
 								<div className="submit_cancel">
-									<button type="submit" name="submit" onClick={handleSubmit}>Check & Submit</button>
-									<button type="submit" name="submit" onClick={handlecancel}>Cancel</button>
-									{/* <a href="#">Cancel <img src="../img/arrow.png" width="11px" alt="" /></a> */}
+									<button
+										type="submit"
+										style={{
+											background: "#ef6100",
+											color: "#fff",
+											borderRadius: "6px",
+											boxShadow: "0px 1px 2px 2px rgb(71, 18, 15)",
+											fontFamily: "Poppins",
+											padding: "6px 22px",
+											transition: "box-shadow 1s"
+										}}
+										name="submit"
+										onClick={handleSubmit}
+									>
+										Check & Submit
+									</button>
+
+									<button type="submit" name="submit" style={{
+										
+										borderRadius: "6px",
+										fontFamily: "Poppins",
+										padding: "6px 22px",
+										transition: "box-shadow 1s",
+										marginLeft: "15px",
+										background: "none",
+										color: "#080424",
+										fontWeight: "500"
+									}} onClick={handlecancel}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
+									{/* <a href="#">Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a> */}
 								</div>
 							</form>
 						</div>
 					</div>
 
 
-				</div>
+				</div >
 
 				<GlobalModal
 					title='Confirm your Post'
 					atom={atom.modal.confirm_project}>
 
-					<div className='wjgf'>
-						{file?.length ? file[0]?.type?.includes("pdf") ? (
-							<div className="pdf-container"><Document
-								file={file[0]}
-								onLoadSuccess={onDocumentLoadSuccess}
-							>
-								<Page pageNumber={1} width={200} />
-							</Document> </div>
-						) : (
-							<img src={file?.length ? URL.createObjectURL(file[0]) : ""} />
-						) : (<></>)}
+					<div className="modal-body modal_design">
+						<figure>
+							{file?.length ? file[0]?.type?.includes("pdf") ? (
+								<div className="pdf-container"><Document
+									file={file[0]}
+									onLoadSuccess={onDocumentLoadSuccess}
+								>
+									<Page pageNumber={1} width={200} />
+								</Document> </div>
+							) : (
+								<img src={file?.length ? URL.createObjectURL(file[0]) : ""} />
+							) : (<></>)}
+						</figure>
+						<label>
+							<h5>Attachments:</h5>
+							<p>{file?.length ? (
+								file?.map((f, i) => {
 
+									return (
+										<>
+											<ul>
+												<li>
+													<a rel="noreferrer" href={URL.createObjectURL(f)} target={"_blank"}>
+														{path.parse(f?.name)?.name?.slice(0, 8)}
+														{path.extname(f?.name)}{" "}
+													</a>
+												</li>
+											</ul>
+										</>
+									);
 
-
-						<div className='cnfm-job-details post'>
-							<div className='cnfm-job-attchmnts'>
-								<div className="post-jb-modal">
-									<h5>Attachments: </h5>
-									<div>
-										{file?.length ? (
-											file?.map((f, i) => {
-
-												return (
-													<>
-														<ul>
-															<li>
-																<a rel="noreferrer" href={URL.createObjectURL(f)} target={"_blank"}>
-																	{path.parse(f?.name)?.name?.slice(0, 8)}
-																	{path.extname(f?.name)}{" "}
-																</a>
-															</li>
-														</ul>
-													</>
-												);
-
-											})
-										) : (
-											<></>
-										)}
-
-
-										{otherFile?.length ? (
-											otherFile?.map((f, i) => {
-
-												return (
-													<>
-														<ul>
-															<li>
-																<a rel="noreferrer" href={URL.createObjectURL(f)} target={"_blank"}>
-																	{path.parse(f?.name)?.name?.slice(0, 8)}
-																	{path.extname(f?.name)}{" "}
-																</a>
-															</li>
-														</ul>
-													</>
-												);
-
-											})
-										) : (
-											<></>
-										)}
-									</div>
-								</div>
-								<br />
-
-							</div>
-
-							<span>
-								<div className="post-jb-modal">
-
-									<h5>Title: </h5>
-									<p className="abcdxy">{project.project_name}</p>
-								</div>
-							</span>
-							<span>
-
-								<div className="post-jb-modal">
-									<h5>Comment: </h5>
-									<pre className="custom-pre"><p>{project?.description}</p></pre>
-								</div>
-							</span>
-							<span>
-								<div className="post-jb-modal">
-									<h5>I would like to receive quotes before: </h5>
-									<p>{project.post_for} Days</p>
-								</div>
-							</span>
-							<span>
-								<div className="post-jb-modal">
-									<h5>Visibility: </h5>
-									<p>{project.visibility}</p>
-								</div>
-							</span>
+								})
+							) : (
+								<></>
+							)}</p>
+						</label>
+						<label>
+							<h5>Title:</h5>
+							<p>{project.project_name}</p>
+						</label>
+						<label>
+							<h5>Comment:</h5>
+							<p>{project?.description}</p>
+						</label>
+						<label>
+							<h5>I would like to receive quotes before:</h5>
+							<p>{project.post_for} days</p>
+						</label>
+						<label>
+							<h5>Visibility</h5>
+							<p>{project.visibility}</p>
+						</label>
+						<div className="button_s">
+							<a style={{ cursor: "pointer" }} onClick={() => setOpen(false)}>Back</a>
+							<a style={{ cursor: "pointer", color: "#fff" }} onClick={processSubmit}>Post Request</a>
 						</div>
-						<div className='reg-bottom'>
-							<button type='submit' name='submit' onClick={() => setOpen(false)}>
-								Back
-							</button>
-							<button type='submit' name='submit' onClick={processSubmit}>
-								Post Request
-							</button>
-						</div>
+
 					</div>
+
+
+
 				</GlobalModal>
 
-			</section>
+			</section >
 
 
 		</>
