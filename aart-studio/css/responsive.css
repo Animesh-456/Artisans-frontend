@@ -239,4 +239,7 @@
   .sign_wp .col-sm-6:last-child {
     padding-left: 15px;
   }
+  .contact_content {
+    margin-bottom: 1em;
+  }
 }
