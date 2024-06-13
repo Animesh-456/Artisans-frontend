@@ -1161,6 +1161,99 @@ p{
     margin-bottom: 2em;
     margin-top: 13px;
 }
+.myproject{
+	background-color: #fce0bb;
+	padding: 3em 0;
+}
+.sidebar {
+    background: #f6e2c9;
+    padding: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
+    margin-bottom: 1em;
+}
+.sidebar ul.side-nav li.active {
+    background: #f16003;
+    border-left: 5px solid #9b3900;
+}
+.sidebar ul.side-nav li.active a {
+    color: #fff;
+}
+.sidebar ul.side-nav li {
+    line-height: 38px;
+    padding: 0 15px;
+}
+.sidebar ul.side-nav li a {
+    color: #222;
+}
+.profile_box {
+    padding: 2em;
+    box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
+    border-radius: 5px;
+    background: #f6e2c9;
+}
+.help-ico {
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+.help-ico select {
+    width: 100%;
+    border: none;
+    height: 43px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #ffecec;
+    padding-left: 5px;
+}
+.help-ico a {
+    margin-left: auto;
+    display: table;
+    color: #f06101;
+}
+.uys5 .nav-pills .nav-link.active, .uys5 .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #f06200;
+}
+.uys5 ul li a {
+    color: #2e2e2e;
+    font-weight: 500;
+}
+.project_loop {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+.project_loop h4 {
+    line-height: 19px;
+    padding-bottom: 7px;
+}
+.project_loop p {
+    font-size: 13px;
+    display: inline;
+    margin: 0;
+}
+.project_loop p:last-child {
+    float: right;
+}
+.uys5 .tab-content {
+    padding-top: 1em;
+}
+.project_loop h4 a {
+    color: #0e0e0e;
+    font-size: 13px;
+}
+ul.side-nav {
+    margin-top: 29px;
+}
+.sidebar .heading_title h2 {
+    margin-left: 18px;
+}
+.sidebar .heading_title {
+    margin-left: 18px;
+}
+button, select {
+    text-transform: none;
+}
 @keyframes customAni {
   0% {
 	transform: translate(0);
