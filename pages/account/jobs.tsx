@@ -35,10 +35,10 @@ const Jobs = (props: Props) => {
         router.replace(l)
     }
     useEffect(() => {
-       
+
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
-    
+
         api.project.my_jobs({ params: { ...opt, page: pageNumber - 1, status: index } });
     }, [index]);
 
@@ -53,7 +53,7 @@ const Jobs = (props: Props) => {
         var sel = ele.selectedIndex;
         var option_p = ele.options[sel];
         var value = Number(option_p.value);
-     
+
         setOptions(value)
         if (value == 0) {
             setIndex(1);
@@ -66,7 +66,7 @@ const Jobs = (props: Props) => {
         }
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
-       
+
 
         api.project.my_jobs({ params: { ...opt, page: pageNumber - 1, status: index } });
     }
@@ -380,33 +380,35 @@ const Jobs = (props: Props) => {
             </section>
 
             <section className="myproject">
-            <div className="container">
+                <div className="container">
                     <div className="row">
                         <div className="col-sm-4">
-                        <AccountSideBar />
-                    </div>
-                    <div className="col-sm-8">
-                        <div className="profile_box">
-                            <h3>My Projects <span>(1)</span>
-                            </h3>
-                            <div className="row help-ico">
-                                {/* <div className="col-sm-6">
+                            <AccountSideBar />
+                        </div>
+                        <div className="col-sm-8">
+                            <div className="profile_box">
+                                <div className="heading_title">
+                                    <h2>My Projects <span>(1)</span>
+                                    </h2>
+                                </div>
+                                <div className="row help-ico">
+                                    {/* <div className="col-sm-6">
                                     <select id="project_status">
                                         <option value="0" selected={true}>Other</option>
                                         <option value="2">Awarded but not yet Funded projects</option>
                                         <option value="4">Finalized Orders without a Review</option>
                                     </select>
                                 </div> */}
-                                {/* <div className="col-sm-6">
+                                    {/* <div className="col-sm-6">
                                     <a href="#" data-toggle="modal" data-target="#myhelp">
                                         <strong>
                                             <i className="fa fa-question-circle"></i> Help </strong>
                                     </a>
                                 </div> */}
-                            </div>
-                            <div className="uys5">
-                                <ul className="nav nav-pills" role="tablist">
-                                    {/* <li className="nav-item">
+                                </div>
+                                <div className="uys5">
+                                    <ul className="nav nav-pills" role="tablist">
+                                        {/* <li className="nav-item">
                                         <a className="nav-link active" data-toggle="pill" href="#all">All</a>
                                     </li>
                                     <li className="nav-item">
@@ -425,7 +427,7 @@ const Jobs = (props: Props) => {
 
 
 
-                                    {/* {user?.role_id == 2 ? (
+                                        {/* {user?.role_id == 2 ? (
                                         Routes.jobsTab.map((j) => {
                                             return (
                                                 <>
@@ -457,45 +459,48 @@ const Jobs = (props: Props) => {
                                     )} */}
 
 
-                                </ul>
-                                <div className="tab-content">
-                                    <div id="all" className="tab-pane active">
+                                    </ul>
+                                    <div className="tab-content">
+                                        <div id="all" className="tab-pane active">
 
 
 
 
-                                        {/* Loop logic here  */}
+                                            {/* Loop logic here  */}
 
 
 
-                                        {list.length
-                                            ? list?.map((l: ProjectDetails) => {
-                                                return (
-                                                    <>
-                                                        <div className='project_loop'>
-                                                            <div className="project_loop_jobs">
+                                            {list.length
+                                                ? list?.map((l: ProjectDetails) => {
+                                                    return (
+                                                        <>
+                                                            {/* <div  className='tab-pane fade'> */}
+                                                            <div className='project_loop'>
+
                                                                 <h4>
 
                                                                     <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                                                 </h4>
+                                                                <p>{l?.visibility} | Open </p>
                                                                 <p>  Posted :{" "}
                                                                     {moment(l?.project_post_date).format("DD-MMM-YYYY")}</p>
 
+
+
                                                             </div>
-                                                            <p>{l?.visibility}</p>
-                                                        </div>
-                                                    </>
-                                                );
-                                            })
-                                            : (<> </>)}
+                                                            {/* </div> */}
+                                                        </>
+                                                    );
+                                                })
+                                                : (<> </>)}
 
 
 
+
+                                        </div>
 
                                     </div>
-
-                                </div>
-                                {/* <ul className="pagination justify-content-center">
+                                    {/* <ul className="pagination justify-content-center">
                                     <li className="page-item"><a className="page-link" href="javascript:void(0);"><i className="fa fa-angle-double-left"></i></a></li>
                                     <li className="page-item"><a className="page-link" href="javascript:void(0);">1</a></li>
                                     <li className="page-item"><a className="page-link" href="javascript:void(0);">2</a></li>
@@ -503,67 +508,67 @@ const Jobs = (props: Props) => {
 
 
 
-                                {/* New Pagination 👇 */}
+                                    {/* New Pagination 👇 */}
 
 
-                                <ul className='pagination'>
-                                    {(opt.page > 0) ? <li className='page-item'>
-                                        <a className='page-link' onClick={() => handlePageClick(0)}>
-                                            First
-                                        </a>
-                                    </li> : ""}
-                                    {(opt.page > 0) ? <li className='page-item'>
-                                        <a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
-                                            Previous
-                                        </a>
-                                    </li> : ""}
-
-
-                                    {opt.total_count && getPageNumbers().map((page) => (
-                                        <>
-                                            <li
-                                                className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-                                                    page
-                                                    ? "active"
-                                                    : ""
-                                                    }`}>
-                                                <Link href={`${router.pathname}?page=${page}`}>
-                                                    <a
-                                                        className='page-link'
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            handlePageClick(page);
-                                                        }}>
-                                                        {page + 1}
-                                                    </a>
-                                                </Link>
-                                            </li>
-                                        </>
-
-                                    ))}
-
-
-
-
-                                    {opt.page != opt.total_pages ?
-                                        <li className='page-item'>
-                                            <a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
-                                                Next
+                                    <ul className='pagination'>
+                                        {(opt.page > 0) ? <li className='page-item'>
+                                            <a className='page-link' onClick={() => handlePageClick(0)}>
+                                                First
                                             </a>
                                         </li> : ""}
-                                    {opt.page != opt.total_pages ? <li className='page-item'>
-                                        <a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
-                                            Last
-                                        </a>
-                                    </li> : ""}
-                                </ul>
+                                        {(opt.page > 0) ? <li className='page-item'>
+                                            <a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
+                                                Previous
+                                            </a>
+                                        </li> : ""}
 
+
+                                        {opt.total_count && getPageNumbers().map((page) => (
+                                            <>
+                                                <li
+                                                    className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
+                                                        page
+                                                        ? "active"
+                                                        : ""
+                                                        }`}>
+                                                    <Link href={`${router.pathname}?page=${page}`}>
+                                                        <a
+                                                            className='page-link'
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                handlePageClick(page);
+                                                            }}>
+                                                            {page + 1}
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                            </>
+
+                                        ))}
+
+
+
+
+                                        {opt.page != opt.total_pages ?
+                                            <li className='page-item'>
+                                                <a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
+                                                    Next
+                                                </a>
+                                            </li> : ""}
+                                        {opt.page != opt.total_pages ? <li className='page-item'>
+                                            <a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
+                                                Last
+                                            </a>
+                                        </li> : ""}
+                                    </ul>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section >
+            </section >
         </>
     );
 };

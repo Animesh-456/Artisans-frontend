@@ -26,7 +26,7 @@ const AccountSideBar = (props: Props) => {
 
     if (user) {
         api.project.reviews_list({ params: {} }, (d) => {
-          
+
             Reviews_data = d.data;
         });
     }
@@ -71,12 +71,12 @@ const AccountSideBar = (props: Props) => {
     const projects = useAtomValue(atom.project.api.total_jobs)
 
 
-   
-
-    
 
 
-   
+
+
+
+
 
     Reviews_data.forEach(function (curr) {
         avg_rating += curr.rating;
@@ -88,7 +88,7 @@ const AccountSideBar = (props: Props) => {
 
     avg_rating = Number(avg_rating.toFixed(2));
 
-   
+
 
 
 
@@ -119,15 +119,15 @@ const AccountSideBar = (props: Props) => {
 
 
 
-    
+
 
     return (
         <>
             {/* <div className="col-sm-4"> */}
             {user != null ? (
-            <div className="sidebar">
+                <div className="sidebar">
                     <div className="heading_title">
-                        <h3>My Account</h3>
+                        <h2>My Account</h2>
                     </div>
                     <ul className="side-nav">
                         {Routes.EditProfileSideBar.filter((f) => {
@@ -135,26 +135,26 @@ const AccountSideBar = (props: Props) => {
                         }).map((d) => {
                             return (
                                 <>
-                                    <div>
-                                        <li className={router.pathname == d.path ? "active" : ""}>
-                                            {d.path === "/account/public-profile/[id]" ? (
 
-                                                <Link href={`/account/public-profile/${user?.id}`}>
-                                                    <a>{d.title}</a>
-                                                </Link>
-                                            ) : (
-                                                <Link href={d.path}>
-                                                    <a>{d.title}</a>
-                                                </Link>
-                                            )}
-                                        </li>
-                                    </div>
+                                    <li className={router.pathname == d.path ? "active" : ""}>
+                                        {d.path === "/account/public-profile/[id]" ? (
+
+                                            <Link href={`/account/public-profile/${user?.id}`}>
+                                                <a>{d.title}</a>
+                                            </Link>
+                                        ) : (
+                                            <Link href={d.path}>
+                                                <a>{d.title}</a>
+                                            </Link>
+                                        )}
+                                    </li>
+
                                 </>
                             );
                         })}
                     </ul>
 
-            </div>
+                </div>
             ) : (<></>)}
 
 
