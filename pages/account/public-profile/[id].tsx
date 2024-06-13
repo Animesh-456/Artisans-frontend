@@ -59,7 +59,7 @@ const EditProfile = () => {
     //     api.auth.public_me({})
     // }, [])
 
-  
+
 
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
@@ -119,7 +119,7 @@ const EditProfile = () => {
             setIndex(index - 1);
         }
         //setSlide(project_images[index]);
-     
+
 
     }
 
@@ -130,7 +130,7 @@ const EditProfile = () => {
         } else {
             setIndex(index + 1);
         }
-       
+
     }
 
 
@@ -144,10 +144,10 @@ const EditProfile = () => {
 
 
 
-   
 
 
-  
+
+
 
 
     return (
@@ -454,30 +454,37 @@ const EditProfile = () => {
         // </>
 
         <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-4">
-                        <AccountSideBar />
-                    </div>
-                    <div className="col-sm-8">
-                        <div className="profile_box">
-                            <div className="overview-head">
-                                <figure>
-                                    <img
-                                        src={
-                                            common.get_profile_picture(udetails?.user_picture) ||
-                                            "/img/no-images.png"
-                                        }
-                                    />
-                                </figure>
-                                <div>
-                                    <h3>{udetails.user_name}</h3>
-                                    <div className="location_a1">
-                                        <div className="location_l2">
-                                            <h5>Feedback</h5>
-                                        </div>
-                                        <div className="location_r2">
-                                            {/* <p>
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>My Profile</h1>
+                </div>
+            </section>
+            <section className="myproject">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <AccountSideBar />
+                        </div>
+                        <div className="col-sm-8">
+                            <div className="profile_box">
+                                <div className="overview-head">
+                                    <figure>
+                                        <img
+                                            src={
+                                                common.get_profile_picture(udetails?.user_picture) ||
+                                                "../../img/man.jpg"
+                                            }
+                                        />
+                                    </figure>
+                                    <div>
+                                        <h3>{udetails.user_name}</h3>
+                                        <div className="location_a1">
+                                            <div className="location_l2">
+                                                <h5>Feedback</h5>
+                                            </div>
+                                            <div className="location_r2">
+                                                {/* <p>
                                                 <i className="fa fa-star"></i>
                                                 <i className="fa fa-star"></i>
                                                 <i className="fa fa-star"></i>
@@ -486,38 +493,38 @@ const EditProfile = () => {
                                                 <span>5.0</span>
                                             </p> */}
 
-                                            {/* Dynamic logic */}
+                                                {/* Dynamic logic */}
 
-                                            {public_avg_rating && user?.role_id == 2 ? (
-                                                <p>
-                                                    <div
-                                                        className="stars"
-                                                        style={{ '--rating': public_avg_rating } as CSSProperties}
-                                                    ><span>{public_avg_rating}</span></div>
+                                                {public_avg_rating && user?.role_id == 2 ? (
+                                                    <p>
+                                                        <div
+                                                            className="stars"
+                                                            style={{ '--rating': public_avg_rating } as CSSProperties}
+                                                        ><span>{public_avg_rating}</span></div>
 
-                                                </p>
-                                            ) : (
-                                                <p>
-                                                    <div
-                                                        className="stars"
-                                                        style={{ '--rating': 0.0 } as CSSProperties}
-                                                    ><span>0.0</span></div>
+                                                    </p>
+                                                ) : (
+                                                    <p>
+                                                        <div
+                                                            className="stars"
+                                                            style={{ '--rating': 0.0 } as CSSProperties}
+                                                        ><span>0.0</span></div>
 
-                                                </p>
-                                            )}
+                                                    </p>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="location_a1">
-                                        <div className="location_l2">
-                                            <h5>Jobs Completed</h5>
-                                        </div>
-                                        <div className="location_r2">
-                                            <p> {totaljobs} </p>
+                                        <div className="location_a1">
+                                            <div className="location_l2">
+                                                <h5>Jobs Completed</h5>
+                                            </div>
+                                            <div className="location_r2">
+                                                <p> {totaljobs} </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {/* <div className="gallery_photo">
+                                {/* <div className="gallery_photo">
                                 <h4>Portfolio</h4>
                                 <div id="demo" className="carousel slide" data-ride="carousel">
                                     <div className="carousel-inner">
@@ -540,196 +547,202 @@ const EditProfile = () => {
                                 </div>
                             </div> */}
 
-                            {/* Portfolio logic */}
+                                {/* Portfolio logic */}
 
 
 
 
-                            {user?.role_id == 2 ? (
-                                <>
+                                {user?.role_id == 2 ? (
+                                    <>
 
-                                    {user?.prot_pic?.length ? (
+                                        {user?.prot_pic?.length ? (
 
-                                        // <div className='gallery_photo'>
-                                        //     <h4>Portfolio</h4>
-                                        //     <div id='demo' className='carousel slide' data-ride='carousel'>
-                                        //         <div className='carousel-inner'>
-                                        //             <div className='carousel-item active'>
-                                        //                 <img src={common.get_portfolio_pic(`${slides[index]}`)} id="curr_img" />
-                                        //             </div>
-                                        //         </div>
-                                        //         <button
-                                        //             className='carousel-control-prev'
-                                        //             onClick={prevSlide}
-                                        //             data-slide='prev'>
-                                        //             <i className="fa fa-angle-left"></i>
-                                        //         </button>
-                                        //         <button
-                                        //             className='carousel-control-next'
-                                        //             onClick={nextSlide}
-                                        //             data-slide='next'>
-                                        //             <i className="fa fa-angle-right"></i>
-                                        //         </button>
-                                        //     </div>
-                                        // </div>
+                                            // <div className='gallery_photo'>
+                                            //     <h4>Portfolio</h4>
+                                            //     <div id='demo' className='carousel slide' data-ride='carousel'>
+                                            //         <div className='carousel-inner'>
+                                            //             <div className='carousel-item active'>
+                                            //                 <img src={common.get_portfolio_pic(`${slides[index]}`)} id="curr_img" />
+                                            //             </div>
+                                            //         </div>
+                                            //         <button
+                                            //             className='carousel-control-prev'
+                                            //             onClick={prevSlide}
+                                            //             data-slide='prev'>
+                                            //             <i className="fa fa-angle-left"></i>
+                                            //         </button>
+                                            //         <button
+                                            //             className='carousel-control-next'
+                                            //             onClick={nextSlide}
+                                            //             data-slide='next'>
+                                            //             <i className="fa fa-angle-right"></i>
+                                            //         </button>
+                                            //     </div>
+                                            // </div>
 
-                                        <Carousel>
-                                            {user?.prot_pic?.split(',').map((m, index) => (
-                                                <Carousel.Item key={index} interval={4000}>
-                                                    <div className="carousel-item active">
-                                                        <img src={common.get_portfolio_pic(m)} id="curr_img" />
-                                                    </div>
-                                                </Carousel.Item>
-                                            ))}
-                                        </Carousel>
-
-
-                                    ) : (<></>)}
-                                </>
-                            ) : (
-                                <></>
-                            )}
-
-                            {user?.role_id == 2 && user?.service_desc?.length ? (
+                                            <Carousel>
+                                                {user?.prot_pic?.split(',').map((m, index) => (
+                                                    <Carousel.Item key={index} interval={4000}>
+                                                        <div className="carousel-item active">
+                                                            <img src={common.get_portfolio_pic(m)} id="curr_img" />
+                                                        </div>
+                                                    </Carousel.Item>
+                                                ))}
+                                            </Carousel>
 
 
-                                <>
-                                    <br />
-                                    <h6>Description</h6>
+                                        ) : (<></>)}
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
+
+                                {user?.role_id == 2 && user?.service_desc?.length ? (
 
 
-                                    <pre className="custom-pre">
-                                        <p>{user?.service_desc}</p>
-                                    </pre>
-                                    <br />
-                                </>
-
-                            ) : user?.role_id == 1 && user?.description?.length ? (
-                                <>
-                                    <br />
-                                    <h6>Description</h6>
+                                    <>
+                                        <br />
+                                        <div className="rys1">
+                                            <h5>Description</h5>
 
 
-                                    <pre className="custom-pre">
-                                        <p>{user?.description}</p>
-                                    </pre>
-                                    <br />
-                                </>
-                            ) : (
-                                <></>
-                            )}
-                            <div>
-                                <h6>Work History <span>({totaljobs})</span></h6>
-                                {projects.length
-                                    ? projects?.map((l) => {
-                                        return (
-                                            <>
-                                                <div className='project_loop'>
-                                                    <h4>
+                                            <pre className="custom-pre">
+                                                <p>{user?.service_desc}</p>
+                                            </pre>
+                                        </div>
+                                        <br />
+                                    </>
 
-                                                        {l?.pro_job == 1 ? (
-                                                            user?.id == usr?.id ? (
-                                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+                                ) : user?.role_id == 1 && user?.description?.length ? (
+                                    <>
+                                        <br />
+                                        <div className="rys1">
+                                            <h5>Description</h5>
+
+
+                                            <pre className="custom-pre">
+                                                <p>{user?.description}</p>
+                                            </pre>
+                                        </div>
+                                        <br />
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
+                                <div>
+                                    <div className="rys">
+                                        <h5>Work History <span>({totaljobs})</span></h5>
+                                    </div>
+                                    {projects.length
+                                        ? projects?.map((l) => {
+                                            return (
+                                                <>
+                                                    <div className='project_loop'>
+                                                        <h4>
+
+                                                            {l?.pro_job == 1 ? (
+                                                                user?.id == usr?.id ? (
+                                                                    <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+                                                                ) : (
+                                                                    <a><b>Pro Job</b></a>
+                                                                )
                                                             ) : (
-                                                                <a><b>Pro Job</b></a>
-                                                            )
-                                                        ) : (
-                                                            <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
-                                                        )}
-                                                        <span>
-                                                            Posted :{" "}
-                                                            {moment(l?.project_post_format_date).format("DD-MMM-YYYY")}
-                                                        </span>
-                                                    </h4>
-                                                    <p>{l?.visibility}  {l?.programmer?.user_name ? ` | Machined by  ${l?.programmer?.user_name}` : ``}  </p>
+                                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+                                                            )}
 
+                                                        </h4>
 
-                                                    {l.reviews.map((r) => (
-                                                        <>
-                                                            <div>
-                                                                <p>Rating: {r?.rating}</p>
+                                                        <p>{l?.visibility}  {l?.programmer?.user_name ? ` | Machined by  ${l?.programmer?.user_name}` : ``}  </p>
+                                                        <p> Posted :{" "}
+                                                            {moment(l?.project_post_format_date).format("DD-MMM-YYYY")}</p>
 
-                                                                <div
-                                                                    className="stars"
-                                                                    style={{ '--rating': r?.rating } as CSSProperties}
-                                                                ><span>{r?.rating}</span></div>
-                                                            </div>
-                                                        </>
-                                                    ))}
-                                                    {l.reviews.map((r) => (
+                                                        {l.reviews.map((r) => (
+                                                            <>
+                                                                <div>
+                                                                    <p>Rating: {r?.rating}</p>
 
-                                                        <>
+                                                                    <div
+                                                                        className="stars"
+                                                                        style={{ '--rating': r?.rating } as CSSProperties}
+                                                                    ><span>{r?.rating}</span></div>
+                                                                </div>
+                                                            </>
+                                                        ))}
+                                                        {l.reviews.map((r) => (
 
-                                                            <div className="comment1">
+                                                            <>
+
+                                                                <div className="comment1">
 
 
 
-                                                                <div className="rating-color pub-rat">
-                                                                    <p>
+                                                                    <div className="rating-color pub-rat">
+                                                                        <p>
 
-                                                                        <div
-                                                                            className="quality"
-                                                                            style={{ '--rating': r?.provider_rate1 } as CSSProperties}
-                                                                        ></div>
-                                                                        <span> Quality </span>
-                                                                    </p>
+                                                                            <div
+                                                                                className="quality"
+                                                                                style={{ '--rating': r?.provider_rate1 } as CSSProperties}
+                                                                            ></div>
+                                                                            <span> Quality </span>
+                                                                        </p>
 
-                                                                    <p>
+                                                                        <p>
 
-                                                                        <div
-                                                                            className="time"
-                                                                            style={{ '--rating': r?.provider_rate2 } as CSSProperties}
-                                                                        ></div>
-                                                                        <span> Deadlines </span>
-                                                                    </p>
+                                                                            <div
+                                                                                className="time"
+                                                                                style={{ '--rating': r?.provider_rate2 } as CSSProperties}
+                                                                            ></div>
+                                                                            <span> Deadlines </span>
+                                                                        </p>
 
-                                                                    <p>
+                                                                        <p>
 
-                                                                        <div
-                                                                            className="communication"
-                                                                            style={{ '--rating': r?.provider_rate3 } as CSSProperties}
-                                                                        ></div>
-                                                                        <span> Communication</span>
+                                                                            <div
+                                                                                className="communication"
+                                                                                style={{ '--rating': r?.provider_rate3 } as CSSProperties}
+                                                                            ></div>
+                                                                            <span> Communication</span>
 
-                                                                    </p>
+                                                                        </p>
 
-                                                                    <p>
+                                                                        <p>
 
-                                                                        <div
-                                                                            className="professionalism"
-                                                                            style={{ '--rating': r?.provider_rate4 } as CSSProperties}
-                                                                        ></div>
-                                                                        <span> Professional</span>
-                                                                    </p>
+                                                                            <div
+                                                                                className="professionalism"
+                                                                                style={{ '--rating': r?.provider_rate4 } as CSSProperties}
+                                                                            ></div>
+                                                                            <span> Professional</span>
+                                                                        </p>
+                                                                    </div>
+
+
+                                                                    <div className="public">
+
+                                                                        <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
+
+                                                                        <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
+
+                                                                    </div>
+
+
                                                                 </div>
 
+                                                            </>
 
-                                                                <div className="public">
+                                                        ))}
+                                                    </div>
+                                                </>
 
-                                                                    <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
+                                            );
 
-                                                                    <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
-
-                                                                </div>
-
-
-                                                            </div>
-
-                                                        </>
-
-                                                    ))}
-                                                </div>
-                                            </>
-
-                                        );
-
-                                    })
-                                    : ""}
+                                        })
+                                        : ""}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 
