@@ -461,25 +461,25 @@ const Jobs = (props: Props) => {
 
                                     </ul>
                                     <div className="tab-content">
-                                        <div id="all" className="tab-pane active">
+                                        {/* <div id="all" className="tab-pane active"> */}
 
 
 
 
-                                            {/* Loop logic here  */}
+                                        {/* Loop logic here  */}
 
 
 
-                                            {list.length
-                                                ? list?.map((l: ProjectDetails) => {
-                                                    return (
-                                                        <>
-                                                            {/* <div  className='tab-pane fade'> */}
+                                        {list.length
+                                            ? list?.map((l: ProjectDetails) => {
+                                                return (
+                                                    <>
+                                                        {/* <div  className='tab-pane fade'> */}
+                                                        <div id="all" className="tab-pane active">
                                                             <div className='project_loop'>
 
                                                                 <h4>
-
-                                                                    <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+                                                                    <a style={{color: "#0e0e0e", fontSize: "13px"}} href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                                                 </h4>
                                                                 <p>{l?.visibility} | Open </p>
                                                                 <p>  Posted :{" "}
@@ -488,16 +488,17 @@ const Jobs = (props: Props) => {
 
 
                                                             </div>
-                                                            {/* </div> */}
-                                                        </>
-                                                    );
-                                                })
-                                                : (<> </>)}
+                                                        </div>
+                                                        {/* </div> */}
+                                                    </>
+                                                );
+                                            })
+                                            : (<> </>)}
 
 
 
 
-                                        </div>
+                                        {/* </div> */}
 
                                     </div>
                                     {/* <ul className="pagination justify-content-center">
