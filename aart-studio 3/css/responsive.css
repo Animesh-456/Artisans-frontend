@@ -241,5 +241,26 @@
   }
   .contact_content {
     margin-bottom: 1em;
-   }
+  }
+  .overview-head figure {
+    width: 55%;
+  }
+  .myprofile_r figure img, .overview-head figure img {
+    width: 105px;
+    height: 105px;
+  }
+  .location_a1 {
+    display: block;
+    margin-bottom: 15px;
+  }
+  .location_l2 {
+    width: auto;
+  }
+  .location_l2 h5 {
+    font-size: 14px;
+    padding-bottom: 2px;
+  }
+  .location_r2 {
+    width: auto;
+  }
 }
