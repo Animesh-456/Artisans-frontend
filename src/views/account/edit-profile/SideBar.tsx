@@ -125,8 +125,10 @@ const AccountSideBar = (props: Props) => {
         <>
             {/* <div className="col-sm-4"> */}
             {user != null ? (
-                <div className="sidebar">
-                    <h3>My Account</h3>
+            <div className="sidebar">
+                    <div className="heading_title">
+                        <h3>My Account</h3>
+                    </div>
                     <ul className="side-nav">
                         {Routes.EditProfileSideBar.filter((f) => {
                             return f.role.includes(parseInt(user?.role_id));
@@ -152,8 +154,7 @@ const AccountSideBar = (props: Props) => {
                         })}
                     </ul>
 
-
-                </div>
+            </div>
             ) : (<></>)}
 
 

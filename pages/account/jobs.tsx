@@ -370,10 +370,19 @@ const Jobs = (props: Props) => {
 
         // New logic goes here 👇
 
-        <section className="cjw">
+
+        <>
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>My Projects</h1>
+                </div>
+            </section>
+
+            <section className="myproject">
             <div className="container">
-                <div className="row">
-                    <div className="col-sm-4">
+                    <div className="row">
+                        <div className="col-sm-4">
                         <AccountSideBar />
                     </div>
                     <div className="col-sm-8">
@@ -555,6 +564,7 @@ const Jobs = (props: Props) => {
                 </div>
             </div>
         </section >
+        </>
     );
 };
 
