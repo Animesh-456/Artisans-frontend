@@ -10,90 +10,145 @@ const Reviews = (props: Props) => {
 
 
     const UserData = JSON.parse(localStorage.getItem('UserData'));
-    
+
 
 
     api.project.reviews_list({ params: {} }, (d) => {
-       
+
         Reviews_data = d.data;
 
     });
 
 
 
-    setTimeout(() => {
-        let Tbody = document.getElementById('Tbody')
-        let ReviewsList = JSON.parse(localStorage.getItem('Reviews_List'));
+    // setTimeout(() => {
+    //     let Tbody = document.getElementById('Tbody')
+    //     let ReviewsList = JSON.parse(localStorage.getItem('Reviews_List'));
 
 
-        ReviewsList.map((item) => (
-            Tbody.innerHTML = Tbody.innerHTML + `<tr> <td>${item.project.project_name}</td> <td>${item.provider.user_name}</td>  <td>${item.rating}</td> </tr>`
-        ))
+    //     ReviewsList.map((item) => (
+    //         Tbody.innerHTML = Tbody.innerHTML + `<tr> <td>${item.project.project_name}</td> <td>${item.provider.user_name}</td>  <td>${item.rating}</td> </tr>`
+    //     ))
 
 
-    }, 1000)
+    // }, 1000)
 
 
 
     return (
-        <div>
-            <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>Review artist</h1>
-                        </div>
-                    </div>
+        // <div>
+        //     <div
+        //         className='banner_wp sign_banner'
+        //         style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+        //         <div className='container'>
+        //             <div className='row'>
+        //                 <div className='banner_text inner_banner_text'>
+        //                     <h1 className='yh'>Review artist</h1>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     <div className='container cjw'>
+        //         <div className='row'>
+        //             <div className="col-sm-4">
+        //                 <AccountSideBar />
+        //             </div>
+
+        //             <div className='col-sm-8'>
+        //                 <div className='profile_box'>
+        //                     <h3>Reviews</h3>
+        //                     <div className='fund_wp'>
+        //                         <div className='table-responsive'>
+        //                             <table className='table table-bordered table-sm'>
+        //                                 <thead>
+        //                                     <tr className='table-primary'>
+        //                                         <td>Name of the project</td>
+        //                                         <td>artist Name</td>
+        //                                         <td>Ratings</td>
+        //                                     </tr>
+        //                                 </thead>
+        //                                 <tbody id="Tbody">
+
+        //                                     {
+
+        //                                         Reviews_data.map((item) => {
+
+        //                                             return (
+        //                                                 <>
+        //                                                     <tr>
+        //                                                         <td>{item.project.project_name}</td>
+        //                                                         <td>{item.provider.user_name}</td>
+        //                                                         <td>{item.rating}</td>
+        //                                                     </tr>
+        //                                                 </>
+        //                                             )
+        //                                         })}
+
+
+        //                                 </tbody>
+        //                             </table>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
+
+        <>
+
+            <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
+                <div className="container">
+                    <h1>Review Machinist</h1>
                 </div>
-            </div>
-            <div className='container cjw'>
-                <div className='row'>
-                    <div className="col-sm-4">
-                        <AccountSideBar />
-                    </div>
+            </section>
 
-                    <div className='col-sm-8'>
-                        <div className='profile_box'>
-                            <h3>Reviews</h3>
-                            <div className='fund_wp'>
-                                <div className='table-responsive'>
-                                    <table className='table table-bordered table-sm'>
-                                        <thead>
-                                            <tr className='table-primary'>
-                                                <td>Name of the project</td>
-                                                <td>artist Name</td>
-                                                <td>Ratings</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="Tbody">
+            <section className="myproject">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <AccountSideBar />
+                        </div>
+                        <div className="col-sm-8">
+                            <div className="profile_box">
+                                <div className="heading_title">
+                                    <h2>Reviews</h2>
+                                </div>
+                                <div className="fund_wp">
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-sm">
+                                            <thead>
+                                                <tr className="table-primary">
+                                                    <th>Name of the project</th>
+                                                    <th>Artist Name</th>
+                                                    <th>Ratings</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
 
-                                            {
+                                                    Reviews_data.map((item) => {
 
-                                                Reviews_data.map((item) => {
-
-                                                    return (
-                                                        <>
-                                                            <tr>
-                                                                <td>{item.project.project_name}</td>
-                                                                <td>{item.provider.user_name}</td>
-                                                                <td>{item.rating}</td>
-                                                            </tr>
-                                                        </>
-                                                    )
-                                                })}
-
-
-                                        </tbody>
-                                    </table>
+                                                        return (
+                                                            <>
+                                                                <tr>
+                                                                    <td>{item.project.project_name}</td>
+                                                                    <td>{item.provider.user_name}</td>
+                                                                    <td>{item.rating}</td>
+                                                                </tr>
+                                                            </>
+                                                        )
+                                                    })}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </>
     );
 };
 

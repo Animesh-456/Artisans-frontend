@@ -26,7 +26,7 @@ const ChangePassword = (props: Props) => {
 
 	return (
 		<>
-			<div
+			{/* <div
 				className='banner_wp sign_banner'
 				style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
 				<div className='container'>
@@ -103,7 +103,72 @@ const ChangePassword = (props: Props) => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
+
+
+
+			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
+				<div className="container">
+					<h1>Change Password</h1>
+				</div>
+			</section>
+
+			<section className="myproject">
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-4">
+							<AccountSideBar />
+						</div>
+						<div className="col-sm-8">
+							<div className="profile_box">
+								<div className="heading_title">
+									<h2>Change Password ({user?.user_name ? ` (${user?.user_name})` : ""})</h2>
+								</div>
+								<div className="edit_password_wp">
+									<form onSubmit={handleSubmit}>
+										<div className="row">
+											<div className="col-sm-4">
+												<label>Old Password</label>
+											</div>
+											<div className="col-sm-8">
+												<input name="oldpwd"
+													value={values.old_password}
+													onChange={setValues("old_password")}
+													type="password" />
+											</div>
+										</div>
+										<div className="row">
+											<div className="col-sm-4">
+												<label>New Password</label>
+											</div>
+											<div className="col-sm-8">
+												<input name="newpwd"
+													value={values.new_password}
+													onChange={setValues("new_password")}
+													type="password" />
+											</div>
+										</div>
+										<div className="row">
+											<div className="col-sm-4">
+												<label>Confirm Password</label>
+											</div>
+											<div className="col-sm-8">
+												<input name="confpwd"
+													value={values.password_confirmation}
+													onChange={setValues("password_confirmation")}
+													type="password" />
+											</div>
+										</div>
+										<div className="reg-bottom">
+											<button type="submit" name="submit">Save</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</>
 	);
 };

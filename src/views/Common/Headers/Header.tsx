@@ -286,9 +286,11 @@ export default function Header({ }: Props) {
 									<ul className="mobimenu">
 										<li><Link href="/">Home</Link></li>
 										<li><Link href="/account/about">About Us</Link></li>
+										<li><Link href="/account/jobs">My account</Link></li>
 										<li><Link href="/job/post">Art Request</Link></li>
 										<li><Link href="/machining/listing">Browse Project</Link></li>
-										<li><Link href="/account/contact_us">Contact Us</Link></li>
+										{/* <li><Link href="/account/contact_us">Contact Us</Link></li> */}
+										
 										{user ? (
 											<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
 										) : (
