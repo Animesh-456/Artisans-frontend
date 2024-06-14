@@ -496,6 +496,7 @@ const EditProfile = () => {
                                                 {/* Dynamic logic */}
 
                                                 {public_avg_rating && user?.role_id == 2 ? (
+                                                    <div className="location_r2">
                                                     <p>
                                                         <div
                                                             className="stars"
@@ -503,7 +504,9 @@ const EditProfile = () => {
                                                         ><span>{public_avg_rating}</span></div>
 
                                                     </p>
+                                                    </div>
                                                 ) : (
+                                                        <div className="location_r2">
                                                     <p>
                                                         <div
                                                             className="stars"
@@ -511,6 +514,7 @@ const EditProfile = () => {
                                                         ><span>0.0</span></div>
 
                                                     </p>
+                                                    </div>
                                                 )}
                                             </div>
                                         </div>
@@ -652,7 +656,7 @@ const EditProfile = () => {
 
                                                         </h4>
 
-                                                        <p>{l?.visibility}  {l?.programmer?.user_name ? ` | Machined by  ${l?.programmer?.user_name}` : ``}  </p>
+                                                        <p>{l?.visibility}  {l?.programmer?.user_name ? ` | Artist by  ${l?.programmer?.user_name}` : ``}  </p>
                                                         <p> Posted :{" "}
                                                             {moment(l?.project_post_format_date).format("DD-MMM-YYYY")}</p>
 
@@ -718,7 +722,7 @@ const EditProfile = () => {
 
                                                                     <div className="public">
 
-                                                                        <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
+                                                                        <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Artist By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
 
                                                                         <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
 

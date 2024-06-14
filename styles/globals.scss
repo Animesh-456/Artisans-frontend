@@ -2085,3 +2085,67 @@ select {
     transform: scale(1);
   }
 }
+
+
+.star-rating {
+  display: inline-block;
+  font-size: 0;
+}
+
+.stars::before {
+  content: "★★★★★";
+  font-size: 1.4rem;
+  display: inline-block;
+  --percent: calc(var(--rating)/5 * 100%);
+  background: linear-gradient(90deg, #f29e06 var(--percent), #ddd 0%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.quality::before {
+  content: "🟧🟧🟧🟧🟧";
+
+  display: inline-block;
+  --percent: calc(var(--rating)/5 * 100%);
+  background: linear-gradient(90deg, #f29e06 var(--percent), #ddd 0%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.time::before {
+  content: "🟧🟧🟧🟧🟧";
+
+  display: inline-block;
+  --percent: calc(var(--rating)/5 * 100%);
+  background: linear-gradient(90deg, #f29e06 var(--percent), #ddd 0%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.communication::before {
+  content: "🟧🟧🟧🟧🟧";
+
+  display: inline-block;
+  --percent: calc(var(--rating)/5 * 100%);
+  background: linear-gradient(90deg, #f29e06 var(--percent), #ddd 0%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.professionalism::before {
+  content: "🟧🟧🟧🟧🟧";
+
+  display: inline-block;
+  --percent: calc(var(--rating)/5 * 100%);
+  background: linear-gradient(90deg, #f29e06 var(--percent), #ddd 0%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.stars span,
+.quality span {
+  font-size: 14px;
+  color: #636363;
+  font-weight: 500;
+  padding-left: 4px;
+}
