@@ -176,61 +176,62 @@ const EditProfile = () => {
 								</div>
 							</div>
 						) : (<></>)} */}
-								<hr className="dashed-hr" />
+								{/* <hr className="dashed-hr" /> */}
 								<div className="heading_title">
 									<h2 >Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h2>
+								</div>
 
-									{/* <hr className='dashed-hr' /> */}
-									<div className="table-responsive inbox-table mt-4">
-										<table className="table">
-											<thead>
-												<tr >
-													<th></th>
-													<th>User</th>
-													<th>Project title</th>
-													<th className=''>Last message</th>
-													<th></th>
-												</tr>
-											</thead>
+								{/* <hr className='dashed-hr' /> */}
+								<div className="table-responsive inbox-table mt-4">
+									<table className="table">
+										<thead>
+											<tr >
+												<th></th>
+												<th>User</th>
+												<th>Project title</th>
+												<th className=''>Last message</th>
+												<th></th>
+											</tr>
+										</thead>
 
-											{list.length ? list.map((l) => {
-												return (
-													<>
+										{list.length ? list.map((l) => {
+											return (
+												<>
 
-														<tbody>
+													<tbody style={{cursor:"pointer"}}>
 
-															<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
-																<td>
-																	<div className="msgform"><i className="fa fa-square"></i></div>
+														<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
+															<td>
+																<div className="msgform"><i className="fa fa-square"></i></div>
 
-																</td>
-																<td className='dummy-anchor darkblue-text cursor-pointer'>
+															</td>
+															<td className='dummy-anchor darkblue-text cursor-pointer'>
 
-																	{l?.user_name}
-																</td>
+																{l?.user_name}
+															</td>
 
-																<td>{l?.project_name}</td>
-																<td className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
+															<td>{l?.project_name}</td>
+															<td className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
 
-																	{user?.role_id == 1 && l?.buyer_message_status == "U" ? (
-																		<b>{l?.message}</b>
-																	) : user?.role_id == 1 && l?.buyer_message_status == "R" ? (
-																		<>{l?.message}</>
-																	) : user?.role_id == 2 && l?.programmer_message_status == "U" ? (
-																		<b>{l?.message}</b>
-																	) : user?.role_id == 2 && l?.programmer_message_status == "R" ? (
-																		<>{l?.message}</>
-																	) : (<>{l?.message}</>)}
-																</td>
+																{user?.role_id == 1 && l?.buyer_message_status == "U" ? (
+																	<b>{l?.message}</b>
+																) : user?.role_id == 1 && l?.buyer_message_status == "R" ? (
+																	<>{l?.message}</>
+																) : user?.role_id == 2 && l?.programmer_message_status == "U" ? (
+																	<b>{l?.message}</b>
+																) : user?.role_id == 2 && l?.programmer_message_status == "R" ? (
+																	<>{l?.message}</>
+																) : (<>{l?.message}</>)}
+															</td>
 
-															</	tr>
-														</tbody >
-													</>
-												)
-											}) : (<></>)}
+														</	tr>
+													</tbody >
+												</>
+											)
+										}) : (<></>)}
 
-										</table>
-									</div>
+									</table>
+								</div>
 								<nav className="pagination_wp">
 									<div className='pagination-wrap'>
 										<ul className='pagination'>
@@ -269,7 +270,7 @@ const EditProfile = () => {
 										},
 											)} */}
 
-													{opt.total_count > 0 && getPageNumbers().map((page) => (
+											{opt.total_count > 0 && getPageNumbers().map((page) => (
 
 												<>
 													<li
@@ -309,9 +310,9 @@ const EditProfile = () => {
 												</a>
 											</li> : ""}
 										</ul>
-										</div>
-									</nav>
-								</div>
+									</div>
+								</nav>
+
 							</div>
 						</div>
 					</div>

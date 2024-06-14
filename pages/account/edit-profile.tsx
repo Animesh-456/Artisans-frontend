@@ -161,7 +161,7 @@ const EditProfile = () => {
 
     }, [pr]);
 
-   
+
 
     function delete_files(e) {
         //setFile(file.filter(function (s) { return s !== e }))
@@ -182,7 +182,7 @@ const EditProfile = () => {
 
     }, [pr2]);
 
-  
+
 
     function delete_files2(e) {
         setFile2(file2.filter(function (s) { return s !== e }))
@@ -229,370 +229,648 @@ const EditProfile = () => {
 
 
 
+    const [imagePreview, setImagePreview] = useState(null);
+
+
+
 
     return (
-        <div>
-            <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>Edit My Profile</h1>
-                        </div>
-                    </div>
+        // <div>
+        //     <div
+        //         className='banner_wp sign_banner'
+        //         style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+        //         <div className='container'>
+        //             <div className='row'>
+        //                 <div className='banner_text inner_banner_text'>
+        //                     <h1 className='yh'>Edit My Profile</h1>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     <div className='container cjw'>
+        //         <div className='row'>
+        //             <div className="col-sm-4">
+        //                 <AccountSideBar />
+        //             </div>
+
+        //             <div className='col-sm-8'>
+        //                 <div className='profile_box'>
+        //                     <h3>
+        //                         My Profile (
+        //                         {user?.role_id == 1
+        //                             ? "Customer"
+        //                             : user?.role_id == 2
+        //                                 ? "Machinist"
+        //                                 : ""}
+        //                         )
+        //                     </h3>
+        //                     <div className='project_profil'>
+        //                         <form onSubmit={handleSubmit}>
+        //                             <div className='row'>
+        //                                 <div className='col-sm-6'>
+        //                                     <label>First Name</label>
+        //                                     <input
+        //                                         name='fname'
+        //                                         type='text'
+        //                                         value={profile.name}
+        //                                         onChange={setProfile("name")}
+        //                                     />
+        //                                 </div>
+        //                                 <div className='col-sm-6'>
+        //                                     <label>Last Name</label>
+        //                                     <input
+        //                                         name='lname'
+        //                                         type='text'
+        //                                         value={profile.surname}
+        //                                         onChange={setProfile("surname")}
+        //                                     />
+        //                                 </div>
+        //                             </div>
+        //                             <div className='row'>
+        //                                 <div className='col-sm-6'>
+        //                                     <label>Username</label>
+        //                                     <input
+        //                                         name='username'
+        //                                         type='text'
+        //                                         value={profile.user_name}
+        //                                         onChange={setProfile("user_name")}
+        //                                         readOnly />
+        //                                 </div>
+        //                                 <div className='col-sm-6'>
+        //                                     <label>Post code</label>
+        //                                     <input
+        //                                         name='zcode'
+        //                                         type='text'
+        //                                         value={profile.zcode}
+        //                                         onChange={setProfile("zcode")}
+        //                                     />
+        //                                 </div>
+        //                             </div>
+        //                             <div className='row'>
+        //                                 <div className='col-sm-6'>
+        //                                     <label>City</label>
+        //                                     <input
+        //                                         name='city'
+        //                                         type='text'
+        //                                         value={profile.city}
+        //                                         onChange={setProfile("city")}
+        //                                     />
+        //                                 </div>
+        //                                 <div className='col-sm-6'>
+        //                                     <label>Country</label>
+
+        //                                     <select
+        //                                         name='country'
+        //                                         value={profile.country_code}
+        //                                         //onChange={setProfile("country_code")}
+        //                                         disabled
+        //                                     >
+        //                                         {countries?.length ? (
+        //                                             countries?.map((d) => {
+        //                                                 return (
+        //                                                     <option value={d.id}>{d.country_name}</option>
+        //                                                 );
+        //                                             })
+        //                                         ) : (
+        //                                             <></>
+        //                                         )}
+        //                                     </select>
+        //                                 </div>
+        //                             </div>
+        //                             <div className='row'>
+        //                                 <div className='col-sm-6'>
+        //                                     <label className="qwe11">Address</label>
+        //                                     <textarea
+        //                                         name='address'
+        //                                         cols={20}
+        //                                         rows={5}
+        //                                         value={profile.address1}
+        //                                         onChange={setProfile("address1")}
+        //                                     />
+        //                                 </div>
+        //                                 {user?.role_id == 2 ? (
+        //                                     <>
+
+        //                                         <div className='col-sm-6'>
+        //                                             <label className="qwe11">Introduce yourself here (eg expertise, experience, machinery, materials, status of your business ...)</label>
+        //                                             <textarea
+        //                                                 name='desc'
+        //                                                 cols={20}
+        //                                                 rows={5}
+        //                                                 value={profile.service_desc}
+        //                                                 onChange={setProfile("service_desc")}
+        //                                             />
+        //                                         </div>
+        //                                     </>
+        //                                 ) : (<></>)}
+
+        //                                 {user?.role_id == 1 ? (
+        //                                     <>
+        //                                         <div className='col-sm-6'>
+        //                                             <label>Description</label>
+        //                                             <textarea
+        //                                                 name='desc'
+        //                                                 cols={20}
+        //                                                 rows={5}
+        //                                                 value={profile.description}
+        //                                                 onChange={setProfile("description")}
+        //                                             />
+        //                                         </div>
+        //                                     </>
+        //                                 ) : (<></>)}
+        //                                 <hr />
+
+
+
+        //                                 {user?.role_id == 2 && user?.pro_user == 1 ? (
+
+        //                                     <>
+        //                                         <div className='col-sm-6'>
+        //                                             <label>Company Name</label>
+        //                                             <input
+        //                                                 name='company_name'
+        //                                                 type='text'
+        //                                                 readOnly
+
+        //                                                 value={profile.company_name}
+        //                                                 onChange={setProfile("company_name")} />
+
+        //                                         </div><div className='col-sm-6'>
+        //                                             <label>SIREN NUMBER</label>
+        //                                             <input
+        //                                                 name='siren'
+        //                                                 type='text'
+        //                                                 readOnly
+        //                                                 value={profile.siren}
+        //                                                 onChange={setProfile("siren")} />
+        //                                         </div><div className='col-sm-6'>
+        //                                             <label><b>TVA %</b></label>
+        //                                             <input
+        //                                                 name='username'
+        //                                                 type='text'
+        //                                                 disabled={tvastate}
+        //                                                 value={profile.tva}
+        //                                                 onChange={setProfile("tva")} />
+        //                                         </div>
+        //                                     </>
+
+        //                                 ) : (<></>)}
+
+        //                             </div>
+        //                             <div className='row'>
+        //                                 <div className='col-sm-6'>
+        //                                     <label>Profile Picture (Formats jpeg, jpg, png, gif-max: 640x350)</label>
+        //                                     <div className='upload-btn-wrapper'>
+        //                                         <button className='btn'>
+        //                                             <i className='fa fa-upload' /> Add your logo, a
+        //                                             picture
+        //                                         </button>
+        //                                         <input
+        //                                             type='file'
+        //                                             name='myfile'
+        //                                             id='fileAttach'
+        //                                             onChange={handle_file_change}
+        //                                             ref={fileInputRef}
+        //                                         />
+        //                                     </div>
+        //                                     <br />
+        //                                     <br />
+        //                                     <br />
+        //                                     {pr < 101 ? (
+        //                                         <ProgressBar now={pr} label={`${pr}%`} />
+        //                                     ) : (<></>)}
+
+        //                                     <br /><br />
+        //                                     {file && pr > 100 ? (
+        //                                         <div className="pro_div">
+        //                                             <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file)}><i className="fa fa-trash-o"></i></a></p>
+        //                                         </div>
+        //                                     ) : (<></>)}
+        //                                 </div>
+        //                                 {profile?.prof_pic && (
+
+        //                                     <div className='col-sm-4'>
+        //                                         <figure>
+        //                                             <img
+        //                                                 src={
+        //                                                     common.get_profile_picture(profile?.prof_pic) ||
+        //                                                     "/img/no-images.png"
+        //                                                 }
+
+        //                                             />
+        //                                             <a style={{ cursor: "pointer" }} onClick={() => { delete_profile_pic(profile?.prof_pic) }}><i className="fa fa-trash-o"></i></a>
+        //                                         </figure>
+        //                                     </div>
+        //                                 )}
+        //                             </div>
+
+
+        //                             {user?.role_id == 2 ? (
+        //                                 <>
+        //                                     <div className='row'>
+        //                                         <div className='col-sm-6'>
+        //                                             <label>Portfolio Picture</label>
+        //                                             <div className='upload-btn-wrapper'>
+        //                                                 <button className='btn'>
+        //                                                     <i className='fa fa-upload' /> Add Portfolio Picture
+        //                                                 </button>
+        //                                                 <input
+        //                                                     type='file'
+        //                                                     name='myfile'
+        //                                                     id='fileAttach'
+        //                                                     multiple
+        //                                                     onChange={handle_file_change2}
+        //                                                     ref={fileInputRef}
+        //                                                 />
+        //                                             </div>
+
+
+        //                                             {pr2 < 101 ? (
+        //                                                 <ProgressBar now={pr2} label={`${pr2}%`} />
+        //                                             ) : (<></>)}
+
+        //                                             {file2 && pr2 > 100 ? (
+        //                                                 file2?.map((f) => {
+        //                                                     return (
+        //                                                         <div className="pro_div">
+        //                                                             <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
+        //                                                         </div>
+        //                                                     )
+        //                                                 })
+        //                                             ) : (<></>)}
+        //                                         </div>
+        //                                         {profile?.prot_pic && profile?.prot_pic?.split(",").map((d) => {
+
+        //                                             return (
+
+        //                                                 <div className='row'>
+        //                                                     <div className="col-sm-4">
+        //                                                         <figure>
+        //                                                             <img
+        //                                                                 src={
+        //                                                                     common.get_portfolio_pic(d) ||
+        //                                                                     "/img/no-images.png"
+        //                                                                 }
+        //                                                             />
+        //                                                             <a style={{ cursor: "pointer" }} onClick={() => { delete_portfolio_pic(d) }}><i className="fa fa-trash-o"></i></a>
+        //                                                         </figure>
+        //                                                     </div>
+        //                                                 </div>
+
+        //                                             )
+        //                                         })}
+        //                                     </div>
+
+        //                                 </>
+        //                             ) : (<></>)}
+
+
+        //                             {user?.pro_user == 1 && user?.role_id == 2 ? (
+
+        //                                 <div className='form-check signcheck'>
+        //                                     <label className='form-check-label'>
+        //                                         <input type='checkbox' className='form-check-input' onClick={selfemployed} />I am self-employed
+        //                                     </label>
+        //                                 </div>
+        //                             ) : (<></>)}
+
+        //                             <div className='reg-bottom'>
+        //                                 <button type='submit' name='submit'>
+        //                                     Save
+        //                                 </button>
+        //                             </div>
+        //                         </form>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+
+
+        //         <GlobalModal
+        //             title='Delete profile picture ?'
+        //             atom={atom.modal.edit_profile_pic}>
+
+        //             <div className='wjgf'>
+
+        //                 <div className='cnfm-job-details post'>
+        //                     <div className='cnfm-job-attchmnts'>
+        //                         <h5>Are you sure you want to delete this picture ? </h5>
+
+        //                     </div>
+
+
+        //                 </div>
+        //                 <div className='reg-bottom'>
+        //                     <button type='submit' name='submit' onClick={() => setOpen(false)}>
+        //                         Back
+        //                     </button>
+        //                     <button type='submit' name='submit' onClick={() => { setOpen(false); handle_delete_profile_pic() }}>
+        //                         Yes
+        //                     </button>
+        //                 </div>
+        //             </div>
+        //         </GlobalModal>
+
+        //         <GlobalModal
+        //             title='Delete portfolio picture ?'
+        //             atom={atom.modal.edit_portfolio_pic}>
+
+        //             <div className='wjgf'>
+
+        //                 <div className='cnfm-job-details post'>
+        //                     <div className='cnfm-job-attchmnts'>
+        //                         <h5>Are you sure you want to delete this picture ? </h5>
+
+        //                     </div>
+
+
+        //                 </div>
+        //                 <div className='reg-bottom'>
+        //                     <button type='submit' name='submit' onClick={() => setOpen2(false)}>
+        //                         Back
+        //                     </button>
+        //                     <button type='submit' name='submit' onClick={() => { setOpen2(false); handle_delete_portfolio_pic() }}>
+        //                         Yes
+        //                     </button>
+        //                 </div>
+        //             </div>
+        //         </GlobalModal>
+        //     </div>
+        // </div>
+        <>
+
+            <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
+                <div className="container">
+                    <h1>Edit My Profile</h1>
                 </div>
-            </div>
-            <div className='container cjw'>
-                <div className='row'>
-                    <div className="col-sm-4">
-                        <AccountSideBar />
-                    </div>
+            </section>
 
-                    <div className='col-sm-8'>
-                        <div className='profile_box'>
-                            <h3>
-                                My Profile (
-                                {user?.role_id == 1
-                                    ? "Customer"
-                                    : user?.role_id == 2
-                                        ? "Machinist"
-                                        : ""}
-                                )
-                            </h3>
-                            <div className='project_profil'>
-                                <form onSubmit={handleSubmit}>
-                                    <div className='row'>
-                                        <div className='col-sm-6'>
-                                            <label>First Name</label>
-                                            <input
-                                                name='fname'
-                                                type='text'
-                                                value={profile.name}
-                                                onChange={setProfile("name")}
-                                            />
-                                        </div>
-                                        <div className='col-sm-6'>
-                                            <label>Last Name</label>
-                                            <input
-                                                name='lname'
-                                                type='text'
-                                                value={profile.surname}
-                                                onChange={setProfile("surname")}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-sm-6'>
-                                            <label>Username</label>
-                                            <input
-                                                name='username'
-                                                type='text'
-                                                value={profile.user_name}
-                                                onChange={setProfile("user_name")}
-                                                readOnly />
-                                        </div>
-                                        <div className='col-sm-6'>
-                                            <label>Post code</label>
-                                            <input
-                                                name='zcode'
-                                                type='text'
-                                                value={profile.zcode}
-                                                onChange={setProfile("zcode")}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-sm-6'>
-                                            <label>City</label>
-                                            <input
-                                                name='city'
-                                                type='text'
-                                                value={profile.city}
-                                                onChange={setProfile("city")}
-                                            />
-                                        </div>
-                                        <div className='col-sm-6'>
-                                            <label>Country</label>
+            <section className="myproject">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4">
 
-                                            <select
-                                                name='country'
-                                                value={profile.country_code}
-                                                //onChange={setProfile("country_code")}
-                                                disabled
-                                            >
-                                                {countries?.length ? (
-                                                    countries?.map((d) => {
-                                                        return (
-                                                            <option value={d.id}>{d.country_name}</option>
-                                                        );
-                                                    })
-                                                ) : (
-                                                    <></>
-                                                )}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-sm-6'>
-                                            <label className="qwe11">Address</label>
-                                            <textarea
-                                                name='address'
-                                                cols={20}
-                                                rows={5}
-                                                value={profile.address1}
-                                                onChange={setProfile("address1")}
-                                            />
-                                        </div>
-                                        {user?.role_id == 2 ? (
-                                            <>
-
-                                                <div className='col-sm-6'>
-                                                    <label className="qwe11">Introduce yourself here (eg expertise, experience, machinery, materials, status of your business ...)</label>
-                                                    <textarea
-                                                        name='desc'
-                                                        cols={20}
-                                                        rows={5}
-                                                        value={profile.service_desc}
-                                                        onChange={setProfile("service_desc")}
-                                                    />
-                                                </div>
-                                            </>
-                                        ) : (<></>)}
-
-                                        {user?.role_id == 1 ? (
-                                            <>
-                                                <div className='col-sm-6'>
-                                                    <label>Description</label>
-                                                    <textarea
-                                                        name='desc'
-                                                        cols={20}
-                                                        rows={5}
-                                                        value={profile.description}
-                                                        onChange={setProfile("description")}
-                                                    />
-                                                </div>
-                                            </>
-                                        ) : (<></>)}
-                                        <hr />
-
-
-
-                                        {user?.role_id == 2 && user?.pro_user == 1 ? (
-
-                                            <>
-                                                <div className='col-sm-6'>
-                                                    <label>Company Name</label>
-                                                    <input
-                                                        name='company_name'
-                                                        type='text'
-                                                        readOnly
-
-                                                        value={profile.company_name}
-                                                        onChange={setProfile("company_name")} />
-
-                                                </div><div className='col-sm-6'>
-                                                    <label>SIREN NUMBER</label>
-                                                    <input
-                                                        name='siren'
-                                                        type='text'
-                                                        readOnly
-                                                        value={profile.siren}
-                                                        onChange={setProfile("siren")} />
-                                                </div><div className='col-sm-6'>
-                                                    <label><b>TVA %</b></label>
-                                                    <input
-                                                        name='username'
-                                                        type='text'
-                                                        disabled={tvastate}
-                                                        value={profile.tva}
-                                                        onChange={setProfile("tva")} />
-                                                </div>
-                                            </>
-
-                                        ) : (<></>)}
-
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-sm-6'>
-                                            <label>Profile Picture (Formats jpeg, jpg, png, gif-max: 640x350)</label>
-                                            <div className='upload-btn-wrapper'>
-                                                <button className='btn'>
-                                                    <i className='fa fa-upload' /> Add your logo, a
-                                                    picture
-                                                </button>
-                                                <input
-                                                    type='file'
-                                                    name='myfile'
-                                                    id='fileAttach'
-                                                    onChange={handle_file_change}
-                                                    ref={fileInputRef}
-                                                />
+                            <AccountSideBar />
+                        </div>
+                        <div className="col-sm-8">
+                            <div className="profile_box">
+                                <div className="heading_title">
+                                    <h2>My Profile ({user?.role_id == 1
+                                        ? "Customer"
+                                        : user?.role_id == 2
+                                            ? "Artist"
+                                            : ""})</h2>
+                                </div>
+                                <div className="project_profil">
+                                    <form onSubmit={handleSubmit}>
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <label>First Name</label>
+                                                <input name="fname"
+                                                    value={profile.name}
+                                                    onChange={setProfile("name")} type="text" />
                                             </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            {pr < 101 ? (
-                                                <ProgressBar now={pr} label={`${pr}%`} />
-                                            ) : (<></>)}
-
-                                            <br /><br />
-                                            {file && pr > 100 ? (
-                                                <div className="pro_div">
-                                                    <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file)}><i className="fa fa-trash-o"></i></a></p>
-                                                </div>
-                                            ) : (<></>)}
+                                            <div className="col-sm-6">
+                                                <label>Last Name</label>
+                                                <input name="lname"
+                                                    value={profile.surname}
+                                                    onChange={setProfile("surname")}
+                                                    type="text" />
+                                            </div>
                                         </div>
-                                        {profile?.prof_pic && (
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <label>Username</label>
+                                                <input name="username" type="text" readOnly value={profile.user_name}
+                                                    onChange={setProfile("user_name")} />
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <label>Post code</label>
+                                                <input name="zcode"
+                                                    value={profile.zcode}
+                                                    onChange={setProfile("zcode")}
+                                                    type="text" />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <label>City</label>
+                                                <input name="city" type="text" value={profile.city}
+                                                    onChange={setProfile("city")} />
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <label>Country</label>
+                                                <select
+                                                    name='country'
+                                                    value={"India"}
 
-                                            <div className='col-sm-4'>
-                                                <figure>
-                                                    <img
-                                                        src={
+                                                    disabled
+                                                >
+                                                    <option>India</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <label className="qwe11">Address</label>
+                                                <textarea name="address"
+                                                    value={profile.address1}
+                                                    onChange={setProfile("address1")}
+                                                    cols={20} rows={5}></textarea>
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <label>Description</label>
+                                                <textarea name="desc"
+                                                    value={profile.description}
+                                                    onChange={setProfile("description")}
+                                                    cols={20} rows={5}></textarea>
+                                            </div>
+                                            <hr />
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <label>Profile Picture (Formats jpeg, jpg, png, gif-max: 640x350)</label>
+                                                <div className="upload-btn-wrapper">
+                                                    <button className="btn">
+                                                        <i className="fa fa-upload"></i> Add your logo, a picture </button>
+
+                                                    <input
+                                                        type='file'
+                                                        name='myfile'
+                                                        id='fileAttach'
+                                                        onChange={handle_file_change}
+                                                        ref={fileInputRef}
+                                                    />
+
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    {pr < 101 ? (
+                                                        <ProgressBar now={pr} label={`${pr}%`} />
+                                                    ) : (<></>)}
+
+                                                    <br /><br />
+                                                    {file && pr > 100 ? (
+                                                        <div className="pro_div">
+                                                            <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file)}><i className="fa fa-trash-o"></i></a></p>
+                                                        </div>
+                                                    ) : (<></>)}
+
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-6">
+
+
+
+                                                {profile?.prof_pic && (
+
+                                                    <figure className="ygs">
+                                                        <img src={
                                                             common.get_profile_picture(profile?.prof_pic) ||
                                                             "/img/no-images.png"
-                                                        }
+                                                        } />
+                                                        <a style={{ cursor: "pointer" }} onClick={() => { delete_profile_pic(profile?.prof_pic) }}>
+                                                            <i className="fa fa-trash-o"></i>
+                                                        </a>
+                                                    </figure>
+                                                )}
 
-                                                    />
-                                                    <a style={{ cursor: "pointer" }} onClick={() => { delete_profile_pic(profile?.prof_pic) }}><i className="fa fa-trash-o"></i></a>
-                                                </figure>
+
+
+
                                             </div>
-                                        )}
-                                    </div>
 
 
-                                    {user?.role_id == 2 ? (
-                                        <>
-                                            <div className='row'>
-                                                <div className='col-sm-6'>
-                                                    <label>Portfolio Picture</label>
-                                                    <div className='upload-btn-wrapper'>
-                                                        <button className='btn'>
-                                                            <i className='fa fa-upload' /> Add Portfolio Picture
-                                                        </button>
-                                                        <input
-                                                            type='file'
-                                                            name='myfile'
-                                                            id='fileAttach'
-                                                            multiple
-                                                            onChange={handle_file_change2}
-                                                            ref={fileInputRef}
-                                                        />
+
+
+
+                                            {user?.role_id == 2 ? (
+                                                <>
+                                                    <div className='row'>
+                                                        <div className='col-sm-6'>
+                                                            <label>Portfolio Picture</label>
+                                                            <div className='upload-btn-wrapper'>
+                                                                <button className='btn'>
+                                                                    <i className='fa fa-upload' /> Add Portfolio Picture
+                                                                </button>
+                                                                <input
+                                                                    type='file'
+                                                                    name='myfile'
+                                                                    id='fileAttach'
+                                                                    multiple
+                                                                    onChange={handle_file_change2}
+                                                                    ref={fileInputRef}
+                                                                />
+                                                            </div>
+
+
+                                                            {pr2 < 101 ? (
+                                                                <ProgressBar now={pr2} label={`${pr2}%`} />
+                                                            ) : (<></>)}
+
+                                                            {file2 && pr2 > 100 ? (
+                                                                file2?.map((f) => {
+                                                                    return (
+                                                                        <>
+                                                                            <div className="pro_div">
+                                                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                                            </div>
+                                                                        </>
+                                                                    )
+                                                                })
+                                                            ) : (<></>)}
+                                                        </div>
+                                                        {profile?.prot_pic && profile?.prot_pic?.split(",").map((d) => {
+
+                                                            return (
+                                                                <>
+
+                                                                    <div className='row'>
+                                                                        <div className="col-sm-4">
+                                                                            <figure>
+                                                                                <img
+                                                                                    src={
+                                                                                        common.get_portfolio_pic(d) ||
+                                                                                        "/img/no-images.png"
+                                                                                    }
+                                                                                />
+                                                                                <a style={{ cursor: "pointer" }} onClick={() => { delete_portfolio_pic(d) }}><i className="fa fa-trash-o"></i></a>
+                                                                            </figure>
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+
+                                                            )
+                                                        })}
                                                     </div>
 
-
-                                                    {pr2 < 101 ? (
-                                                        <ProgressBar now={pr2} label={`${pr2}%`} />
-                                                    ) : (<></>)}
-
-                                                    {file2 && pr2 > 100 ? (
-                                                        file2?.map((f) => {
-                                                            return (
-                                                                <div className="pro_div">
-                                                                    <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
-                                                                </div>
-                                                            )
-                                                        })
-                                                    ) : (<></>)}
-                                                </div>
-                                                {profile?.prot_pic && profile?.prot_pic?.split(",").map((d) => {
-
-                                                    return (
-
-                                                        <div className='row'>
-                                                            <div className="col-sm-4">
-                                                                <figure>
-                                                                    <img
-                                                                        src={
-                                                                            common.get_portfolio_pic(d) ||
-                                                                            "/img/no-images.png"
-                                                                        }
-                                                                    />
-                                                                    <a style={{ cursor: "pointer" }} onClick={() => { delete_portfolio_pic(d) }}><i className="fa fa-trash-o"></i></a>
-                                                                </figure>
-                                                            </div>
-                                                        </div>
-
-                                                    )
-                                                })}
-                                            </div>
-
-                                        </>
-                                    ) : (<></>)}
-
-
-                                    {user?.pro_user == 1 && user?.role_id == 2 ? (
-
-                                        <div className='form-check signcheck'>
-                                            <label className='form-check-label'>
-                                                <input type='checkbox' className='form-check-input' onClick={selfemployed} />I am self-employed
-                                            </label>
+                                                </>
+                                            ) : (<></>)}
                                         </div>
-                                    ) : (<></>)}
-
-                                    <div className='reg-bottom'>
-                                        <button type='submit' name='submit'>
-                                            Save
-                                        </button>
-                                    </div>
-                                </form>
+                                        <div className="reg-bottom">
+                                            <button type='submit' name='submit'>
+                                                Save
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div >
+            </section >
+
+
+            <GlobalModal
+                title='Delete profile picture ?'
+                atom={atom.modal.edit_profile_pic}>
+
+                <div className='wjgf'>
+
+                    <div className='cnfm-job-details post'>
+                        <div className='cnfm-job-attchmnts'>
+                            <h5>Are you sure you want to delete this picture ? </h5>
+
+                        </div>
+
+
+                    </div>
+                    <div className='reg-bottom'>
+                        <button type='submit' name='submit' onClick={() => setOpen(false)}>
+                            Back
+                        </button>
+                        <button type='submit' name='submit' onClick={() => { setOpen(false); handle_delete_profile_pic() }}>
+                            Yes
+                        </button>
                     </div>
                 </div>
+            </GlobalModal>
 
+            <GlobalModal
+                title='Delete portfolio picture ?'
+                atom={atom.modal.edit_portfolio_pic}>
 
-                <GlobalModal
-                    title='Delete profile picture ?'
-                    atom={atom.modal.edit_profile_pic}>
+                <div className='wjgf'>
 
-                    <div className='wjgf'>
-
-                        <div className='cnfm-job-details post'>
-                            <div className='cnfm-job-attchmnts'>
-                                <h5>Are you sure you want to delete this picture ? </h5>
-
-                            </div>
-
+                    <div className='cnfm-job-details post'>
+                        <div className='cnfm-job-attchmnts'>
+                            <h5>Are you sure you want to delete this picture ? </h5>
 
                         </div>
-                        <div className='reg-bottom'>
-                            <button type='submit' name='submit' onClick={() => setOpen(false)}>
-                                Back
-                            </button>
-                            <button type='submit' name='submit' onClick={() => { setOpen(false); handle_delete_profile_pic() }}>
-                                Yes
-                            </button>
-                        </div>
+
+
                     </div>
-                </GlobalModal>
-
-                <GlobalModal
-                    title='Delete portfolio picture ?'
-                    atom={atom.modal.edit_portfolio_pic}>
-
-                    <div className='wjgf'>
-
-                        <div className='cnfm-job-details post'>
-                            <div className='cnfm-job-attchmnts'>
-                                <h5>Are you sure you want to delete this picture ? </h5>
-
-                            </div>
-
-
-                        </div>
-                        <div className='reg-bottom'>
-                            <button type='submit' name='submit' onClick={() => setOpen2(false)}>
-                                Back
-                            </button>
-                            <button type='submit' name='submit' onClick={() => { setOpen2(false); handle_delete_portfolio_pic() }}>
-                                Yes
-                            </button>
-                        </div>
+                    <div className='reg-bottom'>
+                        <button type='submit' name='submit' onClick={() => setOpen2(false)}>
+                            Back
+                        </button>
+                        <button type='submit' name='submit' onClick={() => { setOpen2(false); handle_delete_portfolio_pic() }}>
+                            Yes
+                        </button>
                     </div>
-                </GlobalModal>
-            </div>
-        </div>
+                </div>
+            </GlobalModal>
+        </>
     );
 };
 
