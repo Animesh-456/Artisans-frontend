@@ -47,7 +47,7 @@ const Profile = (props: Props) => {
         totalAmount += e.amount;
     })
 
-   
+
 
     const handlePageClick = (i) => {
         router
@@ -100,12 +100,12 @@ const Profile = (props: Props) => {
         atom.auth.api.countries,
     );
 
-   
+
 
     return (
         <>
-            <div>
-                <div
+
+            {/* <div
                     className='banner_wp sign_banner'
                     style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
                     <div className='container'>
@@ -115,8 +115,15 @@ const Profile = (props: Props) => {
                             </div>
                         </div>
                     </div>
+                </div> */}
+
+            <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }} >
+                <div className="container">
+                    <h1>My Profile</h1>
                 </div>
-                <div className='container cjw'>
+            </section>
+            <section className="myproject">
+                <div className='container'>
                     <div className='row'>
                         <div className="col-sm-4">
                             <AccountSideBar />
@@ -124,15 +131,17 @@ const Profile = (props: Props) => {
 
                         <div className='col-sm-8'>
                             <div className='profile_box'>
-                                <h3>
-                                    My Profile (
-                                    {user?.role_id == 1
-                                        ? "Customer"
-                                        : user?.role_id == 2
-                                            ? "Machinist"
-                                            : ""}
-                                    )
-                                </h3>
+                                <div className="rys1">
+                                    <h5>
+                                        My Profile (
+                                        {user?.role_id == 1
+                                            ? "Customer"
+                                            : user?.role_id == 2
+                                                ? "Artist"
+                                                : ""}
+                                        )
+                                    </h5>
+                                </div>
                                 <div className='myprofile_w'>
                                     <div className='myprofile_l'>
                                         <div className='myprofile_name_label'>
@@ -290,15 +299,15 @@ const Profile = (props: Props) => {
                                 <hr />
                                 {user?.role_id == 1 ? (
                                     <>
-                                        <h3>My Jobs</h3>
+                                        <div className="rys1"><h5>My Jobs</h5></div>
                                         <div className='table-responsive'>
                                             <table className='table table-bordered table-sm'>
                                                 <thead>
                                                     <tr className='table-primary'>
-                                                        <td>Jobs published</td>
-                                                        <td>Jobs awarded</td>
-                                                        <td>Evaluations</td>
-                                                        <td>GBP Spent</td>
+                                                        <th>Jobs published</th>
+                                                        <th>Jobs awarded</th>
+                                                        <th>Evaluations</th>
+                                                        <th>GBP Spent</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -399,7 +408,8 @@ const Profile = (props: Props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
         </>
     );
 };

@@ -45,26 +45,26 @@ const EditProfile = () => {
 
 
 
-	
+
 
 	let pusharray = [];
 
 	const handleChange = (event) => {
 		if (event.target.checked) {
-			
+
 			pusharray.push(event.target.name)
-			
+
 		} else {
-		
+
 			let index = pusharray.indexOf(event.target.name)
 			pusharray.splice(index, 1);
-			
+
 		}
 	};
 
 
 
-	
+
 
 
 	const readmsgs = async (a, b, c) => {
@@ -110,13 +110,13 @@ const EditProfile = () => {
 	useEffect(() => {
 		const pageQueryParam = new URLSearchParams(location.search).get('page');
 		const pageNumber = parseInt(pageQueryParam) || 1;
-	
+
 		api.project.my_msgs({ params: { ...opt, page: pageNumber - 1 } });
 	}, []);
 
 	return (
 		<>
-			<div
+			{/* <div
 				className='banner_wp sign_banner'
 				style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
 				<div className='container'>
@@ -126,15 +126,24 @@ const EditProfile = () => {
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className='container cjw'>
-				<div className='row'>
-					<div className="col-sm-4">
-						<AccountSideBar />
-					</div>
+			</div> */}
 
-					<div className='col-sm-8'>
-						{/* {user?.role_id == 2 ? (
+			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}  >
+				<div className="container">
+					<h1>Inbox</h1>
+				</div>
+			</section>
+
+			<section className="myproject">
+				<div className='container'>
+					<div className='row'>
+						<div className="col-sm-4">
+							<AccountSideBar />
+						</div>
+
+						<div className='col-sm-8'>
+							<div className="profile_box">
+								{/* {user?.role_id == 2 ? (
 							<div className='profile_box mb-4'>
 								<h3 className='pb-0'>
 									Notifications <span className='darkblue-text '>({notifs.length})</span>{" "}
@@ -167,71 +176,75 @@ const EditProfile = () => {
 								</div>
 							</div>
 						) : (<></>)} */}
-						<div className='profile_box'>
-							<h3 className='pb-0'>Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h3>
+								<hr className="dashed-hr" />
+								<div className="heading_title">
+									<h2 >Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h2>
 
-							<hr className='dashed-hr' />
-							<div className='table-responsive inbox-table mt-4'>
-								<table className='table table-bordered table-lg'>
-									<thead>
-										<tr className="table-primary">
-											<th></th>
-											<th>User</th>
-											<th>Project title</th>
-											<th className=''>Last message</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										{list.length ? list.map((l) => {
-											return (
-												<>
+									{/* <hr className='dashed-hr' /> */}
+									<div className="table-responsive inbox-table mt-4">
+										<table className="table">
+											<thead>
+												<tr >
+													<th></th>
+													<th>User</th>
+													<th>Project title</th>
+													<th className=''>Last message</th>
+													<th></th>
+												</tr>
+											</thead>
 
+											{list.length ? list.map((l) => {
+												return (
+													<>
 
+														<tbody>
 
-													<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
-														<td>
-															<div className="msgform"><i className="fa fa-square"></i></div>
+															<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
+																<td>
+																	<div className="msgform"><i className="fa fa-square"></i></div>
 
-														</td>
-														<td className='dummy-anchor darkblue-text cursor-pointer'>
+																</td>
+																<td className='dummy-anchor darkblue-text cursor-pointer'>
 
-															{l?.user_name}
-														</td>
-														<td>{l?.project_name}</td>
-														<td className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
+																	{l?.user_name}
+																</td>
 
-															{user?.role_id == 1 && l?.buyer_message_status == "U" ? (
-																<b>{l?.message}</b>
-															) : user?.role_id == 1 && l?.buyer_message_status == "R" ? (
-																<>{l?.message}</>
-															) : user?.role_id == 2 && l?.programmer_message_status == "U" ? (
-																<b>{l?.message}</b>
-															) : user?.role_id == 2 && l?.programmer_message_status == "R" ? (
-																<>{l?.message}</>
-															) : (<>{l?.message}</>)}
-														</td>
+																<td>{l?.project_name}</td>
+																<td className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
 
-													</	tr>
-												</>
-											)
-										}) : (<></>)}
-									</tbody>
-								</table>
-							</div>
-							<div className='pagination-wrap'>
-								<ul className='pagination'>
-									{(opt.page > 0) ? <li className='page-item'>
-										<a className='page-link' onClick={() => handlePageClick(0)}>
-											First
-										</a>
-									</li> : ""}
-									{(opt.page > 0) ? <li className='page-item'>
-										<a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
-											Previous
-										</a>
-									</li> : ""}
-									{/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
+																	{user?.role_id == 1 && l?.buyer_message_status == "U" ? (
+																		<b>{l?.message}</b>
+																	) : user?.role_id == 1 && l?.buyer_message_status == "R" ? (
+																		<>{l?.message}</>
+																	) : user?.role_id == 2 && l?.programmer_message_status == "U" ? (
+																		<b>{l?.message}</b>
+																	) : user?.role_id == 2 && l?.programmer_message_status == "R" ? (
+																		<>{l?.message}</>
+																	) : (<>{l?.message}</>)}
+																</td>
+
+															</	tr>
+														</tbody >
+													</>
+												)
+											}) : (<></>)}
+
+										</table>
+									</div>
+								<nav className="pagination_wp">
+									<div className='pagination-wrap'>
+										<ul className='pagination'>
+											{(opt.page > 0) ? <li className='page-item'>
+												<a className='page-link' onClick={() => handlePageClick(0)}>
+													First
+												</a>
+											</li> : ""}
+											{(opt.page > 0) ? <li className='page-item'>
+												<a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
+													Previous
+												</a>
+											</li> : ""}
+											{/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
 										(d, i: any) => {
 											return (
 												<li
@@ -254,53 +267,56 @@ const EditProfile = () => {
 												</li>
 											);
 										},
-									)} */}
+											)} */}
 
-									{opt.total_count > 0 && getPageNumbers().map((page) => (
+													{opt.total_count > 0 && getPageNumbers().map((page) => (
 
-										<>
-											<li
-												className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-													page
-													? "active"
-													: ""
-													}`}>
-												<Link href={`${router.pathname}?page=${page}`}>
-													<a
-														className='page-link'
-														onClick={(e) => {
-															e.preventDefault();
-															handlePageClick(page);
-														}}>
-														{page + 1}
+												<>
+													<li
+														className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
+															page
+															? "active"
+															: ""
+															}`}>
+														<Link href={`${router.pathname}?page=${page}`}>
+															<a
+																className='page-link'
+																onClick={(e) => {
+																	e.preventDefault();
+																	handlePageClick(page);
+																}}>
+																{page + 1}
+															</a>
+														</Link>
+													</li>
+												</>
+
+
+											))}
+
+
+
+
+											{opt.page != opt.total_pages ?
+												<li className='page-item'>
+													<a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
+														Next
 													</a>
-												</Link>
-											</li>
-										</>
-
-
-									))}
-
-
-
-
-									{opt.page != opt.total_pages ?
-										<li className='page-item'>
-											<a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
-												Next
-											</a>
-										</li> : ""}
-									{opt.page != opt.total_pages ? <li className='page-item'>
-										<a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
-											Last
-										</a>
-									</li> : ""}
-								</ul>
+												</li> : ""}
+											{opt.page != opt.total_pages ? <li className='page-item'>
+												<a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
+													Last
+												</a>
+											</li> : ""}
+										</ul>
+										</div>
+									</nav>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 		</>
 	);
 };
