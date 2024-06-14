@@ -17,6 +17,9 @@ ul, p{
 a:hover{
 	text-decoration: none;
 }
+table{
+	font-family: "Poppins", sans-serif;
+}
 
 @font-face {
     font-family: 'brasika_display_-_trialRg';
@@ -1239,8 +1242,8 @@ p{
     padding-top: 1em;
 }
 .project_loop h4 a {
-    color: #0e0e0e;
-    font-size: 13px;
+    color: #f16003;
+    font-size: 15px;
 }
 ul.side-nav {
     margin-top: 29px;
@@ -1339,7 +1342,7 @@ ul.side-nav {
 .custom-pre {
     display: inline;
     font-size: 15px;
-    font-family: Montserrat,sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.2;
@@ -1354,6 +1357,250 @@ ul.side-nav {
 .rys1 {
     margin-bottom: 2em;
 }
+.myprofile_w {
+    display: flex;
+}
+.myprofile_l {
+    width: 83%;
+}
+.myprofile_r {
+    width: 17%;
+    text-align: center;
+}
+.myprofile_name_label {
+    width: 33%;
+    display: inline-block;
+    vertical-align: top;
+}
+.myprofile_name_list {
+    width: 65%;
+    display: inline-block;
+}
+.myprofile_name_label p {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.myprofile_name_list p {
+    font-weight: 500;
+}
+.myprofile_name_list .carousel-inner .carousel-item img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+.myprofile_r figcaption {
+    font-weight: 500;
+}
+.profile_box table tr th {
+    font-size: 14px;
+    padding: 9px;
+    background-color: #ffd095;
+    border: none;
+}
+.msgform .fa {
+    color: #f16003;
+}
+.comment1 {
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+}
+.pub-rat {
+    width: 40%;
+    font-family: "Poppins", sans-serif;
+}
+.public {
+    width: 60%;
+}
+.rating-color p {
+    color: #edb300;
+    display: flex;
+}
+.rating-color p span {
+    color: #000;
+    padding-right: 5px;
+    width: 40%;
+}
+.public p {
+    display: block;
+    float: none !important;
+    line-height: 24px;
+}
+.stars p {
+    float: none !important;
+    color: #fd9d0e;
+    font-size: 15px;
+}
+.public a {
+    color: #f16003;
+}
+.quality .fa, .time .fa, .communication .fa, .professionalism .fa {
+    color: #fd9d0e;
+}
+.quality span, .time span, .communication span, .professionalism span{
+    padding-left: 10px;
+    font-size: 14px;
+}
+.project_profil label {
+    width: 100%;
+    margin-bottom: 2px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.project_profil .fileinput, .project_profil input, .project_profil select {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #f3f3f3;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 14px;
+    border: 1px solid #a9a9a9;
+}
+.project_profil {
+    margin-top: 2em;
+    font-family: "Poppins", sans-serif;
+}
+.project_profil textarea {
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    background: #f3f3f3;
+    padding-left: 5px;
+    resize: none;
+    padding-left: 10px;
+    font-size: 14px;
+    border: 1px solid #a9a9a9;
+}
+.ygs img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.ygs {
+    position: relative;
+}
+.ygs a {
+    position: absolute;
+    right: 0;
+    background: white;
+    padding: 3px 6px;
+    border-radius: 0 0 0 5px;
+}
+.ygs a .fa {
+    color: red;
+}
+.reg-bottom button {
+    background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    border: none;
+    transition: box-shadow 1s;
+}
+.reg-bottom button:hover {
+    box-shadow: none;
+}
+.qwe {
+    display: flex;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 10px;
+}
+.inbox-box .admin-text {
+    font-weight: 600;
+    color: #f16003;
+    width: 15%;
+    font-size: 14px;
+}
+.inbox {
+    padding-left: 9px;
+    width: 65%;
+    font-size: 14px;
+}
+.qwe2 {
+    width: 20%;
+    text-align: right;
+    font-size: 14px;
+}
+.inbox-box .admin-text .dpt-box {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #f16003;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+.inbox-box {
+    margin-top: 2em;
+    display: flow-root;
+}
+.table td, .table th {
+    border-top: 1px solid #cda87b;
+}
+.dummy-anchor {
+    font-size: 14px;
+}
+.dashed-hr {
+    border-top: 1px dashed #ccc;
+    height: 1px;
+    opacity: 1;
+}
+.fund_wp label {
+    font-weight: 500;
+}
+.fund_wp select {
+    width: 100%;
+    border: none;
+    height: 43px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    background: #f3f3f3;
+    padding: 0 7px;
+}
+.fund_wp p {
+    color: #000;
+    font-weight: 500;
+    font-size: 13px;
+}
+.in-s {
+    height: 33px;
+    border-radius: 5px;
+    background: #f3f3f3;
+    padding-left: 5px;
+    border: none;
+}
+.fund_wp {
+    margin-top: 2em;
+}
+.fund_wp table tr td {
+    font-size: 12px;
+    border: none;
+    border-bottom: 1px solid #cda87b;
+}
+.job-r label, .edit_password_wp label {
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+.job-r input, .edit_password_wp input {
+    width: 100%;
+    border: none;
+    height: 43px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #f3f3f3;
+    padding-left: 5px;
+    border: 1px solid #a9a9a9;
+}
+.edit_password_wp {
+    margin-top: 2em;
+}
+
 button, select {
     text-transform: none;
 }
