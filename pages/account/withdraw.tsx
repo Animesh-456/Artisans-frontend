@@ -72,7 +72,7 @@ const Withdraw = (props: Props) => {
         //setBalance(remain);
 
         var e = (document.getElementById("payOptions")) as HTMLSelectElement;
-       
+
 
         var sel = e.selectedIndex;
         var opt = e.options[sel];
@@ -105,81 +105,175 @@ const Withdraw = (props: Props) => {
     };
 
     return (
-        <div>
-            <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>Withdraw Funds</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='container cjw'>
-                <div className='row'>
-                    <div className="col-sm-4">
-                        <AccountSideBar />
-                    </div>
+        // <div>
+        //     <div
+        //         className='banner_wp sign_banner'
+        //         style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+        //         <div className='container'>
+        //             <div className='row'>
+        //                 <div className='banner_text inner_banner_text'>
+        //                     <h1 className='yh'>Withdraw Funds</h1>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     <div className='container cjw'>
+        //         <div className='row'>
+        //             <div className="col-sm-4">
+        //                 <AccountSideBar />
+        //             </div>
 
-                    <div className='col-sm-8'>
-                        <div className='profile_box'>
-                            <h3>Remove Fund</h3>
-                            <div className='fund_wp'>
-                                <div className='row'>
-                                    <div className='col-sm-4'>
-                                        <label>Withdrawal Method:</label>
-                                    </div>
-                                    <div className='col-sm-8'>
-                                        <select className='Gr-Border' name='paymentMethod' id="payOptions">
-                                            <option value='paypal'>Paypal</option>
-                                            <option value='bank'>Bank Transfer</option>
-                                        </select>
-                                        <p>
-                                            for your first bank transfer payment, please email your
-                                            bank details to us admin@machining-4u.co.uk
-                                        </p>
-                                    </div>
+        //             <div className='col-sm-8'>
+        //                 <div className='profile_box'>
+        //                     <h3>Remove Fund</h3>
+        //                     <div className='fund_wp'>
+        //                         <div className='row'>
+        //                             <div className='col-sm-4'>
+        //                                 <label>Withdrawal Method:</label>
+        //                             </div>
+        //                             <div className='col-sm-8'>
+        //                                 <select className='Gr-Border' name='paymentMethod' id="payOptions">
+        //                                     <option value='paypal'>Paypal</option>
+        //                                     <option value='bank'>Bank Transfer</option>
+        //                                 </select>
+        //                                 <p>
+        //                                     for your first bank transfer payment, please email your
+        //                                     bank details to us admin@machining-4u.co.uk
+        //                                 </p>
+        //                             </div>
+        //                         </div>
+        //                         <hr />
+        //                         <div className='table-responsive'>
+        //                             <table className='table table-bordered table-sm'>
+        //                                 <thead>
+        //                                     <tr className='table-primary'>
+        //                                         <td>Available Balance</td>
+        //                                         <td>Amount to Withdraw</td>
+        //                                         <td>New Balance</td>
+        //                                     </tr>
+        //                                 </thead>
+        //                                 <tbody>
+        //                                     <tr>
+        //                                         <td>GBP ₹ {currBalance || balanceData?.amount_gbp}</td>
+        //                                         <td>
+        //                                             GBP ₹{" "}
+        //                                             <input onChange={onChange}
+        //                                                 name='total'
+        //                                                 size={15}
+        //                                                 type='text'
+        //                                                 id='amounttered'
+        //                                                 className='in-s'
+        //                                             />
+        //                                         </td>
+        //                                         <td>GBP ₹ {remain}</td>
+        //                                     </tr>
+        //                                 </tbody>
+        //                             </table>
+        //                         </div>
+        //                         <div className='reg-bottom'>
+        //                             <button onClick={openwithdraw} type='submit' name='submit'>
+        //                                 Withdraw Now
+        //                             </button>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+
+        //     <GlobalModal
+        //         title='Enter Paypal address'
+        //         atom={atom.modal.paypal_email}>
+
+        //         <div className='wjgf'>
+
+        //             <div className='cnfm-job-details post-email'>
+        //                 <label>Paypal Email</label>
+        //                 <input
+        //                     name='paypal_email'
+        //                     type='email'
+        //                     value={paypal}
+        //                     onChange={handleInputChange}
+        //                 />
+
+
+        //             </div>
+        //             <div className='reg-bottom'>
+        //                 <button type='submit' name='submit' onClick={() => setOpen(false)}>
+        //                     Back
+        //                 </button>
+        //                 <button type='submit' name='submit' onClick={() => { setOpen(false); handleClick(); }}>
+        //                     Submit
+        //                 </button>
+        //             </div>
+        //         </div>
+        //     </GlobalModal>
+        // </div>
+        <>
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>Withdraw Funds</h1>
+                </div>
+            </section>
+
+            <section className="myproject">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <AccountSideBar />
+                        </div>
+                        <div className="col-sm-8">
+                            <div className="profile_box">
+                                <div className="heading_title">
+                                    <h2>Withdraw Funds</h2>
                                 </div>
-                                <hr />
-                                <div className='table-responsive'>
-                                    <table className='table table-bordered table-sm'>
-                                        <thead>
-                                            <tr className='table-primary'>
-                                                <td>Available Balance</td>
-                                                <td>Amount to Withdraw</td>
-                                                <td>New Balance</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>GBP ₹ {currBalance || balanceData?.amount_gbp}</td>
-                                                <td>
-                                                    GBP ₹{" "}
-                                                    <input onChange={onChange}
+                                <div className="fund_wp">
+                                    <div className="row">
+                                        <div className="col-sm-4">
+                                            <label>Withdrawal Method:</label>
+                                        </div>
+                                        <div className="col-sm-8">
+                                            <select className="Gr-Border" name="paymentMethod">
+                                                <option value="paypal">Paypal</option>
+                                                <option value="bank">Bank Transfer</option>
+                                            </select>
+                                            <p>for your first bank transfer payment, please email your bank details to us admin@machining-4u.co.uk</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-sm">
+                                            <thead>
+                                                <tr className="table-primary">
+                                                    <th>Available Balance</th>
+                                                    <th>Amount to Withdraw</th>
+                                                    <th>New Balance</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>GBP £ {currBalance || balanceData?.amount_gbp}</td>
+                                                    <td>GBP £ <input onChange={onChange}
                                                         name='total'
                                                         size={15}
-                                                        type='text'
-                                                        id='amounttered'
-                                                        className='in-s'
-                                                    />
-                                                </td>
-                                                <td>GBP ₹ {remain}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className='reg-bottom'>
-                                    <button onClick={openwithdraw} type='submit' name='submit'>
-                                        Withdraw Now
-                                    </button>
+                                                        type='text' id="amounttered" className="in-s" />
+                                                    </td>
+                                                    <td>GBP £ {remain}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div className="reg-bottom">
+                                        <button type="submit" onClick={openwithdraw} name="submit">Withdraw Now</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+
 
             <GlobalModal
                 title='Enter Paypal address'
@@ -208,7 +302,9 @@ const Withdraw = (props: Props) => {
                     </div>
                 </div>
             </GlobalModal>
-        </div>
+        </>
+
+
     );
 };
 

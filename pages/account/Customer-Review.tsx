@@ -6,7 +6,7 @@ type Props = {};
 
 //let Reviews_data = []
 
-const reviews = (props: Props) => {
+const Reviews = (props: Props) => {
 
     const [Reviews_data, SetReviews_data] = useState([]);
 
@@ -55,63 +55,61 @@ const reviews = (props: Props) => {
 
 
     return (
-        <div>
-            <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(./img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>Evaluations</h1>
-                        </div>
-                    </div>
+         <>
+
+            <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
+                <div className="container">
+                    <h1>Evaluations</h1>
                 </div>
-            </div>
-            <div className='container cjw'>
-                <div className='row'>
-                    <AccountSideBar />
+            </section>
 
-                    <div className='col-sm-8'>
-                        <div className='profile_box'>
-                            <h3>Evaluations</h3>
-                            <div className='fund_wp'>
-                                <div className='table-responsive'>
-                                    <table className='table table-bordered table-sm'>
-                                        <thead>
-                                            <tr className='table-primary'>
-                                                <td>Nom du projet</td>
-                                                <td>Client</td>
-                                                <td>Statut</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="Tbody">
+            <section className="myproject">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <AccountSideBar />
+                        </div>
+                        <div className="col-sm-8">
+                            <div className="profile_box">
+                                <div className="heading_title">
+                                    <h2>Reviews</h2>
+                                </div>
+                                <div className="fund_wp">
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-sm">
+                                            <thead>
+                                                <tr className="table-primary">
+                                                    <th>Name of the project</th>
+                                                    <th>Artist Name</th>
+                                                    <th>Ratings</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
 
-                                            {Reviews_data &&
+                                                    Reviews_data.map((item) => {
 
-                                                Reviews_data?.map((item) => {
-
-                                                    return (
-                                                        <>
-                                                            <tr>
-                                                                <td>{item?.project?.project_name}</td>
-                                                                <td>{item?.provider?.user_name}</td>
-                                                                <td>{item?.rating}</td>
-                                                            </tr>
-                                                        </>
-                                                    )
-                                                })}
-
-
-                                        </tbody>
-                                    </table>
+                                                        return (
+                                                            <>
+                                                                <tr>
+                                                                    <td>{item.project.project_name}</td>
+                                                                    <td>{item.provider.user_name}</td>
+                                                                    <td>{item.rating}</td>
+                                                                </tr>
+                                                            </>
+                                                        )
+                                                    })}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </>
     );
 };
 
-export default reviews;
+export default Reviews;

@@ -45,7 +45,7 @@ function DownloadPDF(inv_no, customer, p_name, fund_release_date, amount, cus_ad
     var year = fund_release_date1.getFullYear();
     var formatfund_release_date = day + " " + month + " " + year;
 
-    
+
     var pdfjs = `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -160,13 +160,13 @@ const Invoices = (props: Props) => {
     var year = new Date().getFullYear();
 
     const UserData = JSON.parse(localStorage.getItem('UserData'));
-    
+
 
     useEffect(() => {
 
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
-    
+
         api.project.Invoice_list({ params: { ...opt, machinist_id: UserData.id, page: pageNumber - 1 } })
 
     }, [])
@@ -208,9 +208,9 @@ const Invoices = (props: Props) => {
     // },1000)
 
 
-    
 
-    
+
+
 
     const visiblePages = 10; // Number of visible page buttons
     const getPageNumbers = () => {
@@ -220,216 +220,81 @@ const Invoices = (props: Props) => {
     };
 
     return (
-        <div>
-            <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(./img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>Invoices</h1>
-                        </div>
-                    </div>
+
+
+        <>
+
+            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>Invoices</h1>
                 </div>
-            </div>
-            <div className='container cjw'>
-                <div className='row'>
-                    <div className="col-sm-4">
-                        <AccountSideBar />
-                    </div>
+            </section>
 
-                    <div className='col-sm-8'>
-                        <div className='profile_box'>
-                            <h3>Invoices</h3>
-                            <div className='fund_wp'>
-                                <div className='table-responsive'>
-                                    {/* <Button style={{background:'#d6c940',color:'black',borderRadius:'12px'}} onClick={()=>{DownloadPDF()}} >Download </Button> */}
-                                    <table className='table table-bordered table-sm'>
-                                        <thead>
-                                            <tr className='table-primary'>
-                                                <td>Invoice Number</td>
-                                                <td>Date</td>
-                                                <td>Client</td>
-                                                <td>Name of the project</td>
-                                                <td>Amount</td>
-                                                <td>Commision(GBP)</td>
-                                                <td>Action</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="Tbody">
-
-                                            {invoices?.length
-                                                ? (
-
-                                                    invoices.map((item) => {
-
-                                                        return (
-                                                            <>
-                                                                <tr>
-                                                                    <td>{year}{item?.id}</td>
-                                                                    <td>{item?.project?.fund_release_date}</td>
-                                                                    <td>{item?.creator?.user_name}</td>
-                                                                    <td style={{ textAlign: 'center' }}>{item?.project?.project_name}</td>
-                                                                    <td style={{ textAlign: 'center' }}>₹{item?.amount_gbp?.toFixed(2)}</td>
-                                                                    <td style={{ textAlign: 'center' }}>{(item?.amount_gbp - (item?.amount_gbp * ((100 - 14.9) / 100))).toFixed(2)}</td>
-                                                                    <td>  <Button style={{ background: 'whitesmoke', color: 'black', borderRadius: '12px' }} onClick={() => { DownloadPDF(item?.id, item?.reciever?.user_name, item?.project?.project_name, item?.project?.fund_release_date, item?.amount_gbp, item?.reciever?.address1, item?.reciever?.city, item?.reciever?.zcode, item?.id) }} ><BsFillSdCardFill /> </Button></td>
-                                                                </tr>
-                                                            </>
-                                                        )
-                                                    })) : (
-                                                    <></>
-                                                )}
-
-
-                                        </tbody>
-                                    </table>
-                                    <ul className='pagination'>
-                                        {(opt.page > 0) ? <li className='page-item'>
-                                            <a className='page-link' onClick={() => handlePageClick(0)}>
-                                                First
-                                            </a>
-                                        </li> : ""}
-                                        {(opt.page > 0) ? <li className='page-item'>
-                                            <a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
-                                                Previous
-                                            </a>
-                                        </li> : ""}
-                                        {/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
-										(d, i: any) => {
-											return (
-												<li
-													className={`page-item ${parseFloat((router?.query?.page || 0).toString()) -
-														1 ==
-														i
-														? "active"
-														: ""
-														}`}>
-													<Link href={`${router.pathname}?page=${i}`}>
-														<a
-															className='page-link'
-															onClick={(e) => {
-																e.preventDefault();
-																handlePageClick(i);
-															}}>
-															{i + 1}
-														</a>
-													</Link>
-												</li>
-											);
-										},
-									)} */}
-
-                                        {opt.total_count > 10 && getPageNumbers().map((page) => (
-                                            <>
-
-                                                <li
-                                                    className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-                                                        page
-                                                        ? "active"
-                                                        : ""
-                                                        }`}>
-                                                    <Link href={`${router.pathname}?page=${page}`}>
-                                                        <a
-                                                            className='page-link'
-                                                            onClick={(e) => {
-                                                                e.preventDefault();
-                                                                handlePageClick(page);
-                                                            }}>
-                                                            {page + 1}
-                                                        </a>
-                                                    </Link>
-                                                </li>
-                                            </>
-
-                                        ))}
+            <section className="myproject">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <AccountSideBar />
+                        </div>
+                        <div className="col-sm-8">
+                            <div className="profile_box">
+                                <div className="heading_title">
+                                    <h2>Invoices</h2>
+                                </div>
+                                <div className="fund_wp">
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-sm">
+                                            <thead>
+                                                <tr className="table-primary">
+                                                    <th>Facture No.</th>
+                                                    <th>Date</th>
+                                                    <th>Client</th>
+                                                    <th>Project Name</th>
+                                                    <th>Amount</th>
+                                                    <th>Commision(INR)</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="Tbody">
+                                                
 
 
 
+                                                {invoices?.length
+                                                    ? (
 
-                                        {opt.page != opt.total_pages ?
-                                            <li className='page-item'>
-                                                <a className='page-link' onClick={() => handlePageClick(opt.page + 1)}>
-                                                    Next
-                                                </a>
-                                            </li> : ""}
-                                        {opt.page != opt.total_pages ? <li className='page-item'>
-                                            <a className='page-link' onClick={() => handlePageClick(opt.total_pages)}>
-                                                Last
-                                            </a>
-                                        </li> : ""}
-                                    </ul>
+                                                        invoices.map((item) => {
+
+                                                            return (
+                                                                <>
+                                                                    <tr>
+                                                                        <td>{year}{item?.id}</td>
+                                                                        <td>{item?.project?.fund_release_date}</td>
+                                                                        <td>{item?.creator?.user_name}</td>
+                                                                        <td style={{ textAlign: 'center' }}>{item?.project?.project_name}</td>
+                                                                        <td style={{ textAlign: 'center' }}>₹{item?.amount_gbp?.toFixed(2)}</td>
+                                                                        <td style={{ textAlign: 'center' }}>{(item?.amount_gbp - (item?.amount_gbp * ((100 - 14.9) / 100))).toFixed(2)}</td>
+                                                                        <td>  <button type="button" className="btn btn-primary" style={{ background: "whitesmoke", color: "black", borderRadius: "12px" }} onClick={() => { DownloadPDF(item?.id, item?.reciever?.user_name, item?.project?.project_name, item?.project?.fund_release_date, item?.amount_gbp, item?.reciever?.address1, item?.reciever?.city, item?.reciever?.zcode, item?.id) }} >
+                                                                            <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                                <path fillRule="evenodd" d="M12.5 0H5.914a1.5 1.5 0 0 0-1.06.44L2.439 2.853A1.5 1.5 0 0 0 2 3.914V14.5A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 12.5 0zm-7 2.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75zm2 0a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75zm2.75.75a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0v-2zm1.25-.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75z"></path>
+                                                                            </svg>
+                                                                        </button></td>
+                                                                    </tr>
+                                                                </>
+                                                            )
+                                                        })) : (
+                                                        <></>
+                                                    )}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="Content" style={{ display: 'none' }}>
-
-
-                <table style={{ width: '100%', fontFamily: 'sans-serif', color: '#1e4066' }} >
-                    <tr>
-                        <td>
-                            <img width="150px" src="http://jhunsinfobay.net/usineur/img/logo.png" alt="" />
-                        </td>
-                        <td align="right" style={{ color: '#1e4066' }}>
-                            <b>Date: 16jan.2022</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style={{ color: '#1e4066' }}><b>Machining-4U - SAS Faberville</b></td>
-                        <td align="right" style={{ color: '#1e4066' }}><b>Invoice No: 2019000041</b></td>
-                    </tr>
-                    <tr>
-                        <td style={{ lineHeight: '20px' }}>
-                            <address>
-                                15 rue Racine<br />
-                                91400 Orsay<br />
-                                No SIRET: 96854756
-                            </address>
-                        </td>
-                        <td align="right" style={{ lineHeight: '20px' }}>
-                            <b>Johnson</b><br /><br />
-                            <address>
-                                6412<br />
-                                United Kingdom<br />
-                                6412
-                            </address>
-                        </td>
-                    </tr>
-                    <tr><td style={{ height: '30px' }}></td></tr>
-                    <tr>
-                        <td align="center"><b>Invoice</b></td>
-                    </tr>
-                    <tr><td style={{ height: '20px' }}></td></tr>
-                    <tr>
-                        <td >
-                            <table style={{ width: '100%', backgroundColor: '#eee' }} >
-                                <tr style={{ background: '#6384ac', color: '#fff' }}>
-                                    <td align="center">Name of the project</td>
-                                    <td align="center">Project amount</td>
-                                    <td align="center">Commission(%)</td>
-                                    <td align="center">Commission Paid</td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Throttle Body Adaptor</td>
-                                    <td align="center">161.00</td>
-                                    <td align="center">14.90</td>
-                                    <td align="center">GBP 23.99</td>
-                                </tr>
-                                <tr style={{ background: '#dfdfdf' }}>
-                                    <td ></td>
-                                    <td align="center">Commission Paid</td>
-                                    <td align="center">GBP 23.99</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-
-        </div>
+            </section>
+        </>
 
     );
 };
