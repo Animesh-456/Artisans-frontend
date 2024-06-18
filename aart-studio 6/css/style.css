@@ -738,6 +738,7 @@ p{
 }
 .pagination_wp{
 	margin-top: 2em;
+	width: 100%;
 }
 .our_story_wp{
 	background: #fff4e4;
@@ -1000,6 +1001,9 @@ p{
     margin-bottom: 15px;
     display: inline-block;
 }
+.offer_l a:hover{
+	box-shadow: none;
+}
 .offer_r span {
     font-size: 28px;
     font-weight: 500;
@@ -1177,7 +1181,7 @@ p{
 }
 .sidebar ul.side-nav li.active {
     background: #f16003;
-    border-left: 5px solid #9b3900;
+    border-left: 5px solid #47110f;
 }
 .sidebar ul.side-nav li.active a {
     color: #fff;
@@ -1201,17 +1205,19 @@ p{
 }
 .help-ico select {
     width: 100%;
-    border: none;
     height: 43px;
-    border-radius: 5px;
     margin-bottom: 15px;
     background: #ffecec;
-    padding-left: 5px;
+    border-radius: 6px;
+    border: 1px solid #878787;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    padding-left: 18px;
 }
 .help-ico a {
     margin-left: auto;
     display: table;
-    color: #f06101;
+    color: #007ee5;
 }
 .uys5 .nav-pills .nav-link.active, .uys5 .nav-pills .show>.nav-link {
     color: #fff;
@@ -1600,6 +1606,90 @@ ul.side-nav {
 .edit_password_wp {
     margin-top: 2em;
 }
+.step_section {
+    background: #fff4e4;
+    padding-top: 3em;
+}
+.step_one {
+    text-align: center;
+    margin: 0 auto;
+    display: table;
+}
+.circle {
+    background: #f06101;
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    display: grid;
+    align-items: center;
+    border-radius: 50%;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    position: relative;
+    top: 15px;
+    left: 15px;
+}
+.circle_bg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #f3e1cb;
+    position: relative;
+    margin: 0 auto;
+}
+.circle_bg:before {
+    content: "";
+    position: absolute;
+    left: 50px;
+    top: 92px;
+    width: 2px;
+    height: 58px;
+    background: #f3e1cb;
+}
+.step_one h5 {
+    padding-top: 5em;
+}
+.step_one p {
+    font-size: 14px;
+    line-height: 24px;
+}
+.circle_bg:after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #f06101;
+    bottom: -54px;
+    left: 46px;
+    z-index: 1;
+    border: 2px solid #f3e1cb;
+}
+.line {
+    width: 100%;
+    height: 6px;
+    background: #fc9035;
+    margin-top: 3em;
+    position: absolute;
+    left: 0;
+}
+.art_gallery {
+    text-align: center;
+    margin-bottom: 22px;
+}
+.art_gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+.gallery_section{
+	background: #fff4e4;
+    padding: 3em;
+}
+
 
 button, select {
     text-transform: none;

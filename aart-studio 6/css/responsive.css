@@ -273,4 +273,7 @@
   .public {
     width: auto;
   }
+  .step_one {
+    margin: 0 auto 45px;
+  }
 }
