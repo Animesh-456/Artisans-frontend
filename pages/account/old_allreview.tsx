@@ -183,30 +183,7 @@ const allreviews = () => {
                                         Previous
                                     </a>
                                 </li> : ""}
-                                {/*Array.from({ length: opt.total_pages + 1 }).map(
-                    (d, i: any) => {
-                        return (
-                            <li
-                                className={`page-item ${parseFloat((router?.query?.page || 0).toString()) -
-                                    1 ==
-                                    i
-                                    ? "active"
-                                    : ""
-                                    }`}>
-                                <Link href={`${router.pathname}?page=${i}`}>
-                                    <a
-                                        className='page-link'
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            handlePageClick(i);
-                                        }}>
-                                        {i + 1}
-                                    </a>
-                                </Link>
-                            </li>
-                        );
-                    },
-                )*/}
+                                
 
                                 {opt.total_count > 10 && getPageNumbers().map((page) => (
 

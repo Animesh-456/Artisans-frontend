@@ -18,7 +18,7 @@ import Router from "next/router";
 import env from "../../src/config/api";
 import Head from "next/head";
 import axios from 'axios';
-
+// import tick from "../../public/img/tick.png"
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
@@ -682,97 +682,7 @@ const ProjectDetail = () => {
 
 
 
-            {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
 
-                    // <div className="row stepwrapper">
-                <section className="step_section">
-                    <div className="container">
-                        <div className="row">
-                        <div className="col-sm-4">
-                            <div className="step_one">
-                                
-                                
-                                        <div className="circle_bg">
-                                            <div className="circle">
-                                                01
-                                            </div>
-                                        </div>
-                                    <div className="line"></div>
-                                    
-                                    <h5>Deposit funds</h5>
-
-                                    {data?.project_status == '1' ? <p>
-                                        Deposit your fundsss
-                                    </p> : <p>The funds were deposited on {formatDate(data?.project_fund_date_format)}</p>}
-                                    {data?.project_status == "1" && (
-                                        <Link href={`/job/deposit-fund/${p_id}`}>
-                                            <div className="latest_request_text">
-                                                <a>Deposit Funds</a>
-                                            </div>
-                                            
-                                        </Link>
-
-                                    )}
-
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="step_one">
-                                
-                                <div className="circle_bg">
-                                     <div className="circle">
-                                         02
-                                     </div>
-                                     </div>
-                                    <div className="line"></div>
-                                    <h5>Pay your artist</h5>
-                                    {data?.project_status == '5' ? <p>
-                                        Approved parts. Funds released to your artist on {formatDate(data?.fund_release_date)}.
-                                    </p> : <p>You have received your order. You are satisfied with the result. Release your funds and your artist will be paid immediately.</p>}
-                                    {data?.project_status == "4" && (
-                                        <Link
-                                            href={`/account/CustomerRealeasePayment`}
-                                            className='btn btn-warning text-white'
-                                        >
-                                            Pay Artist
-                                        </Link>
-                                    )}
-                                
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="step_one">
-                                
-                                <div className="circle_bg">
-                                    <div className="circle">
-                                        03
-                                    </div>
-                                </div>
-                                <div className="line"></div>
-                                <h5>Evaluate the Art Work</h5>
-
-                                    {(data?.project_status == '5' && reviewCust[0]?.rating != null) ? <p>
-                                        Evaluation performed the {formatDate(reviewCust[0]?.review_post_date)}
-                                    </p> : <p>Evaluate the work of your Artist.</p>}
-
-                                    {(data?.project_status == '5' && reviewCust[0]?.rating == null) && (
-                                        <button onClick={() => setOpenReview(true)}>Review</button>
-                                    )}
-
-
-
-                                    {(data?.project_status == '5' && reviewCust[0]?.rating != null) && <h6>Rating : {reviewCust[0]?.rating}</h6>}
-                                
-                            </div>
-                        </div>
-                        </div>
-                        
-                    {/* </div> */}
-                    </section>
-                )} 
 
 
             {/* Supplier side steps */}
@@ -875,6 +785,133 @@ const ProjectDetail = () => {
                     <h1>{data?.project_name}</h1>
                 </div>
             </section>
+
+
+
+
+            {user && user?.id == data?.creator_id && data?.project_status > 1 && (
+
+                // <div className="row stepwrapper">
+                <section className="step_section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="step_one">
+
+
+                                    <div className="circle_bg">
+                                        <div className="circle">
+                                            01
+                                        </div>
+                                    </div>
+                                    <div className="line"></div>
+
+                                    <h5>Deposit funds</h5>
+
+                                    {data?.project_status == '1' ? <p>
+                                        Deposit your fundsss
+                                    </p> : <p>The funds were deposited on {formatDate(data?.project_fund_date_format)}</p>}
+                                    {data?.project_status == "1" && (
+                                        <Link href={`/job/deposit-fund/${p_id}`}>
+                                            <div className="latest_request_text">
+                                                <a>Deposit Funds</a>
+                                            </div>
+
+                                        </Link>
+
+                                    )}
+
+
+                                    {data?.project_status >= 4 && (
+                                        <div className="latest_request_text">
+                                            <img src={"../img/tick.png"} alt="check" />
+                                        </div>
+                                    )}
+
+                                </div>
+                            </div>
+
+
+
+                            <div className="col-sm-4">
+                                <div className="step_one">
+
+                                    <div className="circle_bg">
+                                        <div className="circle">
+                                            02
+                                        </div>
+                                    </div>
+                                    <div className="line"></div>
+                                    <h5>Pay your artist</h5>
+                                    {data?.project_status == '5' ? <p>
+                                        Approved parts. Funds released to your artist on {formatDate(data?.fund_release_date)}.
+                                    </p> : <p>You have received your order. You are satisfied with the result. Release your funds and your artist will be paid immediately.</p>}
+                                    {data?.project_status == "4" && (
+
+
+
+                                        <div className="latest_request_text">
+                                            <Link
+                                                href={`/account/CustomerRealeasePayment`}
+                                                className='btn btn-warning text-white'
+                                            >
+                                                Pay Artist
+                                            </Link>
+                                        </div>
+                                    )}
+
+
+                                    {data?.project_status == 5 && (
+                                        <div className="latest_request_text">
+                                            <img src={"../img/tick.png"} alt="check" />
+                                        </div>
+                                    )}
+
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="step_one">
+
+                                    <div className="circle_bg">
+                                        <div className="circle">
+                                            03
+                                        </div>
+                                    </div>
+                                    <div className="line"></div>
+                                    <h5>Evaluate the Art Work</h5>
+
+                                    {(data?.project_status == '5' && reviewCust[0]?.rating != null) ? <p>
+                                        Evaluation performed the {formatDate(reviewCust[0]?.review_post_date)}
+                                    </p> : <p>Evaluate the work of your Artist.</p>}
+
+                                    {(data?.project_status == '5' && reviewCust[0]?.rating == null) && (
+
+                                        <div className="latest_request_text">
+                                            <a style={{ color: "#fff", cursor: "pointer" }} onClick={() => setOpenReview(true)}>Pay Artist</a>
+                                        </div>
+
+                                    )}
+
+
+                                    {(data?.project_status == '5' && reviewCust[0]?.rating != null) && (
+                                        <div className="latest_request_text">
+                                            <img src={"../img/tick.png"} alt="check" />
+                                        </div>
+                                    )}
+
+
+
+                                    {(data?.project_status == '5' && reviewCust[0]?.rating != null) && <h6>Rating : {reviewCust[0]?.rating}</h6>}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* </div> */}
+                </section>
+
+            )}
 
             {/* <div className="container">
                     <div className="proj_d1"><h1>Project description</h1></div>
