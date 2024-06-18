@@ -682,22 +682,34 @@ const ProjectDetail = () => {
 
 
 
-            {/* {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
+            {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
 
-                    <div className="row stepwrapper">
+                    // <div className="row stepwrapper">
+                <section className="step_section">
+                    <div className="container">
+                        <div className="row">
                         <div className="col-sm-4">
-                            <div className="step_wp">
-                                <span className="triangle"></span>
-                                <div className="step_wp1">
-                                    <div>1</div>
-                                    <h3>Deposit funds</h3>
+                            <div className="step_one">
+                                
+                                
+                                        <div className="circle_bg">
+                                            <div className="circle">
+                                                01
+                                            </div>
+                                        </div>
+                                    <div className="line"></div>
+                                    
+                                    <h5>Deposit funds</h5>
 
                                     {data?.project_status == '1' ? <p>
                                         Deposit your fundsss
                                     </p> : <p>The funds were deposited on {formatDate(data?.project_fund_date_format)}</p>}
                                     {data?.project_status == "1" && (
                                         <Link href={`/job/deposit-fund/${p_id}`}>
-                                            <a>Deposit Funds</a>
+                                            <div className="latest_request_text">
+                                                <a>Deposit Funds</a>
+                                            </div>
+                                            
                                         </Link>
 
                                     )}
@@ -708,11 +720,15 @@ const ProjectDetail = () => {
 
                         </div>
                         <div className="col-sm-4">
-                            <div className="step_wp">
-                                <span className="triangle"></span>
-                                <div className="step_wp1">
-                                    <div>2</div>
-                                    <h3>Pay your artist</h3>
+                            <div className="step_one">
+                                
+                                <div className="circle_bg">
+                                     <div className="circle">
+                                         02
+                                     </div>
+                                     </div>
+                                    <div className="line"></div>
+                                    <h5>Pay your artist</h5>
                                     {data?.project_status == '5' ? <p>
                                         Approved parts. Funds released to your artist on {formatDate(data?.fund_release_date)}.
                                     </p> : <p>You have received your order. You are satisfied with the result. Release your funds and your artist will be paid immediately.</p>}
@@ -724,14 +740,19 @@ const ProjectDetail = () => {
                                             Pay Artist
                                         </Link>
                                     )}
-                                </div>
+                                
                             </div>
                         </div>
                         <div className="col-sm-4">
-                            <div className="step_wp">
-                                <div className="step_wp1">
-                                    <div>3</div>
-                                    <h3>Review the Artists work</h3>
+                            <div className="step_one">
+                                
+                                <div className="circle_bg">
+                                    <div className="circle">
+                                        03
+                                    </div>
+                                </div>
+                                <div className="line"></div>
+                                <h5>Evaluate the Art Work</h5>
 
                                     {(data?.project_status == '5' && reviewCust[0]?.rating != null) ? <p>
                                         Evaluation performed the {formatDate(reviewCust[0]?.review_post_date)}
@@ -744,11 +765,14 @@ const ProjectDetail = () => {
 
 
                                     {(data?.project_status == '5' && reviewCust[0]?.rating != null) && <h6>Rating : {reviewCust[0]?.rating}</h6>}
-                                </div>
+                                
                             </div>
                         </div>
-                    </div>
-                )} */}
+                        </div>
+                        
+                    {/* </div> */}
+                    </section>
+                )} 
 
 
             {/* Supplier side steps */}
