@@ -271,7 +271,7 @@ export default function Header({ }: Props) {
 			</div> */}
 
 
-			<section className="menubar">
+			{/* <section className="menubar">
 				<div className="container">
 					<div className="row">
 						<div className="col-6 col-sm-3">
@@ -289,7 +289,7 @@ export default function Header({ }: Props) {
 										<li><Link href="/account/jobs">My account</Link></li>
 										<li><Link href="/job/post">Art Request</Link></li>
 										<li><Link href="/machining/listing">Browse Project</Link></li>
-										{/* <li><Link href="/account/contact_us">Contact Us</Link></li> */}
+										
 										
 										{user ? (
 											<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
@@ -300,6 +300,43 @@ export default function Header({ }: Props) {
 											</>
 										)}
 									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> */}
+
+
+			<section className="menubar">
+				<div className="container">
+					<div className="row">
+						<div className="col-6 col-sm-3">
+							<div className="logo">
+								<Link href="/"><img style={{ "cursor": "pointer" }} src={"/img/logo.png"} alt="logo" /></Link>
+							</div>
+						</div>
+						<div className="col-6 col-sm-9">
+							<div className="navigation">
+								<nav>
+									<div className="navwrp">
+										<button style={{ "border": "none", "background": "transparent" }} onClick={handleShow} className="smobitrigger ion-navicon-round"><i className="fa fa-bars"></i></button>
+										<ul className="mobimenu">
+											<li><Link href="/">Home</Link></li>
+											<li><Link href="/account/about">About Us</Link></li>
+											<li><Link href="/account/jobs">My account</Link></li>
+											<li><Link href="/job/post">Art Request</Link></li>
+											<li><Link href="/machining/listing">Browse Project</Link></li>
+											{user ? (
+												<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
+											) : (
+												<>
+													<li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>
+													<li className="signup"><a href={"/auth/sign-in"}>Sign Up</a></li>
+												</>
+											)}
+										</ul>
+									</div>
 								</nav>
 							</div>
 						</div>
