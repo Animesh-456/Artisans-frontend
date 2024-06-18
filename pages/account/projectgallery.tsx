@@ -7,9 +7,9 @@ import api from "../../src/api/services/api";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 import { useAtom } from "jotai";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
-const image = () => {
+const Image = () => {
     const all_list = useAtomValue(atom.project.api.all_list);
     const project_gallery = useAtomValue(atom.project.api.project_gallery)
 
@@ -203,226 +203,239 @@ const image = () => {
 
 
     return (
+        // <>
+        //     <div
+        //         className='banner_wp sign_banner'
+        //         style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+        //         <div className='container'>
+        //             <div className='row'>
+        //                 <div className='banner_text inner_banner_text'>
+        //                     <h1 className='yh'>LATEST ACHIEVEMENTS</h1>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+
+
+
+        //     <div className='container latest_request'>
+
+        //         <div className='row'>
+        //             {project_gallery?.length
+        //                 ? (project_gallery?.map((l, ind) => {
+        //                     var imageSrc = common.get_attachment(l?.a, l?.d);
+        //                     if (imageSrc = '/public/404.jpg') {
+        //                         imageSrc = common.get_attachment_latest_ach(l?.a)
+        //                     }
+
+        //                     return (
+        //                         <>
+        //                             <div className='col-sm-3'>
+        //                                 <div className='last_l'>
+
+        //                                     <figure>
+        //                                         <a data-toggle="tooltip" data-placement="top" title={l?.b}>
+
+        //                                             <img
+        //                                                 src={imageSrc}
+
+        //                                                 onClick={() => {
+        //                                                     setOpen_img(true)
+        //                                                     setSlide(l?.a)
+        //                                                     setIndex(ind)
+        //                                                     setproject_name(l?.b)
+        //                                                     setid(l?.c)
+        //                                                     setdt(l?.d)
+        //                                                     modal_img(l?.a, l?.d)
+        //                                                 }}
+        //                                             />
+
+        //                                         </a>
+
+        //                                         <h6>{l?.b}</h6>
+        //                                     </figure>
+
+        //                                 </div>
+        //                             </div>
+        //                         </>
+        //                     );
+        //                 }))
+        //                 : ""}
+        //             <GlobalModal title={`${project_gallery[index]?.b}`} atom={atom.modal.img_viewer}>
+
+
+        //                 <>
+        //                     <div className='myprofile_name_list'>
+        //                         <div
+        //                             id='demo'
+        //                             className='carousel slide'
+        //                             data-ride='carousel'>
+        //                             <div className='carousel-inner'>
+        //                                 <div className='carousel-item active'>
+        //                                     <img src={`${img_modal}?q=1`} id="curr_img" onClick={() => router.push(`/machining/${project_name?.split(" ").join("-")}-${id}`)} />
+        //                                 </div>
+        //                             </div>
+        //                             <button
+        //                                 className='carousel-control-prev'
+        //                                 onClick={prevSlide}
+        //                                 data-slide='prev'>
+        //                                 <span className='carousel-control-prev-icon' />
+        //                             </button>
+        //                             <button
+        //                                 className='carousel-control-next'
+        //                                 onClick={nextSlide}
+        //                                 data-slide='next'>
+        //                                 <span className='carousel-control-next-icon' />
+        //                             </button>
+        //                         </div>
+        //                     </div>
+        //                 </>
+
+
+
+
+
+        //             </GlobalModal>
+        //         </div>
+
+
+
+
+        //         <ul className='pagination'>
+        //             {(galleryopt.page > 0) ? <li className='page-item'>
+        //                 <a className='page-link' onClick={() => handlePageClick(0)}>
+        //                     First
+        //                 </a>
+        //             </li> : ""}
+        //             {(galleryopt.page > 0) ? <li className='page-item'>
+        //                 <a className='page-link' onClick={() => handlePageClick(galleryopt.page - 1)}>
+        //                     Previous
+        //                 </a>
+        //             </li> : ""}
+
+        //             {galleryopt.total_count && getPageNumbers().map((page) => (
+        //                 <>
+
+        //                     <li
+        //                         className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
+        //                             page
+        //                             ? "active"
+        //                             : ""
+        //                             }`}>
+        //                         <Link href={`${router.pathname}?page=${page}`}>
+        //                             <a
+        //                                 className='page-link'
+        //                                 onClick={(e) => {
+        //                                     e.preventDefault();
+        //                                     handlePageClick(page);
+        //                                 }}>
+        //                                 {page + 1}
+        //                             </a>
+        //                         </Link>
+        //                     </li>
+        //                 </>
+        //             ))}
+
+
+
+
+        //             {galleryopt.page != galleryopt.total_pages ?
+        //                 <li className='page-item'>
+        //                     <a className='page-link' onClick={() => handlePageClick(galleryopt.page + 1)}>
+        //                         Next
+        //                     </a>
+        //                 </li> : ""}
+        //             {galleryopt.page != galleryopt.total_pages ? <li className='page-item'>
+        //                 <a className='page-link' onClick={() => handlePageClick(galleryopt.total_pages)}>
+        //                     Last
+        //                 </a>
+        //             </li> : ""}
+        //         </ul>
+        //     </div>
+
+
+
+        // </>
+
         <>
-            <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>LATEST ACHIEVEMENTS</h1>
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>Latest Art Gallery</h1>
+                </div>
+            </section>
+
+            <section className="gallery_section">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <div className="art_gallery">
+                                <a href="img/pic13.jpg" data-fancybox="gallery">
+                                    <img src={"../img/pic13.jpg"} alt="" />
+                                </a>
+                                <h6>Jehangir Art Gallery</h6>
+                            </div>
                         </div>
+                        <div className="col-sm-3">
+                            <div className="art_gallery">
+                                <a href="img/pic12.jpg" data-fancybox="gallery">
+                                    <img src={"../img/pic12.jpg"} alt="" />
+                                </a>
+                                <h6>Modern Art Gallery</h6>
+                            </div>
+                        </div>
+                        <div className="col-sm-3">
+                            <div className="art_gallery">
+                                <a href={"../img/pic11.jpg"} data-fancybox="gallery">
+                                    <img src={"../img/pic11.jpg"} alt="" />
+                                </a>
+                                <h6>Modern Art Gallery</h6>
+                            </div>
+                        </div>
+                        <div className="col-sm-3">
+                            <div className="art_gallery">
+                                <a href={"../img/pic10.jpg"} data-fancybox="gallery">
+                                    <img src={"../img/pic10.jpg"} alt="" />
+                                </a>
+                                <h6>Indian Art Gallery</h6>
+                            </div>
+                        </div>
+                        <div className="col-sm-3">
+                            <div className="art_gallery">
+                                <a href={"../img/pic10.jpg"} data-fancybox="gallery">
+                                    <img src={"../img/pic10.jpg"} alt="" />
+                                </a>
+                                <h6>Indian Art Gallery</h6>
+                            </div>
+                        </div>
+                        
+                        <nav className="pagination_wp">
+                            <ul className="pagination justify-content-center">
+                                <li className="page-item">
+                                    <a className="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">«</span>
+                                        <span className="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li className="page-item active"><a className="page-link" href="#">1</a></li>
+                                <li className="page-item"><a className="page-link" href="#">2</a></li>
+                                <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                <li className="page-item">
+                                    <a className="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">»</span>
+                                        <span className="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <br /><br /><br />
                     </div>
                 </div>
-            </div>
-
-
-
-            <div className='container latest_request'>
-
-                <div className='row'>
-                    {project_gallery?.length
-                        ? (project_gallery?.map((l, ind) => {
-                            var imageSrc = common.get_attachment(l?.a, l?.d);
-                            if (imageSrc = '/public/404.jpg') {
-                                imageSrc = common.get_attachment_latest_ach(l?.a)
-                            }
-                            //console.log("loop index is ", ind)
-
-                            return (
-                                <div className='col-sm-3'>
-                                    <div className='last_l'>
-
-                                        <figure>
-                                            <a data-toggle="tooltip" data-placement="top" title={l?.b}>
-
-                                                <img
-                                                    src={imageSrc}
-
-                                                    onClick={() => {
-                                                        setOpen_img(true)
-                                                        setSlide(l?.a)
-                                                        setIndex(ind)
-                                                        setproject_name(l?.b)
-                                                        setid(l?.c)
-                                                        setdt(l?.d)
-                                                        modal_img(l?.a, l?.d)
-                                                    }}
-                                                />
-
-                                            </a>
-
-                                            <h6>{l?.b}</h6>
-                                        </figure>
-
-                                    </div>
-                                </div>
-                            );
-                        }))
-                        : ""}
-                    <GlobalModal title={`${project_gallery[index]?.b}`} atom={atom.modal.img_viewer}>
-
-
-                        <>
-                            <div className='myprofile_name_list'>
-                                <div
-                                    id='demo'
-                                    className='carousel slide'
-                                    data-ride='carousel'>
-                                    <div className='carousel-inner'>
-                                        <div className='carousel-item active'>
-                                            <img src={`${img_modal}?q=1`} id="curr_img" onClick={() => router.push(`/machining/${project_name?.split(" ").join("-")}-${id}`)} />
-                                        </div>
-                                    </div>
-                                    <button
-                                        className='carousel-control-prev'
-                                        onClick={prevSlide}
-                                        data-slide='prev'>
-                                        <span className='carousel-control-prev-icon' />
-                                    </button>
-                                    <button
-                                        className='carousel-control-next'
-                                        onClick={nextSlide}
-                                        data-slide='next'>
-                                        <span className='carousel-control-next-icon' />
-                                    </button>
-                                </div>
-                            </div>
-                        </>
-
-
-
-
-
-                    </GlobalModal>
-                </div>
-
-                {/* <div className='row'>
-                    {all_list?.length
-                        ? (all_list?.map((l) => {
-
-                            return (
-                                l?.adminApprove == 1 && l?.attach_file.includes(",") ? l?.attach_file.split(",").map((m) => {
-                                    <div className='col-sm-3'>
-                                        <div className='last_l'>
-
-                                            <figure>
-                                                <a data-toggle="tooltip" data-placement="top" title={l?.project_name}>
-                                                    <img
-                                                        src={common.get_image(
-                                                            (m)
-                                                        )} />
-                                                </a>
-                                                <h6>{l?.project_name}</h6>
-                                            </figure>
-
-                                        </div>
-                                    </div>
-                                }) :  l?.adminApprove == 1 && !l?.attach_file.includes(",")? (
-                                    <div className='col-sm-3'>
-                                        <div className='last_l'>
-
-                                            <figure>
-                                                <a data-toggle="tooltip" data-placement="top" title={l?.project_name}>
-                                                    <img
-                                                        src={common.get_image(
-                                                            (l?.attach_file)
-                                                        )} />
-                                                </a>
-                                                <h6>{l?.project_name}</h6>
-                                            </figure>
-
-                                        </div>
-                                    </div>
-                                ) : (<></>)
-
-                            );
-                        }))
-                        : ""}
-                </div> */}
-
-
-                <ul className='pagination'>
-                    {(galleryopt.page > 0) ? <li className='page-item'>
-                        <a className='page-link' onClick={() => handlePageClick(0)}>
-                            First
-                        </a>
-                    </li> : ""}
-                    {(galleryopt.page > 0) ? <li className='page-item'>
-                        <a className='page-link' onClick={() => handlePageClick(galleryopt.page - 1)}>
-                            Previous
-                        </a>
-                    </li> : ""}
-                    {/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
-										(d, i: any) => {
-											return (
-												<li
-													className={`page-item ${parseFloat((router?.query?.page || 0).toString()) -
-														1 ==
-														i
-														? "active"
-														: ""
-														}`}>
-													<Link href={`${router.pathname}?page=${i}`}>
-														<a
-															className='page-link'
-															onClick={(e) => {
-																e.preventDefault();
-																handlePageClick(i);
-															}}>
-															{i + 1}
-														</a>
-													</Link>
-												</li>
-											);
-										},
-									)} */}
-
-                    {galleryopt.total_count && getPageNumbers().map((page) => (
-
-                        <li
-                            className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-                                page
-                                ? "active"
-                                : ""
-                                }`}>
-                            <Link href={`${router.pathname}?page=${page}`}>
-                                <a
-                                    className='page-link'
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handlePageClick(page);
-                                    }}>
-                                    {page + 1}
-                                </a>
-                            </Link>
-                        </li>
-
-                    ))}
-
-
-
-
-                    {galleryopt.page != galleryopt.total_pages ?
-                        <li className='page-item'>
-                            <a className='page-link' onClick={() => handlePageClick(galleryopt.page + 1)}>
-                                Next
-                            </a>
-                        </li> : ""}
-                    {galleryopt.page != galleryopt.total_pages ? <li className='page-item'>
-                        <a className='page-link' onClick={() => handlePageClick(galleryopt.total_pages)}>
-                            Last
-                        </a>
-                    </li> : ""}
-                </ul>
-            </div>
-
-
-
+            </section>
         </>
     )
 }
 
-image.ignorePath = true
+Image.ignorePath = true
 
-export default image
+export default Image
