@@ -240,109 +240,51 @@ const Message = (props: Props) => {
 
 	return (
 		<>
-			<div
-				className='banner_wp sign_banner'
-				style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+
+			<section className="inner_banner_wp" style={{ backgroundImage: `url(../../../../img/inner-banner.jpg)` }}>
+				<div className="container">
+					<h1>My Profile</h1>
+				</div>
+			</section>
+
+			<section className="myproject">
 				<div className='container'>
 					<div className='row'>
-						<div className='banner_text inner_banner_text'>
-							<h1 className='yh'>My Profile</h1>
+						<div className="col-sm-4">
+							<AccountSideBar />
 						</div>
-					</div>
-				</div>
-			</div>
-			<div className='container cjw'>
-				<div className='row'>
-					<div className="col-sm-4">
-						<AccountSideBar />
-					</div>
 
-					<div className='col-sm-8'>
-						<div className='profile_box mb-4'>
-							<h3 className='pb-0 prj-link'><a href={`/machining/${meta?.project?.project_name}-${meta?.project?.id}`}>{meta?.project?.project_name}</a></h3>
-							<hr className='dashed-hr' />
-							<div className='project_profil'>
-								<div className='project_loop border-0 pb-0'>
-									<form onSubmit={handleSubmit}>
-										<div className='mb-3'>
-											<label className='form-label'>Posts</label>
-											<textarea
-												rows={5}
-												value={msg.message}
-												onChange={setMsg("message")}></textarea>
-										</div>
-										{/* <div className='reg-bottom mb-0'>
-											<button type='submit' name='submit'>
-												Send
-											</button>
-										</div> */}
-										<div className='mb-3 pencil qwe20'>
-											<div className='msg-attach'>
-												{/* <input
-													name='file'
-													type='file'
-													className='opacity-0 '
-													onChange={handle_file_change}
-												/> */}
+						{/* <div className='col-sm-8'>
+							<div className='profile_box'>
+								<div className="rys">
+									<h5 className='pb-0 prj-link'><a href={`/machining/${meta?.project?.project_name}-${meta?.project?.id}`}>{meta?.project?.project_name}</a></h5>
 
-												<div className='attach-input mymsg'>
-													<h6><i className="fa fa-paperclip" /> Attached File</h6>
-													<input
-														name='file'
-														type='file'
-														multiple={true}
-														id='fileAttach'
-														className=''
-														onChange={handle_file_change}
-														ref={fileInputRef}
-													/>
-												</div>
-
-												<div className='mb-3'>
-
-													<label className='fileinput'>
-
-
-
-														{pr < 101 ? (
-															<ProgressBar now={pr} label={`${pr}%`} />
-														) : (<></>)}
-														{file && pr > 100 ? (
-
-															file?.map((f, index) => {
-																return (
-																	<>
-																		<div className="pro_div">
-																			<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
-																		</div>
-																	</>
-																)
-															})
-														) : (<></>)}
-
-
-													</label>
-
-
-
-
-
-												</div>
+								</div>
+								<hr className='dashed-hr' />
+								<div className='project_profil'>
+									<div className='project_loop border-0 pb-0'>
+										<form onSubmit={handleSubmit}>
+											<div className='mb-3'>
+												<label className='form-label'>Posts</label>
+												<textarea
+													rows={5}
+													value={msg.message}
+													onChange={setMsg("message")}></textarea>
 											</div>
-
-											{/* {user?.role_id == 2 && data?.project_status < 5 ? (
+											
+											<div className='mb-3 pencil qwe20'>
 												<div className='msg-attach'>
+													
+
 													<div className='attach-input mymsg'>
-
-
-														<h6><i className="fa fa-paperclip" /> Attach photos of machined parts</h6>
-
+														<h6><i className="fa fa-paperclip" /> Attached File</h6>
 														<input
 															name='file'
 															type='file'
 															multiple={true}
-															className='opacity-0 qwe18'
-															onChange={handle_machine_file}
+															id='fileAttach'
+															className=''
+															onChange={handle_file_change}
 															ref={fileInputRef}
 														/>
 													</div>
@@ -350,25 +292,19 @@ const Message = (props: Props) => {
 													<div className='mb-3'>
 
 														<label className='fileinput'>
-															<i className="fa fa-paperclip" />
-															<input
-													name='file'
-													type='file'
-													className='opacity-0 '
-													onChange={handle_file_change}
-												/>
 
 
-															{pr2 < 101 ? (
-																<ProgressBar now={pr2} label={`${pr2}%`} />
+
+															{pr < 101 ? (
+																<ProgressBar now={pr} label={`${pr}%`} />
 															) : (<></>)}
-															{machineFile && pr2 > 100 ? (
+															{file && pr > 100 ? (
 
-																machineFile?.map((f) => {
+																file?.map((f, index) => {
 																	return (
 																		<>
 																			<div className="pro_div">
-																				<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
+																				<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
 																			</div>
 																		</>
 																	)
@@ -378,122 +314,305 @@ const Message = (props: Props) => {
 
 														</label>
 
+
+
+
+
 													</div>
-
 												</div>
-											) : (<></>)} */}
+
+												
+
+											</div>
+
+											<div className='reg-bottom mb-0'>
+												<button type='submit' name='submit'>
+													Post The Message
+												</button>
+											</div>
+											<hr className='dashed-hr' />
 
 
+
+
+										</form>
+										<div className='profile_box shadow-none p-0'>
+											<div className='table-responsive inbox-table mt-4'>
+												<table
+													className='table mb-0'
+													style={{ border: "1px solid #dee2e6" }}>
+													<thead>
+														<tr>
+															<th>Sender</th>
+															<th>Message</th>
+
+															<th className='text-end unid'>Date</th>
+														</tr>
+													</thead>
+													<tbody>
+														{msgs?.length ? (
+															msgs?.map((m) => {
+																const date = new Date(m?.created * 1000);
+
+																const year = date.getFullYear();
+																const month = String(date.getMonth() + 1).padStart(2, '0');
+																const day = String(date.getDate()).padStart(2, '0');
+																const hours = String(date.getHours()).padStart(2, '0');
+																const minutes = String(date.getMinutes()).padStart(2, '0');
+																const seconds = String(date.getSeconds()).padStart(2, '0');
+
+																const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+																return (
+																	<>
+																		<tr>
+																			<td className='darkblue-text'>
+																				{m?.from_id == user?.id
+																					? user?.user_name
+																					: meta?.to?.user_name}
+																			</td>
+																			<td>
+																				<pre className="custom-pre">{m?.message}</pre>
+																				<br />
+																				{m?.machine_parts_image?.includes(",") ? (
+																					m?.machine_parts_image.split(",").map((m) => {
+																						return (
+																							<>
+																								<ul>
+																									<li>
+
+																										<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
+																										<br />
+
+																									</li>
+																								</ul>
+																							</>
+																						)
+																					})
+																				) : (<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m?.machine_parts_image}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m?.machine_parts_image}</p></a>)}
+
+
+																				{m?.attach_file?.includes(",") ? (
+																					m?.attach_file.split(",").map((m) => {
+																						return (
+																							<>
+																								<ul>
+																									<li>
+
+																										<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m}`)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
+																										<br />
+
+																									</li>
+																								</ul>
+																							</>
+																						)
+																					})
+																				) : (<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m?.attach_file}`)}><p className='darkblue-text cursor-pointer'>{m?.attach_file}</p></a>)}
+																			</td>
+
+
+																			<td className='text-end'>
+																				{moment
+																					.unix(m?.created)
+																					.format("DD MMM, YYYY")}
+																			</td>
+																		</tr>
+																	</>
+																);
+															})
+														) : (
+															<></>
+														)}
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> */}
+
+						<div className="col-sm-8">
+							<div className="profile_box">
+								<div className="rys">
+									<h5><a style={{ textDecoration: "none", color: "inherit" }} href={`/machining/${meta?.project?.project_name}-${meta?.project?.id}`}>{meta?.project?.project_name}</a></h5>
+								</div>
+								<form onSubmit={handleSubmit}>
+									<div className="from_feild">
+										<label>Comment: <span>*</span></label>
+										<textarea placeholder="Comment" rows={6} cols={50}
+											value={msg.message}
+											onChange={setMsg("message")}
+										></textarea>
+									</div>
+									<div className="from_feild">
+										<label>Attach Your Files Here: <span>*</span></label>
+										<div className="upload-btn-wrapper">
+											<button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>
+											<input type="file" name="file" multiple={true} id='fileAttach'
+												onChange={handle_file_change}
+												ref={fileInputRef}
+											/>
 										</div>
 
-										<div className='reg-bottom mb-0'>
-											<button type='submit' name='submit'>
-												Post The Message
-											</button>
+										{pr < 101 ? (
+											<ProgressBar now={pr} label={`${pr}%`} />
+										) : (<></>)}
+										{file && pr > 100 ? (
+
+											file?.map((f, index) => {
+												return (
+													<>
+														<div className="pro_div">
+															<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+														</div>
+													</>
+												)
+											})
+										) : (<></>)}
+									</div>
+									<div className="from_feild">
+										<label>Attach Photos of arts: <span>*</span></label>
+										<div className="upload-btn-wrapper">
+											<button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>
+											<input type="file" name="file" multiple={true} onChange={handle_file_change}
+												ref={fileInputRef} />
 										</div>
-										<hr className='dashed-hr' />
+
+										{pr < 101 ? (
+											<ProgressBar now={pr} label={`${pr}%`} />
+										) : (<></>)}
+										{file && pr > 100 ? (
+
+											file?.map((f, index) => {
+												return (
+													<>
+														<div className="pro_div">
+															<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+														</div>
+													</>
+												)
+											})
+										) : (<></>)}
+									</div>
+									<div className="discover_wp">
+										{/* <a type="submit">Check &amp; Submit</a> */}
+										<button type="submit"
+											style={{
+												background: '#ef6100',
+												color: '#fff',
+												borderRadius: '6px',
+
+												padding: '6px 22px',
+												transition: 'box-shadow 1s'
+											}}
+										>
+											Check &amp; Submit
+										</button>
+									</div>
+								</form>
+								<hr />
+								<div className="fund_wp">
+									<div className="table-responsive">
+										<table className="table table-bordered table-sm">
+											<thead>
+												<tr className="table-primary">
+													<th>Username</th>
+													<th>Message</th>
+													<th>Date</th>
+												</tr>
+											</thead>
+											{/* <tbody>
+												<tr>
+													<td>-</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+											</tbody> */}
+
+											<tbody>
+												{msgs?.length ? (
+													msgs?.map((m) => {
+														const date = new Date(m?.created * 1000);
+
+														const year = date.getFullYear();
+														const month = String(date.getMonth() + 1).padStart(2, '0');
+														const day = String(date.getDate()).padStart(2, '0');
+														const hours = String(date.getHours()).padStart(2, '0');
+														const minutes = String(date.getMinutes()).padStart(2, '0');
+														const seconds = String(date.getSeconds()).padStart(2, '0');
+
+														const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+														return (
+															<>
+																<tr>
+																	<td className='darkblue-text'>
+																		{m?.from_id == user?.id
+																			? user?.user_name
+																			: meta?.to?.user_name}
+																	</td>
+																	<td>
+																		<pre className="custom-pre">{m?.message}</pre>
+																		<br />
+																		{m?.machine_parts_image?.includes(",") ? (
+																			m?.machine_parts_image.split(",").map((m) => {
+																				return (
+																					<>
+																						<ul>
+																							<li>
+
+																								<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
+																								<br />
+
+																							</li>
+																						</ul>
+																					</>
+																				)
+																			})
+																		) : (<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m?.machine_parts_image}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m?.machine_parts_image}</p></a>)}
 
 
+																		{m?.attach_file?.includes(",") ? (
+																			m?.attach_file.split(",").map((m) => {
+																				return (
+																					<>
+																						<ul>
+																							<li>
+
+																								<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m}`)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
+																								<br />
+
+																							</li>
+																						</ul>
+																					</>
+																				)
+																			})
+																		) : (<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m?.attach_file}`)}><p className='darkblue-text cursor-pointer'>{m?.attach_file}</p></a>)}
+																	</td>
 
 
-									</form>
-									<div className='profile_box shadow-none p-0'>
-										<div className='table-responsive inbox-table mt-4'>
-											<table
-												className='table mb-0'
-												style={{ border: "1px solid #dee2e6" }}>
-												<thead>
-													<tr>
-														<th>Sender</th>
-														<th>Message</th>
-
-														<th className='text-end unid'>Date</th>
-													</tr>
-												</thead>
-												<tbody>
-													{msgs?.length ? (
-														msgs?.map((m) => {
-															const date = new Date(m?.created * 1000);
-
-															const year = date.getFullYear();
-															const month = String(date.getMonth() + 1).padStart(2, '0');
-															const day = String(date.getDate()).padStart(2, '0');
-															const hours = String(date.getHours()).padStart(2, '0');
-															const minutes = String(date.getMinutes()).padStart(2, '0');
-															const seconds = String(date.getSeconds()).padStart(2, '0');
-
-															const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
-															return (
-																<>
-																	<tr>
-																		<td className='darkblue-text'>
-																			{m?.from_id == user?.id
-																				? user?.user_name
-																				: meta?.to?.user_name}
-																		</td>
-																		<td>
-																			<pre className="custom-pre">{m?.message}</pre>
-																			<br />
-																			{m?.machine_parts_image?.includes(",") ? (
-																				m?.machine_parts_image.split(",").map((m) => {
-																					return (
-																						<>
-																							<ul>
-																								<li>
-
-																									<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
-																									<br />
-
-																								</li>
-																							</ul>
-																						</>
-																					)
-																				})
-																			) : (<a rel="noreferrer" target={"_blank"} href={common.get_attachment(`${m?.machine_parts_image}`, formattedDate)}><p className='darkblue-text cursor-pointer'>{m?.machine_parts_image}</p></a>)}
-
-
-																			{m?.attach_file?.includes(",") ? (
-																				m?.attach_file.split(",").map((m) => {
-																					return (
-																						<>
-																							<ul>
-																								<li>
-
-																									<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m}`)}><p className='darkblue-text cursor-pointer'>{m}</p></a>
-																									<br />
-
-																								</li>
-																							</ul>
-																						</>
-																					)
-																				})
-																			) : (<a rel="noreferrer" target={"_blank"} href={common.get_message(`${m?.attach_file}`)}><p className='darkblue-text cursor-pointer'>{m?.attach_file}</p></a>)}
-																		</td>
-
-
-																		<td className='text-end'>
-																			{moment
-																				.unix(m?.created)
-																				.format("DD MMM, YYYY")}
-																		</td>
-																	</tr>
-																</>
-															);
-														})
-													) : (
-														<></>
-													)}
-												</tbody>
-											</table>
-										</div>
+																	<td className='text-end'>
+																		{moment
+																			.unix(m?.created)
+																			.format("DD MMM, YYYY")}
+																	</td>
+																</tr>
+															</>
+														);
+													})
+												) : (
+													<></>
+												)}
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 		</>
 	);
 };
