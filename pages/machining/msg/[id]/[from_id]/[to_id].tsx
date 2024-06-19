@@ -471,20 +471,22 @@ const Message = (props: Props) => {
 											})
 										) : (<></>)}
 									</div>
-									<div className="from_feild">
+
+									{/* Logic to upload art files  */}
+									{/* <div className="from_feild">
 										<label>Attach Photos of arts: <span>*</span></label>
 										<div className="upload-btn-wrapper">
 											<button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>
-											<input type="file" name="file" multiple={true} onChange={handle_file_change}
+											<input type="file" name="file" multiple={true} onChange={handle_machine_file}
 												ref={fileInputRef} />
 										</div>
 
-										{pr < 101 ? (
+										{pr2 < 101 ? (
 											<ProgressBar now={pr} label={`${pr}%`} />
 										) : (<></>)}
-										{file && pr > 100 ? (
+										{machineFile && pr2 > 100 ? (
 
-											file?.map((f, index) => {
+											machineFile?.map((f, index) => {
 												return (
 													<>
 														<div className="pro_div">
@@ -494,15 +496,17 @@ const Message = (props: Props) => {
 												)
 											})
 										) : (<></>)}
-									</div>
+									</div> */}
+
+									
 									<div className="discover_wp">
-										{/* <a type="submit">Check &amp; Submit</a> */}
+										
 										<button type="submit"
 											style={{
 												background: '#ef6100',
 												color: '#fff',
 												borderRadius: '6px',
-
+												
 												padding: '6px 22px',
 												transition: 'box-shadow 1s'
 											}}
