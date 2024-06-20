@@ -138,7 +138,7 @@ const Machinistshippingmessage = () => {
 
     return (
         <>
-            <div
+            {/* <div
                 className='banner_wp sign_banner'
                 style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
                 <div className='container'>
@@ -157,10 +157,7 @@ const Machinistshippingmessage = () => {
                         <div className="fund_d1">
                             <h3>Select a date and click OK. And enter the tracking number followed by OK. You can then edit the message text</h3>
                             <hr />
-                            {/* <div className="tgs-3">
-                                <p>Thank you for choosing to integrate Usineur PRO!</p>
-                                <p>To finalize your registration, we need the information below!</p>
-                            </div> */}
+                            
 
                             <div className="row tgs-1">
 
@@ -197,25 +194,12 @@ const Machinistshippingmessage = () => {
                                     </div>
                                 </div>
 
-                                {/* <i className="fa fa-exclamation"></i>
-                                <i className="fa fa-check"></i> */}
+                               
                             </div>
 
                             <br />
 
-                            {/* {data[0]?.project_status == 4 ? (
-                                <div className='upload-btn-wrapper'>
-                                    <button className='btn'>
-                                        <i className='fa fa-upload' /> Attach photos of machined parts
-                                    </button>
-                                    <input
-                                        type='file'
-                                        name='myfile'
-                                        multiple={true}
-                                        onChange={handle_file_change}
-                                    />
-                                </div>
-                            ) : (<></>)} */}
+                            
 
                             {pr < 101 ? (
                                 <ProgressBar now={pr} label={`${pr}%`} />
@@ -250,7 +234,77 @@ const Machinistshippingmessage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>Send a Shipping Message</h1>
+                </div>
+            </section >
+
+            <section className="myproject">
+                <div className="container">
+                    <div className="row" style={{ justifyContent: "center" }}>
+                        <div className="offset-sm-2"></div>
+                        <div className="col-sm-8 profile_box">
+                            <div className="discover_wp">
+                                <h5>Choose a date then enter the traceability number followed by OK. You can then edit the text of the message.</h5>
+                                <hr />
+                                <form>
+                                    <div className="from_feild">
+                                        <label>Enter the estimated shipping day here: </label>
+                                        <input type="date" name="name" min={new Date().toISOString().slice(0, 10)}
+                                            onChange={setmsgs} value={value1} placeholder="Type here..." />
+                                    </div>
+                                   
+                                    <div className="from_feild">
+                                        <label>Enter the traceability number here: </label>
+                                        <input type="text" autoComplete={"off"}
+                                            onChange={setmsgs2} name="name" placeholder="Traceability number" />
+                                    </div>
+                                   
+                                    <div className="from_feild">
+                                        <label>Message sent to your customer:</label>
+                                        <textarea name="desc" rows={5} value={value3}
+                                            onChange={handleMessage} placeholder="Comment..">
+                                        </textarea>
+                                    </div>
+                                    {/* <div className="from_feild">
+                                        <label>Attach photos of Art parts: <span>*</span></label>
+                                        <div className="upload-btn-wrapper">
+                                            <button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>
+                                            <input type="file" name="myfile"  multiple={true} />
+                                        </div>
+                                    </div> */}
+
+                                    {/* {pr < 101 ? (
+                                        <ProgressBar now={pr} label={`${pr}%`} />
+                                    ) : (<></>)}
+
+
+                                    {file && pr > 100 ? (
+                                        file?.map((f) => {
+                                            return (
+                                                <>
+                                                    <div className="pro_div">
+                                                        <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+                                    ) : (<></>)} */}
+
+
+                                    <div className="submit_cancel">
+                                        <a style={{cursor: "pointer", color:"#fff"}} onClick={handlesubmit}>Send the message</a>
+                                        <a style={{cursor: "pointer"}} onClick={handlecancel}>Cancel <img src={"../../img/arrow.png"} width="11px" alt="" /></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 

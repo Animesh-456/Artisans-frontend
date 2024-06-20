@@ -31,7 +31,7 @@ const MachinistConfirmationMessage = () => {
         });
 
         setmsg(previousState => {
-            return { ...previousState, message: updtmsg.replace("@date@", new Date(e.target.value).toLocaleDateString('fr-FR', { day: "numeric", year: "numeric", month: "long" })) }
+            return { ...previousState, message: updtmsg.replace("@date@", new Date(e.target.value).toLocaleDateString('en-US', { day: "numeric", year: "numeric", month: "long" })) }
         });
 
 
@@ -39,7 +39,7 @@ const MachinistConfirmationMessage = () => {
 
     const updatemessage = (e) => {
         setmsg(previousState => {
-            return { ...previousState, message: e.target.value.replace("@date@", new Date(e.target.value).toLocaleDateString('fr-FR', { day: "numeric", year: "numeric", month: "long" })) }
+            return { ...previousState, message: e.target.value.replace("@date@", new Date(e.target.value).toLocaleDateString('en-US', { day: "numeric", year: "numeric", month: "long" })) }
         });
     }
 
@@ -90,7 +90,7 @@ const MachinistConfirmationMessage = () => {
 
     return (
         <>
-            <div
+            {/* <div
                 className='banner_wp sign_banner'
                 style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
                 <div className='container'>
@@ -109,10 +109,7 @@ const MachinistConfirmationMessage = () => {
                         <div className="fund_d1">
                             <h3>Select a date and click OK. You can then edit the message text</h3>
                             <hr />
-                            {/* <div className="tgs-3">
-                                <p>Thank you for choosing to integrate Usineur PRO!</p>
-                                <p>To finalize your registration, we need the information below!</p>
-                            </div> */}
+                           
 
                             <div className="row tgs-1">
 
@@ -121,7 +118,7 @@ const MachinistConfirmationMessage = () => {
                                     autoComplete={"off"}
                                     min={new Date().toISOString().slice(0, 10)}
                                     onChange={setmsgs} value={msg.date} ></input></div>
-                                {/* <button className="col-sm-2" onClick={datestate}>OK </button> */}
+                              
 
                             </div>
 
@@ -140,8 +137,7 @@ const MachinistConfirmationMessage = () => {
                                 </div>
 
 
-                                {/* <i className="fa fa-exclamation"></i>
-                                <i className="fa fa-check"></i> */}
+                               
                             </div>
 
                             <br />
@@ -156,7 +152,46 @@ const MachinistConfirmationMessage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>Send a Confirmation Message</h1>
+                </div>
+            </section>
+
+            <section className="myproject">
+                <div className="container">
+                    <div className="row" style={{justifyContent:"center"}}>
+                        <div className="offset-sm-2"></div>
+                        <div className="col-sm-8 profile_box">
+                            <div className="discover_wp">
+                                <h5>Choose a date then you can then edit the text of the message.</h5>
+                                <hr />
+                                <form>
+                                    <div className="from_feild">
+                                        <label>Enter the estimated shipping day here: </label>
+                                        <input type="date" name="name" autoComplete={"off"}
+                                            min={new Date().toISOString().slice(0, 10)}
+                                            onChange={setmsgs} value={msg.date} />
+                                    </div>
+                                    
+                                    <div className="from_feild">
+                                        <label>Message sent to your customer:</label>
+                                        <textarea name="desc" rows={5} value={msg.message}
+                                            onChange={updatemessage} placeholder="Comment..">
+                                        </textarea>
+                                    </div>
+                                    <div className="submit_cancel">
+                                        <a onClick={handlesubmit} style={{cursor:"pointer", color:"#fff"}}>Send the message</a>
+                                        <a onClick={handlecancel} style={{cursor:"pointer"}}>Cancel <img src={"../../img/arrow.png"} width="11px" alt="" /></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 

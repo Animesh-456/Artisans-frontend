@@ -738,9 +738,6 @@ const ProjectDetail = () => {
                                         </>
                                     )}
 
-                                    
-
-
 
                                     {steps_completed_supplier[0]?.step2 != 1 && data?.project_status < 5 ? (
                                         <Link href={`/account/machinistShippingMessage/${data.id}`}>
@@ -788,6 +785,158 @@ const ProjectDetail = () => {
 
 
 
+            {user && user?.id == data?.programmer_id && data?.project_status >= 4 && (
+
+                // <div className="row stepwrapper">
+                <section className="step_section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="step_one">
+
+
+                                    <div className="circle_bg">
+                                        <div className="circle">
+                                            01
+                                        </div>
+                                    </div>
+                                    <div className="line"></div>
+
+                                    <h5>Confirm Shipment Date</h5>
+
+                                    {steps_completed_supplier[0]?.step1 != 1 ? (
+                                        <p>
+                                            The client has confirmed the order and the funds have been deposited.
+                                        </p>
+                                    ) : (
+                                        <>
+                                            <p>Confirmation message sent</p>
+                                            <p>Sent Date: - {new Date(data?.expedition_day).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
+                                        </>
+                                    )}
+
+
+                                    {steps_completed_supplier[0]?.step1 != 1 && data?.project_status < "5" ? (
+                                        <Link href={`/account/machinistConfirmationMessage/${data.id}`}>
+                                            <div className="latest_request_text">
+                                                <a style={{ color: "#fff", cursor: 'pointer' }}>Send Message</a>
+                                            </div>
+                                        </Link>
+                                    ) : (<></>)}
+
+
+                                    {steps_completed_supplier[0]?.step1 == 1 && (
+                                        <div className="latest_request_text">
+                                            <img src={"../img/tick.png"} alt="check" />
+                                        </div>
+                                    )}
+
+                                </div>
+                            </div>
+
+
+
+                            <div className="col-sm-4">
+                                <div className="step_one">
+
+                                    <div className="circle_bg">
+                                        <div className="circle">
+                                            02
+                                        </div>
+                                    </div>
+                                    <div className="line"></div>
+
+                                    <h5>Shipping now</h5>
+                                    {steps_completed_supplier[0]?.step2 != 1 ? (
+                                        <p>
+                                            Inform your client that you have shipped their order (parcel tracking is compulsory).
+                                        </p>
+                                    ) : (
+                                        <>
+                                            <p>Shipment message sent</p>
+                                            <p>Sent Date: - {new Date(data?.expedition_day2).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })}</p>
+                                            <p>Tracking Number: - {data?.track_number}</p>
+                                        </>
+                                    )}
+
+
+
+
+
+                                    {steps_completed_supplier[0]?.step2 != 1 && data?.project_status < 5 ? (
+
+
+                                        <div className="latest_request_text">
+                                            <Link href={`/account/machinistShippingMessage/${data.id}`}>
+                                                Send Message
+                                            </Link>
+
+                                        </div>
+                                    ) : (<></>)}
+
+
+                                    {steps_completed_supplier[0]?.step2 == 1 && (
+                                        <div className="latest_request_text">
+                                            <img src={"../img/tick.png"} alt="check" />
+                                        </div>
+                                    )}
+
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="step_one">
+
+                                    <div className="circle_bg">
+                                        <div className="circle">
+                                            03
+                                        </div>
+                                    </div>
+                                    <div className="line"></div>
+                                    <h5>Request release of funds</h5>
+                                    {steps_completed_supplier[0]?.step3 != 1 ? (
+
+                                        <p>
+                                            Once your customer has confirmed receipt of their order, request that funds be released into your account.
+                                        </p>
+                                    ) : (
+                                        <>
+                                            <p>Request sent</p>
+                                        </>
+                                    )}
+
+
+                                    {steps_completed_supplier[0]?.step3 != 1 && data?.project_status < "5" ? (
+
+                                        <div className="latest_request_text">
+                                            <Link href={`/account/requestfunds/${data.id}`}>
+                                                <a>Send Message</a>
+                                            </Link>
+                                        </div>
+
+                                    ) : (<></>)}
+
+
+
+
+                                    {steps_completed_supplier[0]?.step3 == 1&& (
+                                        <div className="latest_request_text">
+                                            <img src={"../img/tick.png"} alt="check" />
+                                        </div>
+                                    )}
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* </div> */}
+                </section>
+
+            )}
+
+
+
 
             {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
 
@@ -814,11 +963,9 @@ const ProjectDetail = () => {
                                     {data?.project_status == "1" && (
                                         <Link href={`/job/deposit-fund/${p_id}`}>
                                             <div className="latest_request_text">
-                                                <a style={{color:"#fff", cursor:'pointer'}}>Deposit Funds</a>
+                                                <a style={{ color: "#fff", cursor: 'pointer' }}>Deposit Funds</a>
                                             </div>
-
                                         </Link>
-
                                     )}
 
 

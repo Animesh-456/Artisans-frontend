@@ -41,7 +41,7 @@ const Requestfunds = () => {
     }, []);
     return (
         <>
-            <div
+            {/* <div
                 className='banner_wp sign_banner'
                 style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
                 <div className='container'>
@@ -75,7 +75,34 @@ const Requestfunds = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            <section className="inner_banner_wp" style={{backgroundImage: `url(../../img/inner-banner.jpg)`}}>
+                <div className="container">
+                    <h1>Ask To Be Paid</h1>
+                </div>
+            </section>
+
+            <section className="myproject">
+                <div className="container">
+                    <div className="row" style={{justifyContent:"center"}}>
+                        <div className="offset-sm-2"></div>
+                        <div className="col-sm-8 profile_box">
+                            <div className="discover_wp ewer">
+                                <p>Before asking your customer to pay you, wait until they have received their package. Usineur.fr customers can only pay their Machinist after having been able to control the quality of the parts. they have 7 days to do this upon receipt.
+                                    You will be paid immediately once the funds have been released by your client. The Funds will be visible on the “Withdraw Funds” page in the “My Account” menu</p>
+                                <hr />
+                                <form>
+                                    <div className="submit_cancel">
+                                        <a style={{cursor:"pointer", color:"#fff" }} onClick={handlesubmit}>Request to Release Funds</a>
+                                        <a style={{cursor:"pointer"}} onClick={handlecancel}>Cancel <img src={"../../img/arrow.png"} width="11px" alt=""/></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 
