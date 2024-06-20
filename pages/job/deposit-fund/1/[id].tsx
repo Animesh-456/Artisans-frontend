@@ -176,7 +176,7 @@ const DepositFund1 = (props: Props) => {
     return (
         <>
 
-            <div
+            {/* <div
                 className='banner_wp sign_banner'
                 style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
                 <div className='container'>
@@ -252,7 +252,73 @@ const DepositFund1 = (props: Props) => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
+
+
+
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../../../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>Deposit Funds</h1>
+                </div>
+            </section>
+
+            <section className="myproject">
+                <div className="container">
+                    <div className="row">
+                        <div className="offset-sm-2"></div>
+                        <div className="col-sm-8 profile_box">
+                            <div className="fund_d1">
+                                <p>The funds will be transferred to your artist only afteryou have recevied your custom parts and approved the quality of the work</p>
+                                <div className="table-responsive">
+                                    <table className="table table-bordered table-sm">
+                                        <thead>
+                                            <tr className="table-primary">
+                                                <th>Machinist</th>
+                                                <th>Project Name</th>
+                                                <th>Shipping Date</th>
+                                                <th>Client</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{data?.programmer?.user_name}</td>
+                                                <td>{data?.project_name}</td>
+                                                <td>{
+                                                    data?.bids?.find(
+                                                        (f) => f?.user_id == data?.programmer_id,
+                                                    )?.bid_days
+                                                }{" "}
+                                                    Days</td>
+                                                <td>{data?.creator?.user_name}</td>
+                                                <td> ₹
+                                                    {
+                                                        data?.bids?.find(
+                                                            (f) => f?.user_id == data?.programmer_id,
+                                                        )?.bid_amount_gbp
+                                                    }
+                                                    (Shipping fee included)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>
+                                    {/* <b>Please wait while you are redirected to Paypal.....</b> */}
+                                    <Button onClick={createOrder}>Pay ₹ {
+                                        data?.bids?.find(
+                                            (f) => f?.user_id == data?.programmer_id,
+                                        )?.bid_amount_gbp
+                                    }</Button>
+                                </p>
+                                {/* <div className="progress">
+                                    <div className="progress-bar bg-success progress-bar-striped progress-bar-animated" style={{ width: "100%" }}></div>
+                                </div> */}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </>
     );

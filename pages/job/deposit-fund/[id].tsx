@@ -129,10 +129,10 @@ const DespositFund = (props: Props) => {
 								</div>
 							</div>
 							{updated ? (
-								
-								<button className= "jhs3" onClick={()=> Router.replace(`/job/deposit-fund/1/${router?.query?.id}/?amount=${data?.bids?.find((f) => f?.user_id == data?.programmer_id)
-											?.bid_amount_gbp}`)}>
-							Deposit</button>
+
+								<button className="jhs3" onClick={() => Router.replace(`/job/deposit-fund/1/${router?.query?.id}/?amount=${data?.bids?.find((f) => f?.user_id == data?.programmer_id)
+									?.bid_amount_gbp}`)}>
+									Deposit</button>
 							) : (
 								<></>
 							)}
@@ -197,7 +197,7 @@ const DespositFund = (props: Props) => {
 									</label>
 								</div>
 								{!updated ? (
-									<button  type='submit'>Confirm Address</button>
+									<button type='submit'>Confirm Address</button>
 								) : (
 									<></>
 								)}

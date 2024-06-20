@@ -789,7 +789,7 @@ const ProjectDetail = () => {
 
 
 
-            {user && user?.id == data?.creator_id && data?.project_status > 1 && (
+            {user && user?.id == data?.creator_id && data?.project_status >= 1 && (
 
                 // <div className="row stepwrapper">
                 <section className="step_section">
@@ -814,7 +814,7 @@ const ProjectDetail = () => {
                                     {data?.project_status == "1" && (
                                         <Link href={`/job/deposit-fund/${p_id}`}>
                                             <div className="latest_request_text">
-                                                <a>Deposit Funds</a>
+                                                <a style={{color:"#fff", cursor:'pointer'}}>Deposit Funds</a>
                                             </div>
 
                                         </Link>

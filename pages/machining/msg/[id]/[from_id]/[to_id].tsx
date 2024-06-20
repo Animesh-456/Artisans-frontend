@@ -498,7 +498,7 @@ const Message = (props: Props) => {
 										) : (<></>)}
 									</div> */}
 
-									
+
 									<div className="discover_wp">
 										
 										<button type="submit"
@@ -506,7 +506,6 @@ const Message = (props: Props) => {
 												background: '#ef6100',
 												color: '#fff',
 												borderRadius: '6px',
-												
 												padding: '6px 22px',
 												transition: 'box-shadow 1s'
 											}}
