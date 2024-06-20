@@ -317,7 +317,7 @@ const CustomerSignIn = (props: Props) => {
 									<br />
 									<div className="reg-bottom">
 										<button type="submit" name="submit" style={
-											disable
+											disable 
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
