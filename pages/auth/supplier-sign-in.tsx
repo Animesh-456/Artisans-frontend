@@ -142,7 +142,7 @@ const CustomerSignIn = (props: Props) => {
 									</div>
 
 
-									<hr />
+
 
 									<div className="row from_feild">
 										<div className="col-sm-4">
