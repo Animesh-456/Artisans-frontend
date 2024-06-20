@@ -76,7 +76,7 @@ const CustomerSignIn = (props: Props) => {
 		}
 
 		if (checkbox == true) {
-			
+
 			api.auth.customer_register({ body: signIn }, (d) => {
 				if (storedProject != null) {
 					setUser(d.data);
@@ -86,7 +86,7 @@ const CustomerSignIn = (props: Props) => {
 							setStoredProject(null);
 						},
 					);
-					router.push("/account/jobs");
+					router.push("/auth/success");
 				} else {
 					const requestOptions = {
 						method: "POST",
@@ -158,257 +158,179 @@ const CustomerSignIn = (props: Props) => {
 	}
 
 	return (
-		<div>
-			{/* <div
-				className='banner_wp sign_banner'
-				style={{ backgroundImage: "url(/img/login_bg.jpg)" }}>
-				<div className='container'>
-					<div className='row'>
-						<div className='banner_text inner_banner_text'>
-							<h1 className='yh'>Create your account</h1>
-						</div>
-					</div>
+
+		<>
+
+			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
+				<div className="container">
+					<h1>Create Your Account</h1>
 				</div>
-			</div> */}
-			<div className='container sign_wrapper'>
-				<div className='row'>
-					<div className='col-sm-2'></div>
-					<div className='col-sm-8'>
-						<div className='register_c'>
-							<h3>{signIn.account == "Company" && procust == true ? "Register as a PRO Customer" : "Register as a Customer"}</h3>
-							<form onSubmit={handleSumbit}>
-								<h4>Please Provide Your Information Below:</h4>
-								{/* <div className='row'>
-									<div className='col-sm-4'>
-										<label>
-											Type of Account<span>*</span>
-										</label>
-									</div>
-									<div className='col-sm-8'>
-										<select
-											name='account'
-											onChange={setSign("account")}
-											value={signIn.account}>
-											<option value='Individual'>Individual</option>
-											<option value='Company'>Company</option>
-										</select>
-									</div>
-								</div> */}
-								<div className='row'>
-									<div className='col-sm-4'>
-										<label>
-											First Name<span>*</span>
-										</label>
-									</div>
-									<div className='col-sm-8'>
-										<input
-											className='text'
-											name='name'
-											type='text'
-											value={signIn.name}
-											autoComplete={"off"}
-											onChange={setSign("name")}
-										/>
-									</div>
-								</div>
-								<div className='row'>
-									<div className='col-sm-4'>
-										<label>
-											Last Name <span>*</span>
-										</label>
-									</div>
-									<div className='col-sm-8'>
-										<input
-											className='text'
-											name='surname'
-											type='text'
-											value={signIn.surname}
-											autoComplete={"off"}
-											onChange={setSign("surname")}
-										/>
-									</div>
-								</div>
-								{signIn.account == "Company" && procust == true ? (
-									<><div className='row'>
-										<div className='col-sm-4'>
-											<label>
-												Company Name <span>*</span>
+			</section>
+
+			<section className="myproject">
+				<div className="container">
+					<div className="row">
+						<div className="offset-sm-2"></div>
+						<div className="col-sm-8 profile_box">
+							<div className="register_c">
+								<h3>{signIn.account == "Company" && procust == true ? "Register as a PRO Customer" : "Register as a Customer"}</h3>
+								<form onSubmit={handleSumbit}>
+									<h4>Please Provide Your Information Below:</h4>
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>Type of Account <span>*</span>
 											</label>
 										</div>
-										<div className='col-sm-8'>
-											<input
-												className='text'
-												name='surname'
-												type='text'
-												value={signIn.company_name}
-												autoComplete={"off"}
-												onChange={setSign("company_name")} />
+										<div className="col-sm-8">
+											<select
+												name='account'
+												onChange={setSign("account")}
+												value={signIn.account}>
+												<option value='Individual'>Individual</option>
+												<option value='Company'>Company</option>
+											</select>
 										</div>
-									</div><div className='row'>
+									</div>
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>First Name <span>*</span>
+											</label>
+										</div>
+										<div className="col-sm-8">
+											<input className="text" name="name" type="text" placeholder="First Name"
+												value={signIn.name}
+												autoComplete={"off"}
+												onChange={setSign("name")}
+											/>
+										</div>
+									</div>
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>Last Name <span>*</span>
+											</label>
+										</div>
+										<div className="col-sm-8">
+											<input className="text" name="surname" type="text" placeholder="Last Name"
+												value={signIn.surname}
+												autoComplete={"off"}
+												onChange={setSign("surname")}
+											/>
+										</div>
+									</div>
+									{signIn.account == "Company" && procust == true ? (
+										<><div className='row'>
 											<div className='col-sm-4'>
 												<label>
-													SIREN <span>*</span>
+													Company Name <span>*</span>
 												</label>
 											</div>
-
 											<div className='col-sm-8'>
 												<input
 													className='text'
 													name='surname'
 													type='text'
-													value={signIn.SIREN}
+													value={signIn.company_name}
 													autoComplete={"off"}
-													onChange={setSign("SIREN")} />
-
+													onChange={setSign("company_name")} />
 											</div>
-										</div>
-									</>
-								) : (<></>)}
-								<hr />
-								<h4>Contact Information</h4>
-								<div className='row'>
-									<div className='col-sm-4'>
-										<label>
-											Username <span>*</span>
-										</label>
-									</div>
-									<div className='col-sm-8'>
-										<input
-											autoComplete={"off"}
-											className='text'
-											name='user_name'
-											type='text'
-											value={signIn.user_name}
-											onChange={setSign("user_name")}
-										/>
-										<small>
-											Choose a Username to represent you on www.artisans.studio. It can
-											not be changed later.
-										</small>
-									</div>
-								</div>
-								<div className='row'>
-									<div className='col-sm-4'>
-										<label>
-											Email Address <span>*</span>
-										</label>
-									</div>
-									<div className='col-sm-8'>
-										<input
-											className='text m_b_none'
-											name='email'
-											type='text'
-											autoComplete={"off"}
-											value={signIn.email}
-											onChange={setSign("email")}
-										/>
-										<small>
-											Your email address will not be shared.{" "}
-											<a href={'/account/privacy'}>Privacy policy</a>
-										</small>
-									</div>
-								</div>
-								<div className='row'>
-									<div className='col-sm-4'>
-										<label>
-											Create Password<span>*</span>
-										</label>
-									</div>
-									<div className='col-sm-8'>
-										<input
-											className='text'
-											name='password'
-											type='password'
-											autoComplete={"off"}
-											value={signIn.password}
-											onChange={setSign("password")}
-										/>
-									</div>
-								</div>
-								<div className='row'>
-									<div className='col-sm-4'>
-										<label>
-											Confirm Password<span>*</span>
-										</label>
-									</div>
-									<div className='col-sm-8'>
-										<input
-											className='text'
-											name='confirm_password'
-											autoComplete={"off"}
-											type='password'
-											value={signIn.confirm_password}
-											onChange={setSign("confirm_password")}
-										/>
-									</div>
-								</div>
-								{/* {signIn.account == "Company" && show ? (<Modal show={true} onHide={handleClose}>
-									<Modal.Header closeButton>
-										<Modal.Title>Modal heading</Modal.Title>
-									</Modal.Header>
-									<Modal.Body>
-										<p className="tgs">A Pro to Pro relationship with privileged access to the best machinists. Usineur Pro is free and accessible at no additional cost to professional customers.</p>
-										<div className="form-check">
-											<label className="form-check-label">
-												<input type="checkbox" className="form-check-input" value="option" onClick={modalcheck}></input>Don't show me again
+										</div><div className='row'>
+												<div className='col-sm-4'>
+													<label>
+														SIREN <span>*</span>
+													</label>
+												</div>
+
+												<div className='col-sm-8'>
+													<input
+														className='text'
+														name='surname'
+														type='text'
+														value={signIn.SIREN}
+														autoComplete={"off"}
+														onChange={setSign("SIREN")} />
+
+												</div>
+											</div>
+										</>
+									) : (<></>)}
+									<hr />
+									<h4>Contact Information</h4>
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>Username <span>*</span>
 											</label>
 										</div>
-									</Modal.Body>
-									<Modal.Footer className="oksign2">
-										<Button className="oksign1" variant="secondary" onClick={handleClose}>
-											Not now
-										</Button>
-										<Button className="oksign" variant="primary" onClick={handleok}>
-											Ok, I sign up
-										</Button>
-									</Modal.Footer>
-								</Modal>) : (<></>)} */}
-
-								<div className='form-check signcheck'>
-									<label className='form-check-label cust-sign-label'>
-										<div>
-											<input type='checkbox' onClick={check} />
-
+										<div className="col-sm-8">
+											<input className="text" name="user_name" type="text" autoComplete={"off"} placeholder="Username"
+												value={signIn.user_name}
+												onChange={setSign("user_name")}
+											/>
+											<small>Choose a Username to represent you on Aart Studio. It can not be changed later.</small>
 										</div>
-										<div>
-											I have
-											read and accept the <a href={'/account/terms'}>terms</a> of of use of
-											www.artisans.studio.
+									</div>
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>Email Address <span>*</span>
+											</label>
 										</div>
-										
-									</label>
-
-									{/* <div key={`default-checkbox`} className="mb-3"> 
-										<Form.Check // prettier-ignore
-											type={"checkbox"}
-											id={`default-checkbox`}
-											label={`default checkbox`}
-										/>
-									</div> */}
-
-								</div>
-								<br />
-								<br />
-								<div className='reg-bottom'>
-									<button>Cancel</button>
-									<button
-										type='submit'
-										name='submit'
-										style={
+										<div className="col-sm-8">
+											<input className="text m_b_none" name="email" type="text" placeholder="Email Address"
+												autoComplete={"off"}
+												value={signIn.email}
+												onChange={setSign("email")}
+											/>
+											<small>Your email address will not be shared. <a href={'/account/privacy'}>Privacy policy</a>
+											</small>
+										</div>
+									</div>
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>Create Password <span>*</span>
+											</label>
+										</div>
+										<div className="col-sm-8">
+											<input className="text" name="password" type="password" placeholder="Create Password"
+												autoComplete={"off"}
+												value={signIn.password}
+												onChange={setSign("password")}
+											/>
+										</div>
+									</div>
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>Confirm Password <span>*</span>
+											</label>
+										</div>
+										<div className="col-sm-8">
+											<input className="text" name="confirm_password" autoComplete={"off"}
+												type='password'
+												value={signIn.confirm_password}
+												onChange={setSign("confirm_password")} placeholder="Confirm Password"
+											/>
+										</div>
+									</div>
+									<div className="form-check signcheck">
+										<label className="form-check-label">
+											<input type="checkbox" className="form-check-input" onClick={check} />I have read and accept the <a href={'/account/terms'}>terms</a> of of use of Aart Studio </label>
+									</div>
+									<br />
+									<br />
+									<div className="reg-bottom">
+										<button type="submit" name="submit" style={
 											disable
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
-										}>
-										Register
-									</button>
-								</div>
-							</form>
+										} >Register</button>
+										<button className="canl">Cancel</button>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
-					<div className='col-sm-2'></div>
 				</div>
-			</div>
-		</div>
+			</section>
+
+		</>
 	);
 };
 CustomerSignIn.ignorePath = true;
