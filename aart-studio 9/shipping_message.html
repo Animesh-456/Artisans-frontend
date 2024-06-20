@@ -71,7 +71,7 @@
 
 <section class="inner_banner_wp" style="background-image: url(./img/inner-banner.jpg);">
   <div class="container">
-    <h1>Create Your Account</h1>
+    <h1>Send a Shipping Message</h1>
   </div>
 </section>
 
@@ -80,90 +80,43 @@
     <div class="row">
       <div class="offset-sm-2"></div>
       <div class="col-sm-8 profile_box">
-        <div class="register_c">
-          <h3>Register as a Customer</h3>
+        <div class="discover_wp">
+          <h5>Choose a date then click OK. Then enter the traceability number followed by OK. You can then edit the text of the message.</h5>
+          <hr />
           <form>
-            <h4>Please Provide Your Information Below:</h4>
-            <div class="row from_feild">
-              <div class="col-sm-4">
-                <label>Type of Account <span>*</span>
-                </label>
-              </div>
-              <div class="col-sm-8">
-                <select name="account">
-                  <option value="Individual">Individual</option>
-                  <option value="Company">Company</option>
-                </select>
+            <div class="from_feild">
+              <label>Enter the estimated shipping day here: </label>
+              <input type="date" name="name" autocomplete="off" min="2024-06-18" value="" placeholder="Type here...">
+            </div>
+            <div class="from_feild">
+              <button class="button_div">
+                Ok
+              </button>
+            </div>
+            <div class="from_feild">
+              <label>Enter the traceability number here: </label>
+              <input type="text" name="name" autocomplete="off" min="2024-06-18" value="" placeholder="Traceability number">
+            </div>
+            <div class="from_feild">
+              <button class="button_div">
+                Ok
+              </button>
+            </div>
+            <div class="from_feild">
+              <label>Message sent to your customer:</label>
+              <textarea name="desc" rows="5" placeholder="Comment..">               
+              </textarea>
+            </div>
+            <div class="from_feild">
+              <label>Attach photos of Art parts: <span>*</span></label>
+              <div class="upload-btn-wrapper">
+                <button class="btn">PDF or Image files <i class="fa fa-upload"></i></button>
+                <input type="file" name="myfile" multiple="">
               </div>
             </div>
-            <div class="row from_feild">
-              <div class="col-sm-4">
-                <label>First Name <span>*</span>
-                </label>
-              </div>
-              <div class="col-sm-8">
-                <input class="text" name="name" type="text" autocomplete="off" value="">
-              </div>
-            </div>
-            <div class="row from_feild">
-              <div class="col-sm-4">
-                <label>Last Name <span>*</span>
-                </label>
-              </div>
-              <div class="col-sm-8">
-                <input class="text" name="surname" type="text" autocomplete="off" value="">
-              </div>
-            </div>
-            <hr>
-            <h4>Contact Information</h4>
-            <div class="row from_feild">
-              <div class="col-sm-4">
-                <label>Username <span>*</span>
-                </label>
-              </div>
-              <div class="col-sm-8">
-                <input autocomplete="off" class="text" name="user_name" type="text" value="">
-                <small>Choose a Username to represent you on Aart Studio. It can not be changed later.</small>
-              </div>
-            </div>
-            <div class="row from_feild">
-              <div class="col-sm-4">
-                <label>Email Address <span>*</span>
-                </label>
-              </div>
-              <div class="col-sm-8">
-                <input class="text m_b_none" name="email" type="text" autocomplete="off" value="debraj4">
-                <small>Your email address will not be shared. <a href="/account/privacy">Privacy policy</a>
-                </small>
-              </div>
-            </div>
-            <div class="row from_feild">
-              <div class="col-sm-4">
-                <label>Create Password <span>*</span>
-                </label>
-              </div>
-              <div class="col-sm-8">
-                <input class="text" name="password" type="password" autocomplete="off" value="">
-              </div>
-            </div>
-            <div class="row from_feild">
-              <div class="col-sm-4">
-                <label>Confirm Password <span>*</span>
-                </label>
-              </div>
-              <div class="col-sm-8">
-                <input class="text" name="confirm_password" autocomplete="off" type="password" value="">
-              </div>
-            </div>
-            <div class="form-check signcheck">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input">I have read and accept the <a href="/account/terms">terms</a> of of use of Aart Studio </label>
-            </div>
-            <br>
-            <br>
-            <div class="reg-bottom">              
-              <button type="submit" name="submit">Register</button>
-              <button class="canl">Cancel</button>
+            <div class="submit_cancel">
+              <a href="#">Send the message</a>
+              <a href="#">Cancel <img src="img/arrow.png" width="11px" alt=""></a>
             </div>
           </form>
         </div>
