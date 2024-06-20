@@ -169,7 +169,7 @@ const CustomerSignIn = (props: Props) => {
 
 			<section className="myproject">
 				<div className="container">
-					<div className="row">
+					<div className="row justify-content-center">
 						<div className="offset-sm-2"></div>
 						<div className="col-sm-8 profile_box">
 							<div className="register_c">
@@ -317,7 +317,7 @@ const CustomerSignIn = (props: Props) => {
 									<br />
 									<div className="reg-bottom">
 										<button type="submit" name="submit" style={
-											disable 
+											disable
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
