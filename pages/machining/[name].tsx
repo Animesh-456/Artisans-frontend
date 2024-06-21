@@ -372,6 +372,8 @@ const ProjectDetail = () => {
         const [rating, setRating] = useState(0);
         return (
             <div className='review_machinist_rating'>
+
+
                 <h6>{r.name}</h6>
 
                 <ReactStar
@@ -918,7 +920,7 @@ const ProjectDetail = () => {
 
 
 
-                                    {steps_completed_supplier[0]?.step3 == 1&& (
+                                    {steps_completed_supplier[0]?.step3 == 1 && (
                                         <div className="latest_request_text">
                                             <img src={"../img/tick.png"} alt="check" />
                                         </div>
@@ -1695,39 +1697,36 @@ const ProjectDetail = () => {
             <GlobalModal
                 title='Review Your Artist'
                 atom={atom.modal.review_machinist}>
-                <div className='fdfd4'>
-                    <div className='css-ung'>
-                        {/* <p>Post a Public Message or a Question to the client (optional).</p> */}
-                        <label>Add a valuable comment for the machinist</label>
-                        <textarea
-                            name='message'
-                            rows={4}
-                            placeholder='Write your message here ...'
-                            defaultValue={""}
-                            value={review.comments}
-                            onChange={setreview("comments")}
-                        />
+                
+                <div className="modal-body">
+                    <div className="css-ung">
+                        <form>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            </p>
+                            <div className="from_feild">
+                                <label>Comment: <span>*</span></label>
+                                <textarea placeholder="Comment" defaultValue={""}
+                                    value={review.comments}
+                                    onChange={setreview("comments")} rows={6} cols={50} />
+                            </div>
+                            <div className="rating-color">
+                               
 
-                        {common.reviews_meta.map((r, index) => {
-                            return <ReviewBox key={index} r={r} />;
-                        })}
-                        <br />
-
-
-
-                        <h6>Average rating : {avgrat}</h6>
-
-                        <br />
-
-                        <input
-                            type='submit'
-                            defaultValue='Send your Message'
-                            name='Prebid'
-                            onClick={handleSubmitReview}
-                        />
-                        <hr />
+                                {common.reviews_meta.map((r, index) => {
+                                    return <ReviewBox key={index} r={r} />;
+                                })}
+                            </div><br />
+                            <p>Average rating : {avgrat}</p>
+                            <div className="submit_cancel">
+                                <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleSubmitReview}>Submit</a>
+                                <a style={{ display: "none" }}></a>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
+               
             </GlobalModal>
 
 

@@ -109,7 +109,7 @@ const Jobs = () => {
   return (
     <>
 
-      <div
+      {/* <div
         className='banner_wp sign_banner'
         style={{ backgroundImage: "url(/img/banner1.jpg)", marginTop: '2rem' }}>
         <div className='container'>
@@ -122,9 +122,7 @@ const Jobs = () => {
         </div>
       </div>
 
-      {/* <div style={{ width: '100%', background: '#365d9c', height: '80px', paddingTop: '20px', paddingLeft: '40px', paddingBottom: '20px' }}>
-        <h3 style={{ color: 'whitesmoke', marginBottom: '10px' }}>Free up Funds for your Machinist</h3>
-      </div> */}
+    
 
       <div className="container" style={{ marginTop: '1rem' }}>
         <div className="col-sm-12">
@@ -171,15 +169,53 @@ const Jobs = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {/* {projectdata?.visibility?.toLowerCase() == "public" && Object.keys(customer_releasepayment_checkbox).length ? (
-        <div className='form-check signcheck'>
-          <label className='form-check-label'>
-            <input type='checkbox' checked={chk} onChange={checkstate} className='form-check-input' />I authorize Usineur.fr to publish on the site any photos of my part(s) that my machinist has sent me.
-          </label>
+
+      <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+        <div className="container">
+          <h1>Free Up Funds For Your Artist</h1>
         </div>
-      ) : (<></>)} */}
+      </section>
+
+      <section className="myproject">
+        <div className="container">
+          <div className="row" style={{ justifyContent: "center" }}>
+            <div className="offset-sm-2"></div>
+            <div className="col-sm-8 profile_box">
+              <div className="payment_s">
+                <p>You have received your art and are satisfied with the result. You can now pay your Artist by releasing the funds you deposited during your order.</p>
+                <div className="table-responsive">
+                  <table className="table table-bordered table-sm">
+                    <thead>
+                      <tr className="table-primary">
+                        <th>Project Title</th>
+                        <th>Artist</th>
+                        <th>Price</th>
+                        <th>Client</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{projectData?.project_name}</td>
+                        <td>{project_data?.programmer.user_name}</td>
+                        <td>₹{bidData?.bid_amount_gbp}</td>
+                        <td>{project_data?.creator.user_name}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="submit_cancel">
+                  <a onClick={confirmFund} style={{ cursor: "pointer", color:"#fff" }}>Release the Funds</a>
+                  <a onClick={returnClick} style={{ cursor: "pointer" }}>Back <img src={"../img/arrow.png"} width="11px" alt="arrow" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
 
     </>

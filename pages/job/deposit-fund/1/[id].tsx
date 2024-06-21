@@ -265,7 +265,7 @@ const DepositFund1 = (props: Props) => {
 
             <section className="myproject">
                 <div className="container">
-                    <div className="row">
+                    <div className="row" style={{justifyContent:"center"}}>
                         <div className="offset-sm-2"></div>
                         <div className="col-sm-8 profile_box">
                             <div className="fund_d1">

@@ -26,7 +26,7 @@ const jobs = () => {
     return (
         <>
 
-            <div
+            {/* <div
                 className='banner_wp sign_banner'
                 style={{ backgroundImage: "url(/img/banner1.jpg)", marginTop: '2rem' }}>
                 <div className='container'>
@@ -39,9 +39,7 @@ const jobs = () => {
                 </div>
             </div>
 
-            {/* <div style={{ width: '100%', background: '#365d9c', height: '80px', paddingTop: '20px', paddingLeft: '40px', paddingBottom: '20px' }}>
-                <h3 style={{ color: 'whitesmoke', marginBottom: '10px' }}>Free up Funds for your Machinist</h3>
-            </div> */}
+           
 
             <div className="container">
                 <div className="col-sm-12 tydh3">
@@ -53,7 +51,35 @@ const jobs = () => {
                         <Button style={{ backgroundColor: '#7fc0ac', border: 'none' }} onClick={RedirectProject} >Continue</Button>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+
+
+
+
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>Free Up Funds For Your Artist</h1>
+                </div>
+            </section>
+
+            <section className="myproject">
+                <div className="container">
+                    <div className="row" style={{ justifyContent: "center" }}>
+                        <div className="offset-sm-2"></div>
+                        <div className="col-sm-8 profile_box">
+                            <div className="payment_s">
+                                <p>Thanks. Your Artist will be paid immediately. Can you now leave a very short evaluation of the work carried out by your Artist?</p>
+
+                                <div className="submit_cancel">
+                                    <a onClick={RedirectProject} style={{ cursor: "pointer", color: "#fff" }}>Continue</a>
+                                    <a style={{ display: "none" }}></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 

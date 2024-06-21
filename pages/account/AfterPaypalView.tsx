@@ -26,7 +26,7 @@ const RedirectProject = () => {
 
 
 
-const jobs = () => {
+const Jobs = () => {
 
     const router = useRouter();
 
@@ -40,7 +40,7 @@ const jobs = () => {
 
     return (<>
 
-        <div
+        {/* <div
             className='banner_wp sign_banner'
             style={{ backgroundImage: "url(/img/banner1.jpg)", marginTop: '3rem' }}>
             <div className='container'>
@@ -52,9 +52,7 @@ const jobs = () => {
                 </div>
             </div>
         </div>
-        {/* <div style={{ width: '100%', background: '#365d9c', height: '80px', paddingTop: '20px', paddingLeft: '40px', paddingBottom: '20px' }}>
-            <h3 style={{ color: 'whitesmoke', marginBottom: '10px' }}>Deposit funds</h3>
-        </div> */}
+     
 
         <div style={{ marginTop: '1rem' }} className="container">
             <div className="col-sm-12">
@@ -71,8 +69,37 @@ const jobs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
+
+
+
+
+        <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
+            <div className="container">
+                <h1>Payment Success</h1>
+            </div>
+        </section>
+
+        <section className="myproject">
+            <div className="container">
+                <div className="row" style={{ justifyContent: "center" }}>
+                    <div className="offset-sm-2"></div>
+                    <div className="col-sm-8 profile_box">
+                        <div className="payment_s">
+                            <img src={"../img/tick.png"} width="55px" alt="tick" />
+                            <p>We confirm that your payment has been made.<br />
+                                Thank you for depositing the funds. We have sent you a confirmation email.<br />
+                                Your Machinist will start working on your order.</p>
+                            <div className="submit_cancel">
+                                <a style={{cursor: "pointer", color: "#fff"}} onClick={RedirectMsg}>Send a Message to Your Artist</a>
+                                <a style={{cursor: "pointer"}} onClick={RedirectProject}>Return to Your Project <img src={"../img/arrow.png"} width="11px" alt="arrow" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </>);
 };
 
-export default jobs;
+export default Jobs;

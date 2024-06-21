@@ -76,7 +76,7 @@ const DespositFund = (props: Props) => {
 
 	return (
 		<>
-			<div
+			{/* <div
 				className='banner_wp sign_banner'
 				style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
 				<div className='container'>
@@ -205,7 +205,119 @@ const DespositFund = (props: Props) => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
+
+
+
+			<section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
+				<div className="container">
+					<h1>{data?.project_name}</h1>
+				</div>
+			</section>
+
+			<section className="myproject">
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-6">
+							<div className="profile_box">
+								<div className="tyhd">
+									<p>The funds will be transferred to your artist only after you
+										have received your custom parts and approved the quality of the
+										work</p>
+									<hr />
+									<div className="project_details_content">
+										<p><span>Artist</span><span><b>{data?.programmer?.user_name}</b></span></p>
+										<p><span>Client</span><span><b>{data?.creator?.user_name}</b></span></p>
+										<p><span>Project Name</span><span><b>{data?.project_name}</b></span></p>
+										<p><span>Total price incuding tax:</span><span><b>₹
+											{
+												data?.bids?.find((f) => f?.user_id == data?.programmer_id)
+													?.bid_amount_gbp
+											}</b></span></p>
+										<p><span>Shipping Date: </span><span><b>{
+											data?.bids?.find((f) => f?.user_id == data?.programmer_id)
+												?.bid_days
+										}{" "}</b></span></p>
+									</div>
+
+
+									{updated ? (
+
+										<button
+											style={{
+												background: "#ef6100",
+												color: "#fff",
+												borderRadius: "6px",
+												boxShadow: "0px 1px 2px 2px rgb(71, 18, 15)",
+												fontFamily: "Poppins",
+												padding: "6px 22px",
+												transition: "box-shadow 1s"
+											}}
+											className="jhs3" onClick={() => Router.replace(`/job/deposit-fund/1/${router?.query?.id}/?amount=${data?.bids?.find((f) => f?.user_id == data?.programmer_id)
+												?.bid_amount_gbp}`)}>
+											Deposit</button>
+									) : (
+										<></>
+									)}
+								</div>
+							</div>
+						</div>
+						<div className="col-sm-6">
+							<div className="profile_box">
+								<div className="tyhd">
+									{/* <p>Lorem Ipsum is simply dummy text of the printing</p> */}
+									<hr />
+									<form onSubmit={handle_confirm_address}>
+										<div className="from_feild">
+											<label>Name: <span>*</span></label>
+											<input type="text" value={profile.name}
+												onChange={setProfile("name")} />
+										</div>
+										<div className="from_feild">
+											<label>Address: <span>*</span></label>
+											<input type="text" value={profile.address}
+												onChange={setProfile("address")} />
+										</div>
+										<div className="from_feild">
+											<label>Postal Code: <span>*</span></label>
+											<input type="text" value={profile.postalcode}
+												onChange={setProfile("postalcode")} />
+										</div>
+										<div className="from_feild">
+											<label>City: <span>*</span></label>
+											<input type="text" value={profile.city}
+												onChange={setProfile("city")} />
+										</div>
+										<div className="from_feild2">
+											<input onChange={changestatecheck} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+											<label>save this address</label>
+										</div>
+
+										{!updated ? (
+											<div className="discover_wp">
+												<button
+													style={{
+														background: "#ef6100",
+														color: "#fff",
+														borderRadius: "6px",
+														boxShadow: "0px 1px 2px 2px rgb(71, 18, 15)",
+														fontFamily: "Poppins",
+														padding: "6px 22px",
+														transition: "box-shadow 1s"
+													}}
+													type='submit'>Confirm Address</button>
+											</div>
+										) : (
+											<></>
+										)}
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</>
 	);
 };
