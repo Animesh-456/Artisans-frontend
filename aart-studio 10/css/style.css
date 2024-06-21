@@ -1970,6 +1970,77 @@ a.kts {
     background-color: #ffd095;
     border: none;
 }
+.create_o a{
+	background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    display: inline-block;
+    transition: box-shadow 1s;
+}
+.create_o a:hover{
+	box-shadow: none;
+}
+.create_o {
+    margin-bottom: 20px;
+}
+h4.modal-title {
+    color: #ef6100;
+}
+.css-ung p {
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+.css-ung input[type="submit"] {
+    background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    transition: box-shadow 1s;
+    border: none;
+    cursor: pointer;
+}
+.css-ung input[type="submit"]:hover{
+	box-shadow: none;
+}
+.css-ung label {
+    width: auto;
+}
+.css-ung small {
+    font-family: "Poppins", sans-serif;
+}
+.modal-content{background: #fff4e4;}
+.modal-header{
+	border-bottom: 1px solid #bababb;
+}
+.submit_cancel a {
+    background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    transition: box-shadow 1s;
+}
+.paypal, .paypal1 {
+    border: none;
+    background: none;
+}
+.payment_s p {
+    font-size: 14px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+.payment_s {
+    text-align: center;
+}
+.rating-color {
+    font-family: "Poppins", sans-serif;
+}
 
 button, select {
     text-transform: none;

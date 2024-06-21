@@ -120,7 +120,7 @@
           <h5>Evaluate the Art Work</h5>
           <p>Please evaluate the machining work carried out by your artist</p>
           <div class="latest_request_text">
-            <a href="#">Pay Artist</a>
+            <a href="#" data-toggle="modal" data-target="#payart">Pay Artist</a>
           </div>
         </div>
       </div>
@@ -138,6 +138,7 @@
             <h2>Description</h2>
           </div>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+          <div class="create_o"><a href="#" data-toggle="modal" data-target="#createoffer">Create an offer</a></div>          
           <div class="question_a">
             <div class="question_a1">
               <h4>Questions And Answers:</h4>
@@ -181,7 +182,7 @@
                   <span><b>$30.00</b></span>
                   <p>Shipping fee included</p>
                   <p>Shipping Time: 10 Days</p>
-                  <a href="#">Select  <img src="img/arrow.png" width="11px" alt=""></a>
+                  <a href="#" data-toggle="modal" data-target="#selectoffer">Select  <img src="img/arrow.png" width="11px" alt=""></a>
                 </div>
               </div>
               <div class="chat_bar">
@@ -364,6 +365,204 @@
 </section>
 
 
+
+<div class="modal fade" id="createoffer">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create your Offer</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="css-ung">
+          <form>
+          <p>
+            Post a message, a question for the customer (optional)
+          </p>
+          <div class="from_feild">
+            <label>
+              Send a public message to the customer.
+            </label>
+            <textarea name="message" rows="4" placeholder="Write your message here..."></textarea>
+          </div>
+          <input type="submit" name="Prebid">
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <h5>
+                Make an offer
+              </h5>
+              <p>
+                1. You can describe your offer here.
+              </p>
+              <p>
+                2. Do not include your contact details (email, telephone, address etc...).
+              </p>
+              <p>
+                3. Shipping costs (sending with mandatory traceability) must be included in the price offered to the customer.
+              </p>
+              <div class="from_feild">
+                <label>Comment:</label>
+                <textarea name="message2" rows="4" placeholder="Describe your offer here..."></textarea>
+              </div>
+              <div class="from_feild">
+                <label>Attach Your Files Here: <span>*</span></label>
+                <div class="upload-btn-wrapper">
+                  <button class="btn">
+                    <i class="fa fa-upload"></i>
+                    Add files (Max. &lt; 3 Mb)
+                  </button>
+                  <input type="file" name="myfile" multiple="">
+                </div>
+              </div>
+              <div class="from_feild">
+                <label>
+                  Paid to me: €
+                </label>
+                <input name="txtPrice" type="text" disabled="" value="" placeholder="Type here...">
+              </div>
+              <div class="from_feild">
+                <label>Price for the Customer: € </label>
+                <small>
+                  Includes Usineur.fr fees
+                </small>              
+                <input name="bidAmt" type="text" value="" placeholder="Type here...">
+              </div>
+              <div class="from_feild">
+                <label>
+                  Estimated Shipping Time:
+                </label>
+                <div class="form-inline1">
+                  <select name="days">
+                    <option value="0">
+                      -- Select --
+                    </option>
+                    <option value="2">
+                      2 days
+                    </option>
+                    <option value="3">
+                      3 days
+                    </option>
+                    <option value="4">
+                      4 days
+                    </option>
+                    <option value="5">
+                      5 days
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="from_feild">
+                <div class="form-group form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox">
+                    I will specify the price later
+                  </label>
+                </div>
+              </div>
+              <input type="submit" name="Prebid">
+            </div>
+          </div>
+          
+          <div class="row css-kjus">
+            
+          </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="selectoffer">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Aart Studio</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="css-ung">
+          <form>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          </p>
+          <div class="submit_cancel">
+            <a href="#">Confirm</a>
+            <a href="#">Cancel <img src="img/arrow.png" width="11px" alt=""></a>
+          </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="payart">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Leave a Review</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="css-ung">
+          <form>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </p>
+          <div class="from_feild">
+            <label>Comment: <span>*</span></label>
+            <textarea placeholder="Comment" rows="6" cols="50"></textarea>
+          </div>
+          <div class="rating-color">
+            <div class="quality">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+              <i class="fa fa-star-half-o"></i>
+              <span> Quality </span>
+            </div>
+            <div class="time">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+              <i class="fa fa-star-half-o"></i>
+              <span> Details </span>
+            </div>
+            <div class="communication">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+              <span> Communication</span>
+            </div>
+            <div class="professionalism">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+              <span> Professionnalisme</span>
+            </div>            
+          </div><br />
+          <p>project evaluation 0</p>
+          <div class="submit_cancel">
+            <a href="#">Submit</a>
+            <a href="#" style="display: none;"></a>
+          </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 
 
