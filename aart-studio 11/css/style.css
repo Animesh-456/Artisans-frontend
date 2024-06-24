@@ -2041,6 +2041,40 @@ h4.modal-title {
 .rating-color {
     font-family: "Poppins", sans-serif;
 }
+.post_comment input[type=submit] {
+    background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    transition: box-shadow 1s;
+    border: none;
+}
+.post_comment input[type=submit]:hover{
+	box-shadow: none;
+}
+.vcard p {
+    margin-top: 11px;
+}
+.vcard h6 {
+    font-family: "Poppins", sans-serif;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 12px;
+}
+.vcard {
+    margin-top: 1em;
+    padding: 7px 0;
+}
+.comment-author .vcard:nth-child(odd) {
+    
+}
+.comment-author .vcard:nth-child(even) {
+    width: 95%;
+    margin-left: auto;
+}
 
 button, select {
     text-transform: none;
