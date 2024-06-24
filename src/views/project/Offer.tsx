@@ -7,6 +7,7 @@ import common from "../../helpers/common";
 import { ProgressBar } from "react-bootstrap";
 import moment from "moment";
 import { CSSProperties } from 'react';
+import Link from "next/link";
 
 import atom from "../../jotai/atom";
 import { useAtomValue } from "jotai";
@@ -725,7 +726,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 
 
-			<div className="offer_section">
+			{/* <div className="offer_section">
 				<div className="offer_l">
 					<div className="offer_heading">
 						<figure>
@@ -759,9 +760,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 															<li>
 																<a rel="noreferrer" className="offattach" style={{ color: '#e9bc31' }} target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a>
 
-																{/* <div className="pro_div">
-																	<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span><a rel="noreferrer" className="offattach" style={{ color: '#e9bc31' }} target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a><a className="delete_icon" onClick={() => delete_additional_files(m, bid?.id)}><i className="fa fa-trash-o"></i></a></p>
-																</div> */}
+															
 
 
 															</li>
@@ -831,8 +830,125 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 
 
-			
+			</div> */}
 
+
+
+
+
+
+			<div className="offer_section">
+				<div className="offer_section1">
+					<div className="offer_l">
+						<div className="offer_heading">
+							<figure>
+								<img src={
+									common.get_profile_picture(bid?.user?.logo) ||
+									"/img/work-icon3.png"
+								} alt="" />
+							</figure>
+							<h5>{bid?.user?.user_name}</h5>
+							<div>
+								{revdata?.totalproject} jobs
+								<span className="stars"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></span>
+								<span>{revdata?.public_avg_rating ? revdata?.public_avg_rating : "0.0"}</span>
+							</div>
+						</div>
+
+						{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id || bid?.user_id == user?.id) && (
+							<>
+								<p>{bid?.bid_desc}</p>
+								<a href="msg.html">Message to Artist</a><a className="kts" href="#">View all Message</a>
+								<p>Attachments:
+
+									{String(bid?.bid_file).includes(",") ? (
+
+
+										String(bid?.bid_file).split(",").map((m) => {
+											return (
+												<>
+													<p><a rel="noreferrer" className="offattach" target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a></p>
+												</>
+
+											)
+										})
+
+									) : (<>
+									</>)}
+								</p>
+							</>
+						)}
+					</div>
+
+
+
+
+					<div className="offer_r">
+
+						{/* {(data?.programmer_id == user?.id || data?.creator_id == user?.id) && (
+							<>
+								<span><b>{bid?.no_offer == 2 ? (
+									
+										<><p>Price Unspecified</p></>
+									
+								) : (
+									(data?.programmer_id != null && bid?.user_id == data?.programmer_id ? (
+										<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
+									) : (<><p>Hidden Price</p></>))
+								)}</b></span>
+
+								<p>Shipping fee included</p>
+								<p>Shipping Time: {bid?.bid_days} Days</p>
+							</>
+						)} */}
+
+						<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
+						<p>Shipping fee included</p>
+						<p>Shipping Time: {bid?.bid_days} Days</p>
+
+						{(data?.creator_id == user?.id || data?.project_status >= "1") && (
+
+							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a>
+						)}
+					</div>
+
+
+					{/* After select machinist show price logic */}
+
+
+				</div>
+
+				{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id) && (
+					<>
+						<div className="chat_bar">
+							<small>2024-06-18</small>
+							<div className="chat_bar_p">
+								<p>
+									Lorem Ipsum has been the industrys standard dummy text
+									<span>08:53:50</span>
+								</p>
+								<p>
+									Lorem Ipsum has been the industrys standard dummy text
+									<span>08:53:50</span>
+								</p>
+							</div>
+							<div className="chat_browser">
+								<span>
+									<i className="fa fa-plus-circle"></i>
+								</span>
+								<span>
+									<input type="text" name="name" placeholder="Type here..." />
+								</span>
+								<span>
+									<img src={"../img/send.png"} alt="sendbtn" />
+								</span>
+							</div>
+							<div className="upload_t">
+								<p><i className="fa fa-check"></i> chapeverinpoussir.jpg  <i className="fa fa-trash-o"></i></p>
+							</div>
+						</div>
+					</>
+				)}
 
 			</div>
 

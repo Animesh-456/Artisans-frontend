@@ -82,30 +82,59 @@ const Q_A = ({ d, user, data }: Props) => {
 
 
         <>
-            
-           
+
+
             <div className="answers_a">
-                <p><b>{d?.from?.user_name}</b></p>
-                <p><strong> Q.</strong>{d?.message}</p>
-                <p>
+
+
+
+                <div className="comment-author">
+                    <div className="vcard">
+                        <h6>{d?.from?.user_name}</h6>
+
+                        <p>{d?.message}</p>
+                        {user?.role_id == 1 &&
+                            user?.id == data?.creator_id &&
+                            !d?.reply?.length ? (
+                            <a style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => toggleShow(!show)}>{show ? "Cancel" : "Add Answer"}<img src={"../img/arrow1.png"} width="11px" alt="" /></a>
+                        ) : (
+                            <></>
+                        )}
+                    </div>
+                    <div className="vcard">
+                       
+                        {d?.reply?.map((elem) => {
+                            return (
+                                <>
+                                 <h6>{d?.from?.user_name}</h6>
+                                    <p>{elem?.message}</p>
+                                </>
+                            );
+                        })}
+
+                    </div>
+                </div>
+                {/* <p><b>{d?.from?.user_name}</b></p>
+                <p><strong> Q.</strong>{d?.message}</p> */}
+                {/* <p>
                     {d?.reply?.map((elem) => {
                         return (
                             <>
-                               <p><strong> A.</strong>{elem?.message}</p>
+                                <p><strong> A.</strong>{elem?.message}</p>
                             </>
                         );
                     })}
-                </p>
+                </p> */}
 
 
 
-                {user?.role_id == 1 &&
+                {/* {user?.role_id == 1 &&
                     user?.id == data?.creator_id &&
                     !d?.reply?.length ? (
                     <a style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => toggleShow(!show)}>{show ? "Cancel" : "Add Answer"}<img src={"../img/arrow1.png"} width="11px" alt="" /></a>
                 ) : (
                     <></>
-                )}
+                )} */}
 
 
 

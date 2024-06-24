@@ -1945,29 +1945,26 @@ const ProjectDetail = () => {
                 <div className='slct-machinist-modal'>
                     {selected_machinist ? (
                         <>
-                            <p>
-                                Are you sure, you want to select the offer from{" "}
-                                {selected_machinist?.user_name} for ₹
-                                {selected_machinist?.amount} ?
-                            </p>
-                            <p>This choice is final</p>
-                            <p>The price can not be changed</p>
-                            <div className='reg-bottom slct-mchinst'>
-                                <button
-                                    type='submit'
-                                    name='submit'
-                                    onClick={() => {
-                                        setOpen_machinist(false);
-                                        setselected_machinist(null);
-                                    }}>
-                                    Cancel
-                                </button>
-                                <button
-                                    type='submit'
-                                    name='submit'
-                                    onClick={handle_select_machinist}>
-                                    Confirm
-                                </button>
+
+                            <div className="modal-body">
+                                <div className="css-ung">
+                                    <form>
+                                        <p>
+                                            Are you sure, you want to select the offer from{" "}
+                                            {selected_machinist?.user_name} for ₹
+                                            {selected_machinist?.amount} ?
+                                        </p>
+                                        <p>This choice is final</p>
+                                        <p>The price can not be changed</p>
+                                        <div className="submit_cancel">
+                                            <a onClick={handle_select_machinist} style={{ cursor: "pointer", color: "#fff" }}>Confirm</a>
+                                            <a onClick={() => {
+                                                setOpen_machinist(false);
+                                                setselected_machinist(null);
+                                            }} style={{ cursor: 'pointer' }}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </>
                     ) : (
