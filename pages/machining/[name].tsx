@@ -1558,7 +1558,60 @@ const ProjectDetail = () => {
                                         )}
                                     </span></p>
                                 </div>
+
+                                {(data?.project_status == '5' && data?.visibility?.toLowerCase() == "public") &&
+                                    <div className="desc-img">
+                                        <img className="img-2" src={"../img/tick.png"} alt="tick.png" />
+                                        <h6>Part artist by <a href={`/account/public-profile/${data?.programmer_id}`} className="listing_creator_name">
+                                            <span>{data?.programmer?.user_name}</span>
+                                        </a> for <span>₹{finalised_price} </span>
+                                        </h6>
+                                        <h6>Received and Approved by <a href={`/account/public-profile/${data?.creator_id}`} className="listing_creator_name">
+                                            <span>{data?.creator?.user_name}</span>
+
+                                        </a> on <span>{formatDate(data?.fund_release_date)}</span>
+                                        </h6>
+                                    </div>}
+
+
                             </div>
+
+                            {((table_status == '1' || reviewStatus == '2') && ((data?.creator_id == user?.id) || (data?.programmer_id == user?.id))) &&
+
+
+                                <div className="project_details_right">
+                                    <div className="description_heading_title">
+                                        <h2>Complete or verify your delivery address</h2>
+                                    </div>
+                                    <div className="project_details_content">
+                                        <p><span>Name</span><span><b>{delivery.name} </b></span></p>
+                                        <p><span>Address</span><span><b>{delivery.address} </b></span></p>
+                                        <p><span>Postal code</span><span><b>{delivery.postalcode}</b></span></p>
+                                        <p><span>City</span><span><b>{delivery.city}</b></span></p>
+                                    </div>
+                                    {data.programmer_id == user?.id && (
+                                        <div className="table-responsive">
+                                            <table className="table table-bordered table-sm">
+                                                <thead>
+                                                    <tr className="table-primary">
+                                                        <th>Funds deposited (order placed)</th>
+                                                        <th>Funds released to your account:</th>
+                                                        <th>Rating left</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{data?.project_status >= 1 ? `${moment(data?.project_fund_date_format).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
+                                                        <td>{data?.project_status >= 5 ? `${moment(data?.fund_release_date).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
+                                                        <td>{(data?.project_status >= 5 && reviewCust[0]?.rating != null) ? `${moment(reviewCust[0]?.review_post_date).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    )}
+
+                                </div>}
                         </div>
                     </div>
                 </div>
@@ -1782,29 +1835,29 @@ const ProjectDetail = () => {
                                             </button>
                                             <input type="file" name="myfile" multiple onChange={handle_file_change} />
 
-                                            
+
                                         </div>
 
                                         <br />
-                                            <br />
+                                        <br />
 
 
-                                            {pr < 101 ? (
-                                                <ProgressBar now={pr} label={`${pr}%`} />
-                                            ) : (<></>)}
+                                        {pr < 101 ? (
+                                            <ProgressBar now={pr} label={`${pr}%`} />
+                                        ) : (<></>)}
 
 
-                                            {file && pr > 100 ? (
-                                                file?.map((f) => {
-                                                    return (
-                                                        <>
-                                                            <div className="pro_div">
-                                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
-                                                            </div>
-                                                        </>
-                                                    )
-                                                })
-                                            ) : (<></>)}
+                                        {file && pr > 100 ? (
+                                            file?.map((f) => {
+                                                return (
+                                                    <>
+                                                        <div className="pro_div">
+                                                            <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                        </div>
+                                                    </>
+                                                )
+                                            })
+                                        ) : (<></>)}
                                     </div>
                                     <div className="from_feild">
                                         <label>
