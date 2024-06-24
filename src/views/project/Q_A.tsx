@@ -82,15 +82,58 @@ const Q_A = ({ d, user, data }: Props) => {
 
 
         <>
-            <div className="question_a1">
-                <h4>Questions And Answers:</h4>
-                <a href="#">Add Comment or Files <img src={"../img/arrow.png"} width="11px" alt="" /></a>
-            </div>
-            <hr />
+            
+           
             <div className="answers_a">
                 <p><b>{d?.from?.user_name}</b></p>
-                <p>{d?.message}</p>
-                <a href="#">Reply  <img src={"../img/arrow1.png"} width="11px" alt="" /></a>
+                <p><strong> Q.</strong>{d?.message}</p>
+                <p>
+                    {d?.reply?.map((elem) => {
+                        return (
+                            <>
+                               <p><strong> A.</strong>{elem?.message}</p>
+                            </>
+                        );
+                    })}
+                </p>
+
+
+
+                {user?.role_id == 1 &&
+                    user?.id == data?.creator_id &&
+                    !d?.reply?.length ? (
+                    <a style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => toggleShow(!show)}>{show ? "Cancel" : "Add Answer"}<img src={"../img/arrow1.png"} width="11px" alt="" /></a>
+                ) : (
+                    <></>
+                )}
+
+
+
+
+
+
+
+                {show && (
+
+                    <div className="comment-list">
+                        <form>
+                            <div className="from_feild">
+                                <label>Comment: <span>*</span></label>
+                                <textarea placeholder="Comment"
+
+                                    onChange={(e) => {
+                                        setMessage(e.target.value);
+                                    }}
+                                    rows={6} cols={5}></textarea>
+                            </div>
+                            <div className="post_comment">
+                                <input name="submit" onClick={handle_submit} type="submit" id="submit" className="submit" value="Post Comment" />
+                            </div>
+                        </form>
+
+                    </div>
+                )}
+
             </div>
             <hr />
 

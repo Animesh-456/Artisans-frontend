@@ -220,7 +220,7 @@ const SignIn = (props: Props) => {
 								</div>
 								<div className="discover_wp">
 									{/* <a href="#">Sign Up</a> */}
-									<input type="Submit" name="submit" value="Sign Up" />
+									<input type="Submit" name="submit" />
 								</div>
 							</form>
 						</div>

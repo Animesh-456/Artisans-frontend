@@ -1363,6 +1363,83 @@ const ProjectDetail = () => {
                                     <h2>Description</h2>
                                 </div>
                                 <p>{data?.description}</p>
+
+
+
+
+
+                                {user && (
+                                    <>
+                                        {user?.role_id == 2 &&
+                                            !data?.programmer_id &&
+                                            data?.bids?.filter((f) => f?.user_id == user?.id).length >
+                                            0 ? (
+
+
+
+
+                                            <div className="create_o"><a onClick={() => {
+                                                setOpen_offer(true);
+                                                setBid_id(
+                                                    data?.bids?.filter((f) => f?.user_id == user?.id)[0]
+                                                        ?.id,
+                                                );
+
+                                                let find_bid = data?.bids?.find(
+                                                    (f) => f?.user_id == user?.id,
+                                                );
+
+                                                if (find_bid) {
+                                                    for (const key of Object.keys(bid)) {
+                                                        setbid(key, find_bid[key] || "")(null);
+                                                    }
+                                                }
+                                                setischecked(false)
+                                            }} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Edit offer</a></div>
+
+                                        ) : user?.role_id == 2 && !data?.programmer_id ? (
+                                            (String(data?.visibility).toLocaleLowerCase() == "private" ? (
+                                                (Number(totaljobs) >= 1 ? (
+
+
+                                                    <div className="create_o"><a onClick={() => {
+                                                        setOpen_offer(true); setischecked(false); setprogress(0)
+                                                        setFile([])
+                                                    }} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Create an offer</a></div>
+                                                ) : (<></>))
+
+                                            ) : (
+                                                <>
+
+                                                    <div className="create_o"><a onClick={() => {
+                                                        setOpen_offer(true); setischecked(false); setprogress(0)
+                                                        setFile([])
+                                                    }} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Create an offer</a></div>
+                                                </>
+
+                                            ))
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </>
+                                )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 <div className="question_a">
 
 
@@ -1492,7 +1569,7 @@ const ProjectDetail = () => {
 
 
             <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>
-                <div className='fdfd4'>
+                {/* <div className='fdfd4'>
                     <div className='css-ung'>
                         <p>Post a Public Message or a Question to the client (optional).</p>
                         <label>Send a public message to the client..</label>
@@ -1657,7 +1734,159 @@ const ProjectDetail = () => {
                             </div>
                         </div>
                     </div>
+                </div> */}
+
+
+                <div className="modal-body">
+                    <div className="css-ung">
+                        <form>
+                            <p>
+                                Post a message, a question for the customer (optional)
+                            </p>
+                            <div className="from_feild">
+                                <label>
+                                    Send a public message to the customer.
+                                </label>
+                                <textarea name="message" rows={4} defaultValue={""}
+                                    value={question.message}
+                                    onChange={setQuestion("message")} placeholder="Write your message here..."></textarea>
+                            </div>
+                            <input type="submit" name="Prebid" onClick={handleQuestion} />
+                            <hr />
+                            <div className="row">
+                                <div className="col-sm-12">
+                                    <h5>
+                                        Make an offer
+                                    </h5>
+                                    <p>
+                                        1. You can describe your offer here.
+                                    </p>
+                                    <p>
+                                        2. Do not include your contact details (email, telephone, address etc...).
+                                    </p>
+                                    <p>
+                                        3. Shipping costs (sending with mandatory traceability) must be included in the price offered to the customer.
+                                    </p>
+                                    <div className="from_feild">
+                                        <label>Comment:</label>
+                                        <textarea name="message2" defaultValue={""}
+                                            value={bid.bid_desc}
+                                            onChange={setbid("bid_desc")} rows={4} placeholder="Describe your offer here..."></textarea>
+                                    </div>
+                                    <div className="from_feild">
+                                        <label>Attach Your Files Here: <span>*</span></label>
+                                        <div className="upload-btn-wrapper">
+                                            <button className="btn">
+                                                <i className="fa fa-upload"></i>
+                                                Add files (Max. &lt; 3 Mb)
+                                            </button>
+                                            <input type="file" name="myfile" multiple onChange={handle_file_change} />
+
+                                            
+                                        </div>
+
+                                        <br />
+                                            <br />
+
+
+                                            {pr < 101 ? (
+                                                <ProgressBar now={pr} label={`${pr}%`} />
+                                            ) : (<></>)}
+
+
+                                            {file && pr > 100 ? (
+                                                file?.map((f) => {
+                                                    return (
+                                                        <>
+                                                            <div className="pro_div">
+                                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                            </div>
+                                                        </>
+                                                    )
+                                                })
+                                            ) : (<></>)}
+                                    </div>
+                                    <div className="from_feild">
+                                        <label>
+                                            Paid to me: ₹
+                                        </label>
+                                        <input name="txtPrice" type="text" value={bid.bid_amount} disabled
+                                            onChange={setbid("bid_amount")} placeholder="Type here..." />
+                                    </div>
+                                    <div className="from_feild">
+                                        <label>Price for the Customer: ₹ </label>
+                                        <small>
+                                            Includes aartstudio fees
+                                        </small>
+                                        <input name="bidAmt" type="text" value={bid.bid_amount_gbp}
+                                            disabled={ischecked}
+                                            onChange={setbid("bid_amount_gbp")} placeholder="Type here..." />
+                                    </div>
+                                    <div className="from_feild">
+                                        <label>
+                                            Estimated Shipping Time:
+                                        </label>
+                                        <div className="form-inline1">
+                                            <select name="days" value={bid.bid_days}
+                                                onChange={setbid("bid_days")} disabled={ischecked}>
+                                                <option value={0}>-- Select --</option>
+                                                <option value={2}>2 Days</option>
+                                                <option value={3}>3 Days</option>
+                                                <option value={4}>4 Days</option>
+                                                <option value={5}>5 Days</option>
+                                                <option value={6}>6 Days</option>
+                                                <option value={7}>7 Days</option>
+                                                <option value={8}>8 Days</option>
+                                                <option value={9}>9 Days</option>
+                                                <option value={10}>10 Days</option>
+                                                <option value={11}>11 Days</option>
+                                                <option value={12}>12 Days</option>
+                                                <option value={13}>13 Days</option>
+                                                <option value={14}>14 Days</option>
+                                                <option value={15}>15 Days</option>
+                                                <option value={16}>16 Days</option>
+                                                <option value={17}>17 Days</option>
+                                                <option value={18}>18 Days</option>
+                                                <option value={19}>19 Days</option>
+                                                <option value={20}>20 Days</option>
+                                                <option value={21}>21 Days</option>
+                                                <option value={22}>22 Days</option>
+                                                <option value={23}>23 Days</option>
+                                                <option value={24}>24 Days</option>
+                                                <option value={25}>25 Days</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="from_feild">
+                                        <div className="form-group form-check">
+                                            <label className="form-check-label">
+                                                <input onChange={(e) => {
+                                                    setwill_submit(e.target.checked);
+                                                    if (e.target.checked) {
+                                                        setbid("bid_amount", "0")(null);
+                                                        setbid("bid_amount_gbp", "0")(null);
+                                                        setbid("bid_days", "0")(0);
+                                                        setischecked(true)
+                                                    } else if (!e.target.checked) {
+                                                        setischecked(false)
+                                                    }
+                                                }} className="form-check-input" type="checkbox" />
+                                                I will specify the price later
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="submit" name="Prebid" onClick={handleAddBid} />
+                                </div>
+                            </div>
+
+                            <div className="row css-kjus">
+
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
+
             </GlobalModal>
             <GlobalModal title='Select Artist' atom={atom.modal.slct_mchnst}>
                 <div className='slct-machinist-modal'>
@@ -1697,7 +1926,7 @@ const ProjectDetail = () => {
             <GlobalModal
                 title='Review Your Artist'
                 atom={atom.modal.review_machinist}>
-                
+
                 <div className="modal-body">
                     <div className="css-ung">
                         <form>
@@ -1711,7 +1940,7 @@ const ProjectDetail = () => {
                                     onChange={setreview("comments")} rows={6} cols={50} />
                             </div>
                             <div className="rating-color">
-                               
+
 
                                 {common.reviews_meta.map((r, index) => {
                                     return <ReviewBox key={index} r={r} />;
@@ -1726,7 +1955,7 @@ const ProjectDetail = () => {
                     </div>
                 </div>
 
-               
+
             </GlobalModal>
 
 
