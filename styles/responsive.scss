@@ -363,4 +363,42 @@
     width: 90%;
     margin-left: 11px;
   }
+
+  .offer_section1 {
+    display: block;
+  }
+
+  .offer_r a {
+    margin-top: 1em;
+  }
+
+  .chat_bar {
+    margin-top: 1em;
+  }
+
+  .chat_bar_p p:nth-child(odd) {
+    width: 90%;
+  }
+
+  .chat_bar_p p:nth-child(even) {
+    width: 90%;
+  }
+
+  .chat_browser span img {
+    width: 20px;
+    height: 19px;
+    margin-top: 7px;
+  }
+
+  .chat_browser span .fa {
+    font-size: 20px;
+  }
+
+  .chat_browser span input[type="text"] {
+    height: 35px;
+  }
+
+  .chat_browser span:nth-child(2) {
+    width: 85%;
+  }
 }

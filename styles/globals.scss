@@ -2300,7 +2300,7 @@ ul.side-nav {
   border-radius: 10px;
   width: 100%;
   display: block;
-  padding: 15px;
+  padding: 15px 0 15px 15px;
   font-family: "Poppins", sans-serif;
 }
 
@@ -2335,6 +2335,11 @@ ul.side-nav {
 .chat_browser {
   display: flex;
   margin-top: 20px;
+  padding-right: 15px;
+}
+
+.upload_t {
+  padding-right: 15px;
 }
 
 .chat_browser span:nth-child(1) {
@@ -2526,6 +2531,46 @@ h4.modal-title {
 .comment-author .vcard:nth-child(even) {
   width: 95%;
   margin-left: auto;
+}
+
+.attach {
+  background: none !important;
+  box-shadow: none !important;
+  color: #080424 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.chat_bar_p p {
+  margin-bottom: 12px;
+}
+
+.chat_bar_p {
+  height: 270px;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ef6100;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ef6100;
 }
 
 button,
