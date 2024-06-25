@@ -2316,14 +2316,14 @@ ul.side-nav {
   text-align: right;
 }
 
-.chat_bar_p p:nth-child(odd) {
+.chat_bar_p  .odd {
   background: #f3dec1;
   padding: 10px;
   border-radius: 20px 20px 20px 0;
   width: 80%;
 }
 
-.chat_bar_p p:nth-child(even) {
+.chat_bar_p  .even {
   background: #ffb07b;
   padding: 10px;
   border-radius: 20px 20px 0px 20px;

@@ -844,8 +844,8 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							<figure>
 								<img src={
 									common.get_profile_picture(bid?.user?.logo) ||
-									"/img/work-icon3.png"
-								} alt="" />
+									"../img/work-icon3.png"
+								} alt="profile-picture" />
 							</figure>
 							<h5>{bid?.user?.user_name}</h5>
 							<div>
@@ -858,7 +858,23 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 						{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id || bid?.user_id == user?.id) && (
 							<>
 								<p>{bid?.bid_desc}</p>
-								<a href="msg.html">Message to Artist</a><a className="kts" href="#">View all Message</a>
+								<a onClick={() => {
+									if (
+										data?.programmer_id &&
+										data?.programmer_id == bid?.user_id
+									) {
+										router.push(
+											`/machining/msg/${data?.id}/${bid?.user_id}/${data?.creator_id}`,
+										);
+										return;
+									}
+									setShow(!show);
+									setprogress(0)
+									setChangePic(false)
+								}} style={{ cursor: "pointer", color: "#fff" }}>Message to Artist</a>
+								{msgs?.length > 1 && (
+									<a className="kts" style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setShow(!show)}>{show ? "Hide All messages" : "View All Messages"}</a>
+								)}
 								<p>Attachments:
 
 									{String(bid?.bid_file).includes(",") ? (
@@ -867,25 +883,27 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 										String(bid?.bid_file).split(",").map((m) => {
 											return (
 												<>
-													<p><a rel="noreferrer" className="offattach" target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a></p>
+													<p><a rel="noreferrer" className="attach" target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a></p>
 												</>
 
 											)
 										})
 
 									) : (<>
+										<p><a rel="noreferrer" className="attach" target={"_blank"} href={common.get_attachment_latest_ach(`${bid?.bid_file}`)}>{bid?.bid_file}</a></p>
+								
 									</>)}
-								</p>
-							</>
+							</p>
+					</>
 						)}
-					</div>
+				</div>
 
 
 
 
-					<div className="offer_r">
+				<div className="offer_r">
 
-						{/* {(data?.programmer_id == user?.id || data?.creator_id == user?.id) && (
+					{/* {(data?.programmer_id == user?.id || data?.creator_id == user?.id) && (
 							<>
 								<span><b>{bid?.no_offer == 2 ? (
 									
@@ -902,55 +920,100 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							</>
 						)} */}
 
-						<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
-						<p>Shipping fee included</p>
-						<p>Shipping Time: {bid?.bid_days} Days</p>
+					<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
+					<p>Shipping fee included</p>
+					<p>Shipping Time: {bid?.bid_days} Days</p>
 
-						{(data?.creator_id == user?.id || data?.project_status >= "1") && (
+					{user && (data?.creator_id == user?.id || data?.project_status >= "1") && (
 
-							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a>
-						)}
-					</div>
-
-
-					{/* After select machinist show price logic */}
-
-
+						<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a>
+					)}
 				</div>
 
-				{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id) && (
-					<>
-						<div className="chat_bar">
-							<small>2024-06-18</small>
-							<div className="chat_bar_p">
-								<p>
-									Lorem Ipsum has been the industrys standard dummy text
-									<span>08:53:50</span>
-								</p>
-								<p>
-									Lorem Ipsum has been the industrys standard dummy text
-									<span>08:53:50</span>
-								</p>
-							</div>
-							<div className="chat_browser">
-								<span>
-									<i className="fa fa-plus-circle"></i>
-								</span>
-								<span>
-									<input type="text" name="name" placeholder="Type here..." />
-								</span>
-								<span>
-									<img src={"../img/send.png"} alt="sendbtn" />
-								</span>
-							</div>
-							<div className="upload_t">
-								<p><i className="fa fa-check"></i> chapeverinpoussir.jpg  <i className="fa fa-trash-o"></i></p>
-							</div>
-						</div>
-					</>
-				)}
+
+				{/* After select machinist show price logic */}
+
 
 			</div>
+
+			{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id || bid?.user_id == user?.id) && show && (
+
+
+
+				<>
+					<div className="chat_bar">
+						{/* <small>2024-06-18</small> */}
+
+						<div className="chat_bar_p">
+							{albidmsg?.map((msg: BidsMsgResponse) => {
+								return (
+									<>
+
+										<p className={`${msg?.send_from == user?.id ? "odd" : "even"}`}>
+											{String(msg?.attachment).includes(",") ? (
+
+												String(msg?.attachment).split(",").map((im) => {
+													return (
+														<>
+
+															<li>
+																<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, msg?.datetime)}>{im}</a>
+																<br />
+															</li>
+
+														</>
+
+													)
+												})
+											) : (<><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${msg?.attachment}`, msg?.datetime)}>{msg?.attachment}</a></>)}
+											<br></br>
+											{msg?.msg_box}
+											<span>{moment(msg?.datetime).format('YYYY-MM-DD HH:mm:ss')}</span>
+										</p>
+
+									</>
+								)
+							})}
+						</div>
+
+						<div className="chat_browser">
+							<span>
+								<input type={"file"} multiple onChange={handle_file_change} ref={fileInputRef} />
+								{/* <i className="fa fa-plus-circle"></i> */}
+							</span>
+							<span>
+								<input type="text" value={msg.msg_box}
+									onChange={setMsg("msg_box")} name="name" placeholder="Type here..." />
+							</span>
+							<span>
+								<a onClick={handleSubmit} style={{ cursor: "pointer" }}>
+									{/* <img src={"../img/send.png"} alt="sendbtn" /> */}
+									send
+								</a>
+							</span>
+						</div>
+						<div className="upload_t">
+							{file ? (
+								file?.map((f, index) => {
+									return (
+										<>
+
+											<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+
+										</>
+									)
+								})
+							) : (<></>)}
+						</div>
+					</div>
+				</>
+
+
+
+			)}
+
+		</div >
+		<br></br>
 
 
 		</>
