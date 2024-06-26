@@ -270,22 +270,22 @@ const DespositFund = (props: Props) => {
 									<form onSubmit={handle_confirm_address}>
 										<div className="from_feild">
 											<label>Name: <span>*</span></label>
-											<input type="text" value={profile.name}
+											<input type="text" required value={profile.name}
 												onChange={setProfile("name")} />
 										</div>
 										<div className="from_feild">
 											<label>Address: <span>*</span></label>
-											<input type="text" value={profile.address}
+											<input type="text" required value={profile.address}
 												onChange={setProfile("address")} />
 										</div>
 										<div className="from_feild">
 											<label>Postal Code: <span>*</span></label>
-											<input type="text" value={profile.postalcode}
+											<input type="text" required value={profile.postalcode}
 												onChange={setProfile("postalcode")} />
 										</div>
 										<div className="from_feild">
 											<label>City: <span>*</span></label>
-											<input type="text" value={profile.city}
+											<input type="text" required value={profile.city}
 												onChange={setProfile("city")} />
 										</div>
 										<div className="from_feild2">
