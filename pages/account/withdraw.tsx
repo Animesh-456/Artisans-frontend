@@ -74,8 +74,8 @@ const Withdraw = (props: Props) => {
         var e = (document.getElementById("payOptions")) as HTMLSelectElement;
 
 
-        var sel = e.selectedIndex;
-        var opt = e.options[sel];
+        var sel = e?.selectedIndex;
+        var opt = e?.options[sel];
         var payMethod = opt.value;
         api.auth.update_balance({ body: { "balance": remain, "method": payMethod, "val": val, "paypal_email": paypal } }, (d) => {
             if (d.status == true) {
