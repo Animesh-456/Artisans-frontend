@@ -374,7 +374,7 @@ const Listing = (prp) => {
             </section>
 
 
-            <div className='container'>
+            {/* <div className='container'>
                 <div className='row job_machin_wp'>
 
                     {user?.role_id == 2 || user?.role_id == 1 ? (
@@ -387,7 +387,7 @@ const Listing = (prp) => {
 
 
                 </div>
-            </div>
+            </div> */}
 
         </>
     );

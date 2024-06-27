@@ -59,7 +59,7 @@ const CustomerSignIn = (props: Props) => {
 		api.auth.supplier_register({ body: signIn }, (d) => {
 			if (storedProject != null) {
 				setUser(d.data);
-				router.push("/account/jobs").then(() => {
+				router.push("/auth/suppliersuccess").then(() => {
 					api.project.get_temp(
 						{ body: { project_ids: [storedProject] } },
 						(d) => {
