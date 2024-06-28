@@ -180,7 +180,7 @@ const SignIn = (props: Props) => {
 								<div className="from_feild1">
 									<a href={"/auth/forgetpassword"}>Forgot Password?`</a>
 								</div>
-								<div className="discover_wp">
+								<div className="discover_wp1">
 									{/* <a href="#">Sign In</a> */}
 									<input type="Submit" name="usersLogin" value="Sign in" />
 								</div>
@@ -218,7 +218,7 @@ const SignIn = (props: Props) => {
 								<div className="from_feild1">
 									<a href={"/account/terms"}>Terms of service`</a>
 								</div>
-								<div className="discover_wp">
+								<div className="discover_wp1">
 									{/* <a href="#">Sign Up</a> */}
 									<input type="Submit" name="submit" />
 								</div>

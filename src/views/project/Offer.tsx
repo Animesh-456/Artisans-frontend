@@ -875,7 +875,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 								{msgs?.length > 1 && (
 									<a className="kts" style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setShow(!show)}>{show ? "Hide All messages" : "View All Messages"}</a>
 								)}
-								<p>Attachments:
+								<p>Attachments:{" "}
 
 									{String(bid?.bid_file).includes(",") ? (
 
@@ -883,27 +883,27 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 										String(bid?.bid_file).split(",").map((m) => {
 											return (
 												<>
-													<p><a rel="noreferrer" className="attach" target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a></p>
+													<a rel="noreferrer" className="attach" target={"_blank"} href={common.get_attachment_latest_ach(`${m}`)}>{m}</a>{","}{" "}
 												</>
 
 											)
 										})
 
 									) : (<>
-										<p><a rel="noreferrer" className="attach" target={"_blank"} href={common.get_attachment_latest_ach(`${bid?.bid_file}`)}>{bid?.bid_file}</a></p>
-								
+										<a rel="noreferrer" className="attach" target={"_blank"} href={common.get_attachment_latest_ach(`${bid?.bid_file}`)}>{bid?.bid_file}</a>
+
 									</>)}
-							</p>
-					</>
+								</p>
+							</>
 						)}
-				</div>
+					</div>
 
 
 
 
-				<div className="offer_r">
+					<div className="offer_r">
 
-					{/* {(data?.programmer_id == user?.id || data?.creator_id == user?.id) && (
+						{/* {(data?.programmer_id == user?.id || data?.creator_id == user?.id) && (
 							<>
 								<span><b>{bid?.no_offer == 2 ? (
 									
@@ -920,100 +920,103 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							</>
 						)} */}
 
-					<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
-					<p>Shipping fee included</p>
-					<p>Shipping Time: {bid?.bid_days} Days</p>
+						<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
+						<p>Shipping fee included</p>
+						<p>Shipping Time: {bid?.bid_days} Days</p>
 
-					{user && (data?.creator_id == user?.id || data?.project_status >= "1") && (
+						{user && (data?.creator_id == user?.id || data?.project_status >= "1") && (
 
-						<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a>
-					)}
+							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a>
+						)}
+					</div>
+
+
+					{/* After select machinist show price logic */}
+
+
 				</div>
 
-
-				{/* After select machinist show price logic */}
-
-
-			</div>
-
-			{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id || bid?.user_id == user?.id) && show && (
+				{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id || bid?.user_id == user?.id) && show && (
 
 
 
-				<>
-					<div className="chat_bar">
-						{/* <small>2024-06-18</small> */}
+					<>
+						<div className="chat_bar">
+							{/* <small>2024-06-18</small> */}
 
-						<div className="chat_bar_p">
-							{albidmsg?.map((msg: BidsMsgResponse) => {
-								return (
-									<>
-
-										<p className={`${msg?.send_from == user?.id ? "odd" : "even"}`}>
-											{String(msg?.attachment).includes(",") ? (
-
-												String(msg?.attachment).split(",").map((im) => {
-													return (
-														<>
-
-															<li>
-																<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, msg?.datetime)}>{im}</a>
-																<br />
-															</li>
-
-														</>
-
-													)
-												})
-											) : (<><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${msg?.attachment}`, msg?.datetime)}>{msg?.attachment}</a></>)}
-											<br></br>
-											{msg?.msg_box}
-											<span>{moment(msg?.datetime).format('YYYY-MM-DD HH:mm:ss')}</span>
-										</p>
-
-									</>
-								)
-							})}
-						</div>
-
-						<div className="chat_browser">
-							<span>
-								<input type={"file"} multiple onChange={handle_file_change} ref={fileInputRef} />
-								{/* <i className="fa fa-plus-circle"></i> */}
-							</span>
-							<span>
-								<input type="text" value={msg.msg_box}
-									onChange={setMsg("msg_box")} name="name" placeholder="Type here..." />
-							</span>
-							<span>
-								<a onClick={handleSubmit} style={{ cursor: "pointer" }}>
-									{/* <img src={"../img/send.png"} alt="sendbtn" /> */}
-									send
-								</a>
-							</span>
-						</div>
-						<div className="upload_t">
-							{file ? (
-								file?.map((f, index) => {
+							<div className="chat_bar_p">
+								{albidmsg?.map((msg: BidsMsgResponse) => {
 									return (
 										<>
 
-											<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+											<p className={`${msg?.send_from == user?.id ? "odd" : "even"}`}>
+												{String(msg?.attachment).includes(",") ? (
+
+													String(msg?.attachment).split(",").map((im) => {
+														return (
+															<>
+
+																<li>
+																	<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, msg?.datetime)}>{im}</a>
+																	<br />
+																</li>
+
+															</>
+
+														)
+													})
+												) : (<><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${msg?.attachment}`, msg?.datetime)}>{msg?.attachment}</a></>)}
+												<br></br>
+												{msg?.msg_box}
+												<span>{moment(msg?.datetime).format('YYYY-MM-DD HH:mm:ss')}</span>
+											</p>
 
 										</>
 									)
-								})
-							) : (<></>)}
+								})}
+							</div>
+
+							<div className="chat_browser">
+								<span>
+									{/* <input type={"file"} multiple onChange={handle_file_change} ref={fileInputRef} /> */}
+									<i className="fa fa-plus-circle"></i>
+								</span>
+								<span>
+									<input type="text" value={msg.msg_box}
+										onChange={setMsg("msg_box")} name="name" placeholder="Type here..." />
+								</span>
+								<span>
+									{/* <a onClick={handleSubmit} style={{ cursor: "pointer" }}>
+									
+									send
+								</a> */}
+									<button onClick={handleSubmit} style={{ background: "transparent", border: "none" }}>
+										<img src={"../img/send.png"} alt="sendbtn" />
+									</button>
+								</span>
+							</div>
+							<div className="upload_t">
+								{file ? (
+									file?.map((f, index) => {
+										return (
+											<>
+
+												<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+
+											</>
+										)
+									})
+								) : (<></>)}
+							</div>
 						</div>
-					</div>
-				</>
+					</>
 
 
 
-			)}
+				)}
 
-		</div >
-		<br></br>
+			</div >
+			<br></br>
 
 
 		</>

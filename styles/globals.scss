@@ -366,6 +366,30 @@ table {
   transition: box-shadow 1s;
 }
 
+
+.discover_wp1 input[type="submit"] {
+  background: #ef6100;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+  font-family: "Poppins", sans-serif;
+  padding: 6px 22px;
+  transition: box-shadow 1s;
+  border: none;
+}
+
+.discover_wp1 input[type="submit"]:hover {
+  // background: #ef6100;
+  // color: #fff;
+  // border-radius: 6px;
+  // box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+  // font-family: "Poppins", sans-serif;
+  // padding: 6px 22px;
+  // transition: box-shadow 1s;
+
+  box-shadow: none;
+}
+
 .discover_wp a:hover {
   box-shadow: none;
 }
@@ -429,7 +453,7 @@ table {
 
 .latest_request_text p {
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   color: #080424;
   padding-bottom: 10px;
 }
@@ -1283,9 +1307,10 @@ label {
 
 .project_details_content span {
   width: 50%;
-  display: inline-block;
+  display: inline-flex;
   font-weight: 500;
   font-size: 15px;
+  word-break: break-all;
 }
 
 .project_details_content p {
@@ -2316,14 +2341,14 @@ ul.side-nav {
   text-align: right;
 }
 
-.chat_bar_p  .odd {
+.chat_bar_p .odd {
   background: #f3dec1;
   padding: 10px;
   border-radius: 20px 20px 20px 0;
   width: 80%;
 }
 
-.chat_bar_p  .even {
+.chat_bar_p .even {
   background: #ffb07b;
   padding: 10px;
   border-radius: 20px 20px 0px 20px;
@@ -2774,4 +2799,11 @@ select {
   color: #636363;
   font-weight: 500;
   padding-left: 4px;
+}
+
+
+
+.art-img1 {
+  height: 250px;
+  object-fit: cover;
 }

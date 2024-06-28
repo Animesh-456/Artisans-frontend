@@ -245,13 +245,13 @@ const Listing = (prp) => {
                                             {/* <img src={} alt="" /> */}
                                             {l?.attachment_name?.includes(",") ? (
                                                 <>
-                                                    <img src={common.get_attachment(
+                                                    <img className="art-img1" src={common.get_attachment(
                                                         (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
                                                     ) || "../img/pic2.png"} alt="" /></>
                                             ) : (
                                                 <>
 
-                                                    <img src={common.get_attachment(
+                                                    <img className="art-img1"  src={common.get_attachment(
                                                         (l?.attachment_name), formattedDate) || "../img/pic2.png"} alt="art-image" />
                                                 </>
                                             )}
@@ -267,11 +267,11 @@ const Listing = (prp) => {
                                     <div className="col-sm-9">
                                         <div className="latest_request_text">
                                             <h1>{l?.project_name}</h1>
-                                            <p>
-                                                <div>
+                                            
+                                                {/* <div> */}
 
                                                     {l?.description.length > 250 ? (
-                                                        <div>
+                                                        // <div>
 
                                                             <>
 
@@ -280,23 +280,23 @@ const Listing = (prp) => {
                                                                     <></>
 
                                                                 ) : (
-                                                                    <h5>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+                                                                    <p>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
                                                                 )}
 
                                                             </>
 
-                                                        </div>
-                                                    ) : (<h5>{l?.description}</h5>)}
+                                                        // </div>
+                                                    ) : (<p>{l?.description}</p>)}
                                                     {expandedRows.includes(index) && (
 
-                                                        <h5>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></h5>
+                                                        <p>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
 
                                                     )}
 
 
 
-                                                </div>
-                                            </p>
+                                                {/* </div> */}
+                                            
                                             <div>
                                                 <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
                                                 <span>Posted: {diffInDays} d {hourDifference} h ago</span>
