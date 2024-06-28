@@ -872,7 +872,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 									setprogress(0)
 									setChangePic(false)
 								}} style={{ cursor: "pointer", color: "#fff" }}>Message to Artist</a>
-								{msgs?.length > 1 && (
+								{albidmsg?.length > 1 && (
 									<a className="kts" style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setShow(!show)}>{show ? "Hide All messages" : "View All Messages"}</a>
 								)}
 								<p>Attachments:{" "}
@@ -977,9 +977,13 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							</div>
 
 							<div className="chat_browser">
-								<span>
+								<span className="icon_upload">
 									{/* <input type={"file"} multiple onChange={handle_file_change} ref={fileInputRef} /> */}
-									<i className="fa fa-plus-circle"></i>
+									{/* <i className="fa fa-plus-circle"></i> */}
+									<div className="upload-btn-wrapper">
+										<button className="btn"><i className="fa fa-plus-circle"></i></button>
+										<input onChange={handle_file_change} ref={fileInputRef} type="file" name="myfile" multiple />
+									</div>
 								</span>
 								<span>
 									<input type="text" value={msg.msg_box}
@@ -1001,7 +1005,8 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 										return (
 											<>
 
-												<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+												<p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>
+												{/* <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p> */}
 
 											</>
 										)
