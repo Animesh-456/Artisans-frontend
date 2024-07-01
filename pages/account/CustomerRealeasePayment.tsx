@@ -91,7 +91,7 @@ const Jobs = () => {
 
   let bidData: any = {}
 
-  bidData = projectdata?.bids?.find(c => c.bid_amount_gbp)
+  bidData = projectdata?.bids?.find(c => c?.user_id == projectdata?.programmer_id)
 
   const checkstate = () => {
     if (chk == true) {
@@ -206,7 +206,7 @@ const Jobs = () => {
                   </table>
                 </div>
                 <div className="submit_cancel">
-                  <a onClick={confirmFund} style={{ cursor: "pointer", color:"#fff" }}>Release the Funds</a>
+                  <a onClick={confirmFund} style={{ cursor: "pointer", color: "#fff" }}>Release the Funds</a>
                   <a onClick={returnClick} style={{ cursor: "pointer" }}>Back <img src={"../img/arrow.png"} width="11px" alt="arrow" /></a>
                 </div>
               </div>

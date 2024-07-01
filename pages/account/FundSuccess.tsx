@@ -17,7 +17,7 @@ const RedirectProject = () => {
     //const router = useRouter();
     //  router.push(localStorage.getItem('items'))
     //window.location.href = localStorage.getItem('items')
-    Router.replace(`${localStorage.getItem('items')}`)
+    //Router.replace(`${localStorage.getItem('items')}`)
     console.log("funds success", localStorage.getItem('items'))
 
 }

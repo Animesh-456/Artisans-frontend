@@ -924,7 +924,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 						<p>Shipping fee included</p>
 						<p>Shipping Time: {bid?.bid_days} Days</p>
 
-						{user && (data?.creator_id == user?.id || data?.project_status >= "1") && (
+						{user && (data?.creator_id == user?.id && data?.project_status < "1") && (
 
 							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a>
 						)}
