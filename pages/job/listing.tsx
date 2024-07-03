@@ -256,7 +256,7 @@ const Listing = (prp) => {
                                                 </>
                                             )}
 
-                                            {l?.project_status > 4 ? (
+                                            {l?.project_status >= "1" ? (
 
                                                 <img className="cir" src={"/img/circle.png"} alt="awarded-img" />
                                             ) : (

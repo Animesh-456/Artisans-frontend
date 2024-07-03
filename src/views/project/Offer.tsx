@@ -844,7 +844,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							<figure>
 								<img src={
 									common.get_profile_picture(bid?.user?.logo) ||
-									"../img/work-icon3.png"
+									"../img/no-images.png"
 								} alt="profile-picture" />
 							</figure>
 							<h5>{bid?.user?.user_name}</h5>

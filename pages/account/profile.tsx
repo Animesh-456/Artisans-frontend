@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 import { CountryReponse } from "../../src/@types/type";
 import Carousel from 'react-bootstrap/Carousel';
 
-
 type Props = {};
 
 const Profile = (props: Props) => {
@@ -195,7 +194,7 @@ const Profile = (props: Props) => {
                                             <p>Country</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>{countries[1]?.country_name}</p>
+                                            <p>India</p>
                                         </div>
                                         {user?.role_id == 1 ? (
                                             <>
@@ -289,7 +288,7 @@ const Profile = (props: Props) => {
                                             <img
                                                 src={
                                                     common.get_profile_picture(data?.logo) ||
-                                                    "/img/no-images.png"
+                                                    "../img/no-images.png"
                                                 }
                                             />
                                         </figure>

@@ -231,6 +231,8 @@ const EditProfile = () => {
 
     const [imagePreview, setImagePreview] = useState(null);
 
+    console.log("Profile picture is", file?.name)
+
 
 
 
@@ -680,10 +682,19 @@ const EditProfile = () => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <label>Description</label>
-                                                <textarea name="desc"
-                                                    value={profile.description}
-                                                    onChange={setProfile("description")}
-                                                    cols={20} rows={5}></textarea>
+
+                                                {user?.role_id == 1 ? (
+                                                    <textarea name="desc"
+                                                        value={profile.description}
+                                                        onChange={setProfile("description")}
+                                                        cols={20} rows={5}></textarea>
+                                                ) : (
+                                                    <textarea name="desc"
+                                                        value={profile.service_desc}
+                                                        onChange={setProfile("service_desc")}
+                                                        cols={20} rows={5}></textarea>
+                                                )}
+
                                             </div>
                                             <hr />
                                         </div>
@@ -702,21 +713,34 @@ const EditProfile = () => {
                                                         ref={fileInputRef}
                                                     />
 
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    {pr < 101 ? (
-                                                        <ProgressBar now={pr} label={`${pr}%`} />
-                                                    ) : (<></>)}
 
-                                                    <br /><br />
-                                                    {file && pr > 100 ? (
-                                                        <div className="pro_div">
-                                                            <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file)}><i className="fa fa-trash-o"></i></a></p>
-                                                        </div>
-                                                    ) : (<></>)}
+
+
+
+
+
+
+
+
 
                                                 </div>
+
+                                                {pr < 101 ? (
+                                                    <ProgressBar now={pr} label={`${pr}%`} />
+                                                ) : (<></>)}
+
+                                                <br /><br />
+
+                                                {file && pr > 100 ? (
+
+                                                    <div className="pro_div">
+                                                        <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file[0])}><i className="fa fa-trash-o"></i></a></p>
+                                                    </div>
+
+
+
+
+                                                ) : (<></>)}
                                             </div>
                                             <div className="col-sm-6">
 
@@ -759,7 +783,7 @@ const EditProfile = () => {
                                                                     id='fileAttach'
                                                                     multiple
                                                                     onChange={handle_file_change2}
-                                                                    ref={fileInputRef}
+                                                                    //ref={fileInputRef2}
                                                                 />
                                                             </div>
 
