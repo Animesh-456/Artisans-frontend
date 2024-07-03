@@ -1,6 +1,6 @@
 
 import { useAtom, useAtomValue } from "jotai";
-
+import { toast } from "react-hot-toast";
 import React, { useEffect, useState } from "react";
 import api from "../../src/api/services/api";
 import common from "../../src/helpers/common";
@@ -47,16 +47,43 @@ const SignIn = (props: Props) => {
 	const handleLogin = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
+		// api.auth.login(
+		// 	{ body: Pick(["email_username", "password"], login) },
+		// 	(d) => {
+		// 		if (storedProject != null) {
+
+		// 			api.project.get_temp(
+		// 				{ body: { project_ids: [storedProject] } },
+		// 				(d) => {
+		// 					setStoredProject(null);
+		// 				},
+		// 			);
+		// 		}
+		// 	},
+		// );
+
 		api.auth.login(
 			{ body: Pick(["email_username", "password"], login) },
 			(d) => {
 				if (storedProject != null) {
-					api.project.get_temp(
-						{ body: { project_ids: [storedProject] } },
-						(d) => {
-							setStoredProject(null);
-						},
-					);
+					if (d?.data?.role_id === 1) {
+						
+						api.project.get_temp(
+							{ body: { project_ids: [storedProject] } },
+							(d) => {
+								setStoredProject(null);
+							},
+						);
+					} else {
+						toast.error("Only customers can post jobs.");
+						setStoredProject(null);
+					}
+				}
+				
+				if (d?.data?.role_id === 1) {
+					router.push("/account/jobs");
+				} else if (d?.data?.role_id === 2) {
+					router.push("/account/jobs");
 				}
 			},
 		);
