@@ -2824,3 +2824,23 @@ select {
 .icon_upload .upload-btn-wrapper .btn .fa-plus-circle {
   color: #080424;
 }
+
+
+
+// Bid btn style
+
+.bid-btn {
+  background: #ef6100;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+  font-family: "Poppins", sans-serif;
+  padding: 6px 22px;
+  transition: box-shadow 1s;
+  border: none;
+  cursor: pointer;
+}
+
+.bid-btn:hover {
+  box-shadow: none;
+}

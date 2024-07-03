@@ -124,24 +124,14 @@ const ProjectDetail = () => {
         });
     };
 
-    const handleSubmitReview = () => {
-        let idString = String(router.query.name);
-        const segments = idString.split('-');
-        let id = segments[segments.length - 1];
-        api.project.review_machinist({ body: review }, () => {
-            setreview("comments", "")(null);
-            setOpenReview(false);
-            localStorage.setItem('ShowReview', '2')
-            api.project.detail({ params: { id: id } });
-            api.project.project_review({ params: { id: id } });
-        });
 
-    };
+
 
     const handleAddBid = () => {
         if (!will_submit && !bid.bid_amount && !bid.bid_amount_gbp) {
             return toast.error("Please submit the amount");
         }
+
 
         let form = new FormData();
 
@@ -208,6 +198,92 @@ const ProjectDetail = () => {
             api.project.detail({ params: { id: id } });
         });
     };
+
+
+    const handleSubmitReview = () => {
+        let idString = String(router.query.name);
+        const segments = idString.split('-');
+        let id = segments[segments.length - 1];
+        api.project.review_machinist({ body: review }, () => {
+            setreview("comments", "")(null);
+            setOpenReview(false);
+            localStorage.setItem('ShowReview', '2')
+            api.project.detail({ params: { id: id } });
+            api.project.project_review({ params: { id: id } });
+        });
+
+    };
+
+    // const handleAddBid = () => {
+    //     if (!will_submit && !bid.bid_amount && !bid.bid_amount_gbp) {
+    //         return toast.error("Please submit the amount");
+    //     }
+
+    //     let form = new FormData();
+
+    //     if (file) {
+    //         for (let i = 0; i < file.length; i++) {
+    //             form.append("file", file[i]);
+    //         }
+    //     }
+
+    //     for (const key of Object.keys(bid)) {
+    //         form.append(key, bid[key]);
+    //     }
+
+    //     if (bid_id) {
+    //         api.project.update_bid(
+    //             { body: bid, file: form, params: { id: bid_id } },
+    //             () => {
+    //                 setOpen_offer(false);
+    //                 setwill_submit(false);
+    //                 for (const key of Object.keys(bid)) {
+    //                     setbid(key, "")(null);
+    //                 }
+    //                 setFile(null);
+    //                 let idString = String(router.query.name);
+
+    //                 const segments = idString.split('-');
+    //                 let id = segments[segments.length - 1];
+
+    //                 if (!id) {
+    //                     router.push("/");
+    //                 }
+
+    //                 setQuestion("project_id", id)(null);
+    //                 setBid_id(null);
+    //                 setbid("project_id", id)(null);
+    //                 setbid("user_id", user?.id)(null);
+    //                 api.project.detail({ params: { id: id } });
+    //             },
+    //         );
+
+    //         return true;
+    //     }
+
+    //     api.project.add_bid({ body: bid, file: form }, () => {
+    //         setOpen_offer(false);
+    //         setwill_submit(false);
+    //         for (const key of Object.keys(bid)) {
+    //             setbid(key, "")(null);
+    //         }
+    //         setFile(null);
+    //         let idString = String(router.query.name);
+
+    //         const segments = idString.split('-');
+    //         let id = segments[segments.length - 1];
+
+    //         if (!id) {
+    //             router.push("/");
+    //         }
+
+    //         setQuestion("project_id", id)(null);
+    //         setbid("project_id", id)(null);
+    //         setbid("user_id", user?.id)(null);
+
+    //         api.project.detail({ params: { id: id } });
+    //     });
+    // };
 
     useEffect(() => {
         if (!router.isReady) return;
@@ -1792,150 +1868,150 @@ const ProjectDetail = () => {
 
                 <div className="modal-body">
                     <div className="css-ung">
-                        <form>
-                            <p>
-                                Post a message, a question for the customer (optional)
-                            </p>
-                            <div className="from_feild">
-                                <label>
-                                    Send a public message to the customer.
-                                </label>
-                                <textarea name="message" rows={4} defaultValue={""}
-                                    value={question.message}
-                                    onChange={setQuestion("message")} placeholder="Write your message here..."></textarea>
-                            </div>
-                            <input type="submit" name="Prebid" onClick={handleQuestion} />
-                            <hr />
-                            <div className="row">
-                                <div className="col-sm-12">
-                                    <h5>
-                                        Make an offer
-                                    </h5>
-                                    <p>
-                                        1. You can describe your offer here.
-                                    </p>
-                                    <p>
-                                        2. Do not include your contact details (email, telephone, address etc...).
-                                    </p>
-                                    <p>
-                                        3. Shipping costs (sending with mandatory traceability) must be included in the price offered to the customer.
-                                    </p>
-                                    <div className="from_feild">
-                                        <label>Comment:</label>
-                                        <textarea name="message2" defaultValue={""}
-                                            value={bid.bid_desc}
-                                            onChange={setbid("bid_desc")} rows={4} placeholder="Describe your offer here..."></textarea>
-                                    </div>
-                                    <div className="from_feild">
-                                        <label>Attach Your Files Here: <span>*</span></label>
-                                        <div className="upload-btn-wrapper">
-                                            <button className="btn">
-                                                <i className="fa fa-upload"></i>
-                                                Add files (Max. &lt; 3 Mb)
-                                            </button>
-                                            <input type="file" name="myfile" multiple onChange={handle_file_change} />
-
-
-                                        </div>
-
-                                        <br />
-                                        <br />
-
-
-                                        {pr < 101 ? (
-                                            <ProgressBar now={pr} label={`${pr}%`} />
-                                        ) : (<></>)}
-
-
-                                        {file && pr > 100 ? (
-                                            file?.map((f) => {
-                                                return (
-                                                    <>
-                                                        <div className="pro_div">
-                                                            <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
-                                                        </div>
-                                                    </>
-                                                )
-                                            })
-                                        ) : (<></>)}
-                                    </div>
-                                    <div className="from_feild">
-                                        <label>
-                                            Paid to me: ₹
-                                        </label>
-                                        <input name="txtPrice" type="text" value={bid.bid_amount} disabled
-                                            onChange={setbid("bid_amount")} placeholder="Type here..." />
-                                    </div>
-                                    <div className="from_feild">
-                                        <label>Price for the Customer: ₹ </label>
-                                        <small>
-                                            Includes aartstudio fees
-                                        </small>
-                                        <input name="bidAmt" type="text" value={bid.bid_amount_gbp}
-                                            disabled={ischecked}
-                                            onChange={setbid("bid_amount_gbp")} placeholder="Type here..." />
-                                    </div>
-                                    <div className="from_feild">
-                                        <label>
-                                            Estimated Shipping Time:
-                                        </label>
-                                        <div className="form-inline1">
-                                            <select name="days" value={bid.bid_days}
-                                                onChange={setbid("bid_days")} disabled={ischecked}>
-                                                <option value={0}>-- Select --</option>
-                                                <option value={2}>2 Days</option>
-                                                <option value={3}>3 Days</option>
-                                                <option value={4}>4 Days</option>
-                                                <option value={5}>5 Days</option>
-                                                <option value={6}>6 Days</option>
-                                                <option value={7}>7 Days</option>
-                                                <option value={8}>8 Days</option>
-                                                <option value={9}>9 Days</option>
-                                                <option value={10}>10 Days</option>
-                                                <option value={11}>11 Days</option>
-                                                <option value={12}>12 Days</option>
-                                                <option value={13}>13 Days</option>
-                                                <option value={14}>14 Days</option>
-                                                <option value={15}>15 Days</option>
-                                                <option value={16}>16 Days</option>
-                                                <option value={17}>17 Days</option>
-                                                <option value={18}>18 Days</option>
-                                                <option value={19}>19 Days</option>
-                                                <option value={20}>20 Days</option>
-                                                <option value={21}>21 Days</option>
-                                                <option value={22}>22 Days</option>
-                                                <option value={23}>23 Days</option>
-                                                <option value={24}>24 Days</option>
-                                                <option value={25}>25 Days</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="from_feild">
-                                        <div className="form-group form-check">
-                                            <label className="form-check-label">
-                                                <input onChange={(e) => {
-                                                    setwill_submit(e.target.checked);
-                                                    if (e.target.checked) {
-                                                        setbid("bid_amount", "0")(null);
-                                                        setbid("bid_amount_gbp", "0")(null);
-                                                        setbid("bid_days", "0")(0);
-                                                        setischecked(true)
-                                                    } else if (!e.target.checked) {
-                                                        setischecked(false)
-                                                    }
-                                                }} className="form-check-input" type="checkbox" />
-                                                I will specify the price later
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <input type="submit" name="Prebid" onClick={handleAddBid} />
+                        <p>
+                            Post a message, a question for the customer (optional)
+                        </p>
+                        <div className="from_feild">
+                            <label>
+                                Send a public message to the customer.
+                            </label>
+                            <textarea name="message" rows={4} defaultValue={""}
+                                value={question.message}
+                                onChange={setQuestion("message")} placeholder="Write your message here..."></textarea>
+                        </div>
+                        <input type="submit" name="Prebid" onClick={handleQuestion} />
+                        <hr />
+                        <div className="row">
+                            <div className="col-sm-12">
+                                <h5>
+                                    Make an offer
+                                </h5>
+                                <p>
+                                    1. You can describe your offer here.
+                                </p>
+                                <p>
+                                    2. Do not include your contact details (email, telephone, address etc...).
+                                </p>
+                                <p>
+                                    3. Shipping costs (sending with mandatory traceability) must be included in the price offered to the customer.
+                                </p>
+                                <div className="from_feild">
+                                    <label>Comment:</label>
+                                    <textarea name="message2" defaultValue={""}
+                                        value={bid.bid_desc}
+                                        onChange={setbid("bid_desc")} rows={4} placeholder="Describe your offer here..."></textarea>
                                 </div>
-                            </div>
+                                <div className="from_feild">
+                                    <label>Attach Your Files Here: <span>*</span></label>
+                                    <div className="upload-btn-wrapper">
+                                        <button className="btn">
+                                            <i className="fa fa-upload"></i>
+                                            Add files (Max. &lt; 3 Mb)
+                                        </button>
+                                        <input type="file" name="myfile" multiple onChange={handle_file_change} />
 
-                            <div className="row css-kjus">
 
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+
+                                    {pr < 101 ? (
+                                        <ProgressBar now={pr} label={`${pr}%`} />
+                                    ) : (<></>)}
+
+
+                                    {file && pr > 100 ? (
+                                        file?.map((f) => {
+                                            return (
+                                                <>
+                                                    <div className="pro_div">
+                                                        <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+                                    ) : (<></>)}
+                                </div>
+                                <div className="from_feild">
+                                    <label>
+                                        Paid to me: ₹
+                                    </label>
+                                    <input type="text" value={bid.bid_amount} disabled
+                                        onChange={setbid("bid_amount")} placeholder="Type here..." />
+                                </div>
+                                <div className="from_feild">
+                                    <label>Price for the Customer: ₹ </label>
+                                    <small>
+                                        Includes aartstudio fees
+                                    </small>
+                                    <input type="text" value={bid.bid_amount_gbp}
+                                        disabled={ischecked}
+                                        onChange={setbid("bid_amount_gbp")} placeholder="Type here..." />
+                                </div>
+                                <div className="from_feild">
+                                    <label>
+                                        Estimated Shipping Time:
+                                    </label>
+                                    <div className="form-inline1">
+                                        <select name="days" value={bid.bid_days}
+                                            onChange={setbid("bid_days")} disabled={ischecked}>
+                                            <option value={0}>-- Select --</option>
+                                            <option value={2}>2 Days</option>
+                                            <option value={3}>3 Days</option>
+                                            <option value={4}>4 Days</option>
+                                            <option value={5}>5 Days</option>
+                                            <option value={6}>6 Days</option>
+                                            <option value={7}>7 Days</option>
+                                            <option value={8}>8 Days</option>
+                                            <option value={9}>9 Days</option>
+                                            <option value={10}>10 Days</option>
+                                            <option value={11}>11 Days</option>
+                                            <option value={12}>12 Days</option>
+                                            <option value={13}>13 Days</option>
+                                            <option value={14}>14 Days</option>
+                                            <option value={15}>15 Days</option>
+                                            <option value={16}>16 Days</option>
+                                            <option value={17}>17 Days</option>
+                                            <option value={18}>18 Days</option>
+                                            <option value={19}>19 Days</option>
+                                            <option value={20}>20 Days</option>
+                                            <option value={21}>21 Days</option>
+                                            <option value={22}>22 Days</option>
+                                            <option value={23}>23 Days</option>
+                                            <option value={24}>24 Days</option>
+                                            <option value={25}>25 Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="from_feild">
+                                    <div className="form-group form-check">
+                                        <label className="form-check-label">
+                                            <input onChange={(e) => {
+                                                setwill_submit(e.target.checked);
+                                                if (e.target.checked) {
+                                                    setbid("bid_amount", "0")(null);
+                                                    setbid("bid_amount_gbp", "0")(null);
+                                                    setbid("bid_days", "0")(0);
+                                                    setischecked(true)
+                                                } else if (!e.target.checked) {
+                                                    setischecked(false)
+                                                }
+                                            }} className="form-check-input" type="checkbox" />
+                                            I will specify the price later
+                                        </label>
+                                    </div>
+                                </div>
+                                {/* <input type="submit" name="Prebid" onClick={handleAddBid} /> */}
+                                <button className="bid-btn" onClick={handleAddBid}>Submit</button>
                             </div>
-                        </form>
+                        </div>
+
+                        <div className="row css-kjus">
+
+                        </div>
+
                     </div>
                 </div>
 

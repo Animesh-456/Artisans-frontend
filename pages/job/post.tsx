@@ -313,7 +313,7 @@ const Post = (prp) => {
 
 	// Redirect or display a message if the user is not a customer with role id 1
 	useEffect(() => {
-		if (user && !isCustomer(user)) {
+		if (user && !isCustomer(user)) {	
 			toast.error("Artist do not have permission to post jobs.");
 			router.push('/'); // Redirect to home page or any other page
 		}
