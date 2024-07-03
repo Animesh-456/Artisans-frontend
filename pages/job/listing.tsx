@@ -170,7 +170,7 @@ const Listing = (prp) => {
 
 
                         let n = new Date().toLocaleString('en-US', {
-                            timeZone: 'Europe/Paris',
+                            timeZone: 'Asia/Kolkata',
                         });
                         const nd = new Date(n)
 
@@ -251,7 +251,7 @@ const Listing = (prp) => {
                                             ) : (
                                                 <>
 
-                                                    <img className="art-img1"  src={common.get_attachment(
+                                                    <img className="art-img1" src={common.get_attachment(
                                                         (l?.attachment_name), formattedDate) || "../img/pic2.png"} alt="art-image" />
                                                 </>
                                             )}
@@ -267,36 +267,36 @@ const Listing = (prp) => {
                                     <div className="col-sm-9">
                                         <div className="latest_request_text">
                                             <h1>{l?.project_name}</h1>
-                                            
-                                                {/* <div> */}
 
-                                                    {l?.description.length > 250 ? (
-                                                        // <div>
+                                            {/* <div> */}
 
-                                                            <>
+                                            {l?.description.length > 250 ? (
+                                                // <div>
 
-                                                                {expandedRows.includes(index) ? (
+                                                <>
 
-                                                                    <></>
+                                                    {expandedRows.includes(index) ? (
 
-                                                                ) : (
-                                                                    <p>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
-                                                                )}
+                                                        <></>
 
-                                                            </>
-
-                                                        // </div>
-                                                    ) : (<p>{l?.description}</p>)}
-                                                    {expandedRows.includes(index) && (
-
-                                                        <p>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
-
+                                                    ) : (
+                                                        <p>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
                                                     )}
 
+                                                </>
+
+                                                // </div>
+                                            ) : (<p>{l?.description}</p>)}
+                                            {expandedRows.includes(index) && (
+
+                                                <p>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
+
+                                            )}
 
 
-                                                {/* </div> */}
-                                            
+
+                                            {/* </div> */}
+
                                             <div>
                                                 <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
                                                 <span>Posted: {diffInDays} d {hourDifference} h ago</span>
