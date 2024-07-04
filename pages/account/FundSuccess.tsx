@@ -10,18 +10,24 @@ import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Button } from "react-bootstrap";
 import Router from "next/router";
+import { useRouter } from "next/router";
 
 type Props = {};
 
-const RedirectProject = () => {
-    //const router = useRouter();
-    //  router.push(localStorage.getItem('items'))
-    //window.location.href = localStorage.getItem('items')
-    //Router.replace(`${localStorage.getItem('items')}`)
-    console.log("funds success", localStorage.getItem('items'))
 
-}
 const jobs = () => {
+
+
+
+    const RedirectProject = () => {
+        // router.push(localStorage.getItem('items'))
+        // window.location.href = localStorage.getItem('items')
+        // Router.replace(`${localStorage.getItem('items')}`)
+        // console.log("funds success", localStorage.getItem('items'))
+        Router.replace(`${localStorage.getItem('items')}`)
+        console.log("funds success", localStorage.getItem('items'))
+
+    }
 
     return (
         <>

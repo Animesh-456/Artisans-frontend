@@ -1112,7 +1112,7 @@ const ProjectDetail = () => {
                                     {(data?.project_status == '5' && reviewCust[0]?.rating == null) && (
 
                                         <div className="latest_request_text">
-                                            <a style={{ color: "#fff", cursor: "pointer" }} onClick={() => setOpenReview(true)}>Pay Artist</a>
+                                            <a style={{ color: "#fff", cursor: "pointer" }} onClick={() => setOpenReview(true)}>Evaluate</a>
                                         </div>
 
                                     )}
