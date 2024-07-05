@@ -422,7 +422,7 @@ const Post = (prp) => {
 									<p>The first file will be used for a thumbnail picture</p>
 									<p>Max file size: 3 MB</p>
 								</div>
-								<div className="from_feild">
+								{/* <div className="from_feild">
 									<label>I would like to receive quotes before: <span>*</span></label>
 									<div className="form-check">
 										<label className="form-check-label">
@@ -440,7 +440,7 @@ const Post = (prp) => {
 											/>6 Days
 										</label>
 									</div>
-								</div>
+								</div> */}
 								<div className="from_feild">
 									<label>Visibility: <span>*</span></label>
 									<div className="form-check">
@@ -542,10 +542,10 @@ const Post = (prp) => {
 							<h5>Comment:</h5>
 							<p>{project?.description}</p>
 						</label>
-						<label>
+						{/* <label>
 							<h5>I would like to receive quotes before:</h5>
 							<p>{project.post_for} days</p>
-						</label>
+						</label> */}
 						<label>
 							<h5>Visibility</h5>
 							<p>{project.visibility}</p>

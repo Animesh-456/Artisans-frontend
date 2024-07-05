@@ -300,9 +300,7 @@ const Listing = (prp) => {
                                             <div>
                                                 <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
                                                 <span>Posted: {diffInDays} d {hourDifference} h ago</span>
-                                                <span>End: {diffInDays2 >= 0 ? (
-                                                    <>{diffInDays2} d {hourDifference2} h</>
-                                                ) : (<>0 days 0 hours</>)}</span>
+                                                <span></span>
                                                 <span><a href="#">{l?.bids_count} offers</a></span>
                                             </div>
                                             <Link href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link>

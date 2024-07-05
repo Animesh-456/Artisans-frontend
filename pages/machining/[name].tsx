@@ -1585,11 +1585,11 @@ const ProjectDetail = () => {
                                 <div className="project_details_content">
                                     <p><span>Posted</span><span><b>{moment(data?.project_post_date).format("DD-MMMM-YYYY")}</b></span></p>
                                     <p><span>Visibility</span><span><b>{data?.visibility}</b></span></p>
-                                    <p><span>Remaining Time</span><span><b>{diffInDays >= 0 && hourDifference >= 0 ? (
+                                    {/* <p><span>Remaining Time</span><span><b>{diffInDays >= 0 && hourDifference >= 0 ? (
                                         <>{diffInDays} days {hourDifference} hours</>
                                     ) : (
                                         <>0 days</>
-                                    )}</b></span></p>
+                                    )}</b></span></p> */}
                                     <p><span>Posted by</span>
                                         <b>
                                             <a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}>{data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
