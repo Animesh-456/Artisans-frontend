@@ -84,7 +84,21 @@ const responsive = {
 
 
 function Home(prp) {
+    const latest = useAtomValue(atom.project.api.latest);
+    const allreviews = useAtomValue(atom.project.api.allreviews);
+    const all_list = useAtomValue(atom.project.api.all_list);
+    const [numPages, setNumPages] = useState(null);
+    const [filename, setFilename] = useState("");
+    const [opt, setOpt] = useAtom(atom.project.api.list_opt);
 
+    const user = useAtomValue(atom.storage.user);
+
+    const onDocumentLoadSuccess = ({ numPages }) => {
+        //console.log("total page in pdf", numPages);
+        setNumPages(numPages);
+    };
+
+    const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
     return (
         <>
@@ -303,13 +317,164 @@ function Home(prp) {
                         <h1>Latest Requests</h1>
                     </div>
                     <div className="row">
-                        <div className="col-sm-3">
+
+                        {latest?.length
+                            ? latest?.map((l) => {
+                                const strt = new Date(l?.project_post_format_date)
+
+
+                                let n = new Date().toLocaleString('en-US', {
+                                    timeZone: 'Europe/Paris',
+                                });
+                                const nd = new Date(n)
+
+                                const today = new Date()
+                                nd.setHours(nd.getHours(), nd.getMinutes(), nd.getSeconds());
+
+
+                                // Calculate the time difference in milliseconds
+                                const timeDiff = nd.getTime() - strt.getTime();
+
+                                // Calculate the number of days
+                                const diffInDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+                                // Calculate the number of remaining hours
+                                const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+
+                                // console.log("ndis", diffInDays, hourDifference)
+
+                                const date = new Date(l?.created * 1000);
+
+                                const year = date.getFullYear();
+                                const month = String(date.getMonth() + 1).padStart(2, '0');
+                                const day = String(date.getDate()).padStart(2, '0');
+                                const hours = String(date.getHours()).padStart(2, '0');
+                                const minutes = String(date.getMinutes()).padStart(2, '0');
+                                const seconds = String(date.getSeconds()).padStart(2, '0');
+
+                                const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                                const dt = new Date();
+                                console.log("current date--------->>", dt);
+                                //console.log('created-------------------',formattedDate); 				
+                                return (
+                                    <>
+                                    <div className='col-sm-3'>
+                                        <div className='latest_request_pic'>
+                                            {l?.visibility.toLowerCase() == "public" ? (
+                                                <figure>
+                                                    {l?.attachment_name?.includes(",") ? (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')).includes("pdf") ? <div className="pdf-container"><Document
+                                                        file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
+                                                        onLoadSuccess={onDocumentLoadSuccess}
+                                                    >
+                                                        <Page pageNumber={1} width={200} />
+                                                    </Document> </div> : (
+
+                                                        <img
+                                                            src={common.get_attachment(
+                                                                (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')),
+                                                                formattedDate,
+                                                            )}
+                                                            alt="Custom cnc"
+                                                        />
+                                                    ) : (l?.attachment_name).includes("pdf") ? <div className="pdf-container"><Document
+                                                        file={common.get_attachment((l?.attachment_name), formattedDate)}
+                                                        onLoadSuccess={onDocumentLoadSuccess}
+                                                    >
+                                                        <Page pageNumber={1} width={200} />
+                                                    </Document> </div> : (
+                                                        <img
+                                                            src={common.get_attachment(
+                                                                (l?.attachment_name),
+                                                                formattedDate,
+                                                            )}
+                                                            alt="Custom cnc"
+                                                        />
+                                                    )}
+                                                </figure>
+                                            ) : l?.visibility.toLowerCase() == "private" ? (
+                                                (user && (user?.role_id == 2 && Number(totaljobs) >= 1) || (user?.id == l?.creator_id) ? (
+                                                    <figure>
+                                                        {l?.attachment_name?.includes(",") ? (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')).includes("pdf") ? <div className="pdf-container"><Document
+                                                            file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
+                                                            onLoadSuccess={onDocumentLoadSuccess}
+                                                        >
+                                                            <Page pageNumber={1} width={200} />
+                                                        </Document> </div> : (
+                                                            <img
+                                                                src={common.get_attachment(
+                                                                    (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')),
+                                                                    formattedDate,
+                                                                )}
+                                                                alt="Custom cnc"
+                                                            />
+                                                        ) : (l?.attachment_name).includes("pdf") ? <div className="pdf-container"><Document
+                                                            file={common.get_attachment((l?.attachment_name), formattedDate)}
+                                                            onLoadSuccess={onDocumentLoadSuccess}
+                                                        >
+                                                            <Page pageNumber={1} width={200} />
+                                                        </Document> </div> : (
+                                                            <img
+                                                                src={common.get_attachment(
+                                                                    (l?.attachment_name),
+                                                                    formattedDate,
+                                                                )}
+                                                                alt="Custom cnc"
+                                                            />
+                                                        )}
+                                                    </figure>
+                                                ) : (<figure><img
+                                                    src='/img/private.jpg'
+                                                /></figure>))
+                                            ) : (<></>)}
+                                        </div>
+                                     </div>    
+                                    <div className="col-sm-9">
+
+                                        <div className="latest_request_text">
+
+                                            <h1 >
+                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
+                                            </h1>
+
+                                                {l?.visibility.toLowerCase() == "private" ? (
+                                                    (user && ((user?.role_id == 2 && Number(totaljobs) >= 1) || l?.creator_id == user?.id) ? (
+                                                        <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 80) + '...') : (l?.description)}</p>
+                                                    ) : (
+                                                        <></>
+                                                    ))
+                                                ) : (<p>{l?.description?.length > 80 ? (l?.description?.slice(0, 80) + '...') : (l?.description)}</p>)}
+
+                                                <div>
+                                                    <span>by mikeschmidt41D <i className="fa fa-check-circle"></i></span>
+                                                    <span>
+                                                        Posté:{" "}
+                                                        il y a  {diffInDays} d {hourDifference}
+
+                                                    </span>
+                                                    {/* <span>End: 5d 23h</span> */}
+                                                    <span><a href="#">3 offers</a></span>
+                                                </div>
+                                           
+                                                <a href="#">View Details</a>
+
+
+
+                                           
+                                        </div>
+                                        </div>
+                                    </>
+
+                                );
+                            }).slice(0, 3)
+                            : ""}
+
+                        {/* <div className="col-sm-3">
                             <div className="latest_request_pic">
                                 <img src="img/pic2.png" alt="" />
                                 <img className="cir" src="img/circle.png" alt="" />
                             </div>
-                        </div>
-                        <div className="col-sm-9">
+                        </div> */}
+                        {/* <div className="col-sm-9">
                             <div className="latest_request_text">
                                 <h1>Create Eye-Catching Packaging for YoBe&apos;s Protein Yogurt to <br />Shine at Whole Foods</h1>
                                 <p>We are a traditional supper club located On Main St in Wisconsin. We will feature steaks, chops, ribs, relish trays, fish fries, etc. </p>
@@ -321,9 +486,9 @@ function Home(prp) {
                                 </div>
                                 <a href="#">View Details</a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
-                    <hr />
+                    {/* <hr />
                     <div className="row">
                         <div className="col-sm-3">
                             <div className="latest_request_pic">
@@ -360,8 +525,8 @@ function Home(prp) {
                                 <a href="#">View Details</a>
                             </div>
                         </div>
-                    </div>
-                    <a className="view_all viewall_center" href="#">View all <img src="img/arrow.png" width="11px" alt="" /></a>
+                    </div> */}
+                    <a className="view_all viewall_center" href="/machining/listing">View all <img src="img/arrow.png" width="11px" alt="" /></a>
                 </div>
             </section>
 
