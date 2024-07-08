@@ -430,7 +430,7 @@ function Home(prp) {
                                                     <span></span>
                                                     <span><a href="#">{l?.bids_count} offers</a></span>
                                                 </div>
-                                                <a href={"/machining/listing"}>View Details</a>
+                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</a>
                                             </div>
                                         </div>
                                     </div>
