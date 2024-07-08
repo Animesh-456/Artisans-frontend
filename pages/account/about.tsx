@@ -22,9 +22,13 @@ const about = () => {
                                 <h1>About Art Studio</h1>
                             </div>
                             <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                <b>AARTSTUDIO</b>  is an innovative online platform that connects individuals looking for custom art with a diverse community of skilled artisans. <br />
+                                Here's how it works:
+
+
                                 <br /><br />
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                <b>Posting a Requirement:</b>  Users can post their custom art requirements on the platform, detailing their specific needs, preferences, and any other relevant information.
+
                             </p>
                         </div>
                     </div>
@@ -32,7 +36,7 @@ const about = () => {
             </section>
 
 
-            <section className="missionwp"  style={{ backgroundImage: `url(../img/about-bg.jpg)` }} >
+            <section className="missionwp" style={{ backgroundImage: `url(../img/about-bg.jpg)` }} >
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-6">
@@ -40,9 +44,9 @@ const about = () => {
                                 <h1>About Art Studio</h1>
                             </div>
                             <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                <b>Receiving Quotations:</b> Once a requirement is posted, artisans enlisted on the platform will review the request and send their quotations. These quotations include their proposed price, timeframe, and any other pertinent details.
                                 <br /><br />
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                <b>Reviewing Artisans:</b> Users can view profiles of the artisans who send quotations. These profiles include previous work samples, customer reviews, ratings, and other relevant information to help the user make an informed decision.
                             </p>
                         </div>
                         <div className="col-sm-6">
@@ -63,9 +67,13 @@ const about = () => {
                                 <h1>Our Story</h1>
                             </div>
                             <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                <b>Selecting an Artisan:</b> After reviewing the quotations and artisan profiles, the user can select the artisan that best fits their requirements, budget, and artistic style.
                                 <br /><br />
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                <b>Completion and Delivery:</b> The selected artisan completes the custom art piece according to the agreed terms, and upon completion, the user receives their unique artwork.
+
+                                <br /><br />
+                                <b>AARTSTUDIO</b> aims to streamline the process of commissioning custom art, ensuring a seamless and satisfying experience for both the client and the artist.
+
                             </p>
                         </div>
                     </div>
@@ -87,7 +95,7 @@ const about = () => {
                 </div>
             </section>
 
-            
+
         </>
     )
 }
