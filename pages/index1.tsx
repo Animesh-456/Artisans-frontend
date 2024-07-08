@@ -473,9 +473,6 @@ function Home(prp) {
                             {allreviews?.length ? allreviews?.map((l) => {
 
 
-
-
-
                                 return (
                                     <div className='col-sm-4'>
 

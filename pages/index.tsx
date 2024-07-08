@@ -100,6 +100,12 @@ function Home(prp) {
 
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
+
+    useEffect(() => {
+        api.project.latest({ params: { page: 0 } });
+    }, []);
+    
+
     return (
         <>
 
@@ -216,37 +222,38 @@ function Home(prp) {
                         <li>
                             <a href="#">
                                 <img src="img/icon.png" alt="" />
-                                <p>Painting</p>
+                                <p>Drawing</p>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <img src="img/icon.png" alt="" />
-                                <p>Painting</p>
+                                <p>Sculpture</p>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <img src="img/icon.png" alt="" />
-                                <p>Painting</p>
+                                <p>Photography</p>
+                               
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <img src="img/icon.png" alt="" />
-                                <p>Painting</p>
+                                <p>Printmaking</p>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <img src="img/icon.png" alt="" />
-                                <p>Painting</p>
+                                <p>Mixed Media</p>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <img src="img/icon.png" alt="" />
-                                <p>Painting</p>
+                                <p>Textile Art</p>
                             </a>
                         </li>
                     </ul>
@@ -316,165 +323,17 @@ function Home(prp) {
                     <div className="heading_title latest_request_heading">
                         <h1>Latest Requests</h1>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
 
-                        {latest?.length
-                            ? latest?.map((l) => {
-                                const strt = new Date(l?.project_post_format_date)
+                        
 
-
-                                let n = new Date().toLocaleString('en-US', {
-                                    timeZone: 'Europe/Paris',
-                                });
-                                const nd = new Date(n)
-
-                                const today = new Date()
-                                nd.setHours(nd.getHours(), nd.getMinutes(), nd.getSeconds());
-
-
-                                // Calculate the time difference in milliseconds
-                                const timeDiff = nd.getTime() - strt.getTime();
-
-                                // Calculate the number of days
-                                const diffInDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-                                // Calculate the number of remaining hours
-                                const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
-
-                                // console.log("ndis", diffInDays, hourDifference)
-
-                                const date = new Date(l?.created * 1000);
-
-                                const year = date.getFullYear();
-                                const month = String(date.getMonth() + 1).padStart(2, '0');
-                                const day = String(date.getDate()).padStart(2, '0');
-                                const hours = String(date.getHours()).padStart(2, '0');
-                                const minutes = String(date.getMinutes()).padStart(2, '0');
-                                const seconds = String(date.getSeconds()).padStart(2, '0');
-
-                                const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-                                const dt = new Date();
-                                console.log("current date--------->>", dt);
-                                //console.log('created-------------------',formattedDate); 				
-                                return (
-                                    <>
-                                    <div className='col-sm-3'>
-                                        <div className='latest_request_pic'>
-                                            {l?.visibility.toLowerCase() == "public" ? (
-                                                <figure>
-                                                    {l?.attachment_name?.includes(",") ? (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')).includes("pdf") ? <div className="pdf-container"><Document
-                                                        file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
-                                                        onLoadSuccess={onDocumentLoadSuccess}
-                                                    >
-                                                        <Page pageNumber={1} width={200} />
-                                                    </Document> </div> : (
-
-                                                        <img
-                                                            src={common.get_attachment(
-                                                                (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')),
-                                                                formattedDate,
-                                                            )}
-                                                            alt="Custom cnc"
-                                                        />
-                                                    ) : (l?.attachment_name).includes("pdf") ? <div className="pdf-container"><Document
-                                                        file={common.get_attachment((l?.attachment_name), formattedDate)}
-                                                        onLoadSuccess={onDocumentLoadSuccess}
-                                                    >
-                                                        <Page pageNumber={1} width={200} />
-                                                    </Document> </div> : (
-                                                        <img
-                                                            src={common.get_attachment(
-                                                                (l?.attachment_name),
-                                                                formattedDate,
-                                                            )}
-                                                            alt="Custom cnc"
-                                                        />
-                                                    )}
-                                                </figure>
-                                            ) : l?.visibility.toLowerCase() == "private" ? (
-                                                (user && (user?.role_id == 2 && Number(totaljobs) >= 1) || (user?.id == l?.creator_id) ? (
-                                                    <figure>
-                                                        {l?.attachment_name?.includes(",") ? (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')).includes("pdf") ? <div className="pdf-container"><Document
-                                                            file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
-                                                            onLoadSuccess={onDocumentLoadSuccess}
-                                                        >
-                                                            <Page pageNumber={1} width={200} />
-                                                        </Document> </div> : (
-                                                            <img
-                                                                src={common.get_attachment(
-                                                                    (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')),
-                                                                    formattedDate,
-                                                                )}
-                                                                alt="Custom cnc"
-                                                            />
-                                                        ) : (l?.attachment_name).includes("pdf") ? <div className="pdf-container"><Document
-                                                            file={common.get_attachment((l?.attachment_name), formattedDate)}
-                                                            onLoadSuccess={onDocumentLoadSuccess}
-                                                        >
-                                                            <Page pageNumber={1} width={200} />
-                                                        </Document> </div> : (
-                                                            <img
-                                                                src={common.get_attachment(
-                                                                    (l?.attachment_name),
-                                                                    formattedDate,
-                                                                )}
-                                                                alt="Custom cnc"
-                                                            />
-                                                        )}
-                                                    </figure>
-                                                ) : (<figure><img
-                                                    src='/img/private.jpg'
-                                                /></figure>))
-                                            ) : (<></>)}
-                                        </div>
-                                     </div>    
-                                    <div className="col-sm-9">
-
-                                        <div className="latest_request_text">
-
-                                            <h1 >
-                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
-                                            </h1>
-
-                                                {l?.visibility.toLowerCase() == "private" ? (
-                                                    (user && ((user?.role_id == 2 && Number(totaljobs) >= 1) || l?.creator_id == user?.id) ? (
-                                                        <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 80) + '...') : (l?.description)}</p>
-                                                    ) : (
-                                                        <></>
-                                                    ))
-                                                ) : (<p>{l?.description?.length > 80 ? (l?.description?.slice(0, 80) + '...') : (l?.description)}</p>)}
-
-                                                <div>
-                                                    <span>by mikeschmidt41D <i className="fa fa-check-circle"></i></span>
-                                                    <span>
-                                                        Posté:{" "}
-                                                        il y a  {diffInDays} d {hourDifference}
-
-                                                    </span>
-                                                    {/* <span>End: 5d 23h</span> */}
-                                                    <span><a href="#">3 offers</a></span>
-                                                </div>
-                                           
-                                                <a href="#">View Details</a>
-
-
-
-                                           
-                                        </div>
-                                        </div>
-                                    </>
-
-                                );
-                            }).slice(0, 3)
-                            : ""}
-
-                        {/* <div className="col-sm-3">
+                        <div className="col-sm-3">
                             <div className="latest_request_pic">
                                 <img src="img/pic2.png" alt="" />
                                 <img className="cir" src="img/circle.png" alt="" />
                             </div>
-                        </div> */}
-                        {/* <div className="col-sm-9">
+                        </div>
+                        <div className="col-sm-9">
                             <div className="latest_request_text">
                                 <h1>Create Eye-Catching Packaging for YoBe&apos;s Protein Yogurt to <br />Shine at Whole Foods</h1>
                                 <p>We are a traditional supper club located On Main St in Wisconsin. We will feature steaks, chops, ribs, relish trays, fish fries, etc. </p>
@@ -486,47 +345,128 @@ function Home(prp) {
                                 </div>
                                 <a href="#">View Details</a>
                             </div>
-                        </div> */}
-                    </div>
-                    {/* <hr />
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <div className="latest_request_pic">
-                                <img src="img/pic2.png" alt="" />
-                            </div>
-                        </div>
-                        <div className="col-sm-9">
-                            <div className="latest_request_text">
-                                <h1>Create Eye-Catching Packaging for YoBe&apos;s Protein Yogurt to <br />Shine at Whole Foods</h1>
-                                <p>We are a traditional supper club located On Main St in Wisconsin. We will feature steaks, chops, ribs, relish trays, fish fries, etc. </p>
-                                <div>
-                                    <span>by mikeschmidt41D <i className="fa fa-check-circle"></i></span>
-                                    <span><i className="fa fa-clock-o"></i> 0 d 23 h ago</span>
-                                </div>
-                                <a href="#">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <div className="latest_request_pic">
-                                <img src="img/pic2.png" alt="" />
-                            </div>
-                        </div>
-                        <div className="col-sm-9">
-                            <div className="latest_request_text">
-                                <h1>Create Eye-Catching Packaging for YoBe&apos;s Protein Yogurt to <br />Shine at Whole Foods</h1>
-                                <p>We are a traditional supper club located On Main St in Wisconsin. We will feature steaks, chops, ribs, relish trays, fish fries, etc. </p>
-                                <div>
-                                    <span>by mikeschmidt41D <i className="fa fa-check-circle"></i></span>
-                                    <span><i className="fa fa-clock-o"></i> 0 d 23 h ago</span>
-                                </div>
-                                <a href="#">View Details</a>
-                            </div>
                         </div>
                     </div> */}
-                    <a className="view_all viewall_center" href="/machining/listing">View all <img src="img/arrow.png" width="11px" alt="" /></a>
+
+
+
+                    {latest?.length
+                        ? latest?.map((l) => {
+                            const strt = new Date(l?.project_post_format_date)
+
+
+                            let n = new Date().toLocaleString('en-US', {
+                                timeZone: 'Asia/Kolkata',
+                            });
+                            const nd = new Date(n)
+
+                            const today = new Date()
+                            nd.setHours(nd.getHours(), nd.getMinutes(), nd.getSeconds());
+
+                            const timeDiff = nd.getTime() - strt.getTime();
+
+                            const diffInDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+
+                            const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+
+
+                            const date = new Date(l?.created * 1000);
+
+                            const year = date.getFullYear();
+                            const month = String(date.getMonth() + 1).padStart(2, '0');
+                            const day = String(date.getDate()).padStart(2, '0');
+                            const hours = String(date.getHours()).padStart(2, '0');
+                            const minutes = String(date.getMinutes()).padStart(2, '0');
+                            const seconds = String(date.getSeconds()).padStart(2, '0');
+
+                            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                            const dt = new Date();
+                            console.log("current date--------->>", dt);
+
+                            return (
+                                <>
+                                    <div className="row">
+
+
+                                        {l?.visibility.toLowerCase() == "public" ? (
+                                            <div className="col-sm-3">
+                                                <div className="latest_request_pic">
+                                                    {l?.attachment_name?.includes(",") ? (
+                                                        <>
+                                                            <img className="art-img1" src={common.get_attachment(
+                                                                (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                            ) || "../img/logo.png"} alt="" /></>
+                                                    ) : (
+                                                        <>
+
+                                                            <img className="art-img1" src={common.get_attachment(
+                                                                (l?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
+                                                        </>
+                                                    )}
+                                                    {l?.project_status >= "1" ? (
+
+                                                        <img className="cir" src={"/img/circle.png"} alt="awarded-img" />
+                                                    ) : (
+                                                        <></>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        ) : l?.visibility.toLowerCase() == "private" ? (
+                                            (user && (user?.role_id == 2 && Number(totaljobs) >= 1) || (user?.id == l?.creator_id) ? (
+                                                <div className="col-sm-3">
+                                                    <div className="latest_request_pic">
+                                                        {l?.attachment_name?.includes(",") ? (
+                                                            <>
+                                                                <img className="art-img1" src={common.get_attachment(
+                                                                    (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                                ) || "../img/logo.png"} alt="" /></>
+                                                        ) : (
+                                                            <>
+
+                                                                <img className="art-img1" src={common.get_attachment(
+                                                                    (l?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
+                                                            </>
+                                                        )}
+                                                        {l?.project_status >= "1" ? (
+
+                                                            <img className="cir" src={"/img/circle.png"} alt="awarded-img" />
+                                                        ) : (
+                                                            <></>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            ) : (<figure><img
+                                                src='../img/logo.png'
+                                            /></figure>))
+                                        ) : (<></>)}
+
+
+
+                                        <div className="col-sm-9">
+                                            <div className="latest_request_text">
+                                                <h1>{l?.project_name}</h1>
+                                                <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 80) + '...') : (l?.description)} </p>
+                                                <div>
+                                                    <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
+                                                    <span>Posted: {diffInDays} days {hourDifference} hours</span>
+                                                    <span></span>
+                                                    <span><a href="#">{l?.bids_count} offers</a></span>
+                                                </div>
+                                                <a href={"/machining/listing"}>View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                </>
+
+                            );
+                        }).slice(0, 3)
+                        : ""}
+
+                    <hr />
+
+                    <a className="view_all viewall_center" href={"/machining/listing"}>View all <img src="img/arrow.png" width="11px" alt="" /></a>
                 </div>
             </section>
 

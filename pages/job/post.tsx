@@ -52,6 +52,7 @@ const Post = (prp) => {
 		description: "",
 		visibility: "Public",
 		post_for: "4",
+		category:"",
 
 	});
 
@@ -313,13 +314,16 @@ const Post = (prp) => {
 
 	// Redirect or display a message if the user is not a customer with role id 1
 	useEffect(() => {
-		if (user && !isCustomer(user)) {	
+		if (user && !isCustomer(user)) {
 			toast.error("Artist do not have permission to post jobs.");
 			router.push('/'); // Redirect to home page or any other page
 		}
 	}, [user]);
 
 	const [loading, setLoading] = useState(false);
+
+
+	console.log("category is :- ", project.category)
 
 	return (
 		<>
@@ -395,6 +399,43 @@ const Post = (prp) => {
 									</div>
 								</div>
 
+
+								{/* <div className="from_feild">
+									<label>I would like to receive quotes before: <span>*</span></label>
+									<div className="form-check">
+										<label className="form-check-label">
+											<input type="radio" className="form-check-input" name="otradio" value={"4"}
+												checked={project?.post_for == "4" ? true : false}
+												onChange={setproject("post_for")} /> 4 Days
+
+										</label>
+									</div>
+									<div className="form-check">
+										<label className="form-check-label">
+											<input type="radio" className="form-check-input" name="otradio" value={"6"}
+												checked={project?.post_for == "6" ? true : false}
+												onChange={setproject("post_for")}
+											/>6 Days
+										</label>
+									</div>
+								</div> */}
+
+								<label>Category</label>
+								<select name="category" id="category" value={project.category} onChange={setproject("category")}>
+									<option value="Painting" selected>Painting</option>
+									<option value="Drawing">Drawing</option>
+									<option value="Sculpture">Sculpture</option>
+									<option value="Photography">Photography</option>
+									<option value="Printmaking">Printmaking</option>
+									<option value="Digital Art">Digital Art</option>
+									<option value="Mixed Media">Mixed Media</option>
+									<option value="Textile Art">Textile Art</option>
+									<option value="Ceramics">Ceramics</option>
+									<option value="Ceramics">Ceramics</option>
+									<option value="Installation Art">Installation Art</option>
+								</select>
+
+
 								<br /><br /><br />
 								{pr < 101 ? (
 									<ProgressBar now={pr} label={`${pr}%`} />
@@ -452,7 +493,7 @@ const Post = (prp) => {
 										<label className="form-check-label">
 											<input type="radio" className="form-check-input" name="optradio" value={"Private"}
 												checked={project.visibility == "Private" ? true : false}
-												onChange={setproject("visibility")} />Private (visibility restricted to confirmed machinists)
+												onChange={setproject("visibility")} />Private (visibility restricted to confirmed artists)
 										</label>
 									</div>
 								</div>
@@ -539,9 +580,15 @@ const Post = (prp) => {
 							<p>{project.project_name}</p>
 						</label>
 						<label>
+							<h5>Category:</h5>
+							<p>{project?.category}</p>
+						</label>
+						<label>
 							<h5>Comment:</h5>
 							<p>{project?.description}</p>
 						</label>
+
+
 						{/* <label>
 							<h5>I would like to receive quotes before:</h5>
 							<p>{project.post_for} days</p>
