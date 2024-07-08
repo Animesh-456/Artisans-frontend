@@ -76,7 +76,7 @@ const how_it_works = (prp) => {
                 <meta name="googlebot" content="noindex" />
 
             </Head>
-<div
+            <div
                 className='banner_wp sign_banner'
                 style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
                 <div className='container'>

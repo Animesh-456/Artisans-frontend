@@ -93,20 +93,21 @@ export default function Footer({ }: Props) {
 								<ul>
 									<li><Link href="/">Home</Link></li>
 									<li><Link href="/account/about">About Us</Link></li>
-									<li><Link href="/job/post">Art Request</Link></li>
-									<li><Link href="/machining/listing">Browse Project</Link></li>
+									<li><Link href="/job/post">Custom Artwork Request</Link></li>
+									<li><Link href="/machining/listing">Artist & Artisans</Link></li>
+									<li><Link href="/page/works">How it Works</Link></li>
 									<li><Link href="/account/contact_us">Contact Us</Link></li>
 								</ul>
 							</div>
 							<div className="quick_left">
 								<h3>Resources</h3>
 								<ul>
-									<li><Link href="/auth/sign-in">Become a artist</Link></li>
-									<li><Link href="/">Blog</Link></li>
-									<li><Link href="/">Design without borders</Link></li>
-									<li><Link href="/">T-shirt ideas</Link></li>
-									<li><Link href="/">Designer resources</Link></li>
-									<li><Link href="/account/terms">Help</Link></li>
+									<li><Link href="/auth/sign-in">Join AartStudio</Link></li>
+									<li><Link href="/">Get Paid for your work</Link></li>
+									<li><Link href="/">Delivery & Shipping</Link></li>
+									<li><Link href="/">Blogs</Link></li>
+									<li><Link href="/account/assistance">FAQ</Link></li>
+
 								</ul>
 							</div>
 							<div className="quick_left">
