@@ -324,7 +324,7 @@ function Home(prp) {
 
 
                                 let n = new Date().toLocaleString('en-US', {
-                                    timeZone: 'Europe/Paris',
+                                    timeZone: 'Asia/Kolkata',
                                 });
                                 const nd = new Date(n)
 
@@ -358,41 +358,9 @@ function Home(prp) {
                                 //console.log('created-------------------',formattedDate); 				
                                 return (
                                     <>
-                                    <div className='col-sm-3'>
-                                        <div className='latest_request_pic'>
-                                            {l?.visibility.toLowerCase() == "public" ? (
-                                                <figure>
-                                                    {l?.attachment_name?.includes(",") ? (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')).includes("pdf") ? <div className="pdf-container"><Document
-                                                        file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
-                                                        onLoadSuccess={onDocumentLoadSuccess}
-                                                    >
-                                                        <Page pageNumber={1} width={200} />
-                                                    </Document> </div> : (
-
-                                                        <img
-                                                            src={common.get_attachment(
-                                                                (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')),
-                                                                formattedDate,
-                                                            )}
-                                                            alt="Custom cnc"
-                                                        />
-                                                    ) : (l?.attachment_name).includes("pdf") ? <div className="pdf-container"><Document
-                                                        file={common.get_attachment((l?.attachment_name), formattedDate)}
-                                                        onLoadSuccess={onDocumentLoadSuccess}
-                                                    >
-                                                        <Page pageNumber={1} width={200} />
-                                                    </Document> </div> : (
-                                                        <img
-                                                            src={common.get_attachment(
-                                                                (l?.attachment_name),
-                                                                formattedDate,
-                                                            )}
-                                                            alt="Custom cnc"
-                                                        />
-                                                    )}
-                                                </figure>
-                                            ) : l?.visibility.toLowerCase() == "private" ? (
-                                                (user && (user?.role_id == 2 && Number(totaljobs) >= 1) || (user?.id == l?.creator_id) ? (
+                                        <div className='col-sm-3'>
+                                            <div className='latest_request_pic'>
+                                                {l?.visibility.toLowerCase() == "public" ? (
                                                     <figure>
                                                         {l?.attachment_name?.includes(",") ? (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')).includes("pdf") ? <div className="pdf-container"><Document
                                                             file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
@@ -400,6 +368,7 @@ function Home(prp) {
                                                         >
                                                             <Page pageNumber={1} width={200} />
                                                         </Document> </div> : (
+
                                                             <img
                                                                 src={common.get_attachment(
                                                                     (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')),
@@ -422,19 +391,50 @@ function Home(prp) {
                                                             />
                                                         )}
                                                     </figure>
-                                                ) : (<figure><img
-                                                    src='/img/private.jpg'
-                                                /></figure>))
-                                            ) : (<></>)}
+                                                ) : l?.visibility.toLowerCase() == "private" ? (
+                                                    (user && (user?.role_id == 2 && Number(totaljobs) >= 1) || (user?.id == l?.creator_id) ? (
+                                                        <figure>
+                                                            {l?.attachment_name?.includes(",") ? (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')).includes("pdf") ? <div className="pdf-container"><Document
+                                                                file={common.get_attachment((l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate)}
+                                                                onLoadSuccess={onDocumentLoadSuccess}
+                                                            >
+                                                                <Page pageNumber={1} width={200} />
+                                                            </Document> </div> : (
+                                                                <img
+                                                                    src={common.get_attachment(
+                                                                        (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')),
+                                                                        formattedDate,
+                                                                    )}
+                                                                    alt="Custom cnc"
+                                                                />
+                                                            ) : (l?.attachment_name).includes("pdf") ? <div className="pdf-container"><Document
+                                                                file={common.get_attachment((l?.attachment_name), formattedDate)}
+                                                                onLoadSuccess={onDocumentLoadSuccess}
+                                                            >
+                                                                <Page pageNumber={1} width={200} />
+                                                            </Document> </div> : (
+                                                                <img
+                                                                    src={common.get_attachment(
+                                                                        (l?.attachment_name),
+                                                                        formattedDate,
+                                                                    )}
+                                                                    alt="Custom cnc"
+                                                                />
+                                                            )}
+                                                        </figure>
+                                                    ) : (<figure><img
+                                                        src='/img/private.jpg'
+                                                    /></figure>))
+                                                ) : (<></>)}
+                                            </div>
                                         </div>
-                                     </div>    
-                                    <div className="col-sm-9">
+                                        <div className="col-sm-9">
 
-                                        <div className="latest_request_text">
+                                            <div className="latest_request_text">
 
-                                            <h1 >
-                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
-                                            </h1>
+                                                <h1 >
+                                                    <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} >{l?.project_name}</a>
+                                                </h1>
 
                                                 {l?.visibility.toLowerCase() == "private" ? (
                                                     (user && ((user?.role_id == 2 && Number(totaljobs) >= 1) || l?.creator_id == user?.id) ? (
@@ -454,13 +454,13 @@ function Home(prp) {
                                                     {/* <span>End: 5d 23h</span> */}
                                                     <span><a href="#">3 offers</a></span>
                                                 </div>
-                                           
+
                                                 <a href="#">View Details</a>
 
 
 
-                                           
-                                        </div>
+
+                                            </div>
                                         </div>
                                     </>
 
