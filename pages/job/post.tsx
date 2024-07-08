@@ -52,7 +52,6 @@ const Post = (prp) => {
 		description: "",
 		visibility: "Public",
 		post_for: "4",
-		category:"",
 
 	});
 
@@ -85,6 +84,11 @@ const Post = (prp) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (!file.length) return toast.error("Please select a file");
+		if (selectedCategory == "" || selectedSubCategory == "") return toast.error("Please select catgory and sub category properly!")
+
+		project["category"] = selectedCategory
+		project["sub_category"] = selectedSubCategory
+
 
 		let data = Validate([], schema.project.add, project);
 
@@ -121,6 +125,8 @@ const Post = (prp) => {
 		for (const key of Object.keys(project)) {
 			form.append(key, project[key]);
 		}
+
+
 
 
 
@@ -323,7 +329,37 @@ const Post = (prp) => {
 	const [loading, setLoading] = useState(false);
 
 
-	console.log("category is :- ", project.category)
+	// console.log("category is :- ", project.category)
+	// console.log("subcategory is :- ", project.sub_category)
+
+	const [selectedCategory, setSelectedCategory] = useState('');
+	const [selectedSubCategory, setSelectedSubCategory] = useState('');
+
+	const categories = [
+		{ name: 'Painting', subCategories: ['Oil Painting', 'Acrylic Painting', 'Watercolor Painting', 'Digital Painting', 'Mixed Media Painting'] },
+		{ name: 'Sculpture', subCategories: ['Bronze Sculpture', 'Stone Sculpture', 'Wood Sculpture', 'Clay Sculpture', 'Metal Sculpture'] },
+		{ name: 'Printmaking', subCategories: ['Etching', 'Lithography', 'Screen Printing', 'Woodcut'] },
+		{ name: 'Photography', subCategories: ['Portrait Photography', 'Landscape Photography', 'Abstract Photography', 'Black and White Photography'] },
+		{ name: 'Textile Art', subCategories: ['Tapestry', 'Quilting', 'Embroidery', 'Weaving'] },
+		{ name: 'Ceramics', subCategories: ['Pottery', 'Porcelain', 'Stoneware', 'Earthenware'] },
+		{ name: 'Glass Art', subCategories: ['Stained Glass', 'Blown Glass', 'Fused Glass'] },
+		{ name: 'Digital Art', subCategories: ['3D Modeling', 'Digital Illustration', 'Animation', 'Video Art'] },
+		{ name: 'Mixed Media', subCategories: ['Collage', 'Assemblage'] },
+		{ name: 'Calligraphy', subCategories: ['Traditional Calligraphy', 'Modern Calligraphy'] },
+		{ name: 'Jewelry Design', subCategories: ['Handmade Jewelry', 'Metalwork Jewelry', 'Beaded Jewelry'] },
+		{ name: 'Graffiti and Street Art', subCategories: ['Murals', 'Spray Paint Art'] },
+		{ name: 'Installation Art', subCategories: ['Site-Specific Installations', 'Interactive Installations'] },
+	];
+
+
+	const handleCategoryChange = (event) => {
+		setSelectedCategory(event.target.value);
+		setSelectedSubCategory('');
+	};
+
+	const handleSubCategoryChange = (event) => {
+		setSelectedSubCategory(event.target.value);
+	};
 
 	return (
 		<>
@@ -389,6 +425,32 @@ const Post = (prp) => {
 									<p>If delivery outside mainland UK, please specify the delivery location</p>
 									<p>Please do not provide your contact details here.</p>
 								</div>
+
+								<div className="from_feild">
+									<label htmlFor="category">Category: <span>*</span></label>
+									<select id="category" value={selectedCategory} onChange={handleCategoryChange}>
+										<option value="">Select a category</option>
+										{categories.map((category, index) => (
+											<option key={index} value={category.name}>
+												{category.name}
+											</option>
+										))}
+									</select>
+
+									{selectedCategory && (
+										<div>
+											<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
+											<select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>
+												<option value="">Select a sub-category</option>
+												{categories.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (
+													<option key={index} value={subCategory}>
+														{subCategory}
+													</option>
+												))}
+											</select>
+										</div>
+									)}
+								</div>
 								<div className="from_feild">
 									<label>Attach Your Files Here: <span>*</span></label>
 									<div className="upload-btn-wrapper">
@@ -420,7 +482,7 @@ const Post = (prp) => {
 									</div>
 								</div> */}
 
-								<label>Category</label>
+								{/* <label>Category</label>
 								<select name="category" id="category" value={project.category} onChange={setproject("category")}>
 									<option value="Painting" selected>Painting</option>
 									<option value="Drawing">Drawing</option>
@@ -433,7 +495,10 @@ const Post = (prp) => {
 									<option value="Ceramics">Ceramics</option>
 									<option value="Ceramics">Ceramics</option>
 									<option value="Installation Art">Installation Art</option>
-								</select>
+								</select> */}
+
+
+
 
 
 								<br /><br /><br />
@@ -581,7 +646,12 @@ const Post = (prp) => {
 						</label>
 						<label>
 							<h5>Category:</h5>
-							<p>{project?.category}</p>
+							<p>{selectedCategory}</p>
+						</label>
+
+						<label>
+							<h5>Subcategory:</h5>
+							<p>{selectedSubCategory}</p>
 						</label>
 						<label>
 							<h5>Comment:</h5>

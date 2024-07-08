@@ -104,7 +104,11 @@ function Home(prp) {
     useEffect(() => {
         api.project.latest({ params: { page: 0 } });
     }, []);
-    
+
+    useEffect(() => {
+        api.project.allreviews({ params: opt });
+    }, []);
+
 
     return (
         <>
@@ -235,7 +239,7 @@ function Home(prp) {
                             <a href="#">
                                 <img src="img/icon.png" alt="" />
                                 <p>Photography</p>
-                               
+
                             </a>
                         </li>
                         <li>
@@ -323,7 +327,7 @@ function Home(prp) {
                     <div className="heading_title latest_request_heading">
                         <h1>Latest Requests</h1>
                     </div>
-                   
+
 
 
 
@@ -491,19 +495,29 @@ function Home(prp) {
 
 
 
-            <section className="customer_wp" style={{ backgroundImage: `url(./img/bg4.jpg)` }}>
-                <div className="container">
-                    <div className="heading_title testimonial_heading">
-                        <h1>What Our Customers Are Saying</h1>
+            {allreviews?.length ? (
+
+                <section className="customer_wp" style={{ backgroundImage: `url(./img/bg4.jpg)` }}>
+                    <div className="container">
+
+
+                        <div className="heading_title testimonial_heading">
+                            <h1>What Our Customers Are Saying</h1>
+                        </div>
+                        <div className="owl-carousel owl-carousel1 owl-theme">
+                            <CustomerSays />
+                        </div>
+                        <div className="testimonial_animation">
+                            <img src={"../img/icon1.png"} alt="" />
+                        </div>
+
                     </div>
-                    <div className="owl-carousel owl-carousel1 owl-theme">
-                        <CustomerSays />
-                    </div>
-                    <div className="testimonial_animation">
-                        <img src="img/icon1.png" alt="" />
-                    </div>
-                </div>
-            </section>
+                </section>
+            ) : (<></>)}
+
+
+
+
         </>
     );
 }
