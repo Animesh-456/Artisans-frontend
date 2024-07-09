@@ -49,25 +49,29 @@ const Crou = () => {
                         const minutes = String(date.getMinutes()).padStart(2, '0');
                         const seconds = String(date.getSeconds()).padStart(2, '0');
 
-                        const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                        const formattedDate = `${year}-${month}-${day}`;
 
                         return (
                             <div className="item" key={index}>
                                 <div className="top_artist_slider">
                                     {project?.attachment_name?.includes(",") ? (
                                         <>
-                                            <img className="art-img1" src={common.get_attachment(
-                                                (project?.attachment_name)?.substring(0, project?.attachment_name.indexOf(',')), formattedDate
-                                            ) || "../img/logo.png"} alt="" /></>
+                                            <a href={`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
+                                                <img className="art-img1" src={common.get_attachment(
+                                                    (project?.attachment_name)?.substring(0, project?.attachment_name.indexOf(',')), formattedDate
+                                                ) || "../img/logo.png"} alt="" />
+                                            </a>
+                                        </>
                                     ) : (
                                         <>
-
-                                            <img className="art-img1" src={common.get_attachment(
-                                                (project?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
+                                            <a href={`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
+                                                <img className="art-img1" src={common.get_attachment(
+                                                    (project?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
+                                            </a>
                                         </>
                                     )}
                                     <h3>{project?.project_name}</h3>
-                                    <span><img src={"img/man.jpg"} alt="Artist" /> Created by Raveart</span>
+                                    <span> Created by {project?.creator?.user_name}</span>
                                     <p>{formattedDate}</p>
                                 </div>
                             </div>

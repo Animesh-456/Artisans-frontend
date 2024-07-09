@@ -5,6 +5,7 @@ import { useAtom } from "jotai";
 import { useAtomValue } from "jotai";
 import atom from "../src/jotai/atom";
 import api from "../src/api/services/api";
+import common from "../src/helpers/common";
 
 const CustomerSays = () => {
     const allreviews = useAtomValue(atom.project.api.allreviews);
@@ -25,7 +26,10 @@ const CustomerSays = () => {
 
                             <div className="short_name">
                                 <div className="short_pic">
-                                    <img src={"../img/man.jpg"} alt="" />
+                                    <img src={
+                                        common.get_profile_picture(review?.buyer?.logo) ||
+                                        "../img/no-images.png"
+                                    } alt="profile-picture" />
                                 </div>
                                 <div className="short_text">
                                     <h5>{review?.buyer?.user_name}</h5>
