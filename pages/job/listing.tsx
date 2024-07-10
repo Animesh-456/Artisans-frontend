@@ -12,6 +12,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import env from "../../src/config/api";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
@@ -48,29 +49,56 @@ const Listing = (prp) => {
     const [category, setCategory] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
 
-    //const totaljobs = useAtomValue(atom.project.api.total_jobs)
+
     const [arr, setArr] = useState([]);
 
 
-    //console.log("This users total jobs:- ", totaljobs)
-
 
     const RefLink = (l) => {
-        //const router = useRouter();
+
         localStorage.setItem('items', (l));
         router.replace(l)
     }
 
 
+    const handleApply = () => {
+
+        const pageQueryParam = new URLSearchParams(location.search).get('page');
+        const pageNumber = parseInt(pageQueryParam) || 1;
+        console.log("Page number for handle apply ", pageNumber)
+
+
+        router
+            .replace({
+                pathname: router.pathname,
+                query: {
+                    page: 0,
+                    category: category,
+                    searchQuery: searchQuery
+                },
+            })
+            .then(() => {
+                api.project.list({ params: { ...opt, page: 0, category: category, searchQuery: searchQuery } });
+            });
+
+    }
+
 
     useEffect(() => {
-        common.r("hello");
-        //api.project.list({ params: opt });
-        //api.project.public_profile_total_jobs({ params: { id: user?.id } })
+
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
         console.log("Page number is ", pageNumber)
-        api.project.list({ params: { ...opt, page: pageNumber - 1 } });
+
+
+        const pageQueryParam2 = new URLSearchParams(location.search).get('category');
+        const urlCategory = pageQueryParam2 || "";
+
+        const pageQueryParam3 = new URLSearchParams(location.search).get('searchQuery');
+        const urlsearchQuery = pageQueryParam3 || "";
+
+
+        api.project.list({ params: { ...opt, page: pageNumber - 1, category: urlCategory, searchQuery: urlsearchQuery } });
 
 
     }, []);
@@ -99,9 +127,6 @@ const Listing = (prp) => {
             setExpandedRows([...expandedRows, rowIndex]);
         }
     };
-    console.log("list projects-->", list);
-    console.log("user projects-->", user);
-
 
 
 
@@ -119,7 +144,7 @@ const Listing = (prp) => {
     console.log("This users total jobs:- ", totaljobs)
 
     const onDocumentLoadSuccess = ({ numPages }) => {
-        console.log("total page in pdf", numPages);
+
         setNumPages(numPages);
     };
 
@@ -133,13 +158,15 @@ const Listing = (prp) => {
         return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
     };
 
-    console.log("Page is ", opt.page)
-    console.log("Page limitis ", opt.limit)
+
 
     const handleCategoryChange = (e) => {
         setCategory(e.target.value);
-        console.log("category is", e.target.value)
     };
+    console.log("category is", category)
+    console.log("searchQuery is", searchQuery)
+
+
     return (
         <>
 
@@ -157,12 +184,12 @@ const Listing = (prp) => {
                         <div className="filter_section">
                             <div className="post_request_button"><a href={"/job/post"}>Post Art Request</a></div>
                             <div className="search_bar">
-                                <input type="text" name="text" placeholder="Search.." />
+                                <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
                                 <i className="fa fa-search"></i>
                             </div>
                             <div className="all_categori">
                                 <select value={category} onChange={handleCategoryChange}>
-                                    <option>ALL Categories</option>
+                                    <option value="">ALL Categories</option>
                                     <option>Painting</option>
                                     <option>Sculpture</option>
                                     <option>Printmaking</option>
@@ -177,12 +204,22 @@ const Listing = (prp) => {
                                     <option>JGraffiti and Street Art</option>
                                     <option>Installation Art</option>
                                 </select>
-                                <button>Apply</button>
+
                             </div>
+
+
+                           
+                                
+                                    {/* <button style={{background:"transparent", border: "none", color: "#fff"}} onClick={handleApply}><a className="" style={{cursor: "pointer"}}>Apply</a></button> */}
+                                    <div className="post_request_button"><a style={{cursor: 'pointer', color: "#fff"}} onClick={handleApply}>Apply</a></div>
+                                
+                            
 
                             <div className="sr">
                                 <p>Showing Results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</p>
                             </div>
+
+                            
                         </div>
                     </div>
 
@@ -333,7 +370,7 @@ const Listing = (prp) => {
                                 <hr />
                             </>
                         )
-                    }) : (<></>)}
+                    }) : "No results Found"}
 
 
 

@@ -91,6 +91,8 @@ function Home(prp) {
     const [filename, setFilename] = useState("");
     const [opt, setOpt] = useAtom(atom.project.api.list_opt);
 
+    const [searchQuery, setsearchQuery] = useState("");
+
     const user = useAtomValue(atom.storage.user);
 
     const onDocumentLoadSuccess = ({ numPages }) => {
@@ -157,14 +159,14 @@ function Home(prp) {
                                 <h1>Inspiring</h1>
                                 <h2>Original Art Work</h2>
                                 <div className="search">
-                                    <span className="fa fa-search"></span>
-                                    <input placeholder="Search for any service..." />
+                                    <Link href={`/machining/listing?searchQuery=${searchQuery}`}><span className="fa fa-search"></span></Link>
+                                    <input value={searchQuery} onChange={(e) => setsearchQuery(e.target.value)} placeholder="Search for any service..." />
                                 </div>
                                 <div className="popular_wp">
                                     Popular:
-                                    <span>Painting</span>
-                                    <span>Music</span>
-                                    <span>Animation</span>
+                                    <span onClick={() => setsearchQuery("Painting")}>Painting</span>
+                                    <span onClick={() => setsearchQuery("Music")}>Music</span>
+                                    <span onClick={() => setsearchQuery("Animation")}>Animation</span>
                                 </div>
                             </div>
                         </div>
@@ -218,44 +220,44 @@ function Home(prp) {
                     <a className="view_all" href="#">View all categories <img src={"img/arrow.png"} width="11px" alt="" /></a>
                     <ul className="popular_category_listing">
                         <li>
-                            <a href="#">
+                            <a href={`/machining/listing?category=Painting`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Painting</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href={`/machining/listing?category=Drawing`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Drawing</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href={`/machining/listing?category=Sculpture`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Sculpture</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href={`/machining/listing?category=Photography`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Photography</p>
 
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href={`/machining/listing?category=Printmaking`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Printmaking</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href={`/machining/listing?category=Mixed+Media`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Mixed Media</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href={`/machining/listing?category=Textile+Art`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Textile Art</p>
                             </a>
@@ -298,7 +300,7 @@ function Home(prp) {
                             <div className="heading_title">
                                 <h1>Discover Your  <br /> Artwork</h1>
                             </div>
-                            <br /><br/>
+                            <br /><br />
                             <p>
                                 Welcome to AARTSTUDIO, the premier online platform where talented artisans and artists are
                                 ready to create custom artwork just for you. Whether you're envisioning a unique painting, a
@@ -321,7 +323,7 @@ function Home(prp) {
                             <p>
                                 Explore the world of art, and let us help you discover your next masterpiece!
                             </p>
-                            
+
                             <Link href={`/job/post`}>Know More</Link>
                         </div>
                         <div className="col-sm-7">

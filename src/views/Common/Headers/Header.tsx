@@ -120,7 +120,7 @@ export default function Header({ }: Props) {
 						<div className="col-sm-6">
 							<ul className="top_socialmedia right_icon">
 								<li><a href="mailto: info@aartstudion.com"><i className="fa fa-envelope"></i> info@aartstudion.com</a></li>
-								<li><a href="tel:+91 89815151666"><i className="fa fa-phone"></i> +91 89815151666
+								<li><a href="tel:(+91) 89815151666"><i className="fa fa-phone"></i> +91 89815151666
 								</a></li>
 							</ul>
 						</div>
