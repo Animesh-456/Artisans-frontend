@@ -59,7 +59,8 @@ export default function Footer({ }: Props) {
 						<div className="footer_logo">
 							<img src="img/AartStudio-footer.png" alt="" />
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-							<h4>Hotline : <a href="tel:(+62) 111 33 231">(+62) 111 33 231</a></h4>
+							<h4>Hotline : <a href="tel:(+91) 89 815 15 666">+91 8981515666</a></h4>
+
 						</div>
 					</div>
 					<div className="col-sm-9">
@@ -68,23 +69,17 @@ export default function Footer({ }: Props) {
 								<div><i className="fa fa-phone"></i></div>
 								<div>
 									<h5>Phone</h5>
-									<a href="tel:+62 478-2240-190">+62 478-2240-190</a>
+									<a href="tel:+89 815-15-666">+91 8981515666</a>
 								</div>
 							</div>
 							<div className="footer_information1">
 								<div><i className="fa fa-envelope-open-o"></i></div>
 								<div>
 									<h5>Email</h5>
-									<a href="mail:+info@aartstudio.com">info@aartstudio.com</a>
+									<a href="mailto:Info@aartstudio.in">Info@aartstudio.in</a>
 								</div>
 							</div>
-							<div className="footer_information1">
-								<div><i className="fa fa-map-marker"></i></div>
-								<div>
-									<h5>Location</h5>
-									<small>Kapten Japa West ST. 1190 DPS, Bali</small>
-								</div>
-							</div>
+
 						</div>
 						<hr />
 						<div className="quick_wp">

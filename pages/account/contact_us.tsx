@@ -7,7 +7,7 @@ const contact = () => {
 
     return (
         <>
-           
+
 
             <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
                 <div className="container">
@@ -24,14 +24,14 @@ const contact = () => {
                                     <h2>Need a hand? Or a high five? <br /> Here's how to reach us.</h2>
                                 </div>
                                 <p>
-                                    <img src="../img/call-icon.png" alt="" /> (+61) 111 33 231
+                                    <img src="../img/call-icon.png" alt="" /> <a href="tel:(+91) 89 815 15 666">+91 8981515666</a>
                                 </p>
                                 <p>
-                                    <img src="../img/email-icon.png" alt="" /> info@aartstudio.com
+                                    <img src="../img/email-icon.png" alt="" /> <a href="mailto:Info@aartstudio.in">Info@aartstudio.in</a>
                                 </p>
-                                <p>
+                                {/* <p>
                                     <img src="../img/location-icon.png" alt="" /> Kapten Japa West ST. 1190 DPS, Bali
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                         <div className="col-sm-6">
@@ -41,7 +41,7 @@ const contact = () => {
                 </div>
             </section>
 
-            <section className="discover_wp dya"  style={{ backgroundImage: "url(../img/bg1.jpg)" }} >
+            <section className="discover_wp dya" style={{ backgroundImage: "url(../img/bg1.jpg)" }} >
                 <div className="container">
                     <div className="row">
                         <div className="heading_title latest_request_heading">
