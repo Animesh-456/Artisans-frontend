@@ -157,14 +157,21 @@ export default function Header({ }: Props) {
 						<li className="nav-item">
 							<Link href={'/machining'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									Art Request
+									Custom Artwork Request
 								</button>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link href={'/machining/listing'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									Art and Artisan
+									Artist & Artisans
+								</button>
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link href={'/page/works'}>
+								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
+									How it works
 								</button>
 							</Link>
 						</li>
@@ -325,8 +332,9 @@ export default function Header({ }: Props) {
 											<li><Link href="/">Home</Link></li>
 											<li><Link href="/account/about">About Us</Link></li>
 											<li><Link href="/account/jobs">My account</Link></li>
-											<li><Link href="/job/post">Art Request</Link></li>
-											<li><Link href="/machining/listing">Browse Project</Link></li>
+											<li><Link href="/job/post">Custom Artwork Request</Link></li>
+											<li><Link href="/machining/listing">Artist & Artisans</Link></li>
+											<li><Link href="/page/works">How it works</Link></li>
 											{user ? (
 												<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
 											) : (
