@@ -1586,6 +1586,7 @@ const ProjectDetail = () => {
                                     <p><span>Posted</span><span><b>{moment(data?.project_post_date).format("DD-MMMM-YYYY")}</b></span></p>
                                     <p><span>Visibility</span><span><b>{data?.visibility}</b></span></p>
                                     <p><span>Category</span><span><b>{data?.category}</b></span></p>
+                                    <p><span>sub-category</span><span><b>{data?.sub_category}</b></span></p>
                                     {/* <p><span>Remaining Time</span><span><b>{diffInDays >= 0 && hourDifference >= 0 ? (
                                         <>{diffInDays} days {hourDifference} hours</>
                                     ) : (
