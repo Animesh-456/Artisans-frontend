@@ -11,6 +11,7 @@ import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icon
 import { Document, Page, pdfjs } from 'react-pdf';
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import env from "../../src/config/api";
+import axios from "axios";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
@@ -44,6 +45,9 @@ const Listing = (prp) => {
     const [list, setlist] = useAtom(atom.project.api.list);
     const user = useAtomValue(atom.storage.user);
     const [numPages, setNumPages] = useState(null);
+    const [category, setCategory] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
+
     //const totaljobs = useAtomValue(atom.project.api.total_jobs)
     const [arr, setArr] = useState([]);
 
@@ -56,6 +60,8 @@ const Listing = (prp) => {
         localStorage.setItem('items', (l));
         router.replace(l)
     }
+
+
 
     useEffect(() => {
         common.r("hello");
@@ -107,6 +113,7 @@ const Listing = (prp) => {
 
     }, [])
 
+
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
     console.log("This users total jobs:- ", totaljobs)
@@ -129,7 +136,10 @@ const Listing = (prp) => {
     console.log("Page is ", opt.page)
     console.log("Page limitis ", opt.limit)
 
-
+    const handleCategoryChange = (e) => {
+        setCategory(e.target.value);
+        console.log("category is", e.target.value)
+    };
     return (
         <>
 
@@ -151,12 +161,25 @@ const Listing = (prp) => {
                                 <i className="fa fa-search"></i>
                             </div>
                             <div className="all_categori">
-                                <select>
+                                <select value={category} onChange={handleCategoryChange}>
                                     <option>ALL Categories</option>
-                                    <option>1</option>
-                                    <option>2</option>
+                                    <option>Painting</option>
+                                    <option>Sculpture</option>
+                                    <option>Printmaking</option>
+                                    <option>Photography</option>
+                                    <option>Textile Art</option>
+                                    <option>Ceramics</option>
+                                    <option>Glass Art</option>
+                                    <option>Digital Art</option>
+                                    <option>Mixed Media</option>
+                                    <option>Calligraphy</option>
+                                    <option>Jewelry Design</option>
+                                    <option>JGraffiti and Street Art</option>
+                                    <option>Installation Art</option>
                                 </select>
+                                <button>Apply</button>
                             </div>
+
                             <div className="sr">
                                 <p>Showing Results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</p>
                             </div>
