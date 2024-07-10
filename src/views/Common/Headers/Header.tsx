@@ -318,12 +318,12 @@ export default function Header({ }: Props) {
 			<section className="menubar">
 				<div className="container">
 					<div className="row">
-						<div className="col-6 col-sm-3">
+						<div className="col-6 col-sm-2">
 							<div className="logo">
 								<Link href="/"><img style={{ "cursor": "pointer" }} src={"/img/logo.png"} alt="logo" /></Link>
 							</div>
 						</div>
-						<div className="col-6 col-sm-9">
+						<div className="col-6 col-sm-10">
 							<div className="navigation">
 								<nav>
 									<div className="navwrp">

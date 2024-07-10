@@ -296,13 +296,33 @@ function Home(prp) {
                     <div className="row">
                         <div className="col-sm-5 discover_left">
                             <div className="heading_title">
-                                <h1>Discover Your Ideal <br /> Artwork</h1>
+                                <h1>Discover Your  <br /> Artwork</h1>
                             </div>
+                            <br /><br/>
                             <p>
-                                Egestas maecenas pharetra convallis posuere morbi. Nunc pulvinar sapien et ligula ullamcorper. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.<br /><br />
-                                Augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.
+                                Welcome to AARTSTUDIO, the premier online platform where talented artisans and artists are
+                                ready to create custom artwork just for you. Whether you're envisioning a unique painting, a
+                                stunning sculpture, or any other form of artwork, AARTSTUDIO makes the process easy and
+                                enjoyable.
                             </p>
-                            <a href="#">Know More</a>
+                            <p>Browse through our extensive directory of skilled artisans, each showcasing their unique style
+                                and portfolio. You'll find a variety of artistic talents, ensuring you can discover an artist whose
+                                work resonates with your vision.</p>
+                            <p>
+                                Share your custom art needs and ideas on AARTSTUDIO. Detail your vision, preferences, and any
+                                specific requirements to give the artisans a clear understanding of what you’re looking for.
+                                AARTSTUDIO will connect you with the right artist to create your perfect custom artwork.
+                            </p>
+                            <p>
+                                Discovering and commissioning custom artwork has never been easier. AARTSTUDIO simplifies
+                                the process of commissioning custom art, providing a seamless and enjoyable experience for
+                                both customers and artisans.
+                            </p>
+                            <p>
+                                Explore the world of art, and let us help you discover your next masterpiece!
+                            </p>
+                            
+                            <Link href={`/job/post`}>Know More</Link>
                         </div>
                         <div className="col-sm-7">
                             <div className="discover_img">
