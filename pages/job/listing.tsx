@@ -211,7 +211,7 @@ const Listing = (prp) => {
                            
                                 
                                     {/* <button style={{background:"transparent", border: "none", color: "#fff"}} onClick={handleApply}><a className="" style={{cursor: "pointer"}}>Apply</a></button> */}
-                                    <div className="post_request_button"><a style={{cursor: 'pointer', color: "#fff"}} onClick={handleApply}>Apply</a></div>
+                                    <div className="post_request_button filter-btn"><a style={{cursor: 'pointer', color: "#fff"}} onClick={handleApply}>Apply</a></div>
                                 
                             
 
@@ -360,7 +360,8 @@ const Listing = (prp) => {
                                             <div>
                                                 <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
                                                 <span>Posted: {diffInDays} d {hourDifference} h ago</span>
-                                                <span></span>
+                                                <span>Category: {l?.category}</span>
+                                                {/* <span>sub-category: {l?.sub_category}</span> */}
                                                 <span><a href="#">{l?.bids_count} offers</a></span>
                                             </div>
                                             <Link href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link>

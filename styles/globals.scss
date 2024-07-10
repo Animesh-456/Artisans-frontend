@@ -2814,15 +2814,18 @@ select {
 .icon_upload .upload-btn-wrapper {
   height: auto;
 }
+
 .icon_upload .upload-btn-wrapper .btn {
   background: none;
   border: none;
   padding: 0;
   margin-top: 4px;
 }
-.icon_upload .upload-btn-wrapper input[type=file]{
+
+.icon_upload .upload-btn-wrapper input[type=file] {
   font-size: 21px;
 }
+
 .icon_upload .upload-btn-wrapper .btn .fa-plus-circle {
   color: #080424;
 }
@@ -2845,4 +2848,9 @@ select {
 
 .bid-btn:hover {
   box-shadow: none;
+}
+
+
+.filter-btn {
+  margin-left: 20px;
 }
