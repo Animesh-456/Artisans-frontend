@@ -56,7 +56,7 @@ const Allreviews = () => {
                                 <div className="looking_m">
                                     <h3>Looking for a Artist?</h3>
                                     <p>Post your request and receive quotes for free.</p>
-                                    <a href={"/job/post"}>Post your request</a>
+                                    <a href={"/artrequest"}>Post your request</a>
                                     <h3>Are you a Artist?</h3>
                                     <p>Create a profile and start working.</p>
                                     <a href={"/account/profile"}>Create Your Profile</a>
@@ -80,7 +80,7 @@ const Allreviews = () => {
                                         <>
                                             <div className="project_loop">
 
-                                                <h4><a href={`/machining/${l?.project?.project_name}-${l?.project?.id}`}>{l?.project?.project_name}</a></h4>
+                                                <h4><a href={`/${l?.project?.project_name}-${l?.project?.id}`}>{l?.project?.project_name}</a></h4>
                                                 <p>{l?.project?.visibility} | Machined by - {l?.provider?.user_name}</p>
                                                 <div>
 
@@ -126,7 +126,7 @@ const Allreviews = () => {
                                                         </div>
                                                     </div>
                                                     <div className="public">
-                                                        <p>{new Date(l?.review_post_date).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })} | Artist by {l?.provider?.user_name} | <a href={`/machining/${l?.project?.project_name}-${l?.project?.id}`}>Project Details</a>
+                                                        <p>{new Date(l?.review_post_date).toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "long" })} | Artist by {l?.provider?.user_name} | <a href={`/${l?.project?.project_name}-${l?.project?.id}`}>Project Details</a>
 
 
 

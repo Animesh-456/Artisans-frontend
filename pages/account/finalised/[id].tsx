@@ -155,7 +155,7 @@ const user = useAtomValue(atom.project.api.public_me)
                                                 <img
                                                     src={imageSrc}
                                                     onClick={() => {
-                                                        router.push(`/machining/${l?.b?.split(" ").join("-")}-${l?.c}`)
+                                                        router.push(`/${l?.b?.split(" ").join("-")}-${l?.c}`)
                                                     }}
                                                 />
                                             </a>
@@ -180,7 +180,7 @@ const user = useAtomValue(atom.project.api.public_me)
                                             <div className='carousel-inner'>
                                                 <div className='carousel-item active'>
 
-                                                    <img src={`${common.get_attachment(slide, dt)}`} id="curr_img" onClick={() => router.push(`/machining/${project_name?.split(" ").join("-")}-${id}`)} />
+                                                    <img src={`${common.get_attachment(slide, dt)}`} id="curr_img" onClick={() => router.push(`/${project_name?.split(" ").join("-")}-${id}`)} />
                                                 </div>
                                             </div>
                                             <button
@@ -208,7 +208,7 @@ const user = useAtomValue(atom.project.api.public_me)
                                             <div className='carousel-inner'>
                                                 <div className='carousel-item active'>
 
-                                                    <img src={`${common.get_attachment_latest_ach(slide)}`} id="curr_img" onClick={() => router.push(`/machining/${project_name?.split(" ").join("-")}-${id}`)} />
+                                                    <img src={`${common.get_attachment_latest_ach(slide)}`} id="curr_img" onClick={() => router.push(`/${project_name?.split(" ").join("-")}-${id}`)} />
                                                 </div>
                                             </div>
                                             <button

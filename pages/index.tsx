@@ -159,7 +159,7 @@ function Home(prp) {
                                 <h1>Inspiring</h1>
                                 <h2>Original Art Work</h2>
                                 <div className="search">
-                                    <Link href={`/machining/listing?searchQuery=${searchQuery}`}><span className="fa fa-search"></span></Link>
+                                    <Link href={`/artworklisting?searchQuery=${searchQuery}`}><span className="fa fa-search"></span></Link>
                                     <input value={searchQuery} onChange={(e) => setsearchQuery(e.target.value)} placeholder="Search for any service..." />
                                 </div>
                                 <div className="popular_wp">
@@ -220,44 +220,44 @@ function Home(prp) {
                     <a className="view_all" href="#">View all categories <img src={"img/arrow.png"} width="11px" alt="" /></a>
                     <ul className="popular_category_listing">
                         <li>
-                            <a href={`/machining/listing?category=Painting`}>
+                            <a href={`/artworklisting?category=Painting`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Painting</p>
                             </a>
                         </li>
                         <li>
-                            <a href={`/machining/listing?category=Drawing`}>
+                            <a href={`/artworklisting?category=Drawing`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Drawing</p>
                             </a>
                         </li>
                         <li>
-                            <a href={`/machining/listing?category=Sculpture`}>
+                            <a href={`/artworklisting?category=Sculpture`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Sculpture</p>
                             </a>
                         </li>
                         <li>
-                            <a href={`/machining/listing?category=Photography`}>
+                            <a href={`/artworklisting?category=Photography`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Photography</p>
 
                             </a>
                         </li>
                         <li>
-                            <a href={`/machining/listing?category=Printmaking`}>
+                            <a href={`/artworklisting?category=Printmaking`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Printmaking</p>
                             </a>
                         </li>
                         <li>
-                            <a href={`/machining/listing?category=Mixed+Media`}>
+                            <a href={`/artworklisting?category=Mixed+Media`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Mixed Media</p>
                             </a>
                         </li>
                         <li>
-                            <a href={`/machining/listing?category=Textile+Art`}>
+                            <a href={`/artworklisting?category=Textile+Art`}>
                                 <img src="img/icon.png" alt="" />
                                 <p>Textile Art</p>
                             </a>
@@ -324,7 +324,7 @@ function Home(prp) {
                                 Explore the world of art, and let us help you discover your next masterpiece!
                             </p>
 
-                            <Link href={`/job/post`}>Know More</Link>
+                            <Link href={`/artrequest`}>Know More</Link>
                         </div>
                         <div className="col-sm-7">
                             <div className="discover_img">
@@ -456,7 +456,7 @@ function Home(prp) {
                                                     <span></span>
                                                     <span><a href="#">{l?.bids_count} offers</a></span>
                                                 </div>
-                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</a>
+                                                <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -469,7 +469,7 @@ function Home(prp) {
 
                     <hr />
 
-                    <a className="view_all viewall_center" href={"/machining/listing"}>View all <img src="img/arrow.png" width="11px" alt="" /></a>
+                    <a className="view_all viewall_center" href={"/artworklisting"}>View all <img src="img/arrow.png" width="11px" alt="" /></a>
                 </div>
             </section>
 

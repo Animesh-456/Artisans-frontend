@@ -53,13 +53,13 @@ const MachinistConfirmationMessage = () => {
         }, (d) => {
             console.log("The status is ==>", d.status)
             if (d.status == true) {
-                Router.replace(`/machining/${data[0]?.project_name.split(" ").join("-")}-${data[0].id}`)
+                Router.replace(`/${data[0]?.project_name.split(" ").join("-")}-${data[0].id}`)
             }
         })
     }
 
     const handlecancel = () => {
-        Router.push(`/machining/${data[0]?.project_name}-${data[0].id}`)
+        Router.push(`/${data[0]?.project_name}-${data[0].id}`)
     }
 
     console.log("message datas are:- ", msg)

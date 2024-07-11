@@ -15,7 +15,7 @@ const nextConfig = {
       },
 
       {
-        source: '/machining',
+        source: '/artrequest',
         destination: '/job/post'
       },
       {
@@ -24,13 +24,19 @@ const nextConfig = {
       },
 
       {
-        source: '/machining/listing',
+        source: '/artworklisting',
         destination: '/job/listing'
       },
 
       {
         source: '/page/who_we_are',
         destination: '/account/who_we_are'
+      },
+     
+
+      {
+        source: '/:projectId',
+        destination: '/machining/:projectId',
       },
     ]
   },

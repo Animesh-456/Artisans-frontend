@@ -56,7 +56,7 @@ const Crou = () => {
                                 <div className="top_artist_slider">
                                     {project?.attachment_name?.includes(",") ? (
                                         <>
-                                            <a href={`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
+                                            <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
                                                 <img className="art-img1" src={common.get_attachment(
                                                     (project?.attachment_name)?.substring(0, project?.attachment_name.indexOf(',')), formattedDate
                                                 ) || "../img/logo.png"} alt="" />
@@ -64,7 +64,7 @@ const Crou = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <a href={`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
+                                            <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
                                                 <img className="art-img1" src={common.get_attachment(
                                                     (project?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
                                             </a>

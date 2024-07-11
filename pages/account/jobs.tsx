@@ -276,7 +276,7 @@ const Jobs = (props: Props) => {
         //                                         <div className="project_loop_jobs">
         //                                             <h4>
 
-        //                                                 <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+        //                                                 <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
         //                                             </h4>
         //                                             <p>  Posted :{" "}
         //                                                 {moment(l?.project_post_date).format("DD-MMM-YYYY")}</p>
@@ -479,7 +479,7 @@ const Jobs = (props: Props) => {
                                                             <div className='project_loop'>
 
                                                                 <h4>
-                                                                    <a style={{color: "#0e0e0e", fontSize: "13px"}} href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+                                                                    <a style={{color: "#0e0e0e", fontSize: "13px"}} href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                                                 </h4>
                                                                 <p>{l?.visibility} | Open </p>
                                                                 <p>  Posted :{" "}

@@ -182,7 +182,7 @@ const Listing = (prp) => {
                 <div className="container">
                     <div className="row">
                         <div className="filter_section">
-                            <div className="post_request_button"><a href={"/job/post"}>Post Art Request</a></div>
+                            <div className="post_request_button"><a href={"/artrequest"}>Post Art Request</a></div>
                             <div className="search_bar">
                                 <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
                                 <i className="fa fa-search"></i>
@@ -208,18 +208,18 @@ const Listing = (prp) => {
                             </div>
 
 
-                           
-                                
-                                    {/* <button style={{background:"transparent", border: "none", color: "#fff"}} onClick={handleApply}><a className="" style={{cursor: "pointer"}}>Apply</a></button> */}
-                                    <div className="post_request_button filter-btn"><a style={{cursor: 'pointer', color: "#fff"}} onClick={handleApply}>Apply</a></div>
-                                
-                            
+
+
+                            {/* <button style={{background:"transparent", border: "none", color: "#fff"}} onClick={handleApply}><a className="" style={{cursor: "pointer"}}>Apply</a></button> */}
+                            <div className="post_request_button filter-btn"><a style={{ cursor: 'pointer', color: "#fff" }} onClick={handleApply}>Apply</a></div>
+
+
 
                             <div className="sr">
                                 <p>Showing Results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</p>
                             </div>
 
-                            
+
                         </div>
                     </div>
 
@@ -364,7 +364,7 @@ const Listing = (prp) => {
                                                 {/* <span>sub-category: {l?.sub_category}</span> */}
                                                 <span><a href="#">{l?.bids_count} offers</a></span>
                                             </div>
-                                            <Link href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link>
+                                            <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link>
                                         </div>
                                     </div>
                                 </div>

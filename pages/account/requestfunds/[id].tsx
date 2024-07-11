@@ -18,7 +18,7 @@ const Requestfunds = () => {
 
         api.project.request_release_funds({ body: { project_id: router.query?.id }, params: {} }, (d) => {
             if (d.status == true) {
-                Router.replace(`/machining/${data[0]?.project_name.split(" ").join("-")}-${data[0].id}`)
+                Router.replace(`/${data[0]?.project_name.split(" ").join("-")}-${data[0].id}`)
             }
         })
 
@@ -26,7 +26,7 @@ const Requestfunds = () => {
     }
 
     const handlecancel = () => {
-        Router.push(`/machining/${data[0]?.project_name}-${data[0].id}`)
+        Router.push(`/${data[0]?.project_name}-${data[0].id}`)
     }
     const steps_completed_supplier: any = useAtomValue(atom.project.api.steps_completed_supplier);
 

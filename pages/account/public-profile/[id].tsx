@@ -264,11 +264,11 @@ const EditProfile = () => {
         //                                                             <a data-toggle="tooltip" data-placement="top" title={l?.project_name}>
 
 
-        //                                                                 <Link href={`/machining/${l?.b?.split(" ").join("-")}-${l?.c}`}>
+        //                                                                 <Link href={`/${l?.b?.split(" ").join("-")}-${l?.c}`}>
         //                                                                     <img
         //                                                                         src={imageSrc}
 
-        //                                                                     //onClick={() => RefLink(`/machining/${l?.b}-${l?.c}`)}
+        //                                                                     //onClick={() => RefLink(`/${l?.b}-${l?.c}`)}
         //                                                                     />
         //                                                                 </Link>
 
@@ -344,12 +344,12 @@ const EditProfile = () => {
 
         //                                                 {l?.pro_job == 1 ? (
         //                                                     user?.id == usr?.id ? (
-        //                                                         <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+        //                                                         <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
         //                                                     ) : (
         //                                                         <a><b>Pro Job</b></a>
         //                                                     )
         //                                                 ) : (
-        //                                                     <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+        //                                                     <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
         //                                                 )}
         //                                                 <span>
         //                                                     Posted :{" "}
@@ -426,7 +426,7 @@ const EditProfile = () => {
 
         //                                                     <div className="public">
 
-        //                                                         <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
+        //                                                         <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Machined By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
 
         //                                                         <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
 
@@ -646,12 +646,12 @@ const EditProfile = () => {
 
                                                             {l?.pro_job == 1 ? (
                                                                 user?.id == usr?.id ? (
-                                                                    <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+                                                                    <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
                                                                 ) : (
                                                                     <a><b>Pro Job</b></a>
                                                                 )
                                                             ) : (
-                                                                <a href={`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
+                                                                <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`} ><b>{l?.project_name}</b></a>
                                                             )}
 
                                                         </h4>
@@ -722,7 +722,7 @@ const EditProfile = () => {
 
                                                                     <div className="public">
 
-                                                                        <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Artist By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
+                                                                        <p>{moment(r?.review_post_date).format("DD-MM-YYYY")} | Artist By {l?.programmer?.user_name} | <a href="#" onClick={() => RefLink(`/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>Project Details</a></p>
 
                                                                         <p><b>Rating Comments: </b> <br />{r?.comments} <br /> <a href={`/account/public-profile/${l?.creator?.id}`} >-{l?.creator?.user_name}</a></p>
 

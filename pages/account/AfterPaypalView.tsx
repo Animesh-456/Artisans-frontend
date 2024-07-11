@@ -91,8 +91,8 @@ const Jobs = () => {
                                 Thank you for depositing the funds. We have sent you a confirmation email.<br />
                                 Your Machinist will start working on your order.</p>
                             <div className="submit_cancel">
-                                <a style={{cursor: "pointer", color: "#fff"}} onClick={RedirectMsg}>Send a Message to Your Artist</a>
-                                <a style={{cursor: "pointer"}} onClick={RedirectProject}>Return to Your Project <img src={"../img/arrow.png"} width="11px" alt="arrow" /></a>
+                                <a style={{ cursor: "pointer", color: "#fff" }} onClick={RedirectMsg}>Send a Message to Your Artist</a>
+                                <a style={{ cursor: "pointer" }} onClick={RedirectProject}>Return to Your Project <img src={"../img/arrow.png"} width="11px" alt="arrow" /></a>
                             </div>
                         </div>
                     </div>

@@ -154,7 +154,7 @@ const DepositFund1 = (props: Props) => {
                 localStorage.setItem('ProjectData', JSON.stringify(project))
                 localStorage.setItem('TableShow', '1')
 
-                localStorage.setItem('items', (`/machining/${project?.project_name?.split(" ").join("-")}-${project?.id}`));
+                localStorage.setItem('items', (`/${project?.project_name?.split(" ").join("-")}-${project?.id}`));
 
                 Router.replace(`/account/AfterPaypalView`)
             })

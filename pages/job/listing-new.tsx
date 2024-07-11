@@ -104,7 +104,7 @@ const Listing = () => {
                 <div className="container">
                     <div className="row">
                         <div className="filter_section">
-                            <div className="post_request_button"><a href={"/job/post"}>Post Art Request</a></div>
+                            <div className="post_request_button"><a href={"/artrequest"}>Post Art Request</a></div>
                             <form className="search_bar" onSubmit={handleSearchSubmit}>
                                 <input type="text" name="searchQuery" placeholder="Search.." value={searchQuery} onChange={handleSearchChange} />
                                 <i className="fa fa-search" onClick={handleSearchSubmit}></i>

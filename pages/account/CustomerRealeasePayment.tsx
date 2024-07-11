@@ -85,8 +85,8 @@ const Jobs = () => {
 
   const returnClick = () => {
 
-    //window.location.href = `http://35.179.7.135/machining/${projectdata?.project_name?.split(" ").join("-")}-${projectdata?.id}`
-    Router.replace(`/machining/${projectdata?.project_name?.split(" ").join("-")}-${projectdata?.id}`)
+    //window.location.href = `http://35.179.7.135/${projectdata?.project_name?.split(" ").join("-")}-${projectdata?.id}`
+    Router.replace(`/${projectdata?.project_name?.split(" ").join("-")}-${projectdata?.id}`)
   }
 
   let bidData: any = {}

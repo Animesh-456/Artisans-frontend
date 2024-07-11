@@ -165,7 +165,7 @@ const EditProfile = () => {
 										<div className='project_loop'>
 											<h4>
 
-												<a href='#' onClick={() => RefLink(`/machining/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>{l?.project_name}</a>
+												<a href='#' onClick={() => RefLink(`/${l?.project_name?.split(" ").join("-")}-${l?.id}`)}>{l?.project_name}</a>
 
 											</h4>
 											<p>{l?.visibility} | Open</p>

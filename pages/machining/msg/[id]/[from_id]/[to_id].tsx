@@ -257,7 +257,7 @@ const Message = (props: Props) => {
 						{/* <div className='col-sm-8'>
 							<div className='profile_box'>
 								<div className="rys">
-									<h5 className='pb-0 prj-link'><a href={`/machining/${meta?.project?.project_name}-${meta?.project?.id}`}>{meta?.project?.project_name}</a></h5>
+									<h5 className='pb-0 prj-link'><a href={`/${meta?.project?.project_name}-${meta?.project?.id}`}>{meta?.project?.project_name}</a></h5>
 
 								</div>
 								<hr className='dashed-hr' />
@@ -435,7 +435,7 @@ const Message = (props: Props) => {
 						<div className="col-sm-8">
 							<div className="profile_box">
 								<div className="rys">
-									<h5><a style={{ textDecoration: "none", color: "inherit" }} href={`/machining/${meta?.project?.project_name}-${meta?.project?.id}`}>{meta?.project?.project_name}</a></h5>
+									<h5><a style={{ textDecoration: "none", color: "inherit" }} href={`/${meta?.project?.project_name}-${meta?.project?.id}`}>{meta?.project?.project_name}</a></h5>
 								</div>
 								<form onSubmit={handleSubmit}>
 									<div className="from_feild">
