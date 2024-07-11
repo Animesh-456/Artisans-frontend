@@ -32,11 +32,15 @@ const nextConfig = {
         source: '/page/who_we_are',
         destination: '/account/who_we_are'
       },
-     
 
       {
         source: '/:projectId',
         destination: '/machining/:projectId',
+      },
+
+      {
+        source: '/inbox/:projectId/:fromId/:toId',
+        destination: '/machining/msg/:projectId/:fromId/:toId',
       },
     ]
   },

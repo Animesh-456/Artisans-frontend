@@ -34,8 +34,8 @@ const Jobs = () => {
     console.log("proj data-->", projectData);
 
     const RedirectMsg = () => {
-        //router.push(`/machining/msg/${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
-        Router.replace(`/machining/msg/${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
+        //router.push(`/inbox${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
+        Router.replace(`/inbox/${projectData.id}/${projectData.programmer_id}/${projectData.creator_id}`)
     }
 
     return (<>

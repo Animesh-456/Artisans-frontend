@@ -507,7 +507,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 													data?.programmer_id == bid?.user_id
 												) {
 													router.push(
-														`/machining/msg/${data?.id}/${bid?.user_id}/${data?.creator_id}`,
+														`/inbox/${data?.id}/${bid?.user_id}/${data?.creator_id}`,
 													);
 													return;
 												}
@@ -527,7 +527,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 													data?.programmer_id == bid?.user_id
 												) {
 													router.push(
-														`/machining/msg/${data?.id}/${user?.id}/${bid?.user_id}`,
+														`/inbox/${data?.id}/${user?.id}/${bid?.user_id}`,
 													);
 													return;
 												}
@@ -864,7 +864,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 										data?.programmer_id == bid?.user_id
 									) {
 										router.push(
-											`/machining/msg/${data?.id}/${bid?.user_id}/${data?.creator_id}`,
+											`/inbox/${data?.id}/${bid?.user_id}/${data?.creator_id}`,
 										);
 										return;
 									}

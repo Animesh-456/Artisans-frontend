@@ -397,7 +397,7 @@ const ProjectDetail = () => {
     };
 
     const send_msg = (bid) => () => {
-        router.push(`/machining/msg/${data.id}/${data.creator_id}/${bid.user_id}`);
+        router.push(`/inbox/${data.id}/${data.creator_id}/${bid.user_id}`);
     };
 
     const pay_machinist = () => {

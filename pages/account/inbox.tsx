@@ -74,7 +74,7 @@ const EditProfile = () => {
 		}
 		await api.project.update_read_my_msgs({ body: d });
 		router.push(
-			`/machining/msg/${a}/${b}/${c}`,
+			`/inbox/${a}/${b}/${c}`,
 		)
 	}
 
