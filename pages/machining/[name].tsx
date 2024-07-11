@@ -103,7 +103,7 @@ const ProjectDetail = () => {
 
         if (bid.bid_amount_gbp) {
             let amount = parseFloat(bid.bid_amount_gbp);
-            let fix_value = 0.149;
+            let fix_value = 0.15;
             let paid_to_me = amount - (amount * fix_value);
             setbid("bid_amount", paid_to_me.toFixed(2))(null);
         } else {
