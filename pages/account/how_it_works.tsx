@@ -68,143 +68,93 @@ const how_it_works = (prp) => {
 
     return (
         <>
-            <Head>
-                <title>{`${prp?.prp?.data[4].page_title}`}</title>
-                <meta name="description" content={`${prp?.prp?.data[4].page_desc}`} />
-                <meta name="robots" content="noindex" />
+            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+                <div className="container">
+                    <h1>How it works</h1>
+                </div>
+            </section>
 
-                <meta name="googlebot" content="noindex" />
-
-            </Head>
-            <div
-                className='banner_wp sign_banner'
-                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='banner_text inner_banner_text'>
-                            <h1 className='yh'>HOW IT WORKS</h1>
+            <section className="howit_wp">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <img src="../img/phn-img.png" alt="" />
+                        </div>
+                        <div className="col-sm-6">
+                            <div className="heading_title">
+                                <h1>How It Works at <br /> Aart Studio</h1>
+                            </div>
+                            <p>ARTSTUDIO is an online platform where a community of talented artists and artisans are ready to create custom art pieces for anyone. Whether you're looking for a painting, sculpture, or any other form of artwork, AARTSTUDIO makes the process straightforward and enjoyable. Here's how it works.</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div className="container cjw">
-                <div className="col-sm-12 howit5">
-                    <ul className="nav nav-pills justify-content-center" role="tablist">
-                        <li className="nav-item">
-                            <a className={`nav-link ${customer ? "active" : ""}`} data-toggle="tab" href="#" onClick={selectcust}>You are a customer</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className={`nav-link ${mac ? "active" : ""}`} data-toggle="tab" href="#" onClick={select_mac}>You are a Machinist</a>
-                        </li>
-                    </ul>
-                    <div className="tab-content">
-                        <div id="customer" className={`tab-pane ${customer ? "active" : ""}`}><br />
-                            <div className="howit1">
-                                <h3>You can receive affordable, custom-machined parts from Machining-4U in six easy steps!</h3>
-                                <ul>
-                                    <li> <a href="/artrequest">Post your CNC machining request</a> by describing the work required and attaching your blueprints. It's completely free to list your custom machined part requirement at Machining-4U.</li>
-                                    <li>Receive proposals from machinists straight away.</li>
-                                    <li>Select the proposal that best meets your needs.</li>
-                                    <li>Confirm your order by funding your project. Payment will be held in a secure account.</li>
-                                    <li>Receive custom machined parts at your door.</li>
-                                    <li>Check your parts, release payment to your machinist and leave a review about his work. </li>
-                                </ul>
-                                <div className="howit2">
-                                    <div className="howit3">
-                                        <h3>Getting custom machined parts has never been so easy and affordable</h3>
-                                        <p>Machining-4U is a CNC service that gives you instant access to the best machinists. You can get your custom machined parts easily, quickly, and at an affordable price.</p>
-                                        <p>Finding a machinist is easy: just post your request and wait for proposals from experienced machinists.</p>
-                                    </div>
-                                    <div className="howit4">
-                                        <figure>
-                                            <img src="https://www.usineur.fr/Ecran%20final2.png" alt="Machining" />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div className="howit2">
-                                    <div className="howit3">
-                                        <h3>Results Guaranteed</h3>
-                                        <p>You don't take any risks with Machining-4U. When you order your custom machined parts, your money is held in a secure Machining-4U account. The funds are transferred to the machinist only after you have received your machined part and approved its quality. All the machinists on Machining-4U are reviewed by past customers, making it easy to choose the best person for the job.</p>
-                                    </div>
-                                    <div className="howit4">
-                                        <figure>
-                                            <img src="https://www.usineur.fr/cadenas3.jpg" alt="Machining" />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div className="howit2">
-                                    <div className="howit3">
-                                        <h3>Machining-4u is free for customers.</h3>
-                                        <p>Posting a CNC machining job on Machining-4U is free! There are no hidden fees or additional charges to receive quotes or accept proposals. Our service fee (14.9%) is paid by your machinist. You pay not a penny more than the quote you choose.   </p>
-                                    </div>
-
-
-                                    <div className="howit4">
-                                        <figure>
-                                            <img src="https://www.usineur.fr/euro%20symbole.jpg" alt="Machining" />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div className="qwe21 all_request_button">
-                                    <a href='/account/assistance'>Learn More?<i className='fa fa-angle-right' /></a>
-                                    <a href='/auth/sign-in'>Are you a machinist?<i className='fa fa-angle-right' /></a>
-                                </div>
-                                <div className="howit6">
-                                    <a href="/auth/sign-in">SignUp</a>
-                                </div>
-                            </div>
+            <section className="howit_wp1">
+                <div className="container">
+                    <div className="heading_title latest_request_heading1">
+                        <h1>Breaking Down Our Process of Work </h1>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <img src="../img/icon-1.png" alt="" />
+                            <h5>1. Post Your Requirement</h5>
+                            <p>Start by posting your custom art requirements on AARTSTUDIO. Provide details about your vision, preferences, and any specific elements you want in your artwork.</p>
                         </div>
-                        <div id="machinist" className={`tab-pane ${customer ? "" : "active"}`}><br />
-                            <div className="howit1">
-                                <div className="howit2">
-                                    <div className="howit3">
-                                        <h3>Search our latest machining jobs and send proposals for free.</h3>
-                                        <p>Signing up to Machining-4u is completely free, with no commitments or contracts. Simply send offers to clients and start working!</p>
-                                    </div>
-                                    <div className="howit4">
-                                        <figure>
-                                            <img src="https://www.usineur.fr/Offre%20Usinage2.png" alt="" />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div className="howit2">
-                                    <div className="howit3">
-                                        <h3>Get Paid. Guaranteed.</h3>
-                                        <p>The Machining-4u principle is simple: you deliver quality work and you get paid. To begin a contract, customers must deposit funds into a secure Machining-4u account. The funds are released to you when your customer receives the custom machined parts and approved the quality of your work.</p>
-                                        <p>A 14.9% service fee is deducted to help cover payment processing costs. Everything else on Machining-4u is 100% free! </p>
-                                    </div>
-                                    <div className="howit4">
-                                        <figure>
-                                            <img src="https://www.usineur.fr/piggy-bank.jpg" alt="Machining" />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div className="howit2">
-                                    <div className="howit3">
-                                        <h3>Create your profile</h3>
-                                        <p>Introduce yourself, inspire confidence and convince new customers to place an order with you. Easily create a complete portfolio of your past machining work and customer testimonials. Display photo galleries of your equipment and your best machining pieces.</p>
-                                    </div>
-                                    <div className="howit4">
-                                        <figure>
-                                            <img src="https://www.usineur.fr/Profilfinal2.png" alt="Machining" />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div className="howit6">
-                                    <Link href='/auth/sign-in'>
-                                        <a onClick={() => writeAtom(atom.storage.radio_login, "2")}>SignUp</a>
-                                    </Link>
-
-
-
-                                </div>
-
-                            </div>
+                        <div className="col-sm-4">
+                            <img src="../img/icon-2.png" alt="" />
+                            <h5>2. Receive Proposals</h5>
+                            <p>Once your requirement is posted, artisans and artists will review it and submit their proposals. These proposals will include their approach, pricing, and estimated completion time.</p>
+                        </div>
+                        <div className="col-sm-4">
+                            <img src="../img/icon-3.png" alt="" />
+                            <h5>3. Select a Proposal</h5>
+                            <p>Review the received proposals, check the artists' profiles, and view their previous works. Choose the artist whose proposal and style best match your vision.</p>
+                        </div>
+                        <div className="col-sm-4">
+                            <img src="../img/icon-4.png" alt="" />
+                            <h5>4. Upload Payment</h5>
+                            <p>After selecting an artist, upload the agreed payment to AARTSTUDIO. This ensures a secure transaction for both parties.</p>
+                        </div>
+                        <div className="col-sm-4">
+                            <img src="../img/icon-5.png" alt="" />
+                            <h5>5. Art Creation</h5>
+                            <p>The chosen artist begins creating your custom artwork. Throughout this process, you can communicate with the artist to ensure the work aligns with your expectations.</p>
+                        </div>
+                        <div className="col-sm-4">
+                            <img src="../img/icon-6.png" alt="" />
+                            <h5>6. Review Completed Artwork</h5>
+                            <p>Once the artist completes the artwork, they will upload images ofthe finished piece for your review. If you are satisfied with the result, the artist will proceed to courier the artwork to you.</p>
+                        </div>
+                        <div className="col-sm-4">
+                        </div>
+                        <div className="col-sm-4">
+                            <img src="../img/icon-7.png" alt="" />
+                            <h5>7. Receive and Complete the Job</h5>
+                            <p>Upon receiving your custom artwork, inspect it to ensure it meets your expectations. Once you confirm your satisfaction, complete the job on AARTSTUDIO, and the platform will release the payment to the artist.</p>
+                        </div>
+                        <div className="col-sm-4">
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section className="howit_wp2">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-8">
+                            <div className="heading_title">
+                                <h1>Commission Custom Art <br /> Effortlessly with AARTSTUDIO</h1>
+                            </div>
+                            <p>AARTSTUDIO simplifies the process of commissioning custom art, providing a secure and efficient platform for both customers and artists. Begin your journey to owning a unique, personalized piece of art today with AARTSTUDIO.</p>
+                            <a href="/auth/sign-in">Sign Up Now</a>
+                        </div>
+                        <div className="col-sm-4">
+                            <img src="../img/customart-img.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }

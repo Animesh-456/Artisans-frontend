@@ -2854,3 +2854,135 @@ select {
 .filter-btn {
   margin-left: 20px;
 }
+
+.howit_wp {
+  padding: 3em 0;
+}
+
+.howit_wp p {
+  margin-top: 2em;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.howit_wp img {
+  width: 100%;
+}
+
+.howit_wp .col-sm-6:last-child {
+  margin-top: 5em;
+}
+
+.howit_wp1 {
+  padding: 3em 0;
+  background-color: #fdf2e2;
+}
+
+.latest_request_heading1 {
+  display: table;
+  margin: 0 auto 3em;
+}
+
+.latest_request_heading1:after {
+  left: 235px;
+}
+
+.howit_wp1 .col-sm-4 {
+  text-align: center;
+}
+
+.howit_wp1 img {
+  margin-bottom: 15px;
+  height: 45px;
+}
+
+.howit_wp1 h5 {
+  color: #12151b;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.howit_wp1 p {
+  font-size: 15px;
+  margin-bottom: 4em;
+  line-height: 25px;
+}
+
+.howit_wp2 .container {
+  background: #ffdaa3;
+  border-radius: 20px;
+}
+
+.howit_wp2 {
+  padding: 4em 0;
+}
+
+.howit_wp2 img {
+  width: 100%;
+  margin-top: -3em;
+}
+
+.howit_wp2 .col-sm-8 {
+  padding: 3em;
+}
+
+.howit_wp2 .col-sm-4 {
+  padding-right: 0;
+}
+
+.howit_wp2 .heading_title h1 {
+  color: #6b2b00;
+}
+
+.howit_wp2 p {
+  font-size: 15px;
+  margin-top: 2em;
+  line-height: 25px;
+}
+
+.howit_wp2 a {
+  background: #ef6100;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+  font-family: "Poppins", sans-serif;
+  padding: 6px 22px;
+  transition: box-shadow 1s;
+  display: inline-block;
+  margin-top: 26px;
+}
+
+.howit_wp2 a:hover {
+  box-shadow: none;
+}
+
+
+/* How it work End here */
+/* delivery & Shipping start here */
+.shipping_d p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.shipping_d ul li {
+  position: relative;
+  padding-left: 17px;
+  padding-bottom: 6px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.shipping_d ul li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef6100;
+}
+
+.shipping_d h5 {
+  padding-top: 15px;
+}

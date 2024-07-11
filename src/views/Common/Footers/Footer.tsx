@@ -99,7 +99,7 @@ export default function Footer({ }: Props) {
 								<ul>
 									<li><Link href="/auth/sign-in">Join AartStudio</Link></li>
 									<li><Link href="/">Get Paid for your work</Link></li>
-									<li><Link href="/">Delivery & Shipping</Link></li>
+									<li><Link href="/account/deliveryShipping">Delivery & Shipping</Link></li>
 									<li><Link href="/">Blogs</Link></li>
 									<li><Link href="/account/assistance">FAQ</Link></li>
 

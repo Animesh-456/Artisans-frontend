@@ -24,7 +24,7 @@ table{
 @font-face {
     font-family: 'brasika_display_-_trialRg';
     src: url('../font/brasika-display-trial-webfont.woff2') format('woff2'),
-         url('../font/brasika-display-trial-webfont.woff') format('woff');
+         url('../font/brasika-display-trial-webfont.woff') format('woff')
     font-weight: normal;
     font-style: normal;
 
@@ -233,10 +233,11 @@ table{
     background: #ef6100;
 }
 .heading_title h1 {
-    font-family: 'brasika_display_-_trialRg';
-    font-size: 27px;
-    color: #080424;
+    font-family: "Poppins", sans-serif;
+    font-size: 29px;
+    color: #ef6100;
     display: inline;
+    font-weight: 700;
 }
 .popular_category_listing {
     display: flex;
@@ -346,7 +347,7 @@ table{
     border-radius: 10px;
 }
 .latest_request_text h1 {
-    font-family: 'brasika_display_-_trialRg';
+    font-family: "Poppins", sans-serif;
     font-size: 20px;
     color: #080424;
     line-height: 32px;
@@ -417,7 +418,7 @@ table{
     border-radius: 10px;
 }
 .top_artist_slider h3 {
-    font-family: 'brasika_display_-_trialRg';
+    font-family: "Poppins", sans-serif;
     font-size: 16px;
     padding: 17px 0 5px;
     color: #080424;
@@ -655,12 +656,13 @@ footer hr {
     background-position: top;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'brasika_display_-_trialRg';
+	font-family: "Poppins", sans-serif;
 	color: #080424;
 }
 .inner_banner_wp h1 {
     color: #060322;
     font-size: 50px;
+    font-family: 'brasika_display_-_trialRg';
 }
 .art_request_wp {
     background: #feeede;
@@ -731,7 +733,7 @@ a{
 }
 p{
 	font-family: "Poppins", sans-serif;
-	color: #080424;
+	color: #313030;
 }
 .page-item.active .page-link {
     background-color: #f06101;
@@ -2094,6 +2096,135 @@ h4.modal-title {
     overflow-y: auto;
     padding-right: 15px;
 }
+.icon_upload .upload-btn-wrapper {
+    height: auto;
+}
+.icon_upload .upload-btn-wrapper .btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 4px;
+}
+.icon_upload .upload-btn-wrapper input[type=file]{
+	font-size: 21px;
+}
+.icon_upload .upload-btn-wrapper .btn .fa-plus-circle {
+    color: #080424;
+}
+
+/* How it work start here */
+
+.howit_wp{
+	padding: 3em 0;
+}
+.howit_wp p{
+	margin-top: 2em;
+    font-size: 15px;
+    line-height: 25px;
+}
+.howit_wp img {
+    width: 100%;
+}
+.howit_wp .col-sm-6:last-child {
+    margin-top: 5em;
+}
+.howit_wp1{
+	padding: 3em 0;
+	background-color: #fdf2e2;
+}
+.latest_request_heading1{
+	display: table;
+    margin: 0 auto 3em;
+}
+.latest_request_heading1:after {
+    left: 235px;
+}
+.howit_wp1 .col-sm-4 {
+    text-align: center;
+}
+.howit_wp1 img {
+    margin-bottom: 15px;
+    height: 45px;
+}
+.howit_wp1 h5 {
+    color: #12151b;
+    font-size: 17px;
+    font-weight: 600;
+}
+.howit_wp1 p {
+    font-size: 15px;
+    margin-bottom: 4em;
+    line-height: 25px;
+}
+.howit_wp2 .container {
+    background: #ffdaa3;
+    border-radius: 20px;
+}
+.howit_wp2 {
+    padding: 4em 0;
+}
+.howit_wp2 img {
+    width: 100%;
+    margin-top: -3em;
+}
+.howit_wp2 .col-sm-8 {
+    padding: 3em;
+}
+.howit_wp2 .col-sm-4 {
+	padding-right: 0;
+}
+.howit_wp2 .heading_title h1 {
+    color: #6b2b00;
+}
+.howit_wp2 p {
+    font-size: 15px;
+    margin-top: 2em;
+    line-height: 25px;
+}
+.howit_wp2 a {
+    background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    transition: box-shadow 1s;
+    display: inline-block;
+    margin-top: 26px;
+}
+.howit_wp2 a:hover {
+    box-shadow: none;
+}
+
+
+/* How it work End here */
+/* delivery & Shipping start here */
+.shipping_d p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.shipping_d ul li {
+    position: relative;
+    padding-left: 17px;
+    padding-bottom: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+.shipping_d ul li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef6100;
+}
+.shipping_d h5 {
+    padding-top: 15px;
+}
+/* delivery & Shipping End here */
+
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
