@@ -501,7 +501,7 @@ const Post = (prp) => {
 
 
 
-								<br /><br /><br />
+
 								{pr < 101 ? (
 									<ProgressBar now={pr} label={`${pr}%`} />
 

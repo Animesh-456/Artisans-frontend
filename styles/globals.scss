@@ -3038,3 +3038,25 @@ hr {
 .rating-color i {
   font-style: normal;
 }
+
+.pro_div a {
+  display: block;
+  margin: 0;
+  background: none;
+  color: red;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: inherit;
+  padding: 0;
+  transition: inherit;
+  margin-left: 5px;
+}
+
+
+.pro_div p {
+  display: flex;
+  line-height: 15px !important;
+  padding: 0 !important;
+  margin-bottom: 10px;
+
+}
