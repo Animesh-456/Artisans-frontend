@@ -481,10 +481,10 @@ const EditProfile = () => {
                                         <h3>{udetails.user_name}</h3>
                                         <div className="location_a1">
                                             <div className="location_l2">
-                                                <h5>Feedback</h5>
+                                                {/* <h5>Feedback</h5> */}
                                             </div>
-                                            <div className="location_r2">
-                                                {/* <p>
+                                            {/* <div className="location_r2"> */}
+                                            {/* <p>
                                                 <i className="fa fa-star"></i>
                                                 <i className="fa fa-star"></i>
                                                 <i className="fa fa-star"></i>
@@ -493,10 +493,10 @@ const EditProfile = () => {
                                                 <span>5.0</span>
                                             </p> */}
 
-                                                {/* Dynamic logic */}
+                                            {/* Dynamic logic */}
 
-                                                {public_avg_rating && user?.role_id == 2 ? (
-                                                    <div className="location_r2">
+                                            {public_avg_rating && user?.role_id == 2 ? (
+                                                <div className="location_r2">
                                                     <p>
                                                         <div
                                                             className="stars"
@@ -504,9 +504,9 @@ const EditProfile = () => {
                                                         ><span>{public_avg_rating}</span></div>
 
                                                     </p>
-                                                    </div>
-                                                ) : (
-                                                        <div className="location_r2">
+                                                </div>
+                                            ) : (
+                                                <div className="location_r2">
                                                     <p>
                                                         <div
                                                             className="stars"
@@ -514,17 +514,16 @@ const EditProfile = () => {
                                                         ><span>0.0</span></div>
 
                                                     </p>
-                                                    </div>
-                                                )}
-                                            </div>
+                                                </div>
+                                            )}
+                                            {/* </div> */}
                                         </div>
                                         <div className="location_a1">
                                             <div className="location_l2">
-                                                <h5>Jobs Completed</h5>
+                                                <h5>Jobs Completed <span>({totaljobs})</span></h5>
+
                                             </div>
-                                            <div className="location_r2">
-                                                <p> {totaljobs} </p>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -709,7 +708,7 @@ const EditProfile = () => {
 
                                                                         </p>
 
-                                                                        <p>
+                                                                        <p className="pro-p">
 
                                                                             <div
                                                                                 className="professionalism"

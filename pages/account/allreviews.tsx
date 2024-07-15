@@ -94,7 +94,7 @@ const Allreviews = () => {
                                                 </div>
                                                 <div className="comment1">
                                                     <div className="rating-color pub-rat">
-                                                        <div className="quality">
+                                                        <div className="quality q-1">
 
 
                                                             <i
@@ -103,21 +103,21 @@ const Allreviews = () => {
                                                             ></i>
                                                             <span> Quality </span>
                                                         </div>
-                                                        <div className="time">
+                                                        <div className="time q-1">
                                                             <i
                                                                 className="stars"
                                                                 style={{ '--rating': l?.provider_rate2 } as CSSProperties}
                                                             ></i>
                                                             <span> Details </span>
                                                         </div>
-                                                        <div className="communication">
+                                                        <div className="communication q-1">
                                                             <i
                                                                 className="stars"
                                                                 style={{ '--rating': l?.provider_rate3 } as CSSProperties}
                                                             ></i>
                                                             <span> Communication</span>
                                                         </div>
-                                                        <div className="professionalism">
+                                                        <div className="professionalism q-1">
                                                             <i
                                                                 className="stars"
                                                                 style={{ '--rating': l?.provider_rate4 } as CSSProperties}
@@ -160,7 +160,7 @@ const Allreviews = () => {
                                             </a>
                                         </li> : ""}
 
-                                    
+
 
                                         {opt.total_count > 10 && getPageNumbers().map((page) => (
 

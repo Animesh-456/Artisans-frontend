@@ -285,9 +285,9 @@ table {
 }
 
 .heading_title h1 {
-  font-family: 'brasika_display_-_trialRg';
+  font-family: "Poppins", sans-serif;
   font-size: 27px;
-  color: #080424;
+  color: #ef6100;
   display: inline;
 }
 
@@ -450,7 +450,7 @@ table {
 }
 
 .latest_request_text h1 {
-  font-family: 'brasika_display_-_trialRg';
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
   color: #080424;
   line-height: 32px;
@@ -464,7 +464,8 @@ table {
 }
 
 .latest_request_text div>span:nth-child(1) {
-  font-family: 'brasika_display_-_trialRg';
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
   font-size: 14px;
   color: #080424;
   margin-right: 25px;
@@ -533,8 +534,9 @@ table {
 }
 
 .top_artist_slider h3 {
-  font-family: 'brasika_display_-_trialRg';
-  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 19px;
   padding: 17px 0 5px;
   color: #080424;
 }
@@ -642,8 +644,9 @@ table {
 }
 
 .short_text h5 {
-  font-family: 'brasika_display_-_trialRg';
-  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -837,7 +840,7 @@ h6 {
 }
 
 .art_request_wp {
-  background: #feeede;
+  background: #fdf2e2;
   padding: 3em 0;
 }
 
@@ -1474,7 +1477,7 @@ label {
 }
 
 .myproject {
-  background-color: #fce0bb;
+  background-color: #fdf2e2;
   padding: 3em 0;
 }
 
@@ -1610,6 +1613,8 @@ ul.side-nav {
 }
 
 .overview-head>div h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
   font-size: 20px;
   padding-top: 10px;
   color: #080224;
@@ -1809,6 +1814,7 @@ ul.side-nav {
 .rating-color p span {
   color: #000;
   padding-right: 5px;
+  padding-left: 5px;
   width: 40%;
 }
 
@@ -3010,4 +3016,25 @@ select {
 .react-multiple-carousel__arrow::before {
   color: #000 !important;
 
+}
+
+hr {
+
+  border-top: 1px solid rgba(0, 0, 0, .5);
+}
+
+.pro-p {
+  float: none !important;
+}
+
+.q-1 {
+  display: flex;
+}
+
+.q-1:before {
+  display: none;
+}
+
+.rating-color i {
+  font-style: normal;
 }

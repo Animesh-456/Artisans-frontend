@@ -344,7 +344,7 @@ function Home(prp) {
 
 
 
-            <section className="latest_request" style={{ backgroundImage: `url(./img/bg2.jpg)` }}>
+            <section className="latest_request" style={{ backgroundImage: `url(../img/bg2.jpg)` }}>
                 <div className="container">
                     <div className="heading_title latest_request_heading">
                         <h1>Latest Requests</h1>
@@ -460,14 +460,14 @@ function Home(prp) {
                                             </div>
                                         </div>
                                     </div>
-                                    <hr></hr>
+                                    <hr />
                                 </>
 
                             );
                         }).slice(0, 3)
                         : ""}
 
-                    <hr />
+
 
                     <a className="view_all viewall_center" href={"/artworklisting"}>View all <img src="img/arrow.png" width="11px" alt="" /></a>
                 </div>
