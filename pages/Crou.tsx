@@ -16,8 +16,8 @@ const Crou = () => {
             items: 5
         },
         desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3
+            breakpoint: { max: 4000, min: 1024 },
+            items: 4,
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
@@ -25,7 +25,7 @@ const Crou = () => {
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 1
+            items: 2
         }
     };
 
@@ -37,7 +37,7 @@ const Crou = () => {
     console.log("reviewed projects", projects)
     return (
         <div className="container">
-            <Carousel responsive={responsive} itemAriaLabel="hhh">
+            {/* <Carousel responsive={responsive} itemAriaLabel="hhh">
                 {projects.length
                     ? projects.map((project, index) => {
                         const date = new Date(project?.created * 1000);
@@ -78,7 +78,93 @@ const Crou = () => {
                         );
                     })
                     : "No projects found"}
+            </Carousel> */}
+
+
+
+            <Carousel responsive={responsive} itemAriaLabel="hhh">
+                <div className="item" key={1}>
+                    <div className="top_artist_slider">
+
+                        <a href={`#`}>
+                            <img className="art-img1" src={"../img/man.jpg"} alt="art-image" />
+                        </a>
+
+                        <h3>Art work</h3>
+                        <span> Created by gghh</span>
+                        <p>12/05</p>
+                    </div>
+                </div>
+
+                <div className="item" key={2}>
+                    <div className="top_artist_slider">
+
+                        <a href={`#`}>
+                            <img className="art-img1" src={"../img/man.jpg"} alt="art-image" />
+                        </a>
+
+                        <h3>Art work</h3>
+                        <span> Created by gghh</span>
+                        <p>12/05</p>
+                    </div>
+                </div>
+
+                <div className="item" key={3}>
+                    <div className="top_artist_slider">
+
+                        <a href={`#`}>
+                            <img className="art-img1" src={"../img/man.jpg"} alt="art-image" />
+                        </a>
+
+                        <h3>Art work</h3>
+                        <span> Created by gghh</span>
+                        <p>12/05</p>
+                    </div>
+                </div>
+
+
+                <div className="item" key={4}>
+                    <div className="top_artist_slider">
+
+                        <a href={`#`}>
+                            <img className="art-img1" src={"../img/man.jpg"} alt="art-image" />
+                        </a>
+
+                        <h3>Art work</h3>
+                        <span> Created by gghh</span>
+                        <p>12/05</p>
+                    </div>
+                </div>
+
+                <div className="item" key={5}>
+                    <div className="top_artist_slider">
+
+                        <a href={`#`}>
+                            <img className="art-img1" src={"../img/man.jpg"} alt="art-image" />
+                        </a>
+
+                        <h3>Art work</h3>
+                        <span> Created by gghh</span>
+                        <p>12/05</p>
+                    </div>
+                </div>
+
+                <div className="item" key={6}>
+                    <div className="top_artist_slider">
+
+                        <a href={`#`}>
+                            <img className="art-img1" src={"../img/man.jpg"} alt="art-image" />
+                        </a>
+
+                        <h3>Art work</h3>
+                        <span> Created by gghh</span>
+                        <p>12/05</p>
+                    </div>
+                </div>
             </Carousel>
+
+
+
         </div>
     );
 }

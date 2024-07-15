@@ -5,118 +5,95 @@ type Props = {};
 
 export default function Footer({ }: Props) {
 	return (
-		// <footer>
-		// 	<div classNameName="container">
-		// 		<div classNameName="row footer_l">
-		// 			<div classNameName="col-sm-3">
-		// 				<h4>Artoz</h4>
-		// 				<ul>
-		// 					<li><a href="#">Home</a></li>
-		// 					<li><a href="#">About Us</a></li>
-		// 					<li><a href="#">art request </a></li>
-		// 					<li><a href="#">artist & artisans </a></li>
-		// 					<li><a href="#">Contact us</a></li>
-		// 				</ul>
-		// 			</div>
-		// 			<div classNameName="col-sm-3">
-		// 				<h4>Help Center</h4>
-		// 				<ul>
-		// 					<li><a href="#">Track Your Order</a></li>
-		// 					<li><a href="#">The Nook Book</a></li>
-		// 					<li><a href="#">Buying Guide</a></li>
-		// 					<li><a href="#">Caring For Your Art</a></li>
-		// 					<li><a href="#">FAQ Corner</a></li>
-		// 				</ul>
-		// 			</div>
-		// 			<div classNameName="col-sm-3">
-		// 				<h4>Chat With us</h4>
-		// 				<ul>
-		// 					<li>We are always here for you. Chat with us using the Chat bubble on your screen. </li>
-		// 					<li>Talk to us on whatsapp : <a href="#">+91-7358792364</a></li>
-		// 					<li>Email us - <a href="#">support@nookatyou.com</a></li>
-		// 					<li><a href="#">Contact Form</a></li>
-		// 				</ul>
-		// 			</div>
-		// 			<div classNameName="col-sm-3">
-		// 				<h4>SUBSCRIBE</h4>
-		// 				<p>Be the first to see our latest products, hottest sales and member exclusive discount codes.&nbsp;<strong>Sign up below to get your 10% off coupon</strong></p>
-		// 				<form>
-		// 					<input type="email" name="email" placeholder="Enter your email" />
-		// 						<button><i classNameName="fa fa-envelope-o"></i></button>
-		// 				</form>
-		// 			</div>
-		// 		</div>
-		// 		<div classNameName="footer_b">
-		// 			<img src="img/logo.png" alt="" />
-		// 			<p>&#169;2023 AMOZZA. All Rights Reserved</p>
-		// 		</div>
-		// 	</div>
-		// </footer>
-		<footer>
-			<div className="container">
-				<div className="row">
-					<div className="col-sm-3">
-						<div className="footer_logo">
-							<img src="../img/AartStudio-footer.png" alt="aartstudio" />
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-							<h4>Hotline : <a href="tel:(+91) 89 815 15 666">+91 8981515666</a></h4>
+		<>
 
+			<footer>
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-3">
+							<div className="footer_logo">
+								<img src="../img/AartStudio-footer.png" alt="aartstudio" />
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+								<h4>Hotline : <a href="tel:(+91) 89 815 15 666">+91 8981515666</a></h4>
+
+							</div>
 						</div>
-					</div>
-					<div className="col-sm-9">
-						<div className="footer_information">
-							<div className="footer_information1">
-								<div><i className="fa fa-phone"></i></div>
-								<div>
-									<h5>Phone</h5>
-									<a href="tel:+89 815-15-666">+91 8981515666</a>
+						<div className="col-sm-9">
+							<div className="footer_information">
+								<div className="footer_information1">
+									<div><i className="fa fa-phone"></i></div>
+									<div>
+										<h5>Phone</h5>
+										<a href="tel:+89 815-15-666">+91 8981515666</a>
+									</div>
 								</div>
-							</div>
-							<div className="footer_information1">
-								<div><i className="fa fa-envelope-open-o"></i></div>
-								<div>
-									<h5>Email</h5>
-									<a href="mailto:Info@aartstudio.in">Info@aartstudio.in</a>
+								<div className="footer_information1">
+									<div><i className="fa fa-envelope-open-o"></i></div>
+									<div>
+										<h5>Email</h5>
+										<a href="mailto:Info@aartstudio.in">Info@aartstudio.in</a>
+									</div>
 								</div>
-							</div>
 
-						</div>
-						<hr />
-						<div className="quick_wp">
-							<div className="quick_left">
-								<h3>Company</h3>
-								<ul>
-									<li><Link href="/">Home</Link></li>
-									<li><Link href="/account/about">About Us</Link></li>
-									<li><Link href="/artrequest">Custom Artwork Request</Link></li>
-									<li><Link href="/artworklisting">Artist & Artisans</Link></li>
-									<li><Link href="/page/works">How it Works</Link></li>
-									<li><Link href="/account/contact_us">Contact Us</Link></li>
-								</ul>
 							</div>
-							<div className="quick_left">
-								<h3>Resources</h3>
-								<ul>
-									<li><Link href="/auth/sign-in">Join AartStudio</Link></li>
-									<li><Link href="/">Get Paid for your work</Link></li>
-									<li><Link href="/account/deliveryShipping">Delivery & Shipping</Link></li>
-									<li><Link href="/">Blogs</Link></li>
-									<li><Link href="/account/assistance">FAQ</Link></li>
+							<hr />
+							<div className="quick_wp">
+								<div className="quick_left">
+									<h3>Company</h3>
+									<ul>
+										<li><Link href="/">Home</Link></li>
+										<li><Link href="/account/about">About Us</Link></li>
+										<li><Link href="/artrequest">Custom Artwork Request</Link></li>
+										<li><Link href="/artworklisting">Artist & Artisans</Link></li>
+										<li><Link href="/page/works">How it Works</Link></li>
+										<li><Link href="/account/contact_us">Contact Us</Link></li>
+									</ul>
+								</div>
+								<div className="quick_left">
+									<h3>Resources</h3>
+									<ul>
+										<li><Link href="/auth/sign-in">Join AartStudio</Link></li>
+										<li><Link href="/">Get Paid for your work</Link></li>
+										<li><Link href="/account/deliveryShipping">Delivery & Shipping</Link></li>
+										<li><Link href="/">Blogs</Link></li>
+										<li><Link href="/account/assistance">FAQ</Link></li>
 
-								</ul>
-							</div>
-							<div className="quick_left">
-								<h3>Subscribe Newsletter</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-								<div className="footersearch">
-									<span className="fa fa-search"></span>
-									<input type="email" placeholder="Your Email" />
+									</ul>
+								</div>
+								<div className="quick_left">
+									<h3>Subscribe Newsletter</h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+									<div className="footersearch">
+										<span className="fa fa-search"></span>
+										<input type="email" placeholder="Your Email" />
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</footer>
+			</footer>
+
+			<section className="copyright">
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-6">
+							<p>Copyright © <a href="#">Aart Studion</a> 2024. All rights reserved.</p>
+						</div>
+						<div className="col-sm-6">
+							<ul className="top_socialmedia right_icon">
+								<li><a href="#"><i className="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i className="fa fa-instagram"></i></a></li>
+								<li><a href="#"><i className="fa fa-whatsapp"></i></a></li>
+								<li><a href="#"><i className="fa fa-youtube-play"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</>
+
+
 	)
 }
