@@ -24,7 +24,7 @@ const suppliersuccess = () => {
 
             <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
-                    <h1 className='yh'>You are a  supplier</h1>
+                    <h1 className='yh'>You are a  Artist</h1>
                 </div>
             </section>
 
