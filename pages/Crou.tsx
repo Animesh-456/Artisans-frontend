@@ -37,7 +37,7 @@ const Crou = () => {
     console.log("reviewed projects", projects)
     return (
         <div className="container">
-            {/* <Carousel responsive={responsive} itemAriaLabel="hhh">
+            <Carousel responsive={responsive} itemAriaLabel="hhh">
                 {projects.length
                     ? projects.map((project, index) => {
                         const date = new Date(project?.created * 1000);
@@ -78,11 +78,11 @@ const Crou = () => {
                         );
                     })
                     : "No projects found"}
-            </Carousel> */}
+            </Carousel>
 
 
 
-            <Carousel responsive={responsive} itemAriaLabel="hhh">
+            {/* <Carousel responsive={responsive} itemAriaLabel="hhh">
                 <div className="item" key={1}>
                     <div className="top_artist_slider">
 
@@ -161,7 +161,7 @@ const Crou = () => {
                         <p>12/05</p>
                     </div>
                 </div>
-            </Carousel>
+            </Carousel> */}
 
 
 
