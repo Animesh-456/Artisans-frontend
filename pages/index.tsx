@@ -219,7 +219,7 @@ function Home(prp) {
                         <h1>Popular Category</h1>
                     </div>
                     <a className="view_all" href="#">View all categories <img src={"img/arrow.png"} width="11px" alt="" /></a>
-                    {/* <ul className="popular_category_listing">
+                    <ul className="popular_category_listing">
                         <li>
                             <a href={`/artworklisting?category=Painting`}>
                                 <img src="img/icon.png" alt="" />
@@ -263,13 +263,12 @@ function Home(prp) {
                                 <p>Textile Art</p>
                             </a>
                         </li>
-                    </ul> */}
-                    {/* <ul className="popular_category_listing"> */}
-                    <div className="owl-carousel top_artist_slide owl-theme">
-                        <Popular />
-                    </div>
+                    </ul>
 
-                    {/* </ul> */}
+
+                    {/* <Popular /> */}
+
+
 
                 </div>
             </section>
