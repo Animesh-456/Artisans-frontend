@@ -917,6 +917,7 @@
     width: auto;
     padding-left: 0;
     text-align: left;
+    margin: 10px 0;
   }
 
   .offer_heading figure img {
@@ -926,6 +927,7 @@
 
   .offer_heading figure {
     width: 17%;
+    float: none;
   }
 
   .offer_heading h5 {
@@ -1165,4 +1167,11 @@
   .filter-btn {
     margin-left: 0px;
   }
+
+  .offer_r img {
+    height: 80px !important;
+    float: right;
+  }
+
+
 }

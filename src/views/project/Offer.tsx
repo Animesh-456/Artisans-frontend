@@ -920,23 +920,13 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							</>
 						)} */}
 
-						{bid?.user_id == data?.programmer_id ? (
-
-							data?.visibility.toLowerCase() == "Public" ? (
-								bid?.user_id == data?.programmer_id || (storageuser?.role_id == "2") ? (
-									<h3>
-										<img src='../img/selected.png' alt='' />
-									</h3>
-								) : (<></>)
-							) : (
-								<h3>
-									<img src='../img/selected.png' alt='' />
-								</h3>
-							)
-
-						) : (
-							<></>
+						{bid?.user_id == data?.programmer_id && (
+							<img src='../img/selected.png' alt='' />
 						)}
+
+
+
+
 
 						<h6>{bid?.bid_amount_gbp ? `₹${bid?.bid_amount_gbp}` : ""}</h6>
 						<p>Shipping fee included</p>
@@ -950,6 +940,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 
 					{/* After select machinist show price logic */}
+
 
 
 				</div>

@@ -28,7 +28,7 @@ const CustomerSays = () => {
                                 <div className="short_pic">
                                     <img src={
                                         common.get_profile_picture(review?.buyer?.logo) ||
-                                        "../img/man.jpg"
+                                        "../img/no-images.png"
                                     } alt="profile-picture" />
                                 </div>
                                 <div className="short_text">
