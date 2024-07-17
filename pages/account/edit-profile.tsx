@@ -783,6 +783,7 @@ const EditProfile = () => {
                                                                     id='fileAttach'
                                                                     multiple
                                                                     onChange={handle_file_change2}
+                                                                     accept="image/*,video/*"
                                                                     //ref={fileInputRef2}
                                                                 />
                                                             </div>
