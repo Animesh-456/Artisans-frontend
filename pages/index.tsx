@@ -163,12 +163,12 @@ function Home(prp) {
                                     <Link href={`/artworklisting?searchQuery=${searchQuery}`}><span className="fa fa-search"></span></Link>
                                     <input value={searchQuery} onChange={(e) => setsearchQuery(e.target.value)} placeholder="Search for any service..." />
                                 </div>
-                                <div className="popular_wp">
+                                {/* <div className="popular_wp">
                                     Popular:
                                     <span onClick={() => setsearchQuery("Painting")}>Painting</span>
                                     <span onClick={() => setsearchQuery("Music")}>Music</span>
                                     <span onClick={() => setsearchQuery("Animation")}>Animation</span>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@ function Home(prp) {
                     <div className="heading_title">
                         <h1>Popular Category</h1>
                     </div>
-                    <a className="view_all" href="#">View all categories <img src={"img/arrow.png"} width="11px" alt="" /></a>
+                    {/* <a className="view_all" href="#">View all categories <img src={"img/arrow.png"} width="11px" alt="" /></a> */}
                     <ul className="popular_category_listing">
                         <li>
                             <a href={`/artworklisting?category=Painting`}>
