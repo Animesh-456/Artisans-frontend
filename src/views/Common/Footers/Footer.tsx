@@ -12,7 +12,7 @@ export default function Footer({ }: Props) {
 					<div className="row">
 						<div className="col-sm-3">
 							<div className="footer_logo">
-								<img src={"./img/AartStudio-footer.png"} alt="aartstudio" />
+								<img src={"../img/AartStudio-footer.png"} alt="aartstudio" />
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
 								<h4>Hotline : <a href="tel:(+91) 89 815 15 666">+91 8981515666</a></h4>
 
