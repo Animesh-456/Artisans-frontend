@@ -57,6 +57,11 @@ const EditProfileSideBar = [
 		path: "/account/profile",
 		role: [1, 2],
 	},
+	{
+		title: "My Artwork",
+		path: "/account/artwork",
+		role: [2],
+	},
 
 	{
 		title: "Edit My Profile",
@@ -69,6 +74,7 @@ const EditProfileSideBar = [
 		path: "/account/inbox",
 		role: [1, 2],
 	},
+
 
 	{
 		title: "Withdraw Funds",

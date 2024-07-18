@@ -3277,3 +3277,231 @@ ul.ex1 li a {
   letter-spacing: -.005em;
   font-size: 24px;
 }
+
+/* My Artwork start here */
+
+.manage_p p {
+  font-size: 15px;
+  padding-bottom: 10px;
+  line-height: 25px;
+}
+
+.tgs {
+  color: #262525;
+  font-weight: 500;
+  border-bottom: 1px solid #2e2e2e;
+}
+
+.tgs1 {
+  background: #ef6100;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+  font-family: "Poppins", sans-serif;
+  padding: 6px 22px;
+  transition: box-shadow 1s;
+  display: table;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.manage_p small {
+  color: #ef6100;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  padding-left: 20px;
+}
+
+.manage_p small:before {
+  content: "\f00c";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  font: normal normal normal 14px/1 FontAwesome;
+  color: #ef6100;
+}
+
+.manage_p1 {
+  display: flex;
+}
+
+.manage_p2 p {
+  font-weight: 600;
+}
+
+.manage_p2 img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.manage_p2 {
+  width: 25%;
+  margin-right: 10px;
+  position: relative;
+}
+
+.manage_p2 .fa {
+  position: absolute;
+  right: 6px;
+  top: 41px;
+  color: #78490fe8;
+}
+
+
+/* My Artwork end here */
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ef6100;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ef6100;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+@keyframes customAni {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.createdby {
+  animation: customAni1 4s ease 1s infinite normal none;
+}
+
+@keyframes customAni1 {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateY(-45px);
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  40% {
+    animation-timing-function: ease-in;
+    transform: translateY(-24px);
+  }
+
+  65% {
+    animation-timing-function: ease-in;
+    transform: translateY(-12px);
+  }
+
+  82% {
+    animation-timing-function: ease-in;
+    transform: translateY(-6px);
+  }
+
+  93% {
+    animation-timing-function: ease-in;
+    transform: translateY(-4px);
+  }
+
+  25%,
+  55%,
+  75%,
+  87% {
+    animation-timing-function: ease-out;
+    transform: translateY(0px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes customAni12 {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+
+  10% {
+    transform: rotate(8deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: rotate(-10deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: rotate(10deg);
+  }
+
+  80% {
+    transform: rotate(-8deg);
+  }
+
+  90% {
+    transform: rotate(8deg);
+  }
+}
+
+/* Copy this code after the above code */
+@keyframes customAni3 {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
