@@ -103,9 +103,9 @@ const EditProfile = () => {
 										<div className='location_r2'>
 											<p>
 												<div
-        className="stars"
-        style={{ '--rating': avg_rating } as CSSProperties}
-      ></div>
+													className="stars"
+													style={{ '--rating': avg_rating } as CSSProperties}
+												></div>
 												<span>{avg_rating}</span>
 											</p>
 										</div>
@@ -120,10 +120,10 @@ const EditProfile = () => {
 									</div>
 								</div>
 							</div>
-								{user?.role_id == 2 ? (
-									<>
-							<div className='gallery_photo'>
-								<h4>Portfolio</h4>
+							{user?.role_id == 2 ? (
+								<>
+									<div className='gallery_photo'>
+										<h4>Portfolio</h4>
 										<div id='demo' className='carousel slide' data-ride='carousel'>
 											<div className='carousel-inner'>
 												<div className='carousel-item active'>
@@ -149,13 +149,13 @@ const EditProfile = () => {
 												<span className='carousel-control-next-icon' />
 											</a>
 										</div>
-										</div>
-									</>
-								) : (
-									<></>
-								)}
+									</div>
+								</>
+							) : (
+								<></>
+							)}
 
-							
+
 							<h5>
 								Work History
 							</h5>

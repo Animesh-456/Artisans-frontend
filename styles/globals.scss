@@ -80,7 +80,7 @@ table {
 }
 
 .menubar {
-  background-color: #ffecdb;
+  background-color: #fff;
   padding: 15px 0;
 }
 
@@ -265,7 +265,7 @@ table {
 }
 
 .popular_category {
-  background: #fff4e4;
+  background: #fff;
   padding: 3em 0;
 }
 
@@ -278,7 +278,7 @@ table {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -9px;
+  bottom: -20px;
   width: 40px;
   height: 3px;
   background: #ef6100;
@@ -286,7 +286,7 @@ table {
 
 .heading_title h1 {
   font-family: "Poppins", sans-serif;
-  font-size: 27px;
+  font-size: 34px;
   color: #ef6100;
   display: inline;
 }
@@ -346,9 +346,7 @@ table {
 
 .discover_wp {
   padding: 2em 0 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0;
+  background: #fdf2e2;
 }
 
 .discover_wp p {
@@ -453,7 +451,8 @@ table {
   font-family: "Poppins", sans-serif;
   font-size: 20px;
   color: #080424;
-  line-height: 32px;
+  line-height: 30px;
+  font-weight: 600;
 }
 
 .latest_request_text p {
@@ -600,17 +599,12 @@ table {
 }
 
 .top_artist {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
+  background-color: #fdf2e2;
   padding: 3em 0 2em;
 }
 
 .customer_wp {
   padding: 3em 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
 }
 
 .customer_wp .container {
@@ -815,13 +809,13 @@ footer hr {
 }
 
 .inner_banner_wp {
-  height: 300px;
+  height: 230px;
   background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
   display: grid;
   align-items: center;
-  background-position: top;
+  background-position: center;
 }
 
 h1,
@@ -830,13 +824,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'brasika_display_-_trialRg';
+  font-family: "Poppins", sans-serif;
   color: #080424;
 }
 
 .inner_banner_wp h1 {
   color: #060322;
   font-size: 50px;
+  font-family: 'brasika_display_-_trialRg';
 }
 
 .art_request_wp {
@@ -920,6 +915,7 @@ a {
 p {
   font-family: "Poppins", sans-serif;
   color: #080424;
+  line-height: 1.6;
 }
 
 .page-item.active .page-link {
@@ -937,7 +933,7 @@ p {
 }
 
 .our_story_wp {
-  background: #fff4e4;
+  background: #fdf2e2;
   padding: 3em 0;
 }
 
@@ -1081,13 +1077,13 @@ label {
   font-family: "Poppins", sans-serif;
 }
 
-.dya {
-  background-position: 0;
-}
-
 .submit_cancel {
   display: inline-block;
   margin: 29px 0 40px;
+}
+
+.submit_cancel a:hover {
+  box-shadow: none;
 }
 
 .submit_cancel a:last-child {
@@ -1348,7 +1344,7 @@ label {
 }
 
 .about_wp {
-  background: #fff4e4;
+  background: #fff;
   padding: 3em 0;
 }
 
@@ -1367,9 +1363,7 @@ label {
 
 .missionwp {
   padding: 3em 0 7em;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
+  background: #fdf2e2;
 }
 
 .missionwp img {
@@ -1386,9 +1380,7 @@ label {
 
 .sign_wp {
   padding: 3em 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
+  background-color: #fdf2e2;
 }
 
 .sign_wp form {
@@ -1478,12 +1470,11 @@ label {
 }
 
 .myproject {
-  background-color: #fdf2e2;
   padding: 3em 0;
 }
 
 .sidebar {
-  background: #f6e2c9;
+  background: #fdf2e2;
   padding: 20px 0;
   border-radius: 11px;
   box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
@@ -1512,7 +1503,7 @@ label {
   padding: 2em;
   box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
   border-radius: 11px;
-  background: #f6e2c9;
+  background: #fdf2e2;
 }
 
 .help-ico {
@@ -1784,7 +1775,7 @@ ul.side-nav {
 .profile_box table tr th {
   font-size: 14px;
   padding: 9px;
-  background-color: #ffd095;
+  background-color: #ffddb2;
   border: none;
 }
 
@@ -2245,7 +2236,6 @@ ul.side-nav {
   color: #fff;
   display: block;
   text-align: left;
-  background: #f6e2c9;
   color: #222;
   padding: 20px;
   box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
@@ -3278,8 +3268,6 @@ ul.ex1 li a {
   font-size: 24px;
 }
 
-/* My Artwork start here */
-
 .manage_p p {
   font-size: 15px;
   padding-bottom: 10px;
@@ -3303,6 +3291,11 @@ ul.ex1 li a {
   display: table;
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+.tgs1:hover {
+  box-shadow: none;
+  color: #fff;
 }
 
 .manage_p small {
@@ -3349,159 +3342,4 @@ ul.ex1 li a {
   right: 6px;
   top: 41px;
   color: #78490fe8;
-}
-
-
-/* My Artwork end here */
-
-
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #ef6100;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #ef6100;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-@keyframes customAni {
-  0% {
-    transform: translate(0);
-  }
-
-  20% {
-    transform: translate(-2px, 2px);
-  }
-
-  40% {
-    transform: translate(-2px, -2px);
-  }
-
-  60% {
-    transform: translate(2px, 2px);
-  }
-
-  80% {
-    transform: translate(2px, -2px);
-  }
-
-  100% {
-    transform: translate(0);
-  }
-}
-
-.createdby {
-  animation: customAni1 4s ease 1s infinite normal none;
-}
-
-@keyframes customAni1 {
-  0% {
-    animation-timing-function: ease-in;
-    opacity: 1;
-    transform: translateY(-45px);
-  }
-
-  24% {
-    opacity: 1;
-  }
-
-  40% {
-    animation-timing-function: ease-in;
-    transform: translateY(-24px);
-  }
-
-  65% {
-    animation-timing-function: ease-in;
-    transform: translateY(-12px);
-  }
-
-  82% {
-    animation-timing-function: ease-in;
-    transform: translateY(-6px);
-  }
-
-  93% {
-    animation-timing-function: ease-in;
-    transform: translateY(-4px);
-  }
-
-  25%,
-  55%,
-  75%,
-  87% {
-    animation-timing-function: ease-out;
-    transform: translateY(0px);
-  }
-
-  100% {
-    animation-timing-function: ease-out;
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
-@keyframes customAni12 {
-
-  0%,
-  100% {
-    transform: rotate(0deg);
-    transform-origin: 50% 50%;
-  }
-
-  10% {
-    transform: rotate(8deg);
-  }
-
-  20%,
-  40%,
-  60% {
-    transform: rotate(-10deg);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: rotate(10deg);
-  }
-
-  80% {
-    transform: rotate(-8deg);
-  }
-
-  90% {
-    transform: rotate(8deg);
-  }
-}
-
-/* Copy this code after the above code */
-@keyframes customAni3 {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
 }
