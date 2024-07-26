@@ -2,14 +2,16 @@ import Link from "next/link";
 import { CSSProperties } from 'react';
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import toast from 'react-hot-toast';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from "../../src/api/services/api";
 import atom from "../../src/jotai/atom";
 import { useAtomValue } from "jotai";
 import axios from "axios";
 import common from "../../src/helpers/common";
+import { useRouter } from "next/router";
 
 const Artwork = () => {
+    const router = useRouter();
 
     const [project, projectstate] = useState({
         title: "",
@@ -17,6 +19,7 @@ const Artwork = () => {
         category: "",
     });
     const user = useAtomValue(atom.storage.user);
+    const get_art = useAtomValue(atom.project.api.get_art)
 
     const [file, setFile] = useState([]);
 
@@ -43,7 +46,15 @@ const Artwork = () => {
 
     };
 
+    useEffect(() => {
+        if (!router.isReady) return;
+        let id = router.query?.id;
 
+        api.project.get_art({ params: { id: id } })
+        api.project.public_profile_api({ params: { id: id } })
+
+
+    }, [router.isReady]);
     const handleSubmit = async () => {
 
 
@@ -74,9 +85,9 @@ const Artwork = () => {
                 file: form
             });
 
-           
-            
-            
+
+
+
 
         } catch (error) {
             toast.error(error.message);
@@ -175,6 +186,36 @@ const Artwork = () => {
 
                                     <hr />
                                     <div className="manage_p1">
+
+                                        {get_art?.length
+                                            ? (get_art?.map((l) => {
+                                                console.log("art is ------", l)
+                                                var imageSrc = common.get_portfolio_pic(l?.main_img)
+
+
+                                                return (
+                                                    <div className='manage_p2'>
+
+
+                                                        <p>{l?.title}</p>
+
+
+                                                        <img
+                                                            src={imageSrc}
+
+                                                            alt={`${l?.title}`}
+                                                        />
+
+                                                        <i className="fa fa-times-circle"></i>
+
+
+
+
+                                                    </div>
+
+                                                );
+                                            }))
+                                            : ""}
                                         {/* <div className="manage_p2">
                                             <p>Wall Painting</p>
                                             <video controls poster="images/thumbnail.webp">
@@ -182,7 +223,7 @@ const Artwork = () => {
                                                     Your browser does not support the video tag.
                                             </video>
                                         </div> */}
-                                        <div className="manage_p2">
+                                        {/* <div className="manage_p2">
                                             <p>Wall Painting</p>
                                             <img src="../img/pic16.jpg" alt="" />
                                             <i className="fa fa-times-circle"></i>
@@ -196,7 +237,9 @@ const Artwork = () => {
                                             <p>Wall Painting</p>
                                             <img src="../img/pic18.jpg" alt="" />
                                             <i className="fa fa-times-circle"></i>
-                                        </div>
+                                        </div> */}
+
+
                                     </div>
                                 </div>
 

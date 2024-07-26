@@ -14,9 +14,9 @@ const storage = {
 	project: atomWithStorage("project", null),
 	job_tab: atomWithStorage("job_tab", 1),
 	all_notif: atomWithStorage("all_notif", []),
-        loginmodal: atomWithStorage("loginmodal", false),
+	loginmodal: atomWithStorage("loginmodal", false),
 	project_id: atomWithStorage("project_id", null),
-	project_data: atomWithStorage<ProjectDetails| any>("project_data", null),
+	project_data: atomWithStorage<ProjectDetails | any>("project_data", null),
 	project_status: atomWithStorage("project_state", 1),
 	radio_login: atomWithStorage("radio_login", null),
 };
@@ -32,12 +32,12 @@ const project = {
 		latest: atom([]),
 		allreviews: atom([]),
 		all_list: atom([]),
-		project_gallery:atom([]),
+		project_gallery: atom([]),
 		steps_completed_supplier: atom([]),
 		customer_releasepayment_checkbox: atom([]),
 		my_temp: atom(false),
 		inbox_count: atom(false),
-		get_additional_comment : atom([]),
+		get_additional_comment: atom([]),
 		list_opt: atom({
 			page: 0,
 			limit: 10,
@@ -71,6 +71,8 @@ const project = {
 		total_jobs: atom(false),
 		public_user_reviews: atom([]),
 		offer_reviews_feedback: atom([]),
+		get_art: atom([]),
+
 
 		my_proj_opt: atom({
 			page: 0,
@@ -82,9 +84,9 @@ const project = {
 
 		}),
 		invoices: atom([]),
-		    project_finalise_image: atom([]),
+		project_finalise_image: atom([]),
 
-		reviewed_projects : atom([]),
+		reviewed_projects: atom([]),
 		notifs: atom([]),
 		project_review: atom([]),
 		rev_proj_opt: atom({
@@ -106,7 +108,7 @@ const auth = {
 		machanic_details: atom<UserDetails | any>(false),
 		user_balance: atom<BalanceResponse | any>(false),
 		update_balance: atom<BalanceResponse | any>(false),
-                user_projects: atom([]),
+		user_projects: atom([]),
 		user_spent: atom([])
 	},
 };
@@ -119,9 +121,9 @@ const modal = {
 	create_offer: atom(false),
 	slct_mchnst: atom(false),
 	confirm_project: atom(false),
-	img_viewer:atom(false),
+	img_viewer: atom(false),
 	edit_profile_pic: atom(false),
-	paypal_email:atom(false),
+	paypal_email: atom(false),
 	edit_portfolio_pic: atom(false)
 };
 

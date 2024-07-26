@@ -20,6 +20,7 @@ const artist = () => {
     const user = useAtomValue(atom.project.api.public_me)
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
     const projects = useAtomValue(atom.project.api.public_profile_project)
+    const get_art = useAtomValue(atom.project.api.get_art)
 
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const artist = () => {
         let id = router.query?.id;
         api.project.public_me({ params: { id: id } })
         api.project.public_profile_total_jobs({ params: { id: id } })
-
+        api.project.get_art({ params: { id: id } })
         // api.project.public_user_reviews({ params: { id: id } })
         api.project.public_profile_api({ params: { id: id } })
 
@@ -63,7 +64,7 @@ const artist = () => {
     const [dt, setdt] = useState(project_gallery[0]?.d)
     const [portfolio, setportfolio] = useState(true);
     const [artist, setartist] = useState(false);
-
+    const [art, setGetart] = useState([get_art[0]?.id]);
 
     const prevSlide = () => {
 
@@ -160,18 +161,7 @@ const artist = () => {
     //     }
     // }, [])
 
-    const modal_img = (a, b) => {
-        let md = common.get_attachment(a, b)
-        if (md = '/public/404.jpg') {
-            md = common.get_attachment_latest_ach(a)
-            setimg_modal(md)
-        } else {
-            md = common.get_attachment(a, b)
-            setimg_modal(md)
-        }
 
-        return md
-    }
 
     // useEffect(() => {
     //     var md = common.get_attachment(project_gallery[index]?.a, project_gallery[index]?.d);
@@ -237,7 +227,7 @@ const artist = () => {
     public_avg_rating = (public_avg_rating / public_reviews?.length);
 
     public_avg_rating = Number(public_avg_rating.toFixed(2));
-
+    console.log("get art is----", get_art)
     return (
 
 
@@ -273,91 +263,58 @@ const artist = () => {
                     <ul className="nav nav-tabs" role="tablist">
 
                         <li className="nav-item">
-                            <a className={`nav-link ${portfolio ? "active" : ""}`} data-toggle="tab" href="#portfolio" onClick={selectcust}>Portfolio</a>
+                            <a className={`nav-link ${portfolio ? "active" : ""}`} data-toggle="tab" onClick={selectcust}>Portfolio</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${artist ? "active" : ""}`} data-toggle="tab" href="#" onClick={select_mac}>About</a>
+                            <a className={`nav-link ${artist ? "active" : ""}`} data-toggle="tab" onClick={select_mac}>About</a>
                         </li>
                     </ul>
 
                     <div className="tab-content">
                         <div id="portfolio" className={`tab-pane ${portfolio ? "active" : ""}`}>
                             <div className="row">
-                                <div className="col-sm-3">
+                                {/* <div className="col-sm-3">
                                     <a href="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/23373548/2023/5/24/56145130-901f-4458-96d8-7fd79395f6161684916789570WallArt1.jpg" data-fancybox="gallery" data-caption="Wall Painting">
                                         <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/23373548/2023/5/24/56145130-901f-4458-96d8-7fd79395f6161684916789570WallArt1.jpg" alt="" />
                                         <p>Wall Painting</p>
                                     </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/24688614/2023/8/28/324c1459-9208-462f-80b9-eb2ac7b7d1951693204534842WallArt1.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/24688614/2023/8/28/324c1459-9208-462f-80b9-eb2ac7b7d1951693204534842WallArt1.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/22935384/2023/4/28/88b4ce07-02cc-4b94-95d2-af2dc74cadce1682675775271WallArt1.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/22935384/2023/4/28/88b4ce07-02cc-4b94-95d2-af2dc74cadce1682675775271WallArt1.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/29559872/2024/5/15/6aa7e156-d6ad-4688-8a57-9a8db1d392c81715753553385WallArt1.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/29559872/2024/5/15/6aa7e156-d6ad-4688-8a57-9a8db1d392c81715753553385WallArt1.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/18858602/2022/6/24/0adb28ee-996d-4e5a-9a15-9e4735581fcb1656073249955999StoreBluePinkAbstractWallArt1.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/18858602/2022/6/24/0adb28ee-996d-4e5a-9a15-9e4735581fcb1656073249955999StoreBluePinkAbstractWallArt1.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="img/pic16.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="img/pic16.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="img/pic17.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="img/pic17.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="img/pic18.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="img/pic18.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="img/pic15.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="img/pic15.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="img/pic16.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="img/pic16.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="img/pic17.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="img/pic17.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
-                                <div className="col-sm-3">
-                                    <a href="img/pic18.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="img/pic18.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div>
+                                </div> */}
+
+                                {get_art?.length
+                                    ? (get_art?.map((l) => {
+                                        console.log("art is ------", l)
+                                        var imageSrc = common.get_portfolio_pic(l?.main_img)
+
+
+                                        return (
+                                            <div className='col-sm-3'>
+
+
+
+                                                <a href={imageSrc} data-fancybox="gallery" data-caption="Wall Painting" >
+
+                                                    <img
+                                                        src={imageSrc}
+
+                                                        alt={`${l?.title}`}
+                                                    />
+
+                                                </a>
+
+                                                <p>{l?.title}</p>
+
+
+                                            </div>
+
+                                        );
+                                    }))
+                                    : ""}
+
+
+
                             </div>
                         </div>
-                        <div id="machinist" className={`tab-pane ${portfolio ? "" : "active"}`}>
+                        <div id="about" className={`tab-pane ${portfolio ? "" : "active"}`}>
                             <div className="row ">
                                 <div className="col-sm-4">
                                     <h5>About</h5>

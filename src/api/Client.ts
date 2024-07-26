@@ -59,6 +59,7 @@ class Client {
 			"project/paypal-transaction-complete",
 			// "project/create-order",
 			"project/deposit-fund",
+			"project/get-art",
 			
 			
 		];
