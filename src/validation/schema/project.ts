@@ -4,8 +4,16 @@ const add = {
 	description: Joi.string().required(),
 	visibility: Joi.string().required(),
 	post_for: Joi.number().required(),
-	category:Joi.string().required(),
-	sub_category:Joi.string().required()
+	category: Joi.string().required(),
+	sub_category: Joi.string().required()
+};
+
+
+
+const add_art = {
+	title: Joi.string().required(),
+	description: Joi.string().required(),
+	category: Joi.string().required(),
 };
 
 const question = {
@@ -56,6 +64,8 @@ const send_bid_msg = {
 	msg_box: Joi.string().required(),
 };
 
+
+
 const review_machinist = {
 	project_id: Joi.string().required(),
 	comments: Joi.string().required(),
@@ -82,6 +92,7 @@ const add_desccomment = {
 
 export default {
 	add,
+	add_art,
 	question,
 	answer,
 	get_temp,
@@ -92,5 +103,5 @@ export default {
 	add_payment,
 	review_machinist,
 	send_shipping,
-        add_desccomment,
+	add_desccomment,
 };

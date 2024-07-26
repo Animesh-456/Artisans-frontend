@@ -523,12 +523,6 @@ const artist = () => {
                                         ? projects?.map((l) => {
                                             return (
                                                 <>
-
-
-
-
-
-
                                                     {l.reviews.map((r) => (
                                                         <>
                                                             <div className="review_right">

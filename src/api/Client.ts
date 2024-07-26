@@ -58,7 +58,9 @@ class Client {
 			"project/public-profile-finalised-image",
 			"project/paypal-transaction-complete",
 			// "project/create-order",
-			"project/deposit-fund"
+			"project/deposit-fund",
+			
+			
 		];
 
 		this.test = false;

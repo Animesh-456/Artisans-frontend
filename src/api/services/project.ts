@@ -1275,4 +1275,27 @@ export default {
 
   },
 
+
+
+  add_art_work: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+    toast.loading();
+    let data = Validate([], schema.project.add_art, body);
+
+    if (!data) {
+      return;
+    }
+
+    api
+      .uploadFile("project/add-art-work", file, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
 };

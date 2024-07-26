@@ -77,7 +77,6 @@ const Post = (prp) => {
 	const [numPages, setNumPages] = useState(null);
 	const [filename, setFilename] = useState("");
 	const onDocumentLoadSuccess = ({ numPages }) => {
-
 		setNumPages(numPages);
 	};
 
