@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CSSProperties } from 'react';
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import toast from 'react-hot-toast';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import api from "../../src/api/services/api";
 import atom from "../../src/jotai/atom";
 import { useAtomValue } from "jotai";
@@ -13,11 +13,14 @@ import { useRouter } from "next/router";
 const Artwork = () => {
     const router = useRouter();
 
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
     const [project, projectstate] = useState({
         title: "",
         description: "",
         category: "",
     });
+    const [show, setshow] = useState(false)
     const user = useAtomValue(atom.storage.user);
     const get_art = useAtomValue(atom.project.api.get_art)
 
@@ -47,11 +50,10 @@ const Artwork = () => {
     };
 
     useEffect(() => {
-        if (!router.isReady) return;
-        let id = router.query?.id;
+        const id = user?.id
 
         api.project.get_art({ params: { id: id } })
-        api.project.public_profile_api({ params: { id: id } })
+        //api.project.public_profile_api({ params: { id: id } })
 
 
     }, [router.isReady]);
@@ -85,9 +87,7 @@ const Artwork = () => {
                 file: form
             });
 
-
-
-
+            window.location.reload()
 
         } catch (error) {
             toast.error(error.message);
@@ -96,6 +96,17 @@ const Artwork = () => {
     };
 
 
+
+    function delete_files(fileIndex) {
+        //setFile(file.filter(function (s) { return s !== e }))
+
+        const newFiles = [...file];
+        newFiles.splice(fileIndex, 1);
+        setFile(newFiles);
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+    }
 
 
 
@@ -118,101 +129,123 @@ const Artwork = () => {
                                 <div className="manage_p">
                                     <h4>Manage portfolio design</h4>
                                     <p>Add Artwork to your portfolio! Uploading artwork to Artstudio as a portfolio involves showcasing your work in an organized and visually appealing manner.</p>
-                                    <a href="#" className="tgs">Go to your portfolio <img src="../img/arrow.png" alt="" /></a>
-                                    <a className="tgs1" style={{ cursor: "pointer", color: "#fff" }} >Add Artwork</a>
+                                    <a href={`/account/artist-profile/${user?.id}`} rel="noreferrer" target={"_blank"} className="tgs">Go to your portfolio <img src="../img/arrow.png" alt="" /></a>
 
-                                    <form onSubmit={handleSubmit}>
+                                    {!show && <a className="tgs1" style={{ cursor: "pointer", color: "#fff" }} onClick={() => setshow(!show)}>Add Artwork</a>}
 
-                                        <div>
-                                            <div className="from_feild">
-                                                <label>Title: <span>*</span></label>
-                                                <input
-                                                    required
-                                                    type="text"
-                                                    value={project?.title}
-                                                    onChange={setproject("title")}
-                                                />
-                                            </div>
 
-                                            <div className="from_feild">
-                                                <label>Description: <span>*</span></label>
-                                                <input
-                                                    required
-                                                    type="text"
-                                                    value={project?.description}
-                                                    onChange={setproject("description")}
-                                                />
-                                            </div>
+                                    {show && (
+                                        <>
+                                            <form onSubmit={handleSubmit}>
 
-                                            <div className="from_feild">
-                                                <select required value={project?.category}
-                                                    onChange={setproject("category")}>
-                                                    <option>Select Category</option>
-                                                    <option>Painting</option>
-                                                    <option>Sculpture</option>
-                                                    <option>Printmaking</option>
-                                                    <option>Photography</option>
-                                                    <option>Textile Art</option>
-                                                    <option>Ceramics</option>
-                                                    <option>Glass Art</option>
-                                                    <option>Digital Art</option>
-                                                    <option>Mixed Media</option>
-                                                    <option>Calligraphy</option>
-                                                    <option>Jewelry Design</option>
-                                                    <option>Graffiti and Street Art</option>
-                                                    <option>Installation Art</option>
-                                                </select>
-                                            </div>
+                                                <div>
+                                                    <div className="from_feild">
+                                                        <label>Title: <span>*</span></label>
+                                                        <input
+                                                            required
+                                                            type="text"
+                                                            value={project?.title}
+                                                            onChange={setproject("title")}
+                                                        />
+                                                    </div>
 
-                                            <div className="from_feild">
-                                                <label>Upload image/video: <span>*</span></label>
-                                                <div className="upload-btn-wrapper">
-                                                    <button className="btn">Upload <i className="fa fa-upload"></i></button>
-                                                    <input required type="file" name="myfile" multiple
-                                                        onChange={handle_file_change}
-                                                    />
+                                                    <div className="from_feild">
+                                                        <label>Description: <span>*</span></label>
+                                                        <input
+                                                            required
+                                                            type="text"
+                                                            value={project?.description}
+                                                            onChange={setproject("description")}
+                                                        />
+                                                    </div>
+
+                                                    <div className="from_feild">
+                                                        <select required value={project?.category}
+                                                            onChange={setproject("category")}>
+                                                            <option>Select Category</option>
+                                                            <option>Painting</option>
+                                                            <option>Sculpture</option>
+                                                            <option>Printmaking</option>
+                                                            <option>Photography</option>
+                                                            <option>Textile Art</option>
+                                                            <option>Ceramics</option>
+                                                            <option>Glass Art</option>
+                                                            <option>Digital Art</option>
+                                                            <option>Mixed Media</option>
+                                                            <option>Calligraphy</option>
+                                                            <option>Jewelry Design</option>
+                                                            <option>Graffiti and Street Art</option>
+                                                            <option>Installation Art</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div className="from_feild">
+                                                        <label>Upload image/video: <span>*</span></label>
+                                                        <div className="upload-btn-wrapper">
+                                                            <button className="btn">Upload <i className="fa fa-upload"></i></button>
+                                                            <input required type="file" name="myfile" multiple
+                                                                onChange={handle_file_change}
+                                                                ref={fileInputRef}
+                                                            />
+                                                        </div>
+                                                        {/* <small>Video size limit 50MB</small> */}
+                                                    </div>
+
+
+                                                    <div className="manage_p1">
+
+                                                        {file?.length ? file?.map((f, index) => {
+                                                            return (
+                                                                <>
+                                                                    <div className="manage_p2">
+                                                                        {/* <p>{f?.name}</p> */}
+                                                                        <img src={URL.createObjectURL(f)} />
+                                                                        <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i>
+                                                                    </div>
+                                                                </>
+                                                            )
+                                                        }) : (<></>)}
+                                                    </div>
+
+
+
+
+
+
+
                                                 </div>
-                                                <small>Video size limit 50MB</small>
+
+                                            </form>
+                                            <div className="submit_cancel">
+                                                <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleSubmit} >Submit</a>
+                                                <a style={{ cursor: "pointer" }} onClick={() => setshow(!show)}>Cancel <img src="../../img/arrow.png" width="11px" alt="" /></a>
                                             </div>
+                                        </>
+                                    )}
 
-                                            {/* <div className="submit_cancel">
-                                            <a style={{ cursor: "pointer" }} onClick={() => handleDeleteForm(index)}>Delete</a>
-                                        </div> */}
-                                        </div>
 
-                                    </form>
 
-                                    <button type="submit" className="tgs1" style={{ cursor: "pointer", color: "#fff" }} onClick={handleSubmit}>Submit</button>
+
 
                                     <hr />
                                     <div className="manage_p1">
 
                                         {get_art?.length
                                             ? (get_art?.map((l) => {
-                                                console.log("art is ------", l)
-                                                var imageSrc = common.get_portfolio_pic(l?.main_img)
 
 
                                                 return (
-                                                    <div className='manage_p2'>
+                                                    <>
+                                                        <div className='manage_p2'>
+                                                            <p>{l?.title}</p>
+                                                            <img
+                                                                src={common.get_portfolio_pic(l?.main_img)}
 
-
-                                                        <p>{l?.title}</p>
-
-
-                                                        <img
-                                                            src={imageSrc}
-
-                                                            alt={`${l?.title}`}
-                                                        />
-
-                                                        <i className="fa fa-times-circle"></i>
-
-
-
-
-                                                    </div>
-
+                                                                alt={`${l?.title}`}
+                                                            />
+                                                            <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => toast.error("deleted")}></i>
+                                                        </div>
+                                                    </>
                                                 );
                                             }))
                                             : ""}

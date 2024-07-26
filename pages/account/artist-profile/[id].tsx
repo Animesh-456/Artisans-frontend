@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import { CSSProperties } from 'react';
 
 
-const artist = () => {
+const Artist = () => {
     const router = useRouter();
     const all_list = useAtomValue(atom.project.api.all_list);
     const project_gallery = useAtomValue(atom.project.api.project_gallery)
@@ -34,7 +34,7 @@ const artist = () => {
         api.project.public_me({ params: { id: id } })
         api.project.public_profile_total_jobs({ params: { id: id } })
         api.project.get_art({ params: { id: id } })
-        // api.project.public_user_reviews({ params: { id: id } })
+        api.project.public_user_reviews({ params: { id: id } })
         api.project.public_profile_api({ params: { id: id } })
 
     }, [router.isReady]);
@@ -228,6 +228,8 @@ const artist = () => {
 
     public_avg_rating = Number(public_avg_rating.toFixed(2));
     console.log("get art is----", get_art)
+
+    console.log("public user reviews", public_user_reviews)
     return (
 
 
@@ -287,30 +289,21 @@ const artist = () => {
 
 
                                         return (
-                                            <div className='col-sm-3'>
+                                            <>
+                                                <div className='col-sm-3'>
+                                                    <a href={imageSrc} data-fancybox="gallery" data-caption="Wall Painting" >
+                                                        <img
+                                                            src={imageSrc}
 
-
-
-                                                <a href={imageSrc} data-fancybox="gallery" data-caption="Wall Painting" >
-
-                                                    <img
-                                                        src={imageSrc}
-
-                                                        alt={`${l?.title}`}
-                                                    />
-
-                                                </a>
-
-                                                <p>{l?.title}</p>
-
-
-                                            </div>
-
+                                                            alt={`${l?.title}`}
+                                                        />
+                                                    </a>
+                                                    <p>{l?.title}</p>
+                                                </div>
+                                            </>
                                         );
                                     }))
                                     : ""}
-
-
 
                             </div>
                         </div>
@@ -358,10 +351,10 @@ const artist = () => {
                                             </li>
                                             <li>
 
-                                                {public_avg_rating && user?.role_id == 2 ? (
+                                                {projects?.length && user?.role_id == 2 ? (
 
                                                     <>
-                                                        <h2>{public_avg_rating}</h2>
+                                                        <h2>{projects?.length}</h2>
                                                     </>
                                                 ) : (
                                                     <>
@@ -478,6 +471,16 @@ const artist = () => {
                                 <div className="col-sm-8">
                                     {projects.length
                                         ? projects?.map((l) => {
+                                            const date = new Date(l?.created * 1000);
+
+                                            const year = date.getFullYear();
+                                            const month = String(date.getMonth() + 1).padStart(2, '0');
+                                            const day = String(date.getDate()).padStart(2, '0');
+                                            const hours = String(date.getHours()).padStart(2, '0');
+                                            const minutes = String(date.getMinutes()).padStart(2, '0');
+                                            const seconds = String(date.getSeconds()).padStart(2, '0');
+
+                                            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                                             return (
                                                 <>
                                                     {l.reviews.map((r) => (
@@ -490,11 +493,13 @@ const artist = () => {
                                                                             style={{ '--rating': r?.rating } as CSSProperties}
                                                                         ><span>{r?.rating}</span></div>
                                                                     </p><br />
+                                                                    <b><p>{l?.project_name}</p></b>
+                                                                    <br></br>
                                                                     <p><i>{r?.comments}</i></p>
 
                                                                     <p className="qg">
                                                                         <img src={
-                                                                            common.get_profile_picture(l?.buyer?.logo) ||
+                                                                            common.get_profile_picture(l?.creator?.logo) ||
                                                                             "../../img/no-images.png"
                                                                         } alt="profile-picture" />
                                                                         {l?.creator?.user_name}
@@ -503,18 +508,20 @@ const artist = () => {
 
                                                                 </div>
                                                                 <div className="review_right2">
-                                                                    <img src="../../img/about-img1.jpg" alt="" />
+                                                                    <img src={common.get_attachment(
+                                                                        (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                                    ) || "../../img/logo.png"} alt="" />
                                                                 </div>
                                                             </div>
                                                         </>
-                                                    )).slice(0, 5)}
+                                                    ))}
 
 
                                                 </>
 
                                             );
 
-                                        })
+                                        }).slice(0, 6)
                                         : "0 reviews"}
                                 </div>
 
@@ -529,8 +536,8 @@ const artist = () => {
     )
 }
 
-artist.ignorePath = true
+Artist.ignorePath = true
 
-export default artist
+export default Artist
 
 
