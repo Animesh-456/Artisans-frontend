@@ -23,7 +23,7 @@ const Artwork = () => {
     const [show, setshow] = useState(false)
     const user = useAtomValue(atom.storage.user);
     const get_art = useAtomValue(atom.project.api.get_art)
-
+    const [deleteprot, setdeleteprot] = useState("");
     const [file, setFile] = useState([]);
 
     const setproject = common.ChangeState(projectstate);
@@ -108,7 +108,19 @@ const Artwork = () => {
         }
     }
 
+    const handle_delete_art_image = (id) => {
 
+        // const userConfirmed = window.confirm('Are you sure you want to delete this art item?');
+
+
+        api.project.delete_art_image({
+            params: { id: id }
+        }, (d) => {
+            window.location.href = '/account/artwork'
+        })
+
+
+    }
 
     return (
         <>
@@ -243,7 +255,7 @@ const Artwork = () => {
 
                                                                 alt={`${l?.title}`}
                                                             />
-                                                            <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => toast.error("deleted")}></i>
+                                                            <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => handle_delete_art_image(l?.id)}></i>
                                                         </div>
                                                     </>
                                                 );

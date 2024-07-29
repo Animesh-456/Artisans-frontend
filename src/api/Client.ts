@@ -60,8 +60,9 @@ class Client {
 			// "project/create-order",
 			"project/deposit-fund",
 			"project/get-art",
-			
-			
+
+
+
 		];
 
 		this.test = false;
