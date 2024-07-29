@@ -310,12 +310,12 @@ const Artwork = () => {
                                                             </p>
 
                                                             <div className="submit_cancel">
-                                                                {/* <a onClick={handle_delete_art_image(l?.id)} style={{ cursor: "pointer", color: "#fff" }}>Confirm</a> */}
+
+                                                                <a onClick={handle_delete_art_image} style={{ cursor: 'pointer', color: "#fff" }}>Confirm</a>
                                                                 <a onClick={() => {
-                                                                    setOpen_machinist(false);
-                                                                    setselected_machinist(null);
-                                                                }} style={{ cursor: 'pointer' }}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a>
-                                                                <a onClick={handle_delete_art_image} style={{ cursor: "pointer" }}> confirm </a>
+                                                                    setOpen_machinist(false)
+                                                                    setselected_machinist(null)
+                                                                }} style={{ cursor: "pointer" }}> Cancel <img src={"../img/arrow.png"} width="11px" alt="" /> </a>
                                                             </div>
                                                         </form>
                                                     </div>

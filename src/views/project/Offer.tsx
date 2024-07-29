@@ -847,7 +847,9 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 									"../img/no-images.png"
 								} alt="profile-picture" />
 							</figure>
-							<h5>{bid?.user?.user_name}</h5>
+							
+								<h5>{bid?.user?.user_name}</h5>
+							
 							<div>
 								{revdata?.totalproject} jobs
 								<span className="stars"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></span>

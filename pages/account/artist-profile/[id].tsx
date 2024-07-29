@@ -15,8 +15,6 @@ import { CSSProperties } from 'react';
 
 const Artist = () => {
     const router = useRouter();
-    const all_list = useAtomValue(atom.project.api.all_list);
-    const project_gallery = useAtomValue(atom.project.api.project_gallery)
     const user = useAtomValue(atom.project.api.public_me)
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
     const projects = useAtomValue(atom.project.api.public_profile_project)
@@ -26,7 +24,6 @@ const Artist = () => {
 
     useEffect(() => {
         api.project.all_lists({ params: {} });
-        // api.project.public_me({ params: { id: "17281" } })
     }, []);
 
     useEffect(() => {
@@ -40,154 +37,16 @@ const Artist = () => {
 
     }, [router.isReady]);
 
-    useEffect(() => {
-        const pageQueryParam = new URLSearchParams(location.search).get('page');
-        const pageNumber = parseInt(pageQueryParam) || 1;
-        console.log("Page number is ", pageNumber)
-        api.project.project_gallery({ params: { ...galleryopt, page: pageNumber - 1 } });
-    }, [])
-
-    //console.log("all lists are: ------------->", all_list)
-
-    const RefLink = (l) => {
-        localStorage.setItem('items', (l));
-        router.replace(l)
-    }
 
 
 
-    const [index, setIndex] = useState(0);
-    const [open_img, setOpen_img] = useAtom(atom.modal.img_viewer);
-    const [slide, setSlide] = useState(project_gallery[0]?.a);
-
-    const [project_name, setproject_name] = useState(project_gallery[0]?.a)
-    const [id, setid] = useState(project_gallery[0]?.c)
-    const [dt, setdt] = useState(project_gallery[0]?.d)
     const [portfolio, setportfolio] = useState(true);
     const [artist, setartist] = useState(false);
     const [art, setGetart] = useState([get_art[0]?.id]);
-    const [visibleItems, setVisibleItems] = useState(10);
-
-    const prevSlide = () => {
-
-        if (index == 0) {
-            setIndex(project_gallery.length - 1);
-        }
-        else {
-            setIndex(index - 1);
-        }
-        setSlide(project_gallery[index]?.a);
-        setproject_name(project_gallery[index]?.b)
-        setid(project_gallery[index]?.c)
-        setdt(project_gallery[index]?.d)
-        console.log("prev slide ", slide);
+    const [visibleItems, setVisibleItems] = useState(2);
 
 
 
-
-    }
-
-
-    const nextSlide = () => {
-
-        if (index == project_gallery.length - 1) {
-            setIndex(0)
-            setSlide(project_gallery[index]?.a);
-            setproject_name(project_gallery[index]?.b)
-            setid(project_gallery[index]?.c)
-            setdt(project_gallery[index]?.d)
-        } else {
-            setIndex((prevState) => prevState + 1)
-            setSlide(project_gallery[index]?.a);
-            setproject_name(project_gallery[index]?.b)
-            setid(project_gallery[index]?.c)
-            setdt(project_gallery[index]?.d)
-        }
-
-
-        console.log("next slide ", slide);
-
-        console.log("index is->>>>", index)
-
-        console.log("modal slide-->", img_modal)
-
-    }
-
-    console.log("gallery images :-", project_gallery)
-
-    console.log("index is :- ", index)
-
-    console.log("slide is:-", slide)
-
-    // useEffect(() => {
-    //     setSlide(project_gallery[index]?.a);
-    //     setproject_name(project_gallery[index]?.b)
-    //     setid(project_gallery[index]?.c)
-    //     setdt(project_gallery[index]?.d)
-    //     console.log("useeffect all states", index, slide, project_name, id, dt)
-    // }, [index])
-
-
-    const handlePageClick = (i) => {
-
-        router
-            .replace({
-                pathname: router.pathname,
-                query: {
-                    page: i + 1,
-                },
-            })
-            .then(() => {
-                api.project.project_gallery({ params: { ...galleryopt, page: i } });
-            });
-    };
-
-
-    const galleryopt = useAtomValue(atom.project.api.gallery_opt);
-
-    const visiblePages = 10; // Number of visible page buttons
-    const getPageNumbers = () => {
-        const startPage = Math.max(0, galleryopt.page - Math.floor(visiblePages / 2));
-        const endPage = Math.min(galleryopt.total_pages, startPage + visiblePages - 1);
-        return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
-    };
-
-    const [img_modal, setimg_modal] = useState(null)
-
-    // useEffect(() => {
-    //     let md = common.get_attachment(slide, dt)
-    //     if (md = '/public/404.jpg') {
-    //         setimg_modal(common.get_attachment_latest_ach(slide))
-    //     } else {
-    //         setimg_modal(common.get_attachment(slide, dt))
-    //     }
-    // }, [])
-
-
-
-    // useEffect(() => {
-    //     var md = common.get_attachment(project_gallery[index]?.a, project_gallery[index]?.d);
-    //     if (md = '/public/404.jpg') {
-    //         md = common.get_attachment_latest_ach(project_gallery[index]?.a)
-    //     }
-
-    //     console.log("md is", md)
-    //     setimg_modal(md)
-    //     console.log("img modal useeffect",img_modal)
-    //     //setimg_modal(common.get_attachment(slide, dt))
-    // }, [index])
-
-    useEffect(() => {
-        console.log("index in useeffect", index)
-
-        var md = common.get_attachment(project_gallery[index]?.a, project_gallery[index]?.d)
-        if (md = '/public/404.jpg') {
-            md = common.get_attachment_latest_ach(project_gallery[index]?.a)
-            setimg_modal(md)
-        } else {
-            setimg_modal(md)
-        }
-    }, [index])
 
     const selectcust = () => {
         if (portfolio == false) {
@@ -235,12 +94,9 @@ const Artist = () => {
 
     const loadMore = () => {
         console.log('Load More Clicked');
-        setVisibleItems(prevVisibleItems => {
-             prevVisibleItems + 10;
-        });
+        setVisibleItems((prevItems) => prevItems + 2)
     };
-    console.log('Visible Items:', visibleItems);
-    console.log('Total Projects:', projects.length);
+
 
     return (
 
@@ -253,7 +109,6 @@ const Artist = () => {
                 <div className="container">
                     <div className="artist_pro">
                         <div className="artist_pro_l">
-                            {/* <img src="../../img/man.jpg" alt="artist" /> */}
 
                             <img
                                 src={
@@ -277,26 +132,21 @@ const Artist = () => {
                     <ul className="nav nav-tabs" role="tablist">
 
                         <li className="nav-item">
-                            <a className={`nav-link ${portfolio ? "active" : ""}`} data-toggle="tab" onClick={selectcust}>Portfolio</a>
+                            <a className={`nav-link ${portfolio ? "active" : ""}`} style={{ cursor: "pointer" }} data-toggle="tab" onClick={selectcust}>Portfolio</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${artist ? "active" : ""}`} data-toggle="tab" onClick={select_mac}>About</a>
+                            <a className={`nav-link ${artist ? "active" : ""}`} style={{ cursor: "pointer" }} data-toggle="tab" onClick={select_mac}>About</a>
                         </li>
                     </ul>
 
                     <div className="tab-content">
                         <div id="portfolio" className={`tab-pane ${portfolio ? "active" : ""}`}>
                             <div className="row">
-                                {/* <div className="col-sm-3">
-                                    <a href="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/23373548/2023/5/24/56145130-901f-4458-96d8-7fd79395f6161684916789570WallArt1.jpg" data-fancybox="gallery" data-caption="Wall Painting">
-                                        <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/23373548/2023/5/24/56145130-901f-4458-96d8-7fd79395f6161684916789570WallArt1.jpg" alt="" />
-                                        <p>Wall Painting</p>
-                                    </a>
-                                </div> */}
+
 
                                 {get_art?.length
                                     ? (get_art?.map((l) => {
-                                        console.log("art is ------", l)
+
                                         var imageSrc = common.get_portfolio_pic(l?.main_img)
 
 
@@ -363,16 +213,6 @@ const Artist = () => {
                                             </li>
                                             <li>
 
-                                                {/* {projects?.length && user?.role_id == 2 ? (
-
-                                                    <>
-                                                        <h2>{projects?.length}</h2>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <h2>0</h2>
-                                                    </>
-                                                )} */}
                                                 <h2>{userReviews?.length}</h2>
 
                                                 <small>Reviews</small>
@@ -394,92 +234,7 @@ const Artist = () => {
                                 <div className="col-sm-4">
                                     <h5>Reviews</h5>
                                 </div>
-                                {/* <div className="col-sm-8">
-                                    <div className="review_right">
-                                        <div className="review_right1">
-                                            <p>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                            </p><br />
-                                            <p><i>"Lorem Ipsum is simply dummy text of the"</i></p>
-                                            <a href="#">Full Review</a>
-                                            <p className="qg">
-                                                <img src="img/man.jpg" alt="" />
-                                                Kazi
-                                            </p>
-                                            <small>reviewed 15 days ago</small>
-                                        </div>
-                                        <div className="review_right2">
-                                            <img src="img/about-img1.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div className="review_right">
-                                        <div className="review_right1">
-                                            <p>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                            </p><br />
-                                            <p><i>"Lorem Ipsum is simply dummy text of the"</i></p>
-                                            <a href="#">Full Review</a>
-                                            <p className="qg">
-                                                <img src="img/man.jpg" alt="" />
-                                                Kazi
-                                            </p>
-                                            <small>reviewed 15 days ago</small>
-                                        </div>
-                                        <div className="review_right2">
-                                            <img src="img/pic12.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div className="review_right">
-                                        <div className="review_right1">
-                                            <p>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                            </p><br />
-                                            <p><i>"Lorem Ipsum is simply dummy text of the"</i></p>
-                                            <a href="#">Full Review</a>
-                                            <p className="qg">
-                                                <img src="img/man.jpg" alt="" />
-                                                Kazi
-                                            </p>
-                                            <small>reviewed 15 days ago</small>
-                                        </div>
-                                        <div className="review_right2">
-                                            <img src="img/pic11.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div className="review_right">
-                                        <div className="review_right1">
-                                            <p>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                                <i className="fa fa-star-half-o"></i>
-                                            </p><br />
-                                            <p><i>"Lorem Ipsum is simply dummy text of the"</i></p>
-                                            <a href="#">Full Review</a>
-                                            <p className="qg">
-                                                <img src="img/man.jpg" alt="" />
-                                                Kazi
-                                            </p>
-                                            <small>reviewed 15 days ago</small>
-                                        </div>
-                                        <div className="review_right2">
-                                            <img src="img/about-img3.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                </div> */}
+
 
                                 <div className="col-sm-8">
                                     {projects.length
@@ -534,14 +289,17 @@ const Artist = () => {
 
                                             );
 
-                                        }).slice(0, 6)
+                                        }).slice(0, visibleItems)
                                         : "0 reviews"}
+
                                     {visibleItems < projects.length && (
-                                        <button onClick={loadMore}>Load More</button>
+                                        <div className="submit_cancel">
+                                            <a style={{ cursor: "pointer" }} onClick={loadMore} >Load More</a>
+                                        </div>
                                     )}
 
-                                </div>
 
+                                </div>
 
 
                             </div>
