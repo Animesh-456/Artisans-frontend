@@ -66,6 +66,7 @@ const Artist = () => {
     const [portfolio, setportfolio] = useState(true);
     const [artist, setartist] = useState(false);
     const [art, setGetart] = useState([get_art[0]?.id]);
+    const [visibleItems, setVisibleItems] = useState(10);
 
     const prevSlide = () => {
 
@@ -231,6 +232,16 @@ const Artist = () => {
     console.log("get art is----", get_art)
 
     console.log("public user reviews", public_user_reviews)
+
+    const loadMore = () => {
+        console.log('Load More Clicked');
+        setVisibleItems(prevVisibleItems => {
+             prevVisibleItems + 10;
+        });
+    };
+    console.log('Visible Items:', visibleItems);
+    console.log('Total Projects:', projects.length);
+
     return (
 
 
@@ -525,6 +536,10 @@ const Artist = () => {
 
                                         }).slice(0, 6)
                                         : "0 reviews"}
+                                    {visibleItems < projects.length && (
+                                        <button onClick={loadMore}>Load More</button>
+                                    )}
+
                                 </div>
 
 
