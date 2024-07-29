@@ -5,10 +5,11 @@ import toast from 'react-hot-toast';
 import React, { useState, useEffect, useRef } from 'react';
 import api from "../../src/api/services/api";
 import atom from "../../src/jotai/atom";
-import { useAtomValue } from "jotai";
+import { useAtomValue, useAtom } from "jotai";
 import axios from "axios";
 import common from "../../src/helpers/common";
 import { useRouter } from "next/router";
+import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 
 const Artwork = () => {
     const router = useRouter();
@@ -27,6 +28,9 @@ const Artwork = () => {
     const [file, setFile] = useState([]);
 
     const setproject = common.ChangeState(projectstate);
+    const [open_machinist, setOpen_machinist] = useAtom(atom.modal.art_delete);
+    const [selected_machinist, setselected_machinist] = useState(null);
+    const [selectedArtId, setSelectedArtId] = useState(null); // New state to keep track of selected art ID
 
 
 
@@ -108,13 +112,13 @@ const Artwork = () => {
         }
     }
 
-    const handle_delete_art_image = (id) => {
+    const handle_delete_art_image = () => {
 
         // const userConfirmed = window.confirm('Are you sure you want to delete this art item?');
 
 
         api.project.delete_art_image({
-            params: { id: id }
+            params: { id: selectedArtId }
         }, (d) => {
             window.location.href = '/account/artwork'
         })
@@ -255,8 +259,15 @@ const Artwork = () => {
 
                                                                 alt={`${l?.title}`}
                                                             />
-                                                            <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => handle_delete_art_image(l?.id)}></i>
+                                                            <i className="fa fa-times-circle" data-toggle="modal" data-target="#deleteart" style={{ cursor: "pointer" }} onClick={() => {
+                                                                setSelectedArtId(l.id);
+                                                                setOpen_machinist(true); // Open the modal
+                                                            }}></i>
+                                                            {/* <a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a> */}
+
                                                         </div>
+
+
                                                     </>
                                                 );
                                             }))
@@ -286,6 +297,34 @@ const Artwork = () => {
 
 
                                     </div>
+                                    <GlobalModal title='Delete art' atom={atom.modal.art_delete}>
+                                        <div className='slct-machinist-modal'>
+
+                                            <>
+
+                                                <div className="modal-body">
+                                                    <div className="css-ung">
+                                                        <form>
+                                                            <p>
+                                                                Are you sure, you want to delete this art?
+                                                            </p>
+
+                                                            <div className="submit_cancel">
+                                                                {/* <a onClick={handle_delete_art_image(l?.id)} style={{ cursor: "pointer", color: "#fff" }}>Confirm</a> */}
+                                                                <a onClick={() => {
+                                                                    setOpen_machinist(false);
+                                                                    setselected_machinist(null);
+                                                                }} style={{ cursor: 'pointer' }}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a>
+                                                                <a onClick={handle_delete_art_image} style={{ cursor: "pointer" }}> confirm </a>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </>
+
+                                        </div>
+                                    </GlobalModal>
+
                                 </div>
 
                             </div>

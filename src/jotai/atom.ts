@@ -120,6 +120,7 @@ const modal = {
 	review_machinist: atom(false),
 	create_offer: atom(false),
 	slct_mchnst: atom(false),
+	art_delete: atom(false),
 	confirm_project: atom(false),
 	img_viewer: atom(false),
 	edit_profile_pic: atom(false),
