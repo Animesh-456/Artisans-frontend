@@ -20,6 +20,7 @@ const Artist = () => {
     const user = useAtomValue(atom.project.api.public_me)
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
     const projects = useAtomValue(atom.project.api.public_profile_project)
+    const userReviews = useAtomValue(atom.project.api.public_user_reviews)
     const get_art = useAtomValue(atom.project.api.get_art)
 
 
@@ -46,7 +47,7 @@ const Artist = () => {
         api.project.project_gallery({ params: { ...galleryopt, page: pageNumber - 1 } });
     }, [])
 
-    console.log("all lists are: ------------->", all_list)
+    //console.log("all lists are: ------------->", all_list)
 
     const RefLink = (l) => {
         localStorage.setItem('items', (l));
@@ -351,7 +352,7 @@ const Artist = () => {
                                             </li>
                                             <li>
 
-                                                {projects?.length && user?.role_id == 2 ? (
+                                                {/* {projects?.length && user?.role_id == 2 ? (
 
                                                     <>
                                                         <h2>{projects?.length}</h2>
@@ -360,13 +361,14 @@ const Artist = () => {
                                                     <>
                                                         <h2>0</h2>
                                                     </>
-                                                )}
+                                                )} */}
+                                                <h2>{userReviews?.length}</h2>
 
                                                 <small>Reviews</small>
                                             </li>
 
                                             <li>
-                                                <h2>100%</h2>
+                                                <h2>{projects?.length}</h2>
                                                 <small>jobs awarded</small>
                                             </li>
                                         </ul>
