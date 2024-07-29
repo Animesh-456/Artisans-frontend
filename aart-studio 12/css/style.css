@@ -59,7 +59,6 @@ table{
 	float: right;
 }
 .menubar{
-	background-color: #ffecdb;
 	padding: 15px 0;
 }
 /*---------Authar Style----------*/
@@ -843,7 +842,7 @@ label{
     width: 100%;
     height: 44px;
     border-radius: 7px;
-    padding-left: 10px;
+    padding-left: 20px;
     border: 2px solid #7f8180;
     font-size: 14px;
     font-family: "Poppins", sans-serif;
@@ -1190,14 +1189,12 @@ label{
     margin-top: 13px;
 }
 .myproject{
-	background-color: #fce0bb;
 	padding: 3em 0;
 }
 .sidebar {
-    background: #f6e2c9;
+    background: #fdf2e2;
     padding: 20px 0;
     border-radius:11px;
-    box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
     margin-bottom: 1em;
 }
 .sidebar ul.side-nav li.active {
@@ -1216,9 +1213,8 @@ label{
 }
 .profile_box {
     padding: 2em;
-    box-shadow: 0px 4px 10px 0px rgb(125 125 125 / 45%);
     border-radius: 11px;
-    background: #f6e2c9;
+    background: #fdf2e2;
 }
 .help-ico {
     margin-bottom: 1em;
@@ -2444,12 +2440,60 @@ ul.ex1 li a {
     margin-right: 10px;
     position: relative;
 }
-.manage_p2 .fa {
+.manage_p2 .fa-times {
     position: absolute;
     right: 6px;
     top: 41px;
-    color: #78490fe8;
+    color: #553500;
+    background: #c5ab56;
+    border-radius: 15px;
+    padding: 3px 0 0 5px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    font-size: 13px;
 }
+.manage_p2 .fa-pencil {
+    position: absolute;
+    left: 6px;
+    top: 41px;
+    color: #553500;
+    background: #c5ab56;
+    border-radius: 15px;
+    padding: 3px 0 0 5px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    font-size: 13px;
+}
+.gallery_p2 {
+    float: left;
+    width: 23%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.gallery_p2:nth-child(4), .gallery_p2:nth-child(8) {
+    margin-right: 0;
+}
+.gallery_p2 img {
+    width: 100%;
+    border-radius: 10px;
+}
+.gallery_p2 .fa-times {
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    color: #553500;
+    background: #c5ab56;
+    border-radius: 15px;
+    padding: 3px 0 0 5px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    font-size: 13px;
+}
+
 
 
 /* My Artwork end here */

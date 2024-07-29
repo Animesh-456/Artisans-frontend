@@ -124,8 +124,8 @@
                 <div class="upload-btn-wrapper">
                   <button class="btn">Upload <i class="fa fa-upload"></i></button>
                   <input type="file" name="myfile" multiple="">
-                </div>
-                <small>Video size limit 50MB</small>
+                </div>                
+                <small>Video size limit 50MB</small>                
               </div>
               <div class="submit_cancel">
                 <a href="#">Add Artwork</a>
@@ -137,22 +137,26 @@
               <div class="manage_p2">
                 <p>Wall Pinting</p>
                 <img src="img/pic15.jpg" alt="" />
-                <i class="fa fa-times-circle"></i>
+                <i class="fa fa-times"></i>
+                <i class="fa fa-pencil" data-toggle="modal" data-target="#myedit"></i>
               </div>
               <div class="manage_p2">
                 <p>Wall Pinting</p>
                 <img src="img/pic16.jpg" alt="" />
-                <i class="fa fa-times-circle"></i>
+                <i class="fa fa-times"></i>
+                <i class="fa fa-pencil" data-toggle="modal" data-target="#myedit"></i>
               </div>
               <div class="manage_p2">
                 <p>Wall Pinting</p>
                 <img src="img/pic17.jpg" alt="" />
-                <i class="fa fa-times-circle"></i>
+                <i class="fa fa-times"></i>
+                <i class="fa fa-pencil" data-toggle="modal" data-target="#myedit"></i>
               </div>
               <div class="manage_p2">
                 <p>Wall Pinting</p>
                 <img src="img/pic18.jpg" alt="" />
-                <i class="fa fa-times-circle"></i>
+                <i class="fa fa-times"></i>
+                <i class="fa fa-pencil" data-toggle="modal" data-target="#myedit"></i>
               </div>
             </div>
           </div>
@@ -251,6 +255,86 @@
     </div>
   </div>
 </section>
+
+<div class="modal fade" id="myedit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Wall Pinting </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="from_feild">
+            <label>Title: <span>*</span></label>
+            <input type="text" name="text" placeholder="Email or Username">
+          </div>
+          <div class="from_feild">
+            <label>Description: <span>*</span></label>
+            <input type="text" name="text" placeholder="Type here">
+          </div>
+          <div class="from_feild">
+            <select>
+              <option>Select Category</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+          <div class="from_feild">
+            <label>Upload image/video: <span>*</span></label>
+            <div class="upload-btn-wrapper">
+              <button class="btn">Upload <i class="fa fa-upload"></i></button>
+              <input type="file" name="myfile" multiple="">
+            </div>
+            <div class="manage_p">
+              <small>Video size limit 50MB</small>
+            </div>
+          </div>          
+          <div class="gallery_p1">
+            <div class="gallery_p2">
+              <img src="img/pic15.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+            <div class="gallery_p2">
+              <img src="img/pic16.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+            <div class="gallery_p2">
+              <img src="img/pic17.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+            <div class="gallery_p2">
+              <img src="img/pic18.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+            <div class="gallery_p2">
+              <img src="img/pic15.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+            <div class="gallery_p2">
+              <img src="img/pic16.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+            <div class="gallery_p2">
+              <img src="img/pic17.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+            <div class="gallery_p2">
+              <img src="img/pic18.jpg" alt="">
+              <i class="fa fa-times"></i>
+            </div>
+          </div>
+          <div class="submit_cancel">
+            <a href="#">Update</a>
+            <a href="#">Cancel <img src="img/arrow.png" width="11px" alt=""></a>
+          </div>
+        </form>
+        
+      </div>      
+    </div>
+  </div>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
