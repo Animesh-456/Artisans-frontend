@@ -107,11 +107,6 @@ const ChangePassword = (props: Props) => {
 
 
 
-			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
-				<div className="container">
-					<h1>Change Password</h1>
-				</div>
-			</section>
 
 			<section className="myproject">
 				<div className="container">
@@ -122,7 +117,7 @@ const ChangePassword = (props: Props) => {
 						<div className="col-sm-8">
 							<div className="profile_box">
 								<div className="heading_title">
-									<h2>Change Password ({user?.user_name ? ` (${user?.user_name})` : ""})</h2>
+									<h4>Change Password {user?.user_name ? ` (${user?.user_name})` : ""}</h4>
 								</div>
 								<div className="edit_password_wp">
 									<form onSubmit={handleSubmit}>

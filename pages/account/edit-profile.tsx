@@ -601,11 +601,6 @@ const EditProfile = () => {
         // </div>
         <>
 
-            <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
-                <div className="container">
-                    <h1>Edit My Profile</h1>
-                </div>
-            </section>
 
             <section className="myproject">
                 <div className="container">
@@ -617,11 +612,11 @@ const EditProfile = () => {
                         <div className="col-sm-8">
                             <div className="profile_box">
                                 <div className="heading_title">
-                                    <h2>My Profile ({user?.role_id == 1
+                                    <h4>My Profile ({user?.role_id == 1
                                         ? "Customer"
                                         : user?.role_id == 2
                                             ? "Artist"
-                                            : ""})</h2>
+                                            : ""})</h4>
                                 </div>
                                 <div className="project_profil">
                                     <form onSubmit={handleSubmit}>
@@ -783,8 +778,8 @@ const EditProfile = () => {
                                                                     id='fileAttach'
                                                                     multiple
                                                                     onChange={handle_file_change2}
-                                                                     accept="image/*,video/*"
-                                                                    //ref={fileInputRef2}
+                                                                    accept="image/*,video/*"
+                                                                //ref={fileInputRef2}
                                                                 />
                                                             </div>
 

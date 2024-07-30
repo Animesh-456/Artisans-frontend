@@ -455,11 +455,7 @@ const EditProfile = () => {
 
         <>
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
-                <div className="container">
-                    <h1>My Profile</h1>
-                </div>
-            </section>
+
             <section className="myproject">
                 <div className="container">
                     <div className="row">

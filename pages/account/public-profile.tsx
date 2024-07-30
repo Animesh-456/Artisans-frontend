@@ -67,17 +67,7 @@ const EditProfile = () => {
 	}
 	return (
 		<>
-			<div
-				className='banner_wp sign_banner'
-				style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-				<div className='container'>
-					<div className='row'>
-						<div className='banner_text inner_banner_text'>
-							<h1 className='yh'>My Profile</h1>
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<div className='container cjw'>
 				<div className='row'>
 					<AccountSideBar />

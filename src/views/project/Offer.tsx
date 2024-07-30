@@ -847,9 +847,8 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 									"../img/no-images.png"
 								} alt="profile-picture" />
 							</figure>
-							
-								<h5>{bid?.user?.user_name}</h5>
-							
+
+							<a href={`account/artist-profile/${bid?.user_id}`} className="ofr1">{bid?.user?.user_name} </a>
 							<div>
 								{revdata?.totalproject} jobs
 								<span className="stars"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></span>
@@ -923,7 +922,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 						)} */}
 
 						{bid?.user_id == data?.programmer_id && (
-							<img src='../img/selected.png' alt='' />
+							<img src='../../img/selected.png' alt='' />
 						)}
 
 
@@ -936,7 +935,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 						{user && (data?.creator_id == user?.id && data?.project_status < "1") && bid?.no_offer == "1" && (
 
-							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a>
+							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select <i className="fa-solid fa-arrow-down-right"></i></a>
 						)}
 					</div>
 

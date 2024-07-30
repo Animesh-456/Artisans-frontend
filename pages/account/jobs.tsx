@@ -373,12 +373,6 @@ const Jobs = (props: Props) => {
 
         <>
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
-                <div className="container">
-                    <h1>My Projects</h1>
-                </div>
-            </section>
-
             <section className="myproject">
                 <div className="container">
                     <div className="row">
@@ -388,8 +382,8 @@ const Jobs = (props: Props) => {
                         <div className="col-sm-8">
                             <div className="profile_box">
                                 <div className="heading_title">
-                                    <h2>My Projects <span>(1)</span>
-                                    </h2>
+                                    <h4>My Projects <span>(1)</span>
+                                    </h4>
                                 </div>
                                 <div className="row help-ico">
                                     {/* <div className="col-sm-6">
@@ -479,7 +473,7 @@ const Jobs = (props: Props) => {
                                                             <div className='project_loop'>
 
                                                                 <h4>
-                                                                    <a style={{color: "#0e0e0e", fontSize: "13px"}} href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+                                                                    <a style={{ color: "#0e0e0e", fontSize: "13px" }} href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                                                 </h4>
                                                                 <p>{l?.visibility} | Open </p>
                                                                 <p>  Posted :{" "}

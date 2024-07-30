@@ -300,7 +300,7 @@ function Home(prp) {
             </div> */}
 
 
-            <section className="discover_wp" style={{ backgroundImage: `url(./img/bg1.jpg)` }}>
+            <section className="discover_wp" >
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-5 discover_left">
@@ -351,7 +351,7 @@ function Home(prp) {
 
 
 
-            <section className="latest_request" style={{ backgroundImage: `url(../img/bg2.jpg)` }}>
+            <section className="latest_request" >
                 <div className="container">
                     <div className="heading_title latest_request_heading">
                         <h1>Latest Requests</h1>
@@ -510,7 +510,7 @@ function Home(prp) {
             </div> */}
 
 
-            <section className="top_artist" style={{ backgroundImage: `url(./img/bg3.jpg)` }}>
+            <section className="top_artist" >
                 <div className="container">
                     <div className="heading_title top_artist_heading">
                         <h1>Top Artist & Their Work</h1>
@@ -526,7 +526,7 @@ function Home(prp) {
 
             {allreviews?.length ? (
 
-                <section className="customer_wp" style={{ backgroundImage: `url(./img/bg4.jpg)` }}>
+                <section className="customer_wp" >
                     <div className="container">
 
 

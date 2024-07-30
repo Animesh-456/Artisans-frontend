@@ -116,23 +116,7 @@ const EditProfile = () => {
 
 	return (
 		<>
-			{/* <div
-				className='banner_wp sign_banner'
-				style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-				<div className='container'>
-					<div className='row'>
-						<div className='banner_text inner_banner_text'>
-							<h1 className='yh'>Inbox</h1>
-						</div>
-					</div>
-				</div>
-			</div> */}
 
-			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}  >
-				<div className="container">
-					<h1>Inbox</h1>
-				</div>
-			</section>
 
 			<section className="myproject">
 				<div className='container'>
@@ -178,7 +162,7 @@ const EditProfile = () => {
 						) : (<></>)} */}
 								{/* <hr className="dashed-hr" /> */}
 								<div className="heading_title">
-									<h2 >Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h2>
+									<h4 >Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h4>
 								</div>
 
 								{/* <hr className='dashed-hr' /> */}
@@ -190,7 +174,7 @@ const EditProfile = () => {
 												<th>User</th>
 												<th>Project title</th>
 												<th className=''>Last message</th>
-												<th></th>
+
 											</tr>
 										</thead>
 
@@ -198,7 +182,7 @@ const EditProfile = () => {
 											return (
 												<>
 
-													<tbody style={{cursor:"pointer"}}>
+													<tbody style={{ cursor: "pointer" }}>
 
 														<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
 															<td>

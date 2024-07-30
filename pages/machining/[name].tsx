@@ -1435,8 +1435,8 @@ const ProjectDetail = () => {
                                     )}
                                     alt={`${data?.attachment_name?.split(',')[0]}`}
                                 />
-                                <div className="description_heading_title">
-                                    <h2>Description</h2>
+                                <div className="description">
+                                    <h4>Description</h4>
                                 </div>
                                 <p>{data?.description}</p>
 
@@ -1548,7 +1548,7 @@ const ProjectDetail = () => {
 
 
 
-                                    <hr />
+
 
 
                                     <div className="question_a1">
@@ -1583,56 +1583,55 @@ const ProjectDetail = () => {
                                     <h2>Project Details</h2>
                                 </div>
                                 <div className="project_details_content">
-                                    <p><span>Posted</span><span><b>{moment(data?.project_post_date).format("DD-MMMM-YYYY")}</b></span></p>
-                                    <p><span>Visibility</span><span><b>{data?.visibility}</b></span></p>
-                                    <p><span>Category</span><span><b>{data?.category}</b></span></p>
-                                    <p><span>sub-category</span><span><b>{data?.sub_category}</b></span></p>
+                                    <p><span >Posted</span><span className="www1">{moment(data?.project_post_date).format("DD-MMMM-YYYY")}</span></p>
+                                    <p><span >Visibility</span><span className="www1">{data?.visibility}</span></p>
+                                    <p><span >Category</span><span className="www1">{data?.category}</span></p>
+                                    <p><span >sub-category</span ><span className="www1">{data?.sub_category}</span></p>
                                     {/* <p><span>Remaining Time</span><span><b>{diffInDays >= 0 && hourDifference >= 0 ? (
                                         <>{diffInDays} days {hourDifference} hours</>
                                     ) : (
                                         <>0 days</>
                                     )}</b></span></p> */}
-                                    <p><span>Posted by</span>
-                                        <b>
-                                            <a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}>{data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
-                                                data?.creator?.user_name : "User") : data?.creator?.user_name}</a>
-                                        </b>
+                                    <p><span className="www1">Posted by</span>
+
+                                        <a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}>{data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
+                                            data?.creator?.user_name : "User") : data?.creator?.user_name}</a>
+
                                     </p>
 
 
 
-                                    <p><span>Offers Received </span><span><b>{data?.bids_count} Offers</b></span></p>
-                                    <p><span>Attachments </span><span>
+                                    <p><span >Offers Received </span><span className="www1">{data?.bids_count} Offers</span></p>
+                                    <p><span >Attachments </span><span className="www1">
                                         {data?.attachment_name?.includes(",") ? (
                                             data?.attachment_name?.split(",").map((d) => {
                                                 return (
                                                     <>
                                                         <ul>
                                                             <li>
-                                                                <b>
 
-                                                                    <a
-                                                                        href={common.get_attachment(d, formattedDate)}
-                                                                        rel={"noreferrer"}
-                                                                        target={"_blank"}>
-                                                                        {d}
+                                                                <a
+                                                                    href={common.get_attachment(d, formattedDate)}
+                                                                    rel={"noreferrer"}
+                                                                    target={"_blank"}>
+                                                                    {d}
 
-                                                                    </a>
-                                                                </b>
+                                                                </a>
+
                                                             </li>
                                                         </ul>
                                                     </>
                                                 )
                                             })
                                         ) : (
-                                            <b>
-                                                <a
-                                                    href={common.get_attachment(data?.attachment_name, formattedDate)}
-                                                    rel={"noreferrer"}
-                                                    target={"_blank"}>
-                                                    {data?.attachment_name}
-                                                </a>
-                                            </b>
+
+                                            <a
+                                                href={common.get_attachment(data?.attachment_name, formattedDate)}
+                                                rel={"noreferrer"}
+                                                target={"_blank"}>
+                                                {data?.attachment_name}
+                                            </a>
+
                                         )}
                                     </span></p>
                                 </div>
@@ -1640,7 +1639,7 @@ const ProjectDetail = () => {
                                 {(data?.project_status == '5' && data?.visibility?.toLowerCase() == "public") &&
                                     <div className="desc-img">
                                         <img className="img-2" src={"../img/tick.png"} alt="tick.png" />
-                                        <h6>Part artist by <a  rel="noreferrer"  target={"_blank"} href={`account/artist-profile/${data?.programmer_id}`} className="listing_creator_name">
+                                        <h6>Part artist by <a rel="noreferrer" target={"_blank"} href={`account/artist-profile/${data?.programmer_id}`} className="listing_creator_name">
                                             <span>{data?.programmer?.user_name}</span>
                                         </a> for <span>₹{finalised_price} </span>
                                         </h6>

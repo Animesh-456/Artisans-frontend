@@ -395,7 +395,7 @@ const Post = (prp) => {
 
 
 
-			<section className="discover_wp dya" style={{ "backgroundImage": `url(../img/bg1.jpg)` }}>
+			<section className="discover_wp dya" >
 				<div className="container">
 					<div className="row">
 						<div className="heading_title latest_request_heading">

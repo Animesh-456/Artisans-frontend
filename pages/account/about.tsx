@@ -36,7 +36,7 @@ const about = () => {
             </section>
 
 
-            <section className="missionwp" style={{ backgroundImage: `url(../img/about-bg.jpg)` }} >
+            <section className="missionwp"  >
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-6">
@@ -81,7 +81,7 @@ const about = () => {
             </section>
 
 
-            <section className="customer_wp" style={{ backgroundImage: `url(../img/bg4.jpg)` }}>
+            <section className="customer_wp" >
                 <div className="container">
                     <div className="heading_title testimonial_heading">
                         <h1>What Our Customers Are Saying</h1>

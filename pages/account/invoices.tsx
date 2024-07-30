@@ -239,7 +239,7 @@ const Invoices = (props: Props) => {
                         <div className="col-sm-8">
                             <div className="profile_box">
                                 <div className="heading_title">
-                                    <h2>Invoices</h2>
+                                    <h4>Invoices</h4>
                                 </div>
                                 <div className="fund_wp">
                                     <div className="table-responsive">
@@ -256,7 +256,7 @@ const Invoices = (props: Props) => {
                                                 </tr>
                                             </thead>
                                             <tbody id="Tbody">
-                                                
+
 
 
 

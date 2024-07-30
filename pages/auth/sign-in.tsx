@@ -67,7 +67,7 @@ const SignIn = (props: Props) => {
 			(d) => {
 				if (storedProject != null) {
 					if (d?.data?.role_id === 1) {
-						
+
 						api.project.get_temp(
 							{ body: { project_ids: [storedProject] } },
 							(d) => {
@@ -79,7 +79,7 @@ const SignIn = (props: Props) => {
 						setStoredProject(null);
 					}
 				}
-				
+
 				if (d?.data?.role_id === 1) {
 					router.push("/account/jobs");
 				} else if (d?.data?.role_id === 2) {
@@ -179,7 +179,7 @@ const SignIn = (props: Props) => {
 				</div>
 			</section>
 
-			<section className="sign_wp" style={{ backgroundImage: `url(../img/bg5.jpg)` }}>
+			<section className="sign_wp" >
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-6">
@@ -202,12 +202,13 @@ const SignIn = (props: Props) => {
 								</div>
 								<div className="from_feild2">
 									<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-									<label>Keep me signed in</label>
+									<label> &nbsp; Keep me signed in</label>
 								</div>
 								<div className="from_feild1">
-									<a href={"/auth/forgetpassword"}>Forgot Password?`</a>
+									<a href={"/auth/forgetpassword"}>Forgot Password?</a>
 								</div>
-								<div className="discover_wp1">
+
+								<div className="discover_wp1 signin1">
 									{/* <a href="#">Sign In</a> */}
 									<input type="Submit" name="usersLogin" value="Sign in" />
 								</div>
@@ -243,9 +244,10 @@ const SignIn = (props: Props) => {
 										onChange={setCheck("email")} type="email" name="text" placeholder="Type here..." />
 								</div>
 								<div className="from_feild1">
-									<a href={"/account/terms"}>Terms of service`</a>
+									<a href={"/account/terms"}>Terms of service</a>
 								</div>
-								<div className="discover_wp1">
+
+								<div className="discover_wp1 signin1">
 									{/* <a href="#">Sign Up</a> */}
 									<input type="Submit" name="submit" />
 								</div>

@@ -104,23 +104,9 @@ const Profile = (props: Props) => {
     return (
         <>
 
-            {/* <div
-                    className='banner_wp sign_banner'
-                    style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='banner_text inner_banner_text'>
-                                <h1 className='yh'>My Profile</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
 
-            <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }} >
-                <div className="container">
-                    <h1>My Profile</h1>
-                </div>
-            </section>
+
+
             <section className="myproject">
                 <div className='container'>
                     <div className='row'>
