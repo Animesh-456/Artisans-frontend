@@ -381,76 +381,14 @@ const Jobs = (props: Props) => {
                         </div>
                         <div className="col-sm-8">
                             <div className="profile_box">
-                                <div className="heading_title">
+                                <div className="prof111">
                                     <h4>My Projects <span>(1)</span>
                                     </h4>
                                 </div>
-                                <div className="row help-ico">
-                                    {/* <div className="col-sm-6">
-                                    <select id="project_status">
-                                        <option value="0" selected={true}>Other</option>
-                                        <option value="2">Awarded but not yet Funded projects</option>
-                                        <option value="4">Finalized Orders without a Review</option>
-                                    </select>
-                                </div> */}
-                                    {/* <div className="col-sm-6">
-                                    <a href="#" data-toggle="modal" data-target="#myhelp">
-                                        <strong>
-                                            <i className="fa fa-question-circle"></i> Help </strong>
-                                    </a>
-                                </div> */}
-                                </div>
+
                                 <div className="uys5">
                                     <ul className="nav nav-pills" role="tablist">
-                                        {/* <li className="nav-item">
-                                        <a className="nav-link active" data-toggle="pill" href="#all">All</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" data-toggle="pill" href="#mybid">My Bids</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" data-toggle="pill" href="#orderprogress">My Orders in Progress</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" data-toggle="pill" href="#finalizeorder">My Finalized Orders</a>
-                                    </li> */}
 
-
-
-
-
-
-
-                                        {/* {user?.role_id == 2 ? (
-                                        Routes.jobsTab.map((j) => {
-                                            return (
-                                                <>
-                                                    <li className='nav-item'>
-                                                        <p
-                                                            className={`nav-link c-p ${j.id == index ? "active" : ""
-                                                                }`}
-                                                            style={{
-                                                                cursor: "pointer",
-                                                                color: j.id == index ? "white" : "black",
-                                                            }}
-                                                            onClick={(e) => {
-                                                                if (index == j.id) return;
-                                                                e.preventDefault();
-                                                                setIndex(j.id);
-                                                                console.log("tab id->", j.id);
-                                                                api.project.my_jobs({
-                                                                    params: { ...opt, page: 0, status: j.id },
-                                                                });
-                                                            }}>
-                                                            {j.title}
-                                                        </p>
-                                                    </li>
-                                                </>
-                                            );
-                                        })
-                                    ) : (
-                                        <></>
-                                    )} */}
 
 
                                     </ul>

@@ -150,7 +150,7 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className="col-sm-8">
-											<input className="text m_b_none" name="email" type="text" placeholder="Email Address"
+											<input className="text m_b_none" name="email" type="text" placeholder="Enter your Email Address"
 												autoComplete={"off"}
 												value={signIn.email}
 												onChange={setSign("email")}
@@ -202,7 +202,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 									</div>
 
-									<div className="row from_feild">
+									<div className="row from_feild cont11">
 										<div className="col-sm-4">
 											<label>Secret Answer<span>*</span>
 											</label>
@@ -214,6 +214,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.answer}
 												onChange={setSign("answer")}
+												placeholder="**********"
 											/>
 										</div>
 									</div>
@@ -233,6 +234,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.name}
 												onChange={setSign("name")}
+												placeholder="First Name"
 											/>
 										</div>
 									</div>
@@ -250,6 +252,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.surname}
 												onChange={setSign("surname")}
+												placeholder="Last Name"
 											/>
 										</div>
 									</div>
@@ -268,6 +271,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.address1}
 												onChange={setSign("address1")}
+												placeholder="Address"
 											/>
 										</div>
 									</div>
@@ -284,6 +288,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.zcode}
 												onChange={setSign("zcode")}
+												placeholder="Postal code"
 											/>
 										</div>
 									</div>
@@ -301,6 +306,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.city}
 												onChange={setSign("city")}
+												placeholder="City"
 											/>
 										</div>
 									</div>
@@ -316,6 +322,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.company_name}
 												onChange={setSign("company_name")}
+												placeholder="Company Name"
 											/>
 										</div>
 									</div>
@@ -331,6 +338,7 @@ const CustomerSignIn = (props: Props) => {
 												autoComplete={"off"}
 												value={signIn.company_number}
 												onChange={setSign("company_number")}
+												placeholder="Company Registration Number"
 											/>
 										</div>
 									</div>
@@ -359,7 +367,7 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
-										<button className="canl">Cancel</button>
+										<button className="canl">Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
 							</div>

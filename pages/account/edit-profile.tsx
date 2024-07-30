@@ -611,7 +611,7 @@ const EditProfile = () => {
                         </div>
                         <div className="col-sm-8">
                             <div className="profile_box">
-                                <div className="heading_title">
+                                <div className="prof111">
                                     <h4>My Profile ({user?.role_id == 1
                                         ? "Customer"
                                         : user?.role_id == 2
@@ -767,21 +767,8 @@ const EditProfile = () => {
                                                 <>
                                                     <div className='row'>
                                                         <div className='col-sm-6'>
-                                                            <label>Portfolio Picture</label>
-                                                            <div className='upload-btn-wrapper'>
-                                                                <button className='btn'>
-                                                                    <i className='fa fa-upload' /> Add Portfolio Picture
-                                                                </button>
-                                                                <input
-                                                                    type='file'
-                                                                    name='myfile'
-                                                                    id='fileAttach'
-                                                                    multiple
-                                                                    onChange={handle_file_change2}
-                                                                    accept="image/*,video/*"
-                                                                //ref={fileInputRef2}
-                                                                />
-                                                            </div>
+
+
 
 
                                                             {pr2 < 101 ? (

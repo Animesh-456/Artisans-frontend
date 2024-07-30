@@ -224,8 +224,8 @@ const Withdraw = (props: Props) => {
                         </div>
                         <div className="col-sm-8">
                             <div className="profile_box">
-                                <div className="heading_title">
-                                    <h2>Withdraw Funds</h2>
+                                <div className="prof111">
+                                    <h4>Withdraw Funds</h4>
                                 </div>
                                 <div className="fund_wp">
                                     <div className="row">

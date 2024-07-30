@@ -55,7 +55,7 @@ const Reviews = (props: Props) => {
 
 
     return (
-         <>
+        <>
 
             <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
                 <div className="container">
@@ -71,8 +71,8 @@ const Reviews = (props: Props) => {
                         </div>
                         <div className="col-sm-8">
                             <div className="profile_box">
-                                <div className="heading_title">
-                                    <h2>Reviews</h2>
+                                <div className="prof111">
+                                    <h4>Reviews</h4>
                                 </div>
                                 <div className="fund_wp">
                                     <div className="table-responsive">

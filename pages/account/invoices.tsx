@@ -238,7 +238,7 @@ const Invoices = (props: Props) => {
                         </div>
                         <div className="col-sm-8">
                             <div className="profile_box">
-                                <div className="heading_title">
+                                <div className="prof111">
                                     <h4>Invoices</h4>
                                 </div>
                                 <div className="fund_wp">

@@ -935,7 +935,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 						{user && (data?.creator_id == user?.id && data?.project_status < "1") && bid?.no_offer == "1" && (
 
-							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select <i className="fa-solid fa-arrow-down-right"></i></a>
+							<a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select ↘</a>
 						)}
 					</div>
 

@@ -204,7 +204,7 @@ const CustomerSignIn = (props: Props) => {
 											/>
 										</div>
 									</div>
-									<div className="row from_feild">
+									<div className="row from_feild cont11">
 										<div className="col-sm-4">
 											<label>Last Name <span>*</span>
 											</label>
@@ -321,7 +321,7 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
-										<button className="canl">Cancel</button>
+										<button className="canl" >Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
 							</div>

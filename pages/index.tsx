@@ -215,9 +215,7 @@ function Home(prp) {
 
             <section className="popular_category">
                 <div className="container">
-                    <div className="heading_title">
-                        <h1>Popular Category</h1>
-                    </div>
+
                     {/* <a className="view_all" href="#">View all categories <img src={"img/arrow.png"} width="11px" alt="" /></a> */}
                     <ul className="popular_category_listing">
                         <li>
@@ -476,7 +474,7 @@ function Home(prp) {
 
 
 
-                    <a className="view_all viewall_center" href={"/artworklisting"}>View all <img src="img/arrow.png" width="11px" alt="" /></a>
+                    <a className="view_all viewall_center" style={{ color: "#080424" }} href={"/artworklisting"}>View all <img src="img/arrow.png" width="11px" alt="" /></a>
                 </div>
             </section>
 

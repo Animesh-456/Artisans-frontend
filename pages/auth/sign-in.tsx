@@ -204,7 +204,7 @@ const SignIn = (props: Props) => {
 									<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
 									<label> &nbsp; Keep me signed in</label>
 								</div>
-								<div className="from_feild1">
+								<div className="from_feild1 fff1">
 									<a href={"/auth/forgetpassword"}>Forgot Password?</a>
 								</div>
 
@@ -243,7 +243,7 @@ const SignIn = (props: Props) => {
 									<input value={check.email}
 										onChange={setCheck("email")} type="email" name="text" placeholder="Type here..." />
 								</div>
-								<div className="from_feild1">
+								<div className="from_feild1 fff1">
 									<a href={"/account/terms"}>Terms of service</a>
 								</div>
 

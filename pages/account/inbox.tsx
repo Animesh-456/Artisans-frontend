@@ -161,7 +161,7 @@ const EditProfile = () => {
 							</div>
 						) : (<></>)} */}
 								{/* <hr className="dashed-hr" /> */}
-								<div className="heading_title">
+								<div className="prof111">
 									<h4 >Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h4>
 								</div>
 

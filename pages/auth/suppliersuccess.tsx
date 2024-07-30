@@ -54,34 +54,28 @@ const suppliersuccess = () => {
             <section className="myproject">
                 <div className="container">
                     <div className="row">
-                        <div className="help_wp">
-                            <h3>Thank you for your registration. Welcome to Artisans!</h3>
+                        <div className="col-sm-3"></div>
+                        <div className="col-sm-6">
+                            <div className="success1">
 
-                            <hr />
+                                <h2> Welcome to Artisans!</h2>
 
-                            <hr />
-                            <p>4 points to remember:</p>
-                            <p>1. Send an invoice systematically to your professional customers.</p>
-                            <p>2. Do not communicate your email or phone number until you have won the order. And do not respond to requests to do so.</p>
-                            <p>3. Exclusively use the Usineur.fr payment system with your customers met on Usineur.fr</p>
-                            <p>4. Complete your profile: a presentation text and a few photos are essential to take your first order.</p>
-                            <br />
-                            <br />
-                            <div>
-                                <button type='submit' name='submit' style={{
-                                    background: "#ef6100",
-                                    color: "#fff",
-                                    borderRadius: "6px",
-                                    boxShadow: "0px 1px 2px 2px rgb(71, 18, 15)",
-                                    fontFamily: "Poppins",
-                                    padding: "6px 22px",
-                                    transition: "box-shadow 1s"
-                                }} onClick={redirect_job}>
-                                    Complete Your Profile
-                                </button>
+
+                                <p>Thank you for joining Aartstudio. You will </p>
+
+                                <p> received email message shortly
+                                </p>
+                                <img src="../img/tick.png" />
+                                <br />
+                                <br />
+                                <div>
+                                    <button type='submit' name='submit' className="button123" onClick={redirect_job}>
+                                        Complete Your Profile
+                                    </button>
+                                </div>
                             </div>
-
                         </div>
+                        <div className="col-sm-3"></div>
                     </div>
                 </div>
             </section>

@@ -381,7 +381,7 @@ const Post = (prp) => {
 						<div className="col-sm-6">
 							<div className="our_story_content">
 								<div className="heading_title">
-									<h2>Let's Start Our Story</h2>
+									<h1>Let's Start Our Story</h1>
 								</div>
 								<p>
 									Egestas maecenas pharetra convallis posuere morbi. Nunc pulvinar sapien et ligula ullamcorper. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.<br /><br />
@@ -420,9 +420,20 @@ const Post = (prp) => {
 										onChange={setproject("description")}></textarea>
 								</div>
 								<div className="b-li">
-									<p>Specify the materials to be used, the tolerances and the total number of parts</p>
-									<p>If delivery outside mainland UK, please specify the delivery location</p>
-									<p>Please do not provide your contact details here.</p>
+									<ul>
+										<li>
+											Specify the materials to be used, the tolerances and the total number of parts
+										</li>
+										<li>
+											If delivery outside mainland UK, please specify the delivery location
+										</li>
+										<li>
+											Please do not provide your contact details here.
+										</li>
+									</ul>
+									{/* <p>Specify the materials to be used, the tolerances and the total number of parts</p> */}
+									{/* <p>If delivery outside mainland UK, please specify the delivery location</p>
+									<p>Please do not provide your contact details here.</p> */}
 								</div>
 
 								<div className="from_feild">
@@ -435,6 +446,7 @@ const Post = (prp) => {
 											</option>
 										))}
 									</select>
+
 
 									{selectedCategory && (
 										<div>
@@ -450,6 +462,7 @@ const Post = (prp) => {
 										</div>
 									)}
 								</div>
+								<br />
 								<div className="from_feild">
 									<label>Attach Your Files Here: <span>*</span></label>
 									<div className="upload-btn-wrapper">
@@ -508,7 +521,7 @@ const Post = (prp) => {
 
 								{/* {loading && <Spinner animation="border" variant="info" />} */}
 
-								{!loading ? (
+								{/* {!loading ? (
 									file?.map((f, index) => {
 
 										return (
@@ -520,12 +533,36 @@ const Post = (prp) => {
 										)
 
 									})
-								) : (<></>)}
+								) : (<></>)} */}
+
+								<div className="upload_t file101">
+									{file ? (
+										file?.map((f, index) => {
+											return (
+												<>
+
+													<p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>
+													{/* <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p> */}
+
+												</>
+											)
+										})
+									) : (<></>)}
+								</div>
 
 
 								<div className="b-li">
-									<p>The first file will be used for a thumbnail picture</p>
-									<p>Max file size: 3 MB</p>
+
+
+									<ul>
+										<li>
+											The first file will be used for a thumbnail picture
+										</li>
+										<li>
+											Max file size: 3 MB
+										</li>
+
+									</ul>
 								</div>
 								{/* <div className="from_feild">
 									<label>I would like to receive quotes before: <span>*</span></label>
@@ -562,17 +599,9 @@ const Post = (prp) => {
 									</div>
 								</div>
 								<div className="submit_cancel">
-									<button
+									<button className="but111"
 										type="submit"
-										style={{
-											background: "#ef6100",
-											color: "#fff",
-											borderRadius: "6px",
-											boxShadow: "0px 1px 2px 2px rgb(71, 18, 15)",
-											fontFamily: "Poppins",
-											padding: "6px 22px",
-											transition: "box-shadow 1s"
-										}}
+
 										name="submit"
 										onClick={handleSubmit}
 									>
@@ -666,8 +695,8 @@ const Post = (prp) => {
 							<h5>Visibility</h5>
 							<p>{project.visibility}</p>
 						</label>
-						<div className="button_s">
-							<a style={{ cursor: "pointer" }} onClick={() => setOpen(false)}>Back</a>
+						<div className="button_s ">
+							<a style={{ cursor: "pointer", color:"#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a>
 							<a style={{ cursor: "pointer", color: "#fff" }} onClick={processSubmit}>Post Request</a>
 						</div>
 

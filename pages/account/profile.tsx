@@ -116,8 +116,8 @@ const Profile = (props: Props) => {
 
                         <div className='col-sm-8'>
                             <div className='profile_box'>
-                                <div className="rys1">
-                                    <h5>
+                                <div className="prof111">
+                                    <h4>
                                         My Profile (
                                         {user?.role_id == 1
                                             ? "Customer"
@@ -125,7 +125,7 @@ const Profile = (props: Props) => {
                                                 ? "Artist"
                                                 : ""}
                                         )
-                                    </h5>
+                                    </h4>
                                 </div>
                                 <div className='myprofile_w'>
                                     <div className='myprofile_l'>
@@ -133,31 +133,31 @@ const Profile = (props: Props) => {
                                             <p>Username</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>{data?.user_name}</p>
+                                            <p>: &nbsp;{data?.user_name}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>Name</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>{data?.name + " " + data?.surname}</p>
+                                            <p>: &nbsp;{data?.name + " " + data?.surname}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>Address</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>{data?.address1}</p>
+                                            <p>: &nbsp;{data?.address1}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>Post code</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>{data?.zcode}</p>
+                                            <p>: &nbsp;{data?.zcode}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>City</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>{data?.city}</p>
+                                            <p>: &nbsp;{data?.city}</p>
                                         </div>
                                         {user?.pro_user == 1 ? (
                                             <>
@@ -165,14 +165,14 @@ const Profile = (props: Props) => {
                                                     <p>Company Name</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>{data?.company_name}</p>
+                                                    <p>: &nbsp;{data?.company_name}</p>
                                                 </div>
 
                                                 <div className='myprofile_name_label'>
                                                     <p>SIREN</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>{data?.siren}</p>
+                                                    <p>: &nbsp;{data?.siren}</p>
                                                 </div>
                                             </>
                                         ) : (<></>)}
@@ -180,7 +180,7 @@ const Profile = (props: Props) => {
                                             <p>Country</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>India</p>
+                                            <p>: &nbsp;India</p>
                                         </div>
                                         {user?.role_id == 1 ? (
                                             <>
@@ -188,7 +188,7 @@ const Profile = (props: Props) => {
                                                     <p>Description</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>{data?.description}</p>
+                                                    <p>: &nbsp;{data?.description}</p>
                                                 </div>
                                             </>
                                         ) : user?.role_id == 2 ? (
@@ -197,7 +197,7 @@ const Profile = (props: Props) => {
                                                     <p>Description</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>{data?.service_desc}</p>
+                                                    <p>: &nbsp;{data?.service_desc}</p>
                                                 </div>
                                             </>
                                         ) : (

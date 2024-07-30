@@ -116,7 +116,7 @@ const ChangePassword = (props: Props) => {
 						</div>
 						<div className="col-sm-8">
 							<div className="profile_box">
-								<div className="heading_title">
+								<div className="prof111">
 									<h4>Change Password {user?.user_name ? ` (${user?.user_name})` : ""}</h4>
 								</div>
 								<div className="edit_password_wp">
