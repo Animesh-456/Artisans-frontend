@@ -35,7 +35,7 @@ const Artwork = () => {
     const [selected_machinist, setselected_machinist] = useState(null);
     const [selectedArtId, setSelectedArtId] = useState(null); // New state to keep track of selected art ID
     const [categories, setcategories] = useState([]); // To set multiple categories
-    const [displayOptions, setDisplayOptions] = useState([]);
+
 
 
     const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -117,7 +117,7 @@ const Artwork = () => {
                 file: form
             });
 
-
+            window.location.reload()
 
         } catch (error) {
             toast.error(error.message);
@@ -179,13 +179,10 @@ const Artwork = () => {
 
     const openModal = (art) => {
         setSelectedArt(art);
-        const optionsString = art.categories;
-        const optionsArray = optionsString.split(',').map(option => ({ value: option.trim(), label: option.trim() }));
-        setDisplayOptions(optionsArray);
         setFormData({
             title: art.title,
             description: art.description,
-            category: '',
+            category: art.categories,
             id: art.id,
         });
         setmodalFile(art?.attachment1.split(','))
@@ -221,14 +218,10 @@ const Artwork = () => {
         const obj = {
             id: formData?.id,
             title: formData?.title,
-            category: displayOptions.map(option => option.value).join(','),
+            category: formData?.category,
             description: formData?.description,
             existingFiles: modalfile?.join(',')
         }
-
-
-
-
 
         console.log("form is", obj)
 
@@ -253,7 +246,7 @@ const Artwork = () => {
                 file: form
             });
 
-             
+            window.location.reload()
 
         } catch (error) {
             toast.error(error.message);
@@ -281,9 +274,6 @@ const Artwork = () => {
         { value: 'Installation Art', label: 'Installation Art' },
     ];
 
-    const handleDisplayChange = (options) => {
-        setDisplayOptions(options);
-    };
 
     console.log("selectedValues", categories)
 
@@ -346,7 +336,20 @@ const Artwork = () => {
                                                     <div className="from_feild">
                                                         <Select isMulti required value={categories} options={options}
                                                             onChange={handleCategorychange}>
-
+                                                            {/* <option value="">Select Category</option>
+                                                            <option>Painting</option>
+                                                            <option>Sculpture</option>
+                                                            <option>Printmaking</option>
+                                                            <option>Photography</option>
+                                                            <option>Textile Art</option>
+                                                            <option>Ceramics</option>
+                                                            <option>Glass Art</option>
+                                                            <option>Digital Art</option>
+                                                            <option>Mixed Media</option>
+                                                            <option>Calligraphy</option>
+                                                            <option>Jewelry Design</option>
+                                                            <option>Graffiti and Street Art</option>
+                                                            <option>Installation Art</option> */}
                                                         </Select>
                                                     </div>
 
@@ -467,10 +470,28 @@ const Artwork = () => {
                                                         <input type="text" name="description" value={formData?.description} onChange={(e) => handleChange(e)} placeholder="Type here" />
                                                     </div>
                                                     <div className="from_feild">
-                                                        <Select isMulti required value={displayOptions} options={options} onChange={handleDisplayChange}
-                                                        >
+                                                        <select
+                                                            required
+                                                            value={formData?.category || ''}
+                                                            onChange={(e) => handleChange(e)}
+                                                            name="category"
 
-                                                        </Select>
+                                                        >
+                                                            <option value="">Select Category</option>
+                                                            <option value="Painting">Painting</option>
+                                                            <option value="Sculpture">Sculpture</option>
+                                                            <option value="Printmaking">Printmaking</option>
+                                                            <option value="Photography">Photography</option>
+                                                            <option value="Textile Art">Textile Art</option>
+                                                            <option value="Ceramics">Ceramics</option>
+                                                            <option value="Glass Art">Glass Art</option>
+                                                            <option value="Digital Art">Digital Art</option>
+                                                            <option value="Mixed Media">Mixed Media</option>
+                                                            <option value="Calligraphy">Calligraphy</option>
+                                                            <option value="Jewelry Design">Jewelry Design</option>
+                                                            <option value="Graffiti and Street Art">Graffiti and Street Art</option>
+                                                            <option value="Installation Art">Installation Art</option>
+                                                        </select>
 
                                                     </div>
                                                     <div className="from_feild">
