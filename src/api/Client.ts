@@ -60,7 +60,7 @@ class Client {
 			// "project/create-order",
 			"project/deposit-fund",
 			"project/get-art",
-
+			"project/edit-art-portfolio",
 
 
 		];

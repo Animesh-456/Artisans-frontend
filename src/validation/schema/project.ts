@@ -16,6 +16,14 @@ const add_art = {
 	category: Joi.string().required(),
 };
 
+const edit_art = {
+	id: Joi.number().required(),
+	title: Joi.string().required(),
+	description: Joi.string().required(),
+	category: Joi.string().required(),
+	existingFiles: Joi.required(),
+};
+
 const question = {
 	project_id: Joi.string().required(),
 	message: Joi.string().required(),
@@ -93,6 +101,7 @@ const add_desccomment = {
 export default {
 	add,
 	add_art,
+	edit_art,
 	question,
 	answer,
 	get_temp,
