@@ -10,6 +10,7 @@ import axios from "axios";
 import common from "../../src/helpers/common";
 import { useRouter } from "next/router";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
+import Select from 'react-select';
 
 const Artwork = () => {
     const router = useRouter();
@@ -33,6 +34,7 @@ const Artwork = () => {
     const [open_machinist, setOpen_machinist] = useAtom(atom.modal.art_delete);
     const [selected_machinist, setselected_machinist] = useState(null);
     const [selectedArtId, setSelectedArtId] = useState(null); // New state to keep track of selected art ID
+    const [categories, setcategories] = useState([]); // To set multiple categories
 
 
 
@@ -91,9 +93,15 @@ const Artwork = () => {
             form.append("file", file[key]);
         }
 
+        const obj = {
+            title: project?.title,
+            description: project?.description,
+            category: categories.map(option => option.value).join(','),
+        }
 
-        for (const key of Object.keys(project)) {
-            form.append(key, project[key]);
+
+        for (const key of Object.keys(obj)) {
+            form.append(key, obj[key]);
         }
 
 
@@ -105,7 +113,7 @@ const Artwork = () => {
                 params: {
                     user_id: user?.id
                 },
-                body: project,
+                body: obj,
                 file: form
             });
 
@@ -246,7 +254,28 @@ const Artwork = () => {
         }
     };
 
-    console.log("modalfile", typeof (modalfile))
+    const handleCategorychange = (event) => {
+        setcategories(event)
+    };
+
+    const options = [
+        { value: 'Painting', label: 'Painting' },
+        { value: 'Sculpture', label: 'Sculpture' },
+        { value: 'Printmaking', label: 'Printmaking' },
+        { value: 'Photography', label: 'Photography' },
+        { value: 'Textile Art', label: 'Textile Art' },
+        { value: 'Ceramics', label: 'Ceramics' },
+        { value: 'Glass Art', label: 'Glass Art' },
+        { value: 'Digital Ar', label: 'Digital Art' },
+        { value: 'Mixed Media', label: 'Mixed Media' },
+        { value: 'Calligraphy', label: 'Calligraphy' },
+        { value: 'Jewelry Design', label: 'Jewelry Design' },
+        { value: 'Graffiti and Street Art', label: 'Graffiti and Street Art' },
+        { value: 'Installation Art', label: 'Installation Art' },
+    ];
+
+
+    console.log("selectedValues", categories)
 
 
     return (
@@ -305,9 +334,9 @@ const Artwork = () => {
                                                     </div>
 
                                                     <div className="from_feild">
-                                                        <select required value={project?.category}
-                                                            onChange={setproject("category")}>
-                                                            <option>Select Category</option>
+                                                        <Select isMulti required value={categories} options={options}
+                                                            onChange={handleCategorychange}>
+                                                            {/* <option value="">Select Category</option>
                                                             <option>Painting</option>
                                                             <option>Sculpture</option>
                                                             <option>Printmaking</option>
@@ -320,8 +349,8 @@ const Artwork = () => {
                                                             <option>Calligraphy</option>
                                                             <option>Jewelry Design</option>
                                                             <option>Graffiti and Street Art</option>
-                                                            <option>Installation Art</option>
-                                                        </select>
+                                                            <option>Installation Art</option> */}
+                                                        </Select>
                                                     </div>
 
                                                     <div className="from_feild">
