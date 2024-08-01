@@ -10,7 +10,7 @@ import axios from "axios";
 import common from "../../src/helpers/common";
 import { useRouter } from "next/router";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
-import Select from 'react-select';
+// import Select from 'react-select';
 
 const Artwork = () => {
     const router = useRouter();
@@ -344,10 +344,10 @@ const Artwork = () => {
                                                     </div>
 
                                                     <div className="from_feild">
-                                                        <Select isMulti required value={categories} options={options}
+                                                        {/* <Select isMulti required value={categories} options={options}
                                                             onChange={handleCategorychange}>
 
-                                                        </Select>
+                                                        </Select> */}
                                                     </div>
 
                                                     <div className="from_feild">
@@ -467,10 +467,10 @@ const Artwork = () => {
                                                         <input type="text" name="description" value={formData?.description} onChange={(e) => handleChange(e)} placeholder="Type here" />
                                                     </div>
                                                     <div className="from_feild">
-                                                        <Select isMulti required value={displayOptions} options={options} onChange={handleDisplayChange}
+                                                        {/* <Select isMulti required value={displayOptions} options={options} onChange={handleDisplayChange}
                                                         >
 
-                                                        </Select>
+                                                        </Select> */}
 
                                                     </div>
                                                     <div className="from_feild">
