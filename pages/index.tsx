@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { CSSProperties } from 'react';
 import test from "../src/validation/schema/test";
 import { perfTest, Pick, Validate } from "../src/validation/utils/test";
@@ -112,6 +112,42 @@ function Home(prp) {
         api.project.allreviews({ params: opt });
     }, []);
 
+
+    const marqueeRef = useRef(null);
+    const [mouseEntered, setMouseEntered] = useState(false);
+    const speed = 1;
+
+    useEffect(() => {
+        const marquee = marqueeRef.current;
+        if (!marquee) return;
+
+        const container = marquee.querySelector('.inner');
+        const content = marquee.querySelector('.inner > *');
+        const elWidth = content.offsetWidth;
+
+        // Duplicate content
+        let clone = content.cloneNode(true);
+        container.appendChild(clone);
+
+        let progress = 1;
+
+        const loop = () => {
+            if (!mouseEntered) {
+                progress -= speed;
+            }
+            if (progress <= -elWidth) {
+                progress = 0;
+            }
+            container.style.transform = `translateX(${progress}px)`;
+            window.requestAnimationFrame(loop);
+        };
+
+        loop();
+
+        return () => {
+            // Cleanup function if needed
+        };
+    }, [mouseEntered]);
 
     return (
         <>
@@ -547,7 +583,7 @@ function Home(prp) {
             {allreviews?.length ? (
 
                 <section className="customer_wp" >
-                    <div className="container">
+                    <div className="container1">
 
 
                         <div className="heading_title testimonial_heading">
@@ -561,7 +597,9 @@ function Home(prp) {
                         {/* TESTIMONIALS */}
 
 
-                        <div className="marquee">
+                        <div className="marquee" ref={marqueeRef}
+                            onMouseEnter={() => setMouseEntered(true)}
+                            onMouseLeave={() => setMouseEntered(false)}>
                             <div className="inner testimonial_w">
                                 <div className="testimonial-card">
                                     <div className="testimonial-content">
