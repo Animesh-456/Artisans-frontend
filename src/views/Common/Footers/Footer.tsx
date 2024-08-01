@@ -13,8 +13,8 @@ export default function Footer({ }: Props) {
 						<div className="col-sm-3">
 							<div className="footer_logo">
 								<img src={"../img/AartStudio-footer.png"} alt="aartstudio" />
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-								<h4>Hotline : <a href="tel:(+91) 89 815 15 666">+91 8981515666</a></h4>
+								<p>Discover and buy unique art from diverse artists on our vibrant marketplace.</p>
+								<h4>Hotline : <a href="tel:(+91) 89 815 15 666">+91 89815 15666</a></h4>
 
 							</div>
 						</div>
@@ -24,11 +24,18 @@ export default function Footer({ }: Props) {
 									<div><i className="fa fa-phone"></i></div>
 									<div>
 										<h5>Phone</h5>
-										<a href="tel:+89 815-15-666">+91 8981515666</a>
+										<a href="tel:+89 815-15-666">+91 89815 15666</a>
 									</div>
 								</div>
 								<div className="footer_information1">
-									<div><i className="fa fa-envelope-open-o"></i></div>
+									<div><i className="fa fa-phone"></i></div>
+									<div>
+										<h5>Phone</h5>
+										<a href="tel:+89 815-15-666">+91 89815 15666</a>
+									</div>
+								</div>
+								<div className="footer_information1">
+									<div><i className="fa fa-solid fa-envelope"></i></div>
 									<div>
 										<h5>Email</h5>
 										<a href="mailto:Info@aartstudio.in">Info@aartstudio.in</a>
@@ -62,9 +69,9 @@ export default function Footer({ }: Props) {
 								</div>
 								<div className="quick_left">
 									<h3>Subscribe Newsletter</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+									<p>Subscribe for exclusive access to new artworks, artist updates, and special offers.</p>
 									<div className="footersearch">
-										<span className="fa fa-search"></span>
+										<span className="fa fa-angle-right"></span>
 										<input type="email" placeholder="Your Email" />
 									</div>
 								</div>
@@ -78,7 +85,7 @@ export default function Footer({ }: Props) {
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-6">
-							<p>Copyright © <a href="#">Aart Studion</a> 2024. All rights reserved.</p>
+							<p>Copyright © <a href="#">Aart Studio</a> 2024. All rights reserved.</p>
 						</div>
 						<div className="col-sm-6">
 							<ul className="top_socialmedia right_icon">

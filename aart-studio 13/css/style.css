@@ -74,14 +74,14 @@ table{
   list-style: none;
 }
 
-.navigation nav ul li { display: inline-block; }
+.navigation nav ul li { display: inline-block;  }
 
 .navigation nav ul li a {
   color: #010101;
   font-weight: 500;
   display: inline-block;
   text-decoration: none;
-  padding: 8px 20px;
+  padding: 8px 8px;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   transition: 0.5s;
@@ -625,7 +625,7 @@ footer hr {
 }
 .copyright{
 	background: #12100e;
-	padding: 10px 0;
+	padding: 20px 0;
 }
 .copyright p{
 	font-size: 13px;
@@ -2613,6 +2613,25 @@ ul.ex1 li a {
 }
 
 /* artist portfolio details start here */
+
+.mt-60 {
+    margin-top: 30px;
+}
+.gap-3 {
+    gap: 1rem!important;
+}
+.fd{
+	font-weight: 600;
+}
+.hero-rating {
+    padding-left: 20px;
+    border-left: 1px solid #803400;
+    margin-left: 19px;
+}
+.hero-counter-title{
+	 margin: 0;
+	 font-weight: 600;
+}
 
 /* width */
 ::-webkit-scrollbar {
