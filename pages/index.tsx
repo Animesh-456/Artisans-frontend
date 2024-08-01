@@ -474,7 +474,7 @@ function Home(prp) {
 
 
 
-                    <a className="view_all viewall_center" style={{ color: "#080424" }} href={"/artworklisting"}>View all <img src="img/arrow.png" width="11px" alt="" /></a>
+                    <a className="view_all viewall_center" style={{ color: "#080424" }} href={"/artworklisting"}>View All <img src="img/arrow.png" width="11px" alt="" /></a>
                 </div>
             </section>
 
@@ -534,9 +534,9 @@ function Home(prp) {
                         <div className="owl-carousel owl-carousel1 owl-theme">
                             <CustomerSays />
                         </div>
-                        <div className="testimonial_animation">
+                        {/* <div className="testimonial_animation">
                             <img src={"../img/icon1.png"} alt="" />
-                        </div>
+                        </div> */}
 
                     </div>
                 </section>

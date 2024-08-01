@@ -38,7 +38,7 @@ const Crou = () => {
     return (
         <div className="container">
             <Carousel responsive={responsive} itemAriaLabel="hhh">
-                {projects.length
+                {/* {projects.length
                     ? projects.map((project, index) => {
                         const date = new Date(project?.created * 1000);
 
@@ -77,7 +77,48 @@ const Crou = () => {
                             </div>
                         );
                     })
-                    : "No projects found"}
+                    : "No projects found"} */}
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="../img/pic5.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
+                    </div>
+                </div>
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="../img/pic6.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
+                    </div>
+                </div>
+
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="../img/pic7.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
+                    </div>
+                </div>
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="../img/pic9.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
+                    </div>
+                </div>
+
+                <div className="item">
+                    <div className="top_artist_slider">
+                        <img src="../img/pic8.png" alt="" />
+                        <h3>Beetle Ladybug Art</h3>
+                        <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
+                    </div>
+                </div>
             </Carousel>
 
 
