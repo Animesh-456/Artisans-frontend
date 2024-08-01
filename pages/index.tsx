@@ -315,7 +315,7 @@ function Home(prp) {
                             <p>Browse through our extensive directory of skilled artisans, each showcasing their unique style
                                 and portfolio. You'll find a variety of artistic talents, ensuring you can discover an artist whose
                                 work resonates with your vision.</p>
-                            <p>
+                            {/* <p>
                                 Share your custom art needs and ideas on AARTSTUDIO. Detail your vision, preferences, and any
                                 specific requirements to give the artisans a clear understanding of what you’re looking for.
                                 AARTSTUDIO will connect you with the right artist to create your perfect custom artwork.
@@ -327,7 +327,7 @@ function Home(prp) {
                             </p>
                             <p>
                                 Explore the world of art, and let us help you discover your next masterpiece!
-                            </p>
+                            </p> */}
 
                             <Link href={`/artrequest`}>Know More</Link>
                         </div>
@@ -454,7 +454,7 @@ function Home(prp) {
                                         <div className="col-sm-9">
                                             <div className="latest_request_text">
                                                 <h1>{l?.project_name}</h1>
-                                                <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 80) + '...') : (l?.description)} </p>
+                                                <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 150) + '...') : (l?.description)} </p>
                                                 <div>
                                                     <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
                                                     <span>Posted: {diffInDays} days {hourDifference} hours</span>
