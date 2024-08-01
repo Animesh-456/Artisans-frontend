@@ -907,4 +907,15 @@
   .artist_pro_r {
     padding-top: 8px;
   }
+  .portfolio4 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .portfolio_details_right {
+    box-shadow: none;
+    height: auto;
+  }
+  .portfolio6, .portfolio3 {
+    padding: 25px 0 0;
+  }
 }

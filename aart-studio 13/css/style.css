@@ -2498,6 +2498,121 @@ ul.ex1 li a {
 
 /* My Artwork end here */
 
+/* artist portfolio details start here */
+
+.portfolio4 {
+    padding-left: 7em;
+    padding-right: 2em;
+}
+.portfolio5 .col-sm-6:last-child {
+    text-align: right;
+}
+.portfolio5 .col-sm-6:last-child .fa {
+    font-size: 20px;    
+    padding: 0 4px;
+}
+.portfolio5 .col-sm-6:last-child .fa-search-minus {
+    color: #a7a7a7;
+}
+.portfolio5 .col-sm-6:last-child .fa-search-plus {
+    color: #313030;
+}
+.port_fo img {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+}
+.portfolio_thamb img {
+    width: 169px;
+    height: 115px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.port_fo {
+    margin-bottom: 15px;
+}
+.portfolio5 {
+    padding: 20px 0;
+}
+.portfolio_details_right {
+    box-shadow: -5px 0px 12px -7px rgb(0 0 0 / 34%);
+    height: 100vh;
+}
+.portfolio6 {
+    padding: 2em 4em 0em 2em;
+}
+.portfolio3 {
+    padding: 1em 4em 0em 2em;
+}
+.portfolio1 img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+.portfolio2 h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.portfolio2 p {
+   font-size: 13px;
+    color: #313030;
+    font-weight: 500;
+}
+.portfolio3 h1 {
+    font-size: 24px;
+}
+.portfolio3 small {
+    color: #fd7e14;
+    font-weight: 600;
+    font-size: 14px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+.portfolio3 p {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 25px;
+    height: 250px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+.portfolio_details_wp {
+    margin: 0;
+}
+.portfolio5 .col-sm-6:first-child .fa {
+    font-size: 20px;
+}
+.portfolio5 .col-sm-6:first-child .fa-angle-left {
+    color: #898989;
+}
+.portfolio5 b {
+    padding: 0 5px;
+    color: #2a2a2a;
+    position: relative;
+    top: -1px;
+}
+.portfolio2 h3 .fa {
+    color: #0FA8F2;
+    padding-left: 5px;
+}
+.portfolio_thamb {
+    padding-bottom: 20px;
+}
+.jusa a {
+    color: #141414;
+}
+.jusa {
+    margin-top: 20px;
+    margin-bottom: 7px;
+}
+.plus_one {
+    background: #c3c3c3;
+}
+.plus_one a {
+    padding: 0 4px;
+}
+
+/* artist portfolio details start here */
 
 /* width */
 ::-webkit-scrollbar {
