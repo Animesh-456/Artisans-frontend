@@ -417,7 +417,7 @@ function Home(prp) {
 
 
                     {latest?.length
-                        ? latest?.map((l) => {
+                        ? latest?.map((l, index) => {
                             const strt = new Date(l?.project_post_format_date)
 
 
@@ -523,7 +523,13 @@ function Home(prp) {
                                             </div>
                                         </div>
                                     </div>
-                                    <hr />
+
+                                    {index <= 1 ? (
+                                        <hr />
+                                    ) : (
+                                        <></>
+                                    )}
+
                                 </>
 
                             );
