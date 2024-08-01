@@ -1594,7 +1594,7 @@ const ProjectDetail = () => {
                                     )}</b></span></p> */}
                                     <p><span className="www1">Posted by</span>
 
-                                        <a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}> : {data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
+                                        <a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}>: {data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
                                             data?.creator?.user_name : "User") : data?.creator?.user_name}</a>
 
                                     </p>
