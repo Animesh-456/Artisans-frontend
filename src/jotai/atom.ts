@@ -72,6 +72,7 @@ const project = {
 		public_user_reviews: atom([]),
 		offer_reviews_feedback: atom([]),
 		get_art: atom([]),
+		get_portfolio_art: atom([]),
 
 
 		my_proj_opt: atom({

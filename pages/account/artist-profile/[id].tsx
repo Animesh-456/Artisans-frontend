@@ -153,7 +153,7 @@ const Artist = () => {
                                         return (
                                             <>
                                                 <div className='col-sm-3'>
-                                                    <a href={imageSrc} data-fancybox="gallery" data-caption="Wall Painting" >
+                                                    <a href={`/account/art-work/${l?.id}`} data-fancybox="gallery" data-caption="Wall Painting" >
                                                         <img
                                                             src={imageSrc}
 

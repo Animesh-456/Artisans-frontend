@@ -1353,4 +1353,15 @@ export default {
       .catch((err) => console.log(err));
   },
 
+  get_portfolio_art: ({ params }: GetParams, cb?: GetResponse) => {
+    api.get("project/get-portfolio-art", params).then((d) => {
+      if (d.status) {
+        writeAtom(atom.project.api.get_portfolio_art, d.data)
+        return cb(d)
+      } else {
+        return toast.error(d.message);
+      }
+    }).catch((err) => console.log(err))
+  },
+
 };
