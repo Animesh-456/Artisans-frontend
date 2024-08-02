@@ -11,6 +11,7 @@ import common from "../../src/helpers/common";
 import { useRouter } from "next/router";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 // import Select from 'react-select';
+import Multiselect from 'multiselect-react-dropdown';
 
 const Artwork = () => {
     const router = useRouter();
@@ -253,7 +254,7 @@ const Artwork = () => {
                 file: form
             });
 
-             
+
 
         } catch (error) {
             toast.error(error.message);
@@ -263,6 +264,10 @@ const Artwork = () => {
 
     const handleCategorychange = (event) => {
         setcategories(event)
+    };
+
+    const onRemove = (selectedList) => {
+        setcategories(selectedList)
     };
 
     const options = [
@@ -284,6 +289,12 @@ const Artwork = () => {
     const handleDisplayChange = (options) => {
         setDisplayOptions(options);
     };
+
+
+    const onRemovesecond = (selectedList) => {
+        setDisplayOptions(selectedList)
+    };
+
 
     console.log("selectedValues", categories)
 
@@ -348,6 +359,15 @@ const Artwork = () => {
                                                             onChange={handleCategorychange}>
 
                                                         </Select> */}
+
+                                                        <Multiselect
+                                                            options={options}
+                                                            selectedValues={categories}
+                                                            onSelect={handleCategorychange}
+                                                            onRemove={onRemove}
+                                                            displayValue="label"
+                                                            placeholder="Select Category"
+                                                        />
                                                     </div>
 
                                                     <div className="from_feild">
@@ -471,6 +491,15 @@ const Artwork = () => {
                                                         >
 
                                                         </Select> */}
+
+                                                        <Multiselect
+                                                            options={options}
+                                                            selectedValues={displayOptions}
+                                                            onSelect={handleDisplayChange}
+                                                            onRemove={onRemovesecond}
+                                                            displayValue="label"
+                                                            placeholder="Select Category"
+                                                        />
 
                                                     </div>
                                                     <div className="from_feild">
