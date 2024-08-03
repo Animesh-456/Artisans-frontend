@@ -396,235 +396,43 @@ const Post = (prp) => {
 
 
 			<section className="discover_wp dya" >
-				<div className="container">
-					<div className="row">
-						<div className="heading_title latest_request_heading">
-							<h1>Describe Your Art</h1>
-						</div>
-						<div className="describe_wp">
-							<form>
-								<div className="from_feild">
-									<label>Title of Project: <span>*</span></label>
-									<input type="text" name="text" placeholder="Type here..."
+				<div className="container">                    <div className="row">                        <div className="heading_title latest_request_heading">                            <h1>Describe Your Art</h1>                        </div>                        <div className="describe_wp">                            <form>                                <div className="from_feild">                                    <label>Title of Project: <span>*</span></label>                                    <input type="text" name="text" placeholder="Type here..."
+					autoComplete={"off"} value={project.project_name} onChange={setproject("project_name")} />                                </div>                                <div className="from_feild">                                    <label>Comment: <span>*</span></label>                                    <textarea placeholder="Comment" rows={6} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>                                </div>                                <div className="b-li">                                    <ul>                                        <li>                                            Specify the materials to be used, the tolerances and the total number of parts                                        </li>                                        <li>                                            If delivery outside mainland UK, please specify the delivery location                                        </li>                                        <li>                                            Please do not provide your contact details here.                                        </li>                                    </ul>                                    {/* <p>Specify the materials to be used, the tolerances and the total number of parts</p> */}                                    {/* <p>If delivery outside mainland UK, please specify the delivery location</p>                                    <p>Please do not provide your contact details here.</p> */}                                </div>
+					<div className="from_feild">                                    <label htmlFor="category">Category: <span>*</span></label>
+						<div className="select_div">
+							<select id="category" value={selectedCategory} onChange={handleCategoryChange}>                                        <option value="">Select a category</option>                                        {categories.map((category, index) => (<option key={index} value={category.name}>                                                {category.name}                                            </option>))}                                    </select></div>
 
-										autoComplete={"off"}
-										value={project.project_name}
-										onChange={setproject("project_name")}
-									/>
-								</div>
-								<div className="from_feild">
-									<label>Comment: <span>*</span></label>
-									<textarea placeholder="Comment" rows={6} cols={50}
-										autoComplete={"off"}
-										value={project.description}
-										onChange={setproject("description")}></textarea>
-								</div>
-								<div className="b-li">
-									<ul>
-										<li>
-											Specify the materials to be used, the tolerances and the total number of parts
-										</li>
-										<li>
-											If delivery outside mainland UK, please specify the delivery location
-										</li>
-										<li>
-											Please do not provide your contact details here.
-										</li>
-									</ul>
-									{/* <p>Specify the materials to be used, the tolerances and the total number of parts</p> */}
-									{/* <p>If delivery outside mainland UK, please specify the delivery location</p>
-									<p>Please do not provide your contact details here.</p> */}
-								</div>
+						{selectedCategory && (<div>                                            <label htmlFor="subCategory">Sub-Category: <span>*</span></label>                                            <select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>                                                <option value="">Select a sub-category</option>                                                {categories.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (<option key={index} value={subCategory}>                                                        {subCategory}                                                    </option>))}                                            </select>                                        </div>)}                                </div>                                                                <div className="from_feild">                                    <label>Attach Your Files Here: <span>*</span></label>                                    <div className="upload-btn-wrapper">                                        <button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>                                        <input type="file" name="myfile" onChange={handle_file_change} multiple={true} ref={fileInputRef} />                                    </div>                                </div>
 
-								<div className="from_feild">
-									<label htmlFor="category">Category: <span>*</span></label>
-									<select id="category" value={selectedCategory} onChange={handleCategoryChange}>
-										<option value="">Select a category</option>
-										{categories.map((category, index) => (
-											<option key={index} value={category.name}>
-												{category.name}
-											</option>
-										))}
-									</select>
-
-
-									{selectedCategory && (
-										<div>
-											<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
-											<select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>
-												<option value="">Select a sub-category</option>
-												{categories.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (
-													<option key={index} value={subCategory}>
-														{subCategory}
-													</option>
-												))}
-											</select>
-										</div>
-									)}
-								</div>
-								<br />
-								<div className="from_feild">
-									<label>Attach Your Files Here: <span>*</span></label>
-									<div className="upload-btn-wrapper">
-										<button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>
-										<input type="file" name="myfile" onChange={handle_file_change}
-											multiple={true}
-											ref={fileInputRef} />
-									</div>
-								</div>
-
-
-								{/* <div className="from_feild">
-									<label>I would like to receive quotes before: <span>*</span></label>
-									<div className="form-check">
-										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="otradio" value={"4"}
-												checked={project?.post_for == "4" ? true : false}
-												onChange={setproject("post_for")} /> 4 Days
-
-										</label>
-									</div>
-									<div className="form-check">
-										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="otradio" value={"6"}
-												checked={project?.post_for == "6" ? true : false}
-												onChange={setproject("post_for")}
-											/>6 Days
-										</label>
-									</div>
-								</div> */}
-
-								{/* <label>Category</label>
-								<select name="category" id="category" value={project.category} onChange={setproject("category")}>
-									<option value="Painting" selected>Painting</option>
-									<option value="Drawing">Drawing</option>
-									<option value="Sculpture">Sculpture</option>
-									<option value="Photography">Photography</option>
-									<option value="Printmaking">Printmaking</option>
-									<option value="Digital Art">Digital Art</option>
-									<option value="Mixed Media">Mixed Media</option>
-									<option value="Textile Art">Textile Art</option>
-									<option value="Ceramics">Ceramics</option>
-									<option value="Ceramics">Ceramics</option>
-									<option value="Installation Art">Installation Art</option>
-								</select> */}
+					{/* <div className="from_feild">                                    <label>I would like to receive quotes before: <span>*</span></label>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"4"}                                                checked={project?.post_for == "4" ? true : false}                                                onChange={setproject("post_for")} /> 4 Days
+                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"6"}                                                checked={project?.post_for == "6" ? true : false}                                                onChange={setproject("post_for")}                                            />6 Days                                        </label>                                    </div>                                </div> */}
+					{/* <label>Category</label>                                <div className="select_div"><select name="category" id="category" value={project.category} onChange={setproject("category")}>                                    <option value="Painting" selected>Painting</option>                                    <option value="Drawing">Drawing</option>                                    <option value="Sculpture">Sculpture</option>                                    <option value="Photography">Photography</option>                                    <option value="Printmaking">Printmaking</option>                                    <option value="Digital Art">Digital Art</option>                                    <option value="Mixed Media">Mixed Media</option>                                    <option value="Textile Art">Textile Art</option>                                    <option value="Ceramics">Ceramics</option>                                    <option value="Ceramics">Ceramics</option>                                    <option value="Installation Art">Installation Art</option>                                </select></div> */}
 
 
 
 
 
+					{pr < 101 ? (<ProgressBar now={pr} label={`${pr}%`} />
+					) : (<></>)}
+					{/* {loading && <Spinner animation="border" variant="info" />} */}
+					{/* {!loading ? (                                    file?.map((f, index) => {
+                                        return (                                            <>                                                <div className="pro_div">                                                    <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>                                                </div>                                            </>                                        )
+                                    })                                ) : (<></>)} */}
+					<div className="upload_t file101">                                    {file ? (file?.map((f, index) => {
+						return (<>
+							<p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>                                                    {/* <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p> */}
+						</>)
+					})) : (<></>)}                                </div>
 
-								{pr < 101 ? (
-									<ProgressBar now={pr} label={`${pr}%`} />
+					<div className="b-li">
 
-								) : (<></>)}
-
-								{/* {loading && <Spinner animation="border" variant="info" />} */}
-
-								{/* {!loading ? (
-									file?.map((f, index) => {
-
-										return (
-											<>
-												<div className="pro_div">
-													<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
-												</div>
-											</>
-										)
-
-									})
-								) : (<></>)} */}
-
-								<div className="upload_t file101">
-									{file ? (
-										file?.map((f, index) => {
-											return (
-												<>
-
-													<p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>
-													{/* <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p> */}
-
-												</>
-											)
-										})
-									) : (<></>)}
-								</div>
-
-
-								<div className="b-li">
-
-
-									<ul>
-										<li>
-											The first file will be used for a thumbnail picture
-										</li>
-										<li>
-											Max file size: 3 MB
-										</li>
-
-									</ul>
-								</div>
-								{/* <div className="from_feild">
-									<label>I would like to receive quotes before: <span>*</span></label>
-									<div className="form-check">
-										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="otradio" value={"4"}
-												checked={project?.post_for == "4" ? true : false}
-												onChange={setproject("post_for")} /> 4 Days
-
-										</label>
-									</div>
-									<div className="form-check">
-										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="otradio" value={"6"}
-												checked={project?.post_for == "6" ? true : false}
-												onChange={setproject("post_for")}
-											/>6 Days
-										</label>
-									</div>
-								</div> */}
-								<div className="from_feild">
-									<label>Visibility: <span>*</span></label>
-									<div className="form-check">
-										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="optradio" value={"Public"} checked={project.visibility == "Public" ? true : false} onChange={setproject("visibility")} />Public (you will receive more quotes)
-										</label>
-									</div>
-									<div className="form-check">
-										<label className="form-check-label">
-											<input type="radio" className="form-check-input" name="optradio" value={"Private"}
-												checked={project.visibility == "Private" ? true : false}
-												onChange={setproject("visibility")} />Private (visibility restricted to confirmed artists)
-										</label>
-									</div>
-								</div>
-								<div className="submit_cancel">
-									<button className="but111"
-										type="submit"
-
-										name="submit"
-										onClick={handleSubmit}
-									>
-										Check & Submit
-									</button>
-
-									<button type="submit" name="submit" style={{
-
-										borderRadius: "6px",
-										fontFamily: "Poppins",
-										padding: "6px 22px",
-										transition: "box-shadow 1s",
-										marginLeft: "15px",
-										background: "none",
-										color: "#080424",
-										fontWeight: "500"
-									}} onClick={handlecancel}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
-									{/* <a href="#">Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a> */}
-								</div>
-							</form>
-						</div>
-					</div>
-
+						<ul>                                        <li>                                            The first file will be used for a thumbnail picture                                        </li>                                        <li>                                            Max file size: 3 MB                                        </li>
+						</ul>                                </div>                                {/* <div className="from_feild">                                    <label>I would like to receive quotes before: <span>*</span></label>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"4"}                                                checked={project?.post_for == "4" ? true : false}                                                onChange={setproject("post_for")} /> 4 Days
+                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"6"}                                                checked={project?.post_for == "6" ? true : false}                                                onChange={setproject("post_for")}                                            />6 Days                                        </label>                                    </div>                                </div> */}                                <div className="from_feild">                                    <label>Visibility: <span>*</span></label>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="optradio" value={"Public"} checked={project.visibility == "Public" ? true : false} onChange={setproject("visibility")} />Public (you will receive more quotes)                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="optradio" value={"Private"} checked={project.visibility == "Private" ? true : false} onChange={setproject("visibility")} />Private (visibility restricted to confirmed artists)                                        </label>                                    </div>                                </div>                                <div className="submit_cancel">                                    <button className="but111" type="submit"
+						name="submit" onClick={handleSubmit}                                    >                                        Check & Submit                                    </button>
+						<button type="submit" name="submit" style={{
+							borderRadius: "6px", fontFamily: "Poppins", padding: "6px 22px", transition: "box-shadow 1s", marginLeft: "15px", background: "none", color: "#080424", fontWeight: "500"
+						}} onClick={handlecancel}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>                                    {/* <a href="#">Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a> */}                                </div>                            </form>                        </div>                    </div>
 
 				</div >
 
@@ -696,7 +504,7 @@ const Post = (prp) => {
 							<p>{project.visibility}</p>
 						</label>
 						<div className="button_s ">
-							<a style={{ cursor: "pointer", color:"#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a>
+							<a style={{ cursor: "pointer", color: "#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a>
 							<a style={{ cursor: "pointer", color: "#fff" }} onClick={processSubmit}>Post Request</a>
 						</div>
 

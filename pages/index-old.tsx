@@ -278,49 +278,64 @@ function Home(prp) {
                     <ul className="popular_category_listing">
                         <li>
                             <a href={`/artworklisting?category=Painting`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                <div className="QIkI1k0">
+                                    <img src="img/icon.png" alt="" />
+                                </div>
+
                                 <p>Painting</p>
                             </a>
                         </li>
                         <li>
                             <a href={`/artworklisting?category=Drawing`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                <div className="QIkI1k0">
+                                    <img src="img/icon.png" alt="" />
+                                </div>
+
                                 <p>Drawing</p>
                             </a>
                         </li>
                         <li>
                             <a href={`/artworklisting?category=Sculpture`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                <div className="QIkI1k0">
+                                    <img src="img/icon.png" alt="" />
+                                </div>
                                 <p>Sculpture</p>
                             </a>
                         </li>
                         <li>
                             <a href={`/artworklisting?category=Photography`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                <div className="QIkI1k0">
+                                    <img src="img/icon.png" alt="" />
+                                </div>
                                 <p>Photography</p>
 
                             </a>
                         </li>
                         <li>
                             <a href={`/artworklisting?category=Printmaking`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                <div className="QIkI1k0">
+                                    <img src="img/icon.png" alt="" />
+                                </div>
                                 <p>Printmaking</p>
                             </a>
                         </li>
                         <li>
                             <a href={`/artworklisting?category=Mixed+Media`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                <div className="QIkI1k0">
+                                    <img src="img/icon.png" alt="" />
+                                </div>
                                 <p>Mixed Media</p>
                             </a>
                         </li>
-                        <li className="v0vd7jw">
+                        <li>
                             <a href={`/artworklisting?category=Textile+Art`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                <div className="QIkI1k0">
+                                    <img src="img/icon.png" alt="" />
+                                </div>
                                 <p>Textile Art</p>
                             </a>
                         </li>
                     </ul>
-                    <button className="ZgAjw6a">View 1 more <i className="fa fa-angle-down"></i></button>
 
 
                     {/* <Popular /> */}
@@ -362,8 +377,9 @@ function Home(prp) {
                     <div className="row">
                         <div className="col-sm-5 discover_left">
                             <div className="heading_title">
-                                <h1>Discover Your Artwork</h1>
+                                <h1>Discover Your  <br /> Artwork</h1>
                             </div>
+                            <br /><br />
                             <p>
                                 Welcome to AARTSTUDIO, the premier online platform where talented artisans and artists are
                                 ready to create custom artwork just for you. Whether you're envisioning a unique painting, a
@@ -575,7 +591,7 @@ function Home(prp) {
             <section className="top_artist" >
                 <div className="container">
                     <div className="heading_title top_artist_heading">
-                        <h1>Top Artist & Their Work</h1> 
+                        <h1>Top Artist & Their Work</h1>
                     </div>
 
                     <div className="owl-carousel top_artist_slide owl-theme">
