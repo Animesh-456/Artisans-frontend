@@ -170,7 +170,7 @@ const EditProfile = () => {
 									<table className="table">
 										<thead>
 											<tr >
-												<th></th>
+												{/* <th></th> */}
 												<th>User</th>
 												<th>Project title</th>
 												<th className=''>Last message</th>
@@ -185,10 +185,10 @@ const EditProfile = () => {
 													<tbody style={{ cursor: "pointer" }}>
 
 														<tr className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
-															<td>
+															{/* <td>
 																<div className="msgform"><i className="fa fa-square"></i></div>
 
-															</td>
+															</td> */}
 															<td className='dummy-anchor darkblue-text cursor-pointer'>
 
 																{l?.user_name}

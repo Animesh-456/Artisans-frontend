@@ -95,8 +95,8 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 				params: changePic ? { change_pic: changePic } : {},
 			},
 			(d) => {
-				window.location.reload();
-				setShow(false);
+				//window.location.reload();
+				//setShow(false);
 				setMsg("msg_box", "")(null);
 				setMsgs((p) => {
 					return [...p, d?.data];
@@ -876,7 +876,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 								{albidmsg?.length > 1 && (
 									<a className="kts" style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setShow(!show)}>{show ? "Hide All messages" : "View All Messages"}</a>
 								)}
-								<p>Attachments:{" "}
+								<p><b>Attachments:</b>{" "}
 
 									{String(bid?.bid_file).includes(",") ? (
 
@@ -954,7 +954,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 						<div className="chat_bar">
 							{/* <small>2024-06-18</small> */}
 
-							<div className="chat_bar_p">
+							<div className="chat_bar_p" style={{ height: albidmsg?.length ? "270px" : "0px" }}>
 								{albidmsg?.map((msg: BidsMsgResponse) => {
 									return (
 										<>
@@ -968,7 +968,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 																<li>
 																	<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, msg?.datetime)}>{im}</a>
-																	<br />
+																	{/* <br /> */}
 																</li>
 
 															</>

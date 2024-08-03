@@ -129,6 +129,7 @@ const ChangePassword = (props: Props) => {
 												<input name="oldpwd"
 													value={values.old_password}
 													onChange={setValues("old_password")}
+													placeholder="Enter old password"
 													type="password" />
 											</div>
 										</div>
@@ -140,6 +141,7 @@ const ChangePassword = (props: Props) => {
 												<input name="newpwd"
 													value={values.new_password}
 													onChange={setValues("new_password")}
+													placeholder="Enter new password"
 													type="password" />
 											</div>
 										</div>
@@ -151,6 +153,7 @@ const ChangePassword = (props: Props) => {
 												<input name="confpwd"
 													value={values.password_confirmation}
 													onChange={setValues("password_confirmation")}
+													placeholder="Enter new password again"
 													type="password" />
 											</div>
 										</div>

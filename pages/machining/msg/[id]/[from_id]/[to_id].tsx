@@ -499,16 +499,16 @@ const Message = (props: Props) => {
 									</div> */}
 
 
-									<div className="discover_wp">
-										
+									<div className="checkandsubmit">
+
 										<button type="submit"
-											style={{
-												background: '#ef6100',
-												color: '#fff',
-												borderRadius: '6px',
-												padding: '6px 22px',
-												transition: 'box-shadow 1s'
-											}}
+										// style={{
+										// 	background: '#ef6100',
+										// 	color: '#fff',
+										// 	borderRadius: '6px',
+										// 	padding: '6px 22px',
+										// 	transition: 'box-shadow 1s'
+										// }}
 										>
 											Check &amp; Submit
 										</button>
@@ -517,7 +517,7 @@ const Message = (props: Props) => {
 								<hr />
 								<div className="fund_wp">
 									<div className="table-responsive">
-										<table className="table table-bordered table-sm">
+										<table className="table">
 											<thead>
 												<tr className="table-primary">
 													<th>Username</th>

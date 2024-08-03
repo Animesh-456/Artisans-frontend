@@ -600,7 +600,7 @@ const EditProfile = () => {
 
 
                                     <>
-                                        <br />
+
                                         <div className="rys1">
                                             <h5>Description</h5>
 
@@ -609,12 +609,12 @@ const EditProfile = () => {
                                                 <p>{user?.service_desc}</p>
                                             </pre>
                                         </div>
-                                        <br />
+
                                     </>
 
                                 ) : user?.role_id == 1 && user?.description?.length ? (
                                     <>
-                                        <br />
+
                                         <div className="rys1">
                                             <h5>Description</h5>
 
@@ -623,7 +623,7 @@ const EditProfile = () => {
                                                 <p>{user?.description}</p>
                                             </pre>
                                         </div>
-                                        <br />
+
                                     </>
                                 ) : (
                                     <></>

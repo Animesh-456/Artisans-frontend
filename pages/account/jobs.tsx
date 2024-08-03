@@ -411,7 +411,7 @@ const Jobs = (props: Props) => {
                                                             <div className='project_loop'>
 
                                                                 <h4>
-                                                                    <a style={{ color: "#0e0e0e", fontSize: "13px" }} href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+                                                                    <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                                                 </h4>
                                                                 <p>{l?.visibility} | Open </p>
                                                                 <p>  Posted :{" "}

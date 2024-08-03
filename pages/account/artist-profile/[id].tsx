@@ -200,11 +200,10 @@ const Artist = () => {
 
                                         )}
                                         <p>{user?.service_desc}</p>
-                                        <br />
 
                                         <br />
                                         <small>Member since: <p>{moment.unix(user?.created).format("DD-MMM,YYYY")}</p></small>
-                                        <br /><br />
+                                        <br />
                                         <h6>Experience</h6>
                                         <ul className="ex">
                                             <li>
@@ -224,7 +223,6 @@ const Artist = () => {
                                             </li>
                                         </ul>
 
-                                        <br />
 
                                     </div>
                                 </div>

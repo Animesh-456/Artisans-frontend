@@ -112,7 +112,7 @@ const Reviews = (props: Props) => {
                                 </div>
                                 <div className="fund_wp">
                                     <div className="table-responsive">
-                                        <table className="table table-bordered table-sm">
+                                        <table className="table">
                                             <thead>
                                                 <tr className="table-primary">
                                                     <th>Name of the project</th>

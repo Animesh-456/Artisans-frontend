@@ -1507,22 +1507,13 @@ const ProjectDetail = () => {
 
 
 
-
-
-
-
-
-
-
-
-
                                 <div className="question_a">
 
 
 
                                     {user && data?.prebid_messages?.length && data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
                                         <>
-                                            <h3 className='cus'>Questions and Answers :</h3>
+                                            <h4 className='cus'>Questions and Answers :</h4>
                                             <div className='row'>
                                                 {data?.prebid_messages?.length
                                                     ? data?.prebid_messages?.map((d, index) => {
@@ -1661,10 +1652,10 @@ const ProjectDetail = () => {
                                         <h2>Complete or verify your delivery address</h2>
                                     </div>
                                     <div className="project_details_content">
-                                        <p><span>Name</span><span><b>{delivery.name} </b></span></p>
-                                        <p><span>Address</span><span><b>{delivery.address} </b></span></p>
-                                        <p><span>Postal code</span><span><b>{delivery.postalcode}</b></span></p>
-                                        <p><span>City</span><span><b>{delivery.city}</b></span></p>
+                                        <p><span>Name</span><span><b>: {delivery.name} </b></span></p>
+                                        <p><span>Address</span><span><b>: {delivery.address} </b></span></p>
+                                        <p><span>Postal code</span><span><b>: {delivery.postalcode}</b></span></p>
+                                        <p><span>City</span><span><b>: {delivery.city}</b></span></p>
                                     </div>
                                     {data.programmer_id == user?.id && (
                                         <div className="table-responsive">

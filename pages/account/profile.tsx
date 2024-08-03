@@ -286,7 +286,7 @@ const Profile = (props: Props) => {
                                     <>
                                         <div className="rys1"><h5>My Jobs</h5></div>
                                         <div className='table-responsive'>
-                                            <table className='table table-bordered table-sm'>
+                                            <table className='table'>
                                                 <thead>
                                                     <tr className='table-primary'>
                                                         <th>Jobs published</th>
@@ -316,7 +316,7 @@ const Profile = (props: Props) => {
                                             </table>
 
                                             <div>
-                                                <table className='table table-bordered table-sm'>
+                                                <table className='table'>
                                                     <thead>
                                                         <tr className='table-primary'>
                                                             <th scope='col'>Job Title</th>
