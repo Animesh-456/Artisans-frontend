@@ -149,6 +149,8 @@ function Home(prp) {
         };
     }, [mouseEntered]);
 
+    const [more, setmore] = useState(false);
+
     return (
         <>
 
@@ -313,14 +315,24 @@ function Home(prp) {
                                 <p>Mixed Media</p>
                             </a>
                         </li>
-                        <li className="v0vd7jw">
-                            <a href={`/artworklisting?category=Textile+Art`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                <p>Textile Art</p>
-                            </a>
-                        </li>
+                        {more ? (
+
+                            <li>
+                                <a href={`/artworklisting?category=Textile+Art`}>
+                                    <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                    <p>Textile Art</p>
+                                </a>
+                            </li>
+                        ) : (<></>)}
                     </ul>
-                    <button className="ZgAjw6a">View 1 more <i className="fa fa-angle-down"></i></button>
+
+                    {!more && (
+                        <button onClick={() => setmore(!more)} className="ZgAjw6a">View 1 more <i className="fa fa-angle-down"></i></button>
+                    )}
+
+                    {more && (
+                        <button onClick={() => setmore(!more)} className="ZgAjw6a">View less <i className="fa fa-angle-up"></i></button>
+                    )}
 
 
                     {/* <Popular /> */}
@@ -575,7 +587,7 @@ function Home(prp) {
             <section className="top_artist" >
                 <div className="container">
                     <div className="heading_title top_artist_heading">
-                        <h1>Top Artist & Their Work</h1> 
+                        <h1>Top Artist & Their Work</h1>
                     </div>
 
                     <div className="owl-carousel top_artist_slide owl-theme">
