@@ -160,7 +160,7 @@ export default function Header({ }: Props) {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link href={'/machining'}>
+							<Link href={'/artrequest'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
 									Custom Artwork Request
 								</button>
@@ -199,8 +199,10 @@ export default function Header({ }: Props) {
 
 						<li className="mobile_contact">
 							<ul>
-								<li><button>Log In</button></li>
-								<li><button>Sign Up</button></li>
+								<li>
+									<button onClick={() => window.location.href = '/auth/sign-in'}>Log In</button>
+								</li>
+								<li><button onClick={() => window.location.href = 'auth/sign-in'}>Sign Up</button></li>
 							</ul>
 						</li>
 

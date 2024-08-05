@@ -1023,7 +1023,7 @@ p {
 
 .our_story_wp img {
     border-radius: 5px;
-    height: 430px;
+    height: 350px;
     width: 100%;
     object-fit: cover;
 }
@@ -1067,7 +1067,7 @@ p {
 .upload-btn-wrapper .btn {
     color: #727272;
     background-color: #fff;
-    padding: 13px 20px;
+    padding: 10px 20px;
     border-radius: 8px;
     font-weight: 500;
     width: 100%;
@@ -1129,6 +1129,7 @@ label {
     border: 2px solid #7f8180;
     font-size: 14px;
     font-family: "Poppins", sans-serif;
+    background: #fff;
 }
 
 .from_feild .fa.fa-eye {
@@ -1153,7 +1154,7 @@ label {
 
 .submit_cancel {
     display: inline-block;
-    margin: 29px 0 40px;
+    margin: 9px 0 20px;
 }
 
 .submit_cancel a:hover {
@@ -1210,7 +1211,7 @@ label {
 }
 
 .description_left p {
-    font-size: 13px;
+    font-size: 15px;
     padding-bottom: 25px;
     line-height: 25px;
 }
@@ -1318,6 +1319,11 @@ label {
     width: 70px;
     height: 70px;
     border-radius: 50%;
+    object-fit: cover;
+}
+.offer_r h6 {
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .offer_heading {
@@ -1547,7 +1553,7 @@ label {
 .submit_cancel1 {
     display: inline-block;
     margin-bottom: 2em;
-    margin-top: 13px;
+    margin-top: 0px;
 }
 
 .myproject {
@@ -1751,10 +1757,16 @@ ul.side-nav {
 }
 
 .rys h4 {
-    color: #2c2c2c;
+    color: #080424;
     font-weight: 600;
     font-size: 20px;
     padding-bottom: 17px;
+    letter-spacing: 1px;
+}
+.rys h5 {
+    color: #080424;
+    font-size: 1.5rem;
+    padding-bottom: 13px;
     letter-spacing: 1px;
 }
 
@@ -1797,14 +1809,13 @@ ul.side-nav {
 }
 
 .rys1 h5 {
-    color: #2c2c2c;
-    font-size: 18px;
+    color: #080424;
     padding-bottom: 0;
     letter-spacing: 1px;
 }
 
 .rys1 {
-    margin-bottom: 2em;
+    margin: 16px 0 27px;
 }
 
 .myprofile_w {
@@ -1854,7 +1865,6 @@ ul.side-nav {
 
 .profile_box table tr th {
     font-size: 14px;
-    padding: 9px;
     background-color: #ffddb2;
     border: none;
 }
@@ -1923,8 +1933,7 @@ ul.side-nav {
 
 .project_profil label {
     width: 100%;
-    margin-bottom: 2px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -1933,38 +1942,39 @@ ul.side-nav {
 .project_profil select {
     width: 100%;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     margin-bottom: 15px;
     background: #fff;
-    height: 40px;
+    height: 44px;
     padding-left: 10px;
     font-size: 14px;
-    border: 1px solid #a9a9a9;
+    border: 2px solid #7f8180;
 }
 
 .project_profil {
-    margin-top: 2em;
+    margin-top: 1.5em;
     font-family: "Poppins", sans-serif;
 }
 
 .project_profil textarea {
     width: 100%;
     border: none;
-    border-radius: 3px;
+    border-radius: 7px;
     margin-bottom: 15px;
     background: #fff;
-    padding-left: 5px;
+    padding-left: 10px;
     resize: none;
     padding-left: 10px;
     font-size: 14px;
-    border: 1px solid #a9a9a9;
+    border: 2px solid #7f8180;
 }
 
 .ygs img {
     width: 100%;
     height: 150px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 5px;
+    background: #fff;
 }
 
 .ygs {
@@ -1996,6 +2006,11 @@ ul.side-nav {
 
 .reg-bottom button:hover {
     box-shadow: none;
+}
+.back_button {
+    background: none !important;
+    color: rgb(8, 4, 36) !important;
+    margin-left: 15px;
 }
 
 .qwe {
@@ -2042,7 +2057,7 @@ ul.side-nav {
 .table th {
     border-top: 1px solid #cda87b;
     background: #fff;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .dummy-anchor {
@@ -2065,7 +2080,7 @@ ul.side-nav {
     height: 43px;
     border-radius: 3px;
     margin-bottom: 15px;
-    background: #f3f3f3;
+    background: #e3e3e3;
     padding: 0 7px;
 }
 
@@ -2084,13 +2099,11 @@ ul.side-nav {
 }
 
 .fund_wp {
-    margin-top: 2em;
+    margin-top: 1.5em;
 }
 
 .fund_wp table tr td {
-    font-size: 12px;
-    border: none;
-    border-bottom: 1px solid #cda87b;
+    font-size: 15px;
 }
 
 .job-r label,
@@ -2103,12 +2116,12 @@ ul.side-nav {
 .edit_password_wp input {
     width: 100%;
     border: none;
-    height: 43px;
-    border-radius: 5px;
+    height: 44px;
+    border-radius: 7px;
     margin-bottom: 15px;
     background: #fff;
-    padding-left: 5px;
-    border: 1px solid #a9a9a9;
+    padding-left: 10px;
+    border: 2px solid #7f8180;
 }
 
 .edit_password_wp {
@@ -2167,8 +2180,11 @@ ul.side-nav {
 }
 
 .step_one p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 25px;
+}
+.step_one h6 {
+    padding-top: 8px;
 }
 
 .circle_bg:after {
@@ -2482,6 +2498,7 @@ ul.side-nav {
     height: 30px;
     border-radius: 0;
     margin-top: 6px;
+    background: none;
 }
 
 .upload_t p {
@@ -3203,7 +3220,7 @@ hr {
 .artist_pro_tab .nav-tabs .nav-link.active {
     background: none;
     border-bottom: 2px solid #141414;
-    color: #141414;
+    color: #141414 !important;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -3214,7 +3231,7 @@ hr {
 }
 
 .artist_pro_tab ul li a {
-    color: #141414;
+    color: #141414 !important;
     font-weight: 600;
     padding: 0;
 }
@@ -3506,7 +3523,8 @@ ul.ex1 li a {
     box-shadow: none !important;
     border: none !important;
     margin-bottom: 0 !important;
-    font-size: 20px !important;
+    font-size: 18px!important;
+    font-weight: 500;    
 
 }
 
@@ -3856,4 +3874,31 @@ marquee {
     content: "\f107";
     display: inline-block;
     font: normal normal normal 21px/1 FontAwesome;
+}
+.checkandsubmit {
+    margin-bottom: 31px;
+}
+.checkandsubmit button {
+    font-family: "Poppins", sans-serif;
+    background: rgb(239, 97, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 6px;
+    padding: 6px 22px;
+    transition: box-shadow 1s ease 0s;
+    box-shadow: 0 1px 2px 2px #47120f;
+}
+.checkandsubmit button:hover{
+    box-shadow: none;
+}
+.searchWrapper{
+    border: none;
+    padding: 0;
+}
+.manage_p h4 {
+    padding-bottom: 6px;
+}
+.contact_content p a {
+    color: #080424;
+    font-size: 17px;
+    font-weight: 500;
 }

@@ -616,7 +616,7 @@
     }
 
     .profile_box {
-        margin-bottom: 1em;
+        margin-bottom: 0em;
     }
 
     .howit_wp .col-sm-6:last-child {
@@ -667,6 +667,13 @@
 
     .howit_wp2 {
         padding: 3em 0;
+    }
+    .chat_browser span:first-child {
+        width: 10%;
+        margin-top: 3px;
+    }
+    .chat_browser span:nth-child(3) {
+        width: 13%;
     }
 
 }
@@ -887,6 +894,7 @@
 
     .copyright p {
         margin-bottom: 10px;
+        text-align: center;
     }
 
     .heading_title:after {
@@ -946,6 +954,7 @@
 
     .description_left img {
         height: 200px;
+        object-fit: cover;
     }
 
     .offer_section {
@@ -1066,11 +1075,6 @@
         font-size: 14px;
     }
 
-    .chat_browser span input[type="text"] {
-        width: 90%;
-        margin-left: 11px;
-    }
-
     .offer_section1 {
         display: block;
     }
@@ -1106,7 +1110,7 @@
     }
 
     .chat_browser span:nth-child(2) {
-        width: 85%;
+        width: 77%;
     }
 
     .contact_content h2 {
@@ -1290,15 +1294,63 @@
 
     .offcanvas-header {
         background-color: #fff !important;
+        box-shadow: 0 0 0 1px #ccc;
+        padding: 10px 15px 3px;
     }
 
     .btn-close-white {
         filter: grayscale(100%) !important;
+        opacity: 1 !important;
+    }
+    .offcanvas-body ul{
+        height: 100%;
+        padding-right: 0 !important;
+    }
+
+    .mobile_contact {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .mobile_contact button {
+        background: #ef6100;
+        color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px 2px #47120f;
+        font-family: Poppins,sans-serif;
+        padding: 10px 22px;
+        transition: box-shadow 1s;
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 100%;
+        border: none;
+        font-size: 16px;
+    }
+    .mobile_contact button:hover{
+         box-shadow: none;
+    }
+    .mobile_contact ul li:first-child button {
+        background: #fff;
+        color: #000;
+    }
+    .mobile_contact ul {
+        width: 100%;
+        display: flex;
+    }
+    .mobile_contact ul li {
+        width: 50%;
+        margin-right: 15px;
+    }
+    .mobile_contact ul li:last-child {
+        margin-right: 0;
     }
 
     .nav-link {
         font-weight: 500 !important;
-        color: #62646a !important;
+        color: #1c1c1c !important;
+        padding: 17px !important;
     }
 
     .navbar-nav .nav-link.active,
@@ -1308,7 +1360,7 @@
 
     .offcanvas-body {
         padding: 0 13px !important;
-        margin-top: -20px;
+        margin-top: 0px;
     }
 
     .menu_login {
@@ -1451,6 +1503,33 @@
 
     .b-li ul li {
         padding-bottom: 10px;
+    }
+    .project_loop p {
+        font-size: 14px;
+    }
+    .public p {
+        line-height: 25px;
+        margin-bottom: 5px;
+    }
+    .description_left p {
+        font-size: 17px;
+        line-height: 30px;
+    }
+    a.kts{
+        padding-left: 0;
+    }
+    .ex li {
+        width: auto;
+    }
+    .review_right2 img{
+        width: 50%;
+    }
+    .artist_pro_l img{
+        background: #fff;
+    }
+    .manage_p2{
+        width: auto;
+        margin-right: 0;
     }
 
 }
