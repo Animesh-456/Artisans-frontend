@@ -114,4 +114,6 @@ const Artwork = () => {
     )
 }
 
+Artwork.ignorePath = true;
+
 export default Artwork

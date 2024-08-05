@@ -345,9 +345,11 @@ const Artwork = () => {
 
                                                     <div className="from_feild">
                                                         <label>Description: <span>*</span></label>
-                                                        <input
+                                                        <textarea
                                                             required
-                                                            type="text"
+                                                            rows={6}
+                                                            cols={50}
+                                                            typeof="text"
                                                             placeholder="description"
                                                             value={project?.description}
                                                             onChange={setproject("description")}
@@ -359,6 +361,7 @@ const Artwork = () => {
                                                             onChange={handleCategorychange}>
 
                                                         </Select> */}
+                                                        <label>Category: <span>*</span></label>
 
                                                         <Multiselect
                                                             options={options}
@@ -484,7 +487,8 @@ const Artwork = () => {
                                                     </div>
                                                     <div className="from_feild">
                                                         <label>Description: <span>*</span></label>
-                                                        <input type="text" name="description" value={formData?.description} onChange={(e) => handleChange(e)} placeholder="Type here" />
+                                                        <textarea rows={6}
+                                                            cols={50} typeof="text" name="description" value={formData?.description} onChange={(e) => handleChange(e)} placeholder="Type here" />
                                                     </div>
                                                     <div className="from_feild">
                                                         {/* <Select isMulti required value={displayOptions} options={options} onChange={handleDisplayChange}
@@ -492,7 +496,10 @@ const Artwork = () => {
 
                                                         </Select> */}
 
+                                                        <label>Categories: <span>*</span></label>
+
                                                         <Multiselect
+
                                                             options={options}
                                                             selectedValues={displayOptions}
                                                             onSelect={handleDisplayChange}

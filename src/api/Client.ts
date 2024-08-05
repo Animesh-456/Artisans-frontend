@@ -61,7 +61,7 @@ class Client {
 			"project/deposit-fund",
 			"project/get-art",
 			"project/edit-art-portfolio",
-			// "project/get-portfolio-art",
+			"project/get-portfolio-art",
 		];
 
 		this.test = false;
