@@ -132,7 +132,11 @@ export default function Header({ }: Props) {
 
 			<Offcanvas show={show} onHide={handleClose} placement="end" style={{ "backgroundColor": "rgb(71, 18, 15)", "fontFamily": "Poppins, sans-serif" }}>
 				<Offcanvas.Header closeButton closeVariant="white" style={{ "backgroundColor": "rgba(0, 0, 0, 0.18)" }} >
-					<Offcanvas.Title></Offcanvas.Title>
+					<Offcanvas.Title>
+						<div className="logo">
+							<Link href="/"><img style={{ "cursor": "pointer" }} src={"/img/logo.png"} alt="logo" /></Link>
+						</div>
+					</Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>
 					<ul className="navbar-nav align-items-lg-center flex-grow-1 pe-3" style={{
@@ -191,8 +195,16 @@ export default function Header({ }: Props) {
 								</button>
 							</Link>
 						</li>
-						
-						
+
+
+						<li className="mobile_contact">
+							<ul>
+								<li><button>Log In</button></li>
+								<li><button>Sign Up</button></li>
+							</ul>
+						</li>
+
+
 					</ul>
 				</Offcanvas.Body>
 			</Offcanvas>
@@ -272,7 +284,7 @@ export default function Header({ }: Props) {
 			</section> */}
 
 
-			<section className="menubar">
+			<section className="menubar sticky-top">
 				<div className="container">
 					<div className="row">
 						<div className="col-4 col-sm-2">

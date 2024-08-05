@@ -21,7 +21,7 @@ const contact = () => {
                         <div className="col-sm-6">
                             <div className="contact_content">
                                 <div className="heading_title">
-                                    <h2>Need a hand? Or a high five? <br /> Here's how to reach us.</h2>
+                                    <h1>Need a hand? Or a high five? Here's how to reach us.</h1>
                                 </div>
                                 <p>
                                     <img src="../img/call-icon.png" alt="" /> <a href="tel:(+91) 89 815 15 666">+91 8981515666</a>
@@ -41,7 +41,7 @@ const contact = () => {
                 </div>
             </section>
 
-            <section className="discover_wp dya" style={{ backgroundImage: "url(../img/bg1.jpg)" }} >
+            <section className="discover_wp dya">
                 <div className="container">
                     <div className="row">
                         <div className="heading_title latest_request_heading">
@@ -51,12 +51,14 @@ const contact = () => {
                             <form>
                                 <div className="from_feild">
                                     <label>Are you a customer or a artist: <span>*</span></label>
-                                    <select>
-                                        <option>Select</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                    <div className="select_div">
+                                        <select>
+                                            <option>Select</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="from_feild">
                                     <label>Your Name: <span>*</span></label>

@@ -242,7 +242,7 @@ const Withdraw = (props: Props) => {
                                     </div>
                                     <hr />
                                     <div className="table-responsive">
-                                        <table className="table table-bordered table-sm">
+                                        <table className="table">
                                             <thead>
                                                 <tr className="table-primary">
                                                     <th>Available Balance</th>
@@ -281,7 +281,7 @@ const Withdraw = (props: Props) => {
 
                 <div className='wjgf'>
 
-                    <div className='cnfm-job-details post-email'>
+                    <div className='cnfm-job-details post-email from_feild'>
                         <label>Paypal Email</label>
                         <input
                             name='paypal_email'
@@ -293,11 +293,11 @@ const Withdraw = (props: Props) => {
 
                     </div>
                     <div className='reg-bottom'>
-                        <button type='submit' name='submit' onClick={() => setOpen(false)}>
-                            Back
-                        </button>
                         <button type='submit' name='submit' onClick={() => { setOpen(false); handleClick(); }}>
                             Submit
+                        </button>
+                        <button className="back_button" type='submit' name='submit' onClick={() => setOpen(false)}>
+                            Back
                         </button>
                     </div>
                 </div>
