@@ -62,6 +62,7 @@ class Client {
 			"project/get-art",
 			"project/edit-art-portfolio",
 			"project/get-portfolio-art",
+			"project/get-category-subcategory",
 		];
 
 		this.test = false;

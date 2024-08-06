@@ -105,6 +105,8 @@ const Post = (prp) => {
 				}
 			});
 		}
+
+		api.project.get_category_subcategory({})
 	}, []);
 
 	const processSubmit = () => {
@@ -331,8 +333,14 @@ const Post = (prp) => {
 	// console.log("category is :- ", project.category)
 	// console.log("subcategory is :- ", project.sub_category)
 
+	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+
 	const [selectedCategory, setSelectedCategory] = useState('');
 	const [selectedSubCategory, setSelectedSubCategory] = useState('');
+
+	// Category_subcategory?.categories?.map((m) => {
+	// 	console.log(m)
+	// })
 
 	const categories = [
 		{ name: 'Painting', subCategories: ['Oil Painting', 'Acrylic Painting', 'Watercolor Painting', 'Digital Painting', 'Mixed Media Painting'] },
@@ -359,6 +367,8 @@ const Post = (prp) => {
 	const handleSubCategoryChange = (event) => {
 		setSelectedSubCategory(event.target.value);
 	};
+
+	console.log("categoreis", selectedCategory)
 
 	return (
 		<>
@@ -423,17 +433,19 @@ const Post = (prp) => {
 
 
 
-											{categories.map((category, index) => (<option key={index} value={category.name}>
-												{category.name}
-											</option>))}
+											{Category_subcategory?.categories?.map((category, index) => (
+												<option key={index} value={category[index]}>
+													{category.category_name}
+												</option>
+											))}
 										</select>
 									</div>
-								
-									
+
+
 								</div>
 
-								<div className="from_feild">
-								{selectedCategory && (
+								{/* <div className="from_feild">
+									{selectedCategory && (
 										<div>
 											<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
 
@@ -447,7 +459,7 @@ const Post = (prp) => {
 												</select>
 											</div>
 										</div>)}
-								</div>
+								</div> */}
 								<div className="from_feild">
 									<label>Attach Your Files Here: <span>*</span></label>
 									<div className="upload-btn-wrapper">

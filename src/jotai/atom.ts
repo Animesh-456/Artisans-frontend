@@ -73,6 +73,7 @@ const project = {
 		offer_reviews_feedback: atom([]),
 		get_art: atom([]),
 		get_portfolio_art: atom([]),
+		get_category_subcategory: atom([]),
 
 
 		my_proj_opt: atom({
