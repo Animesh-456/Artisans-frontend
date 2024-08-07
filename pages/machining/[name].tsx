@@ -65,6 +65,9 @@ const ProjectDetail = () => {
 
     const steps_completed_supplier: any = useAtom(atom.project.api.steps_completed_supplier);
 
+    const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+
+
     const [question, questionstae] = useState({
         project_id: "",
         message: "",
@@ -307,6 +310,7 @@ const ProjectDetail = () => {
 
 
         api.project.detail({ params: { id: id } });
+        api.project.get_category_subcategory({})
         api.project.get_additional_comment({ params: { id: id } });
 
 
@@ -744,14 +748,16 @@ const ProjectDetail = () => {
 
 
 
-
-
-
-
-
     const handleclk = (id) => {
         toast.error("Clicked")
     }
+
+
+    const categoryName = Category_subcategory?.categories?.find((item: any) => item?.id == data?.category)
+    const idsArray = data?.sub_category?.split(',').map(id => parseInt(id, 10));
+    const subCategoryName = Category_subcategory?.subCategories?.filter(item => idsArray.includes(item?.id));
+
+
 
 
     return (
@@ -1576,8 +1582,20 @@ const ProjectDetail = () => {
                                 <div className="project_details_content">
                                     <p><span >Posted</span><span className="www1"> : {moment(data?.project_post_date).format("DD-MMMM-YYYY")}</span></p>
                                     <p><span >Visibility</span><span className="www1"> : {data?.visibility}</span></p>
-                                    <p><span >Category</span><span className="www1"> : {data?.category}</span></p>
-                                    <p><span >sub-category</span ><span className="www1"> : {data?.sub_category}</span></p>
+                                    <p><span >Category</span><span className="www1"> : {categoryName?.category_name}</span></p>
+                                    <p><span >sub-category</span ><span className="www1"> : {subCategoryName?.map((m) => {
+                                        return (
+                                            <>{m?.category_name}</>
+                                        )
+                                    })}</span></p>
+
+                                    {/* {subCategoryName?.map((m) => {
+                                        return (
+                                            <>
+                                                <p><span >sub-category</span ><span className="www1"> : {m?.category_name}</span></p>
+                                            </>
+                                        )
+                                    })} */}
                                     {/* <p><span>Remaining Time</span><span><b>{diffInDays >= 0 && hourDifference >= 0 ? (
                                         <>{diffInDays} days {hourDifference} hours</>
                                     ) : (

@@ -53,6 +53,8 @@ const project = {
 			search: null,
 		}),
 		detail: atom<ProjectDetails | any>(0),
+		others: atom(0),
+
 		my: atom([]),
 		my_opt: atom({
 			page: 0,

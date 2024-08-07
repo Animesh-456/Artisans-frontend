@@ -443,6 +443,7 @@ export default {
           }
 
           writeAtom(atom.project.api.detail, d.data);
+          writeAtom(atom.project.api.others, d.data);
           writeAtom(atom.storage.project_id, d.data.id);
           writeAtom(atom.storage.project_data, d.data);
           // callback
