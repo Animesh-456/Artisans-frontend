@@ -15,6 +15,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import Head from "next/head";
 import env from "../../src/config/api";
 import Spinner from 'react-bootstrap/Spinner';
+import Multiselect from "multiselect-react-dropdown";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
@@ -330,53 +331,41 @@ const Post = (prp) => {
 	const [loading, setLoading] = useState(false);
 
 
-	// console.log("category is :- ", project.category)
-	// console.log("subcategory is :- ", project.sub_category)
-
 	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
-	const category = Category_subcategory?.categories;
-	const subcategories: any = Category_subcategory?.subCategories;	
-	const subcategoriesByParent = subcategories.reduce((acc, sub) => {
-		if (!acc[sub.parent_id]) acc[sub.parent_id] = [];
-		acc[sub.parent_id].push(sub);
-		return acc;
-	}, {});
+
+	const categories = Category_subcategory?.categories;
+	const subCategories = [];
+
+	Category_subcategory?.subCategories?.map((sub) => {
+		subCategories.push({ id: sub?.id, parent_id: sub?.parent_id, value: sub?.category_name, label: sub?.category_name })
+	})
+
 
 	const [selectedCategory, setSelectedCategory]: any = useState('');
 	const [selectedSubCategory, setSelectedSubCategory] = useState([]);
-
-	// Category_subcategory?.categories?.map((m) => {
-	// 	console.log(m)
-	// })
-
-	const categories = [
-		{ name: 'Painting', subCategories: ['Oil Painting', 'Acrylic Painting', 'Watercolor Painting', 'Digital Painting', 'Mixed Media Painting'] },
-		{ name: 'Sculpture', subCategories: ['Bronze Sculpture', 'Stone Sculpture', 'Wood Sculpture', 'Clay Sculpture', 'Metal Sculpture'] },
-		{ name: 'Printmaking', subCategories: ['Etching', 'Lithography', 'Screen Printing', 'Woodcut'] },
-		{ name: 'Photography', subCategories: ['Portrait Photography', 'Landscape Photography', 'Abstract Photography', 'Black and White Photography'] },
-		{ name: 'Textile Art', subCategories: ['Tapestry', 'Quilting', 'Embroidery', 'Weaving'] },
-		{ name: 'Ceramics', subCategories: ['Pottery', 'Porcelain', 'Stoneware', 'Earthenware'] },
-		{ name: 'Glass Art', subCategories: ['Stained Glass', 'Blown Glass', 'Fused Glass'] },
-		{ name: 'Digital Art', subCategories: ['3D Modeling', 'Digital Illustration', 'Animation', 'Video Art'] },
-		{ name: 'Mixed Media', subCategories: ['Collage', 'Assemblage'] },
-		{ name: 'Calligraphy', subCategories: ['Traditional Calligraphy', 'Modern Calligraphy'] },
-		{ name: 'Jewelry Design', subCategories: ['Handmade Jewelry', 'Metalwork Jewelry', 'Beaded Jewelry'] },
-		{ name: 'Graffiti and Street Art', subCategories: ['Murals', 'Spray Paint Art'] },
-		{ name: 'Installation Art', subCategories: ['Site-Specific Installations', 'Interactive Installations'] },
-	];
 
 
 	const handleCategoryChange = (event) => {
 		const categoryId = parseInt(event.target.value, 10);
 		setSelectedCategory(categoryId);
-		setSelectedSubCategory(subcategoriesByParent[categoryId] || []);
+		if (!event.target.value) return // To keep the previous subcategories and update the category
+		const filteredArray = subCategories?.filter(item => item?.parent_id == categoryId)
+		setSelectedSubCategory(filteredArray);
 	};
 
-	const handleSubCategoryChange = (event) => {
-		setSelectedSubCategory(event.target.value);
+
+	//Handle subcategory state
+
+	const handleDisplayChange = (options) => {
+		setSelectedSubCategory(options);
 	};
 
-	console.log("categoreis", subcategoriesByParent)
+
+	const onRemovesecond = (selectedList) => {
+		setSelectedSubCategory(selectedList)
+	};
+
+
 
 	return (
 		<>
@@ -441,7 +430,7 @@ const Post = (prp) => {
 
 
 
-											{category?.map((category, index) => (
+											{categories?.map((category, index) => (
 												<option key={category?.id} value={category?.id}>
 													{category.category_name}
 												</option>
@@ -453,30 +442,42 @@ const Post = (prp) => {
 								</div>
 
 								<div className="from_feild">
-									{selectedCategory && (
-										<div>
-											<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
 
-											<div className="select_div">
+									<div>
+										<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
+
+										<div className="select_div">
 
 
-												<select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>
+											{/* <select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>
 													<option value="">Select a sub-category</option>
-													{/* {
-														categories.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (<option key={index} value={subCategory}>
+													{
+														SelectedSubCategory.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (<option key={index} value={subCategory}>
 															{subCategory}
 														</option>
 														))
-													} */}
+													}
 
 													{selectedSubCategory.map(sub => (
 														<option key={sub.id} value={sub.id}>
 															{sub.category_name}
 														</option>
 													))}
-												</select>
-											</div>
-										</div>)}
+												</select> */}
+
+											<Multiselect
+												disable={(selectedCategory === "NaN" || !selectedCategory) ? false : true}
+												//showCheckbox={true}
+
+												options={subCategories}
+												selectedValues={selectedSubCategory}
+												onSelect={handleDisplayChange}
+												onRemove={onRemovesecond}
+												displayValue="label"
+												placeholder="Select Category"
+											/>
+										</div>
+									</div>
 								</div>
 								<div className="from_feild">
 									<label>Attach Your Files Here: <span>*</span></label>
