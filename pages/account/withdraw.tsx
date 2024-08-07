@@ -292,7 +292,7 @@ const Withdraw = (props: Props) => {
 
 
                     </div>
-                    <div className='reg-bottom'>
+                    <div className='reg-bottom withdraw'>
                         <button type='submit' name='submit' onClick={() => { setOpen(false); handleClick(); }}>
                             Submit
                         </button>

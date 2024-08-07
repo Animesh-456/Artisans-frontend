@@ -197,14 +197,17 @@ export default function Header({ }: Props) {
 						</li>
 
 
-						<li className="mobile_contact">
-							<ul>
-								<li>
-									<button onClick={() => window.location.href = '/auth/sign-in'}>Log In</button>
-								</li>
-								<li><button onClick={() => window.location.href = 'auth/sign-in'}>Sign Up</button></li>
-							</ul>
-						</li>
+						{!user && (
+
+							<li className="mobile_contact">
+								<ul>
+									<li>
+										<button onClick={() => window.location.href = '/auth/sign-in'}>Log In</button>
+									</li>
+									<li><button onClick={() => window.location.href = 'auth/sign-in'}>Sign Up</button></li>
+								</ul>
+							</li>
+						)}
 
 
 					</ul>

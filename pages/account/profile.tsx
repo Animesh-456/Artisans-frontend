@@ -314,8 +314,11 @@ const Profile = (props: Props) => {
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                        </div>
 
-                                            <div>
+                                        <div>
+
+                                            <div className="table-responsive">
                                                 <table className='table'>
                                                     <thead>
                                                         <tr className='table-primary'>
@@ -342,49 +345,50 @@ const Profile = (props: Props) => {
                                                         )}
                                                     </tbody>
                                                 </table>
+                                            </div>
 
-                                                <ul className='pagination'>
-                                                    {/* <li className='page-item'>
+                                            <ul className='pagination'>
+                                                {/* <li className='page-item'>
 														<a className='page-link' href='#'>
 															Previous
 														</a>
 													</li> */}
-                                                    {opt_user.total_count > 10 && Array.from({ length: opt_user.total_pages + 1 }).map(
-                                                        (d, i: any) => {
-                                                            return (
-                                                                <li
-                                                                    className={`page-item ${parseFloat((router?.query?.page || 0).toString()) -
-                                                                        1 ==
-                                                                        i
-                                                                        ? "active"
-                                                                        : ""
-                                                                        }`}>
-                                                                    <Link href={`${router.pathname}?page=${i}`}>
-                                                                        <a
-                                                                            className='page-link'
-                                                                            onClick={(e) => {
-                                                                                e.preventDefault();
-                                                                                handlePageClick(i);
-                                                                            }}>
-                                                                            {i + 1}
-                                                                        </a>
-                                                                    </Link>
-                                                                </li>
-                                                            );
-                                                        },
-                                                    )}
+                                                {opt_user.total_count > 10 && Array.from({ length: opt_user.total_pages + 1 }).map(
+                                                    (d, i: any) => {
+                                                        return (
+                                                            <li
+                                                                className={`page-item ${parseFloat((router?.query?.page || 0).toString()) -
+                                                                    1 ==
+                                                                    i
+                                                                    ? "active"
+                                                                    : ""
+                                                                    }`}>
+                                                                <Link href={`${router.pathname}?page=${i}`}>
+                                                                    <a
+                                                                        className='page-link'
+                                                                        onClick={(e) => {
+                                                                            e.preventDefault();
+                                                                            handlePageClick(i);
+                                                                        }}>
+                                                                        {i + 1}
+                                                                    </a>
+                                                                </Link>
+                                                            </li>
+                                                        );
+                                                    },
+                                                )}
 
-                                                    {/* <li className='page-item'>
+                                                {/* <li className='page-item'>
 														<a className='page-link' href=''>
 															Next
 														</a>
 													</li> */}
-                                                </ul>
+                                            </ul>
 
-
-                                            </div>
 
                                         </div>
+
+
                                     </>
                                 ) : (
                                     <></>

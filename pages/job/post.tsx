@@ -83,7 +83,7 @@ const Post = (prp) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (!file.length) return toast.error("Please select a file");
-		if (selectedCategory == "" || selectedSubCategory == "") return toast.error("Please select catgory and sub category properly!")
+		if (selectedCategory == "" || !selectedSubCategory) return toast.error("Please select catgory and sub category properly!")
 
 		project["category"] = selectedCategory
 		project["sub_category"] = selectedSubCategory
@@ -334,9 +334,16 @@ const Post = (prp) => {
 	// console.log("subcategory is :- ", project.sub_category)
 
 	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+	const category = Category_subcategory?.categories;
+	const subcategories: any = Category_subcategory?.subCategories;	
+	const subcategoriesByParent = subcategories.reduce((acc, sub) => {
+		if (!acc[sub.parent_id]) acc[sub.parent_id] = [];
+		acc[sub.parent_id].push(sub);
+		return acc;
+	}, {});
 
-	const [selectedCategory, setSelectedCategory] = useState('');
-	const [selectedSubCategory, setSelectedSubCategory] = useState('');
+	const [selectedCategory, setSelectedCategory]: any = useState('');
+	const [selectedSubCategory, setSelectedSubCategory] = useState([]);
 
 	// Category_subcategory?.categories?.map((m) => {
 	// 	console.log(m)
@@ -360,15 +367,16 @@ const Post = (prp) => {
 
 
 	const handleCategoryChange = (event) => {
-		setSelectedCategory(event.target.value);
-		setSelectedSubCategory('');
+		const categoryId = parseInt(event.target.value, 10);
+		setSelectedCategory(categoryId);
+		setSelectedSubCategory(subcategoriesByParent[categoryId] || []);
 	};
 
 	const handleSubCategoryChange = (event) => {
 		setSelectedSubCategory(event.target.value);
 	};
 
-	console.log("categoreis", selectedCategory)
+	console.log("categoreis", subcategoriesByParent)
 
 	return (
 		<>
@@ -433,8 +441,8 @@ const Post = (prp) => {
 
 
 
-											{Category_subcategory?.categories?.map((category, index) => (
-												<option key={index} value={category[index]}>
+											{category?.map((category, index) => (
+												<option key={category?.id} value={category?.id}>
 													{category.category_name}
 												</option>
 											))}
@@ -444,7 +452,7 @@ const Post = (prp) => {
 
 								</div>
 
-								{/* <div className="from_feild">
+								<div className="from_feild">
 									{selectedCategory && (
 										<div>
 											<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
@@ -454,12 +462,22 @@ const Post = (prp) => {
 
 												<select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>
 													<option value="">Select a sub-category</option>
-													{categories.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (<option key={index} value={subCategory}>
-														{subCategory}                                                    </option>))}
+													{/* {
+														categories.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (<option key={index} value={subCategory}>
+															{subCategory}
+														</option>
+														))
+													} */}
+
+													{selectedSubCategory.map(sub => (
+														<option key={sub.id} value={sub.id}>
+															{sub.category_name}
+														</option>
+													))}
 												</select>
 											</div>
 										</div>)}
-								</div> */}
+								</div>
 								<div className="from_feild">
 									<label>Attach Your Files Here: <span>*</span></label>
 									<div className="upload-btn-wrapper">

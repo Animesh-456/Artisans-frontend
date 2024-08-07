@@ -657,14 +657,16 @@ const EditProfile = () => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <label>Country</label>
-                                                <select
-                                                    name='country'
-                                                    value={"India"}
+                                                <div className="select_div">
+                                                    <select
+                                                        name='country'
+                                                        value={"India"}
 
-                                                    disabled
-                                                >
-                                                    <option>India</option>
-                                                </select>
+                                                        disabled
+                                                    >
+                                                        <option>India</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="row">

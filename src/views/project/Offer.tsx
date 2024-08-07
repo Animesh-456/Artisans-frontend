@@ -976,7 +976,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 														)
 													})
 												) : (<><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${msg?.attachment}`, msg?.datetime)}>{msg?.attachment}</a></>)}
-												<br></br>
+												
 												{msg?.msg_box}
 												<span>{moment(msg?.datetime).format('YYYY-MM-DD HH:mm:ss')}</span>
 											</p>
