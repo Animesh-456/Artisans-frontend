@@ -84,10 +84,10 @@ const Post = (prp) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (!file.length) return toast.error("Please select a file");
-		if (selectedCategory == "" || !selectedSubCategory) return toast.error("Please select catgory and sub category properly!")
+		if (!selectedSubCategory) return toast.error("Please select sub category")
 
 		project["category"] = selectedCategory
-		project["sub_category"] = selectedSubCategory
+		project["sub_category"] = selectedSubCategory?.map(item => item.id)?.join(',');
 
 
 		let data = Validate([], schema.project.add, project);
@@ -127,6 +127,8 @@ const Post = (prp) => {
 		for (const key of Object.keys(project)) {
 			form.append(key, project[key]);
 		}
+
+		console.log("form ", form)
 
 
 
@@ -347,6 +349,7 @@ const Post = (prp) => {
 
 	const handleCategoryChange = (event) => {
 		const categoryId = parseInt(event.target.value, 10);
+		console.log(event.target.value)
 		setSelectedCategory(categoryId);
 		if (!event.target.value) return // To keep the previous subcategories and update the category
 		const filteredArray = subCategories?.filter(item => item?.parent_id == categoryId)
@@ -364,6 +367,8 @@ const Post = (prp) => {
 	const onRemovesecond = (selectedList) => {
 		setSelectedSubCategory(selectedList)
 	};
+
+	console.log("selectedsub", selectedSubCategory)
 
 
 
@@ -500,11 +505,14 @@ const Post = (prp) => {
 								{/* {!loading ? (                                    file?.map((f, index) => {
                                         return (                                            <>                                                <div className="pro_div">                                                    <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>                                                </div>                                            </>                                        )
                                     })                                ) : (<></>)} */}
-								<div className="upload_t file101">                                    {file ? (file?.map((f, index) => {
-									return (<>
-										<p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>                                                    {/* <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p> */}
-									</>)
-								})) : (<></>)}                                </div>
+								<div className="upload_t file101">
+									{file ? (file?.map((f, index) => {
+										return (
+											<>
+												<p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>                                                    {/* <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p> */}
+											</>
+										)
+									})) : (<></>)}                                </div>
 
 								<div className="b-li">
 
@@ -564,12 +572,17 @@ const Post = (prp) => {
 						</label>
 						<label>
 							<h5>Category:</h5>
-							<p>{selectedCategory}</p>
+							<p>{categories?.find(item => item.id === selectedCategory)?.category_name}</p>
 						</label>
 
 						<label>
 							<h5>Subcategory:</h5>
-							<p>{selectedSubCategory}</p>
+
+							{selectedSubCategory?.map((sub, index) => {
+								return (
+									<p key={sub?.id}>{sub?.value}</p>
+								)
+							})}
 						</label>
 						<label>
 							<h5>Comment:</h5>
