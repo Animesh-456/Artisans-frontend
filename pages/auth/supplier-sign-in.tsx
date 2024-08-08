@@ -1,4 +1,4 @@
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import api from "../../src/api/services/api";
@@ -6,6 +6,7 @@ import common from "../../src/helpers/common";
 import atom from "../../src/jotai/atom";
 import { writeAtom } from "jotai-nexus";
 import { toast } from "react-hot-toast";
+import Multiselect from 'multiselect-react-dropdown';
 
 type Props = {};
 
@@ -29,15 +30,23 @@ const CustomerSignIn = (props: Props) => {
 		company_number: "",
 		Squestion: "What is your pet's name?",
 		answer: "",
+		category: ""
 	});
 	const setSign = common.ChangeState(signstate);
 	const BaseURL = "http://localhost:4000/";
 
 	const [disable, setDisable] = useState(false);
 	const [storedProject, setStoredProject] = useAtom(atom.storage.project);
+	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+	const [selectedCategory, setSelectedCategory] = useState('');
+	const [selectedSubCategory, setSelectedSubCategory] = useState('');
+	const [displayOptions, setDisplayOptions] = useState([]);
+	const [categories, setcategories] = useState([]); // To set multiple categories
+
 
 	useEffect(() => {
 
+		api.project.get_category_subcategory({})
 
 		let time = setTimeout(() => {
 			setDisable(false);
@@ -106,7 +115,34 @@ const CustomerSignIn = (props: Props) => {
 		}
 	}
 
+	const handleCategoryChange = (event) => {
+		setSelectedCategory(event.target.value);
+		setSelectedSubCategory('');
+	};
 
+	const options = [
+		{ value: 'Painting', label: 'Painting' },
+		{ value: 'Sculpture', label: 'Sculpture' },
+		{ value: 'Printmaking', label: 'Printmaking' },
+		{ value: 'Photography', label: 'Photography' },
+		{ value: 'Textile Art', label: 'Textile Art' },
+		{ value: 'Ceramics', label: 'Ceramics' },
+		{ value: 'Glass Art', label: 'Glass Art' },
+		{ value: 'Digital Ar', label: 'Digital Art' },
+		{ value: 'Mixed Media', label: 'Mixed Media' },
+		{ value: 'Calligraphy', label: 'Calligraphy' },
+		{ value: 'Jewelry Design', label: 'Jewelry Design' },
+		{ value: 'Graffiti and Street Art', label: 'Graffiti and Street Art' },
+		{ value: 'Installation Art', label: 'Installation Art' },
+	];
+
+
+
+	const onRemove = (selectedList) => {
+		setcategories(selectedList)
+	};
+
+	console.log("Category_subcategory------", Category_subcategory);
 	return (
 		<>
 			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
@@ -201,6 +237,30 @@ const CustomerSignIn = (props: Props) => {
 											</select>
 										</div>
 									</div>
+
+									<div className="row from_feild">
+										<div className="col-sm-4">
+											<label>Select Category <span>*</span>
+											</label>
+										</div>
+										<div className="col-sm-8">
+
+											{Category_subcategory?.categories?.map((category, index) => (
+												<Multiselect>
+													options={options}
+													selectedValues={categories}
+													onSelect={handleCategoryChange}
+													onRemove={onRemove}
+													displayValue="label"
+													placeholder="Select Category"
+												</Multiselect>
+											))}
+
+
+
+										</div>
+									</div>
+
 
 									<div className="row from_feild cont11">
 										<div className="col-sm-4">
