@@ -142,7 +142,7 @@ const Artist = () => {
                         </div>
                         <div className="artist_pro_r">
                             <h1> {udetails.user_name} <i className="fa fa-check-circle"></i></h1>
-                            <p><span >category</span ><span className="www1"> : {categoryNames}</span> </p>
+                            {/* <p><span >category</span ><span className="www1"> : {categoryNames}</span> </p> */}
                         </div>
                     </div>
                 </div>
