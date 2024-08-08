@@ -548,6 +548,7 @@
     .howit_wp2 a {
         font-size: 14px;
     }
+
 }
 
 @media only screen and (max-width: 575px) and (min-width: 320px) {
@@ -617,6 +618,7 @@
 
     .profile_box {
         margin-bottom: 0em;
+        padding: 15px;
     }
 
     .howit_wp .col-sm-6:last-child {
@@ -668,12 +670,34 @@
     .howit_wp2 {
         padding: 3em 0;
     }
+
     .chat_browser span:first-child {
         width: 10%;
         margin-top: 3px;
     }
+
     .chat_browser span:nth-child(3) {
         width: 13%;
+    }
+
+    .inner_banner_wp1 {
+        height: 165px;
+    }
+
+    .artist_pro_tab .nav-tabs {
+        margin-bottom: 2em;
+    }
+
+    .withdraw {
+        margin-top: 15px;
+    }
+
+    .but111 {
+        padding: 6px 10px;
+    }
+
+    .table-responsive {
+        margin-bottom: 15px;
     }
 
 }
@@ -1021,7 +1045,11 @@
     }
 
     .overview-head figure {
-        width: 55%;
+        width: 45%;
+    }
+
+    .overview-head>div {
+        width: 88%;
     }
 
     .myprofile_r figure img,
@@ -1211,7 +1239,7 @@
 
     .submit_cancel {
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     .filter-btn {
@@ -1302,7 +1330,8 @@
         filter: grayscale(100%) !important;
         opacity: 1 !important;
     }
-    .offcanvas-body ul{
+
+    .offcanvas-body ul {
         height: 100%;
         padding-right: 0 !important;
     }
@@ -1319,7 +1348,7 @@
         color: #fff;
         border-radius: 6px;
         box-shadow: 0 1px 2px 2px #47120f;
-        font-family: Poppins,sans-serif;
+        font-family: Poppins, sans-serif;
         padding: 10px 22px;
         transition: box-shadow 1s;
         margin-bottom: 15px;
@@ -1328,29 +1357,49 @@
         border: none;
         font-size: 16px;
     }
-    .mobile_contact button:hover{
-         box-shadow: none;
+
+    .mobile_contact button:hover {
+        box-shadow: none;
     }
+
     .mobile_contact ul li:first-child button {
         background: #fff;
         color: #000;
     }
+
     .mobile_contact ul {
         width: 100%;
         display: flex;
+        align-items: end;
+        justify-content: center;
     }
+
     .mobile_contact ul li {
         width: 50%;
         margin-right: 15px;
     }
+
     .mobile_contact ul li:last-child {
         margin-right: 0;
+    }
+
+    .chat_bar_p p span {
+        padding-top: 10px;
+    }
+
+    .chat_bar_p .even {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .step_section {
+        padding-bottom: 0;
     }
 
     .nav-link {
         font-weight: 500 !important;
         color: #1c1c1c !important;
-        padding: 17px !important;
+        padding: 17px 3px !important;
     }
 
     .navbar-nav .nav-link.active,
@@ -1504,32 +1553,44 @@
     .b-li ul li {
         padding-bottom: 10px;
     }
+
     .project_loop p {
         font-size: 14px;
     }
+
     .public p {
         line-height: 25px;
         margin-bottom: 5px;
     }
+
     .description_left p {
         font-size: 17px;
         line-height: 30px;
     }
-    a.kts{
+
+    a.kts {
         padding-left: 0;
     }
+
     .ex li {
         width: auto;
     }
-    .review_right2 img{
+
+    .review_right2 img {
         width: 50%;
     }
-    .artist_pro_l img{
+
+    .artist_pro_l img {
         background: #fff;
     }
-    .manage_p2{
+
+    .manage_p2 {
         width: auto;
         margin-right: 0;
+    }
+
+    .artist_pro_tab {
+        margin-top: 0;
     }
 
 }

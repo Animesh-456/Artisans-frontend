@@ -1321,6 +1321,7 @@ label {
     border-radius: 50%;
     object-fit: cover;
 }
+
 .offer_r h6 {
     font-size: 25px;
     font-weight: 600;
@@ -1763,6 +1764,7 @@ ul.side-nav {
     padding-bottom: 17px;
     letter-spacing: 1px;
 }
+
 .rys h5 {
     color: #080424;
     font-size: 1.5rem;
@@ -2007,6 +2009,7 @@ ul.side-nav {
 .reg-bottom button:hover {
     box-shadow: none;
 }
+
 .back_button {
     background: none !important;
     color: rgb(8, 4, 36) !important;
@@ -2183,6 +2186,7 @@ ul.side-nav {
     font-size: 15px;
     line-height: 25px;
 }
+
 .step_one h6 {
     padding-top: 8px;
 }
@@ -3523,8 +3527,8 @@ ul.ex1 li a {
     box-shadow: none !important;
     border: none !important;
     margin-bottom: 0 !important;
-    font-size: 18px!important;
-    font-weight: 500;    
+    font-size: 18px !important;
+    font-weight: 500;
 
 }
 
@@ -3875,9 +3879,11 @@ marquee {
     display: inline-block;
     font: normal normal normal 21px/1 FontAwesome;
 }
+
 .checkandsubmit {
     margin-bottom: 31px;
 }
+
 .checkandsubmit button {
     font-family: "Poppins", sans-serif;
     background: rgb(239, 97, 0);
@@ -3887,18 +3893,31 @@ marquee {
     transition: box-shadow 1s ease 0s;
     box-shadow: 0 1px 2px 2px #47120f;
 }
-.checkandsubmit button:hover{
+
+.checkandsubmit button:hover {
     box-shadow: none;
 }
-.searchWrapper{
-    border: none;
-    padding: 0;
+
+.searchWrapper {
+    border: none !important;
+    padding: 0 !important;
 }
+
 .manage_p h4 {
     padding-bottom: 6px;
 }
+
 .contact_content p a {
     color: #080424;
     font-size: 17px;
     font-weight: 500;
+}
+
+.chat_bar_p a {
+    color: #f06101;
+    font-size: 15px;
+}
+
+.chip {
+    background: #ef6100 !important;
 }

@@ -20,6 +20,7 @@ const Artist = () => {
     const projects = useAtomValue(atom.project.api.public_profile_project)
     const userReviews = useAtomValue(atom.project.api.public_user_reviews)
     const get_art = useAtomValue(atom.project.api.get_art)
+    const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
 
 
     useEffect(() => {
@@ -34,7 +35,7 @@ const Artist = () => {
         api.project.get_art({ params: { id: id } })
         api.project.public_user_reviews({ params: { id: id } })
         api.project.public_profile_api({ params: { id: id } })
-
+        api.project.get_category_subcategory({})
     }, [router.isReady]);
 
 
@@ -98,6 +99,27 @@ const Artist = () => {
     };
 
 
+    const idsArray = user?.category
+        ? user.category.split(',').map(id => parseInt(id.trim(), 10)) // Ensure IDs are numbers
+        : [];
+
+    const matchedCategories = Category_subcategory?.categories
+        ? Category_subcategory.categories.filter((item: any) => idsArray.includes(item?.id))
+        : [];
+
+    const categoryNames = matchedCategories.length > 0
+        ? matchedCategories.map(item => item?.category_name).join(", ")
+        : "No categories available";
+
+    console.log("User Categories Array:", idsArray);
+    console.log("Matched Categories:", matchedCategories);
+
+
+
+
+
+    console.log("Category_subcategory.categories:", Category_subcategory?.categories);
+
     return (
 
 
@@ -120,7 +142,7 @@ const Artist = () => {
                         </div>
                         <div className="artist_pro_r">
                             <h1> {udetails.user_name} <i className="fa fa-check-circle"></i></h1>
-                            <p>Sculpture Artist</p>
+                            <p><span >category</span ><span className="www1"> : {categoryNames}</span> </p>
                         </div>
                     </div>
                 </div>
