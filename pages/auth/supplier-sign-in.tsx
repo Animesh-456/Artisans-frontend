@@ -30,18 +30,23 @@ const CustomerSignIn = (props: Props) => {
 		company_number: "",
 		Squestion: "What is your pet's name?",
 		answer: "",
-		category: ""
 	});
 	const setSign = common.ChangeState(signstate);
 	const BaseURL = "http://localhost:4000/";
 
 	const [disable, setDisable] = useState(false);
 	const [storedProject, setStoredProject] = useAtom(atom.storage.project);
-	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
-	const [selectedCategory, setSelectedCategory] = useState('');
-	const [selectedSubCategory, setSelectedSubCategory] = useState('');
-	const [displayOptions, setDisplayOptions] = useState([]);
+	// const [selectedCategory, setSelectedCategory] = useState('');
+	// const [selectedSubCategory, setSelectedSubCategory] = useState('');
+	// const [displayOptions, setDisplayOptions] = useState([]);
 	const [categories, setcategories] = useState([]); // To set multiple categories
+	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+
+	const category = [];
+
+	Category_subcategory?.categories?.map((sub) => {
+		category.push({ id: sub?.id, value: sub?.category_name, label: sub?.category_name })
+	})
 
 
 	useEffect(() => {
@@ -54,7 +59,7 @@ const CustomerSignIn = (props: Props) => {
 		return () => {
 			clearTimeout(time);
 		};
-	}, [disable]);
+	}, []);
 
 	const handleSumbit = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -65,6 +70,8 @@ const CustomerSignIn = (props: Props) => {
 		};
 		if (disable) return;
 		setDisable(true);
+		signIn["category"] = categories?.map(item => item.id)?.join(',');
+		console.log("datas are :-", signIn)
 		api.auth.supplier_register({ body: signIn }, (d) => {
 			if (storedProject != null) {
 				setUser(d.data);
@@ -115,9 +122,9 @@ const CustomerSignIn = (props: Props) => {
 		}
 	}
 
-	const handleCategoryChange = (event) => {
-		setSelectedCategory(event.target.value);
-		setSelectedSubCategory('');
+	const handleCategoryChange = (options) => {
+		setcategories(options);
+		//setSelectedSubCategory('');
 	};
 
 	const options = [
@@ -238,31 +245,10 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 									</div>
 
+
+
+
 									<div className="row from_feild">
-										<div className="col-sm-4">
-											<label>Select Category <span>*</span>
-											</label>
-										</div>
-										<div className="col-sm-8">
-
-											{Category_subcategory?.categories?.map((category, index) => (
-												<Multiselect>
-													options={options}
-													selectedValues={categories}
-													onSelect={handleCategoryChange}
-													onRemove={onRemove}
-													displayValue="label"
-													placeholder="Select Category"
-												</Multiselect>
-											))}
-
-
-
-										</div>
-									</div>
-
-
-									<div className="row from_feild cont11">
 										<div className="col-sm-4">
 											<label>Secret Answer<span>*</span>
 											</label>
@@ -276,6 +262,27 @@ const CustomerSignIn = (props: Props) => {
 												onChange={setSign("answer")}
 												placeholder="**********"
 											/>
+										</div>
+									</div>
+
+									<div className="row from_feild cont11">
+										<div className="col-sm-4">
+											<label>Select Category <span>*</span>
+											</label>
+										</div>
+										<div className="col-sm-8">
+
+
+											<Multiselect
+												options={category}
+												selectedValues={categories}
+												onSelect={handleCategoryChange}
+												onRemove={onRemove}
+												displayValue="label"
+												placeholder="Select Category"
+											/>
+
+
 										</div>
 									</div>
 									<hr />
