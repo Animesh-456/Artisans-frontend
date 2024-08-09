@@ -82,6 +82,7 @@ const Artwork = () => {
         const id = user?.id
 
         api.project.get_art({ params: { id: id } })
+        api.project.get_category_subcategory({})
 
     }, [router.isReady]);
 
@@ -97,7 +98,7 @@ const Artwork = () => {
         const obj = {
             title: project?.title,
             description: project?.description,
-            category: categories.map(option => option.value).join(','),
+            category: categories?.map(item => item.id)?.join(','),
         }
 
 
@@ -180,8 +181,8 @@ const Artwork = () => {
 
     const openModal = (art) => {
         setSelectedArt(art);
-        const optionsString = art.categories;
-        const optionsArray = optionsString.split(',').map(option => ({ value: option.trim(), label: option.trim() }));
+        const option = art?.categories?.split(',').map(id => parseInt(id, 10));
+        const optionsArray = category?.filter(item => option.includes(item?.id))
         setDisplayOptions(optionsArray);
         setFormData({
             title: art.title,
@@ -222,16 +223,12 @@ const Artwork = () => {
         const obj = {
             id: formData?.id,
             title: formData?.title,
-            category: displayOptions.map(option => option.value).join(','),
+            category: displayOptions.map(option => option.id).join(','),
             description: formData?.description,
             existingFiles: modalfile?.join(',')
         }
 
 
-
-
-
-        console.log("form is", obj)
 
         for (const key of Object.keys(obj)) {
             form.append(key, obj[key]);
@@ -270,22 +267,17 @@ const Artwork = () => {
         setcategories(selectedList)
     };
 
-    const options = [
-        { value: 'Painting', label: 'Painting' },
-        { value: 'Sculpture', label: 'Sculpture' },
-        { value: 'Printmaking', label: 'Printmaking' },
-        { value: 'Photography', label: 'Photography' },
-        { value: 'Textile Art', label: 'Textile Art' },
-        { value: 'Ceramics', label: 'Ceramics' },
-        { value: 'Glass Art', label: 'Glass Art' },
-        { value: 'Digital Ar', label: 'Digital Art' },
-        { value: 'Mixed Media', label: 'Mixed Media' },
-        { value: 'Calligraphy', label: 'Calligraphy' },
-        { value: 'Jewelry Design', label: 'Jewelry Design' },
-        { value: 'Graffiti and Street Art', label: 'Graffiti and Street Art' },
-        { value: 'Installation Art', label: 'Installation Art' },
-    ];
 
+
+    const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+
+    const category = [];
+
+    Category_subcategory?.categories?.map((sub) => {
+        category.push({ id: sub?.id, value: sub?.category_name, label: sub?.category_name })
+    })
+
+    
     const handleDisplayChange = (options) => {
         setDisplayOptions(options);
     };
@@ -296,7 +288,6 @@ const Artwork = () => {
     };
 
 
-    console.log("selectedValues", categories)
 
 
     return (
@@ -364,7 +355,7 @@ const Artwork = () => {
                                                         <label>Category: <span>*</span></label>
 
                                                         <Multiselect
-                                                            options={options}
+                                                            options={category}
                                                             selectedValues={categories}
                                                             onSelect={handleCategorychange}
                                                             onRemove={onRemove}
@@ -500,7 +491,7 @@ const Artwork = () => {
 
                                                         <Multiselect
 
-                                                            options={options}
+                                                            options={category}
                                                             selectedValues={displayOptions}
                                                             onSelect={handleDisplayChange}
                                                             onRemove={onRemovesecond}

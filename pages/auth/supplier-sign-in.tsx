@@ -71,7 +71,6 @@ const CustomerSignIn = (props: Props) => {
 		if (disable) return;
 		setDisable(true);
 		signIn["category"] = categories?.map(item => item.id)?.join(',');
-		console.log("datas are :-", signIn)
 		api.auth.supplier_register({ body: signIn }, (d) => {
 			if (storedProject != null) {
 				setUser(d.data);
@@ -149,7 +148,6 @@ const CustomerSignIn = (props: Props) => {
 		setcategories(selectedList)
 	};
 
-	console.log("Category_subcategory------", Category_subcategory);
 	return (
 		<>
 			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
