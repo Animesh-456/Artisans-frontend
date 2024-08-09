@@ -755,7 +755,7 @@ const ProjectDetail = () => {
 
     const categoryName = Category_subcategory?.categories?.find((item: any) => item?.id == data?.category)
     const idsArray = data?.sub_category?.split(',').map(id => parseInt(id, 10));
-    const subCategoryName = Category_subcategory?.subCategories?.filter(item => idsArray.includes(item?.id));
+    const subCategoryName = Category_subcategory?.subCategories?.filter(item => idsArray?.includes(item?.id));
 
 
 
