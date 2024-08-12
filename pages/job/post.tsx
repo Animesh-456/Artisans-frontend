@@ -86,8 +86,8 @@ const Post = (prp) => {
 		if (!file.length) return toast.error("Please select a file");
 		if (!selectedSubCategory) return toast.error("Please select sub category")
 
-		project["category"] = multiselectedCategory?.map(item => item.id)?.join(',');
-		// project["sub_category"] = selectedSubCategory?.map(item => item.id)?.join(',');
+		project["category"] = selectedCategory
+		project["sub_category"] = selectedSubCategory?.map(item => item.id)?.join(',');
 
 
 		let data = Validate([], schema.project.add, project);
@@ -345,11 +345,7 @@ const Post = (prp) => {
 
 	const [selectedCategory, setSelectedCategory]: any = useState('');
 	const [selectedSubCategory, setSelectedSubCategory] = useState([]);
-	const [multiselectedCategory, setmultiselectedCategory] = useState([]);
-	const category = [];
-	Category_subcategory?.categories?.map((sub) => {
-		category.push({ id: sub?.id, value: sub?.category_name, label: sub?.category_name })
-	})
+
 
 	const handleCategoryChange = (event) => {
 		const categoryId = parseInt(event.target.value, 10);
@@ -363,24 +359,16 @@ const Post = (prp) => {
 
 	//Handle subcategory state
 
-	const handlemultiCategoryChange = (options) => {
-		setmultiselectedCategory(options);
-		//setSelectedSubCategory('');
-	};
-
 	const handleDisplayChange = (options) => {
 		setSelectedSubCategory(options);
 	};
 
-	const onRemove = (selectedList) => {
-		setmultiselectedCategory(selectedList)
-	};
 
 	const onRemovesecond = (selectedList) => {
 		setSelectedSubCategory(selectedList)
 	};
 
-	console.log("selectedsub", multiselectedCategory)
+	console.log("selectedsub", selectedSubCategory)
 
 
 
@@ -442,7 +430,7 @@ const Post = (prp) => {
 									</label>
 
 									<div className="select_div">
-										{/* <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
+										<select id="category" value={selectedCategory} onChange={handleCategoryChange}>
 											<option value="">Select a category</option>
 
 
@@ -452,16 +440,7 @@ const Post = (prp) => {
 													{category.category_name}
 												</option>
 											))}
-										</select> */}
-
-										<Multiselect
-											options={category}
-											selectedValues={multiselectedCategory}
-											onSelect={handlemultiCategoryChange}
-											onRemove={onRemove}
-											displayValue="label"
-											placeholder="Select Category"
-										/>
+										</select>
 									</div>
 
 
@@ -470,7 +449,7 @@ const Post = (prp) => {
 								<div className="from_feild">
 
 									<div>
-										{/* <label htmlFor="subCategory">Sub-Category: <span>*</span></label> */}
+										<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
 
 										<div className="select_div">
 
@@ -491,7 +470,7 @@ const Post = (prp) => {
 													))}
 												</select> */}
 
-											{/* <Multiselect
+											<Multiselect
 												disable={(selectedCategory === "NaN" || !selectedCategory) ? false : true}
 												//showCheckbox={true}
 
@@ -501,7 +480,7 @@ const Post = (prp) => {
 												onRemove={onRemovesecond}
 												displayValue="label"
 												placeholder="Select Category"
-											/> */}
+											/>
 										</div>
 									</div>
 								</div>
