@@ -296,7 +296,7 @@ const Jobs = (props: Props) => {
         //                         </li> : ""}
         //                         {(opt.page > 0) ? <li className='page-item'>
         //                             <a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
-        //                                 Previous
+                                        // Previous
         //                             </a>
         //                         </li> : ""}
         //                         {/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(

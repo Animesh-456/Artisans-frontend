@@ -17,6 +17,7 @@ const Withdraw = (props: Props) => {
     const [remain, setRemain] = useState(0);
     const [val, setval] = useState(0);
     const [paypal, setpaypal] = useState(null);
+    const [btndisable, setbtndisable] = useState(false)
 
     const onChange = (e) => {
 
@@ -52,39 +53,33 @@ const Withdraw = (props: Props) => {
             toast.error("Please provide a valid amount!")
             return
         } else {
-            setOpen(true)
+            handleClick()
         }
 
     }
 
     const handleClick = () => {
 
+        if (!val) return toast.error("Please provide an amount")
 
-        if (val == 0) {
-            toast.error("Please provide a valid amount!")
-            return
-        }
-
-        if (paypal == null || paypal == "") {
-            toast.error("Please provide a valid paypal email")
-            return
-        }
-        //setBalance(remain);
+        setbtndisable(true)
 
         var e = (document.getElementById("payOptions")) as HTMLSelectElement;
 
 
         var sel = e?.selectedIndex;
         var opt = e?.options[sel];
-        var payMethod = opt.value;
-        api.auth.update_balance({ body: { "balance": remain, "method": payMethod, "val": val, "paypal_email": paypal } }, (d) => {
+        var payMethod = opt?.value || "bank";
+        api.auth.update_balance({ body: { "balance": remain, "method": payMethod, "val": val } }, (d) => {
             if (d.status == true) {
                 (document.getElementById('amounttered') as HTMLInputElement).value = ""
-                setRemain(0);
+                console.log("balance after submit", d.data)
+                const originalBalance = balanceData?.amount_gbp
+                setRemain(originalBalance);
                 toast.success("Withdrawl successful!");
                 setpaypal(null);
                 setval(0);
-
+                setbtndisable(false)
             }
         });
 
@@ -234,7 +229,7 @@ const Withdraw = (props: Props) => {
                                         </div>
                                         <div className="col-sm-8">
                                             <select className="Gr-Border" name="paymentMethod">
-                                                <option value="paypal">Paypal</option>
+                                                {/* <option value="paypal">Paypal</option> */}
                                                 <option value="bank">Bank Transfer</option>
                                             </select>
                                             <p>for your first bank transfer payment, please email your bank details to us admin@machining-4u.co.uk</p>
@@ -252,19 +247,19 @@ const Withdraw = (props: Props) => {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>GBP £ {currBalance || balanceData?.amount_gbp}</td>
-                                                    <td>GBP £ <input onChange={onChange}
+                                                    <td>Rs. ₹ {balanceData?.amount_gbp}</td>
+                                                    <td>Rs. ₹ <input onChange={onChange}
                                                         name='total'
                                                         size={15}
                                                         type='text' id="amounttered" className="in-s" />
                                                     </td>
-                                                    <td>GBP £ {remain}</td>
+                                                    <td>Rs. ₹ {remain === 0 ? balanceData?.amount_gbp : remain}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div className="reg-bottom">
-                                        <button type="submit" onClick={openwithdraw} name="submit">Withdraw Now</button>
+                                        <button disabled={btndisable ? true : false} type="submit" onClick={handleClick} name="submit">Withdraw Now</button>
                                     </div>
                                 </div>
                             </div>

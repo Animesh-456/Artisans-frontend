@@ -105,7 +105,6 @@ const updateBalance = {
 	balance: Joi.number().required(),
 	method: Joi.string().required(),
 	val: Joi.number().required(),
-	paypal_email:Joi.string().required(),
 };
 
 export default {
