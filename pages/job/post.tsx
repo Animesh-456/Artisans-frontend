@@ -572,10 +572,15 @@ const Post = (prp) => {
 						</label>
 						<label>
 							<h5>Category:</h5>
-							<p>{categories?.find(item => item.id === selectedCategory)?.category_name}</p>
+							{/* <p>{categories?.find(item => item.id === selectedCategory)?.category_name}</p> */}
+							<p>{multiselectedCategory?.map((sub, index) => {
+								return (
+									<p key={sub?.id}>{sub?.value}</p>
+								)
+							})}</p>
 						</label>
 
-						<label>
+						{/* <label>
 							<h5>Subcategory:</h5>
 
 							{selectedSubCategory?.map((sub, index) => {
@@ -583,7 +588,7 @@ const Post = (prp) => {
 									<p key={sub?.id}>{sub?.value}</p>
 								)
 							})}
-						</label>
+						</label> */}
 						<label>
 							<h5>Comment:</h5>
 							<p>{project?.description}</p>
