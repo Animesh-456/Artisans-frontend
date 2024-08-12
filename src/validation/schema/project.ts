@@ -5,7 +5,7 @@ const add = {
 	visibility: Joi.string().required(),
 	post_for: Joi.number().required(),
 	category: Joi.required(),
-	sub_category: Joi.required()
+	// sub_category: Joi.required()
 };
 
 
