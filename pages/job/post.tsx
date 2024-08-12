@@ -470,7 +470,7 @@ const Post = (prp) => {
 								<div className="from_feild">
 
 									<div>
-										<label htmlFor="subCategory">Sub-Category: <span>*</span></label>
+										{/* <label htmlFor="subCategory">Sub-Category: <span>*</span></label> */}
 
 										<div className="select_div">
 

@@ -756,6 +756,8 @@ const ProjectDetail = () => {
     const categoryName = Category_subcategory?.categories?.find((item: any) => item?.id == data?.category)
     const idsArray = data?.sub_category?.split(',').map(id => parseInt(id, 10));
     const subCategoryName = Category_subcategory?.subCategories?.filter(item => idsArray?.includes(item?.id));
+    const idscatArray = data?.category?.split(',').map(id => parseInt(id, 10));
+    const mulCategoryName = Category_subcategory?.categories?.filter(item => idscatArray?.includes(item?.id));
 
 
 
@@ -1582,12 +1584,16 @@ const ProjectDetail = () => {
                                 <div className="project_details_content">
                                     <p><span >Posted</span><span className="www1"> : {moment(data?.project_post_date).format("DD-MMMM-YYYY")}</span></p>
                                     <p><span >Visibility</span><span className="www1"> : {data?.visibility}</span></p>
-                                    <p><span >Category</span><span className="www1"> : {categoryName?.category_name}</span></p>
-                                    <p><span >sub-category</span ><span className="www1"> : {subCategoryName?.map((m) => {
+                                    <p><span >Category</span><span className="www1"> : {mulCategoryName?.map((m) => {
                                         return (
                                             <>{m?.category_name}</>
                                         )
                                     })}</span></p>
+                                    {/* <p><span >sub-category</span ><span className="www1"> : {subCategoryName?.map((m) => {
+                                        return (
+                                            <>{m?.category_name}</>
+                                        )
+                                    })}</span></p> */}
 
                                     {/* {subCategoryName?.map((m) => {
                                         return (
