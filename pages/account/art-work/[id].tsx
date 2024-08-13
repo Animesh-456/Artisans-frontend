@@ -97,13 +97,14 @@ const Artwork = () => {
                         {/* <small>Sculpture</small> */}
                         <div className="jusa">
                             <ul className="ex1">
-                                {get_portfolio_art?.categories?.split(',')?.map((m) => {
+                                {get_portfolio_art?.programmer?.category_names?.map((m) => {
                                     return (
                                         <>
                                             <li><a href="#">{m}</a></li>
                                         </>
                                     )
                                 })}
+                                
                             </ul>
                         </div>
                         <p>{get_portfolio_art?.description}</p>

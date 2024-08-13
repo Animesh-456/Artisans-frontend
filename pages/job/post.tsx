@@ -438,7 +438,7 @@ const Post = (prp) => {
 									<label>Comment: <span>*</span></label>
 									<textarea placeholder="Comment" rows={6} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>                                </div>                                <div className="b-li">                                    <ul>                                        <li>                                            Specify the materials to be used, the tolerances and the total number of parts                                        </li>                                        <li>                                            If delivery outside mainland UK, please specify the delivery location                                        </li>                                        <li>                                            Please do not provide your contact details here.                                        </li>                                    </ul>                                    {/* <p>Specify the materials to be used, the tolerances and the total number of parts</p> */}                                    {/* <p>If delivery outside mainland UK, please specify the delivery location</p>                                    <p>Please do not provide your contact details here.</p> */}                                </div>
 								<div className="from_feild">
-									<label htmlFor="category">Category: <span>*</span>
+									<label htmlFor="category">Category(s): <span>*</span>
 									</label>
 
 									<div className="select_div">

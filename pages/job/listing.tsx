@@ -50,6 +50,9 @@ const Listing = (prp) => {
     const [searchQuery, setSearchQuery] = useState("");
 
 
+    const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+
+
     const [arr, setArr] = useState([]);
 
 
@@ -99,8 +102,7 @@ const Listing = (prp) => {
 
 
         api.project.list({ params: { ...opt, page: pageNumber - 1, category: urlCategory, searchQuery: urlsearchQuery } });
-
-
+        api.project.get_category_subcategory({})
     }, []);
 
 
@@ -190,7 +192,7 @@ const Listing = (prp) => {
                             <div className="all_categori">
                                 <select value={category} onChange={handleCategoryChange}>
                                     <option value="">ALL Categories</option>
-                                    <option>Painting</option>
+                                    {/* <option>Painting</option>
                                     <option>Sculpture</option>
                                     <option>Printmaking</option>
                                     <option>Photography</option>
@@ -202,7 +204,14 @@ const Listing = (prp) => {
                                     <option>Calligraphy</option>
                                     <option>Jewelry Design</option>
                                     <option>JGraffiti and Street Art</option>
-                                    <option>Installation Art</option>
+                                    <option>Installation Art</option> */}
+                                    {Category_subcategory?.categories?.map((cat) => {
+                                        return (
+                                            <>
+                                                <option key={cat?.id} value={cat?.id}>{cat?.category_name}</option>
+                                            </>
+                                        )
+                                    })}
                                 </select>
 
                             </div>
@@ -328,6 +337,8 @@ const Listing = (prp) => {
                                         <div className="latest_request_text">
                                             <h1>{l?.project_name}</h1>
 
+                                            <p><b>Category: &nbsp;</b>{l?.category_names?.join(', ')}</p>
+
                                             {/* <div> */}
 
                                             {l?.description.length > 250 ? (
@@ -360,9 +371,9 @@ const Listing = (prp) => {
                                             <div>
                                                 <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
                                                 <span>Posted: {diffInDays} d {hourDifference} h ago</span>
-                                                <span>Category: {l?.category}</span>
+                                                {/* <span>Category: {l?.category_names?.join(', ')}</span> */}
                                                 {/* <span>sub-category: {l?.sub_category}</span> */}
-                                                <span><a href="#">{l?.bids_count} offers</a></span>
+                                                <span style={{color: "#ef6100"}}>{l?.bids_count} offers</span>
                                             </div>
                                             <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link>
                                         </div>

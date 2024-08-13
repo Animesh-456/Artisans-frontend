@@ -91,6 +91,7 @@ function Home(prp) {
     const [numPages, setNumPages] = useState(null);
     const [filename, setFilename] = useState("");
     const [opt, setOpt] = useAtom(atom.project.api.list_opt);
+    const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
 
     const [searchQuery, setsearchQuery] = useState("");
 
@@ -106,6 +107,7 @@ function Home(prp) {
 
     useEffect(() => {
         api.project.latest({ params: { page: 0 } });
+        api.project.get_category_subcategory({})
     }, []);
 
     useEffect(() => {
@@ -278,51 +280,34 @@ function Home(prp) {
 
                     {/* <a className="view_all" href="#">View all categories <img src={"img/arrow.png"} width="11px" alt="" /></a> */}
                     <ul className="popular_category_listing">
-                        <li>
-                            <a href={`/artworklisting?category=Painting`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                <p>Painting</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href={`/artworklisting?category=Drawing`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                <p>Drawing</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href={`/artworklisting?category=Sculpture`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                <p>Sculpture</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href={`/artworklisting?category=Photography`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                <p>Photography</p>
 
-                            </a>
-                        </li>
-                        <li>
-                            <a href={`/artworklisting?category=Printmaking`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                <p>Printmaking</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href={`/artworklisting?category=Mixed+Media`}>
-                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                <p>Mixed Media</p>
-                            </a>
-                        </li>
+                        {Category_subcategory?.categories?.map((cat) => {
+                            return (
+                                <>
+                                    <li key={cat?.id}>
+                                        <a href={`/artworklisting?category=${cat?.id}`}>
+                                            <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                            <p>{cat?.category_name}</p>
+                                        </a>
+                                    </li>
+                                </>
+                            )
+                        }).slice(0, 6)}
+
                         {more ? (
 
-                            <li>
-                                <a href={`/artworklisting?category=Textile+Art`}>
-                                    <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
-                                    <p>Textile Art</p>
-                                </a>
-                            </li>
+                            Category_subcategory?.categories?.map((cat) => {
+                                return (
+                                    <>
+                                        <li key={cat?.id}>
+                                            <a href={`/artworklisting?category=${cat?.id}`}>
+                                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                                <p>{cat?.category_name}</p>
+                                            </a>
+                                        </li>
+                                    </>
+                                )
+                            }).splice(6, Category_subcategory?.categories?.length)
                         ) : (<></>)}
                     </ul>
 
