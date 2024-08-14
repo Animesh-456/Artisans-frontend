@@ -31,17 +31,9 @@ import { Button } from "react-bootstrap";
 
 import { load } from '@cashfreepayments/cashfree-js'
 
-
-
 type Props = {};
 
 const Paypalprovider = () => {
-
-
-
-
-
-
 
 
     const [{ isPending, options, isInitial, isRejected, isResolved }] =
@@ -124,13 +116,19 @@ const DepositFund1 = (props: Props) => {
             let sessionId = await getSessionId()
             let checkoutOptions = {
                 paymentSessionId: sessionId.sessionId,
-                redirectTarget: "_modal",
+                redirectTarget: "_self",
             }
 
-            cashfree.checkout(checkoutOptions).then(async (res) => {
-                console.log("payment initialized", res)
-                await verifyPayment(sessionId.orderId)
+            // cashfree.checkout(checkoutOptions).then(async (res) => {
+            //     console.log("payment initialized", res)
+            //     await verifyPayment(sessionId.orderId)
 
+            // })
+
+            cashfree.checkout(checkoutOptions).then((data) => {
+                console.log("After payment data", data)
+            }).catch((error) => {
+                console.log("After payment error", error)
             })
 
 
@@ -265,7 +263,7 @@ const DepositFund1 = (props: Props) => {
 
             <section className="myproject">
                 <div className="container">
-                    <div className="row" style={{justifyContent:"center"}}>
+                    <div className="row" style={{ justifyContent: "center" }}>
                         <div className="offset-sm-2"></div>
                         <div className="col-sm-8 profile_box">
                             <div className="fund_d1">
