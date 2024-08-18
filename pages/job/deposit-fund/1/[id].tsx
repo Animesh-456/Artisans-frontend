@@ -113,6 +113,8 @@ const DepositFund1 = (props: Props) => {
 
         try {
 
+            localStorage.setItem('items', (`/${data?.project_name?.split(" ").join("-")}-${data?.id}`));
+
             let sessionId = await getSessionId()
             let checkoutOptions = {
                 paymentSessionId: sessionId.sessionId,
