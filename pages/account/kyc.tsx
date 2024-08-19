@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CSSProperties } from 'react';
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
+import atom from "../../src/jotai/atom";
 import { useAtom, useAtomValue } from "jotai";
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
@@ -10,20 +11,22 @@ import { Validate } from "../../src/validation/utils/test";
 import schema from "../../src/validation/schema/schema";
 import api from "../../src/api/services/api";
 
-const kyc = () => {
+const Kyc = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const user = useAtomValue(atom.storage.user);
 
     const [project, projectstate] = useState({
+        user_id: user?.id,
         pan: "",
         gst: "",
         company_name: "",
         company_address: "",
         company_address1: "",
-        state: "",
+        company_state: "",
         city: "",
-        zip_code: "",
-        bank_acc: "",
-        ifsc_code: "",
+        zip: "",
+        bank_account: "",
+        ifsc: "",
         bank_name: "",
         bank_address: "",
         bank_address1: "",
@@ -155,7 +158,7 @@ const kyc = () => {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <select value={project?.state} onChange={setproject("state")}>
+                                                    <select value={project?.company_state} onChange={setproject("company_state")}>
                                                         <option>Select State</option>
                                                         <option>Andhra Pradesh</option>
                                                         <option>Arunachal Pradesh</option>
@@ -196,19 +199,19 @@ const kyc = () => {
                                             </div>
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" placeholder="Postal / Zip Code" value={project?.zip_code} onChange={setproject("zip_code")} />
+                                            <input type="text" name="text" placeholder="Postal / Zip Code" value={project?.zip} onChange={setproject("zip")} />
                                         </div>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>Bank Acc: <span>*</span></label>
-                                                    <input type="text" name="text" placeholder="Enter Bank Account Number" value={project?.bank_acc} onChange={setproject("bank_acc")} />
+                                                    <input type="text" name="text" placeholder="Enter Bank Account Number" value={project?.bank_account} onChange={setproject("bank_account")} />
                                                 </div>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>IFSC Code: <span>*</span></label>
-                                                    <input type="text" name="text" placeholder="IFSC Code" value={project?.ifsc_code} onChange={setproject("ifsc_code")} />
+                                                    <input type="text" name="text" placeholder="IFSC Code" value={project?.ifsc} onChange={setproject("ifsc")} />
                                                 </div>
                                             </div>
                                         </div>
@@ -305,6 +308,6 @@ const kyc = () => {
     )
 }
 
-kyc.ignorePath = true
+// Kyc.ignorePath = true
 
-export default kyc;
+export default Kyc;

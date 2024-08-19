@@ -10,16 +10,17 @@ const add = {
 
 
 const kyc = {
+	user_id: Joi.number().required(),
 	pan: Joi.string().required(),
 	gst: Joi.string().required(),
 	company_name: Joi.string().required(),
 	company_address: Joi.string().required(),
 	company_address1: Joi.required(),
-	state: Joi.string().required(),
+	company_state: Joi.string().required(),
 	city: Joi.string().required(),
-	zip_code: Joi.number().required(),
-	bank_acc: Joi.string().required(),
-	ifsc_code: Joi.string().required(),
+	zip: Joi.number().required(),
+	bank_account: Joi.string().required(),
+	ifsc: Joi.string().required(),
 	bank_name: Joi.string().required(),
 	bank_address: Joi.string().required(),
 	bank_address1: Joi.required(),
@@ -27,9 +28,6 @@ const kyc = {
 	bank_zip: Joi.number().required(),
 	bank_city: Joi.string().required(),
 };
-
-
-
 
 const add_art = {
 	title: Joi.string().required(),
