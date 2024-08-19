@@ -8,6 +8,8 @@ import common from "../../src/helpers/common";
 import { toast } from "react-hot-toast";
 import { Validate } from "../../src/validation/utils/test";
 import schema from "../../src/validation/schema/schema";
+import api from "../../src/api/services/api";
+
 const kyc = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -89,6 +91,14 @@ const kyc = () => {
 
 
         //    Api call here
+
+        api.project.kyc({ body: project, file: form }, (d) => {
+            for (const key of Object.keys(project)) {
+                setproject(key, "");
+            }
+            setFile([]);
+
+        });
     };
 
     console.log("kyc details are", project)

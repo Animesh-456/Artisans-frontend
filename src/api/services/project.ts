@@ -1376,4 +1376,30 @@ export default {
     }).catch((err) => console.log(err))
   },
 
+
+
+
+  kyc: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+    toast.loading();
+    let data = Validate([], schema.project.kyc, body);
+
+    if (!data) {
+
+      return;
+    }
+
+    api
+      .uploadFile("project/kyc", file, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          window.location.reload()
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
 };
