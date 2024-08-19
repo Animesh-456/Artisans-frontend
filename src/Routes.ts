@@ -62,6 +62,11 @@ const EditProfileSideBar = [
 		path: "/account/artwork",
 		role: [2],
 	},
+	{
+		title: "KYC Documents",
+		path: "/account/kyc",
+		role: [2],
+	},
 
 	{
 		title: "Edit My Profile",

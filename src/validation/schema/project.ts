@@ -9,6 +9,27 @@ const add = {
 };
 
 
+const kyc = {
+	pan:Joi.string().required(),
+	gst: Joi.string().required(),
+	company_name: Joi.string().required(),
+	company_address: Joi.string().required(),
+	company_address1: Joi.string().required(),
+	state: Joi.string().required(),
+	city: Joi.string().required(),
+	zip_code: Joi.number().required(),
+	bank_acc: Joi.string().required(),
+	ifsc_code: Joi.string().required(),
+	bank_name: Joi.string().required(),
+	bank_address: Joi.string().required(),
+	bank_address1: Joi.string().required(),
+	bank_state: Joi.string().required(),
+	bank_zip: Joi.number().required(),
+	bank_city: Joi.string().required(),
+};
+
+
+
 
 const add_art = {
 	title: Joi.string().required(),
@@ -100,6 +121,7 @@ const add_desccomment = {
 
 export default {
 	add,
+	kyc,
 	add_art,
 	edit_art,
 	question,
