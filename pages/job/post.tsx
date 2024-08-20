@@ -88,7 +88,7 @@ const Post = (prp) => {
 		if (!file.length) return toast.error("Please select a file");
 		if (!selectedSubCategory) return toast.error("Please select sub category")
 		if (project.project_name.includes('/')) {
-			return toast.error("The '/' character is not allowed in the job title.");
+			return toast.error("The '/' character is not allowed in the art title.");
 		}
 
 		project["category"] = multiselectedCategory?.map(item => item.id)?.join(',');
