@@ -1381,7 +1381,7 @@ export default {
 
   kyc: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
     toast.loading();
-    let data = Validate([], schema.project.kyc, body);
+    let data = body;
 
     if (!data) {
 
@@ -1401,5 +1401,18 @@ export default {
       })
       .catch((err) => console.log(err));
   },
+
+
+  get_kyc: ({ params }: GetParams, cb?: GetResponse) => {
+    api.get("project/get-kyc", params).then((d) => {
+      if (d.status) {
+        writeAtom(atom.project.api.kyc_details, d.data)
+        return cb(d)
+      } else {
+        return toast.error(d.message);
+      }
+    }).catch((err) => console.log(err))
+  },
+
 
 };

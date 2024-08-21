@@ -14,25 +14,27 @@ import api from "../../src/api/services/api";
 const Kyc = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const user = useAtomValue(atom.storage.user);
+    const kyc_details: any = useAtomValue(atom.project.api.kyc_details)
+    const [readOnly, setreadOnly] = useState(false)
 
     const [project, projectstate] = useState({
-        user_id: user?.id,
-        pan: "",
-        gst: "",
-        company_name: "",
-        company_address: "",
-        company_address1: "",
-        company_state: "",
-        city: "",
-        zip: "",
-        bank_account: "",
-        ifsc: "",
-        bank_name: "",
-        bank_address: "",
-        bank_address1: "",
-        bank_state: "",
-        bank_zip: "",
-        bank_city: "",
+        pan: kyc_details?.pan || "",
+        aadhar_number: kyc_details?.aadhar_number || "",
+        gst: kyc_details?.gst || "",
+        company_name: kyc_details?.company_name || "",
+        company_address: kyc_details?.company_address || "",
+        company_address1: kyc_details?.company_address1 || "",
+        company_state: kyc_details?.company_state || "",
+        city: kyc_details?.city || "",
+        zip: kyc_details?.zip || "",
+        bank_account: kyc_details?.bank_account || "",
+        ifsc: kyc_details?.ifsc || "",
+        bank_name: kyc_details?.bank_name || "",
+        bank_address: kyc_details?.bank_address || "",
+        bank_address1: kyc_details?.bank_address1 || "",
+        bank_state: kyc_details?.bank_state || "",
+        bank_zip: kyc_details?.bank_zip || "",
+        bank_city: kyc_details?.bank_city || "",
     });
 
     const [file, setFile] = useState([]);
@@ -80,8 +82,8 @@ const Kyc = () => {
 
     const handleSubmit = () => {
 
-        let data = Validate([], schema.project.kyc, project);
-        if (!file.length) return toast.error("Please select a file");
+        //let data = Validate([], schema.project.kyc, project);
+        //if (!file.length) return toast.error("Please select a file");
         let form = new FormData();
         for (const key of Object.keys(file)) {
             form.append("file", file[key]);
@@ -91,6 +93,8 @@ const Kyc = () => {
         for (const key of Object.keys(project)) {
             form.append(key, project[key]);
         }
+
+        form.append("user_id", user?.id);
 
 
         //    Api call here
@@ -106,6 +110,21 @@ const Kyc = () => {
 
     console.log("kyc details are", project)
     console.log("Files are", file)
+
+    console.log("user_id", user?.id)
+
+    useEffect(() => {
+        api.project.get_kyc({
+            params: {
+                id: user?.id
+            }
+        }, ((d) => {
+            if (d.data.admin_approve === '1') {
+                setreadOnly(true)
+            }
+            projectstate(d.data);
+        }))
+    }, [user?.id]);
 
 
     return (
@@ -133,23 +152,29 @@ const Kyc = () => {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <label>Pan#: <span>*</span></label>
+                                                    <label>Pan#:</label>
                                                     <input type="text" name="text" placeholder="Enter PAN Number" value={project?.pan} onChange={setproject("pan")} />
                                                 </div>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <label>GST: <span>*</span></label>
+                                                    <label>Aadhar number#: </label>
+                                                    <input type="number" name="text" placeholder="Enter aadhar Number" value={project?.aadhar_number} onChange={setproject("aadhar_number")} />
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <div className="from_feild">
+                                                    <label>GST: </label>
                                                     <input type="text" name="text" placeholder="Enter GSTIN" value={project?.gst} onChange={setproject("gst")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
-                                            <label>Company Name: <span>*</span></label>
+                                            <label>Company Name:</label>
                                             <input type="text" name="text" placeholder="Enter Company Name" value={project?.company_name} onChange={setproject("company_name")} />
                                         </div>
                                         <div className="from_feild">
-                                            <label>Company Address: <span>*</span></label>
+                                            <label>Company Address:</label>
                                             <input type="text" name="text" placeholder="Street Address" value={project?.company_address} onChange={setproject("company_address")} />
                                         </div>
                                         <div className="from_feild">
@@ -204,23 +229,23 @@ const Kyc = () => {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <label>Bank Acc: <span>*</span></label>
+                                                    <label>Bank Acc:</label>
                                                     <input type="text" name="text" placeholder="Enter Bank Account Number" value={project?.bank_account} onChange={setproject("bank_account")} />
                                                 </div>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <label>IFSC Code: <span>*</span></label>
+                                                    <label>IFSC Code:</label>
                                                     <input type="text" name="text" placeholder="IFSC Code" value={project?.ifsc} onChange={setproject("ifsc")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
-                                            <label>Bank Name: <span>*</span></label>
+                                            <label>Bank Name:</label>
                                             <input type="text" name="text" placeholder="Enter Bank Name" value={project?.bank_name} onChange={setproject("bank_name")} />
                                         </div>
                                         <div className="from_feild">
-                                            <label>Bank Address: <span>*</span></label>
+                                            <label>Bank Address:</label>
                                             <input type="text" name="text" placeholder="Street Address" value={project?.bank_address} onChange={setproject("bank_address")} />
                                         </div>
                                         <div className="from_feild">
@@ -273,7 +298,7 @@ const Kyc = () => {
                                             <input type="text" name="text" placeholder="Postal / Zip Code" value={project?.bank_zip} onChange={setproject("bank_zip")} />
                                         </div>
                                         <div className="from_feild">
-                                            <label>Upload documents(Bank passbook, cancelled cheque, PAN Card, GST certificate): <span>*</span></label>
+                                            <label>Upload documents(Bank passbook, cancelled cheque, PAN Card, GST certificate):</label>
                                             <div className="upload-btn-wrapper">
                                                 <button className="btn">Upload <i className="fa fa-upload"></i></button>
                                                 <input type="file" name="myfile" multiple onChange={handle_file_change} ref={fileInputRef} />
