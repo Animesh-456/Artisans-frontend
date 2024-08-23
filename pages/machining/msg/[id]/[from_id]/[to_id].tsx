@@ -73,8 +73,6 @@ const Message = (props: Props) => {
 
 		}
 
-
-
 		if (files.length) {
 			//setpr(0)
 			//setFile(f);
@@ -149,7 +147,7 @@ const Message = (props: Props) => {
 			(d) => {
 				//setMsg("message", null)
 				setMsg("message", "");
-				setFile(null);
+				setFile([]);
 				setmachineFile([])
 				setChangePic(false)
 				setChangeMachinPic(false)
@@ -463,8 +461,8 @@ const Message = (props: Props) => {
 											file?.map((f, index) => {
 												return (
 													<>
-														<div className="pro_div">
-															<p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
+														<div className="upload_t">
+															<p><i className="fa fa-check"></i><span className="none"></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>
 														</div>
 													</>
 												)

@@ -16,6 +16,7 @@ const Kyc = () => {
     const user = useAtomValue(atom.storage.user);
     const kyc_details: any = useAtomValue(atom.project.api.kyc_details)
     const [readOnly, setreadOnly] = useState(false)
+    const [existingFiles, setexistingFiles]: any = useState([]);
 
     const [project, projectstate] = useState({
         pan: kyc_details?.pan || "",
@@ -48,7 +49,7 @@ const Kyc = () => {
             const file = files[i];
             const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
 
-            if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png") {
+            if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "pdf") {
                 toast.error(`File extension .${extension} is not allowed`);
                 continue;
             }
@@ -75,6 +76,12 @@ const Kyc = () => {
         }
     }
 
+    const deleteExistingFiles = (fileIndex) => {
+        const newFiles = [...existingFiles];
+        newFiles.splice(fileIndex, 1);
+        setexistingFiles(newFiles);
+    }
+
     const setproject = common.ChangeState(projectstate);
 
 
@@ -82,21 +89,20 @@ const Kyc = () => {
 
     const handleSubmit = () => {
 
-        //let data = Validate([], schema.project.kyc, project);
-        //if (!file.length) return toast.error("Please select a file");
         let form = new FormData();
         for (const key of Object.keys(file)) {
             form.append("file", file[key]);
         }
 
-
         for (const key of Object.keys(project)) {
             form.append(key, project[key]);
         }
 
-        form.append("user_id", user?.id);
+        if (Object.keys(kyc_details)?.length == 0) {
+            form.append("user_id", user?.id); // Assuming `project.user_id` holds the user ID
+        }
 
-
+        form.append("existingFiles", existingFiles.join(',')); // Assuming `existingFiles` is the variable holding the value
         //    Api call here
 
         api.project.kyc({ body: project, file: form }, (d) => {
@@ -108,10 +114,7 @@ const Kyc = () => {
         });
     };
 
-    console.log("kyc details are", project)
-    console.log("Files are", file)
-
-    console.log("user_id", user?.id)
+    console.log("kyc details are", Object.keys(kyc_details)?.length)
 
     useEffect(() => {
         api.project.get_kyc({
@@ -119,12 +122,15 @@ const Kyc = () => {
                 id: user?.id
             }
         }, ((d) => {
-            if (d.data.admin_approve === '1') {
+            if (d.data.admin_approve === 1) {
                 setreadOnly(true)
             }
             projectstate(d.data);
+            if (d.data.attachments) {
+                setexistingFiles(d.data.attachments.split(','))
+            }
         }))
-    }, [user?.id]);
+    }, []);
 
 
     return (
@@ -153,37 +159,37 @@ const Kyc = () => {
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>Pan#:</label>
-                                                    <input type="text" name="text" placeholder="Enter PAN Number" value={project?.pan} onChange={setproject("pan")} />
+                                                    <input type="text" disabled={readOnly} name="text" placeholder="Enter PAN Number" value={project?.pan} onChange={setproject("pan")} />
                                                 </div>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>Aadhar number#: </label>
-                                                    <input type="number" name="text" placeholder="Enter aadhar Number" value={project?.aadhar_number} onChange={setproject("aadhar_number")} />
+                                                    <input type="number" disabled={readOnly} name="text" placeholder="Enter aadhar Number" value={project?.aadhar_number} onChange={setproject("aadhar_number")} />
                                                 </div>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>GST: </label>
-                                                    <input type="text" name="text" placeholder="Enter GSTIN" value={project?.gst} onChange={setproject("gst")} />
+                                                    <input type="text" disabled={readOnly} name="text" placeholder="Enter GSTIN" value={project?.gst} onChange={setproject("gst")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
                                             <label>Company Name:</label>
-                                            <input type="text" name="text" placeholder="Enter Company Name" value={project?.company_name} onChange={setproject("company_name")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Enter Company Name" value={project?.company_name} onChange={setproject("company_name")} />
                                         </div>
                                         <div className="from_feild">
                                             <label>Company Address:</label>
-                                            <input type="text" name="text" placeholder="Street Address" value={project?.company_address} onChange={setproject("company_address")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address" value={project?.company_address} onChange={setproject("company_address")} />
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" placeholder="Street Address Line 2" value={project?.company_address1} onChange={setproject("company_address1")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address Line 2" value={project?.company_address1} onChange={setproject("company_address1")} />
                                         </div>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <select value={project?.company_state} onChange={setproject("company_state")}>
+                                                    <select value={project?.company_state} disabled={readOnly} onChange={setproject("company_state")}>
                                                         <option>Select State</option>
                                                         <option>Andhra Pradesh</option>
                                                         <option>Arunachal Pradesh</option>
@@ -219,42 +225,42 @@ const Kyc = () => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <input type="text" name="text" placeholder="City" value={project?.city} onChange={setproject("city")} />
+                                                    <input type="text" disabled={readOnly} name="text" placeholder="City" value={project?.city} onChange={setproject("city")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" placeholder="Postal / Zip Code" value={project?.zip} onChange={setproject("zip")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Postal / Zip Code" value={project?.zip} onChange={setproject("zip")} />
                                         </div>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>Bank Acc:</label>
-                                                    <input type="text" name="text" placeholder="Enter Bank Account Number" value={project?.bank_account} onChange={setproject("bank_account")} />
+                                                    <input type="text" name="text" disabled={readOnly} placeholder="Enter Bank Account Number" value={project?.bank_account} onChange={setproject("bank_account")} />
                                                 </div>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>IFSC Code:</label>
-                                                    <input type="text" name="text" placeholder="IFSC Code" value={project?.ifsc} onChange={setproject("ifsc")} />
+                                                    <input type="text" name="text" disabled={readOnly} placeholder="IFSC Code" value={project?.ifsc} onChange={setproject("ifsc")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
                                             <label>Bank Name:</label>
-                                            <input type="text" name="text" placeholder="Enter Bank Name" value={project?.bank_name} onChange={setproject("bank_name")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Enter Bank Name" value={project?.bank_name} onChange={setproject("bank_name")} />
                                         </div>
                                         <div className="from_feild">
                                             <label>Bank Address:</label>
-                                            <input type="text" name="text" placeholder="Street Address" value={project?.bank_address} onChange={setproject("bank_address")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address" value={project?.bank_address} onChange={setproject("bank_address")} />
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" placeholder="Street Address Line 2" value={project?.bank_address1} onChange={setproject("bank_address1")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address Line 2" value={project?.bank_address1} onChange={setproject("bank_address1")} />
                                         </div>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <select value={project?.bank_state} onChange={setproject("bank_state")}>
+                                                    <select value={project?.bank_state} disabled={readOnly} onChange={setproject("bank_state")}>
                                                         <option>Select State</option>
                                                         <option>Andhra Pradesh</option>
                                                         <option>Arunachal Pradesh</option>
@@ -290,18 +296,28 @@ const Kyc = () => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <input type="text" name="text" placeholder="City" value={project?.bank_city} onChange={setproject("bank_city")} />
+                                                    <input type="text" name="text" disabled={readOnly} placeholder="City" value={project?.bank_city} onChange={setproject("bank_city")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" placeholder="Postal / Zip Code" value={project?.bank_zip} onChange={setproject("bank_zip")} />
+                                            <input type="text" name="text" disabled={readOnly} placeholder="Postal / Zip Code" value={project?.bank_zip} onChange={setproject("bank_zip")} />
                                         </div>
                                         <div className="from_feild">
                                             <label>Upload documents(Bank passbook, cancelled cheque, PAN Card, GST certificate):</label>
                                             <div className="upload-btn-wrapper">
                                                 <button className="btn">Upload <i className="fa fa-upload"></i></button>
-                                                <input type="file" name="myfile" multiple onChange={handle_file_change} ref={fileInputRef} />
+                                                <input type="file" disabled={readOnly} name="myfile" multiple onChange={handle_file_change} ref={fileInputRef} />
+                                            </div>
+
+                                            <div className="upload_t file101">
+                                                {existingFiles ? (existingFiles?.map((f, index) => {
+                                                    return (
+                                                        <>
+                                                            <p><i className="fa fa-check"></i> <a href={common.get_kyc_attach(f)}>{f}</a> {!readOnly ? <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => deleteExistingFiles(index)}></i> : ""}</p>
+                                                        </>
+                                                    )
+                                                })) : (<></>)}
                                             </div>
 
                                             <div className="upload_t file101">
@@ -314,10 +330,20 @@ const Kyc = () => {
                                                 })) : (<></>)}
                                             </div>
 
+
+
                                         </div>
                                         <div className="submit_cancel">
-                                            <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleSubmit}>Submit Now</a>
-                                            <a style={{ display: "none" }}></a>
+                                            {!readOnly ? (
+                                                <>
+                                                    <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleSubmit} >Submit Now</a>
+                                                    <a style={{ display: "none" }}></a>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <p>Admin has approved these details. If you want to change anything please contact customer support</p>
+                                                </>
+                                            )}
                                         </div>
                                     </form>
                                 </div>

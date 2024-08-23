@@ -478,10 +478,10 @@ const Post = (prp) => {
 									<div>
 										{/* <label htmlFor="subCategory">Sub-Category: <span>*</span></label> */}
 
-										<div className="select_div">
+										{/* <div className="select_div"> */}
 
 
-											{/* <select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>
+										{/* <select id="subCategory" value={selectedSubCategory} onChange={handleSubCategoryChange}>
 													<option value="">Select a sub-category</option>
 													{
 														SelectedSubCategory.find((category) => category.name === selectedCategory).subCategories.map((subCategory, index) => (<option key={index} value={subCategory}>
@@ -497,7 +497,7 @@ const Post = (prp) => {
 													))}
 												</select> */}
 
-											{/* <Multiselect
+										{/* <Multiselect
 												disable={(selectedCategory === "NaN" || !selectedCategory) ? false : true}
 												//showCheckbox={true}
 
@@ -508,13 +508,13 @@ const Post = (prp) => {
 												displayValue="label"
 												placeholder="Select Category"
 											/> */}
-										</div>
+										{/* </div> */}
 									</div>
 								</div>
 								<div className="from_feild">
 									<label>Attach Your Files Here: <span>*</span></label>
 									<div className="upload-btn-wrapper">
-										<button className="btn">PDF or Image files <i className="fa fa-upload"></i></button>
+										<button className="btn">Image files <i className="fa fa-upload"></i></button>
 										<input type="file" name="myfile" onChange={handle_file_change} multiple={true} ref={fileInputRef} /></div>
 								</div>
 
@@ -526,8 +526,8 @@ const Post = (prp) => {
 
 
 
-								{pr < 101 ? (<ProgressBar now={pr} label={`${pr}%`} />
-								) : (<></>)}
+								{/* {pr < 101 ? (<ProgressBar now={pr} label={`${pr}%`} />
+								) : (<></>)} */}
 								{/* {loading && <Spinner animation="border" variant="info" />} */}
 								{/* {!loading ? (                                    file?.map((f, index) => {
                                         return (                                            <>                                                <div className="pro_div">                                                    <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>                                                </div>                                            </>                                        )

@@ -157,7 +157,7 @@ const ProjectDetail = () => {
                     for (const key of Object.keys(bid)) {
                         setbid(key, "")(null);
                     }
-                    setFile(null);
+                    setFile([]);
                     let idString = String(router.query.name);
 
                     const segments = idString.split('-');
@@ -184,7 +184,7 @@ const ProjectDetail = () => {
             for (const key of Object.keys(bid)) {
                 setbid(key, "")(null);
             }
-            setFile(null);
+            setFile([]);
             let idString = String(router.query.name);
 
             const segments = idString.split('-');
@@ -308,19 +308,29 @@ const ProjectDetail = () => {
 
 
 
-
         api.project.detail({ params: { id: id } });
         api.project.get_category_subcategory({})
         api.project.get_additional_comment({ params: { id: id } });
 
 
         if (user) {
+            api.auth.me({});
+            api.auth.delivery_contacts({ params: { id: id } });
             api.project.project_review({ params: { id: id } });
             api.project.steps_completed_supplier({
                 params: {
                     id: id
                 }
             });
+
+            api.project.steps_completed_supplier({
+                params: {
+                    id: id
+                }
+            }, (d) => {
+
+            })
+            api.project.project_review({ params: { id: id } });
         }
 
 
@@ -416,33 +426,33 @@ const ProjectDetail = () => {
     const avgrat = (review.provider_rate1 + review.provider_rate2 + review.provider_rate3 + review.provider_rate4) / 4;
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        // if (!router.isReady) return;
+    //     // if (!router.isReady) return;
 
-        let idString = String(router.query.name);
+    //     let idString = String(router.query.name);
 
-        const segments = idString.split('-');
-        let id = segments[segments.length - 1];
-
-
-
-        if (user) {
-
-            api.project.steps_completed_supplier({
-                params: {
-                    id: d
-                }
-            }, (d) => {
-
-            })
-            api.project.project_review({ params: { id: d } });
-
-        }
+    //     const segments = idString.split('-');
+    //     let id = segments[segments.length - 1];
 
 
 
-    }, [])
+    //     if (user) {
+
+    //         api.project.steps_completed_supplier({
+    //             params: {
+    //                 id: d
+    //             }
+    //         }, (d) => {
+
+    //         })
+    //         api.project.project_review({ params: { id: d } });
+
+    //     }
+
+
+
+    // }, [])
 
     const ReviewBox = ({ r }) => {
 
@@ -480,17 +490,17 @@ const ProjectDetail = () => {
     let table_status = '0'
 
 
-    useEffect(() => {
-        if (user) {
-            api.auth.me({});
-        }
+    // useEffect(() => {
+    //     if (user) {
+    //         api.auth.me({});
+    //     }
 
-        if (user) {
-            api.auth.delivery_contacts({ params: { id: d } });
-        }
+    //     if (user) {
+    //         api.auth.delivery_contacts({ params: { id: d } });
+    //     }
 
 
-    }, []);
+    // }, []);
 
     if (data?.project_status >= '4') {
 
@@ -762,7 +772,7 @@ const ProjectDetail = () => {
     //     .map(item => item.category_name)                
     //     .join(', ');                                    
 
-    
+
 
 
 
@@ -1715,172 +1725,7 @@ const ProjectDetail = () => {
 
 
             <GlobalModal title='Create Your Offer' atom={atom.modal.create_offer}>
-                {/* <div className='fdfd4'>
-                    <div className='css-ung'>
-                        <p>Post a Public Message or a Question to the client (optional).</p>
-                        <label>Send a public message to the client..</label>
-                        <textarea
-                            name='message'
-                            rows={4}
-                            placeholder='Write your message here ...'
-                            defaultValue={""}
-                            value={question.message}
-                            onChange={setQuestion("message")}
-                        />
-                        <input
-                            type='submit'
-                            defaultValue='Send your Message'
-                            name='Prebid'
-                            onClick={handleQuestion}
-                        />
-                        <hr />
-                        <div className='row'>
-                            <div className='col-sm-12'>
-                                <h5>Make an offer</h5>
-                                <p>1.Describe what you are offering in detail.</p>
-                                <p>
-                                    2.Do not include your contact details (email, phone, address
-                                    etc ...).
-                                </p>
-                                <p>
-                                    3.The shipping costs (with parcel tracking) must be included
-                                    in the price offered to the customer.
-                                </p>
-                                <textarea
-                                    name='message2'
-                                    rows={4}
-                                    placeholder='Describe your offer here ...'
-                                    defaultValue={""}
-                                    value={bid.bid_desc}
-                                    onChange={setbid("bid_desc")}
-                                />
-                            </div>
-                        </div>
-                        <div className='upload-btn-wrapper'>
-                            <button className='btn'>
-                                <i className='fa fa-upload' /> Add files (Max. &lt; 3 Mb)
-                            </button>
-                            <input type='file' name='myfile' multiple onChange={handle_file_change} />
-                        </div>
 
-                        <br />
-                        <br />
-
-
-                        {pr < 101 ? (
-                            <ProgressBar now={pr} label={`${pr}%`} />
-                        ) : (<></>)}
-
-
-                        {file && pr > 100 ? (
-                            file?.map((f) => {
-                                return (
-                                    <>
-                                        <div className="pro_div">
-                                            <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
-                                        </div>
-                                    </>
-                                )
-                            })
-                        ) : (<></>)}
-
-
-
-
-
-                        <div className='row css-kjus'>
-                            <div className='col-sm-6 gfcg'>
-                                <label>Paid to Me : ₹</label>
-                                <input
-                                    name='txtPrice'
-                                    type='text'
-                                    disabled
-                                    value={bid.bid_amount}
-                                    onChange={setbid("bid_amount")}
-                                />
-                            </div>
-                            <div className='col-sm-6 gfcg'>
-                                <label>
-                                    Price for client: ₹ <small>Includes artisans.studio fees</small>
-                                </label>
-                                <input
-                                    name='bidAmt'
-                                    type='text'
-                                    value={bid.bid_amount_gbp}
-                                    disabled={ischecked}
-                                    onChange={setbid("bid_amount_gbp")}
-                                />
-                            </div>
-                            <div className='col-sm-12'>
-                                <label>Estimated Days Until Shipping:</label>
-                                <div className='form-inline1'>
-                                    <select
-                                        name='days'
-                                        value={bid.bid_days}
-                                        onChange={setbid("bid_days")} disabled={ischecked}>
-                                        <option value={0}>-- Select --</option>
-                                        <option value={2}>2 Days</option>
-                                        <option value={3}>3 Days</option>
-                                        <option value={4}>4 Days</option>
-                                        <option value={5}>5 Days</option>
-                                        <option value={6}>6 Days</option>
-                                        <option value={7}>7 Days</option>
-                                        <option value={8}>8 Days</option>
-                                        <option value={9}>9 Days</option>
-                                        <option value={10}>10 Days</option>
-                                        <option value={11}>11 Days</option>
-                                        <option value={12}>12 Days</option>
-                                        <option value={13}>13 Days</option>
-                                        <option value={14}>14 Days</option>
-                                        <option value={15}>15 Days</option>
-                                        <option value={16}>16 Days</option>
-                                        <option value={17}>17 Days</option>
-                                        <option value={18}>18 Days</option>
-                                        <option value={19}>19 Days</option>
-                                        <option value={20}>20 Days</option>
-                                        <option value={21}>21 Days</option>
-                                        <option value={22}>22 Days</option>
-                                        <option value={23}>23 Days</option>
-                                        <option value={24}>24 Days</option>
-                                        <option value={25}>25 Days</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div className='col-sm-4'>
-                                <div className='form-group form-check'>
-                                    <label className='form-check-label'>
-                                        <input
-                                            className='form-check-input'
-                                            type='checkbox'
-                                            onChange={(e) => {
-                                                setwill_submit(e.target.checked);
-                                                if (e.target.checked) {
-                                                    setbid("bid_amount", "0")(null);
-                                                    setbid("bid_amount_gbp", "0")(null);
-                                                    setbid("bid_days", "0")(0);
-                                                    setischecked(true)
-                                                } else if (!e.target.checked) {
-                                                    setischecked(false)
-                                                }
-                                            }}
-                                        />{" "}
-                                        Will Submit Amount Later
-                                    </label>
-                                </div>
-                            </div>
-                            <div className='col-sm-12'>
-                                <input
-                                    type='submit'
-                                    defaultValue='Send your offer'
-                                    name='Prebid'
-                                    onClick={handleAddBid}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
 
 
                 <div className="modal-body">
@@ -1943,8 +1788,8 @@ const ProjectDetail = () => {
                                         file?.map((f) => {
                                             return (
                                                 <>
-                                                    <div className="pro_div">
-                                                        <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                    <div className="upload_t">
+                                                        <p><i className="fa fa-check"></i><span className="none"></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
                                                     </div>
                                                 </>
                                             )

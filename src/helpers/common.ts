@@ -108,6 +108,13 @@ const get_attachment_latest_ach = (pth: string) => {
 	}
 };
 
+
+const get_kyc_attach = (pth: string) => {
+	if (pth) {
+		return `${env.file_path}kyc/${pth}`;
+	}
+};
+
 const toBase64 = (file) =>
 	new Promise((resolve, reject) => {
 		const reader = new FileReader();
@@ -169,4 +176,5 @@ export default {
     	get_message,
 	get_profile_picture,
 	get_portfolio_pic,
+	get_kyc_attach
 };
