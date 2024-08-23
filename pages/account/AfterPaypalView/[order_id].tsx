@@ -19,7 +19,7 @@ const Jobs = ({ paymentStatus, error }) => {
 
     };
 
-    console.log("paymentStatus", paymentStatus)
+    console.log("paymentStatus", paymentStatus.order_status)
 
     return (
         <>
@@ -28,7 +28,7 @@ const Jobs = ({ paymentStatus, error }) => {
                     <h1>Payment {paymentStatus?.order_status === 'PAID' ? "Done" : "Pending"}</h1>
                 </div>
             </section> */}
-            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1 className='yh'>Payment {paymentStatus?.order_status === 'PAID' ? "Done" : "Pending"}</h1>
                 </div>
@@ -85,7 +85,7 @@ const Jobs = ({ paymentStatus, error }) => {
                                         Thank you for depositing the funds. We have sent you a confirmation email.
                                         Your Machinist will start working on your order.
                                     </p>
-                                    <img src="../img/tick.png" />
+                                    <img src="../../img/tick.png" />
                                     <br />
                                     <br />
                                     <div>
@@ -110,7 +110,7 @@ const Jobs = ({ paymentStatus, error }) => {
                                         For assistance, contact our support team.
                                         We apologize for the inconvenience and appreciate your understanding
                                     </p>
-                                    <img src="../img/cancel.png" />
+                                    <img src="../../img/cancel.png" />
                                     <br />
                                     <br />
                                     <div>
@@ -131,10 +131,18 @@ const Jobs = ({ paymentStatus, error }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { order_id } = context.query;
+export async function getStaticPaths() {
+    // Return an empty array since paths are unknown at build time
+    return {
+        paths: [],
+        fallback: 'blocking', // Render on-demand
+    };
+}
 
-    if (!order_id) {
+export const getStaticProps = async (context) => {
+    const { params } = context;
+
+    if (!params.order_id) {
         return {
             props: {
                 paymentStatus: null,
@@ -144,7 +152,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
     try {
-        const response = await fetch(`https://sandbox.cashfree.com/pg/orders/${order_id}`, {
+        const response = await fetch(`https://sandbox.cashfree.com/pg/orders/${params.order_id}`, {
             method: 'GET',
             headers: {
                 'accept': 'application/json',
