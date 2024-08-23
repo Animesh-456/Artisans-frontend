@@ -976,6 +976,7 @@ a {
     content: "\f107";
     display: inline-block;
     font: normal normal normal 21px/1 FontAwesome;
+    z-index: 1;
 }
 
 .sr {
@@ -1624,6 +1625,7 @@ label {
 .uys5 ul li a {
     color: #2e2e2e;
     font-weight: 500;
+    margin-right: 5px !important;
 }
 
 .project_loop {
@@ -3920,4 +3922,14 @@ marquee {
 
 .chip {
     background: #ef6100 !important;
+}
+
+.chat_browser span:nth-child(2) textarea {
+    width: 100%;
+    resize: none;
+    font-size: 14px;
+    height: 45px;
+    border-radius: 30px;
+    border: 1px solid #545454;
+    padding-left: 16px;
 }

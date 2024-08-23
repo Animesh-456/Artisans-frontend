@@ -1387,9 +1387,14 @@
         padding-top: 10px;
     }
 
-    .chat_bar_p .even {
-        font-size: 15px;
-        line-height: 25px;
+    .chat_bar_p .even,
+    .chat_bar_p .odd {
+        font-size: 14px;
+        line-height: 23px;
+    }
+
+    .chat_browser span:nth-child(2) textarea {
+        height: 35px;
     }
 
     .step_section {
@@ -1591,6 +1596,15 @@
 
     .artist_pro_tab {
         margin-top: 0;
+    }
+
+    .howit5 .nav-pills .nav-link {
+        padding: 5px 7px !important;
+        font-size: 13px;
+    }
+
+    .howit5 {
+        padding: 0;
     }
 
 }
