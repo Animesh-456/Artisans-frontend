@@ -312,7 +312,7 @@ function Home(prp) {
                     </ul>
 
                     {!more && (
-                        <button onClick={() => setmore(!more)} className="ZgAjw6a">View 1 more <i className="fa fa-angle-down"></i></button>
+                        <button onClick={() => setmore(!more)} className="ZgAjw6a">View more <i className="fa fa-angle-down"></i></button>
                     )}
 
                     {more && (
