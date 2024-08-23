@@ -518,20 +518,7 @@ const Post = (prp) => {
 										<input type="file" name="myfile" onChange={handle_file_change} multiple={true} ref={fileInputRef} /></div>
 								</div>
 
-								{/* <div className="from_feild">                                    <label>I would like to receive quotes before: <span>*</span></label>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"4"}                                                checked={project?.post_for == "4" ? true : false}                                                onChange={setproject("post_for")} /> 4 Days
-                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"6"}                                                checked={project?.post_for == "6" ? true : false}                                                onChange={setproject("post_for")}                                            />6 Days                                        </label>                                    </div>                                </div> */}
-								{/* <label>Category</label>                                <div className="select_div"><select name="category" id="category" value={project.category} onChange={setproject("category")}>                                    <option value="Painting" selected>Painting</option>                                    <option value="Drawing">Drawing</option>                                    <option value="Sculpture">Sculpture</option>                                    <option value="Photography">Photography</option>                                    <option value="Printmaking">Printmaking</option>                                    <option value="Digital Art">Digital Art</option>                                    <option value="Mixed Media">Mixed Media</option>                                    <option value="Textile Art">Textile Art</option>                                    <option value="Ceramics">Ceramics</option>                                    <option value="Ceramics">Ceramics</option>                                    <option value="Installation Art">Installation Art</option>                                </select></div> */}
-
-
-
-
-
-								{/* {pr < 101 ? (<ProgressBar now={pr} label={`${pr}%`} />
-								) : (<></>)} */}
-								{/* {loading && <Spinner animation="border" variant="info" />} */}
-								{/* {!loading ? (                                    file?.map((f, index) => {
-                                        return (                                            <>                                                <div className="pro_div">                                                    <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p>                                                </div>                                            </>                                        )
-                                    })                                ) : (<></>)} */}
+								
 								<div className="upload_t file101">
 									{file ? (file?.map((f, index) => {
 										return (

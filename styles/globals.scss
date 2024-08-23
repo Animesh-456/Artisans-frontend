@@ -1215,6 +1215,7 @@ label {
     font-size: 15px;
     padding-bottom: 25px;
     line-height: 25px;
+    white-space: pre-line;
 }
 
 .question_a {
@@ -2451,6 +2452,7 @@ ul.side-nav {
     padding: 10px;
     border-radius: 20px 20px 20px 0;
     width: 80%;
+    white-space: pre-line;
 }
 
 .chat_bar_p .even {
@@ -2460,6 +2462,7 @@ ul.side-nav {
     width: 80%;
     margin-top: 12px;
     margin-left: auto;
+    white-space: pre-line;
 }
 
 .chat_browser {

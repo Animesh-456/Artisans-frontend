@@ -270,6 +270,8 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	}
 
+	console.log(albidmsg)
+
 
 
 	return (
@@ -408,6 +410,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 															<>
 
 																<li>
+
 																	<a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${im}`, msg?.datetime)}>{im}</a>
 																	{/* <br /> */}
 																</li>
@@ -416,7 +419,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 														)
 													})
-												) : (<><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${msg?.attachment}`, msg?.datetime)}>{msg?.attachment}</a></>)}
+												) : (<><li><a rel="noreferrer" className="link-text" target={"_blank"} href={common.get_attachment(`${msg?.attachment}`, msg?.datetime)}>{msg?.attachment}</a></li></>)}
 
 												{msg?.msg_box}
 												<span>{moment(msg?.datetime).format('YYYY-MM-DD HH:mm:ss')}</span>
