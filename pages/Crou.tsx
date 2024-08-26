@@ -66,14 +66,14 @@ const Crou = () => {
                                                 <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
                                                     <img className="art-img1" src={common.get_attachment(
                                                         (project?.attachment_name)?.substring(0, project?.attachment_name.indexOf(',')), formattedDate
-                                                    ) || "../../img/no-images.png"} alt="" />
+                                                    ) || "../img/logo.png"} alt="" />
                                                 </a>
                                             </>
                                         ) : (
                                             <>
                                                 <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
                                                     <img className="art-img1" src={common.get_attachment(
-                                                        (project?.attachment_name), formattedDate) || "../../img/no-images.png"} alt="art-image" />
+                                                        (project?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
                                                 </a>
                                             </>
                                         )}
