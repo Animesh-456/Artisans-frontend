@@ -77,6 +77,7 @@ const project = {
 		get_portfolio_art: atom([]),
 		get_category_subcategory: atom([]),
 		kyc_details: atom([]),
+		commision_rate: atom([]),
 
 
 		my_proj_opt: atom({

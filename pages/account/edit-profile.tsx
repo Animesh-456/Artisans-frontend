@@ -726,18 +726,17 @@ const EditProfile = () => {
                                                     <ProgressBar now={pr} label={`${pr}%`} />
                                                 ) : (<></>)}
 
-                                                <br /><br />
+                                                
 
                                                 {file && pr > 100 ? (
 
-                                                    <div className="pro_div">
-                                                        <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file[0])}><i className="fa fa-trash-o"></i></a></p>
+                                                    <div className="upload_t">
+                                                        <p><i className="fa fa-check"></i><span className="none"></span>{file?.name}<a className="delete_icon" onClick={() => delete_files(file[0])}><i className="fa fa-trash-o"></i></a></p>
                                                     </div>
 
-
-
-
                                                 ) : (<></>)}
+
+                                                <br />
                                             </div>
                                             <div className="col-sm-6">
 

@@ -1415,4 +1415,16 @@ export default {
   },
 
 
+  get_commision_rate: ({ params }: GetParams, cb?: GetResponse) => {
+    api.get("project/get-commision-rate", params).then((d) => {
+      if (d.status) {
+        writeAtom(atom.project.api.commision_rate, d.data)
+        return cb(d)
+      } else {
+        return toast.error(d.message);
+      }
+    }).catch((err) => console.log(err))
+  },
+
+
 };

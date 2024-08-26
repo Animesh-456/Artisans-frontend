@@ -102,18 +102,22 @@ const ProjectDetail = () => {
 
     const project_status = useAtomValue(atom.storage.project_status);
 
+    const commision: any = useAtomValue(atom.project.api.commision_rate);
+
+    
+
     useEffect(() => {
 
         if (bid.bid_amount_gbp) {
             let amount = parseFloat(bid.bid_amount_gbp);
-            let fix_value = 0.15;
+            let fix_value = commision?.rate / 100;
             let paid_to_me = amount - (amount * fix_value);
             setbid("bid_amount", paid_to_me.toFixed(2))(null);
         } else {
             setbid("bid_amount", "")(null);
             setbid("bid_amount_gbp", "")(null);
         }
-    }, [bid.bid_amount_gbp]);
+    }, [bid.bid_amount_gbp, commision]);
 
     const handleQuestion = () => {
         let idString = String(router.query.name);
@@ -311,6 +315,7 @@ const ProjectDetail = () => {
         api.project.detail({ params: { id: id } });
         api.project.get_category_subcategory({})
         api.project.get_additional_comment({ params: { id: id } });
+        api.project.get_commision_rate({});
 
 
         if (user) {
