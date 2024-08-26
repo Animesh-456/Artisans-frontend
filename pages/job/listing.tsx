@@ -171,8 +171,14 @@ const Listing = (prp) => {
 
     useEffect(() => {
         const pageQueryParam2 = new URLSearchParams(location.search).get('category');
-        if (pageQueryParam2 == category) return
-        setCategory(pageQueryParam2)
+        const pageQueryParam3 = new URLSearchParams(location.search).get('searchQuery');
+        if (pageQueryParam2 != category) {
+            setCategory(pageQueryParam2)
+        }
+        if (pageQueryParam3 != searchQuery) {
+            setSearchQuery(pageQueryParam3)
+        }
+        return
     }, [location.search])
 
 
