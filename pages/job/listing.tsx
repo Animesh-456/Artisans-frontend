@@ -169,6 +169,13 @@ const Listing = (prp) => {
     console.log("searchQuery is", searchQuery)
 
 
+    useEffect(() => {
+        const pageQueryParam2 = new URLSearchParams(location.search).get('category');
+        if (pageQueryParam2 == category) return
+        setCategory(pageQueryParam2)
+    }, [location.search])
+
+
     return (
         <>
 
@@ -373,7 +380,7 @@ const Listing = (prp) => {
                                                 <span>Posted: {diffInDays} d {hourDifference} h ago</span>
                                                 {/* <span>Category: {l?.category_names?.join(', ')}</span> */}
                                                 {/* <span>sub-category: {l?.sub_category}</span> */}
-                                                <span style={{color: "#ef6100"}}>{l?.bids_count} offers</span>
+                                                <span style={{ color: "#ef6100" }}>{l?.bids_count} offers</span>
                                             </div>
                                             <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link>
                                         </div>
