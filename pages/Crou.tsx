@@ -30,7 +30,11 @@ const Crou = () => {
     };
 
     useEffect(() => {
-        api.project.review_projects({ params: {} })
+        api.project.review_projects({
+            params: {
+
+            }
+        })
 
     }, []);
 
@@ -38,7 +42,7 @@ const Crou = () => {
     return (
         <div className="container">
             <Carousel responsive={responsive} itemAriaLabel="hhh">
-                {/* {projects.length
+                {projects.length
                     ? projects.map((project, index) => {
                         const date = new Date(project?.created * 1000);
 
@@ -52,34 +56,44 @@ const Crou = () => {
                         const formattedDate = `${year}-${month}-${day}`;
 
                         return (
-                            <div className="item" key={index}>
-                                <div className="top_artist_slider">
-                                    {project?.attachment_name?.includes(",") ? (
-                                        <>
-                                            <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
-                                                <img className="art-img1" src={common.get_attachment(
-                                                    (project?.attachment_name)?.substring(0, project?.attachment_name.indexOf(',')), formattedDate
-                                                ) || "../img/logo.png"} alt="" />
-                                            </a>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
-                                                <img className="art-img1" src={common.get_attachment(
-                                                    (project?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
-                                            </a>
-                                        </>
-                                    )}
-                                    <h3>{project?.project_name}</h3>
-                                    <span> Created by {project?.creator?.user_name}</span>
-                                    <p>{formattedDate}</p>
+
+                            <>
+
+                                <div className="item" key={index}>
+                                    <div className="top_artist_slider">
+                                        {project?.attachment_name?.includes(",") ? (
+                                            <>
+                                                <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
+                                                    <img className="art-img1" src={common.get_attachment(
+                                                        (project?.attachment_name)?.substring(0, project?.attachment_name.indexOf(',')), formattedDate
+                                                    ) || "../../img/no-images.png"} alt="" />
+                                                </a>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
+                                                    <img className="art-img1" src={common.get_attachment(
+                                                        (project?.attachment_name), formattedDate) || "../../img/no-images.png"} alt="art-image" />
+                                                </a>
+                                            </>
+                                        )}
+                                        <h3>{project?.project_name}</h3>
+                                        <span> <img src={
+                                            common.get_profile_picture(project?.creator?.logo) ||
+                                            "../img/no-images.png"
+                                        } alt="profile-picture" />
+                                            Created by {project?.creator?.user_name}</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </>
                         );
                     })
-                    : "No projects found"} */}
+                    : "No projects found"}
 
-                <div className="item">
+
+
+
+                {/* <div className="item">
                     <div className="top_artist_slider">
                         <img src="../img/pic5.png" alt="" />
                         <h3>Beetle Ladybug Art</h3>
@@ -118,7 +132,7 @@ const Crou = () => {
                         <h3>Beetle Ladybug Art</h3>
                         <span><img src="img/man.jpg" alt="" /> Created by Raveart</span>
                     </div>
-                </div>
+                </div> */}
             </Carousel>
 
 
