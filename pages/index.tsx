@@ -185,6 +185,15 @@ function Home(prp) {
 
     const [more, setmore] = useState(false);
 
+    const categoryImages = {
+        1: 'img/icon.png', // Replace with your actual image paths
+        2: 'img/sculpture.png',
+        6: 'img/printmaking.png',
+        7: 'img/photography.png',
+        8: 'img/textile.png',
+        9: 'img/ceramics.png',
+        // Add more mappings here
+    };
 
 
     return (
@@ -316,11 +325,15 @@ function Home(prp) {
                     <ul className="popular_category_listing">
 
                         {Category_subcategory?.categories?.map((cat) => {
+                            console.log("cat-id", cat?.id)
                             return (
                                 <>
                                     <li key={cat?.id}>
                                         <a href={`/artworklisting?category=${cat?.id}`}>
-                                            <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                            <div className="QIkI1k0"><img
+                                                src={categoryImages[cat?.id] || 'img/icon.png'}
+                                                alt={cat?.category_name}
+                                            /></div>
                                             <p>{cat?.category_name}</p>
                                         </a>
                                     </li>
@@ -661,7 +674,7 @@ function Home(prp) {
                                                             common.get_profile_picture(review?.buyer?.logo) ||
                                                             "../img/no-images.png"
                                                         } alt="profile-picture" />
-                                                      
+
                                                     </div>
                                                     <div>
                                                         <h4 className="testimonial-author-name fw-semibold"> {review?.buyer?.user_name} </h4>
