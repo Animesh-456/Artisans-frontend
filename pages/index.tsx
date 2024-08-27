@@ -185,21 +185,21 @@ function Home(prp) {
 
     const [more, setmore] = useState(false);
 
-    const categoryImages = {
-        1: 'img/painting.jpg', // Replace with your actual image paths
-        2: 'img/sculpture.jpg',
-        6: 'img/printmaking.jpg',
-        7: 'img/photography.jpg',
-        8: 'img/textile-art.jpg',
-        9: 'img/ceramics.jpg',
-        10: 'img/glass-art.jpg',
-        11: 'img/digital-art.jpg',
-        13: 'img/calligraphy.jpg',
-        14: 'img/jewelry-design.jpg',
-        15: 'img/graffiti-and-street-art.jpg',
-        16: 'img/installation-art.jpg',
-        // Add more mappings here
-    };
+    // const categoryImages = {
+    //     1: 'img/painting.jpg', // Replace with your actual image paths
+    //     2: 'img/sculpture.jpg',
+    //     6: 'img/printmaking.jpg',
+    //     7: 'img/photography.jpg',
+    //     8: 'img/textile-art.jpg',
+    //     9: 'img/ceramics.jpg',
+    //     10: 'img/glass-art.jpg',
+    //     11: 'img/digital-art.jpg',
+    //     13: 'img/calligraphy.jpg',
+    //     14: 'img/jewelry-design.jpg',
+    //     15: 'img/graffiti-and-street-art.jpg',
+    //     16: 'img/installation-art.jpg',
+    //     // Add more mappings here
+    // };
 
 
     return (
@@ -331,13 +331,13 @@ function Home(prp) {
                     <ul className="popular_category_listing">
 
                         {Category_subcategory?.categories?.map((cat) => {
-                            console.log("cat-id", cat?.id)
+                            // console.log("cat-id", cat?.id)
                             return (
                                 <>
                                     <li key={cat?.id}>
                                         <a href={`/artworklisting?category=${cat?.id}`}>
                                             <div className="QIkI1k0"><img
-                                                src={categoryImages[cat?.id] || 'img/icon.png'}
+                                                src={common.get_category(`${cat?.id}.jpg`)}
                                                 alt={cat?.category_name}
                                             /></div>
                                             <p>{cat?.category_name}</p>
@@ -355,7 +355,7 @@ function Home(prp) {
                                         <li key={cat?.id}>
                                             <a href={`/artworklisting?category=${cat?.id}`}>
                                                 <div className="QIkI1k0"><img
-                                                    src={categoryImages[cat?.id] || 'img/icon.png'}
+                                                    src={common.get_category(`${cat?.id}.jpg`)}
                                                     alt={cat?.category_name}
                                                 /></div>
                                                 <p>{cat?.category_name}</p>

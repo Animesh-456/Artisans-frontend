@@ -69,8 +69,8 @@ const r: any = (msg) => {
 
 const get_image = (path: string) => {
 
-	if(path)
-	return `${env.file_path}projects/${path}`;
+	if (path)
+		return `${env.file_path}projects/${path}`;
 
 };
 
@@ -93,21 +93,25 @@ const get_portfolio_pic = (path: String) => {
 
 
 
-const get_attachment = (path: string, createdat : string) => {
-const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-	if(path){
-		let dt=new Date(createdat)	
-		let yr= dt.getFullYear()
-		let mth= month[dt.getMonth()]	
-	return `${env.file_path}projects/${yr}/${mth}/${path}`;
-}
+const get_attachment = (path: string, createdat: string) => {
+	const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	if (path) {
+		let dt = new Date(createdat)
+		let yr = dt.getFullYear()
+		let mth = month[dt.getMonth()]
+		return `${env.file_path}projects/${yr}/${mth}/${path}`;
+	}
 };
 const get_attachment_latest_ach = (pth: string) => {
 	if (pth) {
 		return `${env.file_path}projects/${pth}`;
 	}
 };
-
+const get_category = (pth: string) => {
+	if (pth) {
+		return `${env.file_path}category_images/${pth}`;
+	}
+};
 
 const get_kyc_attach = (pth: string) => {
 	if (pth) {
@@ -173,8 +177,9 @@ export default {
 	reviews_meta,
 	get_attachment,
 	get_attachment_latest_ach,
-    	get_message,
+	get_message,
 	get_profile_picture,
 	get_portfolio_pic,
-	get_kyc_attach
+	get_kyc_attach,
+	get_category
 };
