@@ -23,10 +23,11 @@ const customer_register = {
 		.equal(Joi.ref("password"))
 		.required()
 		.messages({ "any.only": "{{#label}} does not match" }),
-                 SIREN: Joi.required(),
-	         company_name: Joi.required(),
-		 pro_user: Joi.required(),
-		 show_modal: Joi.required(),
+	SIREN: Joi.required(),
+	company_name: Joi.required(),
+	pro_user: Joi.required(),
+	show_modal: Joi.required(),
+	mobile_number: Joi.number().required()
 };
 
 const supplier_register = {
@@ -55,6 +56,7 @@ const supplier_register = {
 	Squestion: Joi.string().required(),
 	answer: Joi.string().required(),
 	category: Joi.string().required(),
+	mobile_number: Joi.number().required()
 };
 
 const login = {
@@ -72,7 +74,7 @@ const update = {
 	address1: Joi.required(),
 	description: Joi.required(),
 	service_desc: Joi.required(),
-	tva:Joi.required(),
+	tva: Joi.required(),
 	company_name: Joi.required(),
 	siren: Joi.required(),
 	prof_pic: Joi.required(),

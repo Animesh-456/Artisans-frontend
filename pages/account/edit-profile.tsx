@@ -32,7 +32,8 @@ const EditProfile = () => {
         siren: user?.siren || "",
         tva: user?.pro_vat || "",
         prof_pic: user?.logo || "",
-        prot_pic: user?.prot_pic || ""
+        prot_pic: user?.prot_pic || "",
+
     });
     const setProfile = common.ChangeState(profileState);
 
@@ -693,8 +694,17 @@ const EditProfile = () => {
                                                 )}
 
                                             </div>
+                                            <div className="row">
+                                                <div className="col-sm-6">
+                                                    <label>Mobile Number</label>
+                                                    <input disabled name="mobile_number" type="text" value={user?.mobile_number}
+                                                    />
+                                                </div>
+                                                
+                                            </div>
                                             <hr />
                                         </div>
+
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <label>Profile Picture (Formats jpeg, jpg, png, gif-max: 640x350)</label>
@@ -726,7 +736,7 @@ const EditProfile = () => {
                                                     <ProgressBar now={pr} label={`${pr}%`} />
                                                 ) : (<></>)}
 
-                                                
+
 
                                                 {file && pr > 100 ? (
 

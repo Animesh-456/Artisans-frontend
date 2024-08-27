@@ -30,6 +30,7 @@ const CustomerSignIn = (props: Props) => {
 		company_number: "",
 		Squestion: "What is your pet's name?",
 		answer: "",
+		mobile_number: ""
 	});
 	const setSign = common.ChangeState(signstate);
 	const BaseURL = "http://localhost:4000/";
@@ -71,6 +72,7 @@ const CustomerSignIn = (props: Props) => {
 		if (disable) return;
 		setDisable(true);
 		signIn["category"] = categories?.map(item => item.id)?.join(',');
+		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits")
 		api.auth.supplier_register({ body: signIn }, (d) => {
 			if (storedProject != null) {
 				setUser(d.data);
@@ -340,6 +342,27 @@ const CustomerSignIn = (props: Props) => {
 											/>
 										</div>
 									</div>
+
+
+									<div className='row from_feild'>
+										<div className='col-sm-4'>
+											<label>
+												Number<span>*</span>
+											</label>
+										</div>
+										<div className='col-sm-8'>
+											<input
+												name='mobile_number'
+												type='number'
+												autoComplete={"off"}
+												value={signIn.mobile_number}
+												onChange={setSign("mobile_number")}
+												placeholder="+91 XXXXXXX890"
+											/>
+										</div>
+									</div>
+
+
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
 											<label>

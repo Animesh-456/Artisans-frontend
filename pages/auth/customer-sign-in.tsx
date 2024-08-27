@@ -30,6 +30,7 @@ const CustomerSignIn = (props: Props) => {
 		SIREN: "",
 		pro_user: 0,
 		show_modal: 0,
+		mobile_number: ""
 	});
 	const setSign = common.ChangeState(signstate);
 	const BaseURL = "http://localhost:4000/";
@@ -50,6 +51,8 @@ const CustomerSignIn = (props: Props) => {
 	const handleSumbit = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (disable) return;
+
+		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits");
 		if (!checkbox) {
 			toast.error("Please accept the terms")
 			return
@@ -156,6 +159,7 @@ const CustomerSignIn = (props: Props) => {
 			setmodal(false)
 		}
 	}
+
 
 	return (
 
@@ -281,6 +285,24 @@ const CustomerSignIn = (props: Props) => {
 											/>
 											<small>Your email address will not be shared. <a href={'/account/privacy'}>Privacy policy</a>
 											</small>
+										</div>
+									</div>
+
+									<div className='row from_feild'>
+										<div className='col-sm-4'>
+											<label>
+												Number<span>*</span>
+											</label>
+										</div>
+										<div className='col-sm-8'>
+											<input
+												name='mobile_number'
+												type='number'
+												
+												value={signIn.mobile_number}
+												onChange={setSign("mobile_number")}
+												placeholder="+91 XXXXXXX890"
+											/>
 										</div>
 									</div>
 									<div className="row from_feild">

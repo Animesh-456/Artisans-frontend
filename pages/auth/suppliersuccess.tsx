@@ -63,7 +63,7 @@ const suppliersuccess = () => {
 
                                 <p>Thank you for joining Aartstudio. You will </p>
 
-                                <p> received email message shortly
+                                <p> receive email message shortly
                                 </p>
                                 <img src="../img/tick.png" />
                                 <br />
