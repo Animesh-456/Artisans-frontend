@@ -192,6 +192,12 @@ function Home(prp) {
         7: 'img/photography.png',
         8: 'img/textile.png',
         9: 'img/ceramics.png',
+        10: 'img/glass_art.png',
+        11: 'img/digital-art.png',
+        13: 'img/calligraphy.png',
+        14: 'img/jewelry.png',
+        15: 'img/graffiti.png',
+        16: 'img/installation.png',
         // Add more mappings here
     };
 
@@ -348,7 +354,10 @@ function Home(prp) {
                                     <>
                                         <li key={cat?.id}>
                                             <a href={`/artworklisting?category=${cat?.id}`}>
-                                                <div className="QIkI1k0"><img src="img/icon.png" alt="" /></div>
+                                                <div className="QIkI1k0"><img
+                                                    src={categoryImages[cat?.id] || 'img/icon.png'}
+                                                    alt={cat?.category_name}
+                                                /></div>
                                                 <p>{cat?.category_name}</p>
                                             </a>
                                         </li>
