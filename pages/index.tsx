@@ -186,18 +186,18 @@ function Home(prp) {
     const [more, setmore] = useState(false);
 
     const categoryImages = {
-        1: 'img/icon.png', // Replace with your actual image paths
-        2: 'img/sculpture.png',
-        6: 'img/printmaking.png',
-        7: 'img/photography.png',
-        8: 'img/textile.png',
-        9: 'img/ceramics.png',
-        10: 'img/glass_art.png',
-        11: 'img/digital-art.png',
-        13: 'img/calligraphy.png',
-        14: 'img/jewelry.png',
-        15: 'img/graffiti.png',
-        16: 'img/installation.png',
+        1: 'img/painting.jpg', // Replace with your actual image paths
+        2: 'img/sculpture.jpg',
+        6: 'img/printmaking.jpg',
+        7: 'img/photography.jpg',
+        8: 'img/textile-art.jpg',
+        9: 'img/ceramics.jpg',
+        10: 'img/glass-art.jpg',
+        11: 'img/digital-art.jpg',
+        13: 'img/calligraphy.jpg',
+        14: 'img/jewelry-design.jpg',
+        15: 'img/graffiti-and-street-art.jpg',
+        16: 'img/installation-art.jpg',
         // Add more mappings here
     };
 

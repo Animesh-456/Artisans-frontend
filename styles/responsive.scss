@@ -117,7 +117,8 @@
     }
 
     .popular_category_listing li img {
-        width: 50px;
+        width: 100%;
+        height: 95px;
     }
 
     .popular_category_listing li a {
@@ -576,7 +577,8 @@
     }
 
     .popular_category_listing li img {
-        width: 50px;
+        width: 100%;
+        height: 95px;
     }
 
     .missionwp {
@@ -813,9 +815,7 @@
 
     .popular_category_listing li {
         width: auto;
-        padding: 10px 0;
         margin: 0 4px;
-        box-shadow: none;
     }
 
     .QIkI1k0 {
@@ -826,14 +826,10 @@
         -webkit-align-items: center;
         align-items: center;
         background-color: #fff;
-        border-radius: 16px;
-        -webkit-box-shadow: 0 0 0.880517px rgb(0 0 0 / 3%), 0 0 2.29197px rgb(0 0 0 / 3%), 0 0 5.52px rgb(0 0 0 / 5%), 0 0 11px rgb(0 0 0 / 9%);
-        box-shadow: 0 0 0.880517px rgb(0 0 0 / 3%), 0 0 2.29197px rgb(0 0 0 / 3%), 0 0 5.52px rgb(0 0 0 / 5%), 0 0 11px rgb(0 0 0 / 9%);
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-        height: 98px;
         -webkit-justify-content: center;
         justify-content: center;
     }
@@ -1514,8 +1510,8 @@
     }
 
     .popular_category_listing li a p {
-        padding-top: 8px;
-        font-size: 14px;
+        padding: 6px 0;
+        font-size: 13px;
         line-height: 21px;
         word-break: break-all;
         font-weight: 600;
