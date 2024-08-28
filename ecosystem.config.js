@@ -1,9 +1,8 @@
 module.exports = {
   apps: [
     {
-      "name": "WEB-APP",
-      "script": "npm",
-      "args": "start",
+      name: "Frontendapp",
+      script: "npm run start",
     },
   ],
 };

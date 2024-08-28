@@ -3986,3 +3986,13 @@ marquee {
     padding-left: 16px;
     overflow: hidden;
 }
+
+.stars::before {
+    content: "★★★★★";
+    font-size: 1.4rem;
+    display: inline-block;
+    --percent: calc(var(--rating)/5 * 100%);
+    background: linear-gradient(90deg, #f29e06 var(--percent), #ddd 0%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
