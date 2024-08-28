@@ -108,9 +108,6 @@ function Home(prp) {
     useEffect(() => {
         api.project.latest({ params: { page: 0 } });
         api.project.get_category_subcategory({})
-    }, []);
-
-    useEffect(() => {
         api.project.allreviews({ params: {} });
     }, []);
 
