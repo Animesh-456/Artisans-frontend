@@ -3846,6 +3846,8 @@ marquee {
     font-size: 14px;
 }
 
+// Old animmation for reviews start
+
 // .testimonial_w {
 //     display: flex;
 //     animation: scroll-left 30s linear infinite;
@@ -3866,6 +3868,10 @@ marquee {
 //     overflow: hidden;
 // }
 
+// Old animmation for reviews end
+
+
+// animesh animation for reviews start
 .testimonial_w {
     display: flex;
     animation: scroll-left 30s linear infinite;
@@ -3897,6 +3903,8 @@ marquee {
         transform: translateX(-50%);
     }
 }
+
+// animesh animation for reviews end
 
 .discover_left .heading_title {
     margin-bottom: 2em;

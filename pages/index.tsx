@@ -206,10 +206,8 @@ function Home(prp) {
 
 
     useEffect(() => {
-        if (mouseEntered) {
-            marqueeRef.current.style.animationPlayState = 'paused';
-        } else {
-            marqueeRef.current.style.animationPlayState = 'running';
+        if (marqueeRef.current) {
+            marqueeRef.current.style.animationPlayState = mouseEntered ? 'paused' : 'running';
         }
     }, [mouseEntered]);
 
