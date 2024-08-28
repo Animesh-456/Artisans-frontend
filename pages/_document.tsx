@@ -15,6 +15,17 @@ export default function Document() {
 					crossOrigin='anonymous'></link>
 
 				<script src='/js/bootstrap.bundle.min.js' defer></script>
+				<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZ6QWM0Z4M"></script>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NZ6QWM0Z4M');
+            `,
+					}}
+				/>
 			</Head>
 			<body>
 				<Main />
