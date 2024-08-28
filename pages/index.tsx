@@ -111,7 +111,7 @@ function Home(prp) {
     }, []);
 
     useEffect(() => {
-        api.project.allreviews({ params: opt });
+        api.project.allreviews({ params: {} });
     }, []);
 
 
