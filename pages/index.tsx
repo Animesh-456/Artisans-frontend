@@ -108,12 +108,11 @@ function Home(prp) {
     useEffect(() => {
         api.project.latest({ params: { page: 0 } });
         api.project.get_category_subcategory({})
-        api.project.allreviews({ params: {} });
     }, []);
 
-    // useEffect(() => {
-    //     api.project.allreviews({ params: opt });
-    // }, [opt]);
+    useEffect(() => {
+        api.project.allreviews({ params: {} });
+    }, []);
 
 
     const marqueeRef = useRef(null);
