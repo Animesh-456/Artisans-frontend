@@ -153,36 +153,66 @@ function Home(prp) {
     // }, [mouseEntered]);
 
 
+    // useEffect(() => {
+    //     const marquee = marqueeRef.current;
+    //     if (!marquee || allreviews.length === 0) return; // Ensure marquee exists and data is loaded
+
+    //     const container = marquee.querySelector('.inner');
+    //     const elWidth = container.scrollWidth; // Total width of the content
+
+    //     // Duplicate content by rendering the data twice to create the loop effect
+    //     let clone = container.cloneNode(true);
+    //     container.appendChild(clone);
+
+    //     let progress = 1;
+
+    //     const loop = () => {
+
+    //         progress -= speed;
+    //         if (progress <= -elWidth) {
+    //             progress = 0;
+    //         }
+    //         container.style.transform = `translateX(${progress}px)`;
+
+    //     };
+
+    //     const animationFrame = setInterval(loop, 20); // Run every ~16ms (~60fps)
+
+    //     return () => {
+    //         clearInterval(animationFrame);
+    //     };
+    // }, [mouseEntered, allreviews]);
+
+    // useEffect(() => {
+    //     const marquee = marqueeRef.current;
+    //     if (!marquee || allreviews.length === 0) return;
+
+    //     let progress = 0;
+
+    //     const loop = () => {
+    //         progress -= speed;
+    //         if (progress <= -marquee.scrollWidth / 2) {
+    //             progress = 0;
+    //         }
+    //         marquee.style.transform = `translateX(${progress}px)`;
+    //         window.requestAnimationFrame(loop);
+    //     };
+
+    //     loop();
+
+    //     return () => {
+    //         // Cleanup if needed
+    //     };
+    // }, [allreviews]);
+
+
     useEffect(() => {
-        const marquee = marqueeRef.current;
-        if (!marquee || allreviews.length === 0) return; // Ensure marquee exists and data is loaded
-
-        const container = marquee.querySelector('.inner');
-        const elWidth = container.scrollWidth; // Total width of the content
-
-        // Duplicate content by rendering the data twice to create the loop effect
-        let clone = container.cloneNode(true);
-        container.appendChild(clone);
-
-        let progress = 1;
-
-        const loop = () => {
-            if (!mouseEntered) {
-                progress -= speed;
-            }
-            if (progress <= -elWidth) {
-                progress = 0;
-            }
-            container.style.transform = `translateX(${progress}px)`;
-            window.requestAnimationFrame(loop);
-        };
-
-        loop();
-
-        return () => {
-            // Cleanup if needed
-        };
-    }, [mouseEntered, allreviews]);
+        if (mouseEntered) {
+            marqueeRef.current.style.animationPlayState = 'paused';
+        } else {
+            marqueeRef.current.style.animationPlayState = 'running';
+        }
+    }, [mouseEntered]);
 
     const [more, setmore] = useState(false);
 

@@ -3846,13 +3846,56 @@ marquee {
     font-size: 14px;
 }
 
+// .testimonial_w {
+//     display: flex;
+//     animation: scroll-left 30s linear infinite;
+// }
+
+// @keyframes scroll-left {
+//     from {
+//         transform: translateX(100%);
+//     }
+
+//     to {
+//         transform: translateX(-100%);
+//     }
+// }
+
+// .marquee {
+//     width: 100%;
+//     overflow: hidden;
+// }
+
 .testimonial_w {
     display: flex;
+    animation: scroll-left 30s linear infinite;
+    /* Duplicate content to create a seamless loop */
+    justify-content: space-between;
 }
 
 .marquee {
     width: 100%;
     overflow: hidden;
+    display: flex;
+    position: relative;
+}
+
+.testimonial_w::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    /* Adjust width as needed */
+    flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 .discover_left .heading_title {
