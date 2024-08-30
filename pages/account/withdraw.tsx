@@ -232,7 +232,7 @@ const Withdraw = (props: Props) => {
                                                 {/* <option value="paypal">Paypal</option> */}
                                                 <option value="bank">Bank Transfer</option>
                                             </select>
-                                            <p>for your first bank transfer payment, please email your bank details to us admin@machining-4u.co.uk</p>
+                                            <p>for your first bank transfer payment, please email your bank details to us info@aartstudio.in</p>
                                         </div>
                                     </div>
                                     <hr />
