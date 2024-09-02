@@ -65,6 +65,7 @@ class Client {
 			"project/get-category-subcategory",
 			"project/kyc",
 			"project/get-commision-rate",
+			"project/contact-us"
 		];
 
 		this.test = false;

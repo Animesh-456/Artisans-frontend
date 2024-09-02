@@ -1,8 +1,87 @@
 import Link from "next/link";
-import { CSSProperties } from 'react';
+import { CSSProperties, useState, useRef } from 'react';
+import { toast } from "react-hot-toast";
+import common from "../../src/helpers/common";
+import api from "../../src/api/services/api";
+const Contact = () => {
 
-const contact = () => {
 
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+
+    const [data, setdata] = useState({
+        role: "1",
+        name: "",
+        email: "",
+        mobile_number: "",
+        subject: "",
+        comment: "",
+    });
+
+    const [file, setFile] = useState([]);
+
+    const setproject = common.ChangeState(setdata);
+
+    const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const { files } = e.currentTarget;
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
+
+
+
+            if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "pdf") {
+                toast.error(`File extension .${extension} is not allowed`);
+                continue;
+            }
+
+            if (file.size / (1024 * 1024) > 10) {
+                toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
+                continue;
+            }
+
+            setFile((p) => [...p, file]);
+
+        }
+
+    };
+
+
+    // Deleting attachments
+
+    function delete_files(fileIndex) {
+        //setFile(file.filter(function (s) { return s !== e }))
+
+        const newFiles = [...file];
+        newFiles.splice(fileIndex, 1);
+        setFile(newFiles);
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+    }
+
+    const handleSubmit = () => {
+        let form = new FormData();
+        for (const key of Object.keys(file)) {
+            form.append("file", file[key]);
+        }
+
+
+        for (const key of Object.keys(data)) {
+            form.append(key, data[key]);
+        }
+
+
+        api.project.contact_us({ body: data, file: form }, (d) => {
+            for (const key of Object.keys(data)) {
+                setproject(key, "");
+            }
+            setFile([]);
+        });
+
+    }
 
 
     return (
@@ -52,43 +131,55 @@ const contact = () => {
                                 <div className="from_feild">
                                     <label>Are you a customer or a artist: <span>*</span></label>
                                     <div className="select_div">
-                                        <select>
-                                            <option>Select</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
+
+                                        <select
+                                            name='role'
+                                            onChange={setproject("role")}
+                                            value={data.role}>
+                                            <option value='1'>Customer</option>
+                                            <option value='2'>Artist</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="from_feild">
                                     <label>Your Name: <span>*</span></label>
-                                    <input type="text" name="text" placeholder="Type here..." />
+                                    <input value={data?.name} onChange={setproject("name")} type="text" name="text" placeholder="Type here..." />
                                 </div>
                                 <div className="from_feild">
                                     <label>Your Email Address: <span>*</span></label>
-                                    <input type="email" name="text" placeholder="Type here..." />
+                                    <input type="email" value={data?.email} onChange={setproject("email")} name="text" placeholder="Type here..." />
                                 </div>
                                 <div className="from_feild">
                                     <label>Phone Number: <span>*</span></label>
-                                    <input type="tel" name="text" placeholder="Type here..." />
+                                    <input type="tel" value={data?.mobile_number} onChange={setproject("mobile_number")} name="text" placeholder="Type here..." />
                                 </div>
                                 <div className="from_feild">
                                     <label>Subject: <span>*</span></label>
-                                    <input type="text" name="text" placeholder="Type here..." />
+                                    <input type="text" value={data?.subject} onChange={setproject("subject")} name="text" placeholder="Type here..." />
                                 </div>
                                 <div className="from_feild">
                                     <label>Comment: <span>*</span></label>
-                                    <textarea placeholder="Please enter the details of your request" rows={6} cols={50}></textarea>
+                                    <textarea value={data?.comment} onChange={setproject("comment")} placeholder="Please enter the details of your request" rows={6} cols={50}></textarea>
                                 </div>
                                 <div className="from_feild">
                                     <label>Attachments: <span>*</span></label>
                                     <div className="upload-btn-wrapper">
                                         <button className="btn">Add file or drop file here <i className="fa fa-upload"></i></button>
-                                        <input type="file" name="myfile" multiple />
+                                        <input onChange={handle_file_change} multiple={true} ref={fileInputRef} type="file" name="myfile" />
                                     </div>
                                 </div>
+
+                                <div className="upload_t file101">
+                                    {file ? (file?.map((f, index) => {
+                                        return (
+                                            <>
+                                                <p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>
+                                            </>
+                                        )
+                                    })) : (<></>)}
+                                </div>
                                 <div className="submit_cancel1">
-                                    <a href="#">Submit Now</a>
+                                    <a onClick={handleSubmit} style={{ cursor: "pointer", color: "#fff" }}>Submit Now</a>
                                 </div>
                             </form>
                         </div>
@@ -101,6 +192,6 @@ const contact = () => {
     )
 }
 
-contact.ignorePath = true
+Contact.ignorePath = true
 
-export default contact;
+export default Contact;

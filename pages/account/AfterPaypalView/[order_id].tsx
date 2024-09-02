@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Router from 'next/router';
 import toast from 'react-hot-toast';
 
+
+
 const Jobs = ({ paymentStatus, error }) => {
     const router = useRouter();
 
@@ -18,8 +20,6 @@ const Jobs = ({ paymentStatus, error }) => {
         Router.replace(localStorage.getItem('items'))
 
     };
-
-    console.log("paymentStatus", paymentStatus.order_status)
 
     return (
         <>
@@ -152,13 +152,13 @@ export const getStaticProps = async (context) => {
     }
 
     try {
-        const response = await fetch(`https://sandbox.cashfree.com/pg/orders/${params.order_id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_CASHFREEAPIURL}pg/orders/${params.order_id}`, {
             method: 'GET',
             headers: {
                 'accept': 'application/json',
-                'x-api-version': '2023-08-01',
-                'x-client-id': 'TEST10167206cb646b2c5b786024977f60276101',
-                'x-client-secret': 'cfsk_ma_test_27727896027d911c54b85a03aa909f2d_248e91f4',
+                'x-api-version': `${process.env.NEXT_PUBLIC_X_API_VERSION}`,
+                'x-client-id': `${process.env.NEXT_PUBLIC_XClientId}`,
+                'x-client-secret':  `${process.env.NEXT_PUBLIC_XClientSecret}`,
             },
         });
 
