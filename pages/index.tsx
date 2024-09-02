@@ -261,13 +261,13 @@ function Home(prp) {
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-5">
-                            {/* <div className="banner_pic">
+                            <div className="banner_pic">
                                 <img className="carve" src={"img/carve.png"} alt="carve-img" />
                                 <img src={"img/banner-img.png"} alt="banner-img" />
                                 <div className="createdby">
                                     <a href="#"><img src={"img/man.jpg"} alt="man-img" /> Created by Raveart</a>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                         <div className="col-sm-7">
                             <div className="banner_text">
