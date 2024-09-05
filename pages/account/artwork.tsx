@@ -126,6 +126,14 @@ const Artwork = () => {
             form.append("file", file[key]);
         }
 
+
+        if (videoFile?.length > 0) {
+
+            for (const key of Object.keys(videoFile)) {
+                form.append("videofile", videoFile[key]);
+            }
+        }
+
         const obj = {
             title: project?.title,
             description: project?.description,
@@ -329,7 +337,7 @@ const Artwork = () => {
     };
 
 
-    console.log("video fie", videoFile)
+
 
 
 
@@ -434,22 +442,22 @@ const Artwork = () => {
                                                                         <img src={URL.createObjectURL(f)} />
                                                                         <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i>
                                                                     </div>
-                                                                    
+
                                                                 </>
                                                             )
-                                                            
+
                                                         }) : (<></>)}
                                                     </div>
 
 
 
-                                                    {/* <div className="from_feild">
+                                                    <div className="from_feild">
                                                         <label>Upload video: <span></span></label>
                                                         <div className="upload-btn-wrapper">
                                                             <button className="btn">Upload <i className="fa fa-upload"></i></button>
                                                             <input required type="file" name="myfile" multiple
                                                                 onChange={handle_file_change_other}
-                                                             ref={videofileInputRef}
+                                                                ref={videofileInputRef}
                                                             />
                                                         </div>
                                                         <small>Video size limit 5MB</small>
@@ -466,7 +474,7 @@ const Artwork = () => {
                                                                 </div>
                                                             </>
                                                         )
-                                                    }) : (<></>)} */}
+                                                    }) : (<></>)}
 
 
                                                 </div>

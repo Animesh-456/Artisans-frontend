@@ -47,7 +47,13 @@ const EditProfileSideBar = [
 	{
 		title: "My Profile - Public View",
 		path: "/account/public-profile/[id]",
-		role: [1, 2],
+		role: [1],
+	},
+
+	{
+		title: "Public View",
+		path: "/account/artist-profile/[id]",
+		role: [2],
 	},
 
 
