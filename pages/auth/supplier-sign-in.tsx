@@ -64,12 +64,12 @@ const CustomerSignIn = (props: Props) => {
 
 	const handleSumbit = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (disable) return;
+		//if (disable) return;
 		if (!checkbox) {
 			toast.error("Please accept the terms")
 			return
 		};
-		if (disable) return;
+		//if (disable) return;
 		setDisable(true);
 		signIn["category"] = categories?.map(item => item.id)?.join(',');
 		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits")
@@ -256,7 +256,7 @@ const CustomerSignIn = (props: Props) => {
 										<div className="col-sm-8">
 											<input
 												name='ans'
-												type='text'
+												type='password'
 												autoComplete={"off"}
 												value={signIn.answer}
 												onChange={setSign("answer")}

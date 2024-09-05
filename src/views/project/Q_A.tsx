@@ -30,6 +30,9 @@ const Q_A = ({ d, user, data }: Props) => {
         setMessage((e.target.value = ""));
     };
 
+
+    console.log("data for answers", d)
+
     return (
         // <div className='col-sm-12'>
         //     <div className='ujs'>
@@ -102,11 +105,11 @@ const Q_A = ({ d, user, data }: Props) => {
                         )}
                     </div>
                     <div className="vcard">
-                       
+
                         {d?.reply?.map((elem) => {
                             return (
                                 <>
-                                 <h6>{d?.from?.user_name}</h6>
+                                    <h6>{elem?.from?.user_name}</h6>
                                     <p>{elem?.message}</p>
                                 </>
                             );

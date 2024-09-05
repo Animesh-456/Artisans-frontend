@@ -105,6 +105,9 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 					return [...p, d.data]
 				})
 				setFile(null);
+				allistmsgs();
+				allbidmsgs();
+
 			},
 		);
 	};
@@ -270,7 +273,8 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 
 	}
 
-	console.log(albidmsg)
+
+
 
 
 
@@ -298,7 +302,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							</div>
 						</div>
 
-						{user && (data?.programmer_id == user?.id || data?.creator_id == user?.id || bid?.user_id == user?.id) && (
+						{user && (bid?.user_id == user?.id || data?.creator_id == user?.id) && (
 							<>
 								<p>{bid?.bid_desc}</p>
 								<a onClick={() => {
@@ -314,7 +318,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 									setShow(!show);
 									setprogress(0)
 									setChangePic(false)
-								}} style={{ cursor: "pointer", color: "#fff" }}>Message to Artist</a>
+								}} style={{ cursor: "pointer", color: "#fff" }}>Message to {user?.role_id == 1 ? "Artist" : "Customer"}</a>
 								{albidmsg?.length > 1 && (
 									<a className="kts" style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setShow(!show)}>{show ? "Hide All messages" : "View All Messages"}</a>
 								)}
@@ -402,7 +406,9 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 									return (
 										<>
 
+
 											<p className={`${msg?.send_from == user?.id ? "odd" : "even"}`}>
+												<b>{msg?.send_from == bid?.user_id ? bid?.user?.user_name : data?.creator?.user_name}</b>
 												{String(msg?.attachment).includes(",") ? (
 
 													String(msg?.attachment).split(",").map((im) => {

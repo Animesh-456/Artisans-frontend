@@ -83,7 +83,7 @@ const Jobs = ({ paymentStatus, error }) => {
                                     <p>
                                         We confirm that your payment has been made.
                                         Thank you for depositing the funds. We have sent you a confirmation email.
-                                        Your Machinist will start working on your order.
+                                        Your Artist will start working on your order.
                                     </p>
                                     <img src="../../img/tick.png" />
                                     <br />

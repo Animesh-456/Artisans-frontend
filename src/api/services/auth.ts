@@ -71,7 +71,7 @@ export default {
       .then((d) => {
         if (d.status) {
           toast.success(d.message);
-	  let { head, body } = notification("Customer register", "Successfully registered as customer");
+          let { head, body } = notification("Customer register", "Successfully registered as customer");
           let final_obj: any = {
             head: head,
             body: body
@@ -81,7 +81,7 @@ export default {
           // finaldata.push(final_obj)
 
           let notifs = readAtom(atom.storage.all_notif);
-          let upNotif = [...notifs,final_obj];
+          let upNotif = [...notifs, final_obj];
           writeAtom(atom.storage.all_notif, upNotif)
 
           return cb(d);
@@ -106,7 +106,7 @@ export default {
       .then((d) => {
         if (d.status) {
           toast.success(d.message);
-	  let { head, body } = notification("Supplier register", "Successfully registered as machinist");
+          let { head, body } = notification("Supplier register", "Successfully registered as machinist");
           let final_obj: any = {
             head: head,
             body: body
@@ -116,7 +116,7 @@ export default {
           // finaldata.push(final_obj)
 
           let notifs = readAtom(atom.storage.all_notif);
-          let upNotif = [...notifs,final_obj];
+          let upNotif = [...notifs, final_obj];
           writeAtom(atom.storage.all_notif, upNotif)
 
           return cb(d);
@@ -167,7 +167,7 @@ export default {
           toast.success(d.message);
           writeAtom(atom.storage.user, d.data);
           localStorage.setItem("UserData", JSON.stringify(d.data));
-          writeAtom(atom.storage.loginmodal,true)
+          writeAtom(atom.storage.loginmodal, true)
 
           Router.push("/account/jobs");
           return cb(d);
@@ -192,7 +192,7 @@ export default {
       .then((d) => {
         if (d.status) {
           toast.success(d.message);
-	  let { head, body } = notification("Password changed", "Your password has been changed");
+          let { head, body } = notification("Password changed", "Your password has been changed");
           let final_obj: any = {
             head: head,
             body: body
@@ -202,7 +202,7 @@ export default {
           // finaldata.push(final_obj)
 
           let notifs = readAtom(atom.storage.all_notif);
-          let upNotif = [...notifs,final_obj];
+          let upNotif = [...notifs, final_obj];
           writeAtom(atom.storage.all_notif, upNotif)
           Router.push("/account/profile");
           return cb(d);
@@ -232,14 +232,14 @@ export default {
       })
       .catch((err) => console.log(err));
   },
- delivery_contacts: ({ params }: GetParams, cb?: GetResponse) => {
+  delivery_contacts: ({ params }: GetParams, cb?: GetResponse) => {
     api
       .get("auth/delivery_contacts", params)
       .then((d) => {
         if (d.status) {
           // api data
           writeAtom(atom.auth.api.delivery_contacts, d.data);
-          
+
 
           return cb(d);
         } else {
@@ -248,7 +248,7 @@ export default {
       })
       .catch((err) => console.log(err));
   },
-	
+
   countries: ({ params }: GetParams, cb?: GetResponse) => {
     api
       .get("auth/countries", params)
@@ -278,7 +278,7 @@ export default {
       .then((d) => {
         if (d.status) {
           toast.success(d.message);
-	  let { head, body } = notification("Profile Updated", "Your profile has been updated");
+          let { head, body } = notification("Profile Updated", "Your profile has been updated");
           let final_obj: any = {
             head: head,
             body: body
@@ -288,7 +288,7 @@ export default {
           // finaldata.push(final_obj)
 
           let notifs = readAtom(atom.storage.all_notif);
-          let upNotif = [...notifs,final_obj];
+          let upNotif = [...notifs, final_obj];
           writeAtom(atom.storage.all_notif, upNotif)
           Router.push("/account/profile");
           return cb(d);
@@ -299,7 +299,7 @@ export default {
       .catch((err) => console.log(err));
   },
 
-update_pro: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+  update_pro: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
     api.post("auth/update_pro", body, params).then((d) => {
       if (d.status) {
         toast.success(d.message)
@@ -360,7 +360,7 @@ update_pro: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
           return cb(d);
 
         }
-        else{
+        else {
           return toast.error(d.message);
         }
       })
@@ -387,7 +387,7 @@ update_pro: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
 
   },
 
-  update_balance: ({params, body}: PostParams, cb?: GetResponse)=>{
+  update_balance: ({ params, body }: PostParams, cb?: GetResponse) => {
     let data = Validate([], schema.auth.updateBalance, body);
 
     if (!data) {
@@ -396,14 +396,14 @@ update_pro: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
 
     // console.log("----->", data);
     // console.log("========>", params);
-    
-    
+
+
 
     api.post("auth/update-balance", data, params)
-    .then((d)=>{
-      if (d.status) {
-        writeAtom(atom.auth.api.update_balance, d.data);
-	let { head, body } = notification("Withdrawl successful", "Amount withdrawl");
+      .then((d) => {
+        if (d.status) {
+          writeAtom(atom.auth.api.update_balance, d.data);
+          let { head, body } = notification("Withdrawl successful", "Amount withdrawl");
           let final_obj: any = {
             head: head,
             body: body
@@ -413,13 +413,15 @@ update_pro: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
           // finaldata.push(final_obj)
 
           let notifs = readAtom(atom.storage.all_notif);
-          let upNotif = [...notifs,final_obj];
+          let upNotif = [...notifs, final_obj];
           writeAtom(atom.storage.all_notif, upNotif)
 
-        return cb(d);
-      } 
-    })
-    .catch((err) => console.log(err));
+          return cb(d);
+        }else {
+          return toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
 
   },
 
@@ -461,7 +463,7 @@ update_pro: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
 
   },
 
-update_modal: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+  update_modal: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
     api.post("auth/update_modal", body, params).then((d) => {
       if (d.status) {
         toast.success(d.message)
@@ -471,8 +473,8 @@ update_modal: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
       }
     })
   },
-  
-  
+
+
   generate_new_password: ({ params, body }: PostParams, cb?: GetResponse) => {
     api.post("auth/generate-new-password", body, params)
       .then((d) => {

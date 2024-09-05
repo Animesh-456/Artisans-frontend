@@ -62,6 +62,8 @@ const Withdraw = (props: Props) => {
 
         if (!val) return toast.error("Please provide an amount")
 
+        if (val > balanceData?.amount) return toast.error("Insuffcient funds to withdraw")
+
         setbtndisable(true)
 
         var e = (document.getElementById("payOptions")) as HTMLSelectElement;
@@ -81,7 +83,8 @@ const Withdraw = (props: Props) => {
                 setval(0);
                 setbtndisable(false)
             }
-        });
+        }
+        );
 
     }
 
@@ -258,9 +261,15 @@ const Withdraw = (props: Props) => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div className="reg-bottom">
-                                        <button disabled={btndisable ? true : false} type="submit" onClick={handleClick} name="submit">Withdraw Now</button>
-                                    </div>
+
+                                    {balanceData?.amount != 0 ? (
+
+                                        <div className="reg-bottom">
+                                            <button disabled={btndisable ? true : false} type="submit" onClick={handleClick} name="submit">Withdraw Now</button>
+                                        </div>
+                                    ) : (
+                                        <p>No balance to withdraw</p>
+                                    )}
                                 </div>
                             </div>
                         </div>

@@ -20,13 +20,7 @@ export default function Footer({ }: Props) {
 						</div>
 						<div className="col-sm-9">
 							<div className="footer_information">
-								<div className="footer_information1">
-									<div><i className="fa fa-phone"></i></div>
-									<div>
-										<h5>Phone</h5>
-										<a href="tel:+89 815-15-666">+91 89815 15666</a>
-									</div>
-								</div>
+
 								<div className="footer_information1">
 									<div><i className="fa fa-phone"></i></div>
 									<div>
@@ -38,7 +32,14 @@ export default function Footer({ }: Props) {
 									<div><i className="fa fa-solid fa-envelope"></i></div>
 									<div>
 										<h5>Email</h5>
-										<a href="mailto:Info@aartstudio.in">Info@aartstudio.in</a>
+										<a href="mailto:Info@aartstudio.in">aartstudio.in@gmail.com</a>
+									</div>
+								</div>
+								<div className="footer_information1">
+									<div><i className="fa fa-solid fa-envelope"></i></div>
+									<div>
+										<h5>Email</h5>
+										<a href="mailto:Info@aartstudio.in">info@aartstudio.in</a>
 									</div>
 								</div>
 
