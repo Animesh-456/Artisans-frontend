@@ -294,9 +294,10 @@
     }
 
     .submit_cancel a {
-        width: 100%;
-        display: block;
+        width: auto;
+        display: inline;
         margin-bottom: 17px;
+        margin-right: 13px;
     }
 
     .submit_cancel a:last-child {
@@ -418,6 +419,10 @@
 
     .howit_wp2 img {
         margin-top: -1em;
+    }
+    .manage_p2 img {
+        height: 95px;
+        object-fit: cover;
     }
 }
 
@@ -1176,9 +1181,10 @@
     }
 
     .submit_cancel a {
-        width: 100%;
-        display: block;
+        width: auto;
+        display: inline;
         margin-bottom: 17px;
+        margin-right: 13px;
     }
 
     .submit_cancel a:last-child {
@@ -1588,6 +1594,7 @@
     .manage_p2 {
         width: auto;
         margin-right: 0;
+        margin-bottom: 15px;
     }
 
     .artist_pro_tab {
@@ -1601,6 +1608,26 @@
 
     .howit5 {
         padding: 0;
+    }
+    h4.modal-title {
+        font-size: 18px;
+    }
+    .cnfm-job-attchmnts h5 {
+        font-size: 18px;
+        padding-bottom: 15px;
+    }
+    .reg-bottom button {
+        margin-right: 15px;
+    }
+    .reg-bottom button:last-child {
+        margin-right: 0;
+    }
+    .manage_p1 {
+        display: block;
+    }
+    .manage_p2 img {
+        height: 200px;
+        object-fit: cover;
     }
 
 }

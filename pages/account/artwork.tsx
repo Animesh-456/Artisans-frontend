@@ -17,6 +17,7 @@ const Artwork = () => {
     const router = useRouter();
 
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const videofileInputRef = useRef<HTMLInputElement>(null);
 
     const [project, projectstate] = useState({
         title: "",
@@ -28,6 +29,7 @@ const Artwork = () => {
     const get_art = useAtomValue(atom.project.api.get_art)
     const [deleteprot, setdeleteprot] = useState("");
     const [file, setFile] = useState([]);
+    const [videoFile, setvideoFile] = useState([]);
     const [modalfile, setmodalFile]: any = useState([]); // images from db for modal for edit art work
     const [extraModalFile, setExtraModalFile] = useState([]); //images from local machine for edit art work
 
@@ -47,13 +49,42 @@ const Artwork = () => {
             const file = files[i];
             const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
 
-            if (file.size / (1024 * 1024) > 10) {
-                toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
+            if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png") {
+                toast.error(`File extension .${extension} is not allowed`);
+                continue;
+            }
+
+            if (file.size / (1024 * 1024) > 5) {
+                toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 5 MB`);
                 continue;
             }
 
             setFile((p) => [...p, file]);
 
+        }
+
+    };
+
+
+    const handle_file_change_other: any = (e: React.MouseEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const { files } = e.currentTarget;
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
+
+            if (extension.toLowerCase() !== "mp4") {
+                toast.error(`File extension .${extension} is not allowed`);
+                continue;
+            }
+
+            if (file.size / (1024 * 1024) > 5) {
+                toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 5 MB`);
+                continue;
+            }
+
+            setvideoFile((p) => [...p, file]);
         }
 
     };
@@ -136,6 +167,16 @@ const Artwork = () => {
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
+    }
+
+    function delete_video_files(fileIndex) {
+        const newFiles = [...videoFile];
+        newFiles.splice(fileIndex, 1);
+        setvideoFile(newFiles);
+        if (videofileInputRef.current) {
+            videofileInputRef.current.value = '';
+        }
+
     }
 
     function delete_modal_files(fileIndex) {
@@ -277,7 +318,7 @@ const Artwork = () => {
         category.push({ id: sub?.id, value: sub?.category_name, label: sub?.category_name })
     })
 
-    
+
     const handleDisplayChange = (options) => {
         setDisplayOptions(options);
     };
@@ -286,6 +327,9 @@ const Artwork = () => {
     const onRemovesecond = (selectedList) => {
         setDisplayOptions(selectedList)
     };
+
+
+    console.log("video fie", videoFile)
 
 
 
@@ -365,7 +409,7 @@ const Artwork = () => {
                                                     </div>
 
                                                     <div className="from_feild">
-                                                        <label>Upload image/video: <span>*</span></label>
+                                                        <label>Upload image: <span>*</span></label>
                                                         <div className="upload-btn-wrapper">
                                                             <button className="btn">Upload <i className="fa fa-upload"></i></button>
                                                             <input required type="file" name="myfile" multiple
@@ -375,6 +419,9 @@ const Artwork = () => {
                                                         </div>
                                                         {/* <small>Video size limit 50MB</small> */}
                                                     </div>
+
+
+
 
 
                                                     <div className="manage_p1">
@@ -387,10 +434,40 @@ const Artwork = () => {
                                                                         <img src={URL.createObjectURL(f)} />
                                                                         <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i>
                                                                     </div>
+                                                                    
                                                                 </>
                                                             )
+                                                            
                                                         }) : (<></>)}
                                                     </div>
+
+
+
+                                                    {/* <div className="from_feild">
+                                                        <label>Upload video: <span></span></label>
+                                                        <div className="upload-btn-wrapper">
+                                                            <button className="btn">Upload <i className="fa fa-upload"></i></button>
+                                                            <input required type="file" name="myfile" multiple
+                                                                onChange={handle_file_change_other}
+                                                             ref={videofileInputRef}
+                                                            />
+                                                        </div>
+                                                        <small>Video size limit 5MB</small>
+                                                    </div>
+
+
+
+                                                    {videoFile?.length ? videoFile?.map((f, index) => {
+                                                        return (
+                                                            <>
+                                                                <div className="upload_t">
+
+                                                                    <p><i className="fa fa-check"></i>{f?.name}<i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_video_files(index)}></i></p>
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    }) : (<></>)} */}
+
 
                                                 </div>
 

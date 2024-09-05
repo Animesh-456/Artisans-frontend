@@ -168,11 +168,14 @@ const Kyc = () => {
                                                     <input type="number" disabled={readOnly} name="text" placeholder="Enter aadhar Number" value={project?.aadhar_number} onChange={setproject("aadhar_number")} />
                                                 </div>
                                             </div>
-                                            <div className="col-sm-6">
-                                                <div className="from_feild">
-                                                    <label>GST: </label>
-                                                    <input type="text" disabled={readOnly} name="text" placeholder="Enter GSTIN" value={project?.gst} onChange={setproject("gst")} />
-                                                </div>
+
+                                        </div>
+
+
+                                        <div className="from_feild">
+                                            <div className="from_feild">
+                                                <label>GST: </label>
+                                                <input type="text" disabled={readOnly} name="text" placeholder="Enter GSTIN" value={project?.gst} onChange={setproject("gst")} />
                                             </div>
                                         </div>
                                         <div className="from_feild">

@@ -1120,6 +1120,7 @@ label {
 .from_feild input[type="email"],
 .from_feild input[type="password"],
 .from_feild input[type="tel"],
+.from_feild input[type="number"],
 .from_feild select,
 .from_feild input[type="date"] {
     width: 100%;
@@ -1214,6 +1215,7 @@ label {
     font-size: 15px;
     padding-bottom: 25px;
     line-height: 25px;
+    white-space: pre-line;
 }
 
 .question_a {
@@ -3256,12 +3258,14 @@ hr {
     width: 100%;
     border-radius: 10px;
     height: 245px;
+    object-fit: cover;
 }
 
 .artist_pro_tab .col-sm-3 p {
     font-weight: 600;
     font-size: 15px;
     padding: 7px 0;
+    text-transform: capitalize;
 }
 
 .artist_pro_tab .col-sm-3 {
@@ -3796,6 +3800,7 @@ marquee {
     min-width: 430px;
     margin-right: 20px;
     background-color: #F7F5F0;
+    height: fit-content;
 }
 
 .testimonial-content {
@@ -3946,6 +3951,7 @@ marquee {
     padding: 6px 22px;
     transition: box-shadow 1s ease 0s;
     box-shadow: 0 1px 2px 2px #47120f;
+    border: none;
 }
 
 .checkandsubmit button:hover {
@@ -3995,4 +4001,9 @@ marquee {
     background: linear-gradient(90deg, #f29e06 var(--percent), #ddd 0%);
     -webkit-background-clip: text;
     color: transparent;
+}
+.manage_p2 .fa.fa-times-circle {
+    position: absolute;
+    right: 4px;
+    top: 4px;
 }

@@ -694,16 +694,20 @@ const EditProfile = () => {
                                                 )}
 
                                             </div>
-                                            <div className="row">
-                                                <div className="col-sm-6">
-                                                    <label>Mobile Number</label>
-                                                    <input disabled name="mobile_number" type="text" value={user?.mobile_number}
-                                                    />
-                                                </div>
-                                                
-                                            </div>
+
                                             <hr />
                                         </div>
+
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <label>Mobile Number</label>
+                                                <input disabled name="mobile_number" type="text" value={user?.mobile_number}
+                                                />
+                                            </div>
+
+                                        </div>
+
+
 
                                         <div className="row">
                                             <div className="col-sm-6">
