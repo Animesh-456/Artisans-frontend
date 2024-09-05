@@ -33,7 +33,8 @@ const CustomerSignIn = (props: Props) => {
 		mobile_number: ""
 	});
 	const setSign = common.ChangeState(signstate);
-	const BaseURL = "http://localhost:4000/";
+	// const BaseURL = "http://localhost:4000/";
+	const BaseURL = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`;
 
 	const [disable, setDisable] = useState(false);
 	const [storedProject, setStoredProject] = useAtom(atom.storage.project);

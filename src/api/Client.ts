@@ -15,7 +15,8 @@ class Client {
 	public test: boolean;
 
 	constructor(options: any = {}) {
-		this.BaseURL = "http://localhost:4000/";
+		// this.BaseURL = "http://localhost:4000/";
+		this.BaseURL = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`;
 		this.headers = options.headers || {};
 		this.headers["Content-Type"] = "application/json";
 		axios.defaults.timeout = 12000;

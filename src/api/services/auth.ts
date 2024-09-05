@@ -136,7 +136,8 @@ export default {
 
     delete data.agreed;
 
-    const BaseURL = "http://localhost:4000/";
+    // const BaseURL = "http://localhost:4000/";
+    const BaseURL = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`;
 
     // api
     // 	.post("user/auth/logink", data, paramsparams)
@@ -417,7 +418,7 @@ export default {
           writeAtom(atom.storage.all_notif, upNotif)
 
           return cb(d);
-        }else {
+        } else {
           return toast.error(d.message);
         }
       })
