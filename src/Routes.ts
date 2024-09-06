@@ -50,13 +50,6 @@ const EditProfileSideBar = [
 		role: [1],
 	},
 
-	{
-		title: "Public View",
-		path: "/account/artist-profile/[id]",
-		role: [2],
-	},
-
-
 
 	{
 		title: "My Profile",

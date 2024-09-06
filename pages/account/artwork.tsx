@@ -31,6 +31,7 @@ const Artwork = () => {
     const [file, setFile] = useState([]);
     const [videoFile, setvideoFile] = useState([]);
     const [modalfile, setmodalFile]: any = useState([]); // images from db for modal for edit art work
+    const [modalvideofile, setmodalvideoFile]: any = useState([]);
     const [extraModalFile, setExtraModalFile] = useState([]); //images from local machine for edit art work
 
     const setproject = common.ChangeState(projectstate);
@@ -205,6 +206,34 @@ const Artwork = () => {
         }
     }
 
+
+
+
+
+    function delete_video_modal_files(fileIndex) {
+        const newFiles = [...modalvideofile];
+        newFiles.splice(fileIndex, 1);
+        setmodalvideoFile(newFiles);
+        if (videofileInputRef.current) {
+            videofileInputRef.current.value = '';
+        }
+    }
+
+    function delete_extra_video_modal_files(fileIndex) {
+        const newFiles = [...extraModalFile];
+        newFiles.splice(fileIndex, 1);
+        setExtraModalFile(newFiles);
+        if (videofileInputRef.current) {
+            videofileInputRef.current.value = '';
+        }
+    }
+
+
+
+
+
+
+
     const handle_delete_art_image = () => {
 
         api.project.delete_art_image({
@@ -240,6 +269,10 @@ const Artwork = () => {
             id: art.id,
         });
         setmodalFile(art?.attachment1.split(','))
+
+        if (art?.attachment2) {
+            setmodalvideoFile(art?.attachment2.split(','))
+        }
         setIsModalOpen(true);
     };
 
@@ -586,15 +619,16 @@ const Artwork = () => {
 
                                                     </div>
                                                     <div className="from_feild">
-                                                        <label>Upload image/video: <span>*</span></label>
+                                                        <label>Upload image: <span>*</span></label>
                                                         <div className="upload-btn-wrapper">
                                                             <button className="btn">Upload <i className="fa fa-upload"></i></button>
                                                             <input type="file" name="myfile" onChange={handle_file_change_modal} multiple />
                                                         </div>
-                                                        <div className="manage_p">
+                                                        {/* <div className="manage_p">
                                                             <small>Video size limit 50MB</small>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
+
                                                     <div className="gallery_p1">
 
 
@@ -602,7 +636,7 @@ const Artwork = () => {
                                                             return (
                                                                 <>
                                                                     <div className="manage_p2">
-                                                                        {/* <p>{f?.name}</p> */}
+
                                                                         <img src={common.get_portfolio_pic(f)} />
                                                                         <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_modal_files(index)}></i>
                                                                     </div>
@@ -614,7 +648,7 @@ const Artwork = () => {
                                                             return (
                                                                 <>
                                                                     <div className="manage_p2">
-                                                                        {/* <p>{f?.name}</p> */}
+
                                                                         <img src={URL.createObjectURL(f)} />
                                                                         <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_extra_modal_files(index)}></i>
                                                                     </div>
@@ -625,6 +659,37 @@ const Artwork = () => {
 
 
                                                     </div>
+
+                                                    <div className="from_feild">
+                                                        <label>Upload image/video: </label>
+                                                        <div className="upload-btn-wrapper">
+                                                            <button className="btn">Upload <i className="fa fa-upload"></i></button>
+                                                            <input type="file" name="myfile" onChange={handle_file_change_modal} multiple />
+                                                        </div>
+                                                        <div className="manage_p">
+                                                            <small>Video size limit 5MB</small>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="gallery_p1">
+
+
+                                                        {modalvideofile?.length > 0 ? modalvideofile?.map((f, index) => { //videos from db edit art
+                                                            return (
+                                                                <>
+                                                                    <div className="upload_t">
+                                                                        <a href={common.get_portfolio_pic(f)}><p><i className="fa fa-check"></i> {f} <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_video_modal_files(index)}></i></p></a>
+                                                                    </div>
+                                                                </>
+                                                            )
+                                                        }) : (<></>)}
+
+
+
+
+
+                                                    </div>
+
                                                     <br />
                                                     <br />
                                                     <div className="submit_cancel">
