@@ -18,6 +18,7 @@ const Artwork = () => {
 
     const fileInputRef = useRef<HTMLInputElement>(null);
     const videofileInputRef = useRef<HTMLInputElement>(null);
+    const videofileInputRef2 = useRef<HTMLInputElement>(null);
 
     const [project, projectstate] = useState({
         title: "",
@@ -33,6 +34,8 @@ const Artwork = () => {
     const [modalfile, setmodalFile]: any = useState([]); // images from db for modal for edit art work
     const [modalvideofile, setmodalvideoFile]: any = useState([]);
     const [extraModalFile, setExtraModalFile] = useState([]); //images from local machine for edit art work
+
+    const [extraModalVideoFile, setExtraModalvideoFile] = useState([]); //videos from local machine for edit art work
 
     const setproject = common.ChangeState(projectstate);
     const [open_machinist, setOpen_machinist] = useAtom(atom.modal.art_delete);
@@ -99,6 +102,11 @@ const Artwork = () => {
             const file = files[i];
             const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
 
+            if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png") {
+                toast.error(`File extension .${extension} is not allowed`);
+                continue;
+            }
+
             if (file.size / (1024 * 1024) > 10) {
                 toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
                 continue;
@@ -109,6 +117,34 @@ const Artwork = () => {
         }
 
     };
+
+
+
+    const handle_video_file_change_modal: any = (e: React.MouseEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const { files } = e.currentTarget;
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
+
+            if (extension.toLowerCase() !== "mp4") {
+                toast.error(`File extension .${extension} is not allowed`);
+                continue;
+            }
+
+            if (file.size / (1024 * 1024) > 5) {
+                toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1024 * 1024)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
+                continue;
+            }
+
+            setExtraModalvideoFile((p) => [...p, file]);
+
+        }
+
+    };
+
+
 
     useEffect(() => {
         const id = user?.id
@@ -219,15 +255,16 @@ const Artwork = () => {
         }
     }
 
-    function delete_extra_video_modal_files(fileIndex) {
-        const newFiles = [...extraModalFile];
+    function delete_video_modal_files_extra(fileIndex) {
+        const newFiles = [...extraModalVideoFile];
         newFiles.splice(fileIndex, 1);
-        setExtraModalFile(newFiles);
-        if (videofileInputRef.current) {
-            videofileInputRef.current.value = '';
+        setExtraModalvideoFile(newFiles);
+        if (videofileInputRef2.current) {
+            videofileInputRef2.current.value = '';
         }
     }
 
+    
 
 
 
@@ -302,12 +339,24 @@ const Artwork = () => {
             form.append("file", extraModalFile[key]);
         }
 
+
+        if (extraModalVideoFile?.length > 0) {
+
+            for (const key of Object.keys(extraModalVideoFile)) {
+                form.append("videofile", extraModalVideoFile[key]);
+            }
+        }
+
+
+
+
         const obj = {
             id: formData?.id,
             title: formData?.title,
             category: displayOptions.map(option => option.id).join(','),
             description: formData?.description,
-            existingFiles: modalfile?.join(',')
+            existingFiles: modalfile?.join(','),
+            existingvideoFiles: modalvideofile?.join(','), 
         }
 
 
@@ -368,6 +417,8 @@ const Artwork = () => {
     const onRemovesecond = (selectedList) => {
         setDisplayOptions(selectedList)
     };
+
+
 
 
 
@@ -664,7 +715,7 @@ const Artwork = () => {
                                                         <label>Upload image/video: </label>
                                                         <div className="upload-btn-wrapper">
                                                             <button className="btn">Upload <i className="fa fa-upload"></i></button>
-                                                            <input type="file" name="myfile" onChange={handle_file_change_modal} multiple />
+                                                            <input type="file" ref={videofileInputRef2} name="myfile" onChange={handle_video_file_change_modal} multiple />
                                                         </div>
                                                         <div className="manage_p">
                                                             <small>Video size limit 5MB</small>
@@ -678,7 +729,18 @@ const Artwork = () => {
                                                             return (
                                                                 <>
                                                                     <div className="upload_t">
-                                                                        <a href={common.get_portfolio_pic(f)}><p><i className="fa fa-check"></i> {f} <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_video_modal_files(index)}></i></p></a>
+                                                                        <p><i className="fa fa-check"></i>  <a rel="noreferrer" target={"_blank"} href={common.get_portfolio_pic(f)}>{f}</a> <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_video_modal_files(index)}></i></p>
+                                                                    </div>
+                                                                </>
+                                                            )
+                                                        }) : (<></>)}
+
+
+                                                        {extraModalVideoFile?.length ? extraModalVideoFile?.map((f, index) => { //videos from local edit art
+                                                            return (
+                                                                <>
+                                                                    <div className="upload_t">
+                                                                        <p><i className="fa fa-check"></i>  {f?.name} <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_video_modal_files_extra(index)}></i></p>
                                                                     </div>
                                                                 </>
                                                             )

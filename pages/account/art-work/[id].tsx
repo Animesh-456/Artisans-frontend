@@ -57,20 +57,34 @@ const Artwork = () => {
                     <div className="port_fo">
                         <img src={common.get_portfolio_pic(get_portfolio_art?.attachment1?.split(',')[slides]) || "../../no-images.png"} alt="" />
                     </div>
-                   
+
                     <div className="portfolio_thamb">
                         <Carousel responsive={responsive} itemAriaLabel="hhh">
 
+
                             {get_portfolio_art?.attachment1?.length ? get_portfolio_art?.attachment1?.split(',')?.map((f, index) => {
                                 return (
-                                    <img style={{cursor: "pointer"}} onClick={() => setslides(index)} key={index} src={common.get_portfolio_pic(f) || "../../no-images.png"} alt="" />
+                                    <img style={{ cursor: "pointer" }} onClick={() => setslides(index)} key={index} src={common.get_portfolio_pic(f) || "../../no-images.png"} alt="" />
                                 )
                             }) : (
                                 <></>
                             )}
 
                         </Carousel>
+
+                        <Carousel responsive={responsive} itemAriaLabel="hhh">
+
+                            {get_portfolio_art?.attachment2?.length ? get_portfolio_art?.attachment2?.split(',')?.map((f, index) => {
+                                return (
+                                    <video controls style={{ cursor: "pointer" }} key={index} src={common.get_portfolio_pic(f) || "../../no-images.png"} />
+                                )
+                            }) : (
+                                <></>
+                            )}
+                        </Carousel>
                     </div>
+
+
                 </div>
             </div>
             <div className="col-sm-4">
@@ -104,7 +118,7 @@ const Artwork = () => {
                                         </>
                                     )
                                 })}
-                                
+
                             </ul>
                         </div>
                         <p>{get_portfolio_art?.description}</p>

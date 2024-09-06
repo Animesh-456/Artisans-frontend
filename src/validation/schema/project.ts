@@ -41,6 +41,7 @@ const edit_art = {
 	description: Joi.string().required(),
 	category: Joi.string().required(),
 	existingFiles: Joi.required(),
+	existingvideoFiles: Joi.required(),
 };
 
 const question = {
