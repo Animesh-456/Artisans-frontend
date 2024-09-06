@@ -46,7 +46,7 @@ const about = (prp) => {
         <Head>
                 <title>{`${prp?.prp?.data[6].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[6].page_desc}`} />
-                <meta name="robots" content="noindex" />
+               
 
                 <meta name="googlebot" content="noindex" />
 
