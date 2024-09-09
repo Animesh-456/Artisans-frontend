@@ -1204,6 +1204,24 @@ export default {
 
   },
 
+
+  page_content_details: ({ params }, cb?: GetResponse) => {
+    api
+      .get("project/page-content-details", params)
+      .then((d) => {
+        if (d.status) {
+          // api data
+          //writeAtom(atom.project.api.page_details, d.data);
+          // callback
+          return cb(d);
+        } else {
+          return toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+
+  },
+
   project_detail_seo: ({ params }, cb?: GetResponse) => {
     api
       .get("project/project-detail-seo", params)

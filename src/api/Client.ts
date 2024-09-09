@@ -55,6 +55,7 @@ class Client {
 			"project/project_finalise_image",
 			"project/get-additional-comment",
 			"project/page-details",
+			"project/page-content-details",
 			"project/project-detail-seo",
 			"project/public-profile-finalised-image",
 			"project/paypal-transaction-complete",

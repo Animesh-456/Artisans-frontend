@@ -3,7 +3,32 @@ import { CSSProperties, useState, useRef } from 'react';
 import { toast } from "react-hot-toast";
 import common from "../../src/helpers/common";
 import api from "../../src/api/services/api";
-const Contact = () => {
+import env from "../../src/config/api";
+
+export const getStaticProps = async () => {
+	try {
+		const response = await fetch(`${env.base_url}project/page-details`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch');
+		}
+		const data = await response.json();
+
+		return {
+			props: {
+				prp: data // Assuming the fetched data structure matches what's expected
+			}
+		};
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		return {
+			props: {
+				prp: null // Or any default value indicating an error occurred
+			}
+		};
+	}
+};
+
+const Contact = (prp) => {
 
 
     const fileInputRef = useRef<HTMLInputElement>(null);

@@ -5,8 +5,33 @@ import atom from "../../src/jotai/atom";
 import common from "../../src/helpers/common";
 import { CSSProperties } from 'react';
 import api from "../../src/api/services/api";
+import env from "../../src/config/api";
 
-const about = () => {
+
+export const getStaticProps = async () => {
+	try {
+		const response = await fetch(`${env.base_url}project/page-details`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch');
+		}
+		const data = await response.json();
+
+		return {
+			props: {
+				prp: data // Assuming the fetched data structure matches what's expected
+			}
+		};
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		return {
+			props: {
+				prp: null // Or any default value indicating an error occurred
+			}
+		};
+	}
+};
+
+const about = (prp) => {
     const allreviews = useAtomValue(atom.project.api.allreviews);
 
     const marqueeRef = useRef(null);

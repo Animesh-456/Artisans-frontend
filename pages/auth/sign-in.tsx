@@ -10,8 +10,44 @@ import IndexHeader from "../../src/views/index/IndexHeader";
 import { writeAtom } from "jotai-nexus";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import env from "../../src/config/api";
 type Props = {};
-const SignIn = (props: Props) => {
+
+
+export const getStaticProps = async () => {
+	try {
+		const response = await fetch(`${env.base_url}project/page-details`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch');
+		}
+		const data = await response.json();
+
+
+		// Second API call
+		const response2 = await fetch(`${env.base_url}project/page-content-details`);
+		if (!response2.ok) {
+			throw new Error('Failed to fetch data from the second API');
+		}
+		const data2 = await response2.json();
+
+		return {
+			props: {
+				prp: data,
+				prp2: data2 // Assuming the fetched data structure matches what's expected
+			}
+		};
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		return {
+			props: {
+				prp: null,
+				prp2: null// Or any default value indicating an error occurred
+			}
+		};
+	}
+};
+
+const SignIn = (props: Props, prp, prp2) => {
 
 	const radio_login = useAtomValue(atom.storage.radio_login)
 	const [check, checkstate] = useState({
