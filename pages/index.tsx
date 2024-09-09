@@ -434,47 +434,9 @@ function Home(prp) {
             </div> */}
 
 
-            <section className="discover_wp" >
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-5 discover_left">
-                            <div className="heading_title">
-                                <h1>Discover Your Artwork</h1>
-                            </div>
-                            <p>
-                                Welcome to AARTSTUDIO, the premier online platform where talented artisans and artists are
-                                ready to create custom artwork just for you. Whether you're envisioning a unique painting, a
-                                stunning sculpture, or any other form of artwork, AARTSTUDIO makes the process easy and
-                                enjoyable.
-                            </p>
-                            <p>Browse through our extensive directory of skilled artisans, each showcasing their unique style
-                                and portfolio. You'll find a variety of artistic talents, ensuring you can discover an artist whose
-                                work resonates with your vision.</p>
-                            {/* <p>
-                                Share your custom art needs and ideas on AARTSTUDIO. Detail your vision, preferences, and any
-                                specific requirements to give the artisans a clear understanding of what you’re looking for.
-                                AARTSTUDIO will connect you with the right artist to create your perfect custom artwork.
-                            </p>
-                            <p>
-                                Discovering and commissioning custom artwork has never been easier. AARTSTUDIO simplifies
-                                the process of commissioning custom art, providing a seamless and enjoyable experience for
-                                both customers and artisans.
-                            </p>
-                            <p>
-                                Explore the world of art, and let us help you discover your next masterpiece!
-                            </p> */}
+           {/* Dynamic content from db */}
 
-                            <Link href={`/artrequest`}>Know More</Link>
-                        </div>
-                        <div className="col-sm-7">
-                            <div className="discover_img">
-                                <img className="carve_pic" src="img/pic1.png" alt="" />
-                                <img className="pic1" src="img/pic.png" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+           <div dangerouslySetInnerHTML={{ __html: prp?.prp2?.data[0]?.text }} />
 
 
             {/* <div className="container-fluid recent-art">
