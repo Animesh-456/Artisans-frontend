@@ -45,7 +45,7 @@ export const getStaticProps = async () => {
 const privacy = (prp) => {
 
 
-
+    console.log("prp2 is", prp?.prp2)
 
 
     return (

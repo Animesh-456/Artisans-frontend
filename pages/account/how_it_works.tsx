@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
         }
         const data = await response.json();
 
-        const params: any = {   
+        const params: any = {
             id: 23,  // Extracted ID from the first API response
             status: 'active', // Any other parameters you want to pass
         };

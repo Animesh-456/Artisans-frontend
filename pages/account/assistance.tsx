@@ -443,7 +443,7 @@ const assistance = (prp) => {
             msetshow35(true)
         }
     }
-
+    console.log("prp2 is", prp?.prp2)
     return (
         <>
 

@@ -40,7 +40,8 @@ export const getStaticProps = async () => {
 
 
 
-const terms = () => {
+const terms = (prp) => {
+    console.log("prp2 is", prp?.prp2)
 
     return (
         <>

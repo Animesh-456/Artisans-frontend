@@ -123,6 +123,8 @@ const Contact = (prp) => {
 
     }
 
+    console.log("prp2 is", prp?.prp2)
+
 
     return (
         <>
