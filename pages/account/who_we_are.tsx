@@ -8,8 +8,8 @@ import Head from "next/head";
 import Client from "../../src/api/Client";
 import env from "../../src/config/api";
 
-let metadata= {
-    title:"abcd",
+let metadata = {
+    title: "abcd",
     description: "how its works"
 }
 
@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
             throw new Error('Failed to fetch');
         }
         const data = await response.json();
-        
+
         return {
             props: {
                 prp: data // Assuming the fetched data structure matches what's expected
@@ -38,30 +38,28 @@ export const getStaticProps = async () => {
 };
 
 const about = (prp) => {
-        console.log("the users from static props  are : -", prp?.prp)
+    console.log("the users from static props  are : -", prp?.prp)
 
 
     return (
         <>
-        <Head>
+            <Head>
                 <title>{`${prp?.prp?.data[6].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[6].page_desc}`} />
-               
 
-                <meta name="googlebot" content="noindex" />
 
             </Head>
-	    <div
-					className='banner_wp sign_banner'
-					style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
-					<div className='container'>
-						<div className='row'>
-							<div className='banner_text inner_banner_text'>
-								<h1 className='yh'>Who are we?</h1>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div
+                className='banner_wp sign_banner'
+                style={{ backgroundImage: "url(/img/banner1.jpg)" }}>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='banner_text inner_banner_text'>
+                            <h1 className='yh'>Who are we?</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div className="container cjw">
                 <div className="col-sm-12 howit5">
@@ -76,12 +74,12 @@ const about = (prp) => {
                         <p><i className="fa fa-envelope"></i> admin@machining-4u.co.uk  </p>
                         <p>MACHINING-4U</p>
                         <p><i className="fa fa-map-marker"></i>
-                            
+
                             57 Rathbone Place, London W1T 1JT
                         </p>
                         <p><i className="fa fa-phone"></i> Tel :  020 3290 1191 </p>
-                       
-                        
+
+
                     </div>
                 </div>
             </div>

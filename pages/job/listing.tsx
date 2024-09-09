@@ -1,5 +1,6 @@
 import { useAtom, useAtomValue } from "jotai";
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 
 import api from "../../src/api/services/api";
 import common from "../../src/helpers/common";
@@ -185,6 +186,10 @@ const Listing = (prp) => {
     return (
         <>
 
+            <Head>
+                <title>{`${prp?.prp?.data[4].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[4].page_desc}`} />
+            </Head>
 
             <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">

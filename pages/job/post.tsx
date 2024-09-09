@@ -44,6 +44,7 @@ export const getStaticProps = async () => {
 };
 
 const Post = (prp) => {
+	console.log("SEO DATA", prp)
 	const router = useRouter();
 
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -392,6 +393,12 @@ const Post = (prp) => {
 	return (
 		<>
 
+
+			<Head>
+				<title>{`${prp?.prp?.data[2].page_title}`}</title>
+				<meta name="description" content={`${prp?.prp?.data[2].page_desc}`} />
+			</Head>
+
 			<section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
 				<div className="container">
 					<h1>Post Your Art Request</h1>
@@ -518,7 +525,7 @@ const Post = (prp) => {
 										<input type="file" name="myfile" onChange={handle_file_change} multiple={true} ref={fileInputRef} /></div>
 								</div>
 
-								
+
 								<div className="upload_t file101">
 									{file ? (file?.map((f, index) => {
 										return (

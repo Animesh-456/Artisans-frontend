@@ -24,8 +24,47 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 type Props = {};
 import { Button, ProgressBar } from "react-bootstrap";
 
+export async function getStaticPaths() {
+    // Return an empty array since paths are unknown at build time
+    return {
+        paths: [],
+        fallback: 'blocking', // Render on-demand
+    };
+}
 
-const ProjectDetail = () => {
+export const getStaticProps = async (context) => {
+
+    const { params } = context;
+    const profileId = params?.name;
+
+
+
+    const numberRegex = /\d+$/; // Match one or more digits at the end of the string
+    const match = profileId.match(numberRegex); // Find the number at the end of the string
+
+
+    try {
+        let url = `${env.base_url}project/project-detail-seo?id=${match}`;
+        const response = await axios.get(url);
+        const data = await response.data;
+
+        return {
+            props: {
+                prp: data, // Assuming the fetched data structure matches what's expected
+                //idurl: profileId
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+
+const ProjectDetail = (prp) => {
 
 
     let d = useAtomValue(atom.storage.project_id)
@@ -104,7 +143,7 @@ const ProjectDetail = () => {
 
     const commision: any = useAtomValue(atom.project.api.commision_rate);
 
-    
+
 
     useEffect(() => {
 
@@ -882,7 +921,10 @@ const ProjectDetail = () => {
                 )} */}
 
 
-
+            <Head>
+                <title>{`${prp?.prp?.data.project_name}`} - Machining-4u - CNC Machined parts</title>
+                <meta name="description" content={`${prp?.prp?.data.description}`} />
+            </Head>
             <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>{data?.project_name}</h1>

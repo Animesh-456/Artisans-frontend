@@ -37,28 +37,28 @@ import Recentart from "./Recentart";
 import Popular from "./Popular";
 
 
-// export const getStaticProps = async () => {
-//     try {
-//         const response = await fetch(`${env.base_url}project/page-details`);
-//         if (!response.ok) {
-//             throw new Error('Failed to fetch');
-//         }
-//         const data = await response.json();
+export const getStaticProps = async () => {
+    try {
+        const response = await fetch(`${env.base_url}project/page-details`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
 
-//         return {
-//             props: {
-//                 prp: data // Assuming the fetched data structure matches what's expected
-//             }
-//         };
-//     } catch (error) {
-//         console.error('Error fetching data:', error);
-//         return {
-//             props: {
-//                 prp: null // Or any default value indicating an error occurred
-//             }
-//         };
-//     }
-// };
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
 
 
 
@@ -85,6 +85,7 @@ const responsive = {
 
 
 function Home(prp) {
+    console.log("SEO DATA", prp)
     const latest = useAtomValue(atom.project.api.latest);
     const allreviews = useAtomValue(atom.project.api.allreviews);
     const all_list = useAtomValue(atom.project.api.all_list);
@@ -230,31 +231,11 @@ function Home(prp) {
     return (
         <>
 
-            {/* <div id="myCarousel" className="carousel slide" data-ride="carousel">
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
 
-                <Carousel>
-                    <Carousel.Item interval={5000}>
-                        <div className="carousel-item active">
-                            <h1><b>Free shipping on all order</b> <a href="#">out now</a></h1>
-                            <img src="img/SLIDER-_1.jpg" alt="" />
-                            <div className="capt_ion">
-                                <h2>600+ artworks</h2>
-                                <p>Transform Your Space with Stunning Wall Art</p>
-                            </div>
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item interval={5000}>
-                        <div className="carousel-item active">
-                            <h1><b>Free shipping on all order</b> <a href="#">out now</a></h1>
-                            <img src="img/SLIDER-_2.jpg" alt="" />
-                            <div className="capt_ion">
-                                <h2>600+ artworks</h2>
-                                <p>Transform Your Space with Stunning Wall Art</p>
-                            </div>
-                        </div>
-                    </Carousel.Item>
-                </Carousel>
-            </div> */}
 
 
             <section className="banner_wp" style={{ backgroundImage: `url(./img/header-banner-bg.jpg)` }}>

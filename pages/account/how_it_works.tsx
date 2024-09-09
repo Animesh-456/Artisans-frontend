@@ -68,6 +68,13 @@ const how_it_works = (prp) => {
 
     return (
         <>
+
+            <Head>
+                <title>{`${prp?.prp?.data[4].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[4].page_desc}`} />
+
+            </Head>
+
             <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>How it works</h1>
