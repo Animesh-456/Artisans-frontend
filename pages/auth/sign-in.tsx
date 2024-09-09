@@ -236,10 +236,10 @@ const SignIn = (props: Props, prp, prp2) => {
 									<input type="password" name="password" placeholder="Password" value={login.password}
 										onChange={setlogin("password")} />
 								</div>
-								<div className="from_feild2">
+								{/* <div className="from_feild2">
 									<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
 									<label> &nbsp; Keep me signed in</label>
-								</div>
+								</div> */}
 								<div className="from_feild1 fff1">
 									<a href={"/auth/forgetpassword"}>Forgot Password?</a>
 								</div>

@@ -22,7 +22,13 @@ type Props = {};
 
 export const getStaticProps = async () => {
 	try {
-		const response = await fetch(`${env.base_url}project/page-details`);
+		const params: any = {
+			id: 14,
+			status: 'active',
+		};
+
+		const queryString = new URLSearchParams(params).toString();
+		const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch');
 		}
@@ -395,8 +401,8 @@ const Post = (prp) => {
 
 
 			<Head>
-				<title>{`${prp?.prp?.data[2].page_title}`}</title>
-				<meta name="description" content={`${prp?.prp?.data[2].page_desc}`} />
+				<title>{`${prp?.prp?.data[0].page_title}`}</title>
+				<meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
 			</Head>
 
 			<section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>

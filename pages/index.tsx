@@ -39,7 +39,13 @@ import Popular from "./Popular";
 
 export const getStaticProps = async () => {
     try {
-        const response = await fetch(`${env.base_url}project/page-details`);
+        const params: any = {
+            id: 6,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
         if (!response.ok) {
             throw new Error('Failed to fetch');
         }
