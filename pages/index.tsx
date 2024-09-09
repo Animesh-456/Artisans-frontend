@@ -39,6 +39,16 @@ import Popular from "./Popular";
 
 export const getStaticProps = async () => {
     try {
+
+        const params1: any = {
+            id: 1,
+            status: 'active',
+        };
+
+        const queryString1 = new URLSearchParams(params1).toString();
+        const res = await fetch(`${env.base_url}project/home-page-content?${queryString1}`);
+
+        const data2 = await res.json()
         const params: any = {
             id: 6,
             status: 'active',
@@ -53,7 +63,8 @@ export const getStaticProps = async () => {
 
         return {
             props: {
-                prp: data // Assuming the fetched data structure matches what's expected
+                prp: data,
+                prp2: data2  // Assuming the fetched data structure matches what's expected
             }
         };
     } catch (error) {
@@ -116,6 +127,7 @@ function Home(prp) {
         api.project.latest({ params: { page: 0 } });
         api.project.get_category_subcategory({})
         api.project.allreviews({ params: {} });
+
     }, []);
 
 

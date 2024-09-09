@@ -56,6 +56,7 @@ class Client {
 			"project/get-additional-comment",
 			"project/page-details",
 			"project/page-content-details",
+
 			"project/project-detail-seo",
 			"project/public-profile-finalised-image",
 			"project/paypal-transaction-complete",
@@ -67,7 +68,8 @@ class Client {
 			"project/get-category-subcategory",
 			"project/kyc",
 			"project/get-commision-rate",
-			"project/contact-us"
+			"project/contact-us",
+			"project/home-page-content",
 		];
 
 		this.test = false;
