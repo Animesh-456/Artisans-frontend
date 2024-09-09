@@ -11,9 +11,24 @@ export const getStaticProps = async () => {
         }
         const data = await response.json();
 
+
+        const params: any = {
+            id: 27,  // Extracted ID from the first API response
+            status: 'active', // Any other parameters you want to pass
+        };
+
+        // Convert params object to query string
+        const queryString = new URLSearchParams(params).toString();
+        const response2 = await fetch(`${env.base_url}project/page-content-details?${queryString}`);
+        if (!response2.ok) {
+            throw new Error('Failed to fetch data from the second API');
+        }
+        const data2 = await response2.json();
+
         return {
             props: {
-                prp: data // Assuming the fetched data structure matches what's expected
+                prp: data,
+                prp2: data2 // Assuming the fetched data structure matches what's expected
             }
         };
     } catch (error) {

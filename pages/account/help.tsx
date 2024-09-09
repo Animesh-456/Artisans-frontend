@@ -1,3 +1,45 @@
+
+
+import env from "../../src/config/api";
+
+
+export const getStaticProps = async () => {
+    try {
+        const response = await fetch(`${env.base_url}project/page-details`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+
+        const params: any = {
+            id: 39,  // Extracted ID from the first API response
+            status: 'active', // Any other parameters you want to pass
+        };
+
+        // Convert params object to query string
+        const queryString = new URLSearchParams(params).toString();
+        const response2 = await fetch(`${env.base_url}project/page-content-details?${queryString}`);
+        if (!response2.ok) {
+            throw new Error('Failed to fetch data from the second API');
+        }
+        const data2 = await response2.json();
+
+        return {
+            props: {
+                prp: data,
+                prp2: data2 // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
 const help = () => {
 
     return (
@@ -31,7 +73,7 @@ const help = () => {
                     <p>The total cost will be the price of the offer you selected. There are no additional fees or charges. Shipping fees are included in the price.</p>
 
                     <p>How do I add a file or a comment to my request?</p>
-                   
+
                     <p>1. Log on to the site with your password.</p>
                     <p>2. Click on "Add a Comment" and then add text and/or files. The Machinists who made an offer will be notified by email that your request has been updated.</p>
 
@@ -39,7 +81,7 @@ const help = () => {
 
                     <h5>How do I pay and where do I buy the parts?</h5>
                     <p>On Machining-4u, buyers buy the custom parts from their Machinist. Machining-4u is used as a matchmaking service and does not sell machine parts itself.</p>
-                    
+
                     <p>To order, the buyer pays the amount of the offer on the Machining-4u secure account. After obtaining the receipt and inspecting the parts, the buyer releases the funds with a simple click and the Machinist gets paid. This allows:</p>
 
                     <p>By ticking the box "I have read and accept the general conditions of use of Usineur.fr" in the registration form, you designate yourself as a "Client" or as a "Usineur". “Clients” are entities seeking companies that can provide parts machining services. The term “Machinist” is used in this Agreement to represent parts machining service providers who seek assignments and complete projects posted by Customers.</p>
@@ -72,9 +114,9 @@ const help = () => {
 
                     <h5>I want to cancel my request. How can I do it?</h5>
                     <p>Add a comment to your request by clicking on "Add a Comment" to say that you cancel it.</p>
-                    
+
                     <p>The Machinists who have made an offer will be notified by email.</p>
-                    
+
                     <p>Thank you !</p>
 
                     <h5>What happens if I'm not satisfied with a part?</h5>
@@ -85,18 +127,18 @@ const help = () => {
 
                     <h5>What's happens if there is any dispute?</h5>
                     <p>A dispute may occur if you don't agree with the Machinist on the quality of the service provided, or if the order isn't shipped on time.</p>
-                    
+
                     <p>In case of a breach by the Machinist to the quality of the service or product received, or if the Machinist has missed any deadlines, the money paid when you ordered will be returned without any fee.
                         In case of a dispute, Machining-4u will provide arbitration based on all written content available, such as the job description, the blueprints provided, and messages on the site mailbox. </p>
-                    
+
                     <p>Machining-4u may need to ask to examine the machined parts.</p>
-                    
+
                     <p>Machining-4u will always encourage the two sides to find a compromise, and in the absence of an agreement, Machining-4u will be entitled to make the decision on the amount to be transferred to one or both sides.</p>
-                    
+
                     <p>If one of the two sides don't answer to any request, 15 days after being requested by Machining-4u, the funds will be transferred to the other side.</p>
-                    
+
                     <p>Since the launch of Machining-4u, only a few disputes were recorded. We invite you to review the evaluations received by the Machinists, which reach an average of 4.8 out of 5.</p>
-                    
+
                     <br />
                     <p>For any questions, do not hesitate to contact us on admin@machining-4u.co.uk. We'll be happy to help.</p>
                 </div>
