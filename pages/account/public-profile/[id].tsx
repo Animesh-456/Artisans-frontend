@@ -491,7 +491,7 @@ const EditProfile = () => {
 
                                             {/* Dynamic logic */}
 
-                                            {public_avg_rating && user?.role_id == 2 ? (
+                                            {/* {public_avg_rating && user?.role_id == 2 ? (
                                                 <div className="location_r2">
                                                     <p>
                                                         <div
@@ -511,7 +511,7 @@ const EditProfile = () => {
 
                                                     </p>
                                                 </div>
-                                            )}
+                                            )} */}
                                             {/* </div> */}
                                         </div>
                                         <div className="location_a1">

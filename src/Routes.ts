@@ -86,17 +86,12 @@ const EditProfileSideBar = [
 		role: [2],
 	},
 	{
-		title: "Review Artists",
-		path: "/account/reviews",
-		role: [1],
-	},
-	{
 		title: "Invoices",
 		path: "/account/invoices",
 		role: [2],
 	},
 	{
-		title: "Customer Review",
+		title: "My feedbacks",
 		path: "/account/Customer-Review",
 		role: [2],
 	},

@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import api from "../../src/api/services/api";
 
@@ -8,17 +9,39 @@ let Reviews_data = []
 
 const Reviews = (props: Props) => {
 
+    const [Reviews_data, SetReviews_data] = useState([]);
 
-    const UserData = JSON.parse(localStorage.getItem('UserData'));
+    // const UserData = JSON.parse(localStorage.getItem('UserData'));
 
 
 
-    api.project.reviews_list({ params: {} }, (d) => {
+    // api.project.reviews_list({ params: {} }, (d) => {
 
-        Reviews_data = d.data;
+    //     Reviews_data = d.data;
 
-    });
+    // });
+    useEffect(() => {
 
+        const UserData = JSON.parse(localStorage.getItem('UserData'));
+
+        // api.project.reviews_list({ params: {} }, (d) => {
+        //     console.log("---->", d)
+        //     // Reviews_data = d.data;
+
+        // });
+        // const d = fetch(`http://localhost:4000/project/customer_review`);
+        console.log("udata--", UserData)
+        api.project.Customer_Review({ params: { machinist_id: UserData.id } }, (d) => {
+            console.log(d)
+            SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
+
+            //setLoaded(true);
+        });
+
+
+        //console.log("yoo")
+        //SetReviews_data(JSON.parse(localStorage.getItem('Customer_Review_List')));
+    }, []);
 
 
     // setTimeout(() => {
@@ -32,6 +55,7 @@ const Reviews = (props: Props) => {
 
 
     // }, 1000)
+    console.log("reviews data", Reviews_data)
 
 
 
@@ -118,6 +142,7 @@ const Reviews = (props: Props) => {
                                                     <th>Name of the project</th>
                                                     <th>Artist Name</th>
                                                     <th>Ratings</th>
+                                                    <th>Comments</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -128,9 +153,10 @@ const Reviews = (props: Props) => {
                                                         return (
                                                             <>
                                                                 <tr>
-                                                                    <td>{item.project.project_name}</td>
-                                                                    <td>{item.provider.user_name}</td>
-                                                                    <td>{item.rating}</td>
+                                                                    <td>{item?.project?.project_name}</td>
+                                                                    <td>{item?.provider?.user_name}</td>
+                                                                    <td>{item?.rating}</td>
+                                                                    <td>{item?.Comments}</td>
                                                                 </tr>
                                                             </>
                                                         )
