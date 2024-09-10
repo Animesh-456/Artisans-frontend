@@ -78,6 +78,7 @@ const project = {
 		get_category_subcategory: atom([]),
 		kyc_details: atom([]),
 		commision_rate: atom([]),
+		faq_content: atom([]),
 
 
 		my_proj_opt: atom({

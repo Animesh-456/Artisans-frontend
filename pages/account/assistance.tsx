@@ -2,6 +2,10 @@ import { useState } from "react";
 import atom from "../../src/jotai/atom";
 import Routes from "../../src/Routes";
 import env from "../../src/config/api";
+import React, { useEffect, useRef } from 'react';
+import api from "../../src/api/services/api";
+import { useRouter } from "next/router";
+import { useAtomValue, useAtom } from "jotai";
 
 export const getStaticProps = async () => {
     try {
@@ -41,6 +45,17 @@ export const getStaticProps = async () => {
     }
 };
 const assistance = (prp) => {
+    const faqCategoryId = 3;
+    const [faq, setFaq] = useState("");
+
+    const faq_content = useAtomValue(atom.project.api.faq_content)
+
+    useEffect(() => {
+
+        api.project.faq_content({ params: { faqCategoryId: faqCategoryId } })
+
+    }, []);
+
     const [cshow1, csetshow1] = useState(false)
     const [cshow2, csetshow2] = useState(false)
     const [cshow3, csetshow3] = useState(false)
@@ -444,6 +459,9 @@ const assistance = (prp) => {
         }
     }
     console.log("prp2 is", prp?.prp2)
+    console.log("faq content is", faq_content)
+
+
     return (
         <>
 

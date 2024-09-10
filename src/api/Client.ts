@@ -70,6 +70,7 @@ class Client {
 			"project/get-commision-rate",
 			"project/contact-us",
 			"project/home-page-content",
+			"project/faq-content",
 		];
 
 		this.test = false;
