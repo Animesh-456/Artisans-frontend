@@ -295,9 +295,13 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 							</figure>
 
 							<a href={`account/artist-profile/${bid?.user_id}`} className="ofr1">{bid?.user?.user_name} </a>
-							<div>
-								{revdata?.totalproject} jobs
-								<span className="stars"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></span>
+							<div className="offr_star">
+								
+								{revdata?.totalproject} jobs {'\t\t'}
+								<span
+									className="stars"
+									style={{ '--rating': revdata?.public_avg_rating } as CSSProperties}
+								></span>
 								<span>{revdata?.public_avg_rating ? revdata?.public_avg_rating : "0.0"}</span>
 							</div>
 						</div>

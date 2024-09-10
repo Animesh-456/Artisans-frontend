@@ -166,7 +166,7 @@ const MachinistConfirmationMessage = () => {
                         <div className="offset-sm-2"></div>
                         <div className="col-sm-8 profile_box">
                             <div className="discover_wp">
-                                <h5>Choose a date then you can then edit the text of the message.</h5>
+                                <h5>Select a shipping date, then edit the message as needed.</h5>
                                 <hr />
                                 <form>
                                     <div className="from_feild">
