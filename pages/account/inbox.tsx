@@ -162,7 +162,7 @@ const EditProfile = () => {
 						) : (<></>)} */}
 								{/* <hr className="dashed-hr" /> */}
 								<div className="prof111">
-									<h4 >Messages {inbox_count ? (<span className='darkblue-text '>({inbox_count})</span>) : (<></>)}</h4>
+									<h4 >Messages {list?.length ? (<span className='darkblue-text '>({list.length})</span>) : (<></>)}</h4>
 								</div>
 
 								{/* <hr className='dashed-hr' /> */}
@@ -197,7 +197,7 @@ const EditProfile = () => {
 															<td>{l?.project_name}</td>
 															<td className='dummy-anchor cursor-pointer' onClick={() => readmsgs(l?.project_id, l?.from_id, l?.to_id)}>
 
-																{user?.role_id == 1 && l?.buyer_message_status == "U" ? (
+																{/* {user?.role_id == 1 && l?.buyer_message_status == "U" ? (
 																	<b>{l?.message}</b>
 																) : user?.role_id == 1 && l?.buyer_message_status == "R" ? (
 																	<>{l?.message}</>
@@ -205,7 +205,8 @@ const EditProfile = () => {
 																	<b>{l?.message}</b>
 																) : user?.role_id == 2 && l?.programmer_message_status == "R" ? (
 																	<>{l?.message}</>
-																) : (<>{l?.message}</>)}
+																) : (<>{l?.message}</>)} */}
+																<>{l?.message}</>
 															</td>
 
 														</	tr>

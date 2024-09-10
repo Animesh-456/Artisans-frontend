@@ -88,7 +88,7 @@ const jobs = () => {
                                         fontFamily: "Poppins",
                                         padding: "6px 22px",
                                         transition: "box-shadow 1s"
-                                    }} onClick={RedirectProject} >Continuer</Button>
+                                    }} onClick={RedirectProject} >Continue</Button>
                                     {/* <a style={{ display: "none" }}></a> */}
                                 </div>
                             </div>

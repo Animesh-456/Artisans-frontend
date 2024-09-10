@@ -248,7 +248,7 @@ const Machinistshippingmessage = () => {
                         <div className="offset-sm-2"></div>
                         <div className="col-sm-8 profile_box">
                             <div className="discover_wp">
-                                <h5>Choose a date then enter the traceability number followed by OK. You can then edit the text of the message.</h5>
+                                <h5>Select the estimated shipping date, then enter the tracking number. You can modify the message text below if needed</h5>
                                 <hr />
                                 <form>
                                     <div className="from_feild">

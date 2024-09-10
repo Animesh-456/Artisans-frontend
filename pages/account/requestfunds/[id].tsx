@@ -89,7 +89,7 @@ const Requestfunds = () => {
                         <div className="offset-sm-2"></div>
                         <div className="col-sm-8 profile_box">
                             <div className="discover_wp ewer">
-                                <p>Before asking your customer to pay you, wait until they have received their package. Usineur.fr customers can only pay their Machinist after having been able to control the quality of the parts. they have 7 days to do this upon receipt.
+                                <p>Before asking your customer to pay you, wait until they have received their package. aartstudio.in customers can only pay their Artist after having been able to control the quality of the artwork. they have 7 days to do this upon receipt.
                                     You will be paid immediately once the funds have been released by your client. The Funds will be visible on the “Withdraw Funds” page in the “My Account” menu</p>
                                 <hr />
                                 <form>

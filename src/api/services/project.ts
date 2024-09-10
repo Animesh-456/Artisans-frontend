@@ -1247,7 +1247,7 @@ export default {
       .then((d) => {
         if (d.status) {
           // api data
-          //writeAtom(atom.project.api.page_details, d.data);
+          writeAtom(atom.project.api.faq_content, d.data);
           // callback
           return cb(d);
         } else {

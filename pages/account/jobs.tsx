@@ -382,7 +382,7 @@ const Jobs = (props: Props) => {
                         <div className="col-sm-8">
                             <div className="profile_box">
                                 <div className="prof111">
-                                    <h4>My Projects <span>(1)</span>
+                                    <h4>My Projects <span>{list?.length ? <span>({opt.total_count})</span> : ""}</span>
                                     </h4>
                                 </div>
 
