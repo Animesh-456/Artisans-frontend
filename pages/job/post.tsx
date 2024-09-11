@@ -418,7 +418,7 @@ const Post = (prp) => {
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-6">
-							<img src="../img/img1.jpg" alt="" />
+							<img src="../img/img1.jpg" alt="art-img" />
 						</div>
 						<div className="col-sm-6">
 							<div className="our_story_content">

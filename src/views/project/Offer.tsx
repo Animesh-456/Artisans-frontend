@@ -373,7 +373,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 						)} */}
 
 						{bid?.user_id == data?.programmer_id && (
-							<img src='../../img/selected.png' alt='' />
+							<img src='../../img/selected.png' alt='selected-img' />
 						)}
 
 

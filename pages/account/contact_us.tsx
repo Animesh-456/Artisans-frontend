@@ -4,10 +4,22 @@ import { toast } from "react-hot-toast";
 import common from "../../src/helpers/common";
 import api from "../../src/api/services/api";
 import env from "../../src/config/api";
+import Head from "next/head";
 
 export const getStaticProps = async () => {
     try {
-        const response = await fetch(`${env.base_url}project/page-details`);
+
+
+
+        const params1: any = {
+            id: 23,
+            status: 'active',
+        };
+
+        const queryString1 = new URLSearchParams(params1).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString1}`);
+
+
         if (!response.ok) {
             throw new Error('Failed to fetch');
         }
@@ -123,11 +135,19 @@ const Contact = (prp) => {
 
     }
 
-    console.log("prp2 is", prp?.prp2)
+    console.log("prp2 is", prp?.prp)
 
 
     return (
         <>
+
+
+
+            <Head>
+                <title>{`${prp?.prp.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp.data[0].page_desc}`} />
+            </Head>
+
 
 
             <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
@@ -156,7 +176,7 @@ const Contact = (prp) => {
                             </div>
                         </div>
                         <div className="col-sm-6">
-                            <img src="../img/contact-img.jpg" alt="" />
+                            <img src="../img/contact-img.jpg" alt="contact-img" />
                         </div>
                     </div>
                 </div>
