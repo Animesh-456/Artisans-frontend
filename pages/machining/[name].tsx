@@ -922,7 +922,7 @@ const ProjectDetail = (prp) => {
 
 
             <Head>
-                <title>{`${prp?.prp?.data.project_name}`} - aartstudio</title>
+                <title>{`${prp?.prp?.data.project_name}`} | AARTSTUDIO</title>  
                 <meta name="description" content={`${prp?.prp?.data.description}`} />
             </Head>
             <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
