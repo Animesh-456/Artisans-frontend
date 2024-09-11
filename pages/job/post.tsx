@@ -407,14 +407,14 @@ const Post = (prp) => {
 
 			<section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
 				<div className="container">
-					<h1>Post Your Art Request</h1>
+					<h1>Post Your Art Requirement</h1>
 				</div>
 			</section>
 
 
 
 
-			<section className="our_story_wp">
+			{/* <section className="our_story_wp">
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-6">
@@ -422,18 +422,12 @@ const Post = (prp) => {
 						</div>
 						<div className="col-sm-6">
 							<div className="our_story_content">
-								<div className="heading_title">
-									<h1>Let's Start Our Story</h1>
-								</div>
-								<p>
-									Egestas maecenas pharetra convallis posuere morbi. Nunc pulvinar sapien et ligula ullamcorper. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.<br /><br />
-									Augue eget arcu dictum varius. Lorem sed risus ultricies tristique. Nulla at volutpat diam ut venenatis tellus.Pellentesque adipiscing commodo elit at imperdiet dui. Sed euismod nisi porta lorem mollis aliquam.
-								</p>
+
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> */}
 
 
 

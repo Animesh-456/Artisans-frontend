@@ -114,7 +114,7 @@ table {
     font-weight: 500;
     display: inline-block;
     text-decoration: none;
-    padding: 8px 8px;
+    padding: 8px 5px;
     font-family: "Poppins", sans-serif;
     font-size: 14px;
     transition: 0.5s;
@@ -2967,13 +2967,13 @@ select {
 
 
 .howit_wp {
-    padding: 3em 0 0;
+    padding: 2em 0 0;
 }
 
 .howit_wp p {
-    margin-top: 2em;
     font-size: 15px;
     line-height: 25px;
+    text-align: center;
 }
 
 .howit_wp img {
@@ -4016,16 +4016,17 @@ marquee {
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .manage_p2 .fa.fa-times-circle {
     position: absolute;
     right: 4px;
     top: 4px;
 }
+
 .gallery_p1 .manage_p2 img {
     height: 100px;
 }
+
 .gallery_p1 .manage_p2 {
     width: 21.9%;
 }
-
-

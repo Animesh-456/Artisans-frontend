@@ -199,7 +199,7 @@ const Listing = (prp) => {
 
             <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
-                    <h1>Art Request</h1>
+                    <h1>List of Artwork Jobs</h1>
                 </div>
             </section>
 
@@ -208,7 +208,7 @@ const Listing = (prp) => {
                 <div className="container">
                     <div className="row">
                         <div className="filter_section">
-                            <div className="post_request_button"><a href={"/artrequest"}>Post Art Request</a></div>
+                            {/* <div className="post_request_button"><a href={"/artrequest"}>Post Art Request</a></div> */}
                             <div className="search_bar">
                                 <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
                                 <i className="fa fa-search"></i>

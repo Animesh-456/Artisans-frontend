@@ -14,12 +14,43 @@ import Button from 'react-bootstrap/Button';
 import common from "../../src/helpers/common";
 import toast from "react-hot-toast";
 import Router from "next/router";
+import env from "../../src/config/api";
+import Head from "next/head";
 
 type Props = {};
 
 
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 26,
+            status: 'active',
+        };
 
-const Jobs = (props: Props) => {
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+
+
+const Jobs = (prp) => {
     const router = useRouter();
 
     const list = useAtomValue(atom.project.api.my);
@@ -296,7 +327,7 @@ const Jobs = (props: Props) => {
         //                         </li> : ""}
         //                         {(opt.page > 0) ? <li className='page-item'>
         //                             <a className='page-link' onClick={() => handlePageClick(opt.page - 1)}>
-                                        // Previous
+        // Previous
         //                             </a>
         //                         </li> : ""}
         //                         {/* {(opt.total_pages < 10 ? (Array.from({ length: opt.page + 1 })) : (Array.from({ length: 10 }))).map(
@@ -373,6 +404,11 @@ const Jobs = (props: Props) => {
 
         <>
 
+
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
             <section className="myproject">
                 <div className="container">
                     <div className="row">

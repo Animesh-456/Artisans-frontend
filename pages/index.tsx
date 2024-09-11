@@ -102,7 +102,7 @@ const responsive = {
 
 
 function Home(prp) {
-    console.log("SEO DATA", prp)
+    // console.log("SEO DATA", prp)
     const latest = useAtomValue(atom.project.api.latest);
     const allreviews = useAtomValue(atom.project.api.allreviews);
     const all_list = useAtomValue(atom.project.api.all_list);
@@ -436,7 +436,40 @@ function Home(prp) {
 
            {/* Dynamic content from db */}
 
-           <div dangerouslySetInnerHTML={{ __html: prp?.prp2?.data[0]?.text }} />
+           {/* <div dangerouslySetInnerHTML={{ __html: prp?.prp2?.data[0]?.text }} /> */}
+
+
+            <section className="discover_wp">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-5 discover_left">
+                            <div className="heading_title">
+                                <h1>Discover Your Artwork</h1>
+                            </div>
+                            <p>
+                                Welcome to AARTSTUDIO, the premier online platform where talented artisans and artists are
+                                ready to create custom artwork just for you. Whether you're envisioning a unique painting, a
+                                stunning sculpture, or any other form of artwork, AARTSTUDIO makes the process easy and
+                                enjoyable.
+                            </p>
+                            <p>Browse through our extensive directory of skilled artisans, each showcasing their unique style
+                                and portfolio. You'll find a variety of artistic talents, ensuring you can discover an artist whose
+                                work resonates with your vision.</p>
+
+                            <div className="latest_request_text">
+                                <a href='/artrequest'>Know More</a>
+                            </div>
+                        </div>
+                        <div className="col-sm-7">
+                            <div className="discover_img">
+                                <img className="carve_pic" src="img/pic1.png" alt="carve_pic" />
+                                <img className="pic1" src="img/pic.png" alt="carve_pic" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
 
             {/* <div className="container-fluid recent-art">

@@ -18,7 +18,7 @@ const headers = [
 	},
 
 	{
-		title: "ARTS AND ARTISANS",
+		title: "List of Artwork Jobs",
 		path: "/job/listing",
 		role: [1, 2],
 	},

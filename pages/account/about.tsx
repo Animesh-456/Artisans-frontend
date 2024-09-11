@@ -118,7 +118,7 @@ const about = (prp) => {
         <>
 
             <Head>
-                <title>{`${prp?.prp.data[0].page_title}`}</title>
+                <title>{`${prp?.prp?.data[0]?.page_title}`}</title>
                 <meta name="description" content={`${prp?.prp.data[0].page_desc}`} />
             </Head>
 
