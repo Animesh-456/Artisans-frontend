@@ -90,10 +90,20 @@ export default function Footer({ }: Props) {
 						</div>
 						<div className="col-sm-6">
 							<ul className="top_socialmedia right_icon">
-								<li><a href="#"><i className="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i className="fa fa-instagram"></i></a></li>
-								<li><a href="#"><i className="fa fa-whatsapp"></i></a></li>
-								<li><a href="#"><i className="fa fa-youtube-play"></i></a></li>
+								<li><a href={process.env.NEXT_PUBLIC_FACEBOOK}><i className="fa fa-facebook"></i></a></li>
+								<li>
+									<a href={process.env.NEXT_PUBLIC_INSTAGRAM}>
+										<i className="fa fa-instagram"></i>
+									</a>
+								</li>
+
+								<li>
+									<a href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP}`} target="_blank" rel="noopener noreferrer">
+										<i className="fa fa-whatsapp"></i>
+									</a>
+								</li>
+
+								<li><a href={process.env.NEXT_PUBLIC_YOUTUBE}><i className="fa fa-youtube-play"></i></a></li>
 							</ul>
 						</div>
 					</div>
