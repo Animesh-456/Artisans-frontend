@@ -9,8 +9,40 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { jsPDF } from "jspdf";
 
+
+import env from "../../src/config/api";
+import Head from "next/head";
+
 type Props = {};
 
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 37,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
 //let Invoice_data = []
 
 function DownloadPDF(inv_no, customer, p_name, fund_release_date, amount, cus_address, cus_city, cus_zcode, transaction_id) {
@@ -152,7 +184,7 @@ function DownloadPDF(inv_no, customer, p_name, fund_release_date, amount, cus_ad
     // window.print();
     // document.body.innerHTML = originalContents; 
 }
-const Invoices = (props: Props) => {
+const Invoices = (prp) => {
 
     const router = useRouter();
     const opt = useAtomValue(atom.project.api.list_opt);
@@ -223,6 +255,11 @@ const Invoices = (props: Props) => {
 
 
         <>
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
+
 
             <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">

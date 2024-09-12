@@ -9,8 +9,38 @@ import atom from "../../src/jotai/atom";
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 
 import Link from "next/link";
+import env from "../../src/config/api";
+import Head from "next/head";
 
-const EditProfile = () => {
+export const getStaticProps = async () => {
+	try {
+		const params: any = {
+			id: 30,
+			status: 'active',
+		};
+
+		const queryString = new URLSearchParams(params).toString();
+		const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch');
+		}
+		const data = await response.json();
+
+		return {
+			props: {
+				prp: data // Assuming the fetched data structure matches what's expected
+			}
+		};
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		return {
+			props: {
+				prp: null // Or any default value indicating an error occurred
+			}
+		};
+	}
+};
+const EditProfile = (prp) => {
 	const router = useRouter();
 
 	const list = useAtomValue(atom.project.api.my_msgs);
@@ -116,7 +146,10 @@ const EditProfile = () => {
 
 	return (
 		<>
-
+			<Head>
+				<title>{`${prp?.prp?.data[0].page_title}`}</title>
+				<meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+			</Head>
 
 			<section className="myproject">
 				<div className='container'>

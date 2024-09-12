@@ -20,7 +20,7 @@ const legal_notice = () => {
                     <div className="col-sm-3">
                         <div className="legal1 legal2">
                             <i className="fa fa-envelope"></i><br />
-                            admin@usineur.fr
+                            info@aartstudion.com
                         </div>
                     </div>
                     <div className="col-sm-3">

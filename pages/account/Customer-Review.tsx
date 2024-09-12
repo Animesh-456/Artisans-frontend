@@ -2,11 +2,43 @@ import React, { useEffect, useState } from "react";
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import api from "../../src/api/services/api";
 
+import env from "../../src/config/api";
+import Head from "next/head";
 type Props = {};
 
 //let Reviews_data = []
 
-const Reviews = (props: Props) => {
+
+
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 38,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+const Reviews = (prp) => {
 
     const [Reviews_data, SetReviews_data] = useState([]);
 
@@ -56,7 +88,10 @@ const Reviews = (props: Props) => {
 
     return (
         <>
-
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
             <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
                 <div className="container">
                     <h1>Evaluations</h1>

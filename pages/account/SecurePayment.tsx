@@ -25,13 +25,13 @@ const SecurePayment = () => {
                         <div className="fund_d1_securePayment">
 
                             <br />
-                            <p>On Usineur.fr, buyers buy their pieces to their usinier machinist. The buyer shall pay the funds to the command on a secure account Usineur.fr. After receipt and inspection of parts, the buyer releases the funds with a simple click on the account of his machinist and so pay it. This allows:</p>
+                            <p>On Aartstudio, buyers buy their pieces to their usinier machinist. The buyer shall pay the funds to the command on a secure account Aartstudio. After receipt and inspection of parts, the buyer releases the funds with a simple click on the account of his machinist and so pay it. This allows:</p>
                             <ul className="term">
                                 <li>the buyer to pay only if the machined parts received conform.</li>
                                 <li>to the factory to have the assurance of being paid for quality work, with funds secured from the order.</li>
                             </ul>
 
-                            <p>Payments are made by conventional means: credit card, Visa, Paypal, MasterCard ... Cheques and liquids payments are not accepted. <span><b>However, tailored solutions exist for companies (contact us on admin@usineur.fr).</b></span></p>
+                            <p>Payments are made by conventional means: credit card, Visa, Paypal, MasterCard ... Cheques and liquids payments are not accepted. <span><b>However, tailored solutions exist for companies (contact us on admin@Aartstudio).</b></span></p>
 
 
 
@@ -42,7 +42,7 @@ const SecurePayment = () => {
                                 You then see the website address that begins with https://The "s" meaning secure or secure French and a lock icon at the bottom of your browser.</p>
 
                             <h4>Paypal payments</h4>
-                            <p>To secure your purchases and allow you Usineur.fr the choice of payment method we chose Paypal car :</p>
+                            <p>To secure your purchases and allow you Aartstudio the choice of payment method we chose Paypal car :</p>
                             <ul className="term">
                                 <li>PayPal allows you to offer payment <span><b>several cards :</b></span> especially Carte Bleue, Visa, Mastercard, Aurora, ...</li>
                                 <li>This allows you to <span><b>pay with your Paypal account</b></span> if you have one.</li>

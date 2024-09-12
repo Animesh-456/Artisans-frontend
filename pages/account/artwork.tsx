@@ -12,8 +12,44 @@ import { useRouter } from "next/router";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 // import Select from 'react-select';
 import Multiselect from 'multiselect-react-dropdown';
+import env from "../../src/config/api";
+import Head from "next/head";
 
-const Artwork = () => {
+
+
+
+
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 34,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+
+
+const Artwork = (prp) => {
     const router = useRouter();
 
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -264,7 +300,7 @@ const Artwork = () => {
         }
     }
 
-    
+
 
 
 
@@ -356,7 +392,7 @@ const Artwork = () => {
             category: displayOptions.map(option => option.id).join(','),
             description: formData?.description,
             existingFiles: modalfile?.join(','),
-            existingvideoFiles: modalvideofile?.join(','), 
+            existingvideoFiles: modalvideofile?.join(','),
         }
 
 
@@ -428,6 +464,11 @@ const Artwork = () => {
 
     return (
         <>
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
+
             <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
                 <div className="container">
                     <h1>My Art work</h1>

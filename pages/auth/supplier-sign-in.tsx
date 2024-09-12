@@ -199,7 +199,7 @@ const CustomerSignIn = (props: Props) => {
 												value={signIn.email}
 												onChange={setSign("email")}
 											/>
-											<small>Your email address will not be shared. <a href={'/account/privacy'}>Privacy policy</a>
+											<small>Your email address will not be shared.
 											</small>
 										</div>
 									</div>

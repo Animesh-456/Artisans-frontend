@@ -6,9 +6,41 @@ import api from "../../src/api/services/api";
 import { BalanceResponse } from "../../src/@types/type";
 import { toast } from "react-hot-toast";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
+import env from "../../src/config/api";
+import Head from "next/head";
+
 type Props = {};
 
-const Withdraw = (props: Props) => {
+
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 36,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+const Withdraw = (prp) => {
 
     const balanceData = useAtomValue<BalanceResponse>(atom.auth.api.user_balance);
     const updatedBalance = useAtomValue<BalanceResponse>(atom.auth.api.update_balance);
@@ -208,6 +240,12 @@ const Withdraw = (props: Props) => {
         //     </GlobalModal>
         // </div>
         <>
+
+
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
             <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Withdraw Funds</h1>

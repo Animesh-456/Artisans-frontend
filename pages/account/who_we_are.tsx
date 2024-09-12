@@ -63,16 +63,16 @@ const about = (prp) => {
 
             <div className="container cjw">
                 <div className="col-sm-12 howit5">
-                    <p>Machining-4U was launched in 2013 to provide affordable custom machined parts. After years of experience in the CNC machining industry, we found large variations in the prices proposed for the same part. Faced with overinflated, unaffordable prices, many customers ended up abandoning their orders, leaving machinists high and dry.</p>
+                    <p>artist was launched in 2013 to provide affordable custom machined parts. After years of experience in the CNC artist industry, we found large variations in the prices proposed for the same part. Faced with overinflated, unaffordable prices, many customers ended up abandoning their orders, leaving machinists high and dry.</p>
                     <p>Our solution was to create a marketplace where buyers and machinists could easily connect, with no risk to either party.</p>
                     <h3>Connecting Buyers and Machinists</h3>
-                    <p>Costs of CNC parts depend on the type of machining operations that need to be performed, such as CNC milling, turning, cutting and drilling. Costs also vary depending on the equipment available in the workshop, the expertise of the machinist and materials in or out of stock.</p>
+                    <p>Costs of CNC parts depend on the type of artist operations that need to be performed, such as CNC milling, turning, cutting and drilling. Costs also vary depending on the equipment available in the workshop, the expertise of the machinist and materials in or out of stock.</p>
                     <h3>Helping You Find the Best Price</h3>
-                    <p>As a result, costs can vary significantly from one workshop to another. By communicating your CNC machining requests to all our members at once, Machining-4U enables machinists to identify the jobs that best suit them and enables buyers to access machine shops that will best meet their specific needs.</p>
-                    <p>By providing a specialized marketplace for buyers and machinists, Machining-4U makes accessing custom machined parts easy, and allows machine shops to reach their full potential.</p>
+                    <p>As a result, costs can vary significantly from one workshop to another. By communicating your CNC artist requests to all our members at once, artist enables machinists to identify the jobs that best suit them and enables buyers to access machine shops that will best meet their specific needs.</p>
+                    <p>By providing a specialized marketplace for buyers and machinists, artist makes accessing custom machined parts easy, and allows machine shops to reach their full potential.</p>
                     <div className="whowe1">
-                        <p><i className="fa fa-envelope"></i> admin@machining-4u.co.uk  </p>
-                        <p>MACHINING-4U</p>
+                        <p><i className="fa fa-envelope"></i> info@artisan.in  </p>
+                        <p>artist</p>
                         <p><i className="fa fa-map-marker"></i>
 
                             57 Rathbone Place, London W1T 1JT

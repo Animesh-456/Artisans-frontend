@@ -8,8 +8,39 @@ import atom from "../../src/jotai/atom";
 import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import { ProgressBar } from "react-bootstrap";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
+import env from "../../src/config/api";
+import Head from "next/head";
 
-const EditProfile = () => {
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 29,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+
+const EditProfile = (prp) => {
     const user = useAtomValue(atom.storage.user);
     const countries = useAtomValue<Array<CountryReponse>>(
         atom.auth.api.countries,
@@ -602,7 +633,10 @@ const EditProfile = () => {
         // </div>
         <>
 
-
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
             <section className="myproject">
                 <div className="container">
                     <div className="row">

@@ -12,8 +12,8 @@ const HomeHeader = (props: Props) => {
 			<div className='container'>
 				<div className='row'>
 					<div className='banner_text home_banner_text'>
-						<h1>{props.title || "CNC Machining for Everyone"}</h1>
-						<p>Send your blueprint and get free CNC quotes</p>
+						<h1>{props.title || "Arts for Everyone"}</h1>
+						<p>Send your blueprint and get free arts quotes</p>
 						<a href='/artrequest'>get free quotes now</a>
 					</div>
 				</div>

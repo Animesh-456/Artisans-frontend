@@ -10,8 +10,40 @@ import { toast } from "react-hot-toast";
 import { Validate } from "../../src/validation/utils/test";
 import schema from "../../src/validation/schema/schema";
 import api from "../../src/api/services/api";
+import env from "../../src/config/api";
+import Head from "next/head";
 
-const Kyc = () => {
+
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 35,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+
+const Kyc = (prp) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const user = useAtomValue(atom.storage.user);
     const kyc_details: any = useAtomValue(atom.project.api.kyc_details)
@@ -136,7 +168,10 @@ const Kyc = () => {
     return (
         <>
 
-
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
 
             <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
                 <div className="container">

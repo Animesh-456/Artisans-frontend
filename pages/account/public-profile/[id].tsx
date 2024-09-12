@@ -13,9 +13,49 @@ import Link from "next/link";
 import Carousel from 'react-bootstrap/Carousel';
 let Reviews_data = []
 let job_list = []
+import env from "../../../src/config/api";
+import Head from "next/head";
 
 
-const EditProfile = () => {
+
+
+export async function getStaticPaths() {
+    // Return an empty array since paths are unknown at build time
+    return {
+        paths: [],
+        fallback: 'blocking', // Render on-demand
+    };
+}
+export const getStaticProps = async () => {
+    try {
+        const params: any = {
+            id: 27,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+
+        return {
+            props: {
+                prp: data // Assuming the fetched data structure matches what's expected
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                prp: null // Or any default value indicating an error occurred
+            }
+        };
+    }
+};
+
+const EditProfile = (prp) => {
     const router = useRouter();
     const usr = useAtomValue(atom.storage.user);
     const user = useAtomValue(atom.project.api.public_me)
@@ -454,7 +494,10 @@ const EditProfile = () => {
         // </>
 
         <>
-
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
 
             <section className="myproject">
                 <div className="container">

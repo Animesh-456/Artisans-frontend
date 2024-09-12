@@ -111,10 +111,19 @@ export default function Header({ }: Props) {
 					<div className="row">
 						<div className="col-sm-6">
 							<ul className="top_socialmedia">
-								<li><a href="#"><i className="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i className="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i className="fa fa-instagram"></i></a></li>
-								<li><a href="#"><i className="fa fa-linkedin"></i></a></li>
+								<li><a href={process.env.NEXT_PUBLIC_YOUTUBE}><i className="fa fa-youtube-play"></i></a></li>
+
+								<li><a href={process.env.NEXT_PUBLIC_FACEBOOK}><i className="fa fa-facebook"></i></a></li>
+								<li>
+									<a href={process.env.NEXT_PUBLIC_INSTAGRAM}>
+										<i className="fa fa-instagram"></i>
+									</a>
+								</li>
+								<li>
+									<a href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP}`} target="_blank" rel="noopener noreferrer">
+										<i className="fa fa-whatsapp"></i>
+									</a>
+								</li>
 							</ul>
 						</div>
 						<div className="col-sm-6">
@@ -169,7 +178,7 @@ export default function Header({ }: Props) {
 						<li className="nav-item">
 							<Link href={'/artworklisting'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									List of Artwork Jobs
+									Artwork Jobs
 								</button>
 							</Link>
 						</li>
@@ -317,7 +326,7 @@ export default function Header({ }: Props) {
 											<li><Link href="/account/about">About Us</Link></li>
 											<li><Link href="/account/jobs">My account</Link></li>
 											<li><Link href="/artrequest">Post Your Art Requirement</Link></li>
-											<li><Link href="/artworklisting">List of Artwork Jobs</Link></li>
+											<li><Link href="/artworklisting">Artwork Jobs</Link></li>
 											<li><Link href="/page/works">How it works</Link></li>
 											{user ? (
 												<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>

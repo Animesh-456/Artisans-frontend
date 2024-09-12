@@ -7,33 +7,26 @@ import api from "../../src/api/services/api";
 import { useRouter } from "next/router";
 import { useAtomValue, useAtom } from "jotai";
 import { custom } from "joi";
+import Head from "next/head";
+
 
 export const getStaticProps = async () => {
     try {
-        const response = await fetch(`${env.base_url}project/page-details`);
+        const params: any = {
+            id: 33,
+            status: 'active',
+        };
+
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${env.base_url}project/page-details?${queryString}`);
         if (!response.ok) {
             throw new Error('Failed to fetch');
         }
         const data = await response.json();
 
-
-        const params: any = {
-            id: 27,  // Extracted ID from the first API response
-            status: 'active', // Any other parameters you want to pass
-        };
-
-        // Convert params object to query string
-        const queryString = new URLSearchParams(params).toString();
-        const response2 = await fetch(`${env.base_url}project/page-content-details?${queryString}`);
-        if (!response2.ok) {
-            throw new Error('Failed to fetch data from the second API');
-        }
-        const data2 = await response2.json();
-
         return {
             props: {
-                prp: data,
-                prp2: data2 // Assuming the fetched data structure matches what's expected
+                prp: data // Assuming the fetched data structure matches what's expected
             }
         };
     } catch (error) {
@@ -81,12 +74,10 @@ const assistance = (prp) => {
 
     return (
         <>
-
-            {/* <Head>
-                <title>{`${prp?.prp?.data[4].page_title}`}</title>
-                <meta name="description" content={`${prp?.prp?.data[4].page_desc}`} />
-
-            </Head> */}
+            <Head>
+                <title>{`${prp?.prp?.data[0].page_title}`}</title>
+                <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
+            </Head>
 
             <section className="inner_banner_wp" style={{ backgroundImage: ` url(../img/inner-banner.jpg)` }}>
                 <div className="container">
