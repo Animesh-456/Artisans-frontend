@@ -37,7 +37,7 @@ const suppliersuccess = () => {
 				<p>4 points to remember:</p>
 				<p>1. Send an invoice systematically to your professional customers.</p>
 				<p>2. Do not communicate your email or phone number until you have won the order. And do not respond to requests to do so.</p>
-				<p>3. Exclusively use the Usineur.fr payment system with your customers met on Usineur.fr</p>
+				<p>3. Exclusively use the arts payment system with your customers met on arts.fr</p>
 				<p>4. Complete your profile: a presentation text and a few photos are essential to take your first order.</p>
 			    <br />
                             <div className='reg-bottom'>

@@ -40,7 +40,7 @@ const legal_notice = () => {
                             <i className="fa fa-map-marker"></i><br />
                             8 avenue du Bel-Air<br />
                             91190 Gif sur Yvette <br />
-                            SAS FaberVille - SIRET: 821 296 092
+
                         </div>
                     </div>
                 </div>

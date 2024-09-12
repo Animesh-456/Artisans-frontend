@@ -101,7 +101,7 @@ function DownloadPDF(inv_no, customer, p_name, fund_release_date, amount, cus_ad
         </tr>
         <tr><td height="10px"></td></tr>
         <tr>
-            <td style= "color: '#1e4066';font-size: 14px;"><b>Machining-4U -SAS Faberville</b></td>
+            <td style= "color: '#1e4066';font-size: 14px;"><b>Aartstudio</b></td>
             <td align="right" style=" color: #1e4066; font-size: 14px;"><b>Invoice No: ${yr}${inv_no}</b></td>
         </tr>
         <tr>

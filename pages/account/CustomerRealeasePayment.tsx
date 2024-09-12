@@ -127,7 +127,7 @@ const Jobs = () => {
       <div className="container" style={{ marginTop: '1rem' }}>
         <div className="col-sm-12">
           <div className="tydh3">
-            <p>You have received your parts and are satisfied with the result. You can now pay your Usineur by releasing the funds you deposited during your order.</p>
+            <p>You have received your parts and are satisfied with the result. You can now pay your arts by releasing the funds you deposited during your order.</p>
             <div className="table-responsive" style={{ marginTop: '1rem' }}>
               <table className="table table-bordered">
                 <tr className="table-primary">
