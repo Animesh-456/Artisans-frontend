@@ -37,19 +37,19 @@ const forgetpassword = () => {
     }
 
     const handlesubmit2 = () => {
-        
+
         if (email2 != null || email2 != "") {
             api.auth.forgot_username({ params: {}, body: { "email": email2 } }, (d) => {
-            if (d.status == true) {
-                toast.success("Username has been sent to your email!");
-                 setemail2(null);
-            }
-        })
-            
-        }else {
+                if (d.status == true) {
+                    toast.success("Username has been sent to your email!");
+                    setemail2(null);
+                }
+            })
+
+        } else {
             toast.error("Please provide a valid email!");
         }
-        
+
     }
 
 
@@ -166,12 +166,24 @@ const forgetpassword = () => {
 
         // </div>
         <>
-            <section className="inner_banner_wp"  style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp"  style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Forgot Password</h1>
                 </div>
-            </section>
+            </section> */}
 
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Forgot Password</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
             <section className="myproject">
                 <div className="container">
@@ -187,18 +199,18 @@ const forgetpassword = () => {
                                             </label>
                                         </div>
                                         <div className="col-sm-8">
-                                            <input className="text m_b_none" name="email"  placeholder="Email Address" 
-                                                                       type='email'
-                                                                           value={email1}
-                                                                         
-                                       onChange={handleprocess1} />
+                                            <input className="text m_b_none" name="email" placeholder="Email Address"
+                                                type='email'
+                                                value={email1}
+
+                                                onChange={handleprocess1} />
                                         </div>
                                     </div>
                                     <div className="reg-bottom">
-                                        <button type="submit" name="submit" onClick={() => { handlesubmit1(); }} 
+                                        <button type="submit" name="submit" onClick={() => { handlesubmit1(); }}
 
 
-                                       >Get a new password</button>
+                                        >Get a new password</button>
                                     </div>
                                     <br /><br />
                                     <h4>Forgot Your Username?</h4>
@@ -212,12 +224,12 @@ const forgetpassword = () => {
                                         </div>
                                     </div>
                                     <div className="reg-bottom">
-                                        <button type="submit" name="submit" onClick={() => { handlesubmit2(); }} 
-                                            
-                                          
+                                        <button type="submit" name="submit" onClick={() => { handlesubmit2(); }}
 
 
-                                                                >
+
+
+                                        >
                                             Get your username</button>
                                     </div>
                                 </form>

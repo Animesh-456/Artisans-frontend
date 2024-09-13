@@ -79,12 +79,22 @@ const assistance = (prp) => {
                 <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
             </Head>
 
-            <section className="inner_banner_wp" style={{ backgroundImage: ` url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: ` url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>FAQ</h1>
                 </div>
-            </section>
+            </section> */}
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">FAQ</li>
 
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
 
             <section className="myproject">

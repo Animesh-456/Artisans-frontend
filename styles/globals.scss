@@ -83,7 +83,7 @@ table {
 .menubar {
     background-color: #fff;
     padding: 15px 0;
-    border-bottom: 1px solid #211f1e;
+
 }
 
 /*---------Authar Style----------*/
@@ -4029,4 +4029,58 @@ marquee {
 
 .gallery_p1 .manage_p2 {
     width: 21.9%;
+}
+
+.about_wp h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 40px;
+    color: #ef6100;
+    display: inline;
+    font-weight: 700;
+
+
+}
+
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #6c757d;
+    content: "\f105";
+    font: normal normal normal 15px/1 FontAwesome;
+}
+
+.breadcrumb a {
+    color: #010101;
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+}
+
+.breadcrumb-item.active {
+    color: #ef6100;
+    font-weight: 500;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    background: none;
+}
+
+.breadcrumb_sec {
+    // background: #f3f2f0;
+    border-top: 1px solid #6c6c6c;
+    border-bottom: 1px solid #6c6c6c;
+}
+
+
+.latest_request_text h1 a {
+    background: none;
+    box-shadow: none;
+    font-size: 20px;
+    color: #080424;
+    line-height: 30px;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
 }

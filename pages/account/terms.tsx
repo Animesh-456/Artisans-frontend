@@ -46,11 +46,25 @@ const terms = (prp) => {
     return (
         <>
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Terms of Service</h1>
                 </div>
+            </section> */}
+
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Terms of Service</li>
+
+                        </ul>
+                    </div>
+                </div>
             </section>
+
 
 
             <section className="myproject">

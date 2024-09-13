@@ -434,9 +434,9 @@ function Home(prp) {
             </div> */}
 
 
-           {/* Dynamic content from db */}
+            {/* Dynamic content from db */}
 
-           {/* <div dangerouslySetInnerHTML={{ __html: prp?.prp2?.data[0]?.text }} /> */}
+            {/* <div dangerouslySetInnerHTML={{ __html: prp?.prp2?.data[0]?.text }} /> */}
 
 
             <section className="discover_wp">
@@ -482,7 +482,7 @@ function Home(prp) {
             <section className="latest_request" >
                 <div className="container">
                     <div className="heading_title latest_request_heading">
-                        <h1>Latest Requests</h1>
+                        <h1>Artwork Jobs</h1>
                     </div>
 
 
@@ -583,7 +583,11 @@ function Home(prp) {
 
                                         <div className="col-sm-9">
                                             <div className="latest_request_text">
-                                                <h1>{l?.project_name}</h1>
+                                                {/* <h1>{l?.project_name}</h1> */}
+                                                <h1>
+                                                    <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+                                                </h1>
+
                                                 <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 150) + '...') : (l?.description)} </p>
                                                 <div>
                                                     <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
@@ -591,7 +595,7 @@ function Home(prp) {
                                                     <span></span>
                                                     <span><a href="#">{l?.bids_count} offers</a></span>
                                                 </div>
-                                                <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</a>
+                                                {/* <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</a> */}
                                             </div>
                                         </div>
                                     </div>

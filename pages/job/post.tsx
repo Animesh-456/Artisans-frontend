@@ -189,8 +189,8 @@ const Post = (prp) => {
 				continue;
 			}
 
-			if (file.size / (1000 * 1000) > 10) {
-				toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1000 * 1000)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 10.00 MB`);
+			if (file.size / (1000 * 1000) > 20) {
+				toast.error(`${file.name} cannot be uploaded! \n File size (${(file.size / (1000 * 1000)).toFixed(2)} MB) is too large!. The maximum file size allowed is set to : 20.00 MB`);
 				continue;
 			}
 			setpr(0)
@@ -405,11 +405,11 @@ const Post = (prp) => {
 				<meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
 			</Head>
 
-			<section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+			{/* <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
 				<div className="container">
 					<h1>Post Your Art Requirement</h1>
 				</div>
-			</section>
+			</section> */}
 
 
 
@@ -430,6 +430,17 @@ const Post = (prp) => {
 			</section> */}
 
 
+			<section className="breadcrumb_sec">
+				<div className="container">
+					<div className="row">
+						<ul className="breadcrumb">
+							<li className="breadcrumb-item"><a href="#">Home</a></li>
+							<li className="breadcrumb-item active">Post your requirement</li>
+
+						</ul>
+					</div>
+				</div>
+			</section>
 
 			<section className="discover_wp dya" >
 				<div className="container">

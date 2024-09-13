@@ -197,9 +197,21 @@ const Listing = (prp) => {
                 <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
             </Head>
 
-            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>List of Artwork Jobs</h1>
+                </div>
+            </section> */}
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Artwork Jobs</li>
+
+                        </ul>
+                    </div>
                 </div>
             </section>
 
@@ -359,7 +371,13 @@ const Listing = (prp) => {
                                     </div>
                                     <div className="col-sm-9">
                                         <div className="latest_request_text">
-                                            <h1>{l?.project_name}</h1>
+                                            {/* <h1>{l?.project_name}</h1> */}
+                                            {/* <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}> */}
+                                            <h1>
+                                                <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
+                                            </h1>
+                                            {/* </a> */}
+
 
                                             <p><b>Category: &nbsp;</b>{l?.category_names?.join(', ')}</p>
 
@@ -399,7 +417,7 @@ const Listing = (prp) => {
                                                 {/* <span>sub-category: {l?.sub_category}</span> */}
                                                 <span style={{ color: "#ef6100" }}>{l?.bids_count} offers</span>
                                             </div>
-                                            <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link>
+                                            {/* <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link> */}
                                         </div>
                                     </div>
                                 </div>

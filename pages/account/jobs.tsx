@@ -409,6 +409,19 @@ const Jobs = (prp) => {
                 <title>{`${prp?.prp?.data[0].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
             </Head>
+
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">My Account</a></li>
+                            <li className="breadcrumb-item active">Jobs</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
             <section className="myproject">
                 <div className="container">
                     <div className="row">

@@ -246,11 +246,11 @@ const Withdraw = (prp) => {
                 <title>{`${prp?.prp?.data[0].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
             </Head>
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Withdraw Funds</h1>
                 </div>
-            </section>
+            </section> */}
 
             <section className="myproject">
                 <div className="container">

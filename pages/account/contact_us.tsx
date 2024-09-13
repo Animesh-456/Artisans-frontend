@@ -150,11 +150,24 @@ const Contact = (prp) => {
 
 
 
-            <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
                 <div className="container">
                     <h1>Contact Us</h1>
                 </div>
+            </section> */}
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Contact Us</li>
+
+                        </ul>
+                    </div>
+                </div>
             </section>
+
 
             <section className="our_story_wp">
                 <div className="container">

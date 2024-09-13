@@ -420,6 +420,7 @@
     .howit_wp2 img {
         margin-top: -1em;
     }
+
     .manage_p2 img {
         height: 95px;
         object-fit: cover;
@@ -1525,16 +1526,16 @@
     }
 
     .ZgAjw6a {
-        display: inline-block;
-        width: 100%;
+        width: auto;
         background: #F5F5F5;
         border: none;
         font-size: 16px;
-        padding: 10px 0;
+        padding: 10px 12px;
         border-radius: 8px;
         font-weight: 600;
         font-family: "Poppins", sans-serif;
         display: block;
+        margin: 0 auto;
     }
 
     .v0vd7jw {
@@ -1609,29 +1610,37 @@
     .howit5 {
         padding: 0;
     }
+
     h4.modal-title {
         font-size: 18px;
     }
+
     .cnfm-job-attchmnts h5 {
         font-size: 18px;
         padding-bottom: 15px;
     }
+
     .reg-bottom button {
         margin-right: 15px;
     }
+
     .reg-bottom button:last-child {
         margin-right: 0;
     }
+
     .manage_p1 {
         display: block;
     }
+
     .manage_p2 img {
         height: 200px;
         object-fit: cover;
     }
+
     .gallery_p1 .manage_p2 {
         width: 100%;
     }
+
     .gallery_p1 .manage_p2 img {
         height: 200px;
     }

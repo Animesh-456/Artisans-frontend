@@ -214,9 +214,23 @@ const SignIn = (prp) => {
 				<title>{`${prp?.prp?.data[0].page_title}`}</title>
 				<meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
 			</Head>
-			<section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+
+
+			{/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
 				<div className="container">
 					<h1>My Account</h1>
+				</div>
+			</section> */}
+
+			<section className="breadcrumb_sec">
+				<div className="container">
+					<div className="row">
+						<ul className="breadcrumb">
+							<li className="breadcrumb-item"><a href="#">Home</a></li>
+							<li className="breadcrumb-item active">My account</li>
+
+						</ul>
+					</div>
 				</div>
 			</section>
 

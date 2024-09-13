@@ -261,11 +261,11 @@ const Invoices = (prp) => {
             </Head>
 
 
-            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Invoices</h1>
                 </div>
-            </section>
+            </section> */}
 
             <section className="myproject">
                 <div className="container">

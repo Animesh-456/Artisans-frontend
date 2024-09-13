@@ -88,12 +88,25 @@ const HowItWorks = ({ prp }) => {
                 </>
             )}
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>{title}</h1>
                 </div>
-            </section>
+            </section> */}
 
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">{title}</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            {/* <h1>{title}</h1> */}
             <div dangerouslySetInnerHTML={{ __html: htmlData }} />
 
 

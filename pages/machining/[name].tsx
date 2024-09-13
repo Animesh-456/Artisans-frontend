@@ -922,16 +922,29 @@ const ProjectDetail = (prp) => {
 
 
             <Head>
-                <title>{`${prp?.prp?.data.project_name}`} | AARTSTUDIO</title>  
+                <title>{`${prp?.prp?.data.project_name}`} | AARTSTUDIO</title>
                 <meta name="description" content={`${prp?.prp?.data.description}`} />
             </Head>
-            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+
+            {/* <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>{data?.project_name}</h1>
                 </div>
+            </section> */}
+
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item"><a href="#">Artwork jobs</a></li>
+                            <li className="breadcrumb-item active">{data?.project_name}</li>
+
+                        </ul>
+                    </div>
+                </div>
             </section>
-
-
 
             {user && user?.id == data?.programmer_id && data?.project_status >= 4 && (
 
