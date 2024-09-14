@@ -154,15 +154,27 @@ const MachinistConfirmationMessage = () => {
                 </div>
             </div> */}
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Send a Confirmation Message</h1>
+                </div>
+            </section> */}
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Send a Confirmation Message</li>
+
+                        </ul>
+                    </div>
                 </div>
             </section>
 
             <section className="myproject">
                 <div className="container">
-                    <div className="row" style={{justifyContent:"center"}}>
+                    <div className="row" style={{ justifyContent: "center" }}>
                         <div className="offset-sm-2"></div>
                         <div className="col-sm-8 profile_box">
                             <div className="discover_wp">
@@ -175,7 +187,7 @@ const MachinistConfirmationMessage = () => {
                                             min={new Date().toISOString().slice(0, 10)}
                                             onChange={setmsgs} value={msg.date} />
                                     </div>
-                                    
+
                                     <div className="from_feild">
                                         <label>Message sent to your customer:</label>
                                         <textarea name="desc" rows={5} value={msg.message}
@@ -183,8 +195,8 @@ const MachinistConfirmationMessage = () => {
                                         </textarea>
                                     </div>
                                     <div className="submit_cancel">
-                                        <a onClick={handlesubmit} style={{cursor:"pointer", color:"#fff"}}>Send the message</a>
-                                        <a onClick={handlecancel} style={{cursor:"pointer"}}>Cancel <img src={"../../img/arrow.png"} width="11px" alt="" /></a>
+                                        <a onClick={handlesubmit} style={{ cursor: "pointer", color: "#fff" }}>Send the message</a>
+                                        <a onClick={handlecancel} style={{ cursor: "pointer" }} className="cancel-button-msgid">Cancel <img src={"../../img/arrow.png"} width="11px" alt="" /></a>
                                     </div>
                                 </form>
                             </div>

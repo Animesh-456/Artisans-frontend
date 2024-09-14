@@ -225,7 +225,7 @@ const Listing = (prp) => {
                 <div className="container">
                     <div className="row">
                         <div className="filter_section">
-                            <div className="sort_dropdown">
+                            {/* <div className="sort_dropdown">
                                 <select value={sortOption} onChange={handleSortChange}>
                                     <option value="newest">Newest to Oldest</option>
                                     <option value="oldest">Oldest to Newest</option>
@@ -233,7 +233,7 @@ const Listing = (prp) => {
                                     <option value="za">Z to A</option>
                                 </select>
                                 <BiSortAlt2 className="sort-icon" />
-                            </div>
+                            </div> */}
                             <div className="search_bar">
                                 <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
                                 <i className="fa fa-search"></i>

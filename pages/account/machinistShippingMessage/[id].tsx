@@ -236,11 +236,23 @@ const Machinistshippingmessage = () => {
                 </div>
             </div> */}
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Send a Shipping Message</h1>
                 </div>
-            </section >
+            </section > */}
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Send a Shipping Message</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
             <section className="myproject">
                 <div className="container">
@@ -256,13 +268,13 @@ const Machinistshippingmessage = () => {
                                         <input type="date" name="name" min={new Date().toISOString().slice(0, 10)}
                                             onChange={setmsgs} value={value1} placeholder="Type here..." />
                                     </div>
-                                   
+
                                     <div className="from_feild">
                                         <label>Enter the traceability number here: </label>
                                         <input type="text" autoComplete={"off"}
                                             onChange={setmsgs2} name="name" placeholder="Traceability number" />
                                     </div>
-                                   
+
                                     <div className="from_feild">
                                         <label>Message sent to your customer:</label>
                                         <textarea name="desc" rows={5} value={value3}
@@ -296,8 +308,8 @@ const Machinistshippingmessage = () => {
 
 
                                     <div className="submit_cancel">
-                                        <a style={{cursor: "pointer", color:"#fff"}} onClick={handlesubmit}>Send the message</a>
-                                        <a style={{cursor: "pointer"}} onClick={handlecancel}>Cancel <img src={"../../img/arrow.png"} width="11px" alt="" /></a>
+                                        <a style={{ cursor: "pointer", color: "#fff" }} onClick={handlesubmit}>Send the message</a>
+                                        <a style={{ cursor: "pointer" }} onClick={handlecancel}>Cancel <img src={"../../img/arrow.png"} width="11px" alt="" /></a>
                                     </div>
                                 </form>
                             </div>

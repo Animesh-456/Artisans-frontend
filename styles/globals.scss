@@ -1190,7 +1190,7 @@ label {
 }
 
 .description_heading_title {
-    margin-top: 24px;
+    margin-top: 7px;
     position: relative;
     margin-bottom: 27px;
 }
@@ -4055,7 +4055,7 @@ marquee {
     color: #010101;
     font-size: 14px;
     position: relative;
-    top: -5px;
+    top: -4px;
 }
 
 .breadcrumb-item.active {
@@ -4092,3 +4092,8 @@ marquee {
     margin-bottom: 7px;
 }
 
+.description_left h2 {
+    font-size: 21px;
+    color: #080424;
+    padding: 5px 0 13px;
+}

@@ -435,7 +435,7 @@ const Post = (prp) => {
 					<div className="row">
 						<ul className="breadcrumb">
 							<li className="breadcrumb-item"><a href="#">Home</a></li>
-							<li className="breadcrumb-item active">Post your requirement</li>
+							<li className="breadcrumb-item active">Post your artwork requirement</li>
 
 						</ul>
 					</div>

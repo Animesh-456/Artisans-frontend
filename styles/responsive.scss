@@ -635,8 +635,8 @@
     }
 
     .howit_wp p {
-        font-size: 15px;
-        line-height: 25px;
+        font-size: 14px;
+        line-height: 24px;
         margin-top: 0;
     }
 
@@ -887,7 +887,7 @@
 
     .latest_request_text h1 {
         margin-top: 5px;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 25px;
         margin-bottom: 0px;
     }
@@ -906,9 +906,9 @@
 
     .heading_title h1 {
         display: block;
-        font-size: 20px;
-        line-height: 28px;
-        font-weight: 600;
+        font-size: 19px;
+        line-height: 25px;
+        font-weight: 500;
     }
 
     .testimonial_animation {
@@ -1001,7 +1001,7 @@
 
     .description_left img {
         height: 200px;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     .offer_section {
@@ -1050,8 +1050,8 @@
     .missionwp p,
     .about_wp p {
         margin-bottom: 8px;
-        font-size: 15px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 24px;
         margin-top: 1em;
     }
 
@@ -1210,6 +1210,7 @@
         display: inline;
         margin-bottom: 17px;
         margin-right: 13px;
+        font-size: 14px;
     }
 
     .submit_cancel a:last-child {
@@ -1248,6 +1249,7 @@
 
     .step_one p {
         line-height: 19px;
+        font-size: 14px;
     }
 
     .latest_request_text a {
@@ -1431,7 +1433,7 @@
     .nav-link {
         font-weight: 500 !important;
         color: #1c1c1c !important;
-        padding: 5px 3px !important;
+        padding: 10px 3px !important;
     }
 
     .navbar-nav .nav-link.active,
@@ -1495,15 +1497,15 @@
     }
 
     .discover_wp p {
-        font-size: 15px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 25px;
         padding-bottom: 0;
     }
 
     .latest_request_heading,
     .testimonial_heading,
     .top_artist_heading {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
         text-align: left;
     }
 
@@ -1513,17 +1515,23 @@
 
     .top_artist_slider h3 {
         font-size: 15px;
+        padding: 8px 0 5px;
     }
 
     .top_artist_slider span {
         font-size: 12px;
         line-height: 14px;
+        align-items: center;
     }
 
     .footer_logo p {
         color: #d9d9d9;
-        font-size: 15px;
+        font-size: 14px;
         padding-bottom: 10px;
+    }
+
+    .footer_logo h4 {
+        font-size: 16px;
     }
 
     .quick_left h3 {
@@ -1535,7 +1543,7 @@
     .quick_left p,
     .quick_left ul li a {
         color: #d9d9d9;
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .quick_left ul li {
@@ -1553,7 +1561,7 @@
 
     .ZgAjw6a {
         width: auto;
-        background: #F5F5F5;
+        background: transparent;
         border: none;
         font-size: 14px;
         padding: 10px 12px;
@@ -1562,6 +1570,7 @@
         font-family: "Poppins", sans-serif;
         display: block;
         margin: 0 auto;
+        color: #080424;
     }
 
     .v0vd7jw {
@@ -1598,8 +1607,8 @@
     }
 
     .description_left p {
-        font-size: 15px;
-        line-height: 25px;
+        font-size: 13px;
+        line-height: 22px;
         padding-bottom: 10px;
     }
 
@@ -1674,23 +1683,23 @@
     }
 
     .sidebar .heading_title h2 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .prof111 h4 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .rys h5 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     h3.cus {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .description h4 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .popular_category {
@@ -1698,7 +1707,7 @@
     }
 
     .latest_request {
-        padding: 1em 0;
+        padding: 2em 0;
     }
 
     .art-img1 {
@@ -1708,7 +1717,7 @@
     }
 
     .latest_request_text p {
-        padding-bottom: 4px;
+        padding-bottom: 0px;
     }
 
     .top_artist {
@@ -1736,7 +1745,8 @@
     }
 
     .latest_request_text h1 a {
-        font-size: 19px;
+        font-size: 15px;
+        font-weight: 500;
     }
 
     .description_left {
@@ -1744,7 +1754,7 @@
     }
 
     .description_heading_title h2 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .description_heading_title {
@@ -1803,6 +1813,85 @@
 
     .discover_wp a {
         margin: 12px 0 30px;
+    }
+
+    .breadcrumb-item+.breadcrumb-item:before {
+        top: 1px;
+        position: relative;
+    }
+
+    .create_o a {
+        font-size: 13px;
+    }
+
+    .project_details_content span {
+        font-size: 13px;
+    }
+
+    .project_details_content p {
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+
+    .project_details_content p a {
+        font-size: 13px;
+    }
+
+    .css-ung p {
+        font-size: 13px;
+        padding-bottom: 7px;
+    }
+
+    .from_feild label {
+        font-size: 13px;
+    }
+
+    .css-ung input[type=submit] {
+        font-size: 13px;
+    }
+
+    .css-ung h5 {
+        font-size: 16px;
+    }
+
+    .from_feild label {
+        margin-bottom: 3px;
+    }
+
+    .bid-btn {
+        font-size: 14px;
+    }
+
+    .howit_wp1 h5 {
+        font-size: 16px;
+    }
+
+    .sign_wp form {
+        margin-top: 0em;
+    }
+
+    .latest_request_heading1 {
+        margin: 0 auto 1em;
+    }
+
+    .discover_wp h5 {
+        font-size: 16px;
+    }
+
+    .cancel-button-msgid {
+        margin-left: 12px;
+    }
+
+    .footer_logo img {
+        width: 120px;
+    }
+
+    .breadcrumb-item.active {
+        font-size: 13px;
+    }
+
+    .breadcrumb a {
+        font-size: 13px;
     }
 
 }

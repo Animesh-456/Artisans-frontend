@@ -938,8 +938,7 @@ const ProjectDetail = (prp) => {
                     <div className="row">
                         <ul className="breadcrumb">
                             <li className="breadcrumb-item"><a href="#">Home</a></li>
-                            <li className="breadcrumb-item"><a href="#">Artwork jobs</a></li>
-                            <li className="breadcrumb-item active">{data?.project_name}</li>
+                            <li className="breadcrumb-item active"><a href="#">Artwork jobs</a></li>
 
                         </ul>
                     </div>
@@ -1511,6 +1510,7 @@ const ProjectDetail = (prp) => {
                     <div className="row">
                         <div className="col-sm-8">
                             <div className="description_left">
+                                <h2>{data?.project_name}</h2>
                                 <img
                                     src={common.get_attachment(
                                         (data?.attachment_name?.split(',')[0]),

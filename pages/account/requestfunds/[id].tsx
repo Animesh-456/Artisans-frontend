@@ -77,15 +77,27 @@ const Requestfunds = () => {
                 </div>
             </div> */}
 
-            <section className="inner_banner_wp" style={{backgroundImage: `url(../../img/inner-banner.jpg)`}}>
+            {/* <section className="inner_banner_wp" style={{backgroundImage: `url(../../img/inner-banner.jpg)`}}>
                 <div className="container">
                     <h1>Ask To Be Paid</h1>
+                </div>
+            </section> */}
+
+            <section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Ask To Be Paid</li>
+
+                        </ul>
+                    </div>
                 </div>
             </section>
 
             <section className="myproject">
                 <div className="container">
-                    <div className="row" style={{justifyContent:"center"}}>
+                    <div className="row" style={{ justifyContent: "center" }}>
                         <div className="offset-sm-2"></div>
                         <div className="col-sm-8 profile_box">
                             <div className="discover_wp ewer">
@@ -94,8 +106,8 @@ const Requestfunds = () => {
                                 <hr />
                                 <form>
                                     <div className="submit_cancel">
-                                        <a style={{cursor:"pointer", color:"#fff" }} onClick={handlesubmit}>Request to Release Funds</a>
-                                        <a style={{cursor:"pointer"}} onClick={handlecancel}>Cancel <img src={"../../img/arrow.png"} width="11px" alt=""/></a>
+                                        <a style={{ cursor: "pointer", color: "#fff" }} onClick={handlesubmit}>Request to Release Funds</a>
+                                        <a style={{ cursor: "pointer" }} onClick={handlecancel}>Cancel <img src={"../../img/arrow.png"} width="11px" alt="" /></a>
                                     </div>
                                 </form>
                             </div>

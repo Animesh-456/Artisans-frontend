@@ -457,7 +457,7 @@ function Home(prp) {
                                 work resonates with your vision.</p>
 
                             <div className="latest_request_text">
-                                <a href='/artrequest'>Know More</a>
+                                <a href='/page/works'>Know More</a>
                             </div>
                         </div>
                         <div className="col-sm-7">
