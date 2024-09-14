@@ -2326,7 +2326,7 @@ ul.side-nav {
 }
 
 #faq .card {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     border: 0;
 }
 
@@ -2967,7 +2967,7 @@ select {
 
 
 .howit_wp {
-    padding: 2em 0 0;
+    padding: 2em 0;
 }
 
 .howit_wp p {
@@ -4049,6 +4049,8 @@ marquee {
     color: #6c757d;
     content: "\f105";
     font: normal normal normal 15px/1 FontAwesome;
+    position: relative;
+    top: 2px;
 }
 
 .breadcrumb a {
@@ -4096,4 +4098,8 @@ marquee {
     font-size: 21px;
     color: #080424;
     padding: 5px 0 13px;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: 0;
 }
