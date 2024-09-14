@@ -566,8 +566,10 @@ const Artwork = (prp) => {
                                                                 <>
                                                                     <div className="manage_p2">
                                                                         {/* <p>{f?.name}</p> */}
-                                                                        <img src={URL.createObjectURL(f)} />
-                                                                        <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i>
+                                                                        <div className="pic_img_edit">
+                                                                            <img src={URL.createObjectURL(f)} />
+                                                                            <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i>
+                                                                        </div>
                                                                     </div>
 
                                                                 </>
@@ -731,10 +733,10 @@ const Artwork = (prp) => {
                                                             return (
                                                                 <>
                                                                     <div className="manage_p2">
-
-                                                                        <img src={common.get_portfolio_pic(f)} />
-                                                                        <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_modal_files(index)}></i>
-                                                                    </div>
+                                                                        <div className="pic_img_edit">
+                                                                            <img src={common.get_portfolio_pic(f)} />
+                                                                            <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_modal_files(index)}></i>
+                                                                        </div> </div>
                                                                 </>
                                                             )
                                                         }) : (<></>)}
@@ -743,10 +745,10 @@ const Artwork = (prp) => {
                                                             return (
                                                                 <>
                                                                     <div className="manage_p2">
-
-                                                                        <img src={URL.createObjectURL(f)} />
-                                                                        <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_extra_modal_files(index)}></i>
-                                                                    </div>
+                                                                        <div className="pic_img_edit">
+                                                                            <img src={URL.createObjectURL(f)} />
+                                                                            <i className="fa fa-times-circle" style={{ cursor: "pointer" }} onClick={() => delete_extra_modal_files(index)}></i>
+                                                                        </div> </div>
                                                                 </>
                                                             )
                                                         }) : (<></>)}

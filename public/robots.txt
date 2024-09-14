@@ -1,0 +1,23 @@
+User-agent: *
+
+Disallow: 
+Disallow: /account/jobs
+Disallow: /account/public-profile
+Disallow: /account/profile
+Disallow: /account/edit-profile
+Disallow: /account/inbox
+Disallow: /account/change-password
+Disallow: /account/kyc
+Disallow: /account/withdraw
+Disallow: /account/invoices
+Disallow: /account/Customer-Review
+Disallow: /key
+Disallow: /account/CustomerRealeasePayment
+Disallow: /auth/forgetpassword
+Disallow: /account/terms
+Disallow: /job/listing
+Disallow: /account/artwork
+
+Sitemap: https://aartstudio.in/sitemap.xml
+
+

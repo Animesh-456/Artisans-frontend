@@ -411,7 +411,7 @@ const Jobs = (prp) => {
             </Head>
 
 
-            <section className="breadcrumb_sec">
+            {/* <section className="breadcrumb_sec">
                 <div className="container">
                     <div className="row">
                         <ul className="breadcrumb">
@@ -421,7 +421,7 @@ const Jobs = (prp) => {
                         </ul>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <section className="myproject">
                 <div className="container">
                     <div className="row">
