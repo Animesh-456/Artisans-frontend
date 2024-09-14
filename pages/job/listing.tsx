@@ -78,11 +78,12 @@ const Listing = (prp) => {
                 query: {
                     page: 0,
                     category: category,
-                    searchQuery: searchQuery
+                    searchQuery: searchQuery,
+                    sort: sortOption
                 },
             })
             .then(() => {
-                api.project.list({ params: { ...opt, page: 0, category: category, searchQuery: searchQuery } });
+                api.project.list({ params: { ...opt, page: 0, category: category, searchQuery: searchQuery, sortBy: sortOption } });
             });
     }
 
@@ -97,20 +98,37 @@ const Listing = (prp) => {
         const pageQueryParam3 = new URLSearchParams(location.search).get('searchQuery');
         const urlsearchQuery = pageQueryParam3 || "";
 
-        api.project.list({ params: { ...opt, page: pageNumber - 1, category: urlCategory, searchQuery: urlsearchQuery } });
+        const pageQueryParam4 = new URLSearchParams(location.search).get('sort');
+        const sort = pageQueryParam4 || "";
+
+        api.project.list({ params: { ...opt, page: pageNumber - 1, category: urlCategory, searchQuery: urlsearchQuery, sortBy: sort } });
         api.project.get_category_subcategory({})
     }, []);
 
     const handlePageClick = (i) => {
+        // router
+        //     .replace({
+        //         pathname: router.pathname,
+        //         query: {
+        //             page: i + 1,
+        //         },
+        //     })
+        //     .then(() => {
+        //         api.project.list({ params: { ...opt, page: i } });
+        //     });
+
         router
             .replace({
                 pathname: router.pathname,
                 query: {
                     page: i + 1,
+                    category: category,
+                    searchQuery: searchQuery,
+                    sort: sortOption
                 },
             })
             .then(() => {
-                api.project.list({ params: { ...opt, page: i } });
+                api.project.list({ params: { ...opt, page: i, category: category, searchQuery: searchQuery, sortBy: sortOption } });
             });
     };
 
@@ -237,7 +255,7 @@ const Listing = (prp) => {
                         </div>
                     </div>
 
-                    {sortProjects(list)?.length ? sortProjects(list)?.map((l, index) => {
+                    {list?.length ? list?.map((l, index) => {
                         const strt = new Date(l?.project_post_format_date)
 
                         let n = new Date().toLocaleString('en-US', {
