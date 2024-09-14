@@ -230,7 +230,7 @@ const Listing = (prp) => {
                                 <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
                                 <i className="fa fa-search"></i>
                             </div>
-                            
+
                             <div className="sort_dropdown all_categori">
                                 <select value={sortOption} onChange={handleSortChange}>
                                     <option value="newest">Newest to Oldest</option>
@@ -304,7 +304,7 @@ const Listing = (prp) => {
                                             <h1>
                                                 <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                             </h1>
-                                            <p><b>Category: &nbsp;</b>{l?.category_names?.join(', ')}</p>
+                                            <h6><span>Category:</span> &nbsp;{l?.category_names?.join(', ')}</h6>
 
                                             {l?.description.length > 250 ? (
                                                 <>
