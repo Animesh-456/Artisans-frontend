@@ -279,12 +279,16 @@ const Listing = (prp) => {
                                     <div className="col-sm-3">
                                         <div className="latest_request_pic">
                                             {l?.attachment_name?.includes(",") ? (
-                                                <img className="art-img1" src={common.get_attachment(
-                                                    (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-                                                ) || "../img/pic2.png"} alt="" />
+                                                <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>
+                                                    <img className="art-img1" src={common.get_attachment(
+                                                        (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                    ) || "../img/pic2.png"} alt="" />
+                                                </Link>
                                             ) : (
-                                                <img className="art-img1" src={common.get_attachment(
-                                                    (l?.attachment_name), formattedDate) || "../img/pic2.png"} alt="art-image" />
+                                                <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>
+                                                    <img className="art-img1" src={common.get_attachment(
+                                                        (l?.attachment_name), formattedDate) || "../img/pic2.png"} alt="art-image" />
+                                                </Link>
                                             )}
 
                                             {l?.project_status >= "1" && (

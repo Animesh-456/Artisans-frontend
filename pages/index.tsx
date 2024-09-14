@@ -532,14 +532,18 @@ function Home(prp) {
                                                 <div className="latest_request_pic">
                                                     {l?.attachment_name?.includes(",") ? (
                                                         <>
-                                                            <img className="art-img1" src={common.get_attachment(
-                                                                (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-                                                            ) || "../img/logo.png"} alt="" /></>
+                                                            <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>
+                                                                <img className="art-img1" src={common.get_attachment(
+                                                                    (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                                ) || "../img/logo.png"} alt="" />
+                                                            </Link>
+                                                        </>
                                                     ) : (
                                                         <>
 
-                                                            <img className="art-img1" src={common.get_attachment(
+                                                            <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}><img className="art-img1" src={common.get_attachment(
                                                                 (l?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
+                                                            </Link>
                                                         </>
                                                     )}
                                                     {l?.project_status >= "1" ? (
