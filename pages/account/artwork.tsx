@@ -625,20 +625,21 @@ const Artwork = (prp) => {
                                                     <>
                                                         <div className='manage_p2'>
                                                             <p>{l?.title}</p>
-                                                            <img
-                                                                src={common.get_portfolio_pic(l?.main_img)}
+                                                            <div className="pic_img_edit">
+                                                                <img
+                                                                    src={common.get_portfolio_pic(l?.main_img)}
 
-                                                                alt={`${l?.title}`}
-                                                            />
-                                                            <i className="fa fa-times" data-toggle="modal" data-target="#deleteart" style={{ cursor: "pointer" }} onClick={() => {
-                                                                setSelectedArtId(l.id);
-                                                                setOpen_machinist(true); // Open the modal
-                                                            }}></i>
+                                                                    alt={`${l?.title}`}
+                                                                />
+                                                                <i className="fa fa-times" data-toggle="modal" data-target="#deleteart" style={{ cursor: "pointer" }} onClick={() => {
+                                                                    setSelectedArtId(l.id);
+                                                                    setOpen_machinist(true); // Open the modal
+                                                                }}></i>
 
 
-                                                            <i className="fa fa-pencil" data-toggle="modal" data-target="#myedit" style={{ cursor: "pointer" }} onClick={() => openModal(l)}></i>
-                                                            {/* <a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a> */}
-
+                                                                <i className="fa fa-pencil" data-toggle="modal" data-target="#myedit" style={{ cursor: "pointer" }} onClick={() => openModal(l)}></i>
+                                                                {/* <a onClick={select_machinist(bid)} style={{ cursor: "pointer" }} data-toggle="modal" data-target="#selectoffer">Select  <img src={"../img/arrow.png"} width="11px" alt="" /></a> */}
+                                                            </div>
                                                         </div>
 
 
@@ -795,8 +796,7 @@ const Artwork = (prp) => {
 
                                                     </div>
 
-                                                    <br />
-                                                    <br />
+
                                                     <div className="submit_cancel">
                                                         <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleUpdate}>Update</a>
                                                         <a style={{ cursor: "pointer" }} onClick={closeModal}>Cancel <img src="img/arrow.png" width="11px" alt="" /></a>

@@ -14,6 +14,7 @@ import AccountSideBar from "../../src/views/account/edit-profile/SideBar";
 import env from "../../src/config/api";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BiSortAlt2 } from "react-icons/bi";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
@@ -34,14 +35,14 @@ export const getStaticProps = async () => {
 
         return {
             props: {
-                prp: data // Assuming the fetched data structure matches what's expected
+                prp: data
             }
         };
     } catch (error) {
         console.error('Error fetching data:', error);
         return {
             props: {
-                prp: null // Or any default value indicating an error occurred
+                prp: null
             }
         };
     }
@@ -56,27 +57,20 @@ const Listing = (prp) => {
     const [category, setCategory] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
 
-
     const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
-
+    const [sortOption, setSortOption] = useState("newest");
 
     const [arr, setArr] = useState([]);
 
-
-
     const RefLink = (l) => {
-
         localStorage.setItem('items', (l));
         router.replace(l)
     }
 
-
     const handleApply = () => {
-
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
         console.log("Page number for handle apply ", pageNumber)
-
 
         router
             .replace({
@@ -90,16 +84,12 @@ const Listing = (prp) => {
             .then(() => {
                 api.project.list({ params: { ...opt, page: 0, category: category, searchQuery: searchQuery } });
             });
-
     }
 
-
     useEffect(() => {
-
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
         console.log("Page number is ", pageNumber)
-
 
         const pageQueryParam2 = new URLSearchParams(location.search).get('category');
         const urlCategory = pageQueryParam2 || "";
@@ -107,14 +97,11 @@ const Listing = (prp) => {
         const pageQueryParam3 = new URLSearchParams(location.search).get('searchQuery');
         const urlsearchQuery = pageQueryParam3 || "";
 
-
         api.project.list({ params: { ...opt, page: pageNumber - 1, category: urlCategory, searchQuery: urlsearchQuery } });
         api.project.get_category_subcategory({})
     }, []);
 
-
     const handlePageClick = (i) => {
-
         router
             .replace({
                 pathname: router.pathname,
@@ -129,7 +116,6 @@ const Listing = (prp) => {
 
     const [expandedRows, setExpandedRows] = useState([]);
     const toggleRowExpansion = (rowIndex) => {
-
         if (expandedRows.includes(rowIndex)) {
             setExpandedRows(expandedRows.filter((i) => i !== rowIndex));
         } else {
@@ -137,29 +123,23 @@ const Listing = (prp) => {
         }
     };
 
-
-
-
     useEffect(() => {
         if (user) {
             api.project.public_profile_total_jobs({ params: { id: user?.id } })
         }
-
     }, [])
-
 
     const totaljobs = useAtomValue(atom.project.api.total_jobs)
 
     console.log("This users total jobs:- ", totaljobs)
 
     const onDocumentLoadSuccess = ({ numPages }) => {
-
         setNumPages(numPages);
     };
 
     console.log("projects attach------------->", list);
 
-    const visiblePages = 10; // Number of visible page buttons
+    const visiblePages = 10;
     const getPageNumbers = () => {
         const startPage = Math.max(0, opt.page - Math.floor(visiblePages / 2));
         const endPage = Math.min(opt.total_pages, startPage + visiblePages - 1);
@@ -167,14 +147,11 @@ const Listing = (prp) => {
         return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
     };
 
-
-
     const handleCategoryChange = (e) => {
         setCategory(e.target.value);
     };
     console.log("category is", category)
     console.log("searchQuery is", searchQuery)
-
 
     useEffect(() => {
         const pageQueryParam2 = new URLSearchParams(location.search).get('category');
@@ -187,21 +164,33 @@ const Listing = (prp) => {
         }
         return
     }, [location.search])
+    // FILTER
 
+    const handleSortChange = (e) => {
+        setSortOption(e.target.value);
+    };
 
+    const sortProjects = (projects) => {
+        switch (sortOption) {
+            case "oldest":
+                return [...projects].sort((a, b) => new Date(a.created).getTime() - new Date(b.created).getTime());
+            case "newest":
+                return [...projects].sort((a, b) => new Date(b.created).getTime() - new Date(a.created).getTime());
+            case "az":
+                return [...projects].sort((a, b) => a.project_name.localeCompare(b.project_name));
+            case "za":
+                return [...projects].sort((a, b) => b.project_name.localeCompare(a.project_name));
+            default:
+                return projects;
+        }
+    };
+    ////FILTER
     return (
         <>
-
             <Head>
                 <title>{`${prp?.prp?.data[0].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
             </Head>
-
-            {/* <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
-                <div className="container">
-                    <h1>List of Artwork Jobs</h1>
-                </div>
-            </section> */}
 
             <section className="breadcrumb_sec">
                 <div className="container">
@@ -209,18 +198,24 @@ const Listing = (prp) => {
                         <ul className="breadcrumb">
                             <li className="breadcrumb-item"><a href="#">Home</a></li>
                             <li className="breadcrumb-item active">Artwork Jobs</li>
-
                         </ul>
                     </div>
                 </div>
             </section>
 
-
             <section className="art_request_wp">
                 <div className="container">
                     <div className="row">
                         <div className="filter_section">
-                            {/* <div className="post_request_button"><a href={"/artrequest"}>Post Art Request</a></div> */}
+                            <div className="sort_dropdown">
+                                <select value={sortOption} onChange={handleSortChange}>
+                                    <option value="newest">Newest to Oldest</option>
+                                    <option value="oldest">Oldest to Newest</option>
+                                    <option value="az">A to Z</option>
+                                    <option value="za">Z to A</option>
+                                </select>
+                                <BiSortAlt2 className="sort-icon" />
+                            </div>
                             <div className="search_bar">
                                 <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
                                 <i className="fa fa-search"></i>
@@ -228,51 +223,22 @@ const Listing = (prp) => {
                             <div className="all_categori">
                                 <select value={category} onChange={handleCategoryChange}>
                                     <option value="">ALL Categories</option>
-                                    {/* <option>Painting</option>
-                                    <option>Sculpture</option>
-                                    <option>Printmaking</option>
-                                    <option>Photography</option>
-                                    <option>Textile Art</option>
-                                    <option>Ceramics</option>
-                                    <option>Glass Art</option>
-                                    <option>Digital Art</option>
-                                    <option>Mixed Media</option>
-                                    <option>Calligraphy</option>
-                                    <option>Jewelry Design</option>
-                                    <option>JGraffiti and Street Art</option>
-                                    <option>Installation Art</option> */}
-                                    {Category_subcategory?.categories?.map((cat) => {
-                                        return (
-                                            <>
-                                                <option key={cat?.id} value={cat?.id}>{cat?.category_name}</option>
-                                            </>
-                                        )
-                                    })}
+                                    {Category_subcategory?.categories?.map((cat) => (
+                                        <option key={cat?.id} value={cat?.id}>{cat?.category_name}</option>
+                                    ))}
                                 </select>
-
                             </div>
 
-
-
-
-                            {/* <button style={{background:"transparent", border: "none", color: "#fff"}} onClick={handleApply}><a className="" style={{cursor: "pointer"}}>Apply</a></button> */}
                             <div className="post_request_button filter-btn"><a style={{ cursor: 'pointer', color: "#fff" }} onClick={handleApply}>Apply</a></div>
-
-
 
                             <div className="sr">
                                 <p>Showing Results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</p>
                             </div>
-
-
                         </div>
                     </div>
 
-
-
-                    {list?.length ? list?.map((l, index) => {
+                    {sortProjects(list)?.length ? sortProjects(list)?.map((l, index) => {
                         const strt = new Date(l?.project_post_format_date)
-
 
                         let n = new Date().toLocaleString('en-US', {
                             timeZone: 'Asia/Kolkata',
@@ -282,225 +248,103 @@ const Listing = (prp) => {
                         const today = new Date()
                         nd.setHours(nd.getHours(), nd.getMinutes(), nd.getSeconds());
 
-
-                        // Calculate the time difference in milliseconds
                         const timeDiff = nd.getTime() - strt.getTime();
-
-                        // Calculate the number of days
                         const diffInDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-                        // Calculate the number of remaining hours
                         const hourDifference = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
 
-                        console.log("ndis", diffInDays, hourDifference)
-
-
-
-                        const strt2 = new Date(n)
-                        const nd2 = new Date(l?.project_expiry_date)
-
-                        const today2 = new Date(l?.project_post_format_date)
-                        nd2.setHours(today2.getHours(), today2.getMinutes(), today2.getSeconds());
-
-
-                        // Calculate the tim2e difference in milliseconds
-                        const timeDiff2 = nd2.getTime() - strt2.getTime();
-
-                        // Calculate the number of days
-                        const diffInDays2 = Math.floor(timeDiff2 / (1000 * 60 * 60 * 24));
-
-                        // Calculate the number of remaining hours
-                        const hourDifference2 = Math.floor((timeDiff2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-                        console.log("ndis2", diffInDays2, hourDifference2)
                         const date = new Date(l?.created * 1000);
+                        const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
 
-                        const year = date.getFullYear();
-                        const month = String(date.getMonth() + 1).padStart(2, '0');
-                        const day = String(date.getDate()).padStart(2, '0');
-                        const hours = String(date.getHours()).padStart(2, '0');
-                        const minutes = String(date.getMinutes()).padStart(2, '0');
-                        const seconds = String(date.getSeconds()).padStart(2, '0');
-
-                        const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
-                        console.log('created-------------------', formattedDate);
-
-
-
-
-
-                        const givenDateTime2 = moment(l?.project_post_format_date, 'YYYY-MM-DD HH:mm:ss');
-                        const nowDateTime2 = moment();
-
-                        // Step 2: Calculate the time difference using the diff method
-                        const timeDifference2 = nowDateTime2.diff(givenDateTime2);
-
-                        // Step 3: Extract the days and hours from the difference using Moment's duration methods
-                        const duration2 = moment.duration(timeDifference2);
-                        const days2 = duration2.days();
-                        const hours2 = duration2.hours();
-
-                        console.log("The new time diff2 is", days2, hours2)
                         return (
-                            <>
+                            <React.Fragment key={l.id}>
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <div className="latest_request_pic">
-                                            {/* <img src={} alt="" /> */}
                                             {l?.attachment_name?.includes(",") ? (
-                                                <>
-                                                    <img className="art-img1" src={common.get_attachment(
-                                                        (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-                                                    ) || "../img/pic2.png"} alt="" /></>
+                                                <img className="art-img1" src={common.get_attachment(
+                                                    (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                ) || "../img/pic2.png"} alt="" />
                                             ) : (
-                                                <>
-
-                                                    <img className="art-img1" src={common.get_attachment(
-                                                        (l?.attachment_name), formattedDate) || "../img/pic2.png"} alt="art-image" />
-                                                </>
+                                                <img className="art-img1" src={common.get_attachment(
+                                                    (l?.attachment_name), formattedDate) || "../img/pic2.png"} alt="art-image" />
                                             )}
 
-                                            {l?.project_status >= "1" ? (
-
+                                            {l?.project_status >= "1" && (
                                                 <img className="cir" src={"/img/circle.png"} alt="awarded-img" />
-                                            ) : (
-                                                <></>
                                             )}
                                         </div>
                                     </div>
                                     <div className="col-sm-9">
                                         <div className="latest_request_text">
-                                            {/* <h1>{l?.project_name}</h1> */}
-                                            {/* <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}> */}
                                             <h1>
                                                 <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                             </h1>
-                                            {/* </a> */}
-
-
                                             <p><b>Category: &nbsp;</b>{l?.category_names?.join(', ')}</p>
 
-                                            {/* <div> */}
-
                                             {l?.description.length > 250 ? (
-                                                // <div>
-
                                                 <>
-
                                                     {expandedRows.includes(index) ? (
-
                                                         <></>
-
                                                     ) : (
                                                         <p>{l?.description.slice(0, 250).concat("...")}  <MdOutlineKeyboardArrowDown style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
                                                     )}
-
                                                 </>
-
-                                                // </div>
                                             ) : (<p>{l?.description}</p>)}
                                             {expandedRows.includes(index) && (
-
                                                 <p>{l?.description} <MdOutlineKeyboardArrowUp style={{ color: "red", cursor: "pointer" }} onClick={() => toggleRowExpansion(index)} /></p>
-
                                             )}
-
-
-
-                                            {/* </div> */}
 
                                             <div>
                                                 <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
                                                 <span>Posted: {diffInDays} d {hourDifference} h ago</span>
-                                                {/* <span>Category: {l?.category_names?.join(', ')}</span> */}
-                                                {/* <span>sub-category: {l?.sub_category}</span> */}
                                                 <span style={{ color: "#ef6100" }}>{l?.bids_count} offers</span>
                                             </div>
-                                            {/* <Link href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>View Details</Link> */}
                                         </div>
                                     </div>
                                 </div>
                                 <hr />
-                            </>
+                            </React.Fragment>
                         )
                     }) : "No results Found"}
 
-
-
-
-
                     <nav className="pagination_wp">
                         <ul className="pagination justify-content-center">
-                            <li className="page-item">
-
-
-
-                                {(opt.page > 0) ? <li className='page-item'>
+                            {(opt.page > 0) && (
+                                <li className='page-item'>
                                     <a className="page-link" onClick={() => handlePageClick(0)} aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
-                                </li> : ""}
-
-                            </li>
-
+                                </li>
+                            )}
 
                             {opt.total_count > 10 && getPageNumbers().map((page) => (
-                                <>
-
-                                    <li
-                                        className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 ==
-                                            page
-                                            ? "active"
-                                            : ""
-                                            }`}>
-                                        <Link href={`${router.pathname}?page=${page}`}>
-                                            <a
-                                                className='page-link'
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    handlePageClick(page);
-                                                }}>
-                                                {page + 1}
-                                            </a>
-                                        </Link>
-                                    </li>
-                                </>
-
+                                <li
+                                    key={page}
+                                    className={`page-item ${parseFloat((router?.query?.page || 0).toString()) - 1 == page ? "active" : ""}`}>
+                                    <Link href={`${router.pathname}?page=${page}`}>
+                                        <a
+                                            className='page-link'
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                handlePageClick(page);
+                                            }}>
+                                            {page + 1}
+                                        </a>
+                                    </Link>
+                                </li>
                             ))}
 
-                            <li className="page-item">
-
-                                {opt.page != opt.total_pages ? <li className='page-item'>
-
+                            {opt.page != opt.total_pages && (
+                                <li className='page-item'>
                                     <a className="page-link" onClick={() => handlePageClick(opt.total_pages)} aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
-
                                     </a>
-
-                                </li> : ""}
-                            </li>
+                                </li>
+                            )}
                         </ul>
                     </nav>
                 </div>
             </section>
-
-
-            {/* <div className='container'>
-                <div className='row job_machin_wp'>
-
-                    {user?.role_id == 2 || user?.role_id == 1 ? (
-                        <>
-                            <AccountSideBar />
-                        </>
-                    ) : (<>
-                    </>)}
-
-
-
-                </div>
-            </div> */}
-
         </>
     );
 };

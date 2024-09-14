@@ -1835,8 +1835,7 @@ const ProjectDetail = (prp) => {
 
                                     </div>
 
-                                    <br />
-                                    <br />
+
 
 
                                     {pr < 101 ? (

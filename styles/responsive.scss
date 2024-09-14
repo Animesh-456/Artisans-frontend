@@ -96,7 +96,7 @@
     }
 
     .banner_text h1 {
-        font-size: 3em;
+        font-size: 2.5em;
     }
 
     .carve {
@@ -291,6 +291,7 @@
     #faq .card .card-header .btn-header-link {
         white-space: break-spaces;
         font-size: 14px;
+        padding: 13px;
     }
 
     .submit_cancel a {
@@ -579,7 +580,7 @@
     }
 
     .banner_text h1 {
-        font-size: 3em;
+        font-size: 2.5em;
     }
 
     .popular_category_listing li img {
@@ -634,14 +635,15 @@
     }
 
     .howit_wp p {
-        font-size: 17px;
-        line-height: 30px;
-        margin-top: 1em;
+        font-size: 15px;
+        line-height: 25px;
+        margin-top: 0;
     }
 
     .howit_wp1 p {
-        font-size: 17px;
-        line-height: 30px;
+        font-size: 15px;
+        line-height: 25px;
+        margin-bottom: 2em;
     }
 
     .howit_wp2 img {
@@ -658,6 +660,14 @@
         text-align: left;
     }
 
+    .sidebar .heading_title {
+        margin-left: 0;
+    }
+
+    ul.side-nav {
+        margin-top: 10px;
+    }
+
     .about_wp img,
     .missionwp img {
         height: 300px;
@@ -668,15 +678,23 @@
     }
 
     .howit_wp {
-        padding: 3em 0;
+        padding: 1em 0;
     }
 
     .howit_wp1 {
-        padding: 3em 0 0;
+        padding: 1em 0 0;
     }
 
     .howit_wp2 {
-        padding: 3em 0;
+        padding: 0;
+    }
+
+    .howit_wp2 .col-sm-8 {
+        padding: 1em;
+    }
+
+    .howit_wp2 p {
+        margin-top: 0em;
     }
 
     .chat_browser span:first-child {
@@ -804,7 +822,7 @@
     }
 
     .banner_text h1 {
-        font-size: 3em;
+        font-size: 2.5em;
     }
 
     .banner_text h2 {
@@ -864,12 +882,14 @@
 
     .discover_wp {
         background-position: 0;
+        padding: 1em 0 0;
     }
 
     .latest_request_text h1 {
-        margin-top: 10px;
+        margin-top: 5px;
         font-size: 16px;
         line-height: 25px;
+        margin-bottom: 0px;
     }
 
     .owl-carousel .owl-nav button.owl-prev {
@@ -886,8 +906,9 @@
 
     .heading_title h1 {
         display: block;
-        font-size: 32px;
-        line-height: 40px;
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 600;
     }
 
     .testimonial_animation {
@@ -915,7 +936,7 @@
 
     .quick_left {
         width: auto;
-        margin-bottom: 30px;
+        margin-bottom: 16px;
     }
 
     .copyright p {
@@ -1022,13 +1043,15 @@
 
     .customer_wp {
         background-position: center;
+        padding: 1em 0;
+
     }
 
     .missionwp p,
     .about_wp p {
-        margin-bottom: 15px;
-        font-size: 17px;
-        line-height: 30px;
+        margin-bottom: 8px;
+        font-size: 15px;
+        line-height: 28px;
         margin-top: 1em;
     }
 
@@ -1103,6 +1126,7 @@
     #faq .card .card-header .btn-header-link {
         white-space: break-spaces;
         font-size: 14px;
+        padding: 13px;
     }
 
     .offer_section1 {
@@ -1292,7 +1316,7 @@
 
     .portfolio6,
     .portfolio3 {
-        padding: 25px 0 0;
+        padding: 10px 0 0;
     }
 
     .navwrp {
@@ -1407,7 +1431,7 @@
     .nav-link {
         font-weight: 500 !important;
         color: #1c1c1c !important;
-        padding: 17px 3px !important;
+        padding: 5px 3px !important;
     }
 
     .navbar-nav .nav-link.active,
@@ -1466,19 +1490,20 @@
     }
 
     .discover_left .heading_title {
-        margin-bottom: 1em;
+        margin-bottom: 0;
         display: block;
     }
 
     .discover_wp p {
-        font-size: 17px;
-        line-height: 30px;
+        font-size: 15px;
+        line-height: 28px;
+        padding-bottom: 0;
     }
 
     .latest_request_heading,
     .testimonial_heading,
     .top_artist_heading {
-        margin-bottom: 2em;
+        margin-bottom: 1em;
         text-align: left;
     }
 
@@ -1498,12 +1523,13 @@
     .footer_logo p {
         color: #d9d9d9;
         font-size: 15px;
+        padding-bottom: 10px;
     }
 
     .quick_left h3 {
         font-size: 19px;
         letter-spacing: 0.5px;
-        padding-bottom: 10px;
+        padding-bottom: 1px;
     }
 
     .quick_left p,
@@ -1513,7 +1539,7 @@
     }
 
     .quick_left ul li {
-        line-height: 29px;
+        line-height: 25px;
     }
 
     .popular_category_listing li a p {
@@ -1529,7 +1555,7 @@
         width: auto;
         background: #F5F5F5;
         border: none;
-        font-size: 16px;
+        font-size: 14px;
         padding: 10px 12px;
         border-radius: 8px;
         font-weight: 600;
@@ -1551,7 +1577,7 @@
 
     .about_wp .col-sm-6:last-child,
     .missionwp .col-sm-6:first-child {
-        margin-top: 2em;
+        margin-top: 0;
     }
 
     .our_story_wp img {
@@ -1572,8 +1598,9 @@
     }
 
     .description_left p {
-        font-size: 17px;
-        line-height: 30px;
+        font-size: 15px;
+        line-height: 25px;
+        padding-bottom: 10px;
     }
 
     a.kts {
@@ -1634,7 +1661,8 @@
 
     .manage_p2 img {
         height: 200px;
-        object-fit: cover;
+        object-fit: contain;
+        background: #fff;
     }
 
     .gallery_p1 .manage_p2 {
@@ -1643,6 +1671,138 @@
 
     .gallery_p1 .manage_p2 img {
         height: 200px;
+    }
+
+    .sidebar .heading_title h2 {
+        font-size: 20px;
+    }
+
+    .prof111 h4 {
+        font-size: 20px;
+    }
+
+    .rys h5 {
+        font-size: 20px;
+    }
+
+    h3.cus {
+        font-size: 20px;
+    }
+
+    .description h4 {
+        font-size: 20px;
+    }
+
+    .popular_category {
+        padding: 1em 0;
+    }
+
+    .latest_request {
+        padding: 1em 0;
+    }
+
+    .art-img1 {
+        height: 210px;
+        object-fit: contain;
+        background: #f1f1f1;
+    }
+
+    .latest_request_text p {
+        padding-bottom: 4px;
+    }
+
+    .top_artist {
+        padding: 1em 0;
+    }
+
+    footer {
+        padding: 1em 0;
+    }
+
+    footer hr {
+        margin: 15px 0 15px;
+    }
+
+    .about_wp {
+        padding: 1em 0;
+    }
+
+    .art_request_wp {
+        padding: 1em 0;
+    }
+
+    .art_request_wp hr {
+        margin: 10px 0;
+    }
+
+    .latest_request_text h1 a {
+        font-size: 19px;
+    }
+
+    .description_left {
+        margin: 1em 0;
+    }
+
+    .description_heading_title h2 {
+        font-size: 20px;
+    }
+
+    .description_heading_title {
+        margin-top: 5px;
+    }
+
+    .modal-body {
+        padding: 5px 9px;
+    }
+
+    .from_feild {
+        margin-bottom: 5px;
+    }
+
+    .css-ung small {
+        display: inline-block;
+        position: relative;
+        top: -9px;
+    }
+
+    .myproject {
+        padding: 1em 0;
+    }
+
+    .manage_p h4 {
+        font-size: 20px;
+    }
+
+    .tgs1 {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .artist_pro_tab .col-sm-3 {
+        margin-bottom: 0.5em;
+    }
+
+    .project_profil .fileinput,
+    .project_profil input,
+    .project_profil select {
+        margin-bottom: 7px;
+    }
+
+    #faq .card {
+        margin-bottom: 0;
+    }
+
+    .our_story_wp {
+        padding: 1em 0;
+    }
+
+    .submit_cancel1 {
+        margin-bottom: 0em;
+        margin-top: 0;
+    }
+
+    .discover_wp a {
+        margin: 12px 0 30px;
     }
 
 }

@@ -163,7 +163,7 @@ const about = (prp) => {
                 </div>
             </section> */}
 
-
+            {/* 
             <section className="about_wp">
                 <div className="container">
                     <div className="row">
@@ -222,9 +222,9 @@ const about = (prp) => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
-
+            <div dangerouslySetInnerHTML={{ __html: htmlData }} />
 
 
             <section className="customer_wp" >

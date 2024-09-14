@@ -3384,7 +3384,7 @@ ul.ex1 li a {
 .manage_p p {
     font-size: 15px;
     padding-bottom: 10px;
-    line-height: 25px;
+    line-height: 20px;
 }
 
 .tgs {
@@ -3436,7 +3436,7 @@ ul.ex1 li a {
 }
 
 .manage_p2 p {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .manage_p2 img {
@@ -3449,9 +3449,12 @@ ul.ex1 li a {
 .manage_p2 {
     width: 23.5%;
     margin-right: 10px;
-    position: relative;
     display: inline-block;
     margin-bottom: 17px;
+}
+
+.pic_img_edit {
+    position: relative;
 }
 
 // .manage_p2 .fa {
@@ -3464,7 +3467,7 @@ ul.ex1 li a {
 .manage_p2 .fa-times {
     position: absolute;
     right: 6px;
-    top: 41px;
+    top: 8px;
     color: #553500;
     background: #c5ab56;
     border-radius: 15px;
@@ -3478,7 +3481,7 @@ ul.ex1 li a {
 .manage_p2 .fa-pencil {
     position: absolute;
     left: 6px;
-    top: 41px;
+    top: 8px;
     color: #553500;
     background: #c5ab56;
     border-radius: 15px;
@@ -4084,3 +4087,8 @@ marquee {
     padding: 0;
     margin: 0;
 }
+
+.gallery_p1 {
+    margin-bottom: 7px;
+}
+
