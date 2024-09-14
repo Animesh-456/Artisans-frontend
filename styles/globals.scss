@@ -979,7 +979,7 @@ a {
 }
 
 .sr {
-    width: 25%;
+    width: 20%;
     text-align: right;
     top: 10px;
     position: relative;
@@ -1561,6 +1561,7 @@ label {
 
 .myproject {
     padding: 3em 0;
+    border-top: 1px solid #6c6c6c;
 }
 
 .sidebar {
@@ -4102,4 +4103,19 @@ marquee {
 
 .breadcrumb-item+.breadcrumb-item {
     padding-left: 0;
+}
+
+.sort_dropdown select {
+    width: 100%;
+    height: 45px;
+    padding-left: 18px;
+    border-radius: 6px;
+    border: 1px solid #878787;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+
+.sort_dropdown {
+    width: 25%;
+    margin-right: 20px;
 }

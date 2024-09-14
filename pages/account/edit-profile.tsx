@@ -729,7 +729,7 @@ const EditProfile = (prp) => {
 
                                             </div>
 
-                                            <hr />
+
                                         </div>
 
                                         <div className="row">
