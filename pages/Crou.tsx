@@ -61,7 +61,7 @@ const Crou = () => {
 
                                 <div className="item" key={index}>
                                     <div className="top_artist_slider">
-                                        {project?.attachment_name?.includes(",") ? (
+                                        {/* {project?.attachment_name?.includes(",") ? (
                                             <>
                                                 <a href={`/${project?.project_name?.split(" ").join("-")}-${project?.id}`}>
                                                     <img className="art-img1" src={common.get_attachment(
@@ -76,13 +76,18 @@ const Crou = () => {
                                                         (project?.attachment_name), formattedDate) || "../img/logo.png"} alt="art-image" />
                                                 </a>
                                             </>
-                                        )}
+                                        )} */}
+
+                                        <a href={`/account/artist-profile/${project?.provider?.programmer_portfolio[0]?.user_id}`}>
+                                            <img className="art-img1" src={common.get_portfolio_pic(
+                                                project?.provider?.programmer_portfolio[0]?.main_img) || "../img/logo.png"} alt="art-image" />
+                                        </a>
                                         <h3>{project?.project_name}</h3>
                                         <span> <img src={
-                                            common.get_profile_picture(project?.creator?.logo) ||
+                                            common.get_profile_picture(project?.provider?.logo) ||
                                             "../img/no-images.png"
                                         } alt="profile-picture" />
-                                            Posted by {project?.creator?.user_name}</span>
+                                            Posted by {project?.provider?.user_name}</span>
                                     </div>
                                 </div>
                             </>
