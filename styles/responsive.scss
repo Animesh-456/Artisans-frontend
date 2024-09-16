@@ -1968,5 +1968,18 @@
         margin-right: 0;
         margin-bottom: 10px;
     }
+    @media (max-width: 768px) {
+        .category-names {
+            max-width: calc(100% - 100px); /* Adjust for mobile */
+        }
+    }
 
+    .category-names {
+        display: inline-block;
+        max-width: calc(100% - 80px); /* Adjust based on your layout */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: bottom;
+    }
 }
