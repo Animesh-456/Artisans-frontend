@@ -82,7 +82,7 @@ const Crou = () => {
                                             common.get_profile_picture(project?.creator?.logo) ||
                                             "../img/no-images.png"
                                         } alt="profile-picture" />
-                                            Created by {project?.creator?.user_name}</span>
+                                            Posted by {project?.creator?.user_name}</span>
                                     </div>
                                 </div>
                             </>
