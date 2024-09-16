@@ -58,7 +58,7 @@ const Listing = (prp) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [expandedCategories, setExpandedCategories] = useState([]);
     const toggleCategoryExpansion = (index) => {
-        setExpandedCategories(prev => 
+        setExpandedCategories(prev =>
             prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
         );
     };
@@ -311,29 +311,29 @@ const Listing = (prp) => {
                                                 <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                             </h1>
                                             <h6>
-    <span>Category:</span> &nbsp;
-    <span className="category-names">
-        {l?.category_names?.length > 3 ? (
-            <>
-                {expandedCategories.includes(index) ? (
-                    l?.category_names.join(', ')
-                ) : (
-                    <>
-                        {l?.category_names.slice(0, 3).join(', ')}
-                        <span 
-                            style={{ color: '#1772eb', cursor: 'pointer', marginLeft: '5px' }}
-                            onClick={() => toggleCategoryExpansion(index)}
-                        >
-                         {l?.category_names.length - 3} more
-                        </span>
-                    </>
-                )}
-            </>
-        ) : (
-            l?.category_names?.join(', ')
-        )}
-    </span>
-</h6>
+                                                <span>Category:</span> &nbsp;
+                                                <span className="category-names">
+                                                    {l?.category_names?.length > 3 ? (
+                                                        <>
+                                                            {expandedCategories.includes(index) ? (
+                                                                l?.category_names.join(', ')
+                                                            ) : (
+                                                                <>
+                                                                    {l?.category_names.slice(0, 3).join(', ')}
+                                                                    <span
+                                                                        style={{ color: '#1772eb', cursor: 'pointer', marginLeft: '5px' }}
+                                                                        onClick={() => toggleCategoryExpansion(index)}
+                                                                    >
+                                                                        {l?.category_names.length - 3} more
+                                                                    </span>
+                                                                </>
+                                                            )}
+                                                        </>
+                                                    ) : (
+                                                        l?.category_names?.join(', ')
+                                                    )}
+                                                </span>
+                                            </h6>
 
                                             {l?.description.length > 250 ? (
                                                 <>

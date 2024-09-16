@@ -63,11 +63,11 @@ const jobs = () => {
 
 
 
-            <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1>Free Up Funds For Your Artist</h1>
                 </div>
-            </section>
+            </section> */}
 
             <section className="myproject">
                 <div className="container">
@@ -77,7 +77,7 @@ const jobs = () => {
                             <div className="payment_s">
                                 <p>Thanks. Your Artist will be paid immediately. Can you now leave a very short evaluation of the work carried out by your Artist?</p>
 
-                                <div className="submit_cancel">
+                                <div className="submit_cancel continue_b">
                                     {/* <a onClick={RedirectProject} style={{ cursor: "pointer", color: "#fff" }}>Continue</a> */}
                                     <Button style={{
                                         background: "#ef6100",

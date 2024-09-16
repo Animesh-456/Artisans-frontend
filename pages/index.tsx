@@ -592,6 +592,7 @@ function Home(prp) {
                                                     <a href={`/${l?.project_name?.split(" ").join("-")}-${l?.id}`}>{l?.project_name}</a>
                                                 </h1>
 
+
                                                 <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 150) + '...') : (l?.description)} </p>
                                                 <div>
                                                     <span>by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
