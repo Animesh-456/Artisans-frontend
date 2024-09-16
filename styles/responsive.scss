@@ -602,22 +602,25 @@
     }
 
     .latest_request_text div>span:nth-child(1) {
-        font-size: 13px;
+        font-size: 12px;
         margin-right: 10px;
+        font-weight: 500;
     }
 
     .latest_request_text div>span:nth-child(2) {
-        font-size: 13px;
+        font-size: 12px;
         padding-right: 10px;
+        font-weight: 500;
     }
 
     .latest_request_text div>span:nth-child(3) {
-        font-size: 13px;
+        font-size: 12px;
         padding-right: 10px;
+        font-weight: 500;
     }
 
     .latest_request_text div>span:nth-child(4) {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .latest_request_text div>span:nth-child(4) a {
@@ -886,10 +889,19 @@
     }
 
     .latest_request_text h1 {
-        margin-top: 5px;
+        margin-top: 10px;
         font-size: 15px;
         line-height: 25px;
-        margin-bottom: 0px;
+        margin-bottom: 2px;
+    }
+
+    .latest_request_text h6 {
+        font-size: 13px;
+        color: #1772eb;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: 7px;
     }
 
     .owl-carousel .owl-nav button.owl-prev {
@@ -1712,13 +1724,26 @@
 
     .art-img1 {
         height: 210px;
-        object-fit: contain;
+        object-fit: cover;
         background: #f1f1f1;
+        object-position: center;
+    }
+
+    .art_request_wp hr {
+        margin: 10px 0;
     }
 
     .latest_request_text p {
-        padding-bottom: 0px;
-        font-size: 13px;
+        padding-bottom: 2px;
+        font-size: 12px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 18px;
+        font-weight: 500;
+        margin-bottom: 3px;
     }
 
     .top_artist {
@@ -1741,13 +1766,10 @@
         padding: 1em 0;
     }
 
-    .art_request_wp hr {
-        margin: 10px 0;
-    }
-
     .latest_request_text h1 a {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 500;
+        color: #f06101;
     }
 
     .description_left {
