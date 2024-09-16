@@ -239,11 +239,11 @@ const Message = (props: Props) => {
 	return (
 		<>
 
-			<section className="inner_banner_wp" style={{ backgroundImage: `url(../../../../img/inner-banner.jpg)` }}>
+			{/* <section className="inner_banner_wp" style={{ backgroundImage: `url(../../../../img/inner-banner.jpg)` }}>
 				<div className="container">
 					<h1>My Profile</h1>
 				</div>
-			</section>
+			</section> */}
 
 			<section className="myproject">
 				<div className='container'>

@@ -313,25 +313,38 @@ const Listing = (prp) => {
                                             <h6>
                                                 <span>Category:</span> &nbsp;
                                                 <span className="category-names">
-                                                    {l?.category_names?.length > 3 ? (
+                                                    {l?.category_names?.length > 2 ? (
                                                         <>
-
+                                                            {/* Show the first 3 categories separated by • */}
                                                             <>
-                                                                {l?.category_names.slice(0, 3).join(', ')}
+                                                                {l?.category_names.slice(0, 2).map((category, index) => (
+                                                                    <span key={index}>
+                                                                        {category}
+                                                                        {/* Add a • between categories, except after the last one */}
+                                                                        {index < 2 && ' • '}
+                                                                    </span>
+                                                                ))}
                                                                 <span
                                                                     style={{ color: '#1772eb', cursor: 'pointer', marginLeft: '5px' }}
-                                                                // onClick={() => toggleCategoryExpansion(index)}
+                                                                // onClick={() => toggleCategoryExpansion(index)} // Uncomment if you want to add expand functionality
                                                                 >
-                                                                    {l?.category_names.length - 3} more
+                                                                    {/* Show how many more categories exist */}
+                                                                    {l?.category_names.length - 2} more
                                                                 </span>
                                                             </>
-
                                                         </>
                                                     ) : (
-                                                        l?.category_names?.join(', ')
+                                                        // If 3 or fewer categories, show them all separated by •
+                                                        <>
+                                                            {l?.category_names.map((category, index) => (
+                                                                <span key={index}>
+                                                                    {category}
+                                                                    {/* Add a • between categories, except after the last one */}
+                                                                    {index < l?.category_names.length - 1 && ' • '}
+                                                                </span>
+                                                            ))}
+                                                        </>
                                                     )}
-
-
                                                 </span>
                                             </h6>
 

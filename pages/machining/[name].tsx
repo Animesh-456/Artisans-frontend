@@ -1510,7 +1510,7 @@ const ProjectDetail = (prp) => {
                     <div className="row">
                         <div className="col-sm-8">
                             <div className="description_left">
-                                <h2>{data?.project_name}</h2>
+                                {/* <h2>{data?.project_name}</h2> */}
                                 <img
                                     src={common.get_attachment(
                                         (data?.attachment_name?.split(',')[0]),
@@ -1519,7 +1519,7 @@ const ProjectDetail = (prp) => {
                                     alt={`${data?.attachment_name?.split(',')[0]}`}
                                 />
                                 <div className="description">
-                                    <h4>Description</h4>
+                                    <h4>{data?.project_name}</h4>
                                 </div>
                                 <p>{data?.description}</p>
 
@@ -1657,7 +1657,7 @@ const ProjectDetail = (prp) => {
                                     <h2>Project Details</h2>
                                 </div>
                                 <div className="project_details_content">
-                                    <p><span >Posted</span><span className="www1"> : {moment(data?.project_post_date).format("DD-MMMM-YYYY")}</span></p>
+                                    <p><span >Posted</span><span > : {moment(data?.project_post_date).format("DD-MMMM-YYYY")}</span></p>
                                     <p><span >Visibility</span><span className="www1"> : {data?.visibility}</span></p>
                                     <p><span >Category</span><span className="www1"> : {data?.category_names?.join(', ')}</span></p>
                                     {/* <p><span >sub-category</span ><span className="www1"> : {subCategoryName?.map((m) => {
