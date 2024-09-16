@@ -4084,7 +4084,7 @@ marquee {
     background: none;
     box-shadow: none;
     font-size: 20px;
-    color: #080424;
+    color: #f06101;
     line-height: 30px;
     font-weight: 600;
     padding: 0;
@@ -4097,8 +4097,7 @@ marquee {
 
 .description_left h2 {
     font-size: 21px;
-    color: #080424;
-    padding: 5px 0 13px;
+    color: #f06101;
 }
 
 .breadcrumb-item+.breadcrumb-item {
@@ -4118,4 +4117,8 @@ marquee {
 .sort_dropdown {
     width: 25%;
     margin-right: 20px;
+}
+
+.submit_cancel button {
+    border: none;
 }
