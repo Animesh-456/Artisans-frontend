@@ -447,7 +447,7 @@ function Home(prp) {
                                 <h1>Discover Your Artwork</h1>
                             </div>
                             <p>
-                                Welcome to AARTSTUDIO, the premier online platform where talented artisans and artists are
+                                Welcome to AARTSTUDIO, a premier online platform where talented artisans and artists are
                                 ready to create custom artwork just for you. Whether you're envisioning a unique painting, a
                                 stunning sculpture, or any other form of artwork, AARTSTUDIO makes the process easy and
                                 enjoyable.

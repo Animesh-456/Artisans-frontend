@@ -163,10 +163,10 @@ const Artist = (prp) => {
         <>
 
 
-            <Head>
+            {/* <Head>
                 <title>{`${prp?.prp?.data[0].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
-            </Head>
+            </Head> */}
             <section className="inner_banner_wp1" style={{ backgroundImage: `url(../../img/header-banner-bg.jpg)` }}>
                 <div className="container">
                     <div className="artist_pro">
