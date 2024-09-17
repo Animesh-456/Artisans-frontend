@@ -697,7 +697,7 @@ function Home(prp) {
             <section className="top_artist" >
                 <div className="container">
                     <div className="heading_title top_artist_heading">
-                        <h1>Top Artist & Their Work</h1>
+                        <h1>Top Artist</h1>
                     </div>
 
                     <div className="owl-carousel top_artist_slide owl-theme">

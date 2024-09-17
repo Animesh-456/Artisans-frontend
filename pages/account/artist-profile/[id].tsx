@@ -106,7 +106,7 @@ const Artist = (prp) => {
         name: user?.name || "",
         user_name: user?.user_name || "",
         user_rating: user?.user_rating || "",
-        user_picture: user?.prof_pic || "",
+        user_picture: user?.logo || user?.prof_pic || "",
         description: user?.description || ""
 
     }
@@ -167,7 +167,7 @@ const Artist = (prp) => {
                 <title>{`${prp?.prp?.data[0].page_title}`}</title>
                 <meta name="description" content={`${prp?.prp?.data[0].page_desc}`} />
             </Head> */}
-            <section className="inner_banner_wp1" style={{ backgroundImage: `url(../../img/header-banner-bg.jpg)` }}>
+            <section className="inner_banner_wp1">
                 <div className="container">
                     <div className="artist_pro">
                         <div className="artist_pro_l">
@@ -240,7 +240,7 @@ const Artist = (prp) => {
                                     <div className="about_left">
 
 
-                                        {public_avg_rating && user?.role_id == 2 ? (
+                                        {/* {public_avg_rating && user?.role_id == 2 ? (
 
                                             <p>
                                                 <div
@@ -260,7 +260,18 @@ const Artist = (prp) => {
 
                                             </p>
 
-                                        )}
+                                        )} */}
+
+
+                                        <p>
+                                            <div
+                                                className="stars"
+                                                style={{ '--rating': user?.avgRating?.toFixed(1) } as CSSProperties}
+                                            ><span>{user?.avgRating?.toFixed(1)}</span></div>
+
+                                        </p>
+
+
                                         <p>{user?.service_desc}</p>
 
                                         <br />
@@ -336,9 +347,22 @@ const Artist = (prp) => {
 
                                                                 </div>
                                                                 <div className="review_right2">
-                                                                    <img src={common.get_attachment(
+                                                                    {/* <img src={common.get_attachment(
                                                                         (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
-                                                                    ) || "../../img/logo.png"} alt="" />
+                                                                    ) || "../../img/logo.png"} alt="" /> */}
+
+                                                                    {l?.attachment_name?.includes(",") ? (
+
+                                                                        <img className="art-img1" src={common.get_attachment(
+                                                                            (l?.attachment_name)?.substring(0, l?.attachment_name.indexOf(',')), formattedDate
+                                                                        ) || "../img/pic2.png"} alt="" />
+
+                                                                    ) : (
+
+                                                                        <img className="art-img1" src={common.get_attachment(
+                                                                            (l?.attachment_name), formattedDate) || "../img/pic2.png"} alt="art-image" />
+
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                         </>
