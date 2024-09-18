@@ -652,8 +652,8 @@ function Home(prp) {
                                         <></>
                                     )}
 
-                                    
-                                    
+
+
 
                                 </>
 
@@ -702,7 +702,7 @@ function Home(prp) {
                     <div className="heading_title top_artist_heading">
                         <h1>Top Artist</h1>
                     </div>
-
+                    <a href="/artistlist">Artist list</a>
                     <div className="owl-carousel top_artist_slide owl-theme">
                         <Crou />
                     </div>

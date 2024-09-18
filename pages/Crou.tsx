@@ -82,13 +82,15 @@ const Crou = () => {
                                             <img className="art-img1" src={common.get_profile_picture(
                                                 project?.logo) || "../img/no-images.png"} alt="art-image" />
                                         </a>
-                                        <h3>Rating: {project?.avgRating}</h3>
-                                        <h3>Total Evaluations :{project?.totalJobs}</h3>
-                                        <span> <img src={
-                                            common.get_profile_picture(project?.provider?.logo) ||
-                                            "../img/no-images.png"
-                                        } alt="profile-picture" />
-                                            by {project?.user_name}</span>
+
+                                        <h2>Total Evaluations :{project?.totalJobs}
+                                            <span> Rating: {project?.avgRating}<img src={
+                                                common.get_profile_picture(project?.provider?.logo) ||
+                                                "../img/no-images.png"
+                                            } alt="profile-picture" />
+                                                by {project?.user_name}</span>
+                                        </h2>
+
                                     </div>
                                 </div>
                             </>
