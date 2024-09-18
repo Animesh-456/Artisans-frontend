@@ -40,7 +40,7 @@ const project = {
 		get_additional_comment: atom([]),
 		list_opt: atom({
 			page: 0,
-			limit: 10,
+			limit: 50,
 			total_pages: 0,
 			total_count: 0,
 			search: null,

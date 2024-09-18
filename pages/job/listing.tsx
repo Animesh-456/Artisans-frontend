@@ -329,14 +329,14 @@ const Listing = (prp) => {
                                                                 // onClick={() => toggleCategoryExpansion(index)} // Uncomment if you want to add expand functionality
                                                                 >
                                                                     {/* Show how many more categories exist */}
-                                                                    {l?.category_names.length - 2} more
+                                                                    {l?.category_names?.length - 2} more
                                                                 </span>
                                                             </>
                                                         </>
                                                     ) : (
                                                         // If 3 or fewer categories, show them all separated by •
                                                         <>
-                                                            {l?.category_names.map((category, index) => (
+                                                            {l?.category_names?.map((category, index) => (
                                                                 <span key={index}>
                                                                     {category}
                                                                     {/* Add a • between categories, except after the last one */}

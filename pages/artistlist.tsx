@@ -201,10 +201,11 @@ const Artistlist = () => {
                 <div className="container">
                     <div className="row desktop_filter">
                         <div className="filter_section">
-                            <div className="search_bar">
+                            {/* <div className="search_bar">
                                 <input type="text" name="text" placeholder="Search.." value="" />
                                 <i className="fa fa-search"></i>
-                            </div>
+                            </div> */}
+                           
                             <div className="sort_dropdown all_categori">
                                 <select value={ratingOrder} onChange={handleSortChange}>
                                     <option value="high-to-low">Rating High to Low</option>
@@ -227,11 +228,9 @@ const Artistlist = () => {
                             </div>
                             <div className="post_request_button filter-btn">
 
-                                <a style={{ color: "rgb(255, 255, 255)", cursor: "pointer" }}>Apply</a>
+                                {/* <a style={{ color: "rgb(255, 255, 255)", cursor: "pointer" }}>Apply</a> */}
                             </div>
-                            <div className="sr">
-                                <p>Showing Results 1-10</p>
-                            </div>
+                            
                         </div>
                     </div>
                     <div className="row mobile_filter">
@@ -278,7 +277,7 @@ const Artistlist = () => {
                                             </div>
                                         </>
                                     )
-                                }) : (<></>)}
+                                }) : (<>No results Found</>)}
 
 
 

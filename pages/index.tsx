@@ -602,7 +602,7 @@ function Home(prp) {
                                                             <>
                                                                 {/* Show the first 3 categories separated by • */}
                                                                 <>
-                                                                    {l?.category_names.slice(0, 2).map((category, index) => (
+                                                                    {l?.category_names?.slice(0, 2).map((category, index) => (
                                                                         <span key={index}>
                                                                             {category}
                                                                             {/* Add a • between categories, except after the last one */}
@@ -614,18 +614,18 @@ function Home(prp) {
                                                                     // onClick={() => toggleCategoryExpansion(index)} // Uncomment if you want to add expand functionality
                                                                     >
                                                                         {/* Show how many more categories exist */}
-                                                                        {l?.category_names.length - 2} more
+                                                                        {l?.category_names?.length - 2} more
                                                                     </span>
                                                                 </>
                                                             </>
                                                         ) : (
                                                             // If 3 or fewer categories, show them all separated by •
                                                             <>
-                                                                {l?.category_names.map((category, index) => (
+                                                                {l?.category_names?.map((category, index) => (
                                                                     <span key={index}>
                                                                         {category}
                                                                         {/* Add a • between categories, except after the last one */}
-                                                                        {index < l?.category_names.length - 1 && ' • '}
+                                                                        {index < l?.category_names?.length - 1 && ' • '}
                                                                     </span>
                                                                 ))}
                                                             </>
@@ -646,16 +646,19 @@ function Home(prp) {
                                         </div>
                                     </div>
 
-                                    {index <= 1 ? (
+                                    {index < 9 ? (
                                         <hr />
                                     ) : (
                                         <></>
                                     )}
 
+                                    
+                                    
+
                                 </>
 
                             );
-                        }).slice(0, 3)
+                        }).slice(0, 10)
                         : ""}
 
 
