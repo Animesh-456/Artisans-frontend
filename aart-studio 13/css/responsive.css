@@ -918,4 +918,25 @@
   .portfolio6, .portfolio3 {
     padding: 25px 0 0;
   }
+
+  .desktop_filter{
+    display: none;
+  }
+  .mobile_filter{
+    display: block;
+  }
+  .gallery_section1 {
+    padding: 0em;
+  }
+  .art_gallery img {
+    height: 160px;
+  }
+  .art_profile_sec h2 {
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+  .art_profile_sec h3 {
+    font-size: 12px;
+    margin-bottom: 1px;
+  }
 }
