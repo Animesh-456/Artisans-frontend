@@ -37,15 +37,15 @@ const Artistlist = () => {
         });
 
         // Add a 2-second delay if needed
-        setTimeout(() => {
-            api.project.artist_list({
-                params: {
-                    page: 0, // Matching the page from router.replace
-                    ratingOrder: newRatingOrder,
-                    categories: category,
-                },
-            });
-        }, 2000);  // Delays the API call by 2 seconds
+        // setTimeout(() => {
+        //     api.project.artist_list({
+        //         params: {
+        //             page: 0, // Matching the page from router.replace
+        //             ratingOrder: newRatingOrder,
+        //             categories: category,
+        //         },
+        //     });
+        // }, 2000);  // Delays the API call by 2 seconds
     };
 
 
@@ -105,7 +105,10 @@ const Artistlist = () => {
         }
 
 
-        api.project.artist_list({ params: { ...opt, page: pageNumber - 1, ratingOrder: pageQueryParam, categories: pageQueryParam2 } })
+        setTimeout(() => {
+            api.project.artist_list({ params: { ...opt, page: pageNumber - 1, ratingOrder: pageQueryParam, categories: pageQueryParam2 } })
+        }, 1000);
+
 
         return
     }, [location.search])
@@ -124,15 +127,15 @@ const Artistlist = () => {
         });
 
         // Add 2-second delay before the API call
-        setTimeout(() => {
-            api.project.artist_list({
-                params: {
-                    page: 0,
-                    ratingOrder: ratingOrder,
-                    categories: newCategory,
-                },
-            });
-        }, 2000); // Delay the API call by 2 seconds
+        // setTimeout(() => {
+        //     api.project.artist_list({
+        //         params: {
+        //             page: 0,
+        //             ratingOrder: ratingOrder,
+        //             categories: newCategory,
+        //         },
+        //     });
+        // }, 2000); // Delay the API call by 2 seconds
     };
 
 
