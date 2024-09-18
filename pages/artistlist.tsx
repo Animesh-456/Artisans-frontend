@@ -6,26 +6,48 @@ import common from "../src/helpers/common";
 import { CSSProperties } from 'react';
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 const Artistlist = () => {
     const router = useRouter();
+
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const [ratingOrder, setratingOrder] = useState("high-to-low");
     const [opt, setOpt] = useAtom(atom.project.api.list_opt);
     const [category, setCategory] = useState("");
     const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
 
-    const handleSortChange = (e) => {
-        setratingOrder(e.target.value);
-        router
-            .replace({
-                pathname: router.pathname,
-                query: {
-                    page: 1,
-                    ratingOrder: e.target.value
+    const handleSortChange = async (e) => {
+        const newRatingOrder = e.target.value;
+        setratingOrder(newRatingOrder);
+
+        // Ensure category is the correct state that holds the selected categories
+        await router.replace({
+            pathname: router.pathname,
+            query: {
+                page: 1,
+                ratingOrder: newRatingOrder,
+                categories: category,
+            },
+        });
+
+        // Add a 2-second delay if needed
+        setTimeout(() => {
+            api.project.artist_list({
+                params: {
+                    page: 0, // Matching the page from router.replace
+                    ratingOrder: newRatingOrder,
+                    categories: category,
                 },
-            })
-    }
+            });
+        }, 2000);  // Delays the API call by 2 seconds
+    };
+
 
     const visiblePages = 10;
     const getPageNumbers = () => {
@@ -40,14 +62,11 @@ const Artistlist = () => {
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
 
-
-        setTimeout(() => { //Delay the api call for filter
-            api.project.artist_list({ params: { ...opt, page: pageNumber - 1, ratingOrder: ratingOrder, categories: category } })
-        }, 1000);
+        api.project.artist_list({ params: { page: 0, ratingOrder: ratingOrder, categories: category } })
 
         api.project.get_category_subcategory({})
 
-    }, [ratingOrder, category])
+    }, [])
 
     const [list, setlist] = useAtom(atom.project.api.artist_list);
 
@@ -59,11 +78,12 @@ const Artistlist = () => {
                 pathname: router.pathname,
                 query: {
                     page: i + 1,
-                    ratingOrder: ratingOrder
+                    ratingOrder: ratingOrder,
+                    category: category
                 },
             })
             .then(() => {
-                api.project.artist_list({ params: { ...opt, page: i, ratingOrder: ratingOrder } })
+                api.project.artist_list({ params: { page: i, ratingOrder: ratingOrder, categories: category } })
             });
     };
 
@@ -71,6 +91,9 @@ const Artistlist = () => {
     useEffect(() => {
         const pageQueryParam = new URLSearchParams(location.search).get('ratingOrder');
         const pageQueryParam2 = new URLSearchParams(location.search).get('category');
+
+        const pageQueryParam3 = new URLSearchParams(location.search).get('page');
+        const pageNumber = parseInt(pageQueryParam) || 1;
 
         if (!pageQueryParam) return
         if (pageQueryParam != ratingOrder) {
@@ -80,22 +103,78 @@ const Artistlist = () => {
         if (pageQueryParam2 != category) {
             setCategory(pageQueryParam2)
         }
+
+
+        api.project.artist_list({ params: { ...opt, page: pageNumber - 1, ratingOrder: pageQueryParam, categories: pageQueryParam2 } })
+
         return
     }, [location.search])
 
-    const handleCategoryChange = (e) => {
-        setCategory(e.target.value);
+    const handleCategoryChange = async (e) => {
+        const newCategory = e.target.value;
+        setCategory(newCategory);
 
+        await router.replace({
+            pathname: router.pathname,
+            query: {
+                page: 1,
+                ratingOrder: ratingOrder,
+                category: newCategory,
+            },
+        });
+
+        // Add 2-second delay before the API call
+        setTimeout(() => {
+            api.project.artist_list({
+                params: {
+                    page: 0,
+                    ratingOrder: ratingOrder,
+                    categories: newCategory,
+                },
+            });
+        }, 2000); // Delay the API call by 2 seconds
+    };
+
+
+
+    const handleCategoryCheck = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+        const { checked } = e.target;
+
+        let updatedCategories = category ? category.split(',').map(Number) : [];
+
+        if (checked) {
+            // Add category ID if checked
+            updatedCategories.push(id);
+        } else {
+            // Remove category ID if unchecked
+            updatedCategories = updatedCategories.filter((catId) => catId !== id);
+        }
+
+        // Convert array back to comma-separated string
+        setCategory(updatedCategories.join(','));
+    }
+
+    const handleApplyFilter = () => {
         router
             .replace({
                 pathname: router.pathname,
                 query: {
                     page: 1,
                     ratingOrder: ratingOrder,
-                    category: e.target.value
+                    category: category
                 },
-            })
+            }).then(() => {
+                api.project.artist_list({ params: { page: 0, ratingOrder: ratingOrder, categories: category } })
+                setShow(false)
+            });
+    }
+
+    const isCategorySelected = (id: number) => {
+        return category?.split(',').map(Number).includes(id);
     };
+
+
+    //console.log("categories are", category)
 
     return (
         <div>
@@ -113,26 +192,7 @@ const Artistlist = () => {
 
 
 
-            <div id="mySidenav" className="sidenav">
-                <div className="close_t"><a href="javascript:void(0)" className="closebtn">&times;</a></div>
-                <div className="widget_product_categories">
-                    <h3>All categories</h3>
-                    <ul>
-                        <li><a href="#">Painting</a></li>
-                        <li><a href="#">Sculpture</a></li>
-                        <li><a href="#">Printmaking</a></li>
-                        <li><a href="#">Photography</a></li>
-                        <li><a href="#">Textile Art</a></li>
-                        <li><a href="#">Ceramics</a></li>
-                        <li><a href="#">Glass Art</a></li>
-                        <li><a href="#">Digital Art</a></li>
-                        <li><a href="#">Calligraphy</a></li>
-                        <li><a href="#">Jewelry Design</a></li>
-                        <li><a href="#">Graffiti Art</a></li>
-                        <li><a href="#">Installation Art</a></li>
-                    </ul>
-                </div>
-            </div>
+
 
             <section className="gallery_section1">
                 <div className="container">
@@ -174,7 +234,7 @@ const Artistlist = () => {
                     <div className="row mobile_filter">
                         <div className="bwp-top-bar">
                             <div className="button-filter-toggle">
-                                <i className="fa fa-sliders"></i>
+                                <i className="fa fa-sliders" onClick={() => setShow(true)}></i>
                             </div>
                             <div className="pwb-dropdown">
                                 <select value={ratingOrder} onChange={handleSortChange}>
@@ -283,6 +343,70 @@ const Artistlist = () => {
                     </div>
                 </div>
             </section>
+
+
+
+            <Offcanvas show={show} onHide={handleClose} placement="start" style={{ "backgroundColor": "rgb(71, 18, 15)", "fontFamily": "Poppins, sans-serif" }}>
+                <Offcanvas.Header closeButton closeVariant="white" style={{ "backgroundColor": "rgba(0, 0, 0, 0.18)" }} >
+                    <Offcanvas.Title>
+                        <div className="logo">
+                            {/* <Link href="/"><img style={{ "cursor": "pointer" }} src={"/img/logo.png"} alt="logo" /></Link> */}
+                            Filters
+                        </div>
+                    </Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+
+                    <div className="widget_product_categories">
+                        <h3>All categories</h3>
+                        {/* <ul>
+                                <li><a href="#">Painting</a></li>
+                                <li><a href="#">Sculpture</a></li>
+                                <li><a href="#">Printmaking</a></li>
+                                <li><a href="#">Photography</a></li>
+                                <li><a href="#">Textile Art</a></li>
+                                <li><a href="#">Ceramics</a></li>
+                                <li><a href="#">Glass Art</a></li>
+                                <li><a href="#">Digital Art</a></li>
+                                <li><a href="#">Calligraphy</a></li>
+                                <li><a href="#">Jewelry Design</a></li>
+                                <li><a href="#">Graffiti Art</a></li>
+                                <li><a href="#">Installation Art</a></li>
+                            </ul> */}
+
+
+
+                        <form>
+
+                            {Category_subcategory?.categories?.map((cat) => (
+                                <>
+                                    <input type="checkbox" id={cat?.id} name={cat?.id}
+                                        checked={isCategorySelected(cat?.id)}
+                                        onChange={(e) => handleCategoryCheck(e, cat?.id)}
+                                    />
+                                    <label>{cat?.category_name}</label><br />
+                                </>
+                            ))}
+                        </form>
+
+                        <br />
+
+                        <li className="mobile_contact">
+                            <ul>
+                                <li>
+                                    <button onClick={() => setCategory("")} >Clear all Filters</button>
+                                </li>
+                                <li><button onClick={handleApplyFilter} >Apply</button></li>
+                            </ul>
+                        </li>
+
+
+                    </div>
+                    {/* </div> */}
+
+
+                </Offcanvas.Body>
+            </Offcanvas>
 
         </div>
     )
