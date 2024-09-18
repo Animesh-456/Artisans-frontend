@@ -1506,7 +1506,23 @@ export default {
 
 
 
+  artist_list: ({ params }: GetParams, cb?: GetResponse) => {
+    api.get("project/artist-list", params).then((d) => {
+      if (d.status) {
+        writeAtom(atom.project.api.artist_list, d.data.rows)
 
-
+        let opt = readAtom(atom.project.api.list_opt);
+        writeAtom(atom.project.api.list_opt, {
+          ...opt,
+          page: d.meta.current_page,
+          total_pages: d.meta.total_pages,
+          total_count: d.meta.total_count,
+        });
+        return cb(d)
+      } else {
+        return toast.error(d.message);
+      }
+    }).catch((err) => console.log(err))
+  },
 
 };
