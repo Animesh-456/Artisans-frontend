@@ -702,10 +702,12 @@ function Home(prp) {
                     <div className="heading_title top_artist_heading">
                         <h1>Top Artist</h1>
                     </div>
-                    <a href="/artistlist">Artist list</a>
+
                     <div className="owl-carousel top_artist_slide owl-theme">
                         <Crou />
                     </div>
+                    <a className="view_all viewall_center" style={{ color: "#080424" }} href={"/artistlist"}>Artist list <img src="img/arrow.png" width="11px" alt="" /></a>
+
                 </div>
             </section>
 

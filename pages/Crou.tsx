@@ -5,6 +5,7 @@ import { useAtom, useAtomValue } from "jotai";
 import atom from "../src/jotai/atom";
 import api from "../src/api/services/api";
 import common from "../src/helpers/common";
+import { CSSProperties } from 'react';
 
 const Crou = () => {
     const [opt, setOpt] = useAtom(atom.project.api.rev_proj_opt);
@@ -83,14 +84,21 @@ const Crou = () => {
                                                 project?.logo) || "../img/no-images.png"} alt="art-image" />
                                         </a>
 
-                                        <h2>Total Evaluations :{project?.totalJobs}
+                                        {/* <h2>Total Evaluations :{project?.totalJobs}
                                             <span> Rating: {project?.avgRating}<img src={
                                                 common.get_profile_picture(project?.provider?.logo) ||
                                                 "../img/no-images.png"
                                             } alt="profile-picture" />
                                                 by {project?.user_name}</span>
-                                        </h2>
-
+                                        </h2> */}
+                                        <h2>{project?.user_name} </h2>
+                                        <h3>
+                                            {project?.totalJobs} jobs
+                                            <span
+                                                className="stars"
+                                                style={{ '--rating': project?.avgRating?.toFixed(1) } as CSSProperties}
+                                            ></span>
+                                        </h3>
                                     </div>
                                 </div>
                             </>
