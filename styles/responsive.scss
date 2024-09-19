@@ -991,7 +991,7 @@
     }
 
     .all_categori {
-        width: auto;
+        width: 175px;
         margin-bottom: 10px;
     }
 
@@ -2009,10 +2009,15 @@
     .art_profile_sec h2 {
         font-size: 15px;
         margin-bottom: 2px;
+        word-break: break-all;
     }
 
     .art_profile_sec h3 {
         font-size: 12px;
         margin-bottom: 1px;
+    }
+
+    .offr_star {
+        line-height: 25px;
     }
 }
