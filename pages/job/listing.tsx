@@ -259,7 +259,9 @@ const Listing = (prp) => {
                             <div className="post_request_button filter-btn"><a style={{ cursor: 'pointer', color: "#fff" }} onClick={handleApply}>Apply</a></div>
 
                             <div className="sr">
-                                <p>Showing Results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</p>
+                                {/* <p>Showing Results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</p> */}
+                                <p>Showing Results {opt.page * 50 + 1}-{Math.min((opt.page + 1) * 50, opt.total_count)}</p>
+
                             </div>
                         </div>
                     </div>
