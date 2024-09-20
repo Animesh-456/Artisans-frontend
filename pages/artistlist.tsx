@@ -253,7 +253,7 @@ const Artistlist = () => {
                             <div className="sort_dropdown all_categori">
                                 <select value={ratingOrder} onChange={handleSortChange}>
                                     <option value="high-to-low">Rating High to Low</option>
-                                    <option value="low-to-high">Rating Low to Hign</option>
+                                    <option value="low-to-high">Rating Low to High</option>
                                     <option value="a-z">A to Z</option>
                                     <option value="z-a">Z to A</option>
                                     <option value="newest-oldest">Newest to Oldest</option>
@@ -455,7 +455,7 @@ const Artistlist = () => {
                         <div className="no_dropdown all_categori">
                             <select value={ratingOrder} onChange={handleSortChange}>
                                 <option value="high-to-low">Rating High to Low</option>
-                                <option value="low-to-high">Rating Low to Hign</option>
+                                <option value="low-to-high">Rating Low to High</option>
                                 <option value="a-z">A to Z</option>
                                 <option value="z-a">Z to A</option>
                                 <option value="newest-oldest">Newest to Oldest</option>
