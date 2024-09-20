@@ -1525,4 +1525,16 @@ export default {
     }).catch((err) => console.log(err))
   },
 
+
+  steps_text: ({ params }: GetParams, cb?: GetResponse) => {
+    api.get("project/steps-text", params).then((d) => {
+      if (d.status) {
+        writeAtom(atom.project.api.steps_text, d.data)
+        return cb(d)
+      } else {
+        return toast.error(d.message);
+      }
+    }).catch((err) => console.log(err))
+  },
+
 };

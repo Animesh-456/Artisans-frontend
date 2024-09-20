@@ -699,14 +699,19 @@ function Home(prp) {
 
             <section className="top_artist" >
                 <div className="container">
-                    <div className="heading_title top_artist_heading">
+                    <div className="heading_title top_art_title">
                         <h1>Top Artist</h1>
                     </div>
 
-                    <div className="owl-carousel top_artist_slide owl-theme">
-                        <Crou />
-                    </div>
-                    <a className="view_all viewall_center" style={{ color: "#080424" }} href={"/artistlist"}>Artist list <img src="img/arrow.png" width="11px" alt="" /></a>
+                    <a className="view_all va" style={{ color: "#080424" }} href={"/artistlist"}>Explore Artists <img src="img/arrow.png" width="11px" alt="" /></a>
+
+                 
+                    <Crou />
+
+
+                   
+                        
+                    
 
                 </div>
             </section>

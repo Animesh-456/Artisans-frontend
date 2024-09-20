@@ -15,6 +15,7 @@ import env from "../../src/config/api";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { BiSortAlt2 } from "react-icons/bi";
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
@@ -49,6 +50,12 @@ export const getStaticProps = async () => {
 };
 
 const Listing = (prp) => {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+
+
     const router = useRouter();
     const [opt, setOpt] = useAtom(atom.project.api.list_opt);
     const [list, setlist] = useAtom(atom.project.api.list);
@@ -194,20 +201,47 @@ const Listing = (prp) => {
         setSortOption(e.target.value);
     };
 
-    const sortProjects = (projects) => {
-        switch (sortOption) {
-            case "oldest":
-                return [...projects].sort((a, b) => new Date(a.created).getTime() - new Date(b.created).getTime());
-            case "newest":
-                return [...projects].sort((a, b) => new Date(b.created).getTime() - new Date(a.created).getTime());
-            case "az":
-                return [...projects].sort((a, b) => a.project_name.localeCompare(b.project_name));
-            case "za":
-                return [...projects].sort((a, b) => b.project_name.localeCompare(a.project_name));
-            default:
-                return projects;
-        }
+    const isCategorySelected = (id: number) => {
+        return category?.split(',').map(Number).includes(id);
     };
+
+    const handleCategoryCheck = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+        const { checked } = e.target;
+
+        let updatedCategories = category ? category.split(',').map(Number) : [];
+
+        if (checked) {
+            // Add category ID if checked
+            updatedCategories.push(id);
+        } else {
+            // Remove category ID if unchecked
+            updatedCategories = updatedCategories.filter((catId) => catId !== id);
+        }
+
+        // Convert array back to comma-separated string
+        setCategory(updatedCategories.join(','));
+    }
+
+    const sidebarapply = () => {
+        const pageQueryParam = new URLSearchParams(location.search).get('page');
+        const pageNumber = parseInt(pageQueryParam) || 1;
+        console.log("Page number for handle apply ", pageNumber)
+
+        router
+            .replace({
+                pathname: router.pathname,
+                query: {
+                    page: 0,
+                    category: category,
+                    searchQuery: searchQuery,
+                    sort: sortOption
+                },
+            })
+            .then(() => {
+                api.project.list({ params: { ...opt, page: 0, category: category, searchQuery: searchQuery, sortBy: sortOption } });
+                setShow(false)
+            });
+    }
     ////FILTER
     return (
         <>
@@ -229,7 +263,7 @@ const Listing = (prp) => {
 
             <section className="art_request_wp">
                 <div className="container">
-                    <div className="row">
+                    <div className="row desktop_filter">
                         <div className="filter_section">
 
                             <div className="search_bar">
@@ -244,7 +278,7 @@ const Listing = (prp) => {
                                     <option value="az">A to Z</option>
                                     <option value="za">Z to A</option>
                                 </select>
-                                {/* <BiSortAlt2 className="sort-icon" /> */}
+
                             </div>
 
                             <div className="all_categori">
@@ -262,6 +296,23 @@ const Listing = (prp) => {
                                 {/* <p>Showing Results {opt.page * 10 + 1}-{list?.length < 10 ? ((opt.page * 10) + list?.length) : (opt.page + 1) * 10}</p> */}
                                 <p>Showing Results {opt.page * 50 + 1}-{Math.min((opt.page + 1) * 50, opt.total_count)}</p>
 
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="row mobile_filter">
+                        <div className="bwp-top-bar">
+                            <div className="button-filter-toggle">
+                                <i className="fa fa-sliders" onClick={() => setShow(true)}></i>
+                            </div>
+                            <div className="listingsearchmobile">
+                                <div className="search_bar">
+                                    <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
+                                    <span>
+                                        <i onClick={handleApply} className="fa fa-search"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -413,6 +464,84 @@ const Listing = (prp) => {
                         </ul>
                     </nav>
                 </div>
+
+                <Offcanvas show={show} onHide={handleClose} placement="start" style={{ "backgroundColor": "rgb(71, 18, 15)", "fontFamily": "Poppins, sans-serif" }}>
+                    <Offcanvas.Header closeButton closeVariant="white" style={{ "backgroundColor": "rgba(0, 0, 0, 0.18)" }} >
+                        <Offcanvas.Title>
+                            <div className="logo">
+                                {/* <Link href="/"><img style={{ "cursor": "pointer" }} src={"/img/logo.png"} alt="logo" /></Link> */}
+                                Filters
+                            </div>
+                        </Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+
+                        <div className="widget_product_categories">
+                            <h3>Sort by</h3>
+
+                            <div className="sort_dropdown all_categori">
+                                <select value={sortOption} onChange={handleSortChange}>
+                                    <option value="newest">Newest to Oldest</option>
+                                    <option value="oldest">Oldest to Newest</option>
+                                    <option value="az">A to Z</option>
+                                    <option value="za">Z to A</option>
+                                </select>
+
+                            </div>
+                            <br />
+
+                            <h3>All categories</h3>
+
+
+
+                            {/* <ul>
+                                <li><a href="#">Painting</a></li>
+                                <li><a href="#">Sculpture</a></li>
+                                <li><a href="#">Printmaking</a></li>
+                                <li><a href="#">Photography</a></li>
+                                <li><a href="#">Textile Art</a></li>
+                                <li><a href="#">Ceramics</a></li>
+                                <li><a href="#">Glass Art</a></li>
+                                <li><a href="#">Digital Art</a></li>
+                                <li><a href="#">Calligraphy</a></li>
+                                <li><a href="#">Jewelry Design</a></li>
+                                <li><a href="#">Graffiti Art</a></li>
+                                <li><a href="#">Installation Art</a></li>
+                            </ul> */}
+
+
+
+                            <form>
+
+                                {Category_subcategory?.categories?.map((cat) => (
+                                    <>
+                                        <input type="checkbox" id={cat?.id} name={cat?.id}
+                                            checked={isCategorySelected(cat?.id)}
+                                            onChange={(e) => handleCategoryCheck(e, cat?.id)}
+                                        />
+                                        <label>{cat?.category_name}</label><br />
+                                    </>
+                                ))}
+                            </form>
+
+                            <br />
+
+                            <li className="mobile_contact">
+                                <ul>
+                                    <li>
+                                        <button onClick={() => setCategory("")} >Clear all Filters</button>
+                                    </li>
+                                    <li><button onClick={sidebarapply} >Apply</button></li>
+                                </ul>
+                            </li>
+
+
+                        </div>
+                        {/* </div> */}
+
+
+                    </Offcanvas.Body>
+                </Offcanvas>
             </section>
         </>
     );

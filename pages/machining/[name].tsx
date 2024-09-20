@@ -106,6 +106,8 @@ const ProjectDetail = (prp) => {
 
     const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
 
+    const steps_text: any = useAtomValue(atom.project.api.steps_text);
+
 
     const [question, questionstae] = useState({
         project_id: "",
@@ -355,6 +357,7 @@ const ProjectDetail = (prp) => {
         api.project.get_category_subcategory({})
         api.project.get_additional_comment({ params: { id: id } });
         api.project.get_commision_rate({});
+        api.project.steps_text({});
 
 
         if (user) {
@@ -817,8 +820,7 @@ const ProjectDetail = (prp) => {
     //     .join(', ');                                    
 
 
-
-
+    
 
 
     return (
@@ -1679,7 +1681,7 @@ const ProjectDetail = (prp) => {
                                     ) : (
                                         <>0 days</>
                                     )}</b></span></p> */}
-                                    <p><span className="www1">Posted by</span>
+                                    <p><span>Posted by</span>
 
                                         <a rel="nofollow" href={`/account/public-profile/${data?.creator?.id}`}> {data?.pro_job == 1 ? (((data?.creator_id == user?.id) || (user?.role_id == 2 && user?.pro_user == 1)) ?
                                             data?.creator?.user_name : "User") : data?.creator?.user_name}</a>

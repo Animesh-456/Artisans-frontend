@@ -72,6 +72,7 @@ class Client {
 			"project/home-page-content",
 			"project/faq-content",
 			"project/artist-list",
+			"project/steps-text",
 		];
 
 		this.test = false;

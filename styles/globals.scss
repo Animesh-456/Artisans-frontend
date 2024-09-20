@@ -2005,6 +2005,10 @@ ul.side-nav {
     transition: box-shadow 1s;
 }
 
+.cnfm-job-attchmnts {
+    padding-bottom: 12px;
+}
+
 .reg-bottom button:hover {
     box-shadow: none;
 }
@@ -2587,7 +2591,7 @@ h4.modal-title {
 }
 
 .modal-content {
-    background: #fff4e4;
+    background: #fff;
 }
 
 .modal-header {
@@ -3182,10 +3186,10 @@ hr {
 
 .inner_banner_wp1 {
     height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
+    background: #f1f1f1;
     padding-top: 2em;
+    border-top: 1px solid #c9c9c9;
+    border-bottom: 1px solid #c9c9c9;
 }
 
 .artist_pro {
@@ -3734,6 +3738,7 @@ ul.ex1 li a {
 
 .portfolio_details_wp {
     margin: 0;
+    border-top: 1px solid #ccc;
 }
 
 .portfolio5 .col-sm-6:first-child .fa {
@@ -4231,4 +4236,109 @@ marquee {
 .top_artist_slider h2 {
     font-size: 19px;
     padding-top: 8px;
+}
+
+.top_artist_wp {
+    box-shadow: 0 3px 9px 0 rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 30px;
+}
+
+.top_artist_sec {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.top_artist_pic {
+    width: 25%;
+}
+
+.top_artist_pic img {
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+}
+
+.top_artist_review {
+    width: 75%;
+    padding-left: 15px;
+}
+
+.top_artist_review h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.top_artist_review h5 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.top_artist_review h5 label {
+    border: 1px solid #424242;
+    padding: 0 8px;
+    border-radius: 3px;
+    line-height: 1.6;
+}
+
+.top_artist_review h5 span {
+    float: right;
+}
+
+.top_artist_portfolio {
+    padding-bottom: 25px;
+}
+
+.top_artist_portfolio img {
+    width: 100%;
+    height: 200px;
+    border-radius: 0;
+}
+
+.va {
+    margin-top: 17px;
+}
+
+.top_art_title {
+    margin-bottom: 40px;
+    display: inline-block;
+}
+
+.reg-bottom button:last-child {
+    margin-left: 15px;
+    background: none;
+    color: #080424;
+    font-weight: 500;
+}
+
+
+.listingsearchmobile input[type="text"] {
+    height: 42px;
+    padding-left: 15px;
+}
+
+.listingsearchmobile {
+    width: 60%;
+    margin-left: auto;
+}
+
+.listingsearchmobile .search_bar span {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background: #ef6100;
+    width: 38px;
+    height: 40px;
+    border-radius: 0 6px 6px 0;
+    text-align: center;
+    align-items: center;
+    display: grid;
+    cursor: pointer;
+}
+
+.listingsearchmobile .search_bar span .fa {
+    color: #fff;
+    font-size: 12px;
 }
