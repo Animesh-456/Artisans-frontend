@@ -485,7 +485,7 @@ function Home(prp) {
                         <h1>Artwork Jobs</h1>
                     </div>
 
-                    <a className="view_all va" style={{ color: "#080424" }} href={"/artworklisting"}>View All <img src="img/arrow.png" width="11px" alt="" /></a>
+                    <a className="view_all va" style={{ color: "#080424" }} href={"/artworklisting"}>Explore Artwork Jobs <img src="img/arrow.png" width="11px" alt="" /></a>
 
 
 
