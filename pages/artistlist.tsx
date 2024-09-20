@@ -246,7 +246,7 @@ const Artistlist = () => {
                         <div className="filter_section">
 
                             <div className="search_bar">
-                                <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
+                                <input type="text" value={searchQuery} name="text" placeholder="Search by username" onChange={(e) => setSearchQuery(e.target.value)} />
                                 <i className="fa fa-search"></i>
                             </div>
 
