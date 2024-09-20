@@ -481,9 +481,11 @@ function Home(prp) {
 
             <section className="latest_request" >
                 <div className="container">
-                    <div className="heading_title latest_request_heading">
+                    <div className="heading_title top_art_title">
                         <h1>Artwork Jobs</h1>
                     </div>
+
+                    <a className="view_all va" style={{ color: "#080424" }} href={"/artworklisting"}>View All <img src="img/arrow.png" width="11px" alt="" /></a>
 
 
 
@@ -663,7 +665,7 @@ function Home(prp) {
 
 
 
-                    <a className="view_all viewall_center" style={{ color: "#080424" }} href={"/artworklisting"}>View All <img src="img/arrow.png" width="11px" alt="" /></a>
+                   
                 </div>
             </section>
 

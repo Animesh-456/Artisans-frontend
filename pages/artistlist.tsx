@@ -13,6 +13,7 @@ const Artistlist = () => {
 
 
     const [show, setShow] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -33,6 +34,7 @@ const Artistlist = () => {
                 page: 1,
                 ratingOrder: newRatingOrder,
                 categories: category,
+                searchQuery: searchQuery
             },
         });
 
@@ -62,7 +64,7 @@ const Artistlist = () => {
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
 
-        api.project.artist_list({ params: { page: 0, ratingOrder: ratingOrder, categories: category } })
+        api.project.artist_list({ params: { page: 0, ratingOrder: ratingOrder, categories: category, searchQuery: searchQuery } })
 
         api.project.get_category_subcategory({})
 
@@ -79,11 +81,12 @@ const Artistlist = () => {
                 query: {
                     page: i + 1,
                     ratingOrder: ratingOrder,
-                    category: category
+                    category: category,
+                    searchQuery: searchQuery
                 },
             })
             .then(() => {
-                api.project.artist_list({ params: { page: i, ratingOrder: ratingOrder, categories: category } })
+                api.project.artist_list({ params: { page: i, ratingOrder: ratingOrder, categories: category, searchQuery: searchQuery } })
             });
     };
 
@@ -92,8 +95,10 @@ const Artistlist = () => {
         const pageQueryParam = new URLSearchParams(location.search).get('ratingOrder');
         const pageQueryParam2 = new URLSearchParams(location.search).get('category');
 
-        const pageQueryParam3 = new URLSearchParams(location.search).get('page');
-        const pageNumber = parseInt(pageQueryParam) || 1;
+        const pageQueryParam3 = new URLSearchParams(location.search).get('searchQuery');
+        const urlsearchQuery = pageQueryParam3 || "";
+
+
 
         if (!pageQueryParam) return
         if (pageQueryParam != ratingOrder) {
@@ -104,10 +109,14 @@ const Artistlist = () => {
             setCategory(pageQueryParam2)
         }
 
+        if (searchQuery != urlsearchQuery) {
+            setSearchQuery(urlsearchQuery)
+        }
 
-        setTimeout(() => {
-            api.project.artist_list({ params: { ...opt, page: pageNumber - 1, ratingOrder: pageQueryParam, categories: pageQueryParam2 } })
-        }, 1000);
+
+        // setTimeout(() => {
+        //     api.project.artist_list({ params: { ...opt, page: pageNumber - 1, ratingOrder: pageQueryParam, categories: pageQueryParam2 } })
+        // }, 1000);
 
 
         return
@@ -123,6 +132,7 @@ const Artistlist = () => {
                 page: 1,
                 ratingOrder: ratingOrder,
                 category: newCategory,
+                searchQuery: searchQuery
             },
         });
 
@@ -164,10 +174,11 @@ const Artistlist = () => {
                 query: {
                     page: 1,
                     ratingOrder: ratingOrder,
-                    category: category
+                    category: category,
+                    searchQuery: searchQuery
                 },
             }).then(() => {
-                api.project.artist_list({ params: { page: 0, ratingOrder: ratingOrder, categories: category } })
+                api.project.artist_list({ params: { page: 0, ratingOrder: ratingOrder, categories: category, searchQuery: searchQuery } })
                 setShow(false)
             });
     }
@@ -200,13 +211,13 @@ const Artistlist = () => {
             <section className="gallery_section1">
                 <div className="container">
                     <div className="row desktop_filter">
-                        <div className="filter_section">
-                            {/* <div className="search_bar">
+                        {/* <div className="filter_section">
+                            <div className="search_bar">
                                 <input type="text" name="text" placeholder="Search.." value="" />
                                 <i className="fa fa-search"></i>
-                            </div> */}
+                            </div>
 
-                            <div className="sort_dropdown all_categori">
+                            <div className="no_dropdown all_categori">
                                 <select value={ratingOrder} onChange={handleSortChange}>
                                     <option value="high-to-low">Rating High to Low</option>
                                     <option value="low-to-high">Rating Low to Hign</option>
@@ -227,18 +238,19 @@ const Artistlist = () => {
                                 </select>
                             </div>
                             <div className="post_request_button filter-btn">
-
-                                {/* <a style={{ color: "rgb(255, 255, 255)", cursor: "pointer" }}>Apply</a> */}
+                                <a style={{ color: "rgb(255, 255, 255)", cursor: "pointer" }}>Apply</a>
                             </div>
 
-                        </div>
-                    </div>
-                    <div className="row mobile_filter">
-                        <div className="bwp-top-bar">
-                            <div className="button-filter-toggle">
-                                <i className="fa fa-sliders" onClick={() => setShow(true)}></i>
+                        </div> */}
+
+                        <div className="filter_section">
+
+                            <div className="search_bar">
+                                <input type="text" value={searchQuery} name="text" placeholder="Search.." onChange={(e) => setSearchQuery(e.target.value)} />
+                                <i className="fa fa-search"></i>
                             </div>
-                            <div className="pwb-dropdown all_categori">
+
+                            <div className="sort_dropdown all_categori">
                                 <select value={ratingOrder} onChange={handleSortChange}>
                                     <option value="high-to-low">Rating High to Low</option>
                                     <option value="low-to-high">Rating Low to Hign</option>
@@ -247,7 +259,52 @@ const Artistlist = () => {
                                     <option value="newest-oldest">Newest to Oldest</option>
                                     <option value="oldest-newest">Oldest to Newest</option>
                                 </select>
+
                             </div>
+
+                            <div className="all_categori">
+                                <select value={category} onChange={handleCategoryChange}>
+                                    <option value="">ALL Categories</option>
+                                    {Category_subcategory?.categories?.map((cat) => (
+                                        <option key={cat?.id} value={cat?.id}>{cat?.category_name}</option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className="post_request_button filter-btn"><a style={{ cursor: 'pointer', color: "#fff" }} onClick={handleApplyFilter}>Apply</a></div>
+
+                            <div className="sr">
+                               
+                                <p>Showing Results {opt.page * 50 + 1}-{Math.min((opt.page + 1) * 50, opt.total_count)}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mobile_filter">
+                        <div className="bwp-top-bar">
+                            <div className="button-filter-toggle">
+                                <i className="fa fa-sliders" onClick={() => setShow(true)}></i>
+                            </div>
+                            {/* <div className="pwb-dropdown all_categori">
+                                <select value={ratingOrder} onChange={handleSortChange}>
+                                    <option value="high-to-low">Rating High to Low</option>
+                                    <option value="low-to-high">Rating Low to Hign</option>
+                                    <option value="a-z">A to Z</option>
+                                    <option value="z-a">Z to A</option>
+                                    <option value="newest-oldest">Newest to Oldest</option>
+                                    <option value="oldest-newest">Oldest to Newest</option>
+                                </select>
+                            </div> */}
+
+                            <div className="listingsearchmobile">
+                                <div className="search_bar">
+                                    <input type="text" value={searchQuery} name="text" placeholder="Search by username" onChange={(e) => setSearchQuery(e.target.value)} />
+                                    <span>
+                                        <i onClick={handleApplyFilter} className="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div className="row">
@@ -392,6 +449,23 @@ const Artistlist = () => {
                 <Offcanvas.Body>
 
                     <div className="widget_product_categories">
+
+                        <h3>Sort by</h3>
+
+                        <div className="no_dropdown all_categori">
+                            <select value={ratingOrder} onChange={handleSortChange}>
+                                <option value="high-to-low">Rating High to Low</option>
+                                <option value="low-to-high">Rating Low to Hign</option>
+                                <option value="a-z">A to Z</option>
+                                <option value="z-a">Z to A</option>
+                                <option value="newest-oldest">Newest to Oldest</option>
+                                <option value="oldest-newest">Oldest to Newest</option>
+                            </select>
+
+                        </div>
+                        <br />
+
+
                         <h3>All categories</h3>
                         {/* <ul>
                                 <li><a href="#">Painting</a></li>

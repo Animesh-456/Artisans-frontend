@@ -2003,6 +2003,7 @@ ul.side-nav {
     padding: 6px 22px;
     border: none;
     transition: box-shadow 1s;
+    margin-right: 15px;
 }
 
 .cnfm-job-attchmnts {
@@ -4178,6 +4179,7 @@ marquee {
     font-size: 14px;
     height: 34px;
     background: none;
+    color: #202020;
 }
 
 .widget_product_categories label {
@@ -4306,8 +4308,7 @@ marquee {
     display: inline-block;
 }
 
-.reg-bottom button:last-child {
-    margin-left: 15px;
+.reg-bottom button:nth-child(2) {
     background: none;
     color: #080424;
     font-weight: 500;

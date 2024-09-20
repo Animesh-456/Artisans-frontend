@@ -479,7 +479,7 @@ const Listing = (prp) => {
                         <div className="widget_product_categories">
                             <h3>Sort by</h3>
 
-                            <div className="sort_dropdown all_categori">
+                            <div className="no_dropdown all_categori">
                                 <select value={sortOption} onChange={handleSortChange}>
                                     <option value="newest">Newest to Oldest</option>
                                     <option value="oldest">Oldest to Newest</option>

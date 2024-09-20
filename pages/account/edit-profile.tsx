@@ -892,12 +892,14 @@ const EditProfile = (prp) => {
 
                     </div>
                     <div className='reg-bottom'>
-                        <button type='submit' name='submit' onClick={() => setOpen(false)}>
-                            Back
-                        </button>
                         <button type='submit' name='submit' onClick={() => { setOpen(false); handle_delete_profile_pic() }}>
                             Yes
                         </button>
+
+                        <button type='submit' name='submit' onClick={() => setOpen(false)}>
+                            Back <img src="../../img/arrow.png" width="11px" alt="" />
+                        </button>
+
                     </div>
                 </div>
             </GlobalModal>
