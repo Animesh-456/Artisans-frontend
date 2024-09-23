@@ -939,8 +939,8 @@ const ProjectDetail = (prp) => {
                 <div className="container">
                     <div className="row">
                         <ul className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="#">Home</a></li>
-                            <li className="breadcrumb-item ">Artwork jobs</li>
+                            <li className="breadcrumb-item"><a href={"/"}>Home</a></li>
+                            <li className="breadcrumb-item "><a href="#">Artwork jobs</a></li>
                             <li className="breadcrumb-item active">{data?.project_name}</li>
 
                         </ul>
