@@ -392,7 +392,8 @@ table {
 
 .discover_wp {
     padding: 2em 0 0;
-    background: #f3f2f0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .discover_wp p {
@@ -405,7 +406,7 @@ table {
 
 .discover_wp a {
     display: inline-block;
-    margin: 20px 0 30px;
+    margin: 7px 0 20px;
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
@@ -641,8 +642,9 @@ table {
 }
 
 .top_artist {
-    background-color: #f3f2f0;
-    padding: 3em 0 3.5em;
+    padding: 2em 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .customer_wp {
@@ -1008,7 +1010,7 @@ p {
 
 .our_story_wp {
     background: #fff;
-    padding: 3em 0;
+    padding: 2em 0;
 }
 
 .our_story_wp p {
@@ -1169,10 +1171,10 @@ label {
 }
 
 .description_left {
-    background: #f3f2f0;
     margin: 3em 0;
     border-radius: 11px;
     padding: 15px;
+    border: 1px solid #ddd;
 }
 
 .description_left img {
@@ -1196,27 +1198,21 @@ label {
     display: inline;
 }
 
-.description_heading_title:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -9px;
-    width: 40px;
-    height: 3px;
-    background: #ef6100;
-}
-
 .description_left p {
     font-size: 15px;
-    padding-bottom: 25px;
+    padding-bottom: 3px;
     line-height: 25px;
     white-space: pre-line;
+}
+.comment-author {
+    border-bottom: 1px solid #ddd;
 }
 
 .question_a {
     background: #fff;
     border-radius: 10px;
-    padding: 20px 15px 3px;
+    padding: 15px 15px 3px;
+    border: 1px solid #ddd;
 }
 
 .question_a1 h4 {
@@ -1386,10 +1382,10 @@ label {
 }
 
 .project_details_right {
-    background: #f3f2f0;
     margin: 3em 0;
     border-radius: 11px;
     padding: 15px 21px;
+    border: 1px solid #ddd;
 }
 
 .project_details_content span {
@@ -1411,6 +1407,10 @@ label {
 
 .question_a1 {
     margin-bottom: 9px;
+    padding-top: 10px;
+}
+.sidebar .heading_title:after{
+    content: none;
 }
 
 .carve {
@@ -1425,7 +1425,7 @@ label {
 }
 
 .about_wp {
-    background: #f3f2f0;
+    border-bottom: 1px solid #ddd;
     padding: 3em 0;
 }
 
@@ -1445,7 +1445,7 @@ label {
 
 .missionwp {
     padding: 3em 0;
-    background: #fff;
+    border-bottom: 1px solid #ddd;
 }
 
 .missionwp img {
@@ -1550,7 +1550,7 @@ label {
 
 .submit_cancel1 {
     display: inline-block;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     margin-top: 0px;
 }
 
@@ -1560,10 +1560,10 @@ label {
 }
 
 .sidebar {
-    background: #f3f2f0;
-    padding: 20px 0;
+    padding: 30px 0 20px;
     border-radius: 11px;
     margin-bottom: 1em;
+    border: 1px solid #ddd;
 }
 
 .sidebar ul.side-nav li.active {
@@ -1587,7 +1587,7 @@ label {
 .profile_box {
     padding: 2em;
     border-radius: 11px;
-    background: #f3f2f0;
+    border: 1px solid #ddd;
 }
 
 .help-ico {
@@ -2986,8 +2986,7 @@ select {
 }
 
 .howit_wp1 {
-    padding: 3em 0 0.5em;
-    background-color: #f3f2f0;
+    padding: 0;
 }
 
 .latest_request_heading1 {
@@ -3016,7 +3015,7 @@ select {
 
 .howit_wp1 p {
     font-size: 15px;
-    margin-bottom: 4em;
+    margin-bottom: 3em;
     line-height: 25px;
 }
 
@@ -3026,7 +3025,7 @@ select {
 }
 
 .howit_wp2 {
-    padding: 5em 0;
+    padding: 1em 0 2em;
 }
 
 .howit_wp2 img {
@@ -3530,9 +3529,9 @@ ul.ex1 li a {
     float: left;
     width: 100%;
 }
-
 .dya {
-    background: #f3f2f0;
+    border: none;
+    padding: 0;
 }
 
 .ofr1 {
@@ -3818,8 +3817,9 @@ marquee {
     border-bottom: 4px solid #ef6100;
     min-width: 430px;
     margin-right: 20px;
-    background-color: #F7F5F0;
+    background-color: #f9f9f9;
     height: fit-content;
+    box-shadow: 0 1px 3px 0 #ababab;
 }
 
 .testimonial-content {
@@ -4012,7 +4012,6 @@ marquee {
     padding-top: 9px;
     overflow: hidden;
 }
-
 .chat_browser span:nth-child(2) .from_feild {
     margin-bottom: 0;
 }
