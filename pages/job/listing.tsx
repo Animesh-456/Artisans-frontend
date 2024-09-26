@@ -416,7 +416,7 @@ const Listing = (prp) => {
 
                                             <div>
                                                 <span>posted by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
-                                                <span>Posted: {diffInDays} d {hourDifference} h ago</span>
+                                                <span>Posted: {diffInDays} days ago</span>
                                                 <span style={{ color: "#ef6100" }}>{l?.bids_count} offers</span>
                                             </div>
                                         </div>
