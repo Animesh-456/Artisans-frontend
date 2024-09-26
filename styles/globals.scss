@@ -1281,9 +1281,10 @@ label {
 }
 
 .offer_section {
-    background: #f3f2f0;
+    background: #fff;
     padding: 15px;
     border-radius: 8px;
+    box-shadow: 0px 1px 3px 0px rgb(171 171 171);
 }
 
 .offer_section1 {
@@ -1400,9 +1401,8 @@ label {
 }
 
 .project_details_content p {
-    border-bottom: 1px solid #303030cc;
-    padding-bottom: 12px;
-    margin-bottom: 12px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .project_details_content p:last-child {
@@ -2504,8 +2504,8 @@ ul.side-nav {
 }
 
 .chat_browser span img {
-    width: 32px;
-    height: 30px;
+    width: 31px;
+    height: 26px;
     border-radius: 0;
     margin-top: 6px;
     background: none;
@@ -2927,7 +2927,7 @@ select {
     background: none;
     border: none;
     padding: 0;
-    margin-top: 4px;
+    margin-top: 0px;
 }
 
 .icon_upload .upload-btn-wrapper input[type=file] {
@@ -4005,11 +4005,16 @@ marquee {
     width: 100%;
     resize: none;
     font-size: 14px;
-    height: 45px;
+    height: 42px;
     border-radius: 30px;
     border: 1px solid #545454;
     padding-left: 16px;
+    padding-top: 9px;
     overflow: hidden;
+}
+
+.chat_browser span:nth-child(2) .from_feild {
+    margin-bottom: 0;
 }
 
 .stars::before {

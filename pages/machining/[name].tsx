@@ -820,7 +820,7 @@ const ProjectDetail = (prp) => {
     //     .join(', ');                                    
 
 
-    
+
 
 
     return (
@@ -1660,7 +1660,7 @@ const ProjectDetail = (prp) => {
                                     <h2>Project Details</h2>
                                 </div>
                                 <div className="project_details_content">
-                                    <p><span >Posted</span><span >  {moment(data?.project_post_date).format("DD-MMMM-YYYY")}</span></p>
+                                    <p><span >Posted</span><span >  {moment(data?.project_post_date).format("DD-MMM-YYYY")}</span></p>
                                     <p><span >Visibility</span><span className="www1">  {data?.visibility}</span></p>
                                     <p><span >Category</span><span className="www1">  {data?.category_names?.join(', ')}</span></p>
                                     {/* <p><span >sub-category</span ><span className="www1"> : {subCategoryName?.map((m) => {

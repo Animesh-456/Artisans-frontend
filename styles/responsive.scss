@@ -84,6 +84,7 @@
         width: 100%;
         text-align: center;
     }
+
     .navigation nav ul li {
         margin-left: 0;
     }
@@ -91,7 +92,21 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
     .navigation nav ul li a {
-        padding: 8px;
+        padding: 8px 3px;
+        font-size: 12px;
+    }
+
+    .logo img {
+        width: 100%;
+    }
+
+    .right_menu_mobile_wp {
+        padding: 0;
+    }
+
+    .menubar .container {
+        padding: 0;
+        max-width: 741px;
     }
 
     .banner_text h2 {
@@ -429,8 +444,57 @@
         height: 95px;
         object-fit: cover;
     }
+
     .navigation nav ul li {
         margin-left: 0;
+    }
+
+    h3.cus {
+        font-size: 19px;
+    }
+
+    .container {
+        max-width: 761px;
+    }
+
+    .sidebar .heading_title h2 {
+        font-size: 18px;
+    }
+
+    .rys1 h5 {
+        font-size: 17px;
+    }
+
+    .overview-head>div h3 {
+        font-size: 18px;
+    }
+
+    .latest_request_text img {
+        width: 38px;
+    }
+
+    .circle {
+        font-size: 24px;
+    }
+
+    .prof111 h4 {
+        font-size: 18px;
+    }
+
+    .sr p {
+        font-size: 13px;
+    }
+
+    .sr {
+        top: 0px;
+    }
+
+    .art-img1 {
+        height: 137px;
+    }
+
+    .latest_request_text h1 a {
+        font-size: 18px;
     }
 }
 
@@ -2026,30 +2090,38 @@
     .offr_star {
         line-height: 25px;
     }
+
     .top_art_title {
         margin-bottom: 12px;
     }
+
     .va {
         margin-top: -10px;
     }
-    .top_artist_wp{
+
+    .top_artist_wp {
         margin-bottom: 20px;
     }
+
     .cnfm-job-attchmnts {
         padding-bottom: 0;
     }
+
     .wjgf {
         padding-bottom: 13px;
         padding-left: 5px;
     }
-    .pwb-dropdown:before{
+
+    .pwb-dropdown:before {
         top: 8px;
     }
+
     .no_dropdown {
         width: 100%;
     }
+
     .no_dropdown select {
-        border-radius: 25px;
+        border-radius: 6px;
         line-height: 34px;
         padding: 0 13px;
         background: none;
