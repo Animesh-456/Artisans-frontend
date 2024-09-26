@@ -639,7 +639,7 @@ function Home(prp) {
                                                 <p>{l?.description?.length > 80 ? (l?.description?.slice(0, 150) + '...') : (l?.description)} </p>
                                                 <div>
                                                     <span>posted by {l?.creator?.user_name} <i className="fa fa-check-circle"></i></span>
-                                                    <span>Posted: {diffInDays} days {hourDifference} hours</span>
+                                                    <span>Posted: {diffInDays} days</span>
                                                     <span></span>
                                                     <span><a href="#">{l?.bids_count} offers</a></span>
                                                 </div>
