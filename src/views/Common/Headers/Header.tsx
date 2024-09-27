@@ -183,11 +183,13 @@ export default function Header({ }: Props) {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link href={'/page/works'}>
+						<li className="nav-item">
+							<Link href={'/how-it-works'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
 									How it works
 								</button>
 							</Link>
+						</li>
 						</li>
 						<li className="nav-item">
 							<Link href={'/account/profile'}>
@@ -327,7 +329,7 @@ export default function Header({ }: Props) {
 											<li><Link href="/account/jobs">My account</Link></li>
 											<li><Link href="/artrequest">Post Your Art Requirement</Link></li>
 											<li><Link href="/artworklisting">Artwork Jobs</Link></li>
-											<li><Link href="/page/works">How it works</Link></li>
+											<li><Link href="/how-it-works">How it works</Link></li>
 											{user ? (
 												<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
 											) : (

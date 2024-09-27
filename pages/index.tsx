@@ -457,7 +457,7 @@ function Home(prp) {
                                 work resonates with your vision.</p>
 
                             <div className="latest_request_text">
-                                <a href='/page/works'>Know More</a>
+                                <a href='/how-it-works'>Know More</a>
                             </div>
                         </div>
                         <div className="col-sm-7">
@@ -665,7 +665,7 @@ function Home(prp) {
 
 
 
-                   
+
                 </div>
             </section>
 
@@ -707,13 +707,13 @@ function Home(prp) {
 
                     <a className="view_all va" style={{ color: "#080424" }} href={"/artistlist"}>Explore Artists <img src="img/arrow.png" width="11px" alt="" /></a>
 
-                 
+
                     <Crou />
 
 
-                   
-                        
-                    
+
+
+
 
                 </div>
             </section>

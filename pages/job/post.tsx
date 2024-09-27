@@ -442,7 +442,7 @@ const Post = (prp) => {
 				</div>
 			</section>
 
-			<section className="discover_wp dya" >
+			<section className="discover_wp" >
 				<div className="container">
 					<div className="row">
 						<div className="heading_title latest_request_heading">
@@ -458,8 +458,30 @@ const Post = (prp) => {
 									<input type="text" name="text" placeholder="Type here..." autoComplete={"off"} value={project.project_name} onChange={setproject("project_name")} />
 								</div>
 								<div className="from_feild">
-									<label>Comment: <span>*</span></label>
-									<textarea placeholder="Comment" rows={6} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>                                </div>                                <div className="b-li">                                    <ul>                                        <li>                                            Specify the arts to be used, the tolerances and the total number of arts                                        </li>                                        <li>                                            If delivery outside mainland , please specify the delivery location                                        </li>                                        <li>                                            Please do not provide your contact details here.                                        </li>                                    </ul>                                    {/* <p>Specify the materials to be used, the tolerances and the total number of parts</p> */}                                    {/* <p>If delivery outside mainland UK, please specify the delivery location</p>                                    <p>Please do not provide your contact details here.</p> */}                                </div>
+									<label>Description: <span>*</span></label>
+									<textarea placeholder="Description" rows={8} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>                                </div>                                <div className="b-li">                                    <ul>                                        <li>                                            Explain the overall idea or theme of the artwork.                                         </li>                                        <li>                                           Provide images or examples of artwork styles, color palettes, or compositions that inspire you.                                      </li>                                        <li>                                           Specify the size or format of the artwork
+
+									</li>
+										<li>
+											Mention any specific colors or palettes you'd like the artist to focus on
+
+										</li>
+										<li>
+											Mention realistic timeframe when you want the artwork to be delivered.
+
+										</li>
+										<li>
+											ention your budget range if applicable
+
+										</li>
+										<li>Do not include contact details (phone number, email)
+										</li>
+										<li>Mention City, State where you want artwork to be delivered
+										</li>
+
+
+
+									</ul>                                    {/* <p>Specify the materials to be used, the tolerances and the total number of parts</p> */}                                    {/* <p>If delivery outside mainland UK, please specify the delivery location</p>                                    <p>Please do not provide your contact details here.</p> */}                                </div>
 								<div className="from_feild">
 									<label htmlFor="category">Category(s): <span>*</span>
 									</label>
@@ -548,9 +570,9 @@ const Post = (prp) => {
 
 								<div className="b-li">
 
-									<ul>                                        <li>                                            The first file will be used for a thumbnail picture                                        </li>                                        <li>                                            Max file size: 10 MB                                        </li>
+									<ul>                                                                                <li>                                            Max file size: 10 MB                                        </li>
 									</ul>                                </div>                                {/* <div className="from_feild">                                    <label>I would like to receive quotes before: <span>*</span></label>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"4"}                                                checked={project?.post_for == "4" ? true : false}                                                onChange={setproject("post_for")} /> 4 Days
-                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"6"}                                                checked={project?.post_for == "6" ? true : false}                                                onChange={setproject("post_for")}                                            />6 Days                                        </label>                                    </div>                                </div> */}                                <div className="from_feild">                                    <label>Visibility: <span>*</span></label>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="optradio" value={"Public"} checked={project.visibility == "Public" ? true : false} onChange={setproject("visibility")} />Public (you will receive more quotes)                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="optradio" value={"Private"} checked={project.visibility == "Private" ? true : false} onChange={setproject("visibility")} />Private (visibility restricted to confirmed artists)                                        </label>                                    </div>                                </div>                                <div className="submit_cancel">                                    <button className="but111" type="submit"
+                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"6"}                                                checked={project?.post_for == "6" ? true : false}                                                onChange={setproject("post_for")}                                            />6 Days                                        </label>                                    </div>                                </div> */}                                                                                                                                  <div className="submit_cancel">                                    <button className="but111" type="submit"
 									name="submit" onClick={handleSubmit}                                    >                                        Check & Submit                                    </button>
 									<button type="submit" name="submit" style={{
 										borderRadius: "6px", fontFamily: "Poppins", padding: "6px 22px", transition: "box-shadow 1s", marginLeft: "15px", background: "none", color: "#080424", fontWeight: "500"

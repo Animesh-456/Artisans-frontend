@@ -3614,6 +3614,7 @@ ul.ex1 li a {
 
 .b-li ul li {
     font-weight: 500;
+    font-size: 14px;
 }
 
 .file101 p {
@@ -4126,6 +4127,10 @@ marquee {
 
 .submit_cancel button {
     border: none;
+    box-shadow: 0 1px 2px 2px #47120f;
+}
+.submit_cancel button:hover{
+    box-shadow: none;
 }
 
 .latest_request_text h6 {
