@@ -32,6 +32,7 @@ export async function getStaticPaths() {
     };
 }
 
+
 export const getStaticProps = async (context) => {
 
     const { params } = context;
@@ -345,6 +346,7 @@ const ProjectDetail = (prp) => {
             router.push("/");
         }
 
+       
         setQuestion("project_id", id)(null);
         setreview("project_id", id)(null);
         setbid("project_id", id)(null);
@@ -817,10 +819,17 @@ const ProjectDetail = (prp) => {
     // const mulCategoryName = Category_subcategory?.categories
     //     ?.filter(item => idscatArray.includes(item.id)) 
     //     .map(item => item.category_name)                
-    //     .join(', ');                                    
+    //     .join(', ');
 
 
-    
+
+    const handleGuestOffer = async () => {
+        toast.error("Please Login/Register to create an offer")
+        return
+    }
+
+
+
 
 
     return (
@@ -1586,12 +1595,7 @@ const ProjectDetail = (prp) => {
                                     </>
                                 )}
 
-
-
-
-
-
-
+                                <div className="create_o"><a onClick={handleGuestOffer} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Create an offer</a></div>
 
                                 <div className="question_a">
 
