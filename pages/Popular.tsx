@@ -42,7 +42,7 @@ const Popular = () => {
 
 
                     <li>
-                        <a href={`/artworklisting?category=Painting`}>
+                        <a href={`/artwork-jobs?category=Painting`}>
                             <img src="img/icon.png" alt="" />
                             <p>Painting</p>
                         </a>
@@ -60,7 +60,7 @@ const Popular = () => {
 
 
                     <li>
-                        <a href={`/artworklisting?category=Sculpture`}>
+                        <a href={`/artwork-jobs?category=Sculpture`}>
                             <img src="img/icon.png" alt="" />
                             <p>Sculpture</p>
                         </a>
@@ -75,7 +75,7 @@ const Popular = () => {
 
 
                     <li>
-                        <a href={`/artworklisting?category=Drawing`}>
+                        <a href={`/artwork-jobs?category=Drawing`}>
                             <img src="img/icon.png" alt="" />
                             <p>Drawing</p>
                         </a>
@@ -89,7 +89,7 @@ const Popular = () => {
 
 
                     <li>
-                        <a href={`/artworklisting?category=Photography`}>
+                        <a href={`/artwork-jobs?category=Photography`}>
                             <img src="img/icon.png" alt="" />
                             <p>Photography</p>
 
@@ -104,7 +104,7 @@ const Popular = () => {
 
 
                     <li>
-                        <a href={`/artworklisting?category=Printmaking`}>
+                        <a href={`/artwork-jobs?category=Printmaking`}>
                             <img src="img/icon.png" alt="" />
                             <p>Printmaking</p>
                         </a>
@@ -118,7 +118,7 @@ const Popular = () => {
 
 
                     <li>
-                        <a href={`/artworklisting?category=Mixed+Media`}>
+                        <a href={`/artwork-jobs?category=Mixed+Media`}>
                             <img src="img/icon.png" alt="" />
                             <p>Mixed Media</p>
                         </a>
@@ -132,7 +132,7 @@ const Popular = () => {
 
 
                     <li>
-                        <a href={`/artworklisting?category=Textile+Art`}>
+                        <a href={`/artwork-jobs?category=Textile+Art`}>
                             <img src="img/icon.png" alt="" />
                             <p>Textile Art</p>
                         </a>

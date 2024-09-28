@@ -56,7 +56,7 @@ const Allreviews = () => {
                                 <div className="looking_m">
                                     <h3>Looking for a Artist?</h3>
                                     <p>Post your request and receive quotes for free.</p>
-                                    <a href={"/artrequest"}>Post your request</a>
+                                    <a href={"/post-your-artwork-requirement"}>Post your request</a>
                                     <h3>Are you a Artist?</h3>
                                     <p>Create a profile and start working.</p>
                                     <a href={"/account/profile"}>Create Your Profile</a>

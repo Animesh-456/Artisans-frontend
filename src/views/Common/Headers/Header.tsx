@@ -162,34 +162,42 @@ export default function Header({ }: Props) {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link href={'/account/about'}>
+							<Link href={'/aboutus'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
 									About Us
 								</button>
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link href={'/artrequest'}>
+							<Link href={'/post-your-artwork-requirement'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
 									Post Your Artwork Requirement
 								</button>
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link href={'/artworklisting'}>
+							<Link href={'/artwork-jobs'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
 									Artwork Jobs
 								</button>
 							</Link>
 						</li>
+
 						<li className="nav-item">
-						<li className="nav-item">
-							<Link href={'/how-it-works'}>
+							<Link href={'/artistlist'}>
 								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									How it works
+									Artist and Artisans
 								</button>
 							</Link>
 						</li>
+						<li className="nav-item">
+							<li className="nav-item">
+								<Link href={'/how-it-works'}>
+									<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
+										How it works
+									</button>
+								</Link>
+							</li>
 						</li>
 						<li className="nav-item">
 							<Link href={'/account/profile'}>
@@ -325,11 +333,13 @@ export default function Header({ }: Props) {
 										<button style={{ "border": "none", "background": "transparent" }} onClick={handleShow} className="smobitrigger ion-navicon-round"><i className="fa fa-bars"></i></button>
 										<ul className="mobimenu">
 											<li><Link href="/">Home</Link></li>
-											<li><Link href="/account/about">About Us</Link></li>
+											<li><Link href="/aboutus">About Us</Link></li>
 											<li><Link href="/account/jobs">My account</Link></li>
-											<li><Link href="/artrequest">Post Your Art Requirement</Link></li>
-											<li><Link href="/artworklisting">Artwork Jobs</Link></li>
+											<li><Link href="/post-your-artwork-requirement">Post Your Art Requirement</Link></li>
+											<li><Link href="/artwork-jobs">Artwork Jobs</Link></li>
+											<li><Link href="/artistlist">Artist and Artisans</Link></li>
 											<li><Link href="/how-it-works">How it works</Link></li>
+
 											{user ? (
 												<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
 											) : (

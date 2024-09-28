@@ -273,7 +273,7 @@ function Home(prp) {
                                 <h1>Inspiring</h1>
                                 <h2>Original Art Work</h2>
                                 <div className="search">
-                                    <Link href={`/artworklisting?searchQuery=${searchQuery}`}><span className="fa fa-search"></span></Link>
+                                    <Link href={`/artwork-jobs?searchQuery=${searchQuery}`}><span className="fa fa-search"></span></Link>
                                     <input value={searchQuery} onChange={(e) => setsearchQuery(e.target.value)} placeholder="Search for any service..." />
                                 </div>
 
@@ -359,7 +359,7 @@ function Home(prp) {
                             return (
                                 <>
                                     <li key={cat?.id}>
-                                        <a href={`/artworklisting?category=${cat?.id}`}>
+                                        <a href={`/artwork-jobs?category=${cat?.id}`}>
                                             <div className="QIkI1k0"><img
                                                 src={common.get_category(`${cat?.id}.jpg`)}
                                                 alt={cat?.category_name}
@@ -377,7 +377,7 @@ function Home(prp) {
                                 return (
                                     <>
                                         <li key={cat?.id}>
-                                            <a href={`/artworklisting?category=${cat?.id}`}>
+                                            <a href={`/artwork-jobs?category=${cat?.id}`}>
                                                 <div className="QIkI1k0"><img
                                                     src={common.get_category(`${cat?.id}.jpg`)}
                                                     alt={cat?.category_name}
@@ -485,7 +485,7 @@ function Home(prp) {
                         <h1>Artwork Jobs</h1>
                     </div>
 
-                    <a className="view_all va" style={{ color: "#080424" }} href={"/artworklisting"}>Explore Artwork Jobs <img src="img/arrow.png" width="11px" alt="" /></a>
+                    <a className="view_all va" style={{ color: "#080424" }} href={"/artwork-jobs"}>Explore Artwork Jobs <img src="img/arrow.png" width="11px" alt="" /></a>
 
 
 
