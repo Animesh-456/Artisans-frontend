@@ -1,17 +1,17 @@
 import { useAtomValue } from "jotai/utils";
-import atom from "../../../src/jotai/atom";
+import atom from "../../../../src/jotai/atom";
 import { useEffect, useState } from "react";
-import common from "../../../src/helpers/common";
+import common from "../../../../src/helpers/common";
 import router from "next/router";
-import api from "../../../src/api/services/api";
-import GlobalModal from "../../../src/views/Common/Modals/GlobalModal";
+import api from "../../../../src/api/services/api";
+import GlobalModal from "../../../../src/views/Common/Modals/GlobalModal";
 import { useAtom } from "jotai";
 import Link from "next/link";
 // import Image from "next/image";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { CSSProperties } from 'react';
-import env from "../../../src/config/api";
+import env from "../../../../src/config/api";
 import Head from "next/head";
 
 export async function getStaticPaths() {

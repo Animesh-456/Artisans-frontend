@@ -1600,9 +1600,12 @@ const ProjectDetail = (prp) => {
                                     </>
                                 )}
 
-                                {!user && (
+
+                                {/* Button for creating offer as guest */}
+
+                                {/* {!user && (
                                     <div className="create_o"><a onClick={handleGuestOffer} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Create an offer</a></div>
-                                )}
+                                )} */}
 
 
                                 <div className="question_a">
@@ -1740,7 +1743,7 @@ const ProjectDetail = (prp) => {
                                 {(data?.project_status == '5' && data?.visibility?.toLowerCase() == "public") &&
                                     <div className="desc-img">
                                         <img className="img-2" src={"../img/tick.png"} alt="tick.png" />
-                                        <h6>Part artist by <a rel="noreferrer" target={"_blank"} href={`account/artist-profile/${data?.programmer_id}`} className="listing_creator_name">
+                                        <h6>Part artist by <a rel="noreferrer" target={"_blank"} href={`/artist/${data?.programmer?.user_name}/${data?.programmer_id}`} className="listing_creator_name">
                                             <span>{data?.programmer?.user_name}</span>
                                         </a> for <span>₹{finalised_price} </span>
                                         </h6>

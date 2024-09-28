@@ -355,7 +355,7 @@ const Artistlist = () => {
                                                         </div>
                                                     </div>
                                                     <div className="top_artist_portfolio">
-                                                        <a href={`/account/artist-profile/${project?.id}`}>
+                                                        <a href={`/artist/${project?.user_name}/${project?.id}`}>
 
                                                             <img className="art-img1" src={common.get_portfolio_pic(
                                                                 project?.programmer_portfolio[0]?.main_img) || "../img/noportfolioimage.jpg"} alt="art-image" />

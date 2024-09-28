@@ -7,13 +7,13 @@ const headers = [
 
 	{
 		title: "About Us",
-		path: "/account/about",
+		path: "/aboutus",
 		role: [1, 2],
 	},
 
 	{
 		title: "ART REQUEST",
-		path: "/artrequest",
+		path: "/post-your-artwork-requirement",
 		role: [1],
 	},
 

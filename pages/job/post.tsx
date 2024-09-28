@@ -471,7 +471,7 @@ const Post = (prp) => {
 
 										</li>
 										<li>
-											ention your budget range if applicable
+											Mention your budget range if applicable
 
 										</li>
 										<li>Do not include contact details (phone number, email)

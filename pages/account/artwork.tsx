@@ -488,7 +488,7 @@ const Artwork = (prp) => {
                                 <div className="manage_p">
                                     <h4>Manage portfolio design</h4>
                                     <p>Add Artwork to your portfolio! Uploading artwork to Artstudio as a portfolio involves showcasing your work in an organized and visually appealing manner.</p>
-                                    <a href={`/account/artist-profile/${user?.id}`} style={{ color: "#262525" }} rel="noreferrer" target={"_blank"} className="tgs">Go to your portfolio <img src="../img/arrow.png" alt="" /></a>
+                                    <a href={`/artist/${user?.user_name}/${user?.id}`} style={{ color: "#262525" }} rel="noreferrer" target={"_blank"} className="tgs">Go to your portfolio <img src="../img/arrow.png" alt="" /></a>
 
 
                                     {!show && <a className="tgs1" style={{ cursor: "pointer", color: "#fff" }} onClick={() => setshow(!show)}>Add Artwork</a>}

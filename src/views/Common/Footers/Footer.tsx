@@ -50,10 +50,10 @@ export default function Footer({ }: Props) {
 									<h3>Company</h3>
 									<ul>
 										<li><Link href="/">Home</Link></li>
-										<li><Link href="/account/about">About Us</Link></li>
-										<li><Link href="/artrequest">Post Your Art Requirement</Link></li>
-										<li><Link href="/artworklisting">Artwork Jobs</Link></li>
-										<li><Link href="/artistlist">Explore Atrists</Link></li>
+										<li><Link href="/aboutus">About Us</Link></li>
+										<li><Link href="/post-your-artwork-requirement">Post Your Art Requirement</Link></li>
+										<li><Link href="/artwork-jobs">Artwork Jobs</Link></li>
+										<li><Link href="/artistlist">Explore Artist</Link></li>
 										<li><Link href="/how-it-works">How it Works</Link></li>
 										<li><Link href="/account/contact_us">Contact Us</Link></li>
 									</ul>

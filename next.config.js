@@ -15,7 +15,13 @@ const nextConfig = {
       },
 
       {
-        source: '/artrequest',
+        source: '/aboutus',
+        destination: '/account/about'
+      },
+
+      
+      {
+        source: '/post-your-artwork-requirement',
         destination: '/job/post'
       },
       {
@@ -24,7 +30,7 @@ const nextConfig = {
       },
 
       {
-        source: '/artworklisting',
+        source: '/artwork-jobs',
         destination: '/job/listing'
       },
 
@@ -42,6 +48,12 @@ const nextConfig = {
         source: '/inbox/:projectId/:fromId/:toId',
         destination: '/machining/msg/:projectId/:fromId/:toId',
       },
+
+      {
+        source: '/artist/:user_name/:id',
+        destination: '/account/artist-profile/:user_name/:id',
+      },
+
     ]
   },
 }

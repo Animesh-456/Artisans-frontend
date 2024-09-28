@@ -294,7 +294,7 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 								} alt="profile-picture" />
 							</figure>
 
-							<a href={`account/artist-profile/${bid?.user_id}`} className="ofr1">{bid?.user?.user_name} </a>
+							<a href={`/artist/${bid?.user?.user_name}/${bid?.user_id}`} className="ofr1">{bid?.user?.user_name} </a>
 							<div className="offr_star">
 								
 								{revdata?.totalproject} jobs {'\t\t'}

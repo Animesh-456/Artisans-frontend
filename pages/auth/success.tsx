@@ -5,7 +5,7 @@ import { useAtom, useAtomValue } from "jotai";
 const success = () => {
     const router = useRouter();
     const redirect_job = () => {
-        router.push("/artrequest")
+        router.push("/post-your-artwork-requirement")
     }
     const user = useAtomValue(atom.storage.user);
     return (
