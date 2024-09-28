@@ -106,7 +106,7 @@ table {
 
 .navigation nav ul li {
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .navigation nav ul li a {
@@ -114,7 +114,7 @@ table {
     font-weight: 500;
     display: inline-block;
     text-decoration: none;
-    padding: 8px 5px;
+    padding: 8px 2px;
     font-family: "Poppins", sans-serif;
     font-size: 14px;
     transition: 0.5s;
@@ -1204,6 +1204,7 @@ label {
     line-height: 25px;
     white-space: pre-line;
 }
+
 .comment-author {
     border-bottom: 1px solid #ddd;
 }
@@ -1409,7 +1410,8 @@ label {
     margin-bottom: 9px;
     padding-top: 10px;
 }
-.sidebar .heading_title:after{
+
+.sidebar .heading_title:after {
     content: none;
 }
 
@@ -3529,6 +3531,7 @@ ul.ex1 li a {
     float: left;
     width: 100%;
 }
+
 .dya {
     border: none;
     padding: 0;
@@ -4013,6 +4016,7 @@ marquee {
     padding-top: 9px;
     overflow: hidden;
 }
+
 .chat_browser span:nth-child(2) .from_feild {
     margin-bottom: 0;
 }
@@ -4129,7 +4133,8 @@ marquee {
     border: none;
     box-shadow: 0 1px 2px 2px #47120f;
 }
-.submit_cancel button:hover{
+
+.submit_cancel button:hover {
     box-shadow: none;
 }
 
