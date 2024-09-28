@@ -79,6 +79,7 @@ export default function Header({ }: Props) {
 	const [user, setUser] = useAtom(atom.storage.user);
 
 	const handleLogout = () => {
+		localStorage.setItem('beforeloginUrl', '');
 		setShow(false)
 		setUser(null);
 		router.push("/auth/sign-in")
@@ -183,11 +184,13 @@ export default function Header({ }: Props) {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link href={'/page/works'}>
-								<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
-									How it works
-								</button>
-							</Link>
+							<li className="nav-item">
+								<Link href={'/how-it-works'}>
+									<button onClick={handleClose} data-bs-dismiss="offcanvas" className="nav-link" style={{ border: 'none', backgroundColor: 'transparent' }}>
+										How it works
+									</button>
+								</Link>
+							</li>
 						</li>
 						<li className="nav-item">
 							<Link href={'/account/profile'}>
@@ -327,9 +330,9 @@ export default function Header({ }: Props) {
 											<li><Link href="/account/jobs">My account</Link></li>
 											<li><Link href="/artrequest">Post Your Art Requirement</Link></li>
 											<li><Link href="/artworklisting">Artwork Jobs</Link></li>
-											<li><Link href="/page/works">How it works</Link></li>
+											<li><Link href="/how-it-works">How it works</Link></li>
 											{user ? (
-												<li className="signup"><a onClick={() => handleLogout()} href={"/auth/sign-in"}>Logout</a></li>
+												<li className="signup"><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()}>Logout</a></li>
 											) : (
 												<>
 													<li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>

@@ -91,7 +91,18 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
     .navigation nav ul li a {
-        padding: 8px;
+        padding: 8px 3px;
+        font-size: 12px;
+    }
+    .logo img {
+        width: 100%;
+    }
+    .right_menu_mobile_wp {
+        padding: 0;
+    }
+    .menubar .container {
+        padding: 0;
+        max-width: 741px;
     }
 
     .banner_text h2 {
@@ -431,6 +442,42 @@
     }
     .navigation nav ul li {
         margin-left: 0;
+    }
+    h3.cus {
+        font-size: 19px;
+    }
+    .container {
+        max-width: 761px;
+    }
+    .sidebar .heading_title h2 {
+        font-size: 18px;
+    }
+    .rys1 h5{
+        font-size: 17px;
+    }
+    .overview-head>div h3{
+        font-size: 18px;
+    }
+    .latest_request_text img{
+        width: 38px;
+    }
+    .circle{
+        font-size: 24px;
+    }
+    .prof111 h4 {
+        font-size: 18px;
+    }
+    .sr p {
+        font-size: 13px;
+    }
+    .sr{
+        top: 0px;
+    }
+    .art-img1{
+        height: 137px;
+    }
+    .latest_request_text h1 a{
+        font-size: 18px;
     }
 }
 
@@ -1520,7 +1567,7 @@
     .latest_request_heading,
     .testimonial_heading,
     .top_artist_heading {
-        margin-bottom: 2em;
+        margin-bottom: 1.5em;
         text-align: left;
     }
 
@@ -1609,7 +1656,8 @@
     }
 
     .b-li ul li {
-        padding-bottom: 10px;
+        padding-bottom: 2px;
+        font-size: 13px;
     }
 
     .project_loop p {
@@ -2049,7 +2097,7 @@
         width: 100%;
     }
     .no_dropdown select {
-        border-radius: 25px;
+        border-radius: 6px;
         line-height: 34px;
         padding: 0 13px;
         background: none;

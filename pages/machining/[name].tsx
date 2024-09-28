@@ -346,7 +346,7 @@ const ProjectDetail = (prp) => {
             router.push("/");
         }
 
-       
+
         setQuestion("project_id", id)(null);
         setreview("project_id", id)(null);
         setbid("project_id", id)(null);
@@ -824,8 +824,13 @@ const ProjectDetail = (prp) => {
 
 
     const handleGuestOffer = async () => {
-        toast.error("Please Login/Register to create an offer")
-        return
+        await localStorage.setItem('beforeloginUrl', router?.asPath)
+
+        toast.error("Please Login/Register as an artist to create an offer")
+        setTimeout(() => {
+            window.location.href = '/auth/sign-in';
+        }, 2000);
+
     }
 
 
@@ -1595,7 +1600,10 @@ const ProjectDetail = (prp) => {
                                     </>
                                 )}
 
-                                <div className="create_o"><a onClick={handleGuestOffer} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Create an offer</a></div>
+                                {!user && (
+                                    <div className="create_o"><a onClick={handleGuestOffer} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Create an offer</a></div>
+                                )}
+
 
                                 <div className="question_a">
 
@@ -1664,7 +1672,7 @@ const ProjectDetail = (prp) => {
                                     <h2>Project Details</h2>
                                 </div>
                                 <div className="project_details_content">
-                                    <p><span >Posted</span><span >  {moment(data?.project_post_date).format("DD-MMMM-YYYY")}</span></p>
+                                    <p><span >Posted</span><span >  {moment(data?.project_post_date).format("DD-MMM-YYYY")}</span></p>
                                     <p><span >Visibility</span><span className="www1">  {data?.visibility}</span></p>
                                     <p><span >Category</span><span className="www1">  {data?.category_names?.join(', ')}</span></p>
                                     {/* <p><span >sub-category</span ><span className="www1"> : {subCategoryName?.map((m) => {

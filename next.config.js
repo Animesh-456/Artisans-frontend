@@ -19,7 +19,7 @@ const nextConfig = {
         destination: '/job/post'
       },
       {
-        source: '/page/works',
+        source: '/how-it-works',
         destination: '/account/how_it_works'
       },
 

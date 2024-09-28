@@ -167,7 +167,7 @@ const Q_A = ({ d, user, data }: Props) => {
                 )}
 
             </div>
-            <hr />
+
 
         </>
     );
