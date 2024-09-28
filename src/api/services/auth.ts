@@ -170,15 +170,18 @@ export default {
           localStorage.setItem("UserData", JSON.stringify(d.data));
           writeAtom(atom.storage.loginmodal, true)
 
-          const redirect = localStorage.getItem('beforeloginUrl')
+          Router.push("/account/jobs");
+          return cb(d);
 
-          if (redirect != '') {
-            Router.push(`${redirect}`);
-            return cb(d);
-          } else {
-            Router.push("/account/jobs");
-            return cb(d);
-          }
+          // const redirect = localStorage.getItem('beforeloginUrl')
+
+          // if (redirect != '') {
+          //   Router.push(`${redirect}`);
+          //   return cb(d);
+          // } else {
+          //   Router.push("/account/jobs");
+          //   return cb(d);
+          // }
 
         } else {
           toast.error(d.message);
