@@ -130,8 +130,6 @@ const Profile = (prp) => {
         atom.auth.api.countries,
     );
 
-
-
     return (
         <>
 
@@ -213,6 +211,9 @@ const Profile = (prp) => {
                                         <div className='myprofile_name_label'>
                                             <p>Country</p>
                                         </div>
+
+
+
                                         <div className='myprofile_name_list'>
                                             <p>: &nbsp;India</p>
                                         </div>
@@ -237,27 +238,11 @@ const Profile = (prp) => {
                                         ) : (
                                             <></>
                                         )}
-                                        {user?.role_id == 2 ? (
-                                            <>
-
-                                                {user?.prot_pic?.length ? (
-
-                                                    <Carousel>
-                                                        {user?.prot_pic?.split(',').map((m, index) => (
-                                                            <Carousel.Item key={index} interval={3000}>
-                                                                <div className="carousel-item active">
-                                                                    <img className="prot-img" src={common.get_portfolio_pic(m)} id="curr_img" />
-                                                                </div>
-                                                            </Carousel.Item>
-                                                        ))}
-                                                    </Carousel>
 
 
-                                                ) : (<></>)}
-                                            </>
-                                        ) : (
-                                            <></>
-                                        )}
+
+
+
 
                                         {user?.role_id == 2 && user?.pro_user == 1 ? (
                                             <>

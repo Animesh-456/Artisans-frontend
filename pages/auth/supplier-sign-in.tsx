@@ -332,10 +332,9 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className='col-sm-8'>
-											<textarea
+											<input
 												name='address1'
-												cols={20}
-												rows={5}
+												type="text"
 												autoComplete={"off"}
 												value={signIn.address1}
 												onChange={setSign("address1")}

@@ -88,7 +88,7 @@ const EditProfile = (prp) => {
 
         const extension = file.name.lastIndexOf(".") === -1 ? "" : file.name.substr(file.name.lastIndexOf(".") + 1);
 
-        if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png" && extension.toLowerCase() !== "gif") {
+        if (extension.toLowerCase() !== "jpg" && extension.toLowerCase() !== "jpeg" && extension.toLowerCase() !== "png") {
             toast.error(`File extension .${extension} is not allowed`);
             return;
         }
@@ -707,10 +707,12 @@ const EditProfile = (prp) => {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <label className="qwe11">Address</label>
-                                                <textarea name="address"
+                                                {/* <textarea name="address"
                                                     value={profile.address1}
                                                     onChange={setProfile("address1")}
-                                                    cols={20} rows={5}></textarea>
+                                                    cols={20} rows={5}></textarea> */}
+                                                <input name="city" type="text"  value={profile.address1}
+                                                    onChange={setProfile("address1")} />
                                             </div>
                                             <div className="col-sm-6">
                                                 <label>Description</label>
@@ -745,7 +747,7 @@ const EditProfile = (prp) => {
 
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                <label>Profile Picture (Formats jpeg, jpg, png, gif-max: 640x350)</label>
+                                                <label>Profile Picture (Formats jpeg, jpg, png)</label>
                                                 <div className="upload-btn-wrapper">
                                                     <button className="btn">
                                                         <i className="fa fa-upload"></i> Add your logo, a picture </button>
@@ -809,59 +811,7 @@ const EditProfile = (prp) => {
                                             </div>
 
 
-
-
-
-                                            {user?.role_id == 2 ? (
-                                                <>
-                                                    <div className='row'>
-                                                        <div className='col-sm-6'>
-
-
-
-
-                                                            {pr2 < 101 ? (
-                                                                <ProgressBar now={pr2} label={`${pr2}%`} />
-                                                            ) : (<></>)}
-
-                                                            {file2 && pr2 > 100 ? (
-                                                                file2?.map((f) => {
-                                                                    return (
-                                                                        <>
-                                                                            <div className="pro_div">
-                                                                                <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files2(f)}><i className="fa fa-trash-o"></i></a></p>
-                                                                            </div>
-                                                                        </>
-                                                                    )
-                                                                })
-                                                            ) : (<></>)}
-                                                        </div>
-                                                        {profile?.prot_pic && profile?.prot_pic?.split(",").map((d) => {
-
-                                                            return (
-                                                                <>
-
-                                                                    <div className='row'>
-                                                                        <div className="col-sm-4">
-                                                                            <figure>
-                                                                                <img
-                                                                                    src={
-                                                                                        common.get_portfolio_pic(d) ||
-                                                                                        "/img/no-images.png"
-                                                                                    }
-                                                                                />
-                                                                                <a style={{ cursor: "pointer" }} onClick={() => { delete_portfolio_pic(d) }}><i className="fa fa-trash-o"></i></a>
-                                                                            </figure>
-                                                                        </div>
-                                                                    </div>
-                                                                </>
-
-                                                            )
-                                                        })}
-                                                    </div>
-
-                                                </>
-                                            ) : (<></>)}
+                                            
                                         </div>
                                         <div className="reg-bottom">
                                             <button type='submit' name='submit'>
