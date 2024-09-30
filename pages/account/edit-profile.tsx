@@ -776,16 +776,7 @@ const EditProfile = (prp) => {
                                                 />
                                             </div>
 
-                                        </div>
-
-
-                                        <div className="row">
                                             <div className="col-sm-6">
-                                                {/* <label>Mobile Number</label>
-                                                <input disabled name="mobile_number" type="text" value={user?.mobile_number}
-                                                /> */}
-
-
                                                 <div className="from_feild">
 
                                                     <label>Categories</label>
@@ -802,6 +793,8 @@ const EditProfile = (prp) => {
 
                                         </div>
 
+
+                                    
 
 
                                         <div className="row">
