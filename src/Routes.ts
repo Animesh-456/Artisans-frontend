@@ -85,11 +85,11 @@ const EditProfileSideBar = [
 		path: "/account/withdraw",
 		role: [2],
 	},
-	{
-		title: "Invoices",
-		path: "/account/invoices",
-		role: [2],
-	},
+	// {
+	// 	title: "Invoices",
+	// 	path: "/account/invoices",
+	// 	role: [2],
+	// },
 	{
 		title: "My feedbacks",
 		path: "/account/Customer-Review",

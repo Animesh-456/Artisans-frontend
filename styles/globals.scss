@@ -1853,6 +1853,8 @@ ul.side-nav {
 
 .myprofile_name_list p {
     font-weight: 500;
+    white-space: pre-wrap;
+
 }
 
 .myprofile_name_list .carousel-inner .carousel-item img {
@@ -3291,6 +3293,7 @@ hr {
     font-size: 14px;
     color: #313030;
     line-height: 24px;
+    white-space:  pre-wrap;
 }
 
 ul.ex {
