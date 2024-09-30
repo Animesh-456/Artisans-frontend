@@ -192,12 +192,20 @@ const Profile = (prp) => {
                                             <p>: &nbsp;{data?.city}</p>
                                         </div>
 
-                                        <div className='myprofile_name_label'>
-                                            <p>Category</p>
-                                        </div>
-                                        <div className='myprofile_name_list'>
-                                            <p>: &nbsp;{data?.category_names?.join(', ')}</p>
-                                        </div>
+                                        {user?.role_id == 2 ? (
+                                            <>
+
+                                                <div className='myprofile_name_label'>
+                                                    <p>Category</p>
+                                                </div>
+                                                <div className='myprofile_name_list'>
+                                                    <p>: &nbsp;{data?.category_names?.join(', ')}</p>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <></>
+                                        )}
+
 
 
                                         {user?.pro_user == 1 ? (

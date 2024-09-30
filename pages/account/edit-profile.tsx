@@ -147,9 +147,13 @@ const EditProfile = (prp) => {
             form.append(key, profile[key]);
         }
 
-        const selectcat = selectedcategory.map(option => option.id).join(',')
-        profile["category"] = selectcat;
-        form.append('category', selectcat)
+
+        
+            const selectcat = selectedcategory.map(option => option.id).join(',')
+            profile["category"] = selectcat;
+            form.append('category', selectcat)
+        
+
 
 
 
@@ -776,25 +780,29 @@ const EditProfile = (prp) => {
                                                 />
                                             </div>
 
-                                            <div className="col-sm-6">
-                                                <div className="from_feild">
+                                            {user?.role_id == 2 ? (
+                                                <div className="col-sm-6">
+                                                    <div className="from_feild">
 
-                                                    <label>Categories</label>
-                                                    <Multiselect
-                                                        options={category}
-                                                        selectedValues={selectedcategory}
-                                                        onSelect={handleCategorychange}
-                                                        onRemove={onRemove}
-                                                        displayValue="label"
-                                                        placeholder="Select Category"
-                                                    />
+                                                        <label>Categories</label>
+                                                        <Multiselect
+                                                            options={category}
+                                                            selectedValues={selectedcategory}
+                                                            onSelect={handleCategorychange}
+                                                            onRemove={onRemove}
+                                                            displayValue="label"
+                                                            placeholder="Select Category"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            ) : (
+                                                <></>
+                                            )}
 
                                         </div>
 
 
-                                    
+
 
 
                                         <div className="row">
