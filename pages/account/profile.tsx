@@ -46,7 +46,7 @@ export const getStaticProps = async () => {
 };
 const Profile = (prp) => {
     const router = useRouter();
-    const data = useAtomValue<UserDetails>(atom.auth.api.me);
+    const data = useAtomValue(atom.auth.api.me);
     const opt = useAtomValue(atom.project.api.my_opt);
     const opt_user = useAtomValue(atom.project.api.my_proj_opt);
     const user = useAtomValue(atom.storage.user);
@@ -191,6 +191,15 @@ const Profile = (prp) => {
                                         <div className='myprofile_name_list'>
                                             <p>: &nbsp;{data?.city}</p>
                                         </div>
+
+                                        <div className='myprofile_name_label'>
+                                            <p>Category</p>
+                                        </div>
+                                        <div className='myprofile_name_list'>
+                                            <p>: &nbsp;{data?.category_names?.join(', ')}</p>
+                                        </div>
+
+
                                         {user?.pro_user == 1 ? (
                                             <>
                                                 <div className='myprofile_name_label'>
@@ -214,11 +223,13 @@ const Profile = (prp) => {
 
 
 
+
+
                                         <div className='myprofile_name_list'>
                                             <p>: &nbsp;India</p>
                                         </div>
 
-                                        
+
 
 
                                         {user?.role_id == 1 ? (
