@@ -10,6 +10,7 @@ import { ProgressBar } from "react-bootstrap";
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 import env from "../../src/config/api";
 import Head from "next/head";
+import Multiselect from 'multiselect-react-dropdown';
 
 export const getStaticProps = async () => {
     try {
@@ -76,6 +77,7 @@ const EditProfile = (prp) => {
 
     useEffect(() => {
         api.auth.countries({});
+        api.project.get_category_subcategory({})
     }, []);
 
     const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -144,6 +146,12 @@ const EditProfile = (prp) => {
         for (const key of Object.keys(profile)) {
             form.append(key, profile[key]);
         }
+
+        const selectcat = selectedcategory.map(option => option.id).join(',')
+        profile["category"] = selectcat;
+        form.append('category', selectcat)
+
+
 
         if (profile.tva >= 0.0 && profile.tva <= 20.0) {
             api.auth.update(
@@ -262,8 +270,35 @@ const EditProfile = (prp) => {
 
 
     const [imagePreview, setImagePreview] = useState(null);
+    const [selectedcategory, setselectedcategory] = useState([])
 
-    console.log("Profile picture is", file?.name)
+
+
+    const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
+
+    const category = [];
+
+    Category_subcategory?.categories?.map((sub) => {
+        category.push({ id: sub?.id, value: sub?.category_name, label: sub?.category_name })
+    })
+
+
+    useEffect(() => {
+        const option = user?.category?.split(',').map(id => parseInt(id, 10));
+        const optionsArray = category?.filter(item => option?.includes(item?.id))
+        setselectedcategory(optionsArray)
+    }, [])
+
+
+    const handleCategorychange = (options) => {
+        setselectedcategory(options);
+    };
+
+
+    const onRemove = (selectedList) => {
+        setselectedcategory(selectedList)
+    };
+
 
 
 
@@ -711,7 +746,7 @@ const EditProfile = (prp) => {
                                                     value={profile.address1}
                                                     onChange={setProfile("address1")}
                                                     cols={20} rows={5}></textarea> */}
-                                                <input name="city" type="text"  value={profile.address1}
+                                                <input name="city" type="text" value={profile.address1}
                                                     onChange={setProfile("address1")} />
                                             </div>
                                             <div className="col-sm-6">
@@ -744,6 +779,30 @@ const EditProfile = (prp) => {
                                         </div>
 
 
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                {/* <label>Mobile Number</label>
+                                                <input disabled name="mobile_number" type="text" value={user?.mobile_number}
+                                                /> */}
+
+
+                                                <div className="from_feild">
+
+                                                    <label>Categories</label>
+                                                    <Multiselect
+                                                        options={category}
+                                                        selectedValues={selectedcategory}
+                                                        onSelect={handleCategorychange}
+                                                        onRemove={onRemove}
+                                                        displayValue="label"
+                                                        placeholder="Select Category"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
 
                                         <div className="row">
                                             <div className="col-sm-6">
@@ -759,15 +818,6 @@ const EditProfile = (prp) => {
                                                         onChange={handle_file_change}
                                                         ref={fileInputRef}
                                                     />
-
-
-
-
-
-
-
-
-
 
 
                                                 </div>
@@ -811,7 +861,7 @@ const EditProfile = (prp) => {
                                             </div>
 
 
-                                            
+
                                         </div>
                                         <div className="reg-bottom">
                                             <button type='submit' name='submit'>
