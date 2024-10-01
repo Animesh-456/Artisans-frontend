@@ -165,6 +165,15 @@ export default {
       .then((response) => response.json())
       .then((d) => {
         if (d.status) {
+
+
+          if (d?.data?.emailVerified == 0) {
+            toast.error("Email not verified");
+            Router.push(`/account/emailverification?email=${d?.data?.email}`);
+            return
+          }
+
+
           toast.success(d.message);
           writeAtom(atom.storage.user, d.data);
           localStorage.setItem("UserData", JSON.stringify(d.data));
@@ -507,6 +516,23 @@ export default {
       })
       .catch((err) => console.log(err));
 
+  },
+
+  resend_verify_email: ({ params, body }: UploadParams, cb?: GetResponse) => {
+    toast.loading();
+
+    api
+      .post("auth/resend-verify-email", body, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          Router.replace('/auth/aign-in');
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
   },
 
 };

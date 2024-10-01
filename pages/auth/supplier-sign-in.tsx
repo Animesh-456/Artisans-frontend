@@ -75,41 +75,43 @@ const CustomerSignIn = (props: Props) => {
 		signIn["category"] = categories?.map(item => item.id)?.join(',');
 		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits")
 		api.auth.supplier_register({ body: signIn }, (d) => {
-			if (storedProject != null) {
-				setUser(d.data);
-				router.push("/auth/suppliersuccess").then(() => {
-					api.project.get_temp(
-						{ body: { project_ids: [storedProject] } },
-						(d) => {
-							setStoredProject(null);
-							router.push("/auth/suppliersuccess");
+			// if (storedProject != null) {
+			// 	setUser(d.data);
+			// 	router.push("/auth/suppliersuccess").then(() => {
+			// 		api.project.get_temp(
+			// 			{ body: { project_ids: [storedProject] } },
+			// 			(d) => {
+			// 				setStoredProject(null);
+			// 				router.push("/auth/suppliersuccess");
 
-						},
-					);
-				});
-			} else {
-				const requestOptions = {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email_username: signIn.email, password: signIn.password }),
-				};
-				fetch(`${BaseURL}user/auth/login`, requestOptions)
-					.then((response) => response.json())
-					.then((d) => {
-						if (d.status) {
-							toast.success(d.message);
-							writeAtom(atom.storage.user, d.data);
-							localStorage.setItem("UserData", JSON.stringify(d.data));
+			// 			},
+			// 		);
+			// 	});
+			// } else {
+			// 	const requestOptions = {
+			// 		method: "POST",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify({ email_username: signIn.email, password: signIn.password }),
+			// 	};
+			// 	fetch(`${BaseURL}user/auth/login`, requestOptions)
+			// 		.then((response) => response.json())
+			// 		.then((d) => {
+			// 			if (d.status) {
+			// 				toast.success(d.message);
+			// 				writeAtom(atom.storage.user, d.data);
+			// 				localStorage.setItem("UserData", JSON.stringify(d.data));
 
-							writeAtom(atom.storage.loginmodal, true)
-							router.push("/auth/suppliersuccess")
+			// 				writeAtom(atom.storage.loginmodal, true)
+			// 				router.push("/auth/suppliersuccess")
 
-						} else {
-							toast.error(d.message);
-						}
-					});
+			// 			} else {
+			// 				toast.error(d.message);
+			// 			}
+			// 		});
 
-			}
+			// }
+
+			router.push("/auth/suppliersuccess")
 		});
 
 

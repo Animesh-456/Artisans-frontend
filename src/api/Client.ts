@@ -73,6 +73,7 @@ class Client {
 			"project/faq-content",
 			"project/artist-list",
 			"project/steps-text",
+			"auth/resend-verify-email",
 		];
 
 		this.test = false;
