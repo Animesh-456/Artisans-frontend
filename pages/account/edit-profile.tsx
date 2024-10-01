@@ -743,8 +743,9 @@ const EditProfile = (prp) => {
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div className="row">
-                                            <div className="col-sm-6">
+                                            <div className="col-sm-12">
                                                 <label className="qwe11">Address</label>
                                                 {/* <textarea name="address"
                                                     value={profile.address1}
@@ -753,7 +754,9 @@ const EditProfile = (prp) => {
                                                 <input name="city" type="text" value={profile.address1}
                                                     onChange={setProfile("address1")} />
                                             </div>
-                                            <div className="col-sm-6">
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-sm-12">
                                                 <label>Description</label>
 
                                                 {user?.role_id == 1 ? (
@@ -770,8 +773,11 @@ const EditProfile = (prp) => {
 
                                             </div>
 
-
                                         </div>
+
+
+
+
 
                                         <div className="row">
                                             <div className="col-sm-6">
@@ -779,6 +785,7 @@ const EditProfile = (prp) => {
                                                 <input disabled name="mobile_number" type="text" value={user?.mobile_number}
                                                 />
                                             </div>
+<<<<<<< HEAD
 
                                             {user?.role_id == 2 ? (
                                                 <div className="col-sm-6">
@@ -794,6 +801,25 @@ const EditProfile = (prp) => {
                                                             placeholder="Select Category"
                                                         />
                                                     </div>
+=======
+                                            <div className="col-sm-6">
+                                                {/* <label>Mobile Number</label>
+                                                <input disabled name="mobile_number" type="text" value={user?.mobile_number}
+                                                /> */}
+
+
+                                                <div className="from_feild">
+
+                                                    <label>Categories</label>
+                                                    <Multiselect
+                                                        options={category}
+                                                        selectedValues={selectedcategory}
+                                                        onSelect={handleCategorychange}
+                                                        onRemove={onRemove}
+                                                        displayValue="label"
+                                                        placeholder="Select Category"
+                                                    />
+>>>>>>> f7a187d (style change)
                                                 </div>
                                             ) : (
                                                 <></>
@@ -802,11 +828,17 @@ const EditProfile = (prp) => {
                                         </div>
 
 
+                                        {/* <div className="row">
+                                            
+
+                                        </div> */}
+
+
 
 
 
                                         <div className="row">
-                                            <div className="col-sm-6">
+                                            <div className="col-sm-12">
                                                 <label>Profile Picture (Formats jpeg, jpg, png)</label>
                                                 <div className="upload-btn-wrapper">
                                                     <button className="btn">
@@ -839,6 +871,14 @@ const EditProfile = (prp) => {
 
                                                 <br />
                                             </div>
+
+
+
+
+                                        </div>
+
+                                        <div className="row">
+
                                             <div className="col-sm-6">
 
 
@@ -860,9 +900,6 @@ const EditProfile = (prp) => {
 
 
                                             </div>
-
-
-
                                         </div>
                                         <div className="reg-bottom">
                                             <button type='submit' name='submit'>
