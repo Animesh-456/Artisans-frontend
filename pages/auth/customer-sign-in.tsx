@@ -81,38 +81,41 @@ const CustomerSignIn = (props: Props) => {
 		if (checkbox == true) {
 
 			api.auth.customer_register({ body: signIn }, (d) => {
-				if (storedProject != null) {
-					setUser(d.data);
-					api.project.get_temp(
-						{ body: { project_ids: [storedProject] } },
-						(d) => {
-							setStoredProject(null);
-						},
-					);
-					router.push("/auth/success");
-				} else {
-					const requestOptions = {
-						method: "POST",
-						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify({ email_username: signIn.email, password: signIn.password }),
-					};
-					fetch(`${BaseURL}user/auth/login`, requestOptions)
-						.then((response) => response.json())
-						.then((d) => {
-							if (d.status) {
-								toast.success(d.message);
-								writeAtom(atom.storage.user, d.data);
-								localStorage.setItem("UserData", JSON.stringify(d.data));
+				// if (storedProject != null) {
+				// 	setUser(d.data);
+				// 	api.project.get_temp(
+				// 		{ body: { project_ids: [storedProject] } },
+				// 		(d) => {
+				// 			setStoredProject(null);
+				// 		},
+				// 	);
+				// 	router.push("/auth/success");
+				// } else {
+				// 	const requestOptions = {
+				// 		method: "POST",
+				// 		headers: { "Content-Type": "application/json" },
+				// 		body: JSON.stringify({ email_username: signIn.email, password: signIn.password }),
+				// 	};
+				// 	fetch(`${BaseURL}user/auth/login`, requestOptions)
+				// 		.then((response) => response.json())
+				// 		.then((d) => {
+				// 			if (d.status) {
+				// 				toast.success(d.message);
+				// 				writeAtom(atom.storage.user, d.data);
+				// 				localStorage.setItem("UserData", JSON.stringify(d.data));
 
-								writeAtom(atom.storage.loginmodal, true)
-								router.push("/auth/success")
+				// 				writeAtom(atom.storage.loginmodal, true)
+				// 				router.push("/auth/success")
 
-							} else {
-								toast.error(d.message);
-							}
-						});
+				// 			} else {
+				// 				toast.error(d.message);
+				// 			}
+				// 		});
 
-				}
+				// }
+
+				router.push("/auth/sign-in");
+				
 			});
 		} else {
 			toast.error("Please agree to the terms of use");
