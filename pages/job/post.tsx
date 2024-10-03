@@ -16,6 +16,8 @@ import Head from "next/head";
 import env from "../../src/config/api";
 import Spinner from 'react-bootstrap/Spinner';
 import Multiselect from "multiselect-react-dropdown";
+import { compressImage } from "../../src/helpers/compressFile";
+
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 type Props = {};
@@ -122,11 +124,19 @@ const Post = (prp) => {
 		api.project.get_category_subcategory({})
 	}, []);
 
-	const processSubmit = () => {
+	const processSubmit = async () => {
 		if (!file.length) return toast.error("Please select a file");
+
+		if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
+
 		let form = new FormData();
 		for (const key of Object.keys(file)) {
-			form.append("file", file[key]);
+			// form.append("file", file[key]);
+			const compressedFile = await compressImage(file[key]); // Compress the file
+            form.append("file", compressedFile); // Append compressed file to FormData
+           
 		}
 
 
@@ -140,7 +150,7 @@ const Post = (prp) => {
 			form.append(key, project[key]);
 		}
 
-		console.log("form ", form)
+		
 
 
 
