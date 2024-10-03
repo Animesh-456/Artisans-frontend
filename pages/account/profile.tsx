@@ -165,31 +165,31 @@ const Profile = (prp) => {
                                             <p>Username</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>: &nbsp;{data?.user_name}</p>
+                                            <p>{data?.user_name}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>Name</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>: &nbsp;{data?.name + " " + data?.surname}</p>
+                                            <p>{data?.name + " " + data?.surname}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>Address</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>: &nbsp;{data?.address1}</p>
+                                            <p>{data?.address1}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>Post code</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>: &nbsp;{data?.zcode}</p>
+                                            <p>{data?.zcode}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
                                             <p>City</p>
                                         </div>
                                         <div className='myprofile_name_list'>
-                                            <p>: &nbsp;{data?.city}</p>
+                                            <p>{data?.city}</p>
                                         </div>
 
                                         {user?.role_id == 2 ? (
@@ -199,7 +199,7 @@ const Profile = (prp) => {
                                                     <p>Category</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>: &nbsp;{data?.category_names?.join(', ')}</p>
+                                                    <p>{data?.category_names?.join(', ')}</p>
                                                 </div>
                                             </>
                                         ) : (
@@ -214,14 +214,14 @@ const Profile = (prp) => {
                                                     <p>Company Name</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>: &nbsp;{data?.company_name}</p>
+                                                    <p>{data?.company_name}</p>
                                                 </div>
 
                                                 <div className='myprofile_name_label'>
                                                     <p>SIREN</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>: &nbsp;{data?.siren}</p>
+                                                    <p>{data?.siren}</p>
                                                 </div>
                                             </>
                                         ) : (<></>)}
@@ -234,7 +234,7 @@ const Profile = (prp) => {
 
 
                                         <div className='myprofile_name_list'>
-                                            <p>: &nbsp;India</p>
+                                            <p>India</p>
                                         </div>
 
 
@@ -246,7 +246,7 @@ const Profile = (prp) => {
                                                     <p>Description</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>: &nbsp;{data?.description}</p>
+                                                    <p>{data?.description}</p>
                                                 </div>
                                             </>
                                         ) : user?.role_id == 2 ? (
@@ -255,7 +255,7 @@ const Profile = (prp) => {
                                                     <p>Description</p>
                                                 </div>
                                                 <div className='myprofile_name_list'>
-                                                    <p>: &nbsp;{data?.service_desc}</p>
+                                                    <p>{data?.service_desc}</p>
                                                 </div>
                                             </>
                                         ) : (
