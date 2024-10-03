@@ -8,9 +8,18 @@ export const compressImage = async (file) => {
   };
 
   try {
-    const compressedFile = await imageCompression(file, options);
+    // Compress the image
+    const compressedBlob = await imageCompression(file, options);
+
+    // Create a new File object to retain the file name and type (extension)
+    const compressedFile = new File([compressedBlob], file.name, {
+      type: file.type,
+      lastModified: Date.now(), // Optional: update last modified timestamp
+    });
+
     return compressedFile;
   } catch (error) {
     console.error('Error compressing file:', error);
+    return null;
   }
 };
