@@ -18,6 +18,8 @@ import Router from "next/router";
 import env from "../../src/config/api";
 import Head from "next/head";
 import axios from 'axios';
+import { compressImage } from "../../src/helpers/compressFile";
+
 // import tick from "../../public/img/tick.png"
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -176,17 +178,22 @@ const ProjectDetail = (prp) => {
 
 
 
-    const handleAddBid = () => {
+    const handleAddBid = async() => {
         if (!will_submit && !bid.bid_amount && !bid.bid_amount_gbp) {
             return toast.error("Please submit the amount");
         }
-
+        if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
 
         let form = new FormData();
 
         if (file) {
             for (let i = 0; i < file.length; i++) {
-                form.append("file", file[i]);
+                // form.append("file", file[i]);
+                const compressedFile = await compressImage(file[i]); // Compress the file
+            form.append("file", compressedFile);
+
             }
         }
 
@@ -397,7 +404,11 @@ const ProjectDetail = (prp) => {
         e.preventDefault();
         const { files } = e.currentTarget;
         const filesArray = [];
-
+        // image compress
+        if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
+        // image compress
         for (let i = 0; i < files.length; i++) {
             const fl = files[i];
 

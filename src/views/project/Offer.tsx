@@ -8,6 +8,7 @@ import { ProgressBar } from "react-bootstrap";
 import moment from "moment";
 import { CSSProperties } from 'react';
 import Link from "next/link";
+import { compressImage } from "../../../src/helpers/compressFile";
 
 import atom from "../../jotai/atom";
 import { useAtomValue } from "jotai";
@@ -72,19 +73,28 @@ const Offer = ({ bid, data, user, send_msg, select_machinist, revdata }: Props) 
 		}
 	};
 
-	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleSubmit = async(e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		if (!file && changePic) return toast.error("Please select an Image");
+		// image compress
+		if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
 
+		// image compress
 		let form = new FormData();
 		if (file && changePic) {
 			for (let i = 0; i < file.length; i++) {
-				form.append("file", file[i]);
+
+				// form.append("file", file[i]);
+				const compressedFile = await compressImage(file[i]); // Compress the file
+            form.append("file", compressedFile); // Append compressed
 			}
 		}
 
 		for (const key of Object.keys(msg)) {
 			form.append(key, msg[key]);
+			
 		}
 
 
