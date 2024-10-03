@@ -11,6 +11,7 @@ import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 import env from "../../src/config/api";
 import Head from "next/head";
 import Multiselect from 'multiselect-react-dropdown';
+import { compressImage } from "../../src/helpers/compressFile";
 
 export const getStaticProps = async () => {
     try {
@@ -127,19 +128,26 @@ const EditProfile = (prp) => {
 
     };
 
-    const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+    const handleSubmit = async(e: React.MouseEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!file && changePic) return toast.error("Please select an Image");
 
+        if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
         let form = new FormData();
         if (file && changePic) {
-            form.append("file", file);
+            // form.append("file", file);
+            const compressedFile = await compressImage(file); // Compress the file
+            form.append("file", compressedFile); // Append c
         }
 
 
         if (file2) {
             for (let i = 0; i < file2.length; i++) {
-                form.append("file2", file2[i]);
+                // form.append("file2", file2[i]);
+                const compressedFile = await compressImage(file2[i]); // Compress the file
+                form.append("file", compressedFile); // Append c
             }
         }
 
