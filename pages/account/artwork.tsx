@@ -14,7 +14,7 @@ import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 import Multiselect from 'multiselect-react-dropdown';
 import env from "../../src/config/api";
 import Head from "next/head";
-
+import { compressImage } from "../../src/helpers/compressFile";
 
 
 
@@ -195,15 +195,29 @@ const Artwork = (prp) => {
 
         const form = new FormData();
 
+
+        if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
+
+
+        if (videoFile?.length > 5) {
+            return toast.error("Maximum 5 video files can be uploaded")
+        }
+
         for (const key of Object.keys(file)) {
-            form.append("file", file[key]);
+            const compressedFile = await compressImage(file[key]); // Compress the file
+            form.append("file", compressedFile); // Append compressed file to FormData
+            //form.append("file", file[key]);
         }
 
 
         if (videoFile?.length > 0) {
 
             for (const key of Object.keys(videoFile)) {
-                form.append("videofile", videoFile[key]);
+                //form.append("videofile", videoFile[key]);
+                const compressedFile = await compressImage(videoFile[key]); // Compress the file
+                form.append("videofile", compressedFile); // Append compressed file to FormData
             }
         }
 
@@ -369,17 +383,32 @@ const Artwork = (prp) => {
         }
 
 
+
+        if (extraModalFile?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
+
+
+        if (extraModalVideoFile?.length > 5) {
+            return toast.error("Maximum 5 video files can be uploaded")
+        }
+
+
         const form = new FormData();
 
         for (const key of Object.keys(extraModalFile)) {
-            form.append("file", extraModalFile[key]);
+            const compressedFile = await compressImage(extraModalFile[key]); // Compress the file
+            form.append("file", compressedFile); // Append compressed file to FormData
         }
 
 
         if (extraModalVideoFile?.length > 0) {
 
             for (const key of Object.keys(extraModalVideoFile)) {
-                form.append("videofile", extraModalVideoFile[key]);
+
+                const compressedFile = await compressImage(extraModalVideoFile[key]); // Compress the file
+                form.append("videofile", compressedFile); // Append compressed file to FormData
+
             }
         }
 
@@ -548,6 +577,7 @@ const Artwork = (prp) => {
                                                         <div className="upload-btn-wrapper">
                                                             <button className="btn">Upload <i className="fa fa-upload"></i></button>
                                                             <input required type="file" name="myfile" multiple
+
                                                                 onChange={handle_file_change}
                                                                 ref={fileInputRef}
                                                             />
