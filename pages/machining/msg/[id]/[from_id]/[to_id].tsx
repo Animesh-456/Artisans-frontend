@@ -8,6 +8,7 @@ import common from "../../../../../src/helpers/common";
 import atom from "../../../../../src/jotai/atom";
 import AccountSideBar from "../../../../../src/views/account/edit-profile/SideBar";
 import { ProgressBar } from "react-bootstrap";
+import { compressImage } from "../../../../../src/helpers/compressFile";
 
 type Props = {};
 
@@ -115,14 +116,26 @@ const Message = (props: Props) => {
 		}
 	};
 
-	const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+	const handleSubmit = async(e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!file && changePic) return toast.error("Please select an Image");
 
+
+		// IMAGE COMPRESS
+
+
+		if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
+
+		// image compress
 		let form = new FormData();
 		if (file && changePic) {
 			for (let i = 0; i < file.length; i++) {
-				form.append("file", file[i]);
+				// form.append("file", file[i]);
+
+			const compressedFile = await compressImage(file[i]); // Compress the file
+            form.append("file", compressedFile); // Append compressed file to FormData
 			}
 		}
 
