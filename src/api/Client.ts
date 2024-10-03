@@ -19,7 +19,7 @@ class Client {
 		this.BaseURL = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`;
 		this.headers = options.headers || {};
 		this.headers["Content-Type"] = "application/json";
-		axios.defaults.timeout = 12000;
+		axios.defaults.timeout = 40000;
 		this.params = {};
 		this.ignorePaths = [
 			"auth/login",
