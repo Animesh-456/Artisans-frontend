@@ -12,6 +12,7 @@ import schema from "../../src/validation/schema/schema";
 import api from "../../src/api/services/api";
 import env from "../../src/config/api";
 import Head from "next/head";
+import { compressImage } from "../../src/helpers/compressFile";
 
 
 export const getStaticProps = async () => {
@@ -119,11 +120,17 @@ const Kyc = (prp) => {
 
 
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
         let form = new FormData();
+
+        if (file?.length > 10) {
+            return toast.error("Maximum 10 files can be uploaded")
+        }
         for (const key of Object.keys(file)) {
-            form.append("file", file[key]);
+            // form.append("file", file[key]);
+            const compressedFile = await compressImage(file[key]); // Compress the file
+            form.append("file", compressedFile); 
         }
 
         for (const key of Object.keys(project)) {
