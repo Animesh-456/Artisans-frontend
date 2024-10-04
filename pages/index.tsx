@@ -244,7 +244,10 @@ function Home(prp) {
     //     16: 'img/installation-art.jpg',
     //     // Add more mappings here
     // };
-
+    const truncateComment = (comment: string, wordLimit: number) => {
+        const words = comment.split(' ');
+        return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : comment;
+    }
 
     return (
         <>
@@ -755,7 +758,7 @@ function Home(prp) {
                                                     </svg>
                                                     <span className="testimonial-title">Very Solid!!</span>
                                                 </div>
-                                                <p className="testimonial-feedback"> {review?.comments} </p>
+                                                <p className="testimonial-feedback"> {truncateComment(review?.comments, 20)} </p>
                                             </div>
                                             <div className="testimonial-meta d-flex align-items-center justify-content-between">
                                                 <div className="d-flex gap-3 align-items-center">
