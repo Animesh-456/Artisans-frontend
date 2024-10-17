@@ -94,6 +94,10 @@ const ProjectDetail = (prp) => {
     const [delivery, setdelivery] = useAtom(atom.auth.api.delivery_contacts);
     const [open, setOpen] = useAtom(atom.modal.project_help);
     const [open_offer, setOpen_offer] = useAtom(atom.modal.create_offer);
+
+    const [open_editart, setOpen_editart] = useAtom(atom.modal.editartwork);
+
+
     const [open_machinist, setOpen_machinist] = useAtom(atom.modal.slct_mchnst);
     const user = useAtomValue(atom.storage.user);
     const [will_submit, setwill_submit] = useState(false);
@@ -178,7 +182,7 @@ const ProjectDetail = (prp) => {
 
 
 
-    const handleAddBid = async() => {
+    const handleAddBid = async () => {
         if (!will_submit && !bid.bid_amount && !bid.bid_amount_gbp) {
             return toast.error("Please submit the amount");
         }
@@ -192,7 +196,7 @@ const ProjectDetail = (prp) => {
             for (let i = 0; i < file.length; i++) {
                 // form.append("file", file[i]);
                 const compressedFile = await compressImage(file[i]); // Compress the file
-            form.append("file", compressedFile);
+                form.append("file", compressedFile);
 
             }
         }
@@ -844,6 +848,31 @@ const ProjectDetail = (prp) => {
 
     }
 
+
+
+    const [edit_art, set_edit_art] = useState({
+        title: "",
+        description: "",
+        existingfiles: "",
+    });
+    const seteditart = common.ChangeState(set_edit_art);
+
+
+
+    function delete_art_files(e) {
+        setFile(file.filter(function (s) { return s !== e }))
+    }
+
+
+
+
+    const handleNavigateed = () => {
+        // Navigate to Page B with data as query parameters
+        router.push({
+            pathname: '/editart',
+            query: data,
+        });
+    };
 
 
 
@@ -1608,6 +1637,10 @@ const ProjectDetail = (prp) => {
                                         ) : (
                                             <></>
                                         )}
+
+                                        {user && data?.creator_id == user?.id && data?.project_status < 1 && (
+                                            <div className="create_o"><a onClick={handleNavigateed} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Edit art</a></div>
+                                        )}
                                     </>
                                 )}
 
@@ -1617,6 +1650,8 @@ const ProjectDetail = (prp) => {
                                 {/* {!user && (
                                     <div className="create_o"><a onClick={handleGuestOffer} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Create an offer</a></div>
                                 )} */}
+
+
 
 
                                 <div className="question_a">
@@ -2035,6 +2070,89 @@ const ProjectDetail = (prp) => {
             </GlobalModal>
 
 
+
+            {/* <GlobalModal title='Edit art' atom={atom.modal.editartwork}>
+
+
+
+                <div className="modal-body">
+                    <div className="css-ung">
+
+                        <div className="row">
+                            <div className="col-sm-12">
+                                <div className="from_feild">
+                                    <label>Title: <span>*</span></label>
+
+                                    <input type="text" value={edit_art?.title}
+                                        onChange={seteditart("title")} />
+
+                                </div>
+
+                                <div className="from_feild">
+                                    <label>Description: <span>*</span></label>
+                                    <textarea name="message2" defaultValue={""}
+                                        value={edit_art?.description}
+                                        onChange={seteditart("description")} rows={4} placeholder="Describe your art..."></textarea>
+                                </div>
+
+
+                                <div className="from_feild">
+                                    <label>Attach Your Files Here: <span>*</span></label>
+                                    <div className="upload-btn-wrapper">
+                                        <button className="btn">
+                                            <i className="fa fa-upload"></i>
+                                            Add files (Max. &lt; 3 Mb)
+                                        </button>
+                                        <input type="file" name="myfile" multiple onChange={handle_file_change} />
+
+
+                                    </div>
+
+
+                                    {edit_art?.existingfiles ? edit_art?.existingfiles?.split(',')?.map((m) => {
+                                        return (
+                                            <>
+                                                <div className="upload_t">
+                                                    <p><i className="fa fa-check"></i><span className="none"></span>{m}<a className="delete_icon" onClick={() => delete_files(m)}><i className="fa fa-trash-o"></i></a></p>
+                                                </div>
+                                            </>
+                                        )
+                                    }) : (<></>)}
+
+
+
+
+
+                                    {file && pr > 100 ? (
+                                        file?.map((f) => {
+                                            return (
+                                                <>
+                                                    <div className="upload_t">
+                                                        <p><i className="fa fa-check"></i><span className="none"></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+                                    ) : (<></>)}
+
+
+
+                                </div>
+
+
+
+                                
+                                <button className="bid-btn" onClick={handleAddBid}>Submit</button>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+
+
+            </GlobalModal> */}
 
 
         </>

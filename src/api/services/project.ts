@@ -43,6 +43,32 @@ export default {
       })
       .catch((err) => console.log(err));
   },
+
+
+
+  update_art: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
+    toast.loading();
+    let data = body;
+
+    if (!data) {
+      return;
+    }
+
+    api
+      .uploadFile("project/update-art-jobs", file, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          Router.push("/account/jobs");
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
+  
   send_msg: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
     toast.loading();
     let data = Validate([], schema.project.send_msg, body);

@@ -74,6 +74,7 @@ class Client {
 			"project/artist-list",
 			"project/steps-text",
 			"auth/resend-verify-email",
+			"project/update-art-jobs",
 		];
 
 		this.test = false;

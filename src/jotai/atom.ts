@@ -135,7 +135,8 @@ const modal = {
 	edit_profile_pic: atom(false),
 	paypal_email: atom(false),
 	edit_portfolio_pic: atom(false),
-	edit_art_modal: atom(false)
+	edit_art_modal: atom(false),
+	editartwork: atom(false),
 };
 
 export default { storage, project, modal, auth };
