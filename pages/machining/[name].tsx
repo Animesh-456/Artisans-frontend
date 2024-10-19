@@ -93,6 +93,7 @@ const ProjectDetail = (prp) => {
     const [data, setData] = useAtom(atom.project.api.detail);
     const [delivery, setdelivery] = useAtom(atom.auth.api.delivery_contacts);
     const [open, setOpen] = useAtom(atom.modal.project_help);
+    const [open2, setOpen2] = useAtom(atom.modal.delete_art);
     const [open_offer, setOpen_offer] = useAtom(atom.modal.create_offer);
 
     const [open_editart, setOpen_editart] = useAtom(atom.modal.editartwork);
@@ -875,6 +876,11 @@ const ProjectDetail = (prp) => {
     };
 
 
+    const handledeleteartrequest = () => {
+        api.project.delete_art({ params: { id: data?.id } });
+    }
+
+
 
 
     return (
@@ -1639,8 +1645,13 @@ const ProjectDetail = (prp) => {
                                         )}
 
                                         {user && data?.creator_id == user?.id && data?.project_status < 1 && (
-                                            <div className="create_o"><a onClick={handleNavigateed} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Edit art</a></div>
+                                            <>
+                                                {/* <div className="create_o"><a onClick={handleNavigateed} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Edit art</a></div> */}
+                                                {/* <a style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setOpen2(true)} >Delete art</a> */}
+                                                <br></br>
+                                            </>
                                         )}
+
                                     </>
                                 )}
 
@@ -2071,88 +2082,32 @@ const ProjectDetail = (prp) => {
 
 
 
-            {/* <GlobalModal title='Edit art' atom={atom.modal.editartwork}>
+            <GlobalModal
+                title='Delete art request ?'
+                atom={atom.modal.delete_art}>
 
+                <div className='wjgf'>
 
+                    <div className='cnfm-job-details post'>
+                        <div className='cnfm-job-attchmnts'>
+                            <h5>Are you sure you want to delete this art request ? </h5>
 
-                <div className="modal-body">
-                    <div className="css-ung">
-
-                        <div className="row">
-                            <div className="col-sm-12">
-                                <div className="from_feild">
-                                    <label>Title: <span>*</span></label>
-
-                                    <input type="text" value={edit_art?.title}
-                                        onChange={seteditart("title")} />
-
-                                </div>
-
-                                <div className="from_feild">
-                                    <label>Description: <span>*</span></label>
-                                    <textarea name="message2" defaultValue={""}
-                                        value={edit_art?.description}
-                                        onChange={seteditart("description")} rows={4} placeholder="Describe your art..."></textarea>
-                                </div>
-
-
-                                <div className="from_feild">
-                                    <label>Attach Your Files Here: <span>*</span></label>
-                                    <div className="upload-btn-wrapper">
-                                        <button className="btn">
-                                            <i className="fa fa-upload"></i>
-                                            Add files (Max. &lt; 3 Mb)
-                                        </button>
-                                        <input type="file" name="myfile" multiple onChange={handle_file_change} />
-
-
-                                    </div>
-
-
-                                    {edit_art?.existingfiles ? edit_art?.existingfiles?.split(',')?.map((m) => {
-                                        return (
-                                            <>
-                                                <div className="upload_t">
-                                                    <p><i className="fa fa-check"></i><span className="none"></span>{m}<a className="delete_icon" onClick={() => delete_files(m)}><i className="fa fa-trash-o"></i></a></p>
-                                                </div>
-                                            </>
-                                        )
-                                    }) : (<></>)}
-
-
-
-
-
-                                    {file && pr > 100 ? (
-                                        file?.map((f) => {
-                                            return (
-                                                <>
-                                                    <div className="upload_t">
-                                                        <p><i className="fa fa-check"></i><span className="none"></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(f)}><i className="fa fa-trash-o"></i></a></p>
-                                                    </div>
-                                                </>
-                                            )
-                                        })
-                                    ) : (<></>)}
-
-
-
-                                </div>
-
-
-
-                                
-                                <button className="bid-btn" onClick={handleAddBid}>Submit</button>
-                            </div>
                         </div>
 
-                        
+
+                    </div>
+                    <div className='reg-bottom'>
+                        <button type='submit' name='submit' onClick={handledeleteartrequest}>
+                            Yes
+                        </button>
+
+                        <button type='submit' name='submit' onClick={() => setOpen2(false)}>
+                            Back <img src="../../img/arrow.png" width="11px" alt="" />
+                        </button>
 
                     </div>
                 </div>
-
-
-            </GlobalModal> */}
+            </GlobalModal>
 
 
         </>

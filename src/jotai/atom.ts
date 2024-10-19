@@ -137,6 +137,7 @@ const modal = {
 	edit_portfolio_pic: atom(false),
 	edit_art_modal: atom(false),
 	editartwork: atom(false),
+	delete_art:atom(false),
 };
 
 export default { storage, project, modal, auth };

@@ -47,6 +47,7 @@ const Post = () => {
     const [otherFile, setFileOther] = useState([]);
 
     const [open, setOpen] = useAtom(atom.modal.confirm_project);
+    
     const [storedProject, setStoredProject] = useAtom(atom.storage.project);
     const user = useAtomValue(atom.storage.user);
     const [progress, setprogress] = useState(0);
@@ -500,6 +501,9 @@ const Post = () => {
 
 
                 </GlobalModal>
+
+
+               
 
             </section >
 

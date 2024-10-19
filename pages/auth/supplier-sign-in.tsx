@@ -177,8 +177,10 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text" name="uname" type="text" placeholder="user Name"
+											
 												value={signIn.user_name}
 												onChange={setSign("user_name")}
+												autoComplete={""}
 											/>
 											<small>
 												Choose a Username to represent you on www.artisans.studio. It can
@@ -197,7 +199,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text m_b_none" name="email" type="text" placeholder="Enter your Email Address"
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.email}
 												onChange={setSign("email")}
 											/>
@@ -212,7 +214,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text" name="password" type="password" placeholder="Create Password"
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.password}
 												onChange={setSign("password")}
 											/>
@@ -224,7 +226,7 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className="col-sm-8">
-											<input className="text" name="ConfirmPassword" autoComplete={"off"}
+											<input className="text" name="ConfirmPassword" autoComplete={""}
 												type='password'
 												value={signIn.password_confirmation}
 												onChange={setSign("password_confirmation")} placeholder="Confirm Password"
@@ -274,16 +276,18 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className="col-sm-8">
+											<div className="select_div">
 
-
-											<Multiselect
-												options={category}
-												selectedValues={categories}
-												onSelect={handleCategoryChange}
-												onRemove={onRemove}
-												displayValue="label"
-												placeholder="Select Category"
-											/>
+												<Multiselect
+													options={category}
+													selectedValues={categories}
+													showCheckbox
+													onSelect={handleCategoryChange}
+													onRemove={onRemove}
+													displayValue="label"
+													placeholder="Select Category"
+												/>
+											</div>
 
 
 										</div>
@@ -301,7 +305,7 @@ const CustomerSignIn = (props: Props) => {
 												className='text'
 												name='username'
 												type='text'
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.name}
 												onChange={setSign("name")}
 												placeholder="First Name"
@@ -319,7 +323,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='lname'
 												type='text'
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.surname}
 												onChange={setSign("surname")}
 												placeholder="Last Name"
@@ -335,9 +339,9 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className='col-sm-8'>
 											<input
-												name='address1'
+												name='address'
 												type="text"
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.address1}
 												onChange={setSign("address1")}
 												placeholder="Address"
@@ -356,7 +360,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='mobile_number'
 												type='number'
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.mobile_number}
 												onChange={setSign("mobile_number")}
 												placeholder="+91 XXXXXXX890"
@@ -375,7 +379,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='zcode'
 												type='text'
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.zcode}
 												onChange={setSign("zcode")}
 												placeholder="Postal code"
@@ -393,7 +397,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='city'
 												type='text'
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.city}
 												onChange={setSign("city")}
 												placeholder="City"
@@ -407,9 +411,9 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className='col-sm-8'>
 											<input
-												name='cname'
+												name='company'
 												type='text'
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.company_name}
 												onChange={setSign("company_name")}
 												placeholder="Company Name"
@@ -425,7 +429,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='cno'
 												type='text'
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.company_number}
 												onChange={setSign("company_number")}
 												placeholder="Company Registration Number"

@@ -206,7 +206,7 @@ const CustomerSignIn = (props: Props) => {
 										<div className="col-sm-8">
 											<input className="text" name="name" type="text" placeholder="First Name"
 												value={signIn.name}
-												autoComplete={"off"}
+												autoComplete={""}
 												onChange={setSign("name")}
 											/>
 										</div>
@@ -219,7 +219,7 @@ const CustomerSignIn = (props: Props) => {
 										<div className="col-sm-8">
 											<input className="text" name="surname" type="text" placeholder="Last Name"
 												value={signIn.surname}
-												autoComplete={"off"}
+												autoComplete={""}
 												onChange={setSign("surname")}
 											/>
 										</div>
@@ -268,7 +268,7 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className="col-sm-8">
-											<input className="text" name="user_name" type="text" autoComplete={"off"} placeholder="Username"
+											<input className="text" name="user_name" type="text" autoComplete={""} placeholder="Username"
 												value={signIn.user_name}
 												onChange={setSign("user_name")}
 											/>
@@ -282,7 +282,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text m_b_none" name="email" type="text" placeholder="Email Address"
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.email}
 												onChange={setSign("email")}
 											/>
@@ -301,7 +301,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='mobile_number'
 												type='number'
-
+												autoComplete={""}
 												value={signIn.mobile_number}
 												onChange={setSign("mobile_number")}
 												placeholder="+91 XXXXXXX890"
@@ -315,7 +315,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text" name="password" type="password" placeholder="Create Password"
-												autoComplete={"off"}
+												autoComplete={""}
 												value={signIn.password}
 												onChange={setSign("password")}
 											/>
