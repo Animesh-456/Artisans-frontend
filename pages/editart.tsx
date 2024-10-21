@@ -47,7 +47,7 @@ const Post = () => {
     const [otherFile, setFileOther] = useState([]);
 
     const [open, setOpen] = useAtom(atom.modal.confirm_project);
-    
+
     const [storedProject, setStoredProject] = useAtom(atom.storage.project);
     const user = useAtomValue(atom.storage.user);
     const [progress, setprogress] = useState(0);
@@ -224,7 +224,7 @@ const Post = () => {
 
 
     const handlecancel = () => {
-        router.push("/account/jobs")
+        router.replace(`/${String(router?.query?.project_name)?.split(" ").join("-")}-${router?.query?.id}`)
     }
 
 
@@ -317,30 +317,9 @@ const Post = () => {
                                 </div>
                                 <div className="from_feild">
                                     <label>Description: <span>*</span></label>
-                                    <textarea placeholder="Description" rows={8} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>                                </div>                                <div className="b-li">                                    <ul>                                        <li>                                            Explain the overall idea or theme of the artwork.                                         </li>                                        <li>                                           Provide images or examples of artwork styles, color palettes, or compositions that inspire you.                                      </li>                                        <li>                                           Specify the size or format of the artwork
-
-                                    </li>
-                                        <li>
-                                            Mention any specific colors or palettes you'd like the artist to focus on
-
-                                        </li>
-                                        <li>
-                                            Mention realistic timeframe when you want the artwork to be delivered.
-
-                                        </li>
-                                        <li>
-                                            Mention your budget range if applicable
-
-                                        </li>
-                                        <li>Do not include contact details (phone number, email)
-                                        </li>
-                                        <li>Mention City, State where you want artwork to be delivered
-                                        </li>
-
-
-
-                                    </ul>
+                                    <textarea placeholder="Description" rows={8} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>
                                 </div>
+
                                 <div className="from_feild">
                                     <label htmlFor="category">Category(s): <span>*</span>
                                     </label>
@@ -503,7 +482,7 @@ const Post = () => {
                 </GlobalModal>
 
 
-               
+
 
             </section >
 

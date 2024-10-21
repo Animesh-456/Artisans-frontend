@@ -128,15 +128,15 @@ const Post = (prp) => {
 		if (!file.length) return toast.error("Please select a file");
 
 		if (file?.length > 10) {
-            return toast.error("Maximum 10 files can be uploaded")
-        }
+			return toast.error("Maximum 10 files can be uploaded")
+		}
 
 		let form = new FormData();
 		for (const key of Object.keys(file)) {
 			// form.append("file", file[key]);
 			const compressedFile = await compressImage(file[key]); // Compress the file
-            form.append("file", compressedFile); // Append compressed file to FormData
-           
+			form.append("file", compressedFile); // Append compressed file to FormData
+
 		}
 
 
@@ -150,7 +150,7 @@ const Post = (prp) => {
 			form.append(key, project[key]);
 		}
 
-		
+
 
 
 
