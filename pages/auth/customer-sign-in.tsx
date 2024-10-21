@@ -206,7 +206,7 @@ const CustomerSignIn = (props: Props) => {
 										<div className="col-sm-8">
 											<input className="text" name="name" type="text" placeholder="First Name"
 												value={signIn.name}
-												autoComplete={""}
+												autoComplete="given-name"
 												onChange={setSign("name")}
 											/>
 										</div>
@@ -219,7 +219,7 @@ const CustomerSignIn = (props: Props) => {
 										<div className="col-sm-8">
 											<input className="text" name="surname" type="text" placeholder="Last Name"
 												value={signIn.surname}
-												autoComplete={""}
+												autoComplete="family-name"
 												onChange={setSign("surname")}
 											/>
 										</div>
@@ -268,7 +268,7 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className="col-sm-8">
-											<input className="text" name="user_name" type="text" autoComplete={""} placeholder="Username"
+											<input className="text" name="user_name" type="text" autoComplete={"username"} placeholder="Username"
 												value={signIn.user_name}
 												onChange={setSign("user_name")}
 											/>
@@ -282,7 +282,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text m_b_none" name="email" type="text" placeholder="Email Address"
-												autoComplete={""}
+												autoComplete={"email"}
 												value={signIn.email}
 												onChange={setSign("email")}
 											/>
@@ -301,7 +301,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='mobile_number'
 												type='number'
-												autoComplete={""}
+												autoComplete={"tel"}
 												value={signIn.mobile_number}
 												onChange={setSign("mobile_number")}
 												placeholder="+91 XXXXXXX890"
@@ -346,7 +346,7 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
-										<button className="canl" >Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
+										<button className="canl" onClick={()=> window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
 							</div>

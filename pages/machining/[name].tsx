@@ -1646,8 +1646,8 @@ const ProjectDetail = (prp) => {
 
                                         {user && data?.creator_id == user?.id && data?.project_status < 1 && (
                                             <>
-                                                {/* <div className="create_o"><a onClick={handleNavigateed} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Edit art</a></div> */}
-                                                {/* <a style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setOpen2(true)} >Delete art</a> */}
+                                                <div className="create_o"><a onClick={handleNavigateed} style={{ cursor: "pointer", color: "#fff" }} data-toggle="modal" data-target="#createoffer">Edit art</a></div>
+                                                <a style={{ cursor: "pointer", color: "#ef6100" }} onClick={() => setOpen2(true)} >Delete art</a>
                                                 <br></br>
                                             </>
                                         )}

@@ -201,13 +201,13 @@ const Kyc = (prp) => {
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>Pan#:</label>
-                                                    <input type="text" disabled={readOnly} name="text" placeholder="Enter PAN Number" value={project?.pan} onChange={setproject("pan")} />
+                                                    <input type="text" disabled={readOnly} autoComplete="off" name="text" placeholder="Enter PAN Number" value={project?.pan} onChange={setproject("pan")} />
                                                 </div>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
                                                     <label>Aadhar number#: </label>
-                                                    <input type="number" disabled={readOnly} name="text" placeholder="Enter aadhar Number" value={project?.aadhar_number} onChange={setproject("aadhar_number")} />
+                                                    <input type="number" disabled={readOnly} name="text" autoComplete="off" placeholder="Enter aadhar Number" value={project?.aadhar_number} onChange={setproject("aadhar_number")} />
                                                 </div>
                                             </div>
 
@@ -217,24 +217,24 @@ const Kyc = (prp) => {
                                         <div className="from_feild">
                                             <div className="from_feild">
                                                 <label>GST: </label>
-                                                <input type="text" disabled={readOnly} name="text" placeholder="Enter GSTIN" value={project?.gst} onChange={setproject("gst")} />
+                                                <input type="text" disabled={readOnly} autoComplete="off" name="text" placeholder="Enter GSTIN" value={project?.gst} onChange={setproject("gst")} />
                                             </div>
                                         </div>
                                         <div className="from_feild">
                                             <label>Company Name:</label>
-                                            <input type="text" name="text" disabled={readOnly} placeholder="Enter Company Name" value={project?.company_name} onChange={setproject("company_name")} />
+                                            <input type="text" name="text" autoComplete="organization" disabled={readOnly} placeholder="Enter Company Name" value={project?.company_name} onChange={setproject("company_name")} />
                                         </div>
                                         <div className="from_feild">
                                             <label>Company Address:</label>
-                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address" value={project?.company_address} onChange={setproject("company_address")} />
+                                            <input type="text" name="text" autoComplete="street-address" disabled={readOnly} placeholder="Street Address" value={project?.company_address} onChange={setproject("company_address")} />
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address Line 2" value={project?.company_address1} onChange={setproject("company_address1")} />
+                                            <input type="text" name="text" disabled={readOnly} autoComplete="off" placeholder="Street Address Line 2" value={project?.company_address1} onChange={setproject("company_address1")} />
                                         </div>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <select value={project?.company_state} disabled={readOnly} onChange={setproject("company_state")}>
+                                                    <select value={project?.company_state} autoComplete="address-level1" disabled={readOnly} onChange={setproject("company_state")}>
                                                         <option>Select State</option>
                                                         <option>Andhra Pradesh</option>
                                                         <option>Arunachal Pradesh</option>
@@ -270,12 +270,12 @@ const Kyc = (prp) => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <input type="text" disabled={readOnly} name="text" placeholder="City" value={project?.city} onChange={setproject("city")} />
+                                                    <input type="text" disabled={readOnly} name="text"  autoComplete="address-level2" placeholder="City" value={project?.city} onChange={setproject("city")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" disabled={readOnly} placeholder="Postal / Zip Code" value={project?.zip} onChange={setproject("zip")} />
+                                            <input type="text" name="text" disabled={readOnly} autoComplete="postal-code" placeholder="Postal / Zip Code" value={project?.zip} onChange={setproject("zip")} />
                                         </div>
                                         <div className="row">
                                             <div className="col-sm-6">
@@ -297,15 +297,15 @@ const Kyc = (prp) => {
                                         </div>
                                         <div className="from_feild">
                                             <label>Bank Address:</label>
-                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address" value={project?.bank_address} onChange={setproject("bank_address")} />
+                                            <input type="text" name="text" disabled={readOnly} autoComplete="address-line1" placeholder="Street Address" value={project?.bank_address} onChange={setproject("bank_address")} />
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" disabled={readOnly} placeholder="Street Address Line 2" value={project?.bank_address1} onChange={setproject("bank_address1")} />
+                                            <input type="text" name="text" disabled={readOnly} autoComplete="address-line2" placeholder="Street Address Line 2" value={project?.bank_address1} onChange={setproject("bank_address1")} />
                                         </div>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <select value={project?.bank_state} disabled={readOnly} onChange={setproject("bank_state")}>
+                                                    <select value={project?.bank_state} autoComplete="address-level1" disabled={readOnly} onChange={setproject("bank_state")}>
                                                         <option>Select State</option>
                                                         <option>Andhra Pradesh</option>
                                                         <option>Arunachal Pradesh</option>
@@ -341,12 +341,12 @@ const Kyc = (prp) => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="from_feild">
-                                                    <input type="text" name="text" disabled={readOnly} placeholder="City" value={project?.bank_city} onChange={setproject("bank_city")} />
+                                                    <input type="text" name="text" autoComplete="address-level2"  disabled={readOnly} placeholder="City" value={project?.bank_city} onChange={setproject("bank_city")} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="from_feild">
-                                            <input type="text" name="text" disabled={readOnly} placeholder="Postal / Zip Code" value={project?.bank_zip} onChange={setproject("bank_zip")} />
+                                            <input type="text" name="text" disabled={readOnly} autoComplete="postal-code" placeholder="Postal / Zip Code" value={project?.bank_zip} onChange={setproject("bank_zip")} />
                                         </div>
                                         <div className="from_feild">
                                             <label>Upload documents(Bank passbook, cancelled cheque, PAN Card, GST certificate):</label>

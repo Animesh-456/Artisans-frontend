@@ -177,10 +177,10 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text" name="uname" type="text" placeholder="user Name"
-											
+
 												value={signIn.user_name}
 												onChange={setSign("user_name")}
-												autoComplete={""}
+												autoComplete={"username"}
 											/>
 											<small>
 												Choose a Username to represent you on www.artisans.studio. It can
@@ -199,7 +199,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 										<div className="col-sm-8">
 											<input className="text m_b_none" name="email" type="text" placeholder="Enter your Email Address"
-												autoComplete={""}
+												autoComplete={"email"}
 												value={signIn.email}
 												onChange={setSign("email")}
 											/>
@@ -305,7 +305,7 @@ const CustomerSignIn = (props: Props) => {
 												className='text'
 												name='username'
 												type='text'
-												autoComplete={""}
+												autoComplete="given-name"
 												value={signIn.name}
 												onChange={setSign("name")}
 												placeholder="First Name"
@@ -323,7 +323,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='lname'
 												type='text'
-												autoComplete={""}
+												autoComplete="family-name"
 												value={signIn.surname}
 												onChange={setSign("surname")}
 												placeholder="Last Name"
@@ -341,7 +341,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='address'
 												type="text"
-												autoComplete={""}
+												autoComplete="street-address"
 												value={signIn.address1}
 												onChange={setSign("address1")}
 												placeholder="Address"
@@ -360,7 +360,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='mobile_number'
 												type='number'
-												autoComplete={""}
+												autoComplete={"tel"}
 												value={signIn.mobile_number}
 												onChange={setSign("mobile_number")}
 												placeholder="+91 XXXXXXX890"
@@ -379,7 +379,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='zcode'
 												type='text'
-												autoComplete={""}
+												autoComplete="postal-code"
 												value={signIn.zcode}
 												onChange={setSign("zcode")}
 												placeholder="Postal code"
@@ -397,7 +397,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='city'
 												type='text'
-												autoComplete={""}
+												autoComplete="address-level2"
 												value={signIn.city}
 												onChange={setSign("city")}
 												placeholder="City"
@@ -413,7 +413,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='company'
 												type='text'
-												autoComplete={""}
+												autoComplete="organization"
 												value={signIn.company_name}
 												onChange={setSign("company_name")}
 												placeholder="Company Name"
@@ -429,7 +429,7 @@ const CustomerSignIn = (props: Props) => {
 											<input
 												name='cno'
 												type='text'
-												autoComplete={""}
+												autoComplete={"off"}
 												value={signIn.company_number}
 												onChange={setSign("company_number")}
 												placeholder="Company Registration Number"
@@ -461,7 +461,7 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
-										<button className="canl">Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
+										<button className="canl" onClick={()=> window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
 							</div>

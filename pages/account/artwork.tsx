@@ -560,16 +560,19 @@ const Artwork = (prp) => {
                                                             onChange={handleCategorychange}>
 
                                                         </Select> */}
-                                                        <label>Category: <span>*</span></label>
 
-                                                        <Multiselect
-                                                            options={category}
-                                                            selectedValues={categories}
-                                                            onSelect={handleCategorychange}
-                                                            onRemove={onRemove}
-                                                            displayValue="label"
-                                                            placeholder="Select Category"
-                                                        />
+                                                        <label>Category: <span>*</span></label>
+                                                        <div className="select_div">
+                                                            <Multiselect
+                                                                options={category}
+                                                                selectedValues={categories}
+                                                                onSelect={handleCategorychange}
+                                                                onRemove={onRemove}
+                                                                showCheckbox
+                                                                displayValue="label"
+                                                                placeholder="Select Category"
+                                                            />
+                                                        </div>
                                                     </div>
 
                                                     <div className="from_feild">
@@ -734,15 +737,18 @@ const Artwork = (prp) => {
 
                                                         <label>Categories: <span>*</span></label>
 
-                                                        <Multiselect
+                                                        
+                                                            <Multiselect
 
-                                                            options={category}
-                                                            selectedValues={displayOptions}
-                                                            onSelect={handleDisplayChange}
-                                                            onRemove={onRemovesecond}
-                                                            displayValue="label"
-                                                            placeholder="Select Category"
-                                                        />
+                                                                options={category}
+                                                                selectedValues={displayOptions}
+                                                                onSelect={handleDisplayChange}
+                                                                onRemove={onRemovesecond}
+                                                                showCheckbox
+                                                                displayValue="label"
+                                                                placeholder="Select Category"
+                                                            />
+                                                        
 
                                                     </div>
                                                     <div className="from_feild">
@@ -788,7 +794,7 @@ const Artwork = (prp) => {
                                                     </div>
 
                                                     <div className="from_feild">
-                                                        <label>Upload image/video: </label>
+                                                        <label>Upload video: </label>
                                                         <div className="upload-btn-wrapper">
                                                             <button className="btn">Upload <i className="fa fa-upload"></i></button>
                                                             <input type="file" ref={videofileInputRef2} name="myfile" onChange={handle_video_file_change_modal} multiple />

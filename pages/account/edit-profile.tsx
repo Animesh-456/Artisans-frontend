@@ -128,7 +128,7 @@ const EditProfile = (prp) => {
 
     };
 
-    const handleSubmit = async(e: React.MouseEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!file && changePic) return toast.error("Please select an Image");
 
@@ -703,12 +703,14 @@ const EditProfile = (prp) => {
                                                 <label>First Name</label>
                                                 <input name="fname"
                                                     value={profile.name}
+                                                    autoComplete="given-name"
                                                     onChange={setProfile("name")} type="text" />
                                             </div>
                                             <div className="col-sm-6">
                                                 <label>Last Name</label>
                                                 <input name="lname"
                                                     value={profile.surname}
+                                                    autoComplete="family-name"
                                                     onChange={setProfile("surname")}
                                                     type="text" />
                                             </div>
@@ -717,6 +719,7 @@ const EditProfile = (prp) => {
                                             <div className="col-sm-6">
                                                 <label>Username</label>
                                                 <input name="username" type="text" readOnly value={profile.user_name}
+                                                    autoComplete="username"
                                                     onChange={setProfile("user_name")} />
                                             </div>
                                             <div className="col-sm-6">
@@ -724,6 +727,7 @@ const EditProfile = (prp) => {
                                                 <input name="zcode"
                                                     value={profile.zcode}
                                                     onChange={setProfile("zcode")}
+                                                    autoComplete="postal-code"
                                                     type="text" />
                                             </div>
                                         </div>
@@ -731,6 +735,7 @@ const EditProfile = (prp) => {
                                             <div className="col-sm-6">
                                                 <label>City</label>
                                                 <input name="city" type="text" value={profile.city}
+                                                    autoComplete="address-level2"
                                                     onChange={setProfile("city")} />
                                             </div>
                                             <div className="col-sm-6">
@@ -756,6 +761,7 @@ const EditProfile = (prp) => {
                                                     onChange={setProfile("address1")}
                                                     cols={20} rows={5}></textarea> */}
                                                 <input name="city" type="text" value={profile.address1}
+                                                    autoComplete="street-address"
                                                     onChange={setProfile("address1")} />
                                             </div>
                                         </div>
@@ -767,11 +773,13 @@ const EditProfile = (prp) => {
                                                     <textarea name="desc"
                                                         value={profile.description}
                                                         onChange={setProfile("description")}
+                                                        autoComplete="description"
                                                         cols={20} rows={5}></textarea>
                                                 ) : (
                                                     <textarea name="desc"
                                                         value={profile.service_desc}
                                                         onChange={setProfile("service_desc")}
+                                                        autoComplete="description"
                                                         cols={20} rows={5}></textarea>
                                                 )}
 
@@ -786,7 +794,7 @@ const EditProfile = (prp) => {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <label>Mobile Number</label>
-                                                <input disabled name="mobile_number" type="text" value={user?.mobile_number}
+                                                <input disabled name="mobile_number" autoComplete="tel" type="text" value={user?.mobile_number}
                                                 />
                                             </div>
                                             <div className="col-sm-6">
@@ -795,17 +803,18 @@ const EditProfile = (prp) => {
                                                 /> */}
 
 
-                                                <div className="from_feild">
-
+                                                <div className="from_feild cont11">
                                                     <label>Categories</label>
-                                                    <Multiselect
-                                                        options={category}
-                                                        selectedValues={selectedcategory}
-                                                        onSelect={handleCategorychange}
-                                                        onRemove={onRemove}
-                                                        displayValue="label"
-                                                        placeholder="Select Category"
-                                                    />
+                                                    <div className="select_div">
+                                                        <Multiselect
+                                                            options={category}
+                                                            selectedValues={selectedcategory}
+                                                            onSelect={handleCategorychange}
+                                                            onRemove={onRemove}
+                                                            displayValue="label"
+                                                            placeholder="Select Category"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
 
