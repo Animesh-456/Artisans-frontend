@@ -469,9 +469,13 @@ const Post = (prp) => {
 								</div>
 								<div className="from_feild">
 									<label>Description: <span>*</span></label>
-									<textarea placeholder="Description" rows={8} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>                                </div>                                <div className="b-li">                                    <ul>                                        <li>                                            Explain the overall idea or theme of the artwork.                                         </li>                                        <li>                                           Provide images or examples of artwork styles, color palettes, or compositions that inspire you.                                      </li>                                        <li>                                           Specify the size or format of the artwork
-
-									</li>
+									<textarea placeholder="Description" rows={8} cols={50} autoComplete={"off"} value={project.description} onChange={setproject("description")}></textarea>
+								</div>
+								<div className="b-li">
+									<ul>
+										<li>Explain the overall idea or theme of the artwork.</li>
+										<li>Provide images or examples of artwork styles, color palettes, or compositions that inspire you.</li>
+										<li>Specify the size or format of the artwork</li>
 										<li>
 											Mention any specific colors or palettes you'd like the artist to focus on
 
@@ -491,7 +495,10 @@ const Post = (prp) => {
 
 
 
-									</ul>                                    {/* <p>Specify the materials to be used, the tolerances and the total number of parts</p> */}                                    {/* <p>If delivery outside mainland UK, please specify the delivery location</p>                                    <p>Please do not provide your contact details here.</p> */}                                </div>
+									</ul>
+								</div>
+
+
 								<div className="from_feild">
 									<label htmlFor="category">Category(s): <span>*</span>
 									</label>
@@ -576,17 +583,76 @@ const Post = (prp) => {
 												<p><i className="fa fa-check"></i> {f?.name}  <i className="fa fa-trash-o" style={{ cursor: "pointer" }} onClick={() => delete_files(index)}></i></p>                                                    {/* <p><i className="fa fa-check"></i><span className="none"><i className="fa fa-warning"></i></span>{f?.name}<a className="delete_icon" onClick={() => delete_files(index)}><i className="fa fa-trash-o"></i></a></p> */}
 											</>
 										)
-									})) : (<></>)}                                </div>
+									})) : (<></>)}
+								</div>
 
 								<div className="b-li">
 
-									<ul>                                                                                <li>                                            Max file size: 10 MB                                        </li>
-									</ul>                                </div>                                {/* <div className="from_feild">                                    <label>I would like to receive quotes before: <span>*</span></label>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"4"}                                                checked={project?.post_for == "4" ? true : false}                                                onChange={setproject("post_for")} /> 4 Days
-                                        </label>                                    </div>                                    <div className="form-check">                                        <label className="form-check-label">                                            <input type="radio" className="form-check-input" name="otradio" value={"6"}                                                checked={project?.post_for == "6" ? true : false}                                                onChange={setproject("post_for")}                                            />6 Days                                        </label>                                    </div>                                </div> */}                                                                                                                                  <div className="submit_cancel">                                    <button className="but111" type="submit"
-									name="submit" onClick={handleSubmit}                                    >                                        Check & Submit                                    </button>
-									<button type="submit" name="submit" style={{
+									<ul>
+										<li>Max file size: 10 MB</li>
+									</ul>
+								</div>
+								<hr />
+
+								{/* Delivery Information */}
+								{/* <h5>Shipping Details</h5>
+								
+
+
+								<div className="from_feild">
+									<label>Name<span></span></label>
+									<input type="text" name="text" placeholder="Type here..." autoComplete="name" value={project.project_name} onChange={setproject("project_name")} />
+								</div>
+
+								<div className="from_feild">
+									<label>Delivery Address<span></span></label>
+									<input type="text" name="text" placeholder="Type here..." autoComplete="street-address" value={project.project_name} onChange={setproject("project_name")} />
+								</div>
+
+								<div className="from_feild">
+									<label>Postal Code<span></span></label>
+									<input
+										name='zcode'
+										type='text'
+										autoComplete="postal-code"
+										//value={signIn.zcode}
+										//onChange={setSign("zcode")}
+										placeholder="Postal code"
+									/>
+								</div>
+
+								<div className="from_feild">
+									<label>City<span></span></label>
+									<input
+										name='city'
+										type='text'
+										autoComplete="address-level2"
+										//value={signIn.city}
+										//onChange={setSign("city")}
+										placeholder="City"
+									/>
+								</div> */}
+
+
+								<div className="submit_cancel">
+
+									<button className="but111" type="submit"
+										name="submit" onClick={handleSubmit}>
+										Check & Submit
+									</button>
+									<a style={{
+										cursor: 'pointer',
 										borderRadius: "6px", fontFamily: "Poppins", padding: "6px 22px", transition: "box-shadow 1s", marginLeft: "15px", background: "none", color: "#080424", fontWeight: "500"
-									}} onClick={handlecancel}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>                                    {/* <a href="#">Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a> */}                                </div>                            </form>                        </div>                    </div>
+									}} onClick={handlecancel}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></a>
+								</div>
+							</form>
+						</div>
+					</div>
+
+
+
+
+
 
 				</div >
 

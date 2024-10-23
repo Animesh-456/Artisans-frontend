@@ -27,7 +27,8 @@ const CustomerSignIn = (props: Props) => {
 		password: "",
 		confirm_password: "",
 		company_name: "",
-		SIREN: "",
+		company_number: "",
+		siren:"",
 		pro_user: 0,
 		show_modal: 0,
 		mobile_number: ""
@@ -58,25 +59,25 @@ const CustomerSignIn = (props: Props) => {
 			return
 		};
 		setDisable(true);
-		if (procust == true && signIn.account == "Company") {
-			signIn.pro_user = 1
-		}
+		// if (procust == true && signIn.account == "Company") {
+		// 	signIn.pro_user = 1
+		// }
 
-		if (signIn.account == "Individual") {
-			signIn.company_name = ""
-			signIn.SIREN = ""
-			signIn.pro_user = 0
-		}
+		// if (signIn.account == "Individual") {
+		// 	signIn.company_name = ""
+		// 	signIn.SIREN = ""
+		// 	signIn.pro_user = 0
+		// }
 
-		if (signIn.account == "Company" && procust == false) {
-			signIn.company_name = ""
-			signIn.SIREN = ""
-			signIn.pro_user = 0
-		}
+		// if (signIn.account == "Company" && procust == false) {
+		// 	signIn.company_name = ""
+		// 	signIn.SIREN = ""
+		// 	signIn.pro_user = 0
+		// }
 
-		if (modal == true) {
-			signIn.show_modal = 1
-		}
+		// if (modal == true) {
+		// 	signIn.show_modal = 1
+		// }
 
 		if (checkbox == true) {
 
@@ -115,7 +116,7 @@ const CustomerSignIn = (props: Props) => {
 				// }
 
 				router.push("/auth/sign-in");
-				
+
 			});
 		} else {
 			toast.error("Please agree to the terms of use");
@@ -194,7 +195,7 @@ const CustomerSignIn = (props: Props) => {
 												onChange={setSign("account")}
 												value={signIn.account}>
 												<option value='Individual'>Individual</option>
-												<option value='Company'>Company</option>
+												{/* <option value='Company'>Company</option> */}
 											</select>
 										</div>
 									</div>
@@ -308,6 +309,56 @@ const CustomerSignIn = (props: Props) => {
 											/>
 										</div>
 									</div>
+
+									<div className='row from_feild'>
+										<div className='col-sm-4'>
+											<label>Company Name</label>
+										</div>
+										<div className='col-sm-8'>
+											<input
+												name='company'
+												type='text'
+												autoComplete="organization"
+												value={signIn.company_name}
+												onChange={setSign("company_name")}
+												placeholder="Company Name"
+											/>
+										</div>
+									</div>
+
+									<div className='row from_feild'>
+										<div className='col-sm-4'>
+											<label>GST Number</label>
+										</div>
+										<div className='col-sm-8'>
+											<input
+												name='cno'
+												type='text'
+												autoComplete={"off"}
+												value={signIn.company_number}
+												onChange={setSign("company_number")}
+												placeholder="Company Registration Number"
+											/>
+										</div>
+									</div>
+
+									<div className='row from_feild'>
+										<div className='col-sm-4'>
+											<label>PAN Number</label>
+										</div>
+										<div className='col-sm-8'>
+											<input
+												name='cno'
+												type='text'
+												autoComplete={"off"}
+												value={signIn.siren}
+												onChange={setSign("siren")}
+												placeholder="PAN Number"
+											/>
+										</div>
+									</div>
+
+
 									<div className="row from_feild">
 										<div className="col-sm-4">
 											<label>Create Password <span>*</span>
@@ -346,7 +397,7 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
-										<button className="canl" onClick={()=> window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
+										<button className="canl" onClick={() => window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
 							</div>

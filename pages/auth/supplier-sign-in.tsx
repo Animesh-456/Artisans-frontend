@@ -461,7 +461,7 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} >Register</button>
-										<button className="canl" onClick={()=> window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
+										<button className="canl" onClick={() => window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
 							</div>

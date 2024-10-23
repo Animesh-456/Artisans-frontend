@@ -23,8 +23,9 @@ const customer_register = {
 		.equal(Joi.ref("password"))
 		.required()
 		.messages({ "any.only": "{{#label}} does not match" }),
-	SIREN: Joi.required(),
+	siren: Joi.required(),
 	company_name: Joi.required(),
+	company_number: Joi.required(),
 	pro_user: Joi.required(),
 	show_modal: Joi.required(),
 	mobile_number: Joi.number().required()
