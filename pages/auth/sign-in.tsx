@@ -123,7 +123,27 @@ const SignIn = (prp) => {
 			},
 		);
 	};
+	if (window) {
+		window["google_signin"] = (data) => {
+			const jwt = data["credential"];
 
+			// Store the token in local storage or session storage
+			// localStorage.setItem('googleToken', jwt);
+			window.location.href = `/auth/google-sign-in?token=${jwt}`;
+			// Redirect to the additional info form page
+			// window.location.href = '/auth/google-sign-in'; // Adjust to the path of your form page
+		}
+	}
+
+
+	// DONT MODIFY
+	function mountScript() {
+		const script = document.createElement('script');
+		script.src = 'https://accounts.google.com/gsi/client';
+		script.async = true;
+		document.body.appendChild(script);
+	}
+	mountScript();
 
 	return (
 		<>
@@ -307,6 +327,45 @@ const SignIn = (prp) => {
 									<input type="Submit" name="submit" />
 								</div>
 							</form>
+							<section id='GOOGLE_SIGN_IN'>
+								<div id="g_id_onload"
+									data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
+									data-context="signin"
+									data-ux_mode="popup"
+									data-callback="google_signin"
+									data-auto_prompt="false">
+								</div>
+
+								<div className="g_id_signin"
+									data-type="standard"
+									data-shape="rectangular"
+									data-theme="filled_black"
+									data-text="signin_with"
+									data-size="large"
+									data-logo_alignment="left">
+								</div>
+
+								{/* <div id="g_id_onload"
+									data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
+									data-context="signup"
+									data-ux_mode="popup"
+									data-callback="google_signup"
+									data-auto_prompt="false">
+								</div>
+
+								<div className="g_id_signin"
+									data-type="standard"
+									data-shape="rectangular"
+									data-theme="outline"
+									data-text="signup_with"
+									data-size="large"
+									data-logo_alignment="left">
+								</div> */}
+
+
+
+
+							</section>
 						</div>
 					</div>
 				</div>
