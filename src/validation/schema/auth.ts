@@ -81,6 +81,7 @@ const update = {
 	prof_pic: Joi.required(),
 	prot_pic: Joi.required(), 
 	category: Joi.required(),
+	country_symbol: Joi.required(),
 };
 
 const editAddress = {
