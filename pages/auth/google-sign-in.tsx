@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 import { number } from 'joi';
+import api from "../../src/api/services/api";
 
 const AdditionalInfo = () => {
     var router = useRouter();
@@ -53,25 +54,27 @@ const AdditionalInfo = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:4000/user/auth/google-register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dataToSend) // Send combined data
-            });
+            // const response = await fetch('http://localhost:4000/user/auth/google-register', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(dataToSend) // Send combined data
+            // });
 
-            const data = await response.json();
-            console.log('Server response:', data);
+            // const data = await response.json();
+            // console.log('Server response:', data);
 
-            if (data.success) {
-                router.push('/account/jobs');
-            } else {
-                alert(data.message || 'Failed to register. Please try again.');
-            }
-        } catch (error) {
+            // if (data.success) {
+            //     router.push('/account/jobs');
+            // } else {
+            //     alert(data.message || 'Failed to register. Please try again.');
+            // }
+            api.auth.google_register({ body: dataToSend })
+        }
+
+        catch (error) {
             console.error('Error:', error);
-            alert('There was an error submitting the form.');
         }
     };
 

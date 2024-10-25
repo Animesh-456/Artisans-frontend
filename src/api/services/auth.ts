@@ -535,4 +535,20 @@ export default {
       .catch((err) => console.log(err));
   },
 
+  google_register: ({ params, body }: UploadParams, cb?: GetResponse) => {
+    toast.loading();
+
+    api
+      .post("auth/google-register", body, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          Router.push('/auth/sign-in');
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
 };
