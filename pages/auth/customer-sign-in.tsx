@@ -28,7 +28,7 @@ const CustomerSignIn = (props: Props) => {
 		confirm_password: "",
 		company_name: "",
 		company_number: "",
-		siren:"",
+		siren: "",
 		pro_user: 0,
 		show_modal: 0,
 		mobile_number: ""
@@ -253,9 +253,9 @@ const CustomerSignIn = (props: Props) => {
 														className='text'
 														name='surname'
 														type='text'
-														value={signIn.SIREN}
+														value={signIn.siren}
 														autoComplete={"off"}
-														onChange={setSign("SIREN")} />
+														onChange={setSign("siren")} />
 
 												</div>
 											</div>
