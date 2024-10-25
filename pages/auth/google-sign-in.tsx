@@ -25,7 +25,7 @@ const AdditionalInfo = () => {
         }
     }, [router.query.token]);
 
-    console.log("formdata account", formData.account);
+    //console.log("formdata account", formData.account);
 
 
     const handleChange = (e) => {
@@ -34,6 +34,12 @@ const AdditionalInfo = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+
+        if (!formData?.password || !formData?.account || !formData?.number) return toast.error("Please fill required feilds");
+
+        if (formData?.number?.length != 10) return toast.error("Mobile number should be 10 digits");
+
 
         if (!token) {
             toast.error("Token is missing.");
