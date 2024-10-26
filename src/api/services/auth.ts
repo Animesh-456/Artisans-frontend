@@ -588,18 +588,21 @@ export default {
             cb(d);
           }
         } else {
-          // Login failed, redirect to /account/google-sign-in
-          toast.error(d.message);
-          // Router.push("/account/google-sign-in");
+          // Login failed, redirect to Google sign-in page with token
+          toast.error(d.message || "Login failed. Redirecting to Google sign-in...");
+          const jwt = data.token; // Assuming `data.token` holds the Google JWT
+          window.location.href = `/auth/google-sign-in?token=${jwt}`;
         }
       })
       .catch((error) => {
-        // Handle unexpected errors
+        // Handle unexpected errors and redirect to Google sign-in page
         console.error("Error in google_login:", error);
-        // Router.push("/account/google-sign-in");
-        toast.error("An error occurred during Google login. Please try again.");
+        toast.error("An error occurred during Google login. Redirecting...");
+        const jwt = data.token;
+        window.location.href = `/auth/google-sign-in?token=${jwt}`;
       });
   }
+
 
 
 };
