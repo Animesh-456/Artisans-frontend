@@ -135,7 +135,7 @@ const SignIn = (prp) => {
 		}
 	}
 
-	
+
 
 
 	// DONT MODIFY
@@ -147,7 +147,7 @@ const SignIn = (prp) => {
 	}
 	mountScript();
 
-	
+
 
 	return (
 		<>
@@ -331,6 +331,11 @@ const SignIn = (prp) => {
 									<input type="Submit" name="submit" />
 								</div>
 							</form>
+
+						</div>
+
+
+						<form>
 							<section id='google-signup'>
 								<div id="g_id_onload"
 									data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
@@ -341,7 +346,6 @@ const SignIn = (prp) => {
 								</div>
 
 								<div className="g_id_signin"
-								
 									data-type="standard"
 									data-shape="rectangular"
 									data-theme="outline"
@@ -371,7 +375,8 @@ const SignIn = (prp) => {
 
 
 							</section>
-						</div>
+						</form>
+
 					</div>
 				</div>
 			</section>
