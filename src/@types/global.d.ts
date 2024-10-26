@@ -2,6 +2,10 @@ declare global {
 	interface Console {
 		r(msg: string): void;
 	}
+
+	interface Window {
+		google: any;
+	  }
 }
 
 Object.defineProperties(console, {

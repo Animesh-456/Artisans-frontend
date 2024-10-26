@@ -67,6 +67,7 @@ const EditProfile = (prp) => {
         prof_pic: user?.logo || "",
         prot_pic: user?.prot_pic || "",
         country_symbol: user?.country_symbol || "IN",
+        company_number: user?.company_number || "",
     });
     const setProfile = common.ChangeState(profileState);
 
@@ -1021,6 +1022,45 @@ const EditProfile = (prp) => {
                                                     onChange={setProfile("address1")} />
                                             </div>
                                         </div>
+
+
+                                        <div className="row">
+                                            <div className="col-sm-12">
+                                                <label className="qwe11">Company Name</label>
+
+                                                <input name="company" type="text" value={profile.company_name}
+                                                    autoComplete=""
+                                                    onChange={setProfile("company_name")} />
+                                            </div>
+                                        </div>
+
+                                        {user?.role_id == 1 && (
+                                            <>
+
+                                                <div className="row">
+                                                    <div className="col-sm-12">
+                                                        <label className="qwe11">PAN</label>
+
+                                                        <input name="pan" type="text" value={profile.siren}
+                                                            autoComplete=""
+                                                            onChange={setProfile("siren")} />
+                                                    </div>
+                                                </div>
+
+                                                <div className="row">
+                                                    <div className="col-sm-12">
+                                                        <label className="qwe11">GST</label>
+
+                                                        <input name="pan" type="text" value={profile.company_number}
+                                                            autoComplete=""
+                                                            onChange={setProfile("company_number")} />
+                                                    </div>
+                                                </div>
+                                            </>
+
+                                        )}
+
+
                                         <div className="row">
                                             <div className="col-sm-12">
                                                 <label>Description</label>
