@@ -124,15 +124,40 @@ const SignIn = (prp) => {
 		);
 	};
 	if (window) {
-		window["google-signup"] = (data) => {
+		// window["google-signup"] = (data) => {
+		// 	const jwt = data["credential"];
+
+
+		// 	window.location.href = `/auth/google-sign-in?token=${jwt}`;
+
+		// }
+
+		window["google-signup"] = async (data) => {
 			const jwt = data["credential"];
 
-			// Store the token in local storage or session storage
-			// localStorage.setItem('googleToken', jwt);
-			window.location.href = `/auth/google-sign-in?token=${jwt}`;
-			// Redirect to the additional info form page
-			// window.location.href = '/auth/google-sign-in'; // Adjust to the path of your form page
-		}
+			if (!jwt) {
+				toast.error("Google login token missing. Please try again.");
+				return;
+			}
+
+			try {
+				// Attempt login using the Google token
+				const response: any = await api.auth.google_login({ body: { token: jwt } });
+
+				if (response && response.success) {
+					// Successful login, redirect to jobs page
+					router.push("/account/jobs");
+				} else {
+					// If login failed, redirect to the sign-in page with the token
+					toast.error(response.message || "Google login failed. Redirecting to sign-in...");
+					// window.location.href = `/auth/google-sign-in?token=${jwt}`;
+				}
+			} catch (error) {
+				// window.location.href = `/auth/google-sign-in?token=${jwt}`;
+
+				console.error("Error during Google login:", error);
+			}
+		};
 	}
 
 
