@@ -127,6 +127,9 @@ const SignIn = (prp) => {
 		window["google-signup"] = (data) => {
 			const jwt = data["credential"];
 
+
+			
+
 			// Store the token in local storage or session storage
 			// localStorage.setItem('googleToken', jwt);
 			window.location.href = `/auth/google-sign-in?token=${jwt}`;
