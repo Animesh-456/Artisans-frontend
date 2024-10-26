@@ -124,7 +124,7 @@ const SignIn = (prp) => {
 		);
 	};
 	if (window) {
-		window["google-signup"] = (data) => {
+		window["google_signup"] = (data) => {
 			const jwt = data["credential"];
 
 			// Store the token in local storage or session storage
@@ -327,25 +327,27 @@ const SignIn = (prp) => {
 									<input type="Submit" name="submit" />
 								</div>
 							</form>
-							<section id='google-signup'>
-								<div id="g_id_onload"
-									data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
-									data-context="signup"
-									data-ux_mode="popup"
-									data-callback="google-signup"
-									data-auto_prompt="false">
-								</div>
 
-								<div className="g_id_signin"
-									data-type="standard"
-									data-shape="rectangular"
-									data-theme="outline"
-									data-text="signup_with"
-									data-size="large"
-									data-logo_alignment="left">
-								</div>
+						</div>
+						<section id='google-signup'>
+							<div id="g_id_onload"
+								data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
+								data-context="signup"
+								data-ux_mode="popup"
+								data-callback="google-signup"
+								data-auto_prompt="false">
+							</div>
 
-								{/* <div id="g_id_onload"
+							<div className="g_id_signin"
+								data-type="standard"
+								data-shape="rectangular"
+								data-theme="outline"
+								data-text="signup_with"
+								data-size="large"
+								data-logo_alignment="left">
+							</div>
+
+							{/* <div id="g_id_onload"
 									data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
 									data-context="signup"
 									data-ux_mode="popup"
@@ -365,8 +367,7 @@ const SignIn = (prp) => {
 
 
 
-							</section>
-						</div>
+						</section>
 					</div>
 				</div>
 			</section>
