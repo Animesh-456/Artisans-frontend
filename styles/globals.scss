@@ -3295,7 +3295,7 @@ hr {
     font-size: 14px;
     color: #313030;
     line-height: 24px;
-    white-space:  pre-wrap;
+    white-space: pre-wrap;
 }
 
 ul.ex {
@@ -4361,4 +4361,18 @@ marquee {
 .listingsearchmobile .search_bar span .fa {
     color: #fff;
     font-size: 12px;
+}
+
+.aro {
+    position: relative;
+}
+
+.aro:after {
+    top: 0;
+    right: 10px;
+    position: absolute;
+    content: "\f107";
+    display: inline-block;
+    font: normal normal normal 21px/1 FontAwesome;
+    z-index: 1;
 }

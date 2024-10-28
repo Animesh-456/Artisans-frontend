@@ -276,9 +276,10 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className="col-sm-8">
-											<div className="select_div">
+											<div className="">
 
 												<Multiselect
+
 													options={category}
 													selectedValues={categories}
 													showCheckbox
