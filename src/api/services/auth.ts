@@ -551,4 +551,58 @@ export default {
       })
       .catch((err) => console.log(err));
   },
+
+
+
+  google_login: ({ params, body }: PostParams, cb?: GetResponse) => {
+    toast.loading("Logging in...");
+
+    let data = body;
+    if (!data) {
+      toast.error("Login data is missing.");
+      return;
+    }
+
+    delete data.agreed;
+
+    const BaseURL = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`;
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+
+    fetch(`${BaseURL}user/auth/google-login`, requestOptions)
+      .then((response) => response.json())
+      .then((d) => {
+        if (d.status) {
+          // Login successful, redirect to /account/jobs
+          toast.success(d.message);
+          writeAtom(atom.storage.user, d.data);
+          localStorage.setItem("UserData", JSON.stringify(d.data));
+          writeAtom(atom.storage.loginmodal, true);
+          Router.push("/account/jobs");
+
+          // Ensure cb is a function before calling it
+          if (typeof cb === "function") {
+            cb(d);
+          }
+        } else {
+          // Login failed, redirect to Google sign-in page with token
+          toast.error(d.message || "Login failed. Redirecting to Google sign-in...");
+          const jwt = data.token; // Assuming `data.token` holds the Google JWT
+          window.location.href = `/auth/google-sign-in?token=${jwt}`;
+        }
+      })
+      .catch((error) => {
+        // Handle unexpected errors and redirect to Google sign-in page
+        console.error("Error in google_login:", error);
+        toast.error("An error occurred during Google login. Redirecting...");
+        const jwt = data.token;
+        window.location.href = `/auth/google-sign-in?token=${jwt}`;
+      });
+  }
+
+
+
 };

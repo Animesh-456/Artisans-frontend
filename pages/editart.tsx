@@ -27,10 +27,23 @@ const Post = () => {
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
+
+    useEffect(() => {
+        api.auth.delivery_contacts({ params: { id: router?.query?.id } })
+    }, [])
+
+
+    const deliveryData = useAtomValue(atom.auth.api.delivery_contacts);
+
+
     const [project, projectstate] = useState({
         id: router.query?.id,
         project_name: router.query?.project_name,
         description: router.query?.description,
+        name: deliveryData?.name || "",
+        address: deliveryData?.address || "",
+        zip: deliveryData?.postalcode || "",
+        city: deliveryData?.city || ""
     });
 
     const [existingfiles, setexistingFiles] = useState(router.query?.attachment_name)
@@ -75,6 +88,20 @@ const Post = () => {
 
 
         //let data = Validate([], schema.project.add, project);
+
+
+        // art details validation
+
+        if (!existingfiles && !file) return toast.error("Please select a file")
+
+        if (project?.name == "") return toast.error("art title is required");
+        if (project?.description == "") return toast.error("art desciption is required");
+        if (project?.city == "") return toast.error("city is required");
+        if (project?.zip == "") return toast.error("postal code is required");
+        if (project?.address == "") return toast.error("address code is required");
+        if (project?.name == "") return toast.error("name code is required");
+
+
         setOpen(true);
     };
 
@@ -86,6 +113,9 @@ const Post = () => {
         if (file?.length > 10) {
             return toast.error("Maximum 10 files can be uploaded")
         }
+
+
+        if (!existingfiles && !file?.length) return toast.error("Please select a file")
 
         let form = new FormData();
         for (const key of Object.keys(file)) {
@@ -111,6 +141,8 @@ const Post = () => {
             }
             setFile([]);
             setOpen(false);
+
+            router.replace(`/${String(router?.query?.project_name)?.split(" ").join("-")}-${router?.query?.id}`)
         });
     };
     const [fileData, setFileData] = useState(null);
@@ -288,6 +320,8 @@ const Post = () => {
     }, [])
 
 
+
+
     const deleteexistingfiles = (f) => {
         const result = String(existingfiles)?.split(',').filter(element => element.trim() !== f);
         setexistingFiles(result)
@@ -377,7 +411,51 @@ const Post = () => {
                                     </ul>
                                 </div>
 
+
+
+                                <hr />
+
+                                <h5>Shipping Details</h5>
+
+
+
+                                <div className="from_feild">
+                                    <label>Name<span>*</span></label>
+                                    <input type="text" name="text" placeholder="Type here..." autoComplete="name" value={project.name} onChange={setproject("name")} />
+                                </div>
+
+                                <div className="from_feild">
+                                    <label>Delivery Address<span>*</span></label>
+                                    <input type="text" name="text" placeholder="Type here..." autoComplete="street-address" value={project.address} onChange={setproject("address")} />
+                                </div>
+
+                                <div className="from_feild">
+                                    <label>Postal Code<span>*</span></label>
+                                    <input
+                                        name='zcode'
+                                        type='text'
+                                        autoComplete="postal-code"
+                                        value={project.zip}
+                                        onChange={setproject("zip")}
+                                        placeholder="Postal code"
+                                    />
+                                </div>
+
+                                <div className="from_feild">
+                                    <label>City<span>*</span></label>
+                                    <input
+                                        name='city'
+                                        type='text'
+                                        autoComplete="address-level2"
+                                        value={project.city}
+                                        onChange={setproject("city")}
+                                        placeholder="City"
+                                    />
+                                </div>
+
                             </form>
+
+
 
                             <div className="submit_cancel">
                                 <button className="but111" type="submit" name="submit" onClick={handleSubmit}> Check & Submit </button>

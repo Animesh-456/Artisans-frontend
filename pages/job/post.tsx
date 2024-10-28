@@ -62,8 +62,19 @@ const Post = (prp) => {
 		description: "",
 		visibility: "Public",
 		post_for: "4",
-
+		name: "",
+		address: "",
+		zip: "",
+		city: ""
 	});
+
+
+	const [shipping, setshipping] = useState({
+		name: "",
+		address: "",
+		zip: "",
+		city: ""
+	})
 
 	const [projectcheck, projectcheckstate] = useState({
 		post_for: "4",
@@ -72,6 +83,7 @@ const Post = (prp) => {
 	const setprojectcheck = common.ChangeState(projectcheckstate);
 
 	const setproject = common.ChangeState(projectstate);
+	const setDelivery = common.ChangeState(setshipping);
 
 	const [file, setFile] = useState([]);
 	const [otherFile, setFileOther] = useState([]);
@@ -104,7 +116,14 @@ const Post = (prp) => {
 		// project["sub_category"] = selectedSubCategory?.map(item => item.id)?.join(',');
 
 
+		if (project?.city == "") return toast.error("city is required");
+		if (project?.zip == "") return toast.error("postal code is required");
+
+
 		let data = Validate([], schema.project.add, project);
+
+		// Logic to validate shipping details
+
 
 		if (!data) {
 			return;
@@ -149,6 +168,13 @@ const Post = (prp) => {
 		for (const key of Object.keys(project)) {
 			form.append(key, project[key]);
 		}
+
+
+		//let shippingform = new FormData();
+
+
+
+		// Appending shipping details
 
 
 
@@ -402,7 +428,7 @@ const Post = (prp) => {
 		setSelectedSubCategory(selectedList)
 	};
 
-	console.log("selectedsub", multiselectedCategory)
+
 
 
 
@@ -595,43 +621,43 @@ const Post = (prp) => {
 								<hr />
 
 								{/* Delivery Information */}
-								{/* <h5>Shipping Details</h5>
-								
+								<h5>Shipping Details</h5>
+
 
 
 								<div className="from_feild">
 									<label>Name<span></span></label>
-									<input type="text" name="text" placeholder="Type here..." autoComplete="name" value={project.project_name} onChange={setproject("project_name")} />
+									<input type="text" name="text" placeholder="Type here..." autoComplete="name" value={project.name} onChange={setproject("name")} />
 								</div>
 
 								<div className="from_feild">
 									<label>Delivery Address<span></span></label>
-									<input type="text" name="text" placeholder="Type here..." autoComplete="street-address" value={project.project_name} onChange={setproject("project_name")} />
+									<input type="text" name="text" placeholder="Type here..." autoComplete="street-address" value={project.address} onChange={setproject("address")} />
 								</div>
 
 								<div className="from_feild">
-									<label>Postal Code<span></span></label>
+									<label>Postal Code<span>*</span></label>
 									<input
 										name='zcode'
 										type='text'
 										autoComplete="postal-code"
-										//value={signIn.zcode}
-										//onChange={setSign("zcode")}
+										value={project.zip}
+										onChange={setproject("zip")}
 										placeholder="Postal code"
 									/>
 								</div>
 
 								<div className="from_feild">
-									<label>City<span></span></label>
+									<label>City<span>*</span></label>
 									<input
 										name='city'
 										type='text'
 										autoComplete="address-level2"
-										//value={signIn.city}
-										//onChange={setSign("city")}
+										value={project.city}
+										onChange={setproject("city")}
 										placeholder="City"
 									/>
-								</div> */}
+								</div>
 
 
 								<div className="submit_cancel">

@@ -59,7 +59,6 @@ export default {
       .then((d) => {
         if (d.status) {
           toast.success(d.message);
-          Router.push("/account/jobs");
           return cb(d);
         } else {
           toast.error(d.message);

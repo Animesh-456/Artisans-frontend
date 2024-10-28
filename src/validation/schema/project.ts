@@ -5,8 +5,16 @@ const add = {
 	visibility: Joi.string().required(),
 	post_for: Joi.number().required(),
 	category: Joi.string().required(),
+	name: Joi.required(),
+	city: Joi.required(),
+	zip: Joi.required(),
+	address: Joi.required()
 	// sub_category: Joi.required()
 };
+
+
+
+
 
 
 const kyc = {
@@ -134,4 +142,5 @@ export default {
 	review_machinist,
 	send_shipping,
 	add_desccomment,
+
 };

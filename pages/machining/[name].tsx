@@ -1815,7 +1815,7 @@ const ProjectDetail = (prp) => {
                             </div>
 
 
-                            {((table_status == '1' || reviewStatus == '2') && ((data?.creator_id == user?.id) || (data?.programmer_id == user?.id))) &&
+                            {/* {((table_status == '1' || reviewStatus == '2') && ((data?.creator_id == user?.id) || (data?.programmer_id == user?.id))) && */}
 
 
                                 <div className="project_details_right">
@@ -1823,10 +1823,10 @@ const ProjectDetail = (prp) => {
                                         <h2>Complete or verify your delivery address</h2>
                                     </div>
                                     <div className="project_details_content">
-                                        {/* <p><span>Name</span><span><b> {delivery.name} </b></span></p> */}
-                                        <p><span>Address</span><span><b> {delivery.address || "N/A"} </b></span></p>
-                                        <p><span>Postal code</span><span><b> {delivery.postalcode || "N/A"}</b></span></p>
-                                        <p><span>City</span><span><b> {delivery.city || "N/A"}</b></span></p>
+                                        <p><span>Name</span><span><b> {delivery?.name || "N/A"} </b></span></p>
+                                        <p><span>Address</span><span><b> {delivery?.address || "N/A"} </b></span></p>
+                                        <p><span>Postal code</span><span><b> {delivery?.postalcode || "N/A"}</b></span></p>
+                                        <p><span>City</span><span><b> {delivery?.city || "N/A"}</b></span></p>
                                     </div>
                                     {data.programmer_id == user?.id && (
                                         <div className="table-responsive">
@@ -1850,7 +1850,9 @@ const ProjectDetail = (prp) => {
 
                                     )}
 
-                                </div>}
+                                </div>
+
+                            {/* } */}
 
                         </div>
                     </div>
