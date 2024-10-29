@@ -28,13 +28,26 @@ const DespositFund = (props: Props) => {
 	}
 
 
+	useEffect(() => {
+		if (!router.isReady) return;
 
+		let id = router.query?.id;
+
+		if (!id) {
+			router.push("/");
+		}
+
+		api.project.detail({ params: { id: id } });
+		api.auth.delivery_contacts({ params: { id: id } });
+	}, [router.isReady]);
+
+	const [delivery, setdelivery] = useAtom(atom.auth.api.delivery_contacts);
 
 	const [profile, profileState] = useState({
-		name: user?.name || "",
-		postalcode: user?.zcode || "",
-		city: user?.city || "",
-		address: user?.address1 || "",
+		name: delivery?.name || "",
+		postalcode: delivery?.postalcode || "",
+		city: delivery?.city || "",
+		address: delivery?.address || "",
 		user_id: user?.id || "",
 		project_id: data?.id || ""
 	});
@@ -62,17 +75,7 @@ const DespositFund = (props: Props) => {
 		);
 	};
 
-	useEffect(() => {
-		if (!router.isReady) return;
 
-		let id = router.query?.id;
-
-		if (!id) {
-			router.push("/");
-		}
-
-		api.project.detail({ params: { id: id } });
-	}, [router.isReady]);
 
 	return (
 		<>
@@ -265,32 +268,32 @@ const DespositFund = (props: Props) => {
 						<div className="col-sm-6">
 							<div className="profile_box">
 								<div className="tyhd">
-									{/* <p>Lorem Ipsum is simply dummy text of the printing</p> */}
+									<p>Review you delivery address</p>
 									<hr />
 									<form onSubmit={handle_confirm_address}>
 										<div className="from_feild">
 											<label>Name: <span>*</span></label>
-											<input type="text" required value={profile.name}
+											<input type="text" disabled required value={profile?.name}
 												onChange={setProfile("name")} />
 										</div>
 										<div className="from_feild">
 											<label>Address: <span>*</span></label>
-											<input type="text" required value={profile.address}
+											<input type="text" disabled required value={profile?.address}
 												onChange={setProfile("address")} />
 										</div>
 										<div className="from_feild">
 											<label>Postal Code: <span>*</span></label>
-											<input type="text" required value={profile.postalcode}
+											<input type="text" disabled required value={profile?.postalcode}
 												onChange={setProfile("postalcode")} />
 										</div>
 										<div className="from_feild">
 											<label>City: <span>*</span></label>
-											<input type="text" required value={profile.city}
+											<input type="text" disabled required value={profile?.city}
 												onChange={setProfile("city")} />
 										</div>
 										<div className="from_feild2">
 											<input onChange={changestatecheck} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-											<label>save this address</label>
+											<label>save this address to profile</label>
 										</div>
 
 										{!updated ? (
