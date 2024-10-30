@@ -494,7 +494,7 @@ const SignIn = (prp) => {
 						{/* <div onClick={handleFacebookLogin} className="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
 
 						<button onClick={handleFacebookLogin} style={{ padding: '10px 20px', backgroundColor: '#4267B2', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-							Login with Facebook
+							Continue with Facebook
 						</button>
 
 					</div>
