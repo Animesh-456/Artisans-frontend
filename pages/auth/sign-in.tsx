@@ -174,13 +174,75 @@ const SignIn = (prp) => {
 	}
 	mountScript();
 
+	useEffect(() => {
+		window.fbAsyncInit = function () {
+			window.FB.init({
+				appId: "1323269679079061",
+				cookie: true,
+				xfbml: true,
+				version: "v21.0",
+			});
+		};
+
+		const loadFBSDK = () => {
+			const script = document.createElement("script");
+			script.src = "https://connect.facebook.net/en_GB/sdk.js";
+			script.async = true;
+			script.defer = true;
+			document.body.appendChild(script);
+		};
+
+		loadFBSDK();
+	}, []);
+
+
+	const handleFacebookLogin = () => {
+		window.FB.login(
+			function (response: any) {
+
+				console.log("Facebook op up response", response)
+				if (response.authResponse) {
+					// User is logged in, get the access token
+					const accessToken = response.authResponse.accessToken;
+
+
+					// Check for login api
+
+					// Send the access token to the backend
+					fetch("http://localhost:4000/user/auth/facebook/callback", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ accessToken }),
+					})
+						.then((res) => res.json())
+						.then((data) => {
+							console.log("User data saved to backend:", data);
+						})
+						.catch((error) => {
+							console.error("Error sending access token to backend:", error);
+						});
+				} else {
+					console.log("User cancelled login or did not fully authorize.");
+				}
+			},
+			{ scope: "public_profile,email" }
+		);
+	};
+
+
+	// App id 1323269679079061
+	// App secret ecfa8adec73117a7ddcc620dba72402d
+
 
 
 	return (
 		<>
 
 			<div id="fb-root"></div>
-			<Script async defer src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0&appId=3789400361309842"></Script>
+			{/* <Script async defer src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0&appId=1323269679079061"></Script> */}
+			{/* <Script async defer src="https://connect.facebook.net/en_GB/sdk.js"></Script> */}
 			{/* <section className="sign_wrap" style={{ backgroundImage: `url(./img/wave.png)` }}>
 
 				<div className="container">
@@ -393,8 +455,12 @@ const SignIn = (prp) => {
 
 						</form>
 						{/* FACEBOOK BUTTON--------------- */}
-						{/* <div className="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
+						{/* <button onClick={handleFacebookLogin}>Contunue with FB</button> */}
+						{/* <div onClick={handleFacebookLogin} className="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
 
+						<button onClick={handleFacebookLogin} style={{ padding: '10px 20px', backgroundColor: '#4267B2', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+							Login with Facebook
+						</button>
 
 					</div>
 				</div>

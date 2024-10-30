@@ -6,6 +6,11 @@ declare global {
 	interface Window {
 		google: any;
 	  }
+
+	  interface Window {
+		fbAsyncInit: () => void;
+		FB: any; // You can further specify the type if needed
+	  }
 }
 
 Object.defineProperties(console, {
