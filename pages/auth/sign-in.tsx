@@ -12,6 +12,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import env from "../../src/config/api";
 import Head from "next/head";
+import Script from 'next/script';
+import { log } from "console";
 
 type Props = {};
 
@@ -176,6 +178,9 @@ const SignIn = (prp) => {
 
 	return (
 		<>
+
+			<div id="fb-root"></div>
+			<Script async defer src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0&appId=3789400361309842"></Script>
 			{/* <section className="sign_wrap" style={{ backgroundImage: `url(./img/wave.png)` }}>
 
 				<div className="container">
@@ -379,28 +384,17 @@ const SignIn = (prp) => {
 									data-logo_alignment="left">
 								</div>
 
-								{/* <div id="g_id_onload"
-									data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
-									data-context="signup"
-									data-ux_mode="popup"
-									data-callback="google_signup"
-									data-auto_prompt="false">
-								</div>
 
-								<div className="g_id_signin"
-									data-type="standard"
-									data-shape="rectangular"
-									data-theme="outline"
-									data-text="signup_with"
-									data-size="large"
-									data-logo_alignment="left">
-								</div> */}
 
 
 
 
 							</section>
+
 						</form>
+						{/* FACEBOOK BUTTON--------------- */}
+						{/* <div className="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
+
 
 					</div>
 				</div>

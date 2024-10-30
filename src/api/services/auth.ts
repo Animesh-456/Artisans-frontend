@@ -601,7 +601,7 @@ export default {
         const jwt = data.token;
         window.location.href = `/auth/google-sign-in?token=${jwt}`;
       });
-  }
+  },
 
 
 

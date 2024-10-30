@@ -75,7 +75,7 @@ class Client {
 			"project/steps-text",
 			"auth/resend-verify-email",
 			"project/update-art-jobs",
-			"auth/google-register"
+			"auth/google-register",
 		];
 
 		this.test = false;
