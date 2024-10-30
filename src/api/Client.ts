@@ -76,6 +76,8 @@ class Client {
 			"auth/resend-verify-email",
 			"project/update-art-jobs",
 			"auth/google-register",
+			"auth/facebook-callback",
+			"auth/facebook-login",
 		];
 
 		this.test = false;

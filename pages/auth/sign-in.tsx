@@ -177,7 +177,7 @@ const SignIn = (prp) => {
 	useEffect(() => {
 		window.fbAsyncInit = function () {
 			window.FB.init({
-				appId: "1323269679079061",
+				appId: "3789400361309842",
 				cookie: true,
 				xfbml: true,
 				version: "v21.0",
@@ -196,40 +196,75 @@ const SignIn = (prp) => {
 	}, []);
 
 
-	const handleFacebookLogin = () => {
-		window.FB.login(
-			function (response: any) {
+	// const handleFacebookLogin = () => {
+	// 	window.FB.login(
+	// 		function (response: any) {
 
-				console.log("Facebook op up response", response)
+	// 			console.log("Facebook op up response", response)
+	// 			if (response.authResponse) {
+	// 				// User is logged in, get the access token
+	// 				const accessToken = response.authResponse.accessToken;
+
+
+	// 				// Check for login api
+
+	// 				// Send the access token to the backend
+	// 				fetch("http://localhost:4000/user/auth/facebook/callback", {
+	// 					method: "POST",
+	// 					headers: {
+	// 						"Content-Type": "application/json",
+	// 					},
+	// 					body: JSON.stringify({ accessToken }),
+	// 				})
+	// 					.then((res) => res.json())
+	// 					.then((data) => {
+	// 						console.log("User data saved to backend:", data);
+	// 					})
+	// 					.catch((error) => {
+	// 						console.error("Error sending access token to backend:", error);
+	// 					});
+	// 			} else {
+	// 				console.log("User cancelled login or did not fully authorize.");
+	// 			}
+	// 		},
+	// 		{ scope: "public_profile,email" }
+	// 	);
+	// };
+
+	const handleFacebookLogin = async () => {
+		window.FB.login(
+			async function (response) {
+				console.log("Facebook popup response:", response);
+
 				if (response.authResponse) {
 					// User is logged in, get the access token
 					const accessToken = response.authResponse.accessToken;
+					// console.log("accessToken is ", accessToken);
 
 
-					// Check for login api
+					if (!accessToken) {
+						toast.error("Facebook login token missing. Please try again.");
+						return;
+					}
 
-					// Send the access token to the backend
-					fetch("http://localhost:4000/user/auth/facebook/callback", {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify({ accessToken }),
-					})
-						.then((res) => res.json())
-						.then((data) => {
-							console.log("User data saved to backend:", data);
-						})
-						.catch((error) => {
-							console.error("Error sending access token to backend:", error);
-						});
-				} else {
+
+					await api.auth.facebook_login({ body: { accessToken } });
+
+					// if (response && response.success) {
+					// 	router.push("/account/jobs");
+					// } else {
+					// 	toast.error(response.message || "Facebook login failed. Redirecting to sign-in...");
+
+					// }
+				}
+				else {
 					console.log("User cancelled login or did not fully authorize.");
 				}
 			},
 			{ scope: "public_profile,email" }
 		);
 	};
+
 
 
 	// App id 1323269679079061
