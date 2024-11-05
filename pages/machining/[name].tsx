@@ -1828,7 +1828,7 @@ const ProjectDetail = (prp) => {
                                         <p><span>Postal code</span><span><b> {delivery?.postalcode || "N/A"}</b></span></p>
                                         <p><span>City</span><span><b> {delivery?.city || "N/A"}</b></span></p>
                                     </div>
-                                    {data.programmer_id == user?.id && (
+                                    {user && data.programmer_id == user?.id && (
                                         <div className="table-responsive">
                                             <table className="table table-bordered table-sm">
                                                 <thead>
