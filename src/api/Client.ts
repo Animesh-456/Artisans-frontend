@@ -78,6 +78,7 @@ class Client {
 			"auth/google-register",
 			"auth/facebook-callback",
 			"auth/facebook-login",
+			"auth/delivery_contacts"
 		];
 
 		this.test = false;
