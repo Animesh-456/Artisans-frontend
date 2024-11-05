@@ -177,7 +177,7 @@ const SignIn = (prp) => {
 	useEffect(() => {
 		window.fbAsyncInit = function () {
 			window.FB.init({
-				appId: "3789400361309842",
+				appId: "1323269679079061",
 				cookie: true,
 				xfbml: true,
 				version: "v21.0",
