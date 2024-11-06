@@ -74,15 +74,15 @@ const SignIn = (prp) => {
     const setlogin = common.ChangeState(loginstate);
     const [storedProject, setStoredProject] = useAtom(atom.storage.project);
 
-    const handleSumbit = (e: React.MouseEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleSumbit = () => {
+        // e.preventDefault();
 
 
         api.auth.check({ body: check });
     };
 
-    const handleLogin = (e: React.MouseEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleLogin = () => {
+        // e.preventDefault();
 
         // api.auth.login(
         // 	{ body: Pick(["email_username", "password"], login) },
