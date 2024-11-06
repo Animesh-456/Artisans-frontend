@@ -443,9 +443,9 @@ const SignIn = (prp) => {
                                                 onChange={setlogin("password")} />
                                             {/* <i className="fa fa-eye"></i> */}
                                         </div>
-                                        <div className="from_feild2">
-                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-                                            <label >Remember me</label>
+                                        <div className="from_feild2" >
+                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style={{ display: "none" }} />
+                                            <label></label>
                                         </div>
                                         <div className="from_feild1">
                                             <a href={"/auth/forgetpassword"}>Forgot Password?`</a>
