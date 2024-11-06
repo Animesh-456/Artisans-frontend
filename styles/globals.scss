@@ -4427,29 +4427,134 @@ marquee {
     margin: auto;
 }
 
+// .google-login {
+//     display: inline-block;
+//     border: 1px solid #c5c4c4;
+//     text-align: center;
+//     line-height: 42px;
+//     border-radius: 3px;
+//     margin-right: 10px;
+//     margin-top: 20px;
+// }
+
+// .facebook-login {
+//     width: 226px;
+//     background: #fff;
+//     display: inline-block;
+//     border: 1px solid #c5c4c4;
+//     height: 40px;
+//     text-align: center;
+//     line-height: 36px;
+//     border-radius: 3px;
+// }
+
+// .google-login a,
+// .facebook-login a {
+//     color: #363636;
+//     font-size: 14px;
+// }
+
+
 .google-login {
+    width: 100%;
     display: inline-block;
-    border: 1px solid #c5c4c4;
+    border: 2px solid #7f8180;
+    height: 45px;
     text-align: center;
     line-height: 42px;
-    border-radius: 3px;
+    border-radius: 5px;
     margin-right: 10px;
     margin-top: 20px;
 }
 
 .facebook-login {
-    width: 226px;
-    background: #fff;
+    width: 100%;
     display: inline-block;
-    border: 1px solid #c5c4c4;
-    height: 40px;
+    border: 2px solid #7f8180;
+    height: 45px;
     text-align: center;
-    line-height: 36px;
-    border-radius: 3px;
+    line-height: 42px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
 .google-login a,
 .facebook-login a {
-    color: #363636;
+    color: #000;
     font-size: 14px;
+}
+
+.google-login a img,
+.facebook-login a img {
+    float: left;
+    padding: 8px 0 0 8px;
+}
+
+.login_wp h3 {
+    text-align: center;
+    font-size: 21px;
+}
+
+.or {
+    position: relative;
+}
+
+.or p {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 2em;
+}
+
+.or:before {
+    border-top: 1px solid #cfcfcf;
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 44%;
+    top: 9px;
+}
+
+.or:after {
+    border-top: 1px solid #ddd;
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 44%;
+    top: 9px;
+}
+
+.signin_btn a {
+    background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    transition: box-shadow 1s;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.signin_btn a:hover {
+    box-shadow: none;
+}
+
+.signin_btn small {
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+
+.signin_btn {
+    margin-top: 20px;
+}
+
+#orange {
+    accent-color: #ef6100;
 }

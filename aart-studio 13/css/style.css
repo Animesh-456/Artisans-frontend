@@ -1117,6 +1117,7 @@ label{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
+    background: #f3f2f0;
 }
 .sign_wp form {
     margin-top: 2em;
@@ -1524,7 +1525,7 @@ ul.side-nav {
 .ygs a {
     position: absolute;
     right: 0;
-    background: white;
+    background: #006400;
     padding: 3px 6px;
     border-radius: 0 0 0 5px;
 }
@@ -1720,7 +1721,7 @@ ul.side-nav {
     margin-bottom: 12px;
 }
 .gallery_section{
-	background: #fff4e4;
+	background: #fff;
     padding: 3em;
 }
 .latest_request_text img {
@@ -2837,9 +2838,6 @@ button, select {
   100% {
 	transform: scale(1);
   }
-
-
-
 }
 
 
@@ -2882,6 +2880,7 @@ button, select {
     font-family: Poppins,sans-serif;
     font-size: 14px;
     height: 34px;
+    background: none;
 }
 .sidenav {
   height: 100%;
@@ -2893,7 +2892,7 @@ button, select {
   background-color: #fff;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 45px;
 }
 .widget_product_categories ul li {
     padding-bottom: 4px;
@@ -2927,4 +2926,114 @@ button, select {
 }
 
 
+
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #6c757d;
+    content: "\f105";
+    font: normal normal normal 14px/1 FontAwesome;
+}
+.breadcrumb a {
+    color: #010101;
+}
+.breadcrumb-item.active {
+    color: #ef6100;
+    font-weight: 500;
+    font-family: Poppins,sans-serif;
+}
+.breadcrumb {
+    margin-bottom: 0;
+    background: none;
+}
+.breadcrumb_sec{
+    background: #f3f2f0;
+}
+.google-login {
+    width: 100%;
+    display: inline-block;
+    border: 2px solid #7f8180;
+    height: 45px;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.facebook-login {
+    width: 100%;
+    display: inline-block;
+    border: 2px solid #7f8180;
+    height: 45px;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.google-login a, .facebook-login a {
+    color: #000;
+    font-size: 14px;
+}
+.google-login a img, .facebook-login a img {
+    float: left;
+    padding: 8px 0 0 8px;
+}
+.login_wp h3 {
+    text-align: center;
+    font-size: 21px;
+}
+.or{
+    position: relative;
+}
+.or p {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 2em;
+}
+.or:before{
+    border-top: 1px solid #cfcfcf;
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 44%;
+    top: 9px;
+}
+.or:after{
+    border-top: 1px solid #ddd;
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 44%;
+    top: 9px;
+}
+.signin_btn a{
+    background: #ef6100;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    transition: box-shadow 1s;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+.signin_btn a:hover{
+    box-shadow: none;
+}
+.signin_btn small {
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+.signin_btn {
+    margin-top: 20px;
+}
+#orange {
+    accent-color: #ef6100;
+}
 

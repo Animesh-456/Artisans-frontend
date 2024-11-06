@@ -2145,6 +2145,15 @@
     //     }
 
 
+    // .google-login {
+    //     width: 100%;
+    //     margin-bottom: 10px;
+    //     margin-right: 0;
+    //     margin-top: 0px;
+    // }
+
+    // .facebook-login {}
+
     .google-login {
         width: 100%;
         margin-bottom: 10px;
@@ -2152,7 +2161,10 @@
         margin-top: 0px;
     }
 
-    .facebook-login {}
+    .facebook-login {
+        width: 100%;
+        margin-top: 0px;
+    }
 }
 
 @media all and (max-width: 600px) {

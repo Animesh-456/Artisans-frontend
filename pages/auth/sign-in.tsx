@@ -385,137 +385,56 @@ const SignIn = (prp) => {
                 </div>
             </section>
 
-            <section className="sign_wp" >
+
+
+            <section className="sign_wp">
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-6">
-                            <div className="heading_title">
-                                <h1>Sign In</h1>
-                            </div>
-                            <form onSubmit={handleLogin}>
-                                <div className="from_feild">
-                                    <label>Email or Username: <span>*</span></label>
-                                    <input type="text" name="text" placeholder="Email or Username"
-                                        autoComplete='on'
-                                        value={login.email_username}
-                                        onChange={setlogin("email_username")}
-                                    />
-                                </div>
-                                <div className="from_feild">
-                                    <label>Password: <span>*</span></label>
-                                    <input type="password" name="password" placeholder="Password" value={login.password}
-                                        onChange={setlogin("password")} />
-                                </div>
-                                {/* <div className="from_feild2">
-									<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-									<label> &nbsp; Keep me signed in</label>
-								</div> */}
-                                <div className="from_feild1 fff1">
-                                    <a href={"/auth/forgetpassword"}>Forgot Password?</a>
-                                </div>
-
-                                <div className="discover_wp1 signin1">
-                                    {/* <a href="#">Sign In</a> */}
-                                    <input type="Submit" name="usersLogin" value="Sign in" />
-                                </div>
-                            </form>
+                        <div className="col-sm-4">
                         </div>
-                        <div className="col-sm-6">
-                            <div className="heading_title">
-                                <h1>Create an Account</h1>
-                            </div>
-                            <form onSubmit={handleSumbit}>
-                                <div className="from_feild">
-                                    <div className="form-check">
-                                        <label className="form-check-label">
-                                            <input type="radio" className="form-check-input" name="optradio"
-                                                value={2}
-                                                checked={check.role == 2 ? true : false}
-                                                onChange={setCheck("role")}
-                                            />I am an artist
-                                        </label>
+                        <div className="col-sm-4">
+                            <div className="login_wp">
+                                <h3>Welcome back!</h3>
+                                <div className="google-login">
+                                    <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=AcMMx-efvZdEv6pHDvArTR1RK5SLq3KB5oWwOCw1GTfIP3xnMSDTp499WFjLxe2Rxp5T05ubi9hg&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-802053235%3A1730791277136844&ddm=1" target="_blank"><img src="img/new-google-icon.svg" alt="" /> Continue with Google</a>
+                                </div>
+                                <div className="facebook-login">
+                                    <a href="https://www.facebook.com/" target="_blank"><img src="img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
+                                </div>
+                                <div className="or">
+                                    <p>OR</p>
+                                </div>
+                                <form>
+                                    <div className="from_feild">
+                                        <label>Email or Username: <span>*</span></label>
+                                        <input type="email" name="text" placeholder="Email or Username" />
                                     </div>
-                                    <div className="form-check">
-                                        <label className="form-check-label">
-                                            <input type="radio" className="form-check-input" name="optradio" value={1}
-                                                checked={check.role == 1 ? true : false}
-                                                onChange={setCheck("role")}
-                                            />I am an customer
-                                        </label>
+                                    <div className="from_feild">
+                                        <label>Password: <span>*</span></label>
+                                        <input type="email" name="password" placeholder="Password" />
+                                        <i className="fa fa-eye"></i>
                                     </div>
-                                </div>
-                                <div className="from_feild">
-                                    <label>Email Address: <span>*</span></label>
-                                    <input value={check.email}
-                                        onChange={setCheck("email")} type="email" name="text" placeholder="Type here..." />
-                                </div>
-                                <div className="from_feild1 fff1">
-                                    <a href={"/account/terms"}>Terms of service</a>
-                                </div>
-
-                                <div className="discover_wp1 signin1">
-                                    {/* <a href="#">Sign Up</a> */}
-                                    <input type="Submit" name="submit" />
-                                </div>
-                            </form>
-
-                        </div>
-
-                        <div className="or-separator">
-                            <span>OR</span>
-                            <hr />
-                        </div>
-
-
-                        <div id="OAUTH_BUTTONS">
-                            <section id='google-signup'>
-                                <div id="g_id_onload"
-                                    data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
-                                    data-context="signup"
-                                    data-ux_mode="popup"
-                                    data-callback="google-signup"
-                                    data-auto_prompt="false">
-                                </div>
-
-                                <div className="g_id_signin"
-                                    data-type="standard"
-                                    data-shape="rectangular"
-                                    data-theme="outline"
-                                    data-text="signup_with"
-                                    data-size="large"
-                                    data-logo_alignment="left">
-                                </div>
-                            </section>
-
-
-                            <section className="facebook-login">
-                                <a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin} ><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
-                            </section>
-                        </div>
-
-
-                        {/* <div className="row">
-                            <div className="col-sm-3"></div>
-                            <div className="col-sm-6">
-
-                              
-                                
-
+                                    <div className="from_feild2">
+                                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+                                        <label >Remember me</label>
+                                    </div>
+                                    <div className="from_feild1">
+                                        <a href="#">Forgot Password?`</a>
+                                    </div>
+                                    <div className="signin_btn">
+                                        <a href="#">Sign In</a>
+                                        <small>Or Create new account</small>
+                                    </div>
+                                </form>
                             </div>
-                            <div className="col-sm-3"></div>
-                        </div> */}
-                        {/* FACEBOOK BUTTON--------------- */}
-                        {/* <button onClick={handleFacebookLogin}>Contunue with FB</button> */}
-                        {/* <div onClick={handleFacebookLogin} className="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
-
-                        {/* <button onClick={handleFacebookLogin} style={{ padding: '10px 20px', backgroundColor: '#4267B2', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-							Continue with Facebook
-						</button> */}
-
-
+                        </div>
+                        <div className="col-sm-4">
+                        </div>
                     </div>
                 </div>
             </section>
+
+            
         </>
     );
 };

@@ -461,11 +461,13 @@ const SignIn = (prp) => {
 
 						</div>
 
+						<div className="or-separator">
+							<span>OR</span>
+							<hr />
+						</div>
 
-						<form>
-							<div className="google-btn">
 
-							
+						<div id="OAUTH_BUTTONS">
 							<section id='google-signup'>
 								<div id="g_id_onload"
 									data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
@@ -483,20 +485,25 @@ const SignIn = (prp) => {
 									data-size="large"
 									data-logo_alignment="left">
 								</div>
-
-
-
-
-
-
 							</section>
 
-							<button onClick={handleFacebookLogin} className="facebook-btn">
-								Continue with Facebook
-							</button>
+
+							<section className="facebook-login">
+								<a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin} ><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
+							</section>
 						</div>
 
-						</form>
+
+						{/* <div className="row">
+                            <div className="col-sm-3"></div>
+                            <div className="col-sm-6">
+
+                              
+                                
+
+                            </div>
+                            <div className="col-sm-3"></div>
+                        </div> */}
 						{/* FACEBOOK BUTTON--------------- */}
 						{/* <button onClick={handleFacebookLogin}>Contunue with FB</button> */}
 						{/* <div onClick={handleFacebookLogin} className="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
