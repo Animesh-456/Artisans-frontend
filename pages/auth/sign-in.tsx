@@ -271,11 +271,15 @@ const SignIn = (prp) => {
     // App secret ecfa8adec73117a7ddcc620dba72402d
 
 
+    const [pageview, setpageview] = useState(true)
+
+
 
     return (
         <>
 
             <div id="fb-root"></div>
+            
             {/* <Script async defer src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0&appId=1323269679079061"></Script> */}
             {/* <Script async defer src="https://connect.facebook.net/en_GB/sdk.js"></Script> */}
             {/* <section className="sign_wrap" style={{ backgroundImage: `url(./img/wave.png)` }}>
@@ -386,55 +390,142 @@ const SignIn = (prp) => {
             </section>
 
 
+            {pageview ? (
 
-            <section className="sign_wp">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-4">
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="login_wp">
-                                <h3>Welcome back!</h3>
-                                <div className="google-login">
-                                    <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=AcMMx-efvZdEv6pHDvArTR1RK5SLq3KB5oWwOCw1GTfIP3xnMSDTp499WFjLxe2Rxp5T05ubi9hg&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-802053235%3A1730791277136844&ddm=1" target="_blank"><img src="img/new-google-icon.svg" alt="" /> Continue with Google</a>
+                <section className="sign_wp">
+
+
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-4">
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="login_wp">
+                                    <h3>Welcome back!</h3>
+                                    {/* <div className="google-login">
+                                        <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=AcMMx-efvZdEv6pHDvArTR1RK5SLq3KB5oWwOCw1GTfIP3xnMSDTp499WFjLxe2Rxp5T05ubi9hg&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-802053235%3A1730791277136844&ddm=1" target="_blank"><img src="img/new-google-icon.svg" alt="" /> Continue with Google</a>
+                                    </div> */}
+                                    <div id="g_id_onload"
+                                        data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
+                                        data-context="signup"
+                                        data-ux_mode="popup"
+                                        data-login_uri="google-signup"
+                                        data-callback = "google-signup"
+                                        data-auto_prompt="false">
+                                    </div>
+
+                                    <div className="g_id_signin"
+                                        data-type="standard"
+                                        data-shape="rectangular"
+                                        data-theme="outline"
+                                        data-text="continue_with"
+                                        data-size="large"
+                                        data-logo_alignment="left"
+                                        data-width="200px">
+                                    </div>
+                                    <div className="facebook-login">
+                                        <a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin}><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
+                                    </div>
+                                    <div className="or">
+                                        <p>OR</p>
+                                    </div>
+                                    <form onSubmit={handleLogin}>
+                                        <div className="from_feild">
+                                            <label>Email or Username: <span>*</span></label>
+                                            <input type="text" name="text" placeholder="Email or Username"
+                                                autoComplete='on'
+                                                value={login.email_username}
+                                                onChange={setlogin("email_username")} />
+                                        </div>
+                                        <div className="from_feild">
+                                            <label>Password: <span>*</span></label>
+                                            <input type="password" name="password" placeholder="Password" value={login.password}
+                                                onChange={setlogin("password")} />
+                                            {/* <i className="fa fa-eye"></i> */}
+                                        </div>
+                                        <div className="from_feild2">
+                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+                                            <label >Remember me</label>
+                                        </div>
+                                        <div className="from_feild1">
+                                            <a href={"/auth/forgetpassword"}>Forgot Password?`</a>
+                                        </div>
+                                        <div className="signin_btn">
+                                            <a href="#" onClick={handleLogin}>Sign In</a>
+                                            <small style={{ cursor: "pointer" }} onClick={() => setpageview(false)}>Or Create new account</small>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div className="facebook-login">
-                                    <a href="https://www.facebook.com/" target="_blank"><img src="img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
-                                </div>
-                                <div className="or">
-                                    <p>OR</p>
-                                </div>
-                                <form>
-                                    <div className="from_feild">
-                                        <label>Email or Username: <span>*</span></label>
-                                        <input type="email" name="text" placeholder="Email or Username" />
-                                    </div>
-                                    <div className="from_feild">
-                                        <label>Password: <span>*</span></label>
-                                        <input type="email" name="password" placeholder="Password" />
-                                        <i className="fa fa-eye"></i>
-                                    </div>
-                                    <div className="from_feild2">
-                                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-                                        <label >Remember me</label>
-                                    </div>
-                                    <div className="from_feild1">
-                                        <a href="#">Forgot Password?`</a>
-                                    </div>
-                                    <div className="signin_btn">
-                                        <a href="#">Sign In</a>
-                                        <small>Or Create new account</small>
-                                    </div>
-                                </form>
+                            </div>
+                            <div className="col-sm-4">
                             </div>
                         </div>
-                        <div className="col-sm-4">
-                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ) : (
+                <>
 
-            
+                    <section className="sign_wp">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-sm-4">
+                                </div>
+                                <div className="col-sm-4">
+                                    <div className="login_wp">
+                                        <h3>Create an account</h3>
+                                        <div className="google-login">
+                                            <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=AcMMx-efvZdEv6pHDvArTR1RK5SLq3KB5oWwOCw1GTfIP3xnMSDTp499WFjLxe2Rxp5T05ubi9hg&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-802053235%3A1730791277136844&ddm=1" target="_blank"><img src="img/new-google-icon.svg" alt="" /> Continue with Google</a>
+                                        </div>
+                                        <div className="facebook-login">
+                                            <a href="https://www.facebook.com/" target="_blank"><img src="img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
+                                        </div>
+                                        <div className="or">
+                                            <p>OR</p>
+                                        </div>
+                                        <form onSubmit={handleSumbit}>
+                                            <div className="from_feild">
+                                                <div className="form-check">
+                                                    <label className="form-check-label">
+                                                        <input type="radio" id="orange" className="form-check-input" name="optradio" value={2}
+                                                            checked={check.role == 2 ? true : false}
+                                                            onChange={setCheck("role")} />I am an artist </label>
+                                                </div>
+                                                <div className="form-check">
+                                                    <label className="form-check-label">
+                                                        <input type="radio" id="orange" className="form-check-input" name="optradio" value={1}
+                                                            checked={check.role == 1 ? true : false}
+                                                            onChange={setCheck("role")} />I am an customer </label>
+                                                </div>
+                                            </div>
+                                            <div className="from_feild">
+                                                <label>Email Address: <span>*</span>
+                                                </label>
+                                                <input type="email" name="text" value={check.email}
+                                                    onChange={setCheck("email")} placeholder="Type here..." />
+                                            </div>
+                                            <div className="from_feild2">
+                                                {/* <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" /> */}
+                                                <a href={"/account/terms"}>Terms of service</a>
+                                            </div>
+                                            <div className="signin_btn">
+                                                <a href="#" onClick={handleSumbit}>Sign Up</a>
+                                                <small style={{ cursor: "pointer" }} onClick={() => setpageview(true)}>Or Log in as an existing customer/artist </small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div className="col-sm-4">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </>
+            )}
+
+
+
         </>
     );
 };
