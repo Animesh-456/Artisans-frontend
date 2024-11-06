@@ -103,7 +103,7 @@ const AdditionalInfo = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="row from_feild">
+                                {/* <div className="row from_feild">
                                     <div className="col-sm-4">
                                         <label>Address <span>*</span></label>
                                     </div>
@@ -116,7 +116,7 @@ const AdditionalInfo = () => {
                                             placeholder="Enter your address"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="row from_feild cont11">
                                     <div className="col-sm-4">
                                         <label>Password <span>*</span></label>
