@@ -174,6 +174,8 @@ const SignIn = (prp) => {
     }
     mountScript();
 
+    
+
     useEffect(() => {
         window.fbAsyncInit = function () {
             window.FB.init({
@@ -421,7 +423,8 @@ const SignIn = (prp) => {
                                         data-text="continue_with"
                                         data-size="large"
                                         data-logo_alignment="left"
-                                        data-width="200px">
+                                        
+                                        >
                                     </div>
                                     <div className="facebook-login">
                                         <a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin}><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
