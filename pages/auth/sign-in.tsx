@@ -174,8 +174,6 @@ const SignIn = (prp) => {
     }
     mountScript();
 
-    
-
     useEffect(() => {
         window.fbAsyncInit = function () {
             window.FB.init({
@@ -423,8 +421,7 @@ const SignIn = (prp) => {
                                         data-text="continue_with"
                                         data-size="large"
                                         data-logo_alignment="left"
-                                        data-width="350"
-                                        >
+                                        data-width="350">
                                     </div>
                                     <div className="facebook-login">
                                         <a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin}><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
@@ -446,9 +443,9 @@ const SignIn = (prp) => {
                                                 onChange={setlogin("password")} />
                                             {/* <i className="fa fa-eye"></i> */}
                                         </div>
-                                        <div className="from_feild2">
-                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-                                            <label >Remember me</label>
+                                        <div className="from_feild2" >
+                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style={{ display: "none" }} />
+                                            <label></label>
                                         </div>
                                         <div className="from_feild1">
                                             <a href={"/auth/forgetpassword"}>Forgot Password?`</a>
@@ -536,7 +533,7 @@ const SignIn = (prp) => {
                                                 <a href={"/account/terms"}>Terms of service</a>
                                             </div>
                                             <div className="signin_btn">
-                                                <a href="#" onClick={handleSumbit}>Sign Up</a>
+                                                <a onClick={handleSumbit}>Sign Up</a>
                                                 <small style={{ cursor: "pointer" }} onClick={() => setpageview(true)}>Or Log in as an existing customer/artist </small>
                                             </div>
                                         </form>
