@@ -3036,4 +3036,37 @@ button, select {
 #orange {
     accent-color: #ef6100;
 }
+/*8.11.2024*/
+.login_otp a{
+    background: #fff;
+    color: #000;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    font-family: "Poppins", sans-serif;
+    padding: 6px 22px;
+    transition: box-shadow 1s;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+}
+.login_otp a:hover{
+    box-shadow: none;
+}
+.login_otp {
+    margin-top: 2em;
+}
+.login_wp h5 {
+    font-size: 13px;
+    text-align: left;
+    font-weight: 500;
+    margin-top: 32px;
+}
+.resend_otp a {
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 2em;
+}
 

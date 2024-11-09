@@ -668,4 +668,130 @@ export default {
   },
 
 
+  // MOBILE OTP SEND  
+
+
+  send_mobileOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+
+    api
+      .post("auth/otp-send", body, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          // Router.push('/auth/sign-in');
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
+  // MOBILE OTP VERIFY  
+
+  verify_mobileOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+
+    toast.loading();
+    let data = body;
+
+    if (!data) {
+      return;
+    }
+
+    delete data.agreed;
+    const BaseURL = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`;
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+    fetch(`${BaseURL}user/auth/otp-verify`, requestOptions)
+      .then((response) => response.json())
+      .then((d) => {
+        if (d.status) {
+
+
+
+          toast.success(d.message);
+          writeAtom(atom.storage.user, d.data);
+          localStorage.setItem("UserData", JSON.stringify(d.data));
+          writeAtom(atom.storage.loginmodal, true)
+
+          Router.push("/account/jobs");
+          return cb(d);
+
+        } else {
+          toast.error(d.message);
+        }
+      });
+  },
+
+  // Email OTP SEND  
+
+
+  send_emailOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+    api
+      .post("auth/email-otp-send", body, params)
+      .then((d) => {
+        if (d.status) {
+          // Store the emailOtpToken in localStorage
+          if (d.data) {
+            localStorage.setItem("emailOtpToken", d.data);
+          }
+
+          toast.success(d.message);
+          // Router.push('/auth/sign-in');
+          return cb?.(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
+  // EMAIL OTP VERIFY  
+
+  verify_emailOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+    toast.loading();
+    let data = body;
+
+    if (!data) {
+      return;
+    }
+
+    const BaseURL = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`;
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${params?.token}`, // Pass token in Authorization header
+      },
+      body: JSON.stringify(data),
+    };
+
+    fetch(`${BaseURL}user/auth/email-otp-verify`, requestOptions)
+      .then((response) => response.json())
+      .then((d) => {
+        if (d.status) {
+        
+
+          toast.success(d.message);
+          writeAtom(atom.storage.user, d.data);
+          localStorage.setItem("UserData", JSON.stringify(d.data));
+          writeAtom(atom.storage.loginmodal, true);
+
+          Router.push("/account/jobs");
+          return cb(d);
+        } else {
+          toast.error(d.message);
+        }
+      })
+      .catch((error) => {
+        toast.error("An error occurred. Please try again.");
+
+      });
+  },
+
+
+
 };

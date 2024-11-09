@@ -28,8 +28,10 @@ class Client {
 			"auth/generate-new-password",
 			"auth/forgot-username",
 			"auth/send-mobile-otp",
+			"auth/send-email-otp",
 			"auth/get-otp",
 			"auth/verify-mobile-otp",
+			"auth/verify-email-otp",
 			"project/list",
 			"auth/google-login",
 			"auth/register",
@@ -78,7 +80,14 @@ class Client {
 			"auth/google-register",
 			"auth/facebook-callback",
 			"auth/facebook-login",
-			"auth/delivery_contacts"
+			"auth/delivery_contacts",
+			"auth/otp-send",
+			"auth/otp-verify",
+			"auth/email-otp-send",
+			"auth/email-otp-verify",
+
+			
+			
 		];
 
 		this.test = false;
