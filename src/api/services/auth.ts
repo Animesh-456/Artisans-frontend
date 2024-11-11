@@ -682,6 +682,7 @@ export default {
           return cb(d);
         } else {
           toast.error(d.message);
+          return 
         }
       })
       .catch((err) => console.log(err));
@@ -718,7 +719,7 @@ export default {
           writeAtom(atom.storage.loginmodal, true)
 
           Router.push("/account/jobs");
-          return cb(d);
+          return;
 
         } else {
           toast.error(d.message);
@@ -741,7 +742,7 @@ export default {
 
           toast.success(d.message);
           // Router.push('/auth/sign-in');
-          return cb?.(d);
+          return cb(d);
         } else {
           toast.error(d.message);
         }

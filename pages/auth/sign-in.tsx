@@ -454,6 +454,13 @@ const SignIn = (prp) => {
                                             <a href="#" onClick={handleLogin}>Sign In</a>
                                             <small style={{ cursor: "pointer" }} onClick={() => setpageview(false)}>Or Create new account</small>
                                         </div>
+
+                                        <div className="or">
+                                            <p>OR</p>
+                                        </div>
+                                        <div className="login_otp">
+                                            <a href="/auth/otp">Get an OTP on your phone</a>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -533,9 +540,12 @@ const SignIn = (prp) => {
                                                 <a href={"/account/terms"}>Terms of service</a>
                                             </div>
                                             <div className="signin_btn">
-                                                <a onClick={handleSumbit}>Sign Up</a>
+                                                <a href="#" onClick={handleSumbit}>Sign Up</a>
                                                 <small style={{ cursor: "pointer" }} onClick={() => setpageview(true)}>Or Log in as an existing customer/artist </small>
                                             </div>
+
+
+
                                         </form>
                                     </div>
                                 </div>
