@@ -774,7 +774,7 @@ export default {
       .then((response) => response.json())
       .then((d) => {
         if (d.status) {
-        
+
 
           toast.success(d.message);
           writeAtom(atom.storage.user, d.data);
@@ -793,6 +793,18 @@ export default {
       });
   },
 
+  register_mobileOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+    return api
+      .post("auth/register-otp-send", body, params)
+  },
 
+  // REGISTER OTP SEND
 
+  // REGISTERVERIFY OTP SEND
+  registerverify_mobileOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+
+    return api
+      .post("auth/register-otp-verify", body, params)
+  },
+  
 };

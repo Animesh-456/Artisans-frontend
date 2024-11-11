@@ -7,6 +7,7 @@ import atom from "../../src/jotai/atom";
 import { writeAtom } from "jotai-nexus";
 import { toast } from "react-hot-toast";
 import Multiselect from 'multiselect-react-dropdown';
+import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
 
 type Props = {};
 
@@ -43,7 +44,8 @@ const CustomerSignIn = (props: Props) => {
 	// const [displayOptions, setDisplayOptions] = useState([]);
 	const [categories, setcategories] = useState([]); // To set multiple categories
 	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
-
+	const [otp, setotp] = useState("");
+	const [open, setOpen] = useAtom(atom.modal.confirm_project);
 	const category = [];
 
 	Category_subcategory?.categories?.map((sub) => {
@@ -63,8 +65,8 @@ const CustomerSignIn = (props: Props) => {
 		};
 	}, []);
 
-	const handleSumbit = (e: React.MouseEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const handleSumbit = () => {
+		
 		//if (disable) return;
 		if (!checkbox) {
 			toast.error("Please accept the terms")
@@ -153,13 +155,76 @@ const CustomerSignIn = (props: Props) => {
 		setcategories(selectedList)
 	};
 
+
+	const startRegister = async (event) => {
+		event.preventDefault();
+		
+		console.log("Current phoneNumber value:", signIn.mobile_number); 
+		try {
+			const data = { body:{phoneNumber: signIn.mobile_number}  };
+			const response = await api.auth.register_mobileOtp(data);
+			if (response.status) {
+				toast.success("OTP sent successfully");
+				setOpen(true);
+			} else {
+				toast.error("Error sending OTP: " + response.message);
+			}
+		} catch (error) {
+			console.error(error);
+			toast.error(error?.message || "Unknown error, check logs");
+		}
+		// setOpen(true);
+		
+	};
+
+	const verifyOTP = async (event) => {
+		event.preventDefault();
+	
+		try {
+			// Replace `otp` and `phoneNumber` with actual values from state or input fields
+			const response:any = await api.auth.registerverify_mobileOtp({ 
+				body: { 
+					code: otp, 
+					phoneNumber: signIn.mobile_number
+				} 
+			});
+	
+			if (response.status) {
+				toast.success("OTP verified successfully");
+
+				handleSumbit();	
+				router.push("/auth/suppliersuccess")			
+				// Perform actions upon successful verification, such as redirecting or opening a modal
+				setOpen(false); // Close OTP modal on success
+			} else {
+				toast.error("OTP verification failed: " + response.message);
+			}
+		} catch (error) {
+			console.error("Error verifying OTP:", error);
+			toast.error(error?.message || "Unknown error, check logs");
+		}
+	};
+
 	return (
 		<>
-			<section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
+			{/* <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
 				<div className="container">
 					<h1>Create Your Account</h1>
 				</div>
-			</section>
+			</section> */}
+
+				<section className="breadcrumb_sec">
+				<div className="container">
+					<div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href={"/"}>Home</a></li>
+                            <li className="breadcrumb-item active">Supplier Register</li>
+                           
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
 			<section className="myproject">
 				<div className="container">
 					<div className="row justify-content-center">
@@ -360,7 +425,7 @@ const CustomerSignIn = (props: Props) => {
 										<div className='col-sm-8'>
 											<input
 												name='mobile_number'
-												type='number'
+												type='text'
 												autoComplete={"tel"}
 												value={signIn.mobile_number}
 												onChange={setSign("mobile_number")}
@@ -461,13 +526,42 @@ const CustomerSignIn = (props: Props) => {
 											disable
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
-										} >Register</button>
+										} onClick={startRegister}>Register</button>
 										<button className="canl" onClick={() => window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
+
+					<GlobalModal
+						title='Verify Your OTP'
+						atom={atom.modal.confirm_project}>
+
+						<div className="modal-body modal_design">
+
+							<div className="from_feild">
+								<label>Enter OTP: <span>*</span></label>
+								<input type="text" name="text" placeholder="OTP" value={otp} onChange={(e) => setotp(e.target.value)}/>
+							</div>
+
+							<div className="signin_btn">
+								<a href="#" 
+								onClick={verifyOTP}>Verify</a>
+							</div>
+							{/* <div className="resend_otp">
+								<a href="#">Resend OTP</a>
+							</div> */}
+							<div className="button_s ">
+								{/* <a style={{ cursor: "pointer", color: "#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a> */}
+								{/* <a style={{ cursor: "pointer", color: "#fff" }} onSubmit={handleSumbit}>Submit</a> */}
+							</div>
+
+						</div>
+
+
+
+					</GlobalModal>
 				</div>
 			</section>
 		</>

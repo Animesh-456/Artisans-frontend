@@ -423,9 +423,9 @@ const SignIn = (prp) => {
                                         data-logo_alignment="left"
                                         data-width="350">
                                     </div>
-                                    <div className="facebook-login">
+                                    {/* <div className="facebook-login">
                                         <a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin}><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
-                                    </div>
+                                    </div> */}
                                     <div className="or">
                                         <p>OR</p>
                                     </div>
@@ -508,9 +508,9 @@ const SignIn = (prp) => {
                                         </div>
 
 
-                                        <div className="facebook-login">
+                                        {/* <div className="facebook-login">
                                             <a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin}><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
-                                        </div>
+                                        </div> */}
                                         <div className="or">
                                             <p>OR</p>
                                         </div>
