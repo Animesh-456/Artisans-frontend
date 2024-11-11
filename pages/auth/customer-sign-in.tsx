@@ -10,6 +10,8 @@ import { toast } from "react-hot-toast";
 import { writeAtom } from "jotai-nexus";
 import Form from 'react-bootstrap/Form';
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
+import { Validate } from "../../src/validation/utils/test";
+import schema from "../../src/validation/schema/schema";
 
 
 type Props = {};
@@ -44,7 +46,13 @@ const CustomerSignIn = (props: Props) => {
 	const [procust, setprocust] = useState(false);
 	const [open, setOpen] = useAtom(atom.modal.confirm_project);
 	const [otp, setotp] = useState("");
-	
+	const [visiblity, setvisibility] = useState(true);
+	const [optsendbutton, setoptsendbutton] = useState(true)
+    const [verifybutton, setverifybutton] = useState(true)
+
+
+    const [timeLeft, setTimeLeft] = useState(60); // Countdown starting from 60 seconds
+    const [isTimerRunning, setIsTimerRunning] = useState(false);
 	useEffect(() => {
 		let time = setTimeout(() => {
 			setDisable(false);
@@ -169,17 +177,47 @@ const CustomerSignIn = (props: Props) => {
 		}
 	}
 
+	useEffect(() => {
+        let timerId: NodeJS.Timeout | null = null;
+
+        if (isTimerRunning && timeLeft > 0) {
+            timerId = setInterval(() => {
+                setTimeLeft((prevTime) => prevTime - 1);
+            }, 1000);
+        } else if (timeLeft === 0) {
+            setIsTimerRunning(false); 
+			setvisibility(true);
+			// Stop the timer when it reaches 0
+        }
+
+        // Cleanup function
+        return () => {
+            if (timerId) {
+                clearInterval(timerId);
+            }
+        };
+    }, [isTimerRunning, timeLeft]);
 
 	const startRegister = async (event) => {
 		event.preventDefault();
-		
-		console.log("Current phoneNumber value:", signIn.mobile_number); 
+
+
+		let data = Validate([], schema.auth.customer_register, signIn)
+		if(!data) return;
+		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits");
+		if (!checkbox) {
+			toast.error("Please accept the terms")
+			return
+		};
 		try {
 			const data = { body:{phoneNumber: signIn.mobile_number}  };
 			const response = await api.auth.register_mobileOtp(data);
 			if (response.status) {
 				toast.success("OTP sent successfully");
 				setOpen(true);
+				setvisibility(false);
+				setIsTimerRunning(true);
+				setTimeLeft(60);
 			} else {
 				toast.error("Error sending OTP: " + response.message);
 			}
@@ -219,7 +257,40 @@ const CustomerSignIn = (props: Props) => {
 		}
 	};
 	
+	const resendOtp = async() => {
+        setotp("")
 
+        //  Call api to send otp to mobile number
+        // api.auth.send_mobileOtp(
+        //     { params: {}, body: { phoneNumber: mobile } },
+        //     (d) => {
+        //         if (d?.status === true) {
+        //             setvisibility(true);
+        //             setIsTimerRunning(true);
+        //             setTimeLeft(60);
+        //         }
+        //     }
+        // );
+
+		
+		console.log("Current phoneNumber value:", signIn.mobile_number); 
+		try {
+			const data = { body:{phoneNumber: signIn.mobile_number}  };
+			const response = await api.auth.register_mobileOtp(data);
+			if (response.status) {
+				toast.success("OTP sent successfully");
+				setOpen(true);
+				setvisibility(false);
+				setIsTimerRunning(true);
+				setTimeLeft(60);
+			} else {
+				toast.error("Error sending OTP: " + response.message);
+			}
+		} catch (error) {
+			console.error(error);
+			toast.error(error?.message || "Unknown error, check logs");
+		}
+    }
 
 	return (
 
@@ -231,7 +302,7 @@ const CustomerSignIn = (props: Props) => {
 				</div>
 			</section> */}
 
-<section className="breadcrumb_sec">
+			<section className="breadcrumb_sec">
 				<div className="container">
 					<div className="row">
                         <ul className="breadcrumb">
@@ -464,10 +535,10 @@ const CustomerSignIn = (props: Props) => {
 									<br />
 									<div className="reg-bottom">
 										<button type="submit" name="submit" style={
-											disable
+											!visiblity
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
-										} onClick={startRegister}>Register</button>
+										} disabled={!visiblity} onClick={startRegister}>Register</button>
 										<button className="canl" onClick={() => window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
@@ -494,6 +565,10 @@ const CustomerSignIn = (props: Props) => {
 							{/* <div className="resend_otp">
 								<a href="#">Resend OTP</a>
 							</div> */}
+							<div className="resend_otp">
+                                     {isTimerRunning ? (<a href="#">Resend OTP in {timeLeft}s</a>) : (<a href="#" onClick={resendOtp}>Resend OTP</a>)}
+                                     </div>
+
 							<div className="button_s ">
 								{/* <a style={{ cursor: "pointer", color: "#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a> */}
 								{/* <a style={{ cursor: "pointer", color: "#fff" }} onSubmit={handleSumbit}>Submit</a> */}

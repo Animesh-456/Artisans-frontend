@@ -8,7 +8,8 @@ import { writeAtom } from "jotai-nexus";
 import { toast } from "react-hot-toast";
 import Multiselect from 'multiselect-react-dropdown';
 import GlobalModal from "../../src/views/Common/Modals/GlobalModal";
-
+import { Validate } from "../../src/validation/utils/test";
+import schema from "../../src/validation/schema/schema";
 type Props = {};
 
 const CustomerSignIn = (props: Props) => {
@@ -31,7 +32,8 @@ const CustomerSignIn = (props: Props) => {
 		company_number: "",
 		Squestion: "What is your pet's name?",
 		answer: "",
-		mobile_number: ""
+		mobile_number: "",
+		category: ""
 	});
 	const setSign = common.ChangeState(signstate);
 	// const BaseURL = "http://localhost:4000/";
@@ -46,6 +48,10 @@ const CustomerSignIn = (props: Props) => {
 	const Category_subcategory: any = useAtomValue(atom.project.api.get_category_subcategory)
 	const [otp, setotp] = useState("");
 	const [open, setOpen] = useAtom(atom.modal.confirm_project);
+	const [visiblity, setvisibility] = useState(true);
+
+    const [timeLeft, setTimeLeft] = useState(60); // Countdown starting from 60 seconds
+    const [isTimerRunning, setIsTimerRunning] = useState(false);
 	const category = [];
 
 	Category_subcategory?.categories?.map((sub) => {
@@ -155,16 +161,90 @@ const CustomerSignIn = (props: Props) => {
 		setcategories(selectedList)
 	};
 
+	useEffect(() => {
+        let timerId: NodeJS.Timeout | null = null;
+
+        if (isTimerRunning && timeLeft > 0) {
+            timerId = setInterval(() => {
+                setTimeLeft((prevTime) => prevTime - 1);
+            }, 1000);
+        } else if (timeLeft === 0) {
+            setIsTimerRunning(false); 
+			setvisibility(true);
+			// Stop the timer when it reaches 0
+        }
+
+        // Cleanup function
+        return () => {
+            if (timerId) {
+                clearInterval(timerId);
+            }
+        };
+    }, [isTimerRunning, timeLeft]);
+
 
 	const startRegister = async (event) => {
 		event.preventDefault();
+		// let data = Validate([], schema.auth.supplier_register, signIn)
+		// if(!data) return;
+		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits");
+		if (!checkbox) {
+			toast.error("Please accept the terms")
+			return
+		};
+		// //setDisable(true);
+		// signIn["category"] = categories?.map(item => item.id)?.join(',');
+		if (!signIn.user_name ) {
+			return toast.error("Please enter username");
+		}
+		// if (!signIn.category || signIn.category.trim() === "") {
+		// 	return toast.error("Please select at least one category");
+		// }
+	
 		
-		console.log("Current phoneNumber value:", signIn.mobile_number); 
+		// Validate email
+		if (!signIn.email ) {
+			return toast.error("Please enter a valid email address");
+		}
+
+		// Validate password
+		if (!signIn.password || signIn.password.length < 6) {
+			return toast.error("Password must be at least 6 characters long");
+		}
+
+		// Validate password confirmation
+		if (signIn.password !== signIn.password_confirmation) {
+			return toast.error("Passwords do not match");
+		}
+
+		if (!signIn.answer ) {
+			return toast.error("Secret answer cannot be empty");
+		}
+
+		// Validate address
+		if (!signIn.address1 ) {
+			return toast.error("Address cannot be empty");
+		}
+
+		// Validate postal code
+		if (!signIn.zcode ) {
+			return toast.error("Postal code cannot be empty");
+		}
+
+		// Validate city
+		if (!signIn.city || signIn.city.trim() === "") {
+			return toast.error("City cannot be empty");
+		}
+		
+
 		try {
 			const data = { body:{phoneNumber: signIn.mobile_number}  };
 			const response = await api.auth.register_mobileOtp(data);
 			if (response.status) {
 				toast.success("OTP sent successfully");
+				setvisibility(false);
+				setIsTimerRunning(true);
+				setTimeLeft(60);
 				setOpen(true);
 			} else {
 				toast.error("Error sending OTP: " + response.message);
@@ -207,11 +287,7 @@ const CustomerSignIn = (props: Props) => {
 
 	return (
 		<>
-			{/* <section className="inner_banner_wp" style={{ backgroundImage: "url(../img/inner-banner.jpg)" }}>
-				<div className="container">
-					<h1>Create Your Account</h1>
-				</div>
-			</section> */}
+			
 
 				<section className="breadcrumb_sec">
 				<div className="container">
@@ -523,10 +599,10 @@ const CustomerSignIn = (props: Props) => {
 									<br />
 									<div className="reg-bottom">
 										<button type="submit" name="submit" style={
-											disable
+											!visiblity
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
-										} onClick={startRegister}>Register</button>
+										} disabled={!visiblity} onClick={startRegister}>Register</button>
 										<button className="canl" onClick={() => window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
 									</div>
 								</form>
