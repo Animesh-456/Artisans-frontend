@@ -210,7 +210,7 @@ const CustomerSignIn = (props: Props) => {
 			return
 		};
 		try {
-			const data = { body:{phoneNumber: signIn.mobile_number}  };
+			const data = { body:{phoneNumber: signIn.mobile_number, email: signIn.email, user_name: signIn.user_name}  };
 			const response = await api.auth.register_mobileOtp(data);
 			if (response.status) {
 				toast.success("OTP sent successfully");
