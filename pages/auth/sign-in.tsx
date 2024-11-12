@@ -455,12 +455,12 @@ const SignIn = (prp) => {
                                             <small style={{ cursor: "pointer" }} onClick={() => setpageview(false)}>Or Create new account</small>
                                         </div>
 
-                                        {/* <div className="or">
+                                        <div className="or">
                                             <p>OR</p>
-                                        </div> */}
-                                        {/* <div className="login_otp">
+                                        </div>
+                                        <div className="login_otp">
                                             <a href="/auth/otp">Get an OTP on your phone</a>
-                                        </div> */}
+                                        </div>
                                     </form>
                                 </div>
                             </div>
