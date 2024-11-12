@@ -1089,9 +1089,12 @@ const EditProfile = (prp) => {
 
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                <label>Mobile Number</label>
+                                                <label>Mobile Number  <a href="/account/update-mobile">Update</a></label>
                                                 <input disabled name="mobile_number" autoComplete="tel" type="text" value={user?.mobile_number}
+
                                                 />
+
+                                               
                                             </div>
 
 

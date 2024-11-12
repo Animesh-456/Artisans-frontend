@@ -86,10 +86,7 @@ class Client {
 			"auth/email-otp-send",
 			"auth/email-otp-verify",
 			"auth/register-otp-send",
-			"auth/register-otp-verify"
-
-
-
+			"auth/register-otp-verify",
 		];
 
 		this.test = false;

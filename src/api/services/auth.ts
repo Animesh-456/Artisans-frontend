@@ -682,7 +682,7 @@ export default {
           return cb(d);
         } else {
           toast.error(d.message);
-          return 
+          return
         }
       })
       .catch((err) => console.log(err));
@@ -726,6 +726,53 @@ export default {
         }
       });
   },
+
+
+
+
+
+
+
+
+  update_mobile_send_mobileOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+
+    api
+      .post("auth/update-mobile-otp-send", body, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          // Router.push('/auth/sign-in');
+          return cb(d);
+        } else {
+          toast.error(d.message);
+          return
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
+  // MOBILE OTP VERIFY  
+
+  update_mobile_verify_mobileOtp: ({ params, body }: UploadParams, cb?: GetResponse) => {
+
+    api
+      .post("auth/update-mobile-otp-verify", body, params)
+      .then((d) => {
+        if (d.status) {
+          toast.success(d.message);
+          Router.push('/account/profile');
+          return cb(d);
+        } else {
+          toast.error(d.message);
+          return
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+
+
+
+
 
   // Email OTP SEND  
 
@@ -806,5 +853,5 @@ export default {
     return api
       .post("auth/register-otp-verify", body, params)
   },
-  
+
 };

@@ -1,10 +1,10 @@
+import { useAtom, useAtomValue } from "jotai";
 import { toast } from "react-hot-toast";
 import React, { useEffect, useState } from "react";
 import api from "../../src/api/services/api";
+import atom from "../../src/jotai/atom";
 
-const Otp = () => {
-
-
+const UpdateMobile = () => {
     const [visiblity, setvisibility] = useState(false);
     const [mobile, setmobile] = useState("");
     const [otp, setotp] = useState("");
@@ -15,6 +15,8 @@ const Otp = () => {
 
     const [timeLeft, setTimeLeft] = useState(60); // Countdown starting from 60 seconds
     const [isTimerRunning, setIsTimerRunning] = useState(false);
+
+    const user = useAtomValue(atom.storage.user);
 
     // useEffect to handle the countdown logic
     useEffect(() => {
@@ -38,13 +40,13 @@ const Otp = () => {
 
     const sendOtp = (e) => {
         e.preventDefault()
-        
+
 
         if (mobile?.length == 0 || mobile?.length != 10) return toast.error("Mobile number should be 10 digits")
         //  Call api to send otp to mobile number
         setoptsendbutton(false)
-        api.auth.send_mobileOtp(
-            { params: {}, body: { phoneNumber: mobile } },
+        api.auth.update_mobile_send_mobileOtp(
+            { params: {}, body: { phoneNumber: mobile, userId: user?.id } },
             (d) => {
                 if (d?.status === true) {
                     setvisibility(true);
@@ -62,7 +64,7 @@ const Otp = () => {
         e.preventDefault()
         setverifybutton(false)
         if (!mobile || !otp) return toast.error("Please provide mobile and OTP");
-        await api.auth.verify_mobileOtp({ params: {}, body: { phoneNumber: mobile, code: otp } })
+        await api.auth.update_mobile_verify_mobileOtp({ params: {}, body: { phoneNumber: mobile, code: otp, userId: user?.id } })
     }
 
     const resendOtp = () => {
@@ -70,8 +72,8 @@ const Otp = () => {
 
         if (mobile?.length == 0 || mobile?.length != 10) return toast.error("Mobile number should be 10 digits")
         //  Call api to send otp to mobile number
-        api.auth.send_mobileOtp(
-            { params: {}, body: { phoneNumber: mobile } },
+        api.auth.update_mobile_send_mobileOtp(
+            { params: {}, body: { phoneNumber: mobile, userId: user?.id } },
             (d) => {
                 if (d?.status === true) {
                     setvisibility(true);
@@ -94,7 +96,7 @@ const Otp = () => {
                         </div>
                         <div className="col-sm-4">
                             <div className="login_wp">
-                                <h3>Authorization Required</h3>
+                                <h3>Update Mobile</h3>
                                 {visiblity && (
                                     <h5>We've sent a One Time Password (OTP) to the <br />register mobile number. Please enter it to complete<br />verification</h5>
                                 )}
@@ -103,18 +105,18 @@ const Otp = () => {
 
                                         <div className="from_feild">
                                             <label>Mobile Number: <span>*</span></label>
-                                            <input value={mobile} onChange={(e) => setmobile(e.target.value)} type="number" name="tel" placeholder="Mobile Number" />
+                                            <input value={mobile} onChange={(e) => setmobile(e.target.value)} type="number" name="tel" placeholder="Enter new Mobile Number" />
                                         </div>
                                     ) : (
                                         <div className="from_feild">
                                             <label>Enter OTP: <span>*</span></label>
-                                            <input value={otp} onChange={(e) => setotp(e.target.value)} type="text" name="text" placeholder="OTP" />
+                                            <input value={otp} onChange={(e) => setotp(e.target.value)} type="text" name="text" placeholder="Enter OTP" />
                                         </div>
                                     )}
 
                                     {!visiblity ? (
                                         <div className="signin_btn">
-                                            <a href="#" onClick={sendOtp} style={{ display: optsendbutton ? "" : "none" }}>Get OTP</a>
+                                            <a href="#" onClick={sendOtp}>Get OTP</a>
                                         </div>
                                     ) : (
                                         <>
@@ -127,15 +129,7 @@ const Otp = () => {
                                         </>
                                     )}
 
-                                    <div className="or">
-                                        <p>OR</p>
-                                    </div>
-                                    <div className="login_otp">
-                                        <a href={"/auth/sign-in"}>Sign in with email & password</a>
-                                    </div>
-                                    {/* <div className="signin_btn">
-                                        <small>Or Create new account</small>
-                                    </div> */}
+                                    
                                 </form>
                             </div>
                         </div>
@@ -148,6 +142,4 @@ const Otp = () => {
     )
 }
 
-Otp.ignorePath = true;
-
-export default Otp
+export default UpdateMobile

@@ -378,6 +378,12 @@ const Profile = (prp) => {
                                             <p>{data?.address1}</p>
                                         </div>
                                         <div className='myprofile_name_label'>
+                                            <p>Mobile</p>
+                                        </div>
+                                        <div className='myprofile_name_list'>
+                                            <p>+91 {data?.mobile_number}</p>
+                                        </div>
+                                        <div className='myprofile_name_label'>
                                             <p>Post code</p>
                                         </div>
                                         <div className='myprofile_name_list'>
