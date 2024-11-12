@@ -36,7 +36,7 @@ const CustomerSignIn = (props: Props) => {
 		pro_user: 0,
 		show_modal: 0,
 		mobile_number: ""
-		
+
 	});
 	const setSign = common.ChangeState(signstate);
 	// const BaseURL = "http://localhost:4000/";
@@ -48,11 +48,11 @@ const CustomerSignIn = (props: Props) => {
 	const [otp, setotp] = useState("");
 	const [visiblity, setvisibility] = useState(true);
 	const [optsendbutton, setoptsendbutton] = useState(true)
-    const [verifybutton, setverifybutton] = useState(true)
+	const [verifybutton, setverifybutton] = useState(true)
 
 
-    const [timeLeft, setTimeLeft] = useState(60); // Countdown starting from 60 seconds
-    const [isTimerRunning, setIsTimerRunning] = useState(false);
+	const [timeLeft, setTimeLeft] = useState(60); // Countdown starting from 60 seconds
+	const [isTimerRunning, setIsTimerRunning] = useState(false);
 	useEffect(() => {
 		let time = setTimeout(() => {
 			setDisable(false);
@@ -66,7 +66,7 @@ const CustomerSignIn = (props: Props) => {
 		// e.preventDefault();
 		if (disable) return;
 
-		 if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits");
+		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits");
 		if (!checkbox) {
 			toast.error("Please accept the terms")
 			return
@@ -178,39 +178,39 @@ const CustomerSignIn = (props: Props) => {
 	}
 
 	useEffect(() => {
-        let timerId: NodeJS.Timeout | null = null;
+		let timerId: NodeJS.Timeout | null = null;
 
-        if (isTimerRunning && timeLeft > 0) {
-            timerId = setInterval(() => {
-                setTimeLeft((prevTime) => prevTime - 1);
-            }, 1000);
-        } else if (timeLeft === 0) {
-            setIsTimerRunning(false); 
+		if (isTimerRunning && timeLeft > 0) {
+			timerId = setInterval(() => {
+				setTimeLeft((prevTime) => prevTime - 1);
+			}, 1000);
+		} else if (timeLeft === 0) {
+			setIsTimerRunning(false);
 			setvisibility(true);
 			// Stop the timer when it reaches 0
-        }
+		}
 
-        // Cleanup function
-        return () => {
-            if (timerId) {
-                clearInterval(timerId);
-            }
-        };
-    }, [isTimerRunning, timeLeft]);
+		// Cleanup function
+		return () => {
+			if (timerId) {
+				clearInterval(timerId);
+			}
+		};
+	}, [isTimerRunning, timeLeft]);
 
 	const startRegister = async (event) => {
 		event.preventDefault();
 
 
 		let data = Validate([], schema.auth.customer_register, signIn)
-		if(!data) return;
+		if (!data) return;
 		if (signIn.mobile_number.length > 10 || signIn.mobile_number.length < 10) return toast.error("Mobile number should be of 10 digits");
 		if (!checkbox) {
 			toast.error("Please accept the terms")
 			return
 		};
 		try {
-			const data = { body:{phoneNumber: signIn.mobile_number, email: signIn.email, user_name: signIn.user_name}  };
+			const data = { body: { phoneNumber: signIn.mobile_number, email: signIn.email, user_name: signIn.user_name } };
 			const response = await api.auth.register_mobileOtp(data);
 			if (response.status) {
 				toast.success("OTP sent successfully");
@@ -226,22 +226,22 @@ const CustomerSignIn = (props: Props) => {
 			toast.error(error?.message || "Unknown error, check logs");
 		}
 		// setOpen(true);
-		
+
 	};
 
 
 	const verifyOTP = async (event) => {
 		event.preventDefault();
-	
+
 		try {
 			// Replace `otp` and `phoneNumber` with actual values from state or input fields
-			const response:any = await api.auth.registerverify_mobileOtp({ 
-				body: { 
-					code: otp, 
+			const response: any = await api.auth.registerverify_mobileOtp({
+				body: {
+					code: otp,
 					phoneNumber: signIn.mobile_number
-				} 
+				}
 			});
-	
+
 			if (response.status) {
 				toast.success("OTP verified successfully");
 
@@ -256,26 +256,26 @@ const CustomerSignIn = (props: Props) => {
 			toast.error(error?.message || "Unknown error, check logs");
 		}
 	};
-	
-	const resendOtp = async() => {
-        setotp("")
 
-        //  Call api to send otp to mobile number
-        // api.auth.send_mobileOtp(
-        //     { params: {}, body: { phoneNumber: mobile } },
-        //     (d) => {
-        //         if (d?.status === true) {
-        //             setvisibility(true);
-        //             setIsTimerRunning(true);
-        //             setTimeLeft(60);
-        //         }
-        //     }
-        // );
+	const resendOtp = async () => {
+		setotp("")
 
-		
-		console.log("Current phoneNumber value:", signIn.mobile_number); 
+		//  Call api to send otp to mobile number
+		// api.auth.send_mobileOtp(
+		//     { params: {}, body: { phoneNumber: mobile } },
+		//     (d) => {
+		//         if (d?.status === true) {
+		//             setvisibility(true);
+		//             setIsTimerRunning(true);
+		//             setTimeLeft(60);
+		//         }
+		//     }
+		// );
+
+
+		console.log("Current phoneNumber value:", signIn.mobile_number);
 		try {
-			const data = { body:{phoneNumber: signIn.mobile_number}  };
+			const data = { body: { phoneNumber: signIn.mobile_number } };
 			const response = await api.auth.register_mobileOtp(data);
 			if (response.status) {
 				toast.success("OTP sent successfully");
@@ -290,7 +290,7 @@ const CustomerSignIn = (props: Props) => {
 			console.error(error);
 			toast.error(error?.message || "Unknown error, check logs");
 		}
-    }
+	}
 
 	return (
 
@@ -305,15 +305,15 @@ const CustomerSignIn = (props: Props) => {
 			<section className="breadcrumb_sec">
 				<div className="container">
 					<div className="row">
-                        <ul className="breadcrumb">
-                            <li className="breadcrumb-item"><a href={"/"}>Home</a></li>
-                            <li className="breadcrumb-item active">Customer Register</li>
-                           
-				
-                        </ul>
-                    </div>
-                </div>
-            </section>
+						<ul className="breadcrumb">
+							<li className="breadcrumb-item"><a href={"/"}>Home</a></li>
+							<li className="breadcrumb-item active">Customer Register</li>
+
+
+						</ul>
+					</div>
+				</div>
+			</section>
 
 			<section className="myproject">
 				<div className="container">
@@ -444,11 +444,14 @@ const CustomerSignIn = (props: Props) => {
 												type='text'
 												autoComplete={"tel"}
 												value={signIn.mobile_number}
-												 onChange={setSign("mobile_number")}
-												
+												onChange={setSign("mobile_number")}
+
 												placeholder="+91 XXXXXXX890"
 											/>
-											
+
+											<small>Your OTP has been sent to the registered mobile number.
+											</small>
+
 										</div>
 									</div>
 
@@ -555,19 +558,19 @@ const CustomerSignIn = (props: Props) => {
 
 							<div className="from_feild">
 								<label>Enter OTP: <span>*</span></label>
-								<input type="text" name="text" placeholder="OTP" value={otp} onChange={(e) => setotp(e.target.value)}/>
+								<input type="text" name="text" placeholder="OTP" value={otp} onChange={(e) => setotp(e.target.value)} />
 							</div>
 
 							<div className="signin_btn">
-								<a href="#" 
-								onClick={verifyOTP}>Verify</a>
+								<a href="#"
+									onClick={verifyOTP}>Verify</a>
 							</div>
 							{/* <div className="resend_otp">
 								<a href="#">Resend OTP</a>
 							</div> */}
 							<div className="resend_otp">
-                                     {isTimerRunning ? (<a href="#">Resend OTP in {timeLeft}s</a>) : (<a href="#" onClick={resendOtp}>Resend OTP</a>)}
-                                     </div>
+								{isTimerRunning ? (<a href="#">Resend OTP in {timeLeft}s</a>) : (<a href="#" onClick={resendOtp}>Resend OTP</a>)}
+							</div>
 
 							<div className="button_s ">
 								{/* <a style={{ cursor: "pointer", color: "#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a> */}

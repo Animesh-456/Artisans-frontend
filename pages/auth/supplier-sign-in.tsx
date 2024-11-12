@@ -507,6 +507,7 @@ const CustomerSignIn = (props: Props) => {
 												onChange={setSign("mobile_number")}
 												placeholder="+91 XXXXXXX890"
 											/>
+											<small>Your OTP has been sent to the registered mobile number</small>
 										</div>
 									</div>
 
