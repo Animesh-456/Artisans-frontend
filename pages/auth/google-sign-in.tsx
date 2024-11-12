@@ -7,10 +7,10 @@ import api from "../../src/api/services/api";
 const AdditionalInfo = () => {
     var router = useRouter();
     const [formData, setFormData] = useState({
-        address: '',
+        // address: '',
         password: '',
         account: '',
-        number: '',
+        //number: '',
     });
     const [decodedData, setDecodedData] = useState(null);
     const [token, setToken] = useState('');
@@ -37,9 +37,9 @@ const AdditionalInfo = () => {
         e.preventDefault();
 
 
-        if (!formData?.password || !formData?.account || !formData?.number) return toast.error("Please fill required feilds");
+         if (!formData?.password || !formData?.account) return toast.error("Please fill required feilds");
 
-        if (formData?.number?.length != 10) return toast.error("Mobile number should be 10 digits");
+        // if (formData?.number?.length != 10) return toast.error("Mobile number should be 10 digits");
 
 
         if (!token) {
@@ -133,7 +133,7 @@ const AdditionalInfo = () => {
 
 
                                 </div>
-                                <div className="row from_feild cont11">
+                                {/* <div className="row from_feild cont11">
                                     <div className="col-sm-4">
                                         <label>Contact Number <span>*</span></label>
                                     </div>
@@ -148,7 +148,7 @@ const AdditionalInfo = () => {
                                     </div>
 
 
-                                </div>
+                                </div> */}
 
 
                                 <div className="reg-bottom">
