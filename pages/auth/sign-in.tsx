@@ -458,9 +458,9 @@ const SignIn = (prp) => {
                                         <div className="or">
                                             <p>OR</p>
                                         </div>
-                                        <div className="login_otp">
+                                        {/* <div className="login_otp">
                                             <a href="/auth/otp">Get an OTP on your phone</a>
-                                        </div>
+                                        </div> */}
                                     </form>
                                 </div>
                             </div>
