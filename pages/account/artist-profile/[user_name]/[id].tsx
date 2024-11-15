@@ -107,7 +107,9 @@ const Artist = (prp) => {
         user_name: user?.user_name || "",
         user_rating: user?.user_rating || "",
         user_picture: user?.logo || user?.prof_pic || "",
-        description: user?.description || ""
+        description: user?.description || "",
+        first_name: user?.name || "",
+        last_name: user?.surname || "",
 
     }
     const public_user_reviews = useAtomValue(atom.project.api.public_user_reviews)
@@ -182,6 +184,7 @@ const Artist = (prp) => {
                         </div>
                         <div className="artist_pro_r">
                             <h1> {udetails.user_name} <i className="fa fa-check-circle"></i></h1>
+                            <p>{udetails.first_name} {udetails.last_name}</p>
                             {/* <p><span >category</span ><span className="www1"> : {categoryNames}</span> </p> */}
                         </div>
                     </div>

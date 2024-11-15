@@ -604,8 +604,10 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} disabled={!visiblity} onClick={startRegister}>Register</button>
-										<button className="canl" onClick={() => window.location.href = '/auth/sign-in'}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>
-									</div>
+<button className="canl" onClick={(event) => {
+											event.preventDefault();
+											window.location.href = '/auth/sign-in';
+										}}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>										</div>
 								</form>
 							</div>
 						</div>
