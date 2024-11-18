@@ -184,14 +184,19 @@ const ProjectDetail = (prp) => {
     };
 
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
 
     const handleAddBid = async () => {
+        if (isSubmitting) return; // Prevent multiple clicks
+        setIsSubmitting(true); // Disable the button when the process starts
         if (!will_submit && !bid.bid_amount && !bid.bid_amount_gbp) {
             return toast.error("Please submit the amount");
         }
         if (file?.length > 10) {
-            return toast.error("Maximum 10 files can be uploaded")
+            toast.error("Maximum 10 files can be uploaded")
+            setIsSubmitting(false); // Re-enable the button
+            return;
         }
 
         let form = new FormData();
@@ -235,7 +240,7 @@ const ProjectDetail = (prp) => {
                     api.project.detail({ params: { id: id } });
                 },
             );
-
+            setIsSubmitting(false);
             return true;
         }
 
@@ -261,6 +266,7 @@ const ProjectDetail = (prp) => {
 
             api.project.detail({ params: { id: id } });
         });
+        setIsSubmitting(false);
     };
 
 
@@ -2005,7 +2011,9 @@ const ProjectDetail = (prp) => {
                                     </div>
                                 </div>
                                 {/* <input type="submit" name="Prebid" onClick={handleAddBid} /> */}
-                                <button className="bid-btn" onClick={handleAddBid}>Submit</button>
+                                <button className="bid-btn" onClick={handleAddBid}>
+                                    {isSubmitting ? 'Processing...' : 'Submit'}
+                                </button>
                             </div>
                         </div>
 

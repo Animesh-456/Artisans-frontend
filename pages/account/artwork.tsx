@@ -373,7 +373,8 @@ const Artwork = (prp) => {
     };
 
     const handleUpdate = async () => {
-
+        if (isSubmitting) return; 
+        setIsSubmitting(true);
 
         if (modalfile == '' && extraModalFile?.length == 0) {
             return toast.error("Please upload files to continue!")
@@ -382,12 +383,16 @@ const Artwork = (prp) => {
 
 
         if (extraModalFile?.length > 10) {
-            return toast.error("Maximum 10 files can be uploaded")
+            toast.error("Maximum 10 files can be uploaded")
+            setIsSubmitting(false); // Re-enable the button
+            return;
         }
 
 
         if (extraModalVideoFile?.length > 5) {
-            return toast.error("Maximum 5 video files can be uploaded")
+            toast.error("Maximum 5 video files can be uploaded")
+            setIsSubmitting(false); // Re-enable the button
+            return;
         }
 
 
@@ -448,7 +453,9 @@ const Artwork = (prp) => {
 
         } catch (error) {
             toast.error(error.message);
-            return;
+            
+        } finally {
+            setIsSubmitting(false); // Re-enable the button after the process completes
         }
     };
 
@@ -835,7 +842,10 @@ const Artwork = (prp) => {
 
 
                                                     <div className="submit_cancel">
-                                                        <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleUpdate}>Update</a>
+                                                        {/* <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleUpdate}>Update</a> */}
+                                                        <a style={{ cursor: isSubmitting ? "not-allowed" : "pointer", color: isSubmitting ? "#ccc" : "#fff", pointerEvents: isSubmitting ? "none" : "auto" }} onClick={handleUpdate}>
+                                                            {isSubmitting ? 'Processing...' : 'Update'}
+                                                        </a>
                                                         <a style={{ cursor: "pointer" }} onClick={closeModal}>Cancel <img src="img/arrow.png" width="11px" alt="" /></a>
                                                     </div>
                                                 </form>

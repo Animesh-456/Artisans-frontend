@@ -115,9 +115,14 @@ const Message = (props: Props) => {
 			setprogress(0)
 		}
 	};
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
 
 	const handleSubmit = async(e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (isSubmitting) return; // Prevent multiple clicks
+		setIsSubmitting(true); // Disable the button when the process starts
+
 		if (!file && changePic) return toast.error("Please select an Image");
 
 
@@ -125,8 +130,10 @@ const Message = (props: Props) => {
 
 
 		if (file?.length > 10) {
-            return toast.error("Maximum 10 files can be uploaded")
-        }
+			toast.error("Maximum 10 files can be uploaded")
+			setIsSubmitting(false); // Re-enable the button
+			return;
+		}
 
 		// image compress
 		let form = new FormData();
@@ -169,7 +176,8 @@ const Message = (props: Props) => {
 					return [d?.data, ...p];
 				});
 			},
-		);
+			);
+		setIsSubmitting(false); // Re-enable the button
 		//window.location.reload();
 	};
 
@@ -521,7 +529,7 @@ const Message = (props: Props) => {
 										// 	transition: 'box-shadow 1s'
 										// }}
 										>
-											Check &amp; Submit
+											{isSubmitting ? 'Processing...' : 'Check & Submit'}
 										</button>
 									</div>
 								</form>

@@ -106,12 +106,17 @@ const Post = () => {
     };
 
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const processSubmit = async () => {
+        if (isSubmitting) return; // Prevent multiple clicks
+        setIsSubmitting(true); // Disable the button when the process starts
         //if (!file.length) return toast.error("Please select a file");
 
         if (file?.length > 10) {
-            return toast.error("Maximum 10 files can be uploaded")
+            toast.error("Maximum 10 files can be uploaded")
+            setIsSubmitting(false); // Re-enable the button
+            return;
         }
 
 
@@ -144,6 +149,7 @@ const Post = () => {
 
             router.replace(`/${String(router?.query?.project_name)?.split(" ").join("-")}-${router?.query?.id}`)
         });
+        setIsSubmitting(false); // Re-enable the button
     };
     const [fileData, setFileData] = useState(null);
     const handle_file_change: any = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -550,7 +556,9 @@ const Post = () => {
 
                         <div className="button_s ">
                             <a style={{ cursor: "pointer", color: "#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a>
-                            <a style={{ cursor: "pointer", color: "#fff" }} onClick={processSubmit}>Submit Request</a>
+                            <a style={{ cursor: isSubmitting ? "not-allowed" : "pointer", color: isSubmitting ? "#ccc" : "#fff", pointerEvents: isSubmitting ? "none" : "auto" }} onClick={ processSubmit}>
+                                {isSubmitting ? 'Processing...' : 'Submit Request'}
+                            </a>
                         </div>
 
                     </div>
