@@ -190,66 +190,63 @@ const Artwork = (prp) => {
 
     }, [router.isReady]);
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     const handleSubmit = async () => {
+        if (isSubmitting) return; // Prevent multiple clicks
+        setIsSubmitting(true); // Disable the button when the process starts
 
         const form = new FormData();
 
-
         if (file?.length > 10) {
-            return toast.error("Maximum 10 files can be uploaded")
+            toast.error("Maximum 10 files can be uploaded");
+            setIsSubmitting(false); // Re-enable the button
+            return;
         }
-
 
         if (videoFile?.length > 5) {
-            return toast.error("Maximum 5 video files can be uploaded")
+            toast.error("Maximum 5 video files can be uploaded");
+            setIsSubmitting(false); // Re-enable the button
+            return;
         }
-
-        for (const key of Object.keys(file)) {
-            const compressedFile = await compressImage(file[key]); // Compress the file
-            form.append("file", compressedFile); // Append compressed file to FormData
-            //form.append("file", file[key]);
-        }
-
-
-        if (videoFile?.length > 0) {
-
-            for (const key of Object.keys(videoFile)) {
-                //form.append("videofile", videoFile[key]);
-                const compressedFile = await compressImage(videoFile[key]); // Compress the file
-                form.append("videofile", compressedFile); // Append compressed file to FormData
-            }
-        }
-
-        const obj = {
-            title: project?.title,
-            description: project?.description,
-            category: categories?.map(item => item.id)?.join(','),
-        }
-
-
-        for (const key of Object.keys(obj)) {
-            form.append(key, obj[key]);
-        }
-
-
-        // Log FormData content for debugging
-
 
         try {
+            for (const key of Object.keys(file)) {
+                const compressedFile = await compressImage(file[key]); // Compress the file
+                form.append("file", compressedFile); // Append compressed file to FormData
+            }
+
+            if (videoFile?.length > 0) {
+                for (const key of Object.keys(videoFile)) {
+                    const compressedFile = await compressImage(videoFile[key]); // Compress the file
+                    form.append("videofile", compressedFile); // Append compressed file to FormData
+                }
+            }
+
+            const obj = {
+                title: project?.title,
+                description: project?.description,
+                category: categories?.map((item) => item.id)?.join(','),
+            };
+
+            for (const key of Object.keys(obj)) {
+                form.append(key, obj[key]);
+            }
+
             const result = await api.project.add_art_work({
                 params: {
-                    user_id: user?.id
+                    user_id: user?.id,
                 },
                 body: obj,
-                file: form
+                file: form,
             });
 
-
-
+            // Handle success or other actions here if needed
         } catch (error) {
             toast.error(error.message);
-            return;
+        } finally {
+            setIsSubmitting(false); // Re-enable the button after the process completes
         }
     };
 
@@ -643,7 +640,9 @@ const Artwork = (prp) => {
 
                                             </form>
                                             <div className="submit_cancel">
-                                                <a style={{ cursor: "pointer", color: "#fff" }} onClick={handleSubmit} >Submit</a>
+                                                <a style={{ cursor: isSubmitting ? "not-allowed" : "pointer", color: isSubmitting ? "#ccc" : "#fff", pointerEvents: isSubmitting ? "none" : "auto" }} onClick={handleSubmit}>
+                                                    {isSubmitting ? 'Processing...' : 'Submit'}
+                                                </a>
                                                 <a style={{ cursor: "pointer" }} onClick={() => setshow(!show)}>Cancel <img src="../../img/arrow.png" width="11px" alt="" /></a>
                                             </div>
                                         </>
@@ -737,18 +736,18 @@ const Artwork = (prp) => {
 
                                                         <label>Categories: <span>*</span></label>
 
-                                                        
-                                                            <Multiselect
 
-                                                                options={category}
-                                                                selectedValues={displayOptions}
-                                                                onSelect={handleDisplayChange}
-                                                                onRemove={onRemovesecond}
-                                                                showCheckbox
-                                                                displayValue="label"
-                                                                placeholder="Select Category"
-                                                            />
-                                                        
+                                                        <Multiselect
+
+                                                            options={category}
+                                                            selectedValues={displayOptions}
+                                                            onSelect={handleDisplayChange}
+                                                            onRemove={onRemovesecond}
+                                                            showCheckbox
+                                                            displayValue="label"
+                                                            placeholder="Select Category"
+                                                        />
+
 
                                                     </div>
                                                     <div className="from_feild">

@@ -51,6 +51,9 @@ export const getStaticProps = async (context) => {
         const response = await axios.get(url);
         const data = await response.data;
 
+
+        
+
         return {
             props: {
                 prp: data, // Assuming the fetched data structure matches what's expected

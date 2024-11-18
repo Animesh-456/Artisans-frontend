@@ -1,7 +1,6 @@
 // // 👇️ ts-nocheck ignores all ts errors in the file
 // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // // @ts-nocheck
-
 import {
   GetParams,
   GetResponse,
@@ -16,9 +15,11 @@ import schema from "../../validation/schema/schema";
 import common from "../../helpers/common";
 import { readAtom, writeAtom } from "jotai-nexus";
 import atom from "../../jotai/atom";
-
+import axios from "axios";
 const api = new Client();
 const toast = new Toast();
+
+
 
 export default {
   add: ({ params, body, file }: UploadParams, cb?: GetResponse) => {
@@ -467,10 +468,10 @@ export default {
       })
       .catch((err) => console.log(err));
   },
-  detail: ({ params }, cb?: GetResponse) => {
+  detail: async ({ params }, cb?: GetResponse) => {
     api
       .get("project/detail", params)
-      .then((d) => {
+      .then(async (d) => {
         if (d.status) {
           // api data
 
@@ -494,6 +495,11 @@ export default {
           writeAtom(atom.project.api.others, d.data);
           writeAtom(atom.storage.project_id, d.data.id);
           writeAtom(atom.storage.project_data, d.data);
+
+          
+
+
+          // updateSitemap(`<url> <loc>https://www.domain.com/project/</loc> <lastmod>${new Date().toISOString().split('T')[0]}</lastmod> <priority>0.8</priority> </url>`)
           // callback
           return cb(d);
         } else {
@@ -502,6 +508,8 @@ export default {
       })
       .catch((err) => console.log(err));
   },
+
+
 
   select_machinist: ({ params }, cb?: GetResponse) => {
     api
