@@ -102,6 +102,8 @@ const Post = (prp) => {
 		setNumPages(numPages);
 	};
 
+
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -371,9 +373,18 @@ const Post = (prp) => {
 	};
 
 	// Redirect or display a message if the user is not a customer with role id 1
+	// useEffect(() => {
+	// 	if (user && !isCustomer(user)) {
+	// 		toast.error("Artist do not have permission to post jobs.");
+	// 		router.push('/'); // Redirect to home page or any other page
+	// 	}
+	// }, [user]);
 	useEffect(() => {
-		if (user && !isCustomer(user)) {
-			toast.error("Artist do not have permission to post jobs.");
+		if (!user) {
+			toast.error("You must be logged in as a customer to post a job.");
+			router.push('/auth/sign-in'); // Redirect to login page
+		} else if (user.role_id === 2) {
+			toast.error("Artists do not have permission to post jobs.");
 			router.push('/'); // Redirect to home page or any other page
 		}
 	}, [user]);
