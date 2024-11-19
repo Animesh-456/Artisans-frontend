@@ -207,6 +207,9 @@ const CustomerSignIn = (props: Props) => {
 			return toast.error("Please enter a valid email address");
 		}
 
+		// if (!signIn.address1) {
+		// 	return toast.error("Please enter your address");
+		// }
 		// Validate password
 		if (!signIn.password || signIn.password.length < 6) {
 			return toast.error("Password must be at least 6 characters long");
@@ -217,28 +220,16 @@ const CustomerSignIn = (props: Props) => {
 			return toast.error("Passwords do not match");
 		}
 
-		if (!signIn.answer ) {
-			return toast.error("Secret answer cannot be empty");
-		}
+		
 
-		// Validate address
-		if (!signIn.address1 ) {
-			return toast.error("Address cannot be empty");
-		}
+		
 
-		// Validate postal code
-		if (!signIn.zcode ) {
-			return toast.error("Postal code cannot be empty");
-		}
-
-		// Validate city
-		if (!signIn.city || signIn.city.trim() === "") {
-			return toast.error("City cannot be empty");
-		}
+	
+		
 		
 
 		try {
-			const data = { body:{phoneNumber: signIn.mobile_number}  };
+			const data = { body:{phoneNumber: signIn.mobile_number, email: signIn.email, user_name: signIn.user_name}  };
 			const response = await api.auth.register_mobileOtp(data);
 			if (response.status) {
 				toast.success("OTP sent successfully");
@@ -285,6 +276,41 @@ const CustomerSignIn = (props: Props) => {
 		}
 	};
 
+	const resendOtp = async () => {
+		setotp("")
+
+		//  Call api to send otp to mobile number
+		// api.auth.send_mobileOtp(
+		//     { params: {}, body: { phoneNumber: mobile } },
+		//     (d) => {
+		//         if (d?.status === true) {
+		//             setvisibility(true);
+		//             setIsTimerRunning(true);
+		//             setTimeLeft(60);
+		//         }
+		//     }
+		// );
+
+
+		console.log("Current phoneNumber value:", signIn.mobile_number);
+		try {
+			const data = { body: { phoneNumber: signIn.mobile_number } };
+			const response = await api.auth.register_mobileOtp(data);
+			if (response.status) {
+				toast.success("OTP sent successfully");
+				setOpen(true);
+				setvisibility(false);
+				setIsTimerRunning(true);
+				setTimeLeft(60);
+			} else {
+				toast.error("Error sending OTP: " + response.message);
+			}
+		} catch (error) {
+			console.error(error);
+			toast.error(error?.message || "Unknown error, check logs");
+		}
+	}
+
 	return (
 		<>
 			
@@ -294,7 +320,7 @@ const CustomerSignIn = (props: Props) => {
 					<div className="row">
                         <ul className="breadcrumb">
                             <li className="breadcrumb-item"><a href={"/"}>Home</a></li>
-                            <li className="breadcrumb-item active">Supplier Register</li>
+                            <li className="breadcrumb-item active">Artist Register</li>
                            
 
                         </ul>
@@ -307,7 +333,7 @@ const CustomerSignIn = (props: Props) => {
 						<div className="offset-sm-2"></div>
 						<div className="col-sm-8 profile_box">
 							<div className="register_c">
-								<h3>Register as artist</h3>
+								<h3>Register as Artist</h3>
 								<form onSubmit={handleSumbit}>
 									<h4>Please Provide Your Information Below:</h4>
 
@@ -377,7 +403,7 @@ const CustomerSignIn = (props: Props) => {
 
 									<div className="row from_feild">
 										<div className="col-sm-4">
-											<label>Secret Question <span>*</span>
+											<label>Secret Question
 											</label>
 										</div>
 										<div className="col-sm-8">
@@ -396,7 +422,7 @@ const CustomerSignIn = (props: Props) => {
 
 									<div className="row from_feild">
 										<div className="col-sm-4">
-											<label>Secret Answer<span>*</span>
+											<label>Secret Answer
 											</label>
 										</div>
 										<div className="col-sm-8">
@@ -476,7 +502,7 @@ const CustomerSignIn = (props: Props) => {
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
 											<label>
-												Address<span>*</span>
+												Address
 											</label>
 										</div>
 										<div className='col-sm-8'>
@@ -507,7 +533,7 @@ const CustomerSignIn = (props: Props) => {
 												onChange={setSign("mobile_number")}
 												placeholder="+91 XXXXXXX890"
 											/>
-											<small>Your OTP has been sent to the registered mobile number</small>
+											<small>Your One-Time Password will be sent to the registered mobile number.</small>
 										</div>
 									</div>
 
@@ -515,7 +541,7 @@ const CustomerSignIn = (props: Props) => {
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
 											<label>
-												Post Code<span>*</span>
+												Post Code
 											</label>
 										</div>
 										<div className='col-sm-8'>
@@ -533,7 +559,7 @@ const CustomerSignIn = (props: Props) => {
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
 											<label>
-												City <span>*</span>
+												City 
 											</label>
 										</div>
 										<div className='col-sm-8'>
@@ -631,6 +657,9 @@ const CustomerSignIn = (props: Props) => {
 							{/* <div className="resend_otp">
 								<a href="#">Resend OTP</a>
 							</div> */}
+							<div className="resend_otp">
+								{isTimerRunning ? (<a href="#">Resend OTP in {timeLeft}s</a>) : (<a href="#" onClick={resendOtp}>Resend OTP</a>)}
+							</div>
 							<div className="button_s ">
 								{/* <a style={{ cursor: "pointer", color: "#080424" }} onClick={() => setOpen(false)}>Back <img className="image101" src={"../img/arrow.png"} width="11px" alt="" /></a> */}
 								{/* <a style={{ cursor: "pointer", color: "#fff" }} onSubmit={handleSumbit}>Submit</a> */}

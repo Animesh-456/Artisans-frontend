@@ -49,13 +49,13 @@ const supplier_register = {
 		.messages({ "any.only": "{{#label}} does not match" }),
 	name: Joi.string().required(),
 	surname: Joi.string().required(),
-	address1: Joi.string().required(),
-	zcode: Joi.string().required(),
-	city: Joi.string().required(),
+	address1: Joi.required(),
+	zcode: Joi.required(),
+	city: Joi.required(),
 	company_name: Joi.required(),
 	company_number: Joi.required(),
-	Squestion: Joi.string().required(),
-	answer: Joi.string().required(),
+	Squestion: Joi.required(),
+	answer: Joi.required(),
 	category: Joi.string().required(),
 	mobile_number: Joi.number().required()
 };

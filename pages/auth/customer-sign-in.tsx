@@ -449,7 +449,7 @@ const CustomerSignIn = (props: Props) => {
 												placeholder="+91 XXXXXXX890"
 											/>
 
-											<small>Your OTP has been sent to the registered mobile number.
+											<small>Your One-Time Password will be sent to the registered mobile number.
 											</small>
 
 										</div>
