@@ -56,7 +56,7 @@ const supplier_register = {
 	company_number: Joi.required(),
 	Squestion: Joi.required(),
 	answer: Joi.required(),
-	category: Joi.string().required(),
+	category: Joi.required(),
 	mobile_number: Joi.number().required()
 };
 

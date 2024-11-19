@@ -439,7 +439,7 @@ const CustomerSignIn = (props: Props) => {
 
 									<div className="row from_feild cont11">
 										<div className="col-sm-4">
-											<label>Select Category <span>*</span>
+											<label>Select Category 
 											</label>
 										</div>
 										<div className="col-sm-8">
