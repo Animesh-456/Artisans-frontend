@@ -212,9 +212,17 @@ const DespositFund = (props: Props) => {
 
 
 
-			<section className="inner_banner_wp" style={{ backgroundImage: `url(../../img/inner-banner.jpg)` }}>
-				<div className="container">
-					<h1>{data?.project_name}</h1>
+			
+
+			<section className="breadcrumb_sec">
+                <div className="container">
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item"><a href="#">Artwork Jobs</a></li>
+                            <li className="breadcrumb-item active">{data?.project_name}</li>
+                        </ul>
+                    </div>
 				</div>
 			</section>
 

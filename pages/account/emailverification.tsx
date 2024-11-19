@@ -21,12 +21,17 @@ const Emailverify = () => {
     return (
         <>
 
-            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+           
+            <section className="breadcrumb_sec">
                 <div className="container">
-                    <h1 className='yh'>Verify your email</h1>
+                    <div className="row">
+                        <ul className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item active">Verify your email</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
-
 
             <section className="myproject">
                 <div className="container">
