@@ -1912,7 +1912,7 @@ const ProjectDetail = (prp) => {
                                         onChange={setbid("bid_desc")} rows={4} placeholder="Describe your offer here..."></textarea>
                                 </div>
                                 <div className="from_feild">
-                                    <label>Attach Your Files Here: <span>*</span></label>
+                                    <label>Attach Your Files Here: </label>
                                     <div className="upload-btn-wrapper">
                                         <button className="btn">
                                             <i className="fa fa-upload"></i>

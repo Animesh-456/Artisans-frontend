@@ -37,7 +37,7 @@ const AdditionalInfo = () => {
         e.preventDefault();
 
 
-         if (!formData?.password || !formData?.account) return toast.error("Please fill required feilds");
+        if (!formData?.password || !formData?.account) return toast.error("Please fill required feilds");
 
         // if (formData?.number?.length != 10) return toast.error("Mobile number should be 10 digits");
 
@@ -54,22 +54,7 @@ const AdditionalInfo = () => {
         };
 
         try {
-            // const response = await fetch('http://localhost:4000/user/auth/google-register', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(dataToSend) // Send combined data
-            // });
 
-            // const data = await response.json();
-            // console.log('Server response:', data);
-
-            // if (data.success) {
-            //     router.push('/account/jobs');
-            // } else {
-            //     alert(data.message || 'Failed to register. Please try again.');
-            // }
             api.auth.google_register({ body: dataToSend })
         }
 
