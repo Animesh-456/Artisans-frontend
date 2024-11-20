@@ -10,7 +10,7 @@ import $ from 'jquery';
 // import 'owl.carousel/dist/assets/owl.carousel.css';
 // import 'owl.carousel/dist/assets/owl.theme.default.css';
 //import 'owl.carousel';
-
+import common from "../../../helpers/common";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
 
@@ -93,6 +93,8 @@ export default function Header({ }: Props) {
 	}, [])
 
 	const inbox_count = useAtomValue(atom.project.api.inbox_count)
+
+	const [dropview, setdropview] = useState(false);
 	return (
 		<>
 
@@ -321,11 +323,39 @@ export default function Header({ }: Props) {
 							<div className="menu_login">
 								{!user ? (
 									<>
-										<a href={"/auth/sign-in"}>Log In</a>
-										<a href={"/auth/sign-in"}>Sign Up</a>
+										<ul>
+											<li className="myaccount">
+												<a href={"/auth/sign-in"}>
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260.6 253.8"><path d="M101.1 119.4c-23-14.1-34.8-33.8-33.7-60.1.7-17 8.2-31.3 20.5-43.1 22.9-21.9 62.9-21.6 85.9 1.1 15.1 15 21.9 33.1 18.9 54.4-3 21-14.5 36.3-33.1 47.5 2.2.9 3.4 1.5 4.6 1.9 32.2 8.8 55.9 28.6 73.2 56.6 13 21 20.6 43.9 23 68.5.7 6.9.3 7.3-6.7 7.3-3.8 0-8.7 1.1-11.1-.7-2.2-1.7-2-6.8-2.6-10.5-3.6-23.4-12-45-26.3-64-18-24-41.8-38-71.9-41-29.2-2.8-55.7 3.7-78.4 22.6-21 17.3-33.2 40.1-39.6 66.1-1.7 7.1-2.5 14.4-3.3 21.6-.5 4.2-1.8 6.6-6.5 5.8-1.9-.3-4-.1-6-.1-8.1 0-8.5 0-7.6-7.9 5.8-50.2 26.9-90.9 72.8-115.8 6.9-3.8 14.8-5.8 22.3-8.5 1.4-.5 3-.9 5.6-1.7zm72-56.2c0-24.1-19.3-43.6-42.9-43.4-23.8.2-42.7 19.2-42.8 43 0 23.6 18.7 43.2 41.4 43.3 25.3.1 44.3-18.3 44.3-42.9z"></path></svg>
+												</a>
+											</li>
+										</ul>
 									</>
 								) : (
-									<a onClick={() => handleLogout()}>Log Out</a>
+									<ul>
+										<li className="myaccount">
+											<div className="dropdown">
+												<button onClick={() => setdropview(!dropview)} className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<img
+														src={
+															common.get_profile_picture(user?.logo) ||
+															"../img/no-images.png"
+														}
+													/> <span>{user?.user_name?.length > 10 ? (
+														<span>{user?.user_name.slice(0, 10).concat("...")}</span>
+													) : (
+														<span>{user?.user_name}</span>
+													)}</span>
+												</button>
+
+												{dropview && (
+													<div className="dropdown-menu-right log-ln">
+														<a className="dropdown-item" style={{ cursor: 'pointer' }} onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</a>
+													</div>
+												)}
+											</div>
+										</li>
+									</ul>
 								)}
 							</div>
 							<div className="navigation">
@@ -335,18 +365,50 @@ export default function Header({ }: Props) {
 										<ul className="mobimenu">
 											<li><Link href="/">Home</Link></li>
 											<li><Link href="/aboutus">About Us</Link></li>
-											<li><Link href="/account/jobs">My account</Link></li>
+											{/* <li><Link href="/account/jobs">My account</Link></li> */}
 											<li><Link href="/post-your-artwork-requirement">Post Your Art Requirement</Link></li>
 											<li><Link href="/artwork-jobs">Artwork Jobs</Link></li>
 											<li><Link href="/artistlist">Artist and Artisans</Link></li>
 											<li><Link href="/how-it-works">How it works</Link></li>
 
+
+
 											{user ? (
-												<li className="signup"><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()}>Logout</a></li>
+
+												<li className="myaccount">
+													<div className="dropdown">
+														<button onClick={() => setdropview(!dropview)} className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															<img
+																src={
+																	common.get_profile_picture(user?.logo) ||
+																	"../img/no-images.png"
+																}
+															/> {user?.user_name?.length > 10 ? (
+																<span>{user?.user_name.slice(0, 10).concat("...")}</span>
+															) : (
+																<span>{user?.user_name}</span>
+															)}
+														</button>
+
+														{dropview && (
+															<div className="dropdown-menu-right log-ln">
+																<a className="dropdown-item" style={{ cursor: 'pointer' }} onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</a>
+															</div>
+														)}
+													</div>
+												</li>
+												// <li className="signup"><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()}>Logout</a></li>
 											) : (
 												<>
-													<li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>
-													<li className="signup"><a href={"/auth/sign-in"}>Sign Up</a></li>
+													{/* <li className="login"><a href={"/auth/sign-in"}><i className="fa fa-user-o"></i> Login</a></li>
+													<li className="signup"><a href={"/auth/sign-in"}>Sign Up</a></li> */}
+
+													<li className="myaccount">
+														<a href={"/auth/sign-in"}>
+															<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260.6 253.8"><path d="M101.1 119.4c-23-14.1-34.8-33.8-33.7-60.1.7-17 8.2-31.3 20.5-43.1 22.9-21.9 62.9-21.6 85.9 1.1 15.1 15 21.9 33.1 18.9 54.4-3 21-14.5 36.3-33.1 47.5 2.2.9 3.4 1.5 4.6 1.9 32.2 8.8 55.9 28.6 73.2 56.6 13 21 20.6 43.9 23 68.5.7 6.9.3 7.3-6.7 7.3-3.8 0-8.7 1.1-11.1-.7-2.2-1.7-2-6.8-2.6-10.5-3.6-23.4-12-45-26.3-64-18-24-41.8-38-71.9-41-29.2-2.8-55.7 3.7-78.4 22.6-21 17.3-33.2 40.1-39.6 66.1-1.7 7.1-2.5 14.4-3.3 21.6-.5 4.2-1.8 6.6-6.5 5.8-1.9-.3-4-.1-6-.1-8.1 0-8.5 0-7.6-7.9 5.8-50.2 26.9-90.9 72.8-115.8 6.9-3.8 14.8-5.8 22.3-8.5 1.4-.5 3-.9 5.6-1.7zm72-56.2c0-24.1-19.3-43.6-42.9-43.4-23.8.2-42.7 19.2-42.8 43 0 23.6 18.7 43.2 41.4 43.3 25.3.1 44.3-18.3 44.3-42.9z"></path></svg>
+														</a>
+
+													</li>
 												</>
 											)}
 										</ul>

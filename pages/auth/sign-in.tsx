@@ -405,24 +405,29 @@ const SignIn = (prp) => {
                                     {/* <div className="google-login">
                                         <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=AcMMx-efvZdEv6pHDvArTR1RK5SLq3KB5oWwOCw1GTfIP3xnMSDTp499WFjLxe2Rxp5T05ubi9hg&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-802053235%3A1730791277136844&ddm=1" target="_blank"><img src="img/new-google-icon.svg" alt="" /> Continue with Google</a>
                                     </div> */}
-                                    <div id="g_id_onload"
-                                        data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
-                                        data-context="signup"
-                                        data-ux_mode="popup"
-                                        data-login_uri="google-signup"
-                                        data-callback="google-signup"
-                                        data-auto_prompt="false">
+                                    <br />
+                                    <div className="google-login-ln">
+                                        <div id="g_id_onload"
+                                            data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
+                                            data-context="signup"
+                                            data-ux_mode="popup"
+                                            data-login_uri="google-signup"
+                                            data-callback="google-signup"
+                                            data-auto_prompt="false">
+                                        </div>
+
+                                        <div className="g_id_signin"
+                                            data-type="standard"
+                                            data-shape="rectangular"
+                                            data-theme="outline"
+                                            data-text="continue_with"
+                                            data-size="large"
+                                            data-logo_alignment="center"
+                                            data-width="250">
+                                        </div>
                                     </div>
 
-                                    <div className="g_id_signin"
-                                        data-type="standard"
-                                        data-shape="rectangular"
-                                        data-theme="outline"
-                                        data-text="continue_with"
-                                        data-size="large"
-                                        data-logo_alignment="left"
-                                        data-width="350">
-                                    </div>
+
                                     {/* <div className="facebook-login">
                                         <a href="https://www.facebook.com/" target="_blank" onClick={handleFacebookLogin}><img src="/img/new-facebook-icon.svg" alt="" /> Continue with Facebook</a>
                                     </div> */}

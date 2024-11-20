@@ -2165,22 +2165,46 @@
         width: 350px;
         margin-top: 0px;
     }
+
     .or p {
         margin-top: 1em;
         margin-bottom: 1em;
     }
-    .sidebar{
+
+    .sidebar {
         padding: 15px 0 15px;
     }
+
     .post_comment input {
         font-size: 14px;
     }
-    .rys1 h5{
+
+    .rys1 h5 {
         font-size: 16px;
     }
+
     .overview-head>div h3 {
         font-size: 18px;
     }
+
+    .menu_login ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .log-ln {
+        left: 2em;
+        min-width: 7rem;
+    }
+
+    .menu_login a {
+        padding: 6px;
+        text-align: left;
+    }
+
+
 }
 
 @media all and (max-width: 600px) {

@@ -1866,7 +1866,7 @@ ul.side-nav {
 .myprofile_r figcaption {
     font-weight: 500;
     color: #080424;
-    font-family: Poppins,sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
 .profile_box table tr th {
@@ -2097,7 +2097,7 @@ ul.side-nav {
     margin-bottom: 15px;
     background: #e3e3e3;
     padding: 0 7px;
-    font-family: Poppins,sans-serif;
+    font-family: Poppins, sans-serif;
     font-size: 14px;
 }
 
@@ -4564,7 +4564,7 @@ marquee {
 }
 
 
-.login_otp a{
+.login_otp a {
     background: #fff;
     color: #000;
     border-radius: 6px;
@@ -4577,18 +4577,22 @@ marquee {
     text-align: center;
     font-size: 15px;
 }
-.login_otp a:hover{
+
+.login_otp a:hover {
     box-shadow: none;
 }
+
 .login_otp {
     margin-top: 2em;
 }
+
 .login_wp h5 {
     font-size: 13px;
     text-align: left;
     font-weight: 500;
     margin-top: 32px;
 }
+
 .resend_otp a {
     text-align: center;
     display: block;
@@ -4596,31 +4600,39 @@ marquee {
     font-weight: 500;
     padding-top: 2em;
 }
-.myaccount svg{
+
+.myaccount svg {
     height: 20px;
     width: 30px;
     fill: #ef6100;
     position: relative;
-    top: 0.3rem;
+    // top: 0.3rem;
 }
+
 .myaccount img {
     width: 23px;
     height: 23px;
     border-radius: 30px;
 }
+
 .myaccount button {
     background: none;
     padding: 0;
+    border: none;
 }
-.myaccount .btn.focus, .myaccount .btn:focus {
+
+.myaccount .btn.focus,
+.myaccount .btn:focus {
     outline: 0;
     box-shadow: none;
 }
+
 .myaccount button span {
     font-family: "Poppins", sans-serif;
     font-size: 14px;
 }
-.myaccount .dropdown-menu{
+
+.myaccount .dropdown-menu {
     padding: 0;
     background-color: #fff;
     border: 1px solid #f0f0f0;
@@ -4628,23 +4640,55 @@ marquee {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
+
 .myaccount .dropdown-menu a.dropdown-item {
     padding: 8px 10px;
     font-weight: 400;
 }
-.myaccount .dropdown-menu a.dropdown-item img{
+
+.myaccount .dropdown-menu a.dropdown-item img {
     width: 18px;
     height: 18px;
 }
-.manage_p2:nth-child(4), .manage_p2:nth-child(8) {
+
+.manage_p2:nth-child(4),
+.manage_p2:nth-child(8) {
     margin-right: 0;
 }
+
 .prof111 h4 {
     font-size: 20px;
 }
+
 .manage_p h4 {
     font-size: 20px;
 }
+
 .attachment_d li a {
     font-size: 14px;
+}
+
+.log-ln {
+    position: absolute;
+    transform: translate3d(-43px, 27px, 0px);
+    top: 0px;
+    left: 0px;
+    min-width: 9rem;
+    /* right: 0px; */
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.log-ln a {
+    padding: 6px !important;
+}
+
+.google-login-ln {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
 }
