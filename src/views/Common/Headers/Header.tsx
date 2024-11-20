@@ -83,6 +83,7 @@ export default function Header({ }: Props) {
 		setShow(false)
 		setUser(null);
 		router.push("/auth/sign-in")
+		window.location.reload();
 	};
 
 

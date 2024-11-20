@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }) {
 		setIsBrowser(true);
 	}, []);
 
+	
 	if (!isBrowser) {
 		return (
 			<>

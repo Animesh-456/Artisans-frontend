@@ -46,10 +46,23 @@ export const getStaticProps = async () => {
         };
     }
 };
-
+  function mountScript() {
+        const script = document.createElement('script');
+        script.src = 'https://accounts.google.com/gsi/client';
+        script.async = true;
+        document.body.appendChild(script);
+    }
 const SignIn = (prp) => {
+    
     console.log("seo data", prp)
+    useEffect(() => {
+        // Load Google script only once
+        
+        if (!document.querySelector('script[src="https://accounts.google.com/gsi/client"]')) {
+            mountScript();
 
+        }
+    }, []); 
     const radio_login = useAtomValue(atom.storage.radio_login)
     const [check, checkstate] = useState({
         role: radio_login ? 2 : 1,
@@ -166,13 +179,13 @@ const SignIn = (prp) => {
 
 
     // DONT MODIFY
-    function mountScript() {
-        const script = document.createElement('script');
-        script.src = 'https://accounts.google.com/gsi/client';
-        script.async = true;
-        document.body.appendChild(script);
-    }
-    mountScript();
+    // function mountScript() {
+    //     const script = document.createElement('script');
+    //     script.src = 'https://accounts.google.com/gsi/client';
+    //     script.async = true;
+    //     document.body.appendChild(script);
+    // }
+    // mountScript();
 
     useEffect(() => {
         window.fbAsyncInit = function () {
@@ -413,7 +426,9 @@ const SignIn = (prp) => {
                                             data-ux_mode="popup"
                                             data-login_uri="google-signup"
                                             data-callback="google-signup"
-                                            data-auto_prompt="false">
+                                            data-auto_prompt="false"
+                                            style={{ position: 'relative' }}
+                                        >
                                         </div>
 
                                         <div className="g_id_signin"
@@ -423,7 +438,9 @@ const SignIn = (prp) => {
                                             data-text="continue_with"
                                             data-size="large"
                                             data-logo_alignment="center"
-                                            data-width="250">
+                                            data-width="250"
+                                            style={{ position: 'relative' }}
+                                        >
                                         </div>
                                     </div>
 
@@ -490,26 +507,30 @@ const SignIn = (prp) => {
                                         </div> */}
 
 
-                                        <div id="g_id_onload"
-                                            data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
-                                            data-context="signup"
-                                            data-ux_mode="popup"
-                                            data-login_uri="google-signup"
-                                            data-callback="google-signup"
-                                            data-auto_select="false"
-                                            data-auto_prompt="false">
-                                        </div>
+                                        <br />
+                                        <div className="google-login-ln">
+                                            <div id="g_id_onload"
+                                                data-client_id="73873787865-3d7nkcfm4b6f4efji86ar4a9ctss4j94.apps.googleusercontent.com"
+                                                data-context="signup"
+                                                data-ux_mode="popup"
+                                                data-login_uri="google-signup"
+                                                data-callback="google-signup"
+                                                data-auto_prompt="false"
+                                                style={{ position: 'relative' }}
+                                            >
+                                            </div>
 
-                                        <div className="g_id_signin"
-                                            data-type="standard"
-                                            data-shape="rectangular"
-                                            data-theme="outline"
-                                            data-text="continue_with"
-                                            data-size="large"
-                                            data-auto_select="false"
-                                            data-logo_alignment="left"
-                                            data-auto_prompt="false"
-                                            data-width="350">
+                                            <div className="g_id_signin"
+                                                data-type="standard"
+                                                data-shape="rectangular"
+                                                data-theme="outline"
+                                                data-text="continue_with"
+                                                data-size="large"
+                                                data-logo_alignment="center"
+                                                data-width="250"
+                                                style={{ position: 'relative' }}
+                                            >
+                                            </div>
                                         </div>
 
 
