@@ -1711,7 +1711,7 @@
     }
 
     .manage_p2 {
-        width: auto;
+        width: 100%;
         margin-right: 0;
         margin-bottom: 15px;
     }
@@ -1752,7 +1752,7 @@
 
     .manage_p2 img {
         height: 200px;
-        object-fit: contain;
+        object-fit: cover;
         background: #fff;
     }
 
@@ -2164,6 +2164,22 @@
     .facebook-login {
         width: 350px;
         margin-top: 0px;
+    }
+    .or p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .sidebar{
+        padding: 15px 0 15px;
+    }
+    .post_comment input {
+        font-size: 14px;
+    }
+    .rys1 h5{
+        font-size: 16px;
+    }
+    .overview-head>div h3 {
+        font-size: 18px;
     }
 }
 

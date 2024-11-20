@@ -132,7 +132,7 @@ table {
     background: #ef6100;
     color: #fff !important;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
 }
 
 .signup a:hover {
@@ -410,7 +410,7 @@ table {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -421,7 +421,7 @@ table {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -432,7 +432,7 @@ table {
     // background: #ef6100;
     // color: #fff;
     // border-radius: 6px;
-    // box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    // box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     // font-family: "Poppins", sans-serif;
     // padding: 6px 22px;
     // transition: box-shadow 1s;
@@ -556,11 +556,11 @@ table {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     display: inline-block;
-    margin-top: 1.5em;
+    margin-top: 0;
     transition: box-shadow 1s;
 }
 
@@ -902,7 +902,7 @@ a {
 }
 
 .post_request_button a {
-    box-shadow: 0px 1px 2px 2px rgb(71, 18, 15);
+    box-shadow: 0px 1px 1px 1px rgb(71, 18, 15);
     background: #f06101;
     color: #fff;
     width: 100%;
@@ -1124,7 +1124,7 @@ label {
     height: 44px;
     border-radius: 7px;
     padding-left: 10px;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
     font-size: 14px;
     font-family: "Poppins", sans-serif;
     background: #fff;
@@ -1181,7 +1181,7 @@ label {
     width: 100%;
     border-radius: 11px;
     height: 300px;
-    background-color: #fff;
+    background-color: #f1f0f0;
     object-fit: contain;
     text-align: center;
 }
@@ -1338,7 +1338,7 @@ label {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -1465,7 +1465,7 @@ label {
 
 .sign_wp {
     padding: 3em 0;
-    background-color: #f3f2f0;
+    background-color: #fcfcfd;
 }
 
 .sign_wp form {
@@ -1527,7 +1527,7 @@ label {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -1537,7 +1537,7 @@ label {
 .button_s a:first-child {
     background: #FCEDDA;
     color: #ef6100;
-    box-shadow: 0px 1px 2px 2px rgb(129 120 120);
+    box-shadow: 0px 1px 1px 1px rgb(129 120 120);
 }
 
 .contact_content p img {
@@ -1562,7 +1562,7 @@ label {
 }
 
 .sidebar {
-    padding: 30px 0 20px;
+    padding: 2px 0 20px;
     border-radius: 11px;
     margin-bottom: 1em;
     border: 1px solid #ddd;
@@ -1662,7 +1662,7 @@ ul.side-nav {
 
 .sidebar .heading_title h2 {
     margin-left: 18px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .sidebar .heading_title {
@@ -1852,7 +1852,7 @@ ul.side-nav {
 }
 
 .myprofile_name_list p {
-    font-weight: 500;
+    font-weight: 400;
     white-space: pre-wrap;
 
 }
@@ -1866,12 +1866,14 @@ ul.side-nav {
 .myprofile_r figcaption {
     font-weight: 500;
     color: #080424;
+    font-family: Poppins,sans-serif;
 }
 
 .profile_box table tr th {
     font-size: 14px;
     background-color: #ffddb2;
     border: none;
+    font-weight: 500;
 }
 
 .msgform .fa {
@@ -2004,7 +2006,7 @@ ul.side-nav {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     border: none;
@@ -2095,6 +2097,8 @@ ul.side-nav {
     margin-bottom: 15px;
     background: #e3e3e3;
     padding: 0 7px;
+    font-family: Poppins,sans-serif;
+    font-size: 14px;
 }
 
 .fund_wp p {
@@ -2262,7 +2266,7 @@ ul.side-nav {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     display: inline-block;
@@ -2306,7 +2310,7 @@ ul.side-nav {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     border: none;
@@ -2549,7 +2553,7 @@ a.kts {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     display: inline-block;
@@ -2577,7 +2581,7 @@ h4.modal-title {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -2609,7 +2613,7 @@ h4.modal-title {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -2639,7 +2643,7 @@ h4.modal-title {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -2952,7 +2956,7 @@ select {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -3061,7 +3065,7 @@ select {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -3404,7 +3408,7 @@ ul.ex1 li a {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -3588,7 +3592,7 @@ ul.ex1 li a {
     background: rgb(239, 97, 0);
     color: rgb(255, 255, 255);
     border-radius: 6px;
-    box-shadow: rgb(71, 18, 15) 0px 1px 2px 2px;
+    box-shadow: rgb(71, 18, 15) 0px 1px 1px 1px;
     font-family: Poppins;
     padding: 6px 22px;
     transition: box-shadow 1s ease 0s;
@@ -3603,7 +3607,7 @@ ul.ex1 li a {
     background: rgb(239, 97, 0);
     color: rgb(255, 255, 255);
     border-radius: 6px;
-    box-shadow: rgb(71, 18, 15) 0px 1px 2px 2px;
+    box-shadow: rgb(71, 18, 15) 0px 1px 1px 1px;
     font-family: Poppins;
     padding: 6px 22px;
     transition: box-shadow 1s ease 0s;
@@ -3978,7 +3982,7 @@ marquee {
     border-radius: 6px;
     padding: 6px 22px;
     transition: box-shadow 1s ease 0s;
-    box-shadow: 0 1px 2px 2px #47120f;
+    box-shadow: 0 1px 1px 1px #47120f;
     border: none;
 }
 
@@ -4136,7 +4140,7 @@ marquee {
 
 .submit_cancel button {
     border: none;
-    box-shadow: 0 1px 2px 2px #47120f;
+    box-shadow: 0 1px 1px 1px #47120f;
 }
 
 .submit_cancel button:hover {
@@ -4511,7 +4515,7 @@ marquee {
     position: absolute;
     left: 0;
     width: 44%;
-    top: 9px;
+    top: 12px;
 }
 
 .or:after {
@@ -4520,14 +4524,14 @@ marquee {
     position: absolute;
     right: 0;
     width: 44%;
-    top: 9px;
+    top: 12px;
 }
 
 .signin_btn a {
     background: #ef6100;
     color: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -4564,7 +4568,7 @@ marquee {
     background: #fff;
     color: #000;
     border-radius: 6px;
-    box-shadow: 0px 1px 2px 2px rgb(71 18 15);
+    box-shadow: 0px 1px 1px 1px rgb(71 18 15);
     font-family: "Poppins", sans-serif;
     padding: 6px 22px;
     transition: box-shadow 1s;
@@ -4592,7 +4596,6 @@ marquee {
     font-weight: 500;
     padding-top: 2em;
 }
-
 .myaccount svg{
     height: 20px;
     width: 30px;
@@ -4632,4 +4635,16 @@ marquee {
 .myaccount .dropdown-menu a.dropdown-item img{
     width: 18px;
     height: 18px;
+}
+.manage_p2:nth-child(4), .manage_p2:nth-child(8) {
+    margin-right: 0;
+}
+.prof111 h4 {
+    font-size: 20px;
+}
+.manage_p h4 {
+    font-size: 20px;
+}
+.attachment_d li a {
+    font-size: 14px;
 }

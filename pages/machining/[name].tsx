@@ -52,7 +52,7 @@ export const getStaticProps = async (context) => {
         const data = await response.data;
 
 
-        
+
 
         return {
             props: {
@@ -1742,8 +1742,8 @@ const ProjectDetail = (prp) => {
                                 </div>
                                 <div className="project_details_content">
                                     <p><span >Posted</span><span >{moment(data?.project_post_date).format("DD-MMM-YYYY")}</span></p>
-                                    <p><span >Visibility</span><span className="www1">  {data?.visibility}</span></p>
-                                    <p><span >Category</span><span className="www1">  {data?.category_names?.join(', ')}</span></p>
+                                    <p><span >Visibility</span><span className="">  {data?.visibility}</span></p>
+                                    <p><span >Category</span><span className="">  {data?.category_names?.join(', ')}</span></p>
                                     {/* <p><span >sub-category</span ><span className="www1"> : {subCategoryName?.map((m) => {
                                         return (
                                             <>{m?.category_name}</>
@@ -1771,28 +1771,30 @@ const ProjectDetail = (prp) => {
 
 
 
-                                    <p><span >Offers Received </span><span className="www1">  {data?.bids_count} Offers</span></p>
-                                    <p><span >Attachments </span><span className="www1">
-                                        {data?.attachment_name?.includes(",") ? (
+                                    <p><span >Offers Received </span><span className="">  {data?.bids_count} Offers</span></p>
+                                    <p><span >Attachments </span><span className="">
+                                        {/* {data?.attachment_name?.includes(",") ? (
                                             data?.attachment_name?.split(",").map((d) => {
                                                 return (
-                                                    <>
-                                                        <ul>
-                                                            <li>
+                                                    // <>
+                                                    //     <ul>
+                                                    //         <li>
 
-                                                                <a
-                                                                    href={common.get_attachment(d, formattedDate)}
-                                                                    rel={"noreferrer"}
-                                                                    target={"_blank"}>
-                                                                    {d}
+                                                    //             <a
+                                                    //                 href={common.get_attachment(d, formattedDate)}
+                                                    //                 rel={"noreferrer"}
+                                                    //                 target={"_blank"}>
+                                                    //                 {d}
 
-                                                                </a>
+                                                    //             </a>
 
-                                                            </li>
-                                                        </ul>
-                                                    </>
+                                                    //         </li>
+                                                    //     </ul>
+                                                    // </>
+                                                    
                                                 )
-                                            })
+                                            }
+                                            )
                                         ) : (
 
                                             <a
@@ -1802,6 +1804,31 @@ const ProjectDetail = (prp) => {
                                                 {data?.attachment_name}
                                             </a>
 
+                                        )} */}
+
+                                        {data?.attachment_name?.includes(",") ? (
+                                            <ul className="attachment_d">
+                                                {data?.attachment_name?.split(",").map((d) => (
+                                                    <li key={d}>
+                                                        <a
+                                                            href={common.get_attachment(d, formattedDate)}
+                                                            rel="noreferrer"
+                                                            target="_blank"
+                                                        >
+                                                            {d}
+                                                        </a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            // Handle the case where there is only one attachment
+                                            <a
+                                                href={common.get_attachment(data?.attachment_name, formattedDate)}
+                                                rel="noreferrer"
+                                                target="_blank"
+                                            >
+                                                {data?.attachment_name}
+                                            </a>
                                         )}
                                     </span></p>
                                 </div>
@@ -1827,39 +1854,39 @@ const ProjectDetail = (prp) => {
                             {/* {((table_status == '1' || reviewStatus == '2') && ((data?.creator_id == user?.id) || (data?.programmer_id == user?.id))) && */}
 
 
-                                <div className="project_details_right">
-                                    <div className="description_heading_title">
-                                        <h2>Complete or verify your delivery address</h2>
-                                    </div>
-                                    <div className="project_details_content">
-                                        <p><span>Name</span><span><b> {delivery?.name || "N/A"} </b></span></p>
-                                        <p><span>Address</span><span><b> {delivery?.address || "N/A"} </b></span></p>
-                                        <p><span>Postal code</span><span><b> {delivery?.postalcode || "N/A"}</b></span></p>
-                                        <p><span>City</span><span><b> {delivery?.city || "N/A"}</b></span></p>
-                                    </div>
-                                    {user && data.programmer_id == user?.id && (
-                                        <div className="table-responsive">
-                                            <table className="table table-bordered table-sm">
-                                                <thead>
-                                                    <tr className="table-primary">
-                                                        <th>Funds deposited (order placed)</th>
-                                                        <th>Funds released to your account:</th>
-                                                        <th>Rating left</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{data?.project_status >= 1 ? `${moment(data?.project_fund_date_format).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
-                                                        <td>{data?.project_status >= 5 ? `${moment(data?.fund_release_date).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
-                                                        <td>{(data?.project_status >= 5 && reviewCust[0]?.rating != null) ? `${moment(reviewCust[0]?.review_post_date).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                    )}
-
+                            <div className="project_details_right">
+                                <div className="description_heading_title">
+                                    <h2>Complete or verify your delivery address</h2>
                                 </div>
+                                <div className="project_details_content">
+                                    <p><span>Name</span><span><b> {delivery?.name || "N/A"} </b></span></p>
+                                    <p><span>Address</span><span><b> {delivery?.address || "N/A"} </b></span></p>
+                                    <p><span>Postal code</span><span><b> {delivery?.postalcode || "N/A"}</b></span></p>
+                                    <p><span>City</span><span><b> {delivery?.city || "N/A"}</b></span></p>
+                                </div>
+                                {user && data.programmer_id == user?.id && (
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-sm">
+                                            <thead>
+                                                <tr className="table-primary">
+                                                    <th>Funds deposited (order placed)</th>
+                                                    <th>Funds released to your account:</th>
+                                                    <th>Rating left</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{data?.project_status >= 1 ? `${moment(data?.project_fund_date_format).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
+                                                    <td>{data?.project_status >= 5 ? `${moment(data?.fund_release_date).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
+                                                    <td>{(data?.project_status >= 5 && reviewCust[0]?.rating != null) ? `${moment(reviewCust[0]?.review_post_date).format("DD-MMMM-YYYY")}` : "Not yet"}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                )}
+
+                            </div>
 
                             {/* } */}
 

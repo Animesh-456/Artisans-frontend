@@ -547,7 +547,7 @@ const Post = (prp) => {
 									<label htmlFor="category">Category(s): <span>*</span>
 									</label>
 
-									<div className="">
+									<div className="select_div1">
 										{/* <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
 											<option value="">Select a category</option>
 
