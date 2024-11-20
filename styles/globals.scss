@@ -4592,3 +4592,44 @@ marquee {
     font-weight: 500;
     padding-top: 2em;
 }
+
+.myaccount svg{
+    height: 20px;
+    width: 30px;
+    fill: #ef6100;
+    position: relative;
+    top: 0.3rem;
+}
+.myaccount img {
+    width: 23px;
+    height: 23px;
+    border-radius: 30px;
+}
+.myaccount button {
+    background: none;
+    padding: 0;
+}
+.myaccount .btn.focus, .myaccount .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+.myaccount button span {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+.myaccount .dropdown-menu{
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / 20%);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.myaccount .dropdown-menu a.dropdown-item {
+    padding: 8px 10px;
+    font-weight: 400;
+}
+.myaccount .dropdown-menu a.dropdown-item img{
+    width: 18px;
+    height: 18px;
+}
