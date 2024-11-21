@@ -1,4 +1,3 @@
-
 import { useAtom, useAtomValue } from "jotai";
 import { toast } from "react-hot-toast";
 import React, { useEffect, useState } from "react";
@@ -46,23 +45,30 @@ export const getStaticProps = async () => {
         };
     }
 };
-  function mountScript() {
+  
+const SignIn = (prp) => {
+    console.log("seo data", prp);
+    
+    const [pageview, setpageview] = useState(true);
+    
+    const mountScript = () => {
+        // Remove any existing Google script first
+        const existingScript = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
+        if (existingScript) {
+            existingScript.remove();
+        }
+        
+        // Add the script again
         const script = document.createElement('script');
         script.src = 'https://accounts.google.com/gsi/client';
         script.async = true;
         document.body.appendChild(script);
-    }
-const SignIn = (prp) => {
-    
-    console.log("seo data", prp)
-    useEffect(() => {
-        // Load Google script only once
-        
-        if (!document.querySelector('script[src="https://accounts.google.com/gsi/client"]')) {
-            mountScript();
+    };
 
-        }
-    }, []); 
+    // Now pageview is defined before being used in useEffect
+    useEffect(() => {
+        mountScript();
+    }, [pageview]); 
     const radio_login = useAtomValue(atom.storage.radio_login)
     const [check, checkstate] = useState({
         role: radio_login ? 2 : 1,
@@ -282,9 +288,6 @@ const SignIn = (prp) => {
 
     // App id 1323269679079061
     // App secret ecfa8adec73117a7ddcc620dba72402d
-
-
-    const [pageview, setpageview] = useState(true)
 
 
 
