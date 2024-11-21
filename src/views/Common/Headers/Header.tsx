@@ -351,6 +351,9 @@ export default function Header({ }: Props) {
 
 												{dropview && (
 													<div className="dropdown-menu-right log-ln">
+														<a className="dropdown-item" href="/account/profile">
+															<img src="../img/no-images.png" alt="" /> My Account
+														</a>
 														<a className="dropdown-item" style={{ cursor: 'pointer' }} onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</a>
 													</div>
 												)}
@@ -393,6 +396,9 @@ export default function Header({ }: Props) {
 
 														{dropview && (
 															<div className="dropdown-menu-right log-ln">
+																<a className="dropdown-item" href="/account/profile">
+																	<img src="../img/no-images.png" alt="" /> My Account
+																</a>
 																<a className="dropdown-item" style={{ cursor: 'pointer' }} onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</a>
 															</div>
 														)}
