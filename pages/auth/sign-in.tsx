@@ -441,7 +441,7 @@ const SignIn = (prp) => {
                                             data-text="continue_with"
                                             data-size="large"
                                             data-logo_alignment="center"
-                                            data-width="250"
+                                            data-width="330"
                                             style={{ position: 'relative' }}
                                         >
                                         </div>
@@ -530,7 +530,7 @@ const SignIn = (prp) => {
                                                 data-text="continue_with"
                                                 data-size="large"
                                                 data-logo_alignment="center"
-                                                data-width="250"
+                                                data-width="330"
                                                 style={{ position: 'relative' }}
                                             >
                                             </div>

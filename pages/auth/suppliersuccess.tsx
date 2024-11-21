@@ -22,11 +22,11 @@ const suppliersuccess = () => {
                 </div>
             </div> */}
 
-            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1 className='yh'>You are a  Artist</h1>
                 </div>
-            </section>
+            </section> */}
 
             {/* <div className="container cjw">
                 <div className="row">
@@ -58,7 +58,7 @@ const suppliersuccess = () => {
                         <div className="col-sm-6">
                             <div className="success1">
 
-                                <h2> Welcome to Artisans!</h2>
+                                <h2> Welcome to Aartstudio!</h2>
 
 
                                 <p>Thank you for joining Aartstudio. You will </p>

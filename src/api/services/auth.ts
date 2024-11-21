@@ -564,8 +564,7 @@ export default {
                 writeAtom(atom.storage.user, d.data);
                 localStorage.setItem("UserData", JSON.stringify(d.data));
                 writeAtom(atom.storage.loginmodal, true);
-                Router.push("/account/jobs");
-
+                Router.push("/auth/google-success");
                 // Ensure cb is a function before calling it
                 if (typeof cb === "function") {
                   cb(d);

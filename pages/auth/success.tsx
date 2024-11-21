@@ -47,11 +47,11 @@ const success = () => {
                 </div>
             </section> */}
 
-            <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
+            {/* <section className="inner_banner_wp" style={{ "backgroundImage": `url(../img/inner-banner.jpg)` }}>
                 <div className="container">
                     <h1 className='yh'>You are a  Customer</h1>
                 </div>
-            </section>
+            </section> */}
 
             <section className="myproject">
                 <div className="container">
@@ -60,7 +60,7 @@ const success = () => {
                         <div className="col-sm-6">
                             <div className="success1">
 
-                                <h2> Welcome to Artisans!</h2>
+                                <h2> Welcome to Aartstudio!</h2>
 
 
                                 <p>Thank you for joining Aartstudio. You will </p>
