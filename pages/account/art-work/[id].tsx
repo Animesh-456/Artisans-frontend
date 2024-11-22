@@ -58,8 +58,8 @@ const Artwork = (prp) => {
                                 <i style={{ cursor: "pointer", display: slides == 0 ? "none" : "" }} onClick={() => setslides((slides) => slides - 1)} className="fa fa-angle-left"></i> <b>{slides + 1} / {get_portfolio_art?.attachment1?.split(',')?.length}</b> <i style={{ cursor: "pointer", display: slides + 1 == get_portfolio_art?.attachment1?.split(',')?.length ? "none" : "" }} onClick={() => setslides((slides) => slides + 1)} className="fa fa-angle-right"></i>
                             </div>
                             <div className="col-sm-6">
-                                <i className="fa fa-search-plus" aria-hidden="true"></i>
-                                <i className="fa fa-search-minus" aria-hidden="true"></i>
+                                {/* <i className="fa fa-search-plus" aria-hidden="true"></i>
+                                <i className="fa fa-search-minus" aria-hidden="true"></i> */}
                             </div>
                         </div>
                         <div className="port_fo">
@@ -109,7 +109,7 @@ const Artwork = (prp) => {
                             <div className="col-sm-9">
                                 <div className="portfolio2">
                                     <h3>{get_portfolio_art?.programmer?.user_name} <i className="fa fa-check-circle"></i></h3>
-                                    <p>Sculpture Artist</p>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>

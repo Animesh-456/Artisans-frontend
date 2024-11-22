@@ -11,7 +11,7 @@ import { BsCheckCircleFill, BsFillCaretRightFill } from "react-icons/bs";
 import { Button } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import Router from "next/router";
-
+import { useRouter } from "next/router";
 
 
 type Props = {};
@@ -19,6 +19,10 @@ type Props = {};
 
 
 const Jobs = () => {
+
+  const router = useRouter();
+    
+  const prtitle = router?.query?.title;
 
   let currprojectData = JSON.parse(localStorage.getItem('ProjectData'))
   //let currUserData = JSON.parse(localStorage.getItem('UserData'))
@@ -197,7 +201,7 @@ const Jobs = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>{projectData?.project_name}</td>
+                        <td>{projectData?.project_name || prtitle}</td>
                         <td>{project_data?.programmer.user_name}</td>
                         <td>₹{bidData?.bid_amount_gbp}</td>
                         <td>{project_data?.creator.user_name}</td>

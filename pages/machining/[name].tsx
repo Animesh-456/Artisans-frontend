@@ -1231,7 +1231,7 @@ const ProjectDetail = (prp) => {
 
                                         <div className="latest_request_text">
                                             <Link
-                                                href={`/account/CustomerRealeasePayment`}
+                                                href={`/account/CustomerRealeasePayment?title=${data?.project_name}`}
                                                 className='btn btn-warning text-white'
                                             >
                                                 Pay Artist
