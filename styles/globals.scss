@@ -19,7 +19,10 @@ body {
     padding: 0;
     margin: 0;
 }
-
+:focus {
+    border: none;
+    outline: none;
+}
 ul,
 p {
     margin: 0;
@@ -1069,7 +1072,7 @@ p {
     font-weight: 500;
     width: 100%;
     text-align: left;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
     font-size: 14px;
     font-family: "Poppins", sans-serif;
 }
@@ -1121,7 +1124,7 @@ label {
 .from_feild select,
 .from_feild input[type="date"] {
     width: 100%;
-    height: 44px;
+    height: 40px;
     border-radius: 7px;
     padding-left: 10px;
     border: 1px solid #cfa487;
@@ -1145,7 +1148,7 @@ label {
     width: 100%;
     border-radius: 7px;
     padding-left: 10px;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
     font-size: 14px;
     font-family: "Poppins", sans-serif;
 }
@@ -1952,10 +1955,10 @@ ul.side-nav {
     border-radius: 7px;
     margin-bottom: 15px;
     background: #fff;
-    height: 44px;
+    height: 40px;
     padding-left: 10px;
     font-size: 14px;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
 }
 
 .project_profil {
@@ -1973,7 +1976,7 @@ ul.side-nav {
     resize: none;
     padding-left: 10px;
     font-size: 14px;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
 }
 
 .ygs img {
@@ -2133,12 +2136,12 @@ ul.side-nav {
 .edit_password_wp input {
     width: 100%;
     border: none;
-    height: 44px;
+    height: 40px;
     border-radius: 7px;
     margin-bottom: 15px;
     background: #fff;
     padding-left: 10px;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
 }
 
 .edit_password_wp {
@@ -4462,7 +4465,7 @@ marquee {
 .google-login {
     width: 100%;
     display: inline-block;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
     height: 45px;
     text-align: center;
     line-height: 42px;
@@ -4474,7 +4477,7 @@ marquee {
 .facebook-login {
     width: 100%;
     display: inline-block;
-    border: 2px solid #7f8180;
+    border: 1px solid #cfa487;
     height: 45px;
     text-align: center;
     line-height: 42px;
@@ -4603,7 +4606,7 @@ marquee {
 
 .myaccount svg {
     height: 20px;
-    width: 30px;
+    width: 21px;
     fill: #ef6100;
     position: relative;
     // top: 0.3rem;
@@ -4670,7 +4673,7 @@ marquee {
 
 .log-ln {
     position: absolute;
-    transform: translate3d(-43px, 27px, 0px);
+    transform: translate3d(-63px, 27px, 0px);
     top: 0px;
     left: 0px;
     min-width: 9rem;
@@ -4691,4 +4694,12 @@ marquee {
     display: table;
     margin: 0 auto;
     text-align: center;
+}
+.from_feild2 a {
+    font-size: 14px;
+    margin-left: auto;
+    display: table;
+}
+.dropdown-item:active {
+    background: none;
 }
