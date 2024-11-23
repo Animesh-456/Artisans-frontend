@@ -434,6 +434,9 @@ const Jobs = (prp) => {
                                 </div>
 
                                 {user?.role_id == 2 ? (
+                                    <div className="award-ln select_div">
+
+                                  
                                     <select id='project_status' onChange={handleOptions}>
                                         <option value={0} selected={true}>
                                             Jobs Awarded
@@ -443,6 +446,7 @@ const Jobs = (prp) => {
                                         </option>
 
                                     </select>
+                                    </div>
                                 ) : (
                                     <></>
                                 )}
