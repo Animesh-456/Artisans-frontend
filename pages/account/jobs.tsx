@@ -89,12 +89,10 @@ const Jobs = (prp) => {
         if (value == 0) {
             setIndex(1);
         }
-        else if (value == 1) {
-            setIndex(5);
+        else {
+            setIndex(2);
         }
-        else if (value == 2) {
-            setIndex(6);
-        }
+
         const pageQueryParam = new URLSearchParams(location.search).get('page');
         const pageNumber = parseInt(pageQueryParam) || 1;
 
@@ -434,6 +432,20 @@ const Jobs = (prp) => {
                                     <h4>My Projects <span>{list?.length ? <span>({opt.total_count})</span> : ""}</span>
                                     </h4>
                                 </div>
+
+                                {user?.role_id == 2 ? (
+                                    <select id='project_status' onChange={handleOptions}>
+                                        <option value={0} selected={true}>
+                                            Jobs Awarded
+                                        </option>
+                                        <option value={1}>
+                                            Made an offer
+                                        </option>
+
+                                    </select>
+                                ) : (
+                                    <></>
+                                )}
 
                                 <div className="uys5">
                                     <ul className="nav nav-pills" role="tablist">
