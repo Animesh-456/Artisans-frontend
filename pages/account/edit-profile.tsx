@@ -1082,6 +1082,14 @@ const EditProfile = (prp) => {
                                             </div>
 
                                         </div>
+                                        
+
+
+                                        <div className="row">
+                                            <div className="col-sm-12">
+                                                
+                                            </div>
+                                        </div>
 
 
 
@@ -1094,7 +1102,7 @@ const EditProfile = (prp) => {
 
                                                 />
 
-                                               
+
                                             </div>
 
 
@@ -1114,7 +1122,7 @@ const EditProfile = (prp) => {
                                                                 onRemove={onRemove}
                                                                 displayValue="label"
                                                                 placeholder="Select Category"
-                                                                
+                                                                showCheckbox
                                                             />
                                                         </div>
                                                     </div>

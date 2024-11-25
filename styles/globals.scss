@@ -969,7 +969,8 @@ a {
 }
 
 .select_div:before {
-    top: 11px;
+    //top: 11px;
+    bottom: 24px;
     right: 15px;
     position: absolute;
     content: "\f107";
@@ -4722,12 +4723,27 @@ marquee {
     font-family: "Poppins", sans-serif;
     padding-left: 10px;
 }
+
+.award-ln::before{
+    bottom: 10px;
+}
+
 .searchWrapper::after {
-    bottom: 24px;
+    bottom: 10px;
     right: 15px;
     position: absolute;
     content: "\f107";
     display: inline-block;
     font: normal normal normal 21px/1 FontAwesome;
     z-index: 1;
+}
+
+.select_div .searchWrapper::after{
+    display: none;
+}
+
+.multiSelectContainer input{
+    width: auto;
+    height: auto;
+    margin-bottom: 0px;
 }
