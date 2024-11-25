@@ -443,7 +443,7 @@ const CustomerSignIn = (props: Props) => {
 											</label>
 										</div>
 										<div className="col-sm-8">
-											<div className="">
+											<div className="select_div1">
 
 												<Multiselect
 

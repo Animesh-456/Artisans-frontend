@@ -364,7 +364,7 @@ const Post = () => {
                                     <label htmlFor="category">Category(s): <span>*</span>
                                     </label>
 
-                                    <div className="select_div">
+                                    <div className="select_div1">
 
                                         <Multiselect
                                             showCheckbox

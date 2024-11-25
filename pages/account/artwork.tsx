@@ -566,7 +566,7 @@ const Artwork = (prp) => {
                                                         </Select> */}
 
                                                         <label>Category: <span>*</span></label>
-                                                        <div className="select_div">
+                                                        <div className="select_div1">
                                                             <Multiselect
                                                                 options={category}
                                                                 selectedValues={categories}

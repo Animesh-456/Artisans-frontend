@@ -4613,9 +4613,10 @@ marquee {
 }
 
 .myaccount img {
-    width: 23px;
-    height: 23px;
+    width: 18px;
+    height: 18px;
     border-radius: 30px;
+    margin-right: 7px;
 }
 
 .myaccount button {
@@ -4633,6 +4634,7 @@ marquee {
 .myaccount button span {
     font-family: "Poppins", sans-serif;
     font-size: 14px;
+    font-weight: 500;
 }
 
 .myaccount .dropdown-menu {
@@ -4687,7 +4689,8 @@ marquee {
 }
 
 .log-ln a {
-    padding: 6px !important;
+    padding: 8px 12px !important;
+    font-weight: 400 !important;
 }
 
 .google-login-ln {
@@ -4718,4 +4721,13 @@ marquee {
     border-radius: 3px;
     font-family: "Poppins", sans-serif;
     padding-left: 10px;
+}
+.searchWrapper::after {
+    bottom: 24px;
+    right: 15px;
+    position: absolute;
+    content: "\f107";
+    display: inline-block;
+    font: normal normal normal 21px/1 FontAwesome;
+    z-index: 1;
 }

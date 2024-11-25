@@ -1106,7 +1106,7 @@ const EditProfile = (prp) => {
 
                                                     <div className="from_feild cont11">
                                                         <label>Categories</label>
-                                                        <div className="select_div">
+                                                        <div className="select_div1">
                                                             <Multiselect
                                                                 options={category}
                                                                 selectedValues={selectedcategory}
