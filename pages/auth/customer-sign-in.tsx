@@ -435,7 +435,7 @@ const CustomerSignIn = (props: Props) => {
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
 											<label>
-												Number<span>*</span>
+												Phone<span>*</span>
 											</label>
 										</div>
 										<div className='col-sm-8'>
@@ -449,7 +449,7 @@ const CustomerSignIn = (props: Props) => {
 												placeholder="+91 XXXXXXX890"
 											/>
 
-											<small>Your One-Time Password will be sent to the registered mobile number.
+											<small>Your One-Time Password will be sent to this mobile number.
 											</small>
 
 										</div>

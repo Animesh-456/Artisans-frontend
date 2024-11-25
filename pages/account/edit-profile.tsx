@@ -1114,6 +1114,7 @@ const EditProfile = (prp) => {
                                                                 onRemove={onRemove}
                                                                 displayValue="label"
                                                                 placeholder="Select Category"
+                                                                
                                                             />
                                                         </div>
                                                     </div>

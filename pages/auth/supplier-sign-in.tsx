@@ -50,8 +50,8 @@ const CustomerSignIn = (props: Props) => {
 	const [open, setOpen] = useAtom(atom.modal.confirm_project);
 	const [visiblity, setvisibility] = useState(true);
 
-    const [timeLeft, setTimeLeft] = useState(60); // Countdown starting from 60 seconds
-    const [isTimerRunning, setIsTimerRunning] = useState(false);
+	const [timeLeft, setTimeLeft] = useState(60); // Countdown starting from 60 seconds
+	const [isTimerRunning, setIsTimerRunning] = useState(false);
 	const category = [];
 
 	Category_subcategory?.categories?.map((sub) => {
@@ -72,7 +72,7 @@ const CustomerSignIn = (props: Props) => {
 	}, []);
 
 	const handleSumbit = () => {
-		
+
 		//if (disable) return;
 		if (!checkbox) {
 			toast.error("Please accept the terms")
@@ -162,25 +162,25 @@ const CustomerSignIn = (props: Props) => {
 	};
 
 	useEffect(() => {
-        let timerId: NodeJS.Timeout | null = null;
+		let timerId: NodeJS.Timeout | null = null;
 
-        if (isTimerRunning && timeLeft > 0) {
-            timerId = setInterval(() => {
-                setTimeLeft((prevTime) => prevTime - 1);
-            }, 1000);
-        } else if (timeLeft === 0) {
-            setIsTimerRunning(false); 
+		if (isTimerRunning && timeLeft > 0) {
+			timerId = setInterval(() => {
+				setTimeLeft((prevTime) => prevTime - 1);
+			}, 1000);
+		} else if (timeLeft === 0) {
+			setIsTimerRunning(false);
 			setvisibility(true);
 			// Stop the timer when it reaches 0
-        }
+		}
 
-        // Cleanup function
-        return () => {
-            if (timerId) {
-                clearInterval(timerId);
-            }
-        };
-    }, [isTimerRunning, timeLeft]);
+		// Cleanup function
+		return () => {
+			if (timerId) {
+				clearInterval(timerId);
+			}
+		};
+	}, [isTimerRunning, timeLeft]);
 
 
 	const startRegister = async (event) => {
@@ -194,16 +194,16 @@ const CustomerSignIn = (props: Props) => {
 		};
 		// //setDisable(true);
 		// signIn["category"] = categories?.map(item => item.id)?.join(',');
-		if (!signIn.user_name ) {
+		if (!signIn.user_name) {
 			return toast.error("Please enter username");
 		}
 		// if (!signIn.category || signIn.category.trim() === "") {
 		// 	return toast.error("Please select at least one category");
 		// }
-	
-		
+
+
 		// Validate email
-		if (!signIn.email ) {
+		if (!signIn.email) {
 			return toast.error("Please enter a valid email address");
 		}
 
@@ -220,16 +220,16 @@ const CustomerSignIn = (props: Props) => {
 			return toast.error("Passwords do not match");
 		}
 
-		
 
-		
 
-	
-		
-		
+
+
+
+
+
 
 		try {
-			const data = { body:{phoneNumber: signIn.mobile_number, email: signIn.email, user_name: signIn.user_name}  };
+			const data = { body: { phoneNumber: signIn.mobile_number, email: signIn.email, user_name: signIn.user_name } };
 			const response = await api.auth.register_mobileOtp(data);
 			if (response.status) {
 				toast.success("OTP sent successfully");
@@ -245,26 +245,26 @@ const CustomerSignIn = (props: Props) => {
 			toast.error(error?.message || "Unknown error, check logs");
 		}
 		// setOpen(true);
-		
+
 	};
 
 	const verifyOTP = async (event) => {
 		event.preventDefault();
-	
+
 		try {
 			// Replace `otp` and `phoneNumber` with actual values from state or input fields
-			const response:any = await api.auth.registerverify_mobileOtp({ 
-				body: { 
-					code: otp, 
+			const response: any = await api.auth.registerverify_mobileOtp({
+				body: {
+					code: otp,
 					phoneNumber: signIn.mobile_number
-				} 
+				}
 			});
-	
+
 			if (response.status) {
 				toast.success("OTP verified successfully");
 
-				handleSumbit();	
-				router.push("/auth/suppliersuccess")			
+				handleSumbit();
+				router.push("/auth/suppliersuccess")
 				// Perform actions upon successful verification, such as redirecting or opening a modal
 				setOpen(false); // Close OTP modal on success
 			} else {
@@ -313,20 +313,20 @@ const CustomerSignIn = (props: Props) => {
 
 	return (
 		<>
-			
 
-				<section className="breadcrumb_sec">
+
+			<section className="breadcrumb_sec">
 				<div className="container">
 					<div className="row">
-                        <ul className="breadcrumb">
-                            <li className="breadcrumb-item"><a href={"/"}>Home</a></li>
-                            <li className="breadcrumb-item active">Artist Register</li>
-                           
+						<ul className="breadcrumb">
+							<li className="breadcrumb-item"><a href={"/"}>Home</a></li>
+							<li className="breadcrumb-item active">Artist Register</li>
 
-                        </ul>
-                    </div>
-                </div>
-            </section>
+
+						</ul>
+					</div>
+				</div>
+			</section>
 			<section className="myproject">
 				<div className="container">
 					<div className="row justify-content-center">
@@ -439,7 +439,7 @@ const CustomerSignIn = (props: Props) => {
 
 									<div className="row from_feild cont11">
 										<div className="col-sm-4">
-											<label>Select Category 
+											<label>Select Category
 											</label>
 										</div>
 										<div className="col-sm-8">
@@ -502,6 +502,25 @@ const CustomerSignIn = (props: Props) => {
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
 											<label>
+												Phone<span>*</span>
+											</label>
+										</div>
+										<div className='col-sm-8'>
+											<input
+												name='mobile_number'
+												type='text'
+												autoComplete={"tel"}
+												value={signIn.mobile_number}
+												onChange={setSign("mobile_number")}
+												placeholder="+91 XXXXXXX890"
+											/>
+											<small>Your One-Time Password will be sent to this mobile number.</small>
+										</div>
+									</div>
+
+									<div className='row from_feild'>
+										<div className='col-sm-4'>
+											<label>
 												Address
 											</label>
 										</div>
@@ -521,22 +540,20 @@ const CustomerSignIn = (props: Props) => {
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
 											<label>
-												Number<span>*</span>
+												City
 											</label>
 										</div>
 										<div className='col-sm-8'>
 											<input
-												name='mobile_number'
+												name='city'
 												type='text'
-												autoComplete={"tel"}
-												value={signIn.mobile_number}
-												onChange={setSign("mobile_number")}
-												placeholder="+91 XXXXXXX890"
+												autoComplete="address-level2"
+												value={signIn.city}
+												onChange={setSign("city")}
+												placeholder="City"
 											/>
-											<small>Your One-Time Password will be sent to the registered mobile number.</small>
 										</div>
 									</div>
-
 
 									<div className='row from_feild'>
 										<div className='col-sm-4'>
@@ -552,24 +569,6 @@ const CustomerSignIn = (props: Props) => {
 												value={signIn.zcode}
 												onChange={setSign("zcode")}
 												placeholder="Postal code"
-											/>
-										</div>
-									</div>
-
-									<div className='row from_feild'>
-										<div className='col-sm-4'>
-											<label>
-												City 
-											</label>
-										</div>
-										<div className='col-sm-8'>
-											<input
-												name='city'
-												type='text'
-												autoComplete="address-level2"
-												value={signIn.city}
-												onChange={setSign("city")}
-												placeholder="City"
 											/>
 										</div>
 									</div>
@@ -630,7 +629,7 @@ const CustomerSignIn = (props: Props) => {
 												? { backgroundColor: "grey", color: "whitesmoke" }
 												: {}
 										} disabled={!visiblity} onClick={startRegister}>Register</button>
-<button className="canl" onClick={(event) => {
+										<button className="canl" onClick={(event) => {
 											event.preventDefault();
 											window.location.href = '/auth/sign-in';
 										}}>Cancel <img src={"../img/arrow.png"} width="11px" alt="" /></button>										</div>
@@ -647,12 +646,12 @@ const CustomerSignIn = (props: Props) => {
 
 							<div className="from_feild">
 								<label>Enter OTP: <span>*</span></label>
-								<input type="text" name="text" placeholder="OTP" value={otp} onChange={(e) => setotp(e.target.value)}/>
+								<input type="text" name="text" placeholder="OTP" value={otp} onChange={(e) => setotp(e.target.value)} />
 							</div>
 
 							<div className="signin_btn">
-								<a href="#" 
-								onClick={verifyOTP}>Verify</a>
+								<a href="#"
+									onClick={verifyOTP}>Verify</a>
 							</div>
 							{/* <div className="resend_otp">
 								<a href="#">Resend OTP</a>
