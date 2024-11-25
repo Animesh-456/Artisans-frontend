@@ -13,7 +13,7 @@ import $ from 'jquery';
 import common from "../../../helpers/common";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
-
+import { Dropdown, Image } from "react-bootstrap";
 
 type Props = {};
 
@@ -336,7 +336,7 @@ export default function Header({ }: Props) {
 									<ul>
 										<li className="myaccount">
 											<div className="dropdown">
-												<button onClick={() => setdropview(!dropview)} className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												{/* <button onClick={() => setdropview(!dropview)} className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 													<img
 														src={
 															common.get_profile_picture(user?.logo) ||
@@ -352,20 +352,48 @@ export default function Header({ }: Props) {
 												{dropview && (
 													<div className="dropdown-menu-right log-ln">
 														<a className="dropdown-item" href="/account/profile">
-														<img
-														src={
-															common.get_profile_picture(user?.logo) ||
-															"../img/no-images.png"
-														}
-													/> My Account
+															<img
+																src={
+																	common.get_profile_picture(user?.logo) ||
+																	"../img/no-images.png"
+																}
+															/> My Account
 														</a>
 														<a className="dropdown-item" style={{ cursor: 'pointer' }} onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</a>
 													</div>
-												)}
+												)} */}
+
+												<Dropdown align="end">
+													<Dropdown.Toggle variant="light" id="dropdown-basic">
+														<Image
+															src={
+																common.get_profile_picture(user?.logo) ||
+																"../img/no-images.png"
+															} // Replace with the actual profile image URL
+															roundedCircle
+															style={{ width: "30px", height: "30px", marginRight: "5px" }}
+														/>
+														{user?.user_name?.length > 10 ? (
+															<span>{user?.user_name.slice(0, 10).concat("...")}</span>
+														) : (
+															<span>{user?.user_name}</span>
+														)}
+													</Dropdown.Toggle>
+
+													<Dropdown.Menu>
+														<Dropdown.Item href="/account/profile"><img
+															src={
+																common.get_profile_picture(user?.logo) ||
+																"../img/no-images.png"
+															}
+														/> My Account</Dropdown.Item>
+														<Dropdown.Item onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</Dropdown.Item>
+													</Dropdown.Menu>
+												</Dropdown>
 											</div>
 										</li>
 									</ul>
-									
+
 								)}
 							</div>
 							<div className="navigation">
@@ -386,7 +414,7 @@ export default function Header({ }: Props) {
 											{user ? (
 
 												<li className="myaccount">
-													<div className="dropdown">
+													{/* <div className="dropdown">
 														<button onClick={() => setdropview(!dropview)} className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 															<img
 																src={
@@ -413,7 +441,35 @@ export default function Header({ }: Props) {
 																<a className="dropdown-item" style={{ cursor: 'pointer' }} onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</a>
 															</div>
 														)}
-													</div>
+													</div> */}
+
+													<Dropdown align="end">
+														<Dropdown.Toggle variant="light" id="dropdown-basic">
+															<Image
+																src={
+																	common.get_profile_picture(user?.logo) ||
+																	"../img/no-images.png"
+																} // Replace with the actual profile image URL
+																roundedCircle
+																style={{ width: "30px", height: "30px", marginRight: "5px" }}
+															/>
+															{user?.user_name?.length > 10 ? (
+																<span>{user?.user_name.slice(0, 10).concat("...")}</span>
+															) : (
+																<span>{user?.user_name}</span>
+															)}
+														</Dropdown.Toggle>
+
+														<Dropdown.Menu>
+															<Dropdown.Item href="/account/profile"><img
+																src={
+																	common.get_profile_picture(user?.logo) ||
+																	"../img/no-images.png"
+																}
+															/> My Account</Dropdown.Item>
+															<Dropdown.Item onClick={() => handleLogout()}><img src="../img/logout.svg" alt="" /> Logout</Dropdown.Item>
+														</Dropdown.Menu>
+													</Dropdown>
 												</li>
 												// <li className="signup"><a style={{ cursor: 'pointer' }} onClick={() => handleLogout()}>Logout</a></li>
 											) : (

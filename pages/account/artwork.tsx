@@ -753,6 +753,7 @@ const Artwork = (prp) => {
                                                             showCheckbox
                                                             displayValue="label"
                                                             placeholder="Select Category"
+                                                            
                                                         />
 
 
