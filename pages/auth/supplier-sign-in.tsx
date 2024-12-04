@@ -401,7 +401,7 @@ const CustomerSignIn = (props: Props) => {
 										</div>
 									</div>
 
-									<div className="row from_feild">
+									{/* <div className="row from_feild">
 										<div className="col-sm-4">
 											<label>Secret Question
 											</label>
@@ -415,12 +415,12 @@ const CustomerSignIn = (props: Props) => {
 												</option>
 											</select>
 										</div>
-									</div>
+									</div> */}
 
 
 
 
-									<div className="row from_feild">
+									{/* <div className="row from_feild">
 										<div className="col-sm-4">
 											<label>Secret Answer
 											</label>
@@ -435,7 +435,7 @@ const CustomerSignIn = (props: Props) => {
 												placeholder="**********"
 											/>
 										</div>
-									</div>
+									</div> */}
 
 									<div className="row from_feild cont11">
 										<div className="col-sm-4">
